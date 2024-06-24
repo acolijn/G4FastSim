@@ -4,7 +4,10 @@
 #include "G4ParticleChangeForGamma.hh"
 #include "G4ProductionCutsTable.hh"
 #include "G4AutoLock.hh"
+#include "G4DynamicParticle.hh"
+#include "G4MaterialCutsCouple.hh"
 #include <thread>
+#include <vector>
 
 // Declare the mutex globally within the file for G4AutoLock
 namespace {
@@ -44,78 +47,6 @@ void GammaRayHelper::Initialize(G4Material* mat) {
         photoelectricModels[mat] = photoelectricModel;
     }
 } 
- 
-G4ThreeVector GammaRayHelper::GenerateComptonScatteringDirection(
-    const G4ThreeVector& initialDirection,
-    G4double initialEnergy,
-    G4double& scatteredEnergy,
-    G4double minAngle,
-    G4double maxAngle,
-    G4double& weight,
-    G4Material* material)
-{
-    auto& comptonModel = comptonModels[material];
-
-    // Calculate the scattering angle and corresponding differential cross section
-    G4double theta, phi;
-    G4double minCosTheta = std::cos(maxAngle);
-    G4double maxCosTheta = std::cos(minAngle);
-
-    // Ensure correct min/max range
-    if (minCosTheta > maxCosTheta) std::swap(minCosTheta, maxCosTheta);
-
-    G4double cosTheta, sinTheta, differentialCrossSection;
-    do {
-        cosTheta = minCosTheta + (maxCosTheta - minCosTheta) * G4UniformRand();
-        sinTheta = std::sqrt(1.0 - cosTheta * cosTheta);
-        phi = 2.0 * pi * G4UniformRand();
-        
-        differentialCrossSection = 0.0;
-        const G4ElementVector* elementVector = material->GetElementVector();
-        const G4double* fractionVector = material->GetFractionVector();
-        for (size_t i = 0; i < material->GetNumberOfElements(); ++i) {
-            const G4Element* element = (*elementVector)[i];
-            differentialCrossSection += fractionVector[i] * comptonModel->ComputeCrossSectionPerAtom(G4Gamma::Gamma(), initialEnergy, element->GetZ(), cosTheta);
-        }
-    } while (G4UniformRand() > differentialCrossSection);
-
-    theta = std::acos(cosTheta);
-
-    // Calculate the energy of the scattered photon using Compton formula
-    G4double scatteredWavelength = (h_Planck * c_light / initialEnergy) + (h_Planck / (electron_mass_c2 * c_light)) * (1.0 - cosTheta);
-    scatteredEnergy = h_Planck * c_light / scatteredWavelength;
-
-    // Calculate the new direction of the scattered photon
-    G4double sinPhi = std::sin(phi);
-    G4double cosPhi = std::cos(phi);
-
-    G4ThreeVector newDirection(
-        sinTheta * cosPhi,
-        sinTheta * sinPhi,
-        cosTheta
-    );
-
-    // Rotate the new direction to align with the initial photon direction
-    G4ThreeVector rotationAxis = G4ThreeVector(0., 0., 1.).cross(initialDirection.unit());
-    G4double rotationAngle = std::acos(G4ThreeVector(0., 0., 1.).dot(initialDirection.unit()));
-    G4RotationMatrix rotationMatrix;
-    rotationMatrix.rotate(rotationAngle, rotationAxis);
-
-    newDirection *= rotationMatrix;
-
-    // Calculate the weight
-    G4double fullCrossSection = 0.0;
-    const G4ElementVector* elementVector = material->GetElementVector();
-    const G4double* fractionVector = material->GetFractionVector();
-    for (size_t i = 0; i < material->GetNumberOfElements(); ++i) {
-        const G4Element* element = (*elementVector)[i];
-        fullCrossSection += fractionVector[i] * comptonModel->ComputeCrossSectionPerAtom(G4Gamma::Gamma(), initialEnergy, element->GetZ(), -1.0); // Total cross section
-    }
-    G4double restrictedCrossSection = (maxCosTheta - minCosTheta) * fullCrossSection / 2.0;
-    weight = fullCrossSection / restrictedCrossSection;
-
-    return newDirection;
-}
 
 G4double GammaRayHelper::GetComptonCrossSection(G4double energy, G4Material* material) {
     //G4AutoLock lock(&mutex); // Ensure thread-safe access
@@ -188,4 +119,33 @@ G4double GammaRayHelper::GetMassAttenuationCoefficient(G4double energy, G4Materi
     
     return att;
 }
+G4ThreeVector GammaRayHelper::GenerateComptonScatteringDirection(
+    const G4ThreeVector& initialDirection,
+    G4double initialEnergy,
+    G4double& scatteredEnergy,
+    G4double minAngle,
+    G4double maxAngle,
+    G4double& weight,
+    G4Material* material, const G4Step *step)
+{
+    auto& comptonModel = comptonModels[material];
+
+    std::vector<G4DynamicParticle*>* fv = new std::vector<G4DynamicParticle*>();
+    G4MaterialCutsCouple* cuts = new G4MaterialCutsCouple(material, 0);
+
+    G4double E0 = step->GetPreStepPoint()->GetKineticEnergy();
+    G4DynamicParticle* gamma = new G4DynamicParticle(G4Gamma::Gamma(), initialDirection, initialEnergy);
+    comptonModel->SampleSecondaries(fv, cuts, gamma, 0,0);
+    G4double E1 = step->GetPreStepPoint()->GetKineticEnergy();
+
+
+    G4DynamicParticle* electron = (*fv)[0];
+    scatteredEnergy = electron->GetKineticEnergy();
+    G4cout << "Scattered energy: " << scatteredEnergy << " E0 ="<< E0 <<" E1 ="<< E1<<G4endl;
+
+    G4ThreeVector newDirection = G4ThreeVector(0,0,1.);
+    return newDirection;
+}
+
+
  

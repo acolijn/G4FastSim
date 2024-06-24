@@ -9,6 +9,8 @@
 #include "G4SystemOfUnits.hh"
 #include "G4DataVector.hh"
 #include "G4AutoLock.hh"
+#include "G4Track.hh"
+#include "G4Step.hh"
 #include <map>
 #include <mutex>
 
@@ -25,7 +27,7 @@ public:
         G4double minAngle,
         G4double maxAngle,
         G4double& weight,
-        G4Material* material);
+        G4Material* material, const G4Step *step);
 
     G4double GetComptonCrossSection(G4double energy, G4Material* material);
     G4double GetPhotoelectricCrossSection(G4double energy, G4Material* material);

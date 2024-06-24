@@ -41,6 +41,7 @@
 #include "G4Track.hh"
 #include "G4DynamicParticle.hh"
 #include "G4AutoLock.hh"
+#include "G4AnalysisManager.hh"
 #include "GammaRayHelper.hh"
 
 #include <vector>
@@ -77,6 +78,8 @@ void SteppingAction::UserSteppingAction(const G4Step* step)
       G4RunManager::GetRunManager()->GetUserDetectorConstruction());
     fScoringVolume = detConstruction->GetScoringVolume();
   }
+
+
 
   // get volume of the current step
   G4LogicalVolume* volume_pre = step->GetPreStepPoint()->GetTouchableHandle()->GetVolume()->GetLogicalVolume();
@@ -118,6 +121,22 @@ void SteppingAction::UserSteppingAction(const G4Step* step)
     //AddSecondaryParticle(newTrack);
  
   if((step->GetTrack()->GetTrackID() == 1) && (volume_pre->GetName() == "LXe")) {
+    // get analysis manager
+
+
+    // testing compton scatter angle generation.......
+    auto analysisManager = G4AnalysisManager::Instance();
+
+    G4double cost = -1;
+    G4double eout = 0.0;
+    G4double pi = 3.14159265358979323846;
+    for (int i = 0; i < 100; i++){
+      fGammaRayHelper->GenerateComptonScatteringDirection(G4ThreeVector(1.0, 0.0, 0.0), 0.3 * MeV, eout, 
+        0.0, pi, cost, volume_pre->GetMaterial(), step);
+    
+      analysisManager->FillH1(0, cost);
+    }
+
     // Get the pre-step point
     G4StepPoint* preStepPoint = step->GetPreStepPoint();
 
@@ -154,6 +173,8 @@ void SteppingAction::UserSteppingAction(const G4Step* step)
     // Add the new track to the list of secondaries
     G4TrackVector* secondaries = const_cast<G4TrackVector*>(step->GetSecondary());
     secondaries->push_back(newTrack);
+
+    track->SetTrackStatus(fStopAndKill);
 }
 
 

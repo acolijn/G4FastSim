@@ -33,7 +33,7 @@
 #include "G4LogicalVolume.hh"
 #include "G4Box.hh"
 #include "G4RunManager.hh"
-#include "G4ParticleGun.hh"
+#include "G4GeneralParticleSource.hh"
 #include "G4ParticleTable.hh"
 #include "G4ParticleDefinition.hh"
 #include "G4SystemOfUnits.hh"
@@ -47,7 +47,7 @@ namespace G4FastSim
 PrimaryGeneratorAction::PrimaryGeneratorAction()
 {
   G4int n_particle = 1;
-  fParticleGun  = new G4ParticleGun(n_particle);
+  fParticleGun  = new G4GeneralParticleSource();
 
   // default particle kinematic
   G4ParticleTable* particleTable = G4ParticleTable::GetParticleTable();
@@ -55,8 +55,8 @@ PrimaryGeneratorAction::PrimaryGeneratorAction()
   G4ParticleDefinition* particle
     = particleTable->FindParticle(particleName="geantino");
   fParticleGun->SetParticleDefinition(particle);
-  fParticleGun->SetParticleMomentumDirection(G4ThreeVector(1.,0.,0));
-  fParticleGun->SetParticleEnergy(6.*MeV);
+  //fParticleGun->SetParticleMomentumDirection(G4ThreeVector(1.,0.,0));
+  //fParticleGun->SetParticleEnergy(6.*MeV);
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
@@ -75,7 +75,7 @@ void PrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
 
 
 
-  fParticleGun->SetParticlePosition(G4ThreeVector(-6*m,0,0));
+//  fParticleGun->SetParticlePosition(G4ThreeVector(-6*m,0,0));
 
   fParticleGun->GeneratePrimaryVertex(anEvent);
 }

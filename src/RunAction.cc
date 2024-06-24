@@ -80,6 +80,9 @@ void RunAction::InitializeNtuples(){
         analysisManager->SetVerboseLevel(1);
         // Default settings
         analysisManager->SetNtupleMerging(true);
+
+        analysisManager->CreateH1("cost", "cos theta of Compton", 100, -1.0, +1.0); // id = 0
+
         // Creating event data ntuple
         DefineEventNtuple();
         // Creating and filling physics data ntuple

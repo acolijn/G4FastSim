@@ -3,6 +3,9 @@
 # To be run preferably in batch, without graphics:
 # % exampleB4[a,b,c,d] run2.mac
 #
+/gps/particle geantino
+/gps/direction 1. 0. 0.
+/gps/position -6*m 0. 0.
 #/run/numberOfThreads 4
 #/control/cout/ignoreThreadsExcept 0
 #
@@ -13,5 +16,5 @@
 # 1000 events
 #
 /run/printProgress 100
-/run/beamOn 1
+/run/beamOn 200
 
