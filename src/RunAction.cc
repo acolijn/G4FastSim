@@ -43,6 +43,8 @@
 
 #include "G4AnalysisManager.hh"
 #include "GammaRayHelper.hh"
+#include "G4Gamma.hh"
+
 #include <cmath>
 
 
@@ -87,8 +89,50 @@ void RunAction::InitializeNtuples(){
         DefineEventNtuple();
         // Creating and filling physics data ntuple
         DefineCrossSectionNtuple();
+
+
+         // get material table
+        const G4MaterialTable* materialTable = G4Material::GetMaterialTable();
+
+        testId = analysisManager->CreateNtuple("xsec", "differential cross-section data");
+        analysisManager->CreateNtupleSColumn(testId, "mat");      // column Id = 0
+        analysisManager->CreateNtupleDColumn(testId, "cost");     // column Id = 1
+        analysisManager->CreateNtupleDColumn(testId, "form");     // column Id = 2
+        analysisManager->CreateNtupleDColumn(testId, "dsig");     // column Id = 3
+
+        analysisManager->FinishNtuple(testId);
+        G4cout <<"RunAction::BeginOfRunAction: Test  ntuple created. ID = "<< testId << G4endl;
+
+        for (size_t i = 0; i < materialTable->size(); ++i) {
+          G4Material* material = (*materialTable)[i];
+          auto* comptonModel = fGammaRayHelper->GetComptonModel(material);
+          G4MaterialCutsCouple* cuts = new G4MaterialCutsCouple(material, 0);
+          G4DynamicParticle* gamma = new G4DynamicParticle(G4Gamma::Gamma(), G4ThreeVector(1,0,0), 0.1*MeV);
+          G4ParticleDefinition *particle = gamma->GetDefinition();
+
+          // select which element to scatter to.... based on cross section and relative amount in the material
+          const G4Element* elm = comptonModel->SelectRandomAtom(cuts,particle,0.1*MeV);
+
+          for (G4double theta = 0; theta < 3.14; theta += 0.01) {
+            // get scatter function
+            G4double s = comptonModel->FormFactor(elm, gamma, theta);
+            // get differential cross-section
+            G4double dsig = comptonModel->KleinNishina(gamma, theta);
+
+            analysisManager->FillNtupleSColumn(testId, 0, material->GetName());
+            analysisManager->FillNtupleDColumn(testId, 1, std::cos(theta));
+            analysisManager->FillNtupleDColumn(testId, 2, s);
+            analysisManager->FillNtupleDColumn(testId, 3, dsig);
+
+            analysisManager->AddNtupleRow(testId);
+
+          }
+        } 
+
+      }
     }
-}
+
+//}
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 

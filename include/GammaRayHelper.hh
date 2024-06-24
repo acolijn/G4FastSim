@@ -2,6 +2,7 @@
 #define GAMMA_RAY_HELPER_H
 
 #include "G4LivermoreComptonModel.hh"
+#include "ExtendedLivermoreComptonModel.hh"
 #include "G4LivermorePhotoElectricModel.hh"
 #include "G4Material.hh"
 #include "G4ThreeVector.hh"
@@ -35,6 +36,10 @@ public:
     G4double GetAttenuationLength(G4double energy, G4Material* material); 
     G4double GetMassAttenuationCoefficient(G4double energy, G4Material* material);
 
+    ExtendedLivermoreComptonModel* GetComptonModel(G4Material* material){
+        return comptonModels[material];
+    };
+
 private:
     GammaRayHelper();
     ~GammaRayHelper() = default;
@@ -42,7 +47,7 @@ private:
     GammaRayHelper(const GammaRayHelper&) = delete;
     GammaRayHelper& operator=(const GammaRayHelper&) = delete;
 
-    std::map<G4Material*, G4LivermoreComptonModel*> comptonModels;
+    std::map<G4Material*, ExtendedLivermoreComptonModel*> comptonModels;
     std::map<G4Material*, G4LivermorePhotoElectricModel*> photoelectricModels;
     std::mutex initMutex; // Mutex for thread-safe initialization
 };

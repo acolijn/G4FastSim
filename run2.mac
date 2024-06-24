@@ -5,7 +5,7 @@
 #
 /gps/particle geantino
 /gps/direction 1. 0. 0.
-/gps/position -6*m 0. 0.
+/gps/position -6. 0. 0. m
 #/run/numberOfThreads 4
 #/control/cout/ignoreThreadsExcept 0
 #
@@ -16,5 +16,5 @@
 # 1000 events
 #
 /run/printProgress 100
-/run/beamOn 200
+/run/beamOn 10000
 

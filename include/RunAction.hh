@@ -66,6 +66,8 @@ class RunAction : public G4UserRunAction
 
     int eventNtupleId = -1;
     int crossSectionNtupleId = -1;
+    int testId = -1;
+    
 };
 
 }

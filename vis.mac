@@ -1,6 +1,9 @@
 # Macro file for the visualization setting in the initialization phase 
 # of the B1 example when running in interactive mode
 #
+/gps/particle geantino
+/gps/direction 1. 0. 0.
+/gps/position -6. 0. 0. m
 
 # Use these open statements to open selected visualization
 #

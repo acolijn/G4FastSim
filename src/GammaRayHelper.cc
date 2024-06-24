@@ -21,21 +21,16 @@ GammaRayHelper& GammaRayHelper::Instance() {
 
 GammaRayHelper::GammaRayHelper() {}
 
-/* GammaRayHelper::~GammaRayHelper() {
-    // Clean up allocated memory
-    for (auto& pair : comptonModels) {
-        delete pair.second;
-    }
-    for (auto& pair : photoelectricModels) {
-        delete pair.second;
-    }
-} */
-
+/**
+ * Initialize the Compton and photoelectric models for a given material.
+ * @param mat The material to initialize the models for.
+ */
 void GammaRayHelper::Initialize(G4Material* mat) {
     G4AutoLock lock(&mutex); // Use G4AutoLock for thread-safe initialization
     if (comptonModels.find(mat) == comptonModels.end()) {
         G4cout << "GammaRayHelper::Initializing Compton and photoelectric models for material " << mat->GetName() << G4endl;
-        G4LivermoreComptonModel* comptonModel = new G4LivermoreComptonModel();
+        //G4LivermoreComptonModel* comptonModel = new G4LivermoreComptonModel();
+        ExtendedLivermoreComptonModel* comptonModel = new ExtendedLivermoreComptonModel();
         G4LivermorePhotoElectricModel* photoelectricModel = new G4LivermorePhotoElectricModel();
 
         G4DataVector cuts;
@@ -48,10 +43,14 @@ void GammaRayHelper::Initialize(G4Material* mat) {
     }
 } 
 
+/**
+ * Get the Compton cross section for a given energy and material.
+ * @param energy The energy of the gamma ray.
+ * @param material The material to calculate the cross section for.
+ * @return The Compton cross section.
+ */
 G4double GammaRayHelper::GetComptonCrossSection(G4double energy, G4Material* material) {
     //G4AutoLock lock(&mutex); // Ensure thread-safe access
-
-    
     auto& comptonModel = comptonModels[material];
     G4double crossSection = 0.0;
     const G4ElementVector* elementVector = material->GetElementVector();
@@ -63,6 +62,12 @@ G4double GammaRayHelper::GetComptonCrossSection(G4double energy, G4Material* mat
     return crossSection;
 }
 
+/**
+ * Get the photoelectric cross section for a given energy and material.
+ * @param energy The energy of the gamma ray.
+ * @param material The material to calculate the cross section for.
+ * @return The photoelectric cross section.
+ */
 G4double GammaRayHelper::GetPhotoelectricCrossSection(G4double energy, G4Material* material) {
     //G4AutoLock lock(&mutex); // Ensure thread-safe access
 
@@ -77,13 +82,24 @@ G4double GammaRayHelper::GetPhotoelectricCrossSection(G4double energy, G4Materia
     return crossSection;
 }
 
-
+/**
+ * Get the total cross section (Compton + photoelectric) for a given energy and material.
+ * @param energy The energy of the gamma ray.
+ * @param material The material to calculate the cross section for.
+ * @return The total cross section.
+ */
 G4double GammaRayHelper::GetTotalCrossSection(G4double energy, G4Material* material) {
     //G4AutoLock lock(&mutex); // Ensure thread-safe access
     G4double crossSection = GetComptonCrossSection(energy, material) + GetPhotoelectricCrossSection(energy, material);
     return crossSection;
 }
 
+/**
+ * Get the attenuation length for a given energy and material.
+ * @param energy The energy of the gamma ray.
+ * @param material The material to calculate the attenuation length for.
+ * @return The attenuation length.
+ */
 G4double GammaRayHelper::GetAttenuationLength(G4double energy, G4Material* material) {
     //G4AutoLock lock(&mutex); // Ensure thread-safe access
     
@@ -91,6 +107,12 @@ G4double GammaRayHelper::GetAttenuationLength(G4double energy, G4Material* mater
     return 1.0 / (crossSection * material->GetDensity());
 }
 
+/**
+ * Get the mass attenuation coefficient for a given energy and material.
+ * @param energy The energy of the gamma ray.
+ * @param material The material to calculate the mass attenuation coefficient for.
+ * @return The mass attenuation coefficient.
+ */
 G4double GammaRayHelper::GetMassAttenuationCoefficient(G4double energy, G4Material* material) {
     /*
     
@@ -119,6 +141,19 @@ G4double GammaRayHelper::GetMassAttenuationCoefficient(G4double energy, G4Materi
     
     return att;
 }
+
+/**
+ * Generate the direction of a Compton-scattered gamma ray.
+ * @param initialDirection The initial direction of the gamma ray.
+ * @param initialEnergy The initial energy of the gamma ray.
+ * @param scatteredEnergy The energy of the scattered gamma ray (output parameter).
+ * @param minAngle The minimum scattering angle.
+ * @param maxAngle The maximum scattering angle.
+ * @param weight The weight of the scattered gamma ray (output parameter).
+ * @param material The material in which the scattering occurs.
+ * @param step The step in which the scattering occurs.
+ * @return The direction of the scattered gamma ray.
+ */
 G4ThreeVector GammaRayHelper::GenerateComptonScatteringDirection(
     const G4ThreeVector& initialDirection,
     G4double initialEnergy,
@@ -133,15 +168,11 @@ G4ThreeVector GammaRayHelper::GenerateComptonScatteringDirection(
     std::vector<G4DynamicParticle*>* fv = new std::vector<G4DynamicParticle*>();
     G4MaterialCutsCouple* cuts = new G4MaterialCutsCouple(material, 0);
 
-    G4double E0 = step->GetPreStepPoint()->GetKineticEnergy();
     G4DynamicParticle* gamma = new G4DynamicParticle(G4Gamma::Gamma(), initialDirection, initialEnergy);
     comptonModel->SampleSecondaries(fv, cuts, gamma, 0,0);
-    G4double E1 = step->GetPreStepPoint()->GetKineticEnergy();
-
 
     G4DynamicParticle* electron = (*fv)[0];
     scatteredEnergy = electron->GetKineticEnergy();
-    G4cout << "Scattered energy: " << scatteredEnergy << " E0 ="<< E0 <<" E1 ="<< E1<<G4endl;
 
     G4ThreeVector newDirection = G4ThreeVector(0,0,1.);
     return newDirection;

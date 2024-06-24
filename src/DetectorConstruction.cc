@@ -93,6 +93,7 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
       G4Material* material = (*materialTable)[i];
       fGammaRayHelper->Initialize(material);
       G4cout << "Material: " << material->GetName() << " Attenuation length:" <<  fGammaRayHelper->GetAttenuationLength(1.0 * MeV, material) /cm << " cm" << G4endl;
+
   }
 
   
