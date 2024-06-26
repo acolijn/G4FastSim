@@ -59,6 +59,7 @@ class RunAction : public G4UserRunAction
     void InitializeNtuples();
     void DefineEventNtuple();
     void DefineCrossSectionNtuple();
+    void DefineDifferentialCrossSectionNtuple();
 
   private:
     EventAction* fEventAction = nullptr;
@@ -66,8 +67,7 @@ class RunAction : public G4UserRunAction
 
     int eventNtupleId = -1;
     int crossSectionNtupleId = -1;
-    int testId = -1;
-    
+    int diffXsecNtupleId = -1;
 };
 
 }

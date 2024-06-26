@@ -73,23 +73,37 @@ SteppingAction::~SteppingAction()
 
 void SteppingAction::UserSteppingAction(const G4Step* step)
 {
-  if (!fScoringVolume) {
-    const auto detConstruction = static_cast<const DetectorConstruction*>(
-      G4RunManager::GetRunManager()->GetUserDetectorConstruction());
-    fScoringVolume = detConstruction->GetScoringVolume();
-  }
-
-
-
+  G4cout <<"Entering SteppingAction::UserSteppingAction"<<G4endl;
+  //if (!fScoringVolume) {
+  //  const auto detConstruction = static_cast<const DetectorConstruction*>(
+  //    G4RunManager::GetRunManager()->GetUserDetectorConstruction());
+  //  fScoringVolume = detConstruction->GetScoringVolume();
+  //}
   // get volume of the current step
   G4LogicalVolume* volume_pre = step->GetPreStepPoint()->GetTouchableHandle()->GetVolume()->GetLogicalVolume();
+  auto poststep = step->GetPostStepPoint()->GetTouchableHandle()->GetVolume();
+
+  if(!poststep) {
+    G4cout << "No post step volume......" << G4endl;
+    return;
+  }
   G4LogicalVolume* volume_post = step->GetPostStepPoint()->GetTouchableHandle()->GetVolume()->GetLogicalVolume();
+
 
   G4Material* material = volume_pre->GetMaterial();
 
-  //G4cout << "Material: " << material->GetName() << " Attenuation length:" <<  fGammaRayHelper->GetAttenuationLength(1.0 * MeV, material) /cm << " cm" << G4endl;
+  G4cout << "track ID: " << step->GetTrack()->GetTrackID() << G4endl;
+  G4cout << "  volume_pre: " << volume_pre->GetName() << G4endl;
+  G4cout << "  volume_post: " << volume_post->GetName() << G4endl;
+  G4cout << "  material: " << material->GetName() << " Attenuation length:" <<  fGammaRayHelper->GetAttenuationLength(1.0 * MeV, material) /cm << " cm" << G4endl;
   // get the track information
+
   G4Track* track = step->GetTrack();
+  G4ParticleDefinition* particle = track->GetDefinition();
+  G4String particleName = particle->GetParticleName();
+
+
+
   // change direction of teh track
   //G4ThreeVector direction = track->GetMomentumDirection();
   //G4ThreeVector newDirection = direction;
@@ -101,8 +115,7 @@ void SteppingAction::UserSteppingAction(const G4Step* step)
   //G4cout<< "New track direction: " << newDirection << G4endl;
 
   // get the particle information
-  G4ParticleDefinition* particle = track->GetDefinition();
-  G4String particleName = particle->GetParticleName();
+
   //G4cout << "Particle name: " << particleName << G4endl;
 
   // set the particle definition to gamma
@@ -121,22 +134,6 @@ void SteppingAction::UserSteppingAction(const G4Step* step)
     //AddSecondaryParticle(newTrack);
  
   if((step->GetTrack()->GetTrackID() == 1) && (volume_pre->GetName() == "LXe")) {
-    // get analysis manager
-
-
-    // testing compton scatter angle generation.......
-    auto analysisManager = G4AnalysisManager::Instance();
-
-    G4double cost = -1;
-    G4double eout = 0.0;
-    G4double pi = 3.14159265358979323846;
-    for (int i = 0; i < 100; i++){
-      fGammaRayHelper->GenerateComptonScatteringDirection(G4ThreeVector(1.0, 0.0, 0.0), 0.3 * MeV, eout, 
-        0.0, pi, cost, volume_pre->GetMaterial(), step);
-    
-      analysisManager->FillH1(0, cost);
-    }
-
     // Get the pre-step point
     G4StepPoint* preStepPoint = step->GetPreStepPoint();
 
@@ -172,11 +169,12 @@ void SteppingAction::UserSteppingAction(const G4Step* step)
 
     // Add the new track to the list of secondaries
     G4TrackVector* secondaries = const_cast<G4TrackVector*>(step->GetSecondary());
+    G4cout << "Adding secondary particle" << G4endl;
     secondaries->push_back(newTrack);
 
     track->SetTrackStatus(fStopAndKill);
-}
-
+  }
+  G4cout << "Step length: " << step->GetStepLength() << G4endl;	
 
 
 }

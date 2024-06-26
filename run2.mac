@@ -4,8 +4,16 @@
 # % exampleB4[a,b,c,d] run2.mac
 #
 /gps/particle geantino
-/gps/direction 1. 0. 0.
-/gps/position -6. 0. 0. m
+/gps/pos/type Volume
+/gps/pos/shape Cylinder
+/gps/pos/centre 0. 0. 0. cm
+/gps/pos/radius 1.4 m
+/gps/pos/halfz 1.1 m
+/gps/pos/confine OuterCryostat
+/gps/ang/type iso
+
+#/gps/direction 1. 0. 0.
+#/gps/position -6. 0. 0. m
 #/run/numberOfThreads 4
 #/control/cout/ignoreThreadsExcept 0
 #
@@ -16,5 +24,4 @@
 # 1000 events
 #
 /run/printProgress 100
-/run/beamOn 10000
-
+/run/beamOn 1

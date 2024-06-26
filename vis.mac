@@ -2,8 +2,13 @@
 # of the B1 example when running in interactive mode
 #
 /gps/particle geantino
-/gps/direction 1. 0. 0.
-/gps/position -6. 0. 0. m
+/gps/pos/type Volume
+/gps/pos/shape Cylinder
+/gps/pos/centre 0. 0. 0. cm
+/gps/pos/radius 1.4 m
+/gps/pos/halfz 1.1 m
+/gps/pos/confine OuterCryostat
+/gps/ang/type iso
 
 # Use these open statements to open selected visualization
 #

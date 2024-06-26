@@ -44,11 +44,20 @@
 #include "G4AnalysisManager.hh"
 #include "GammaRayHelper.hh"
 #include "G4Gamma.hh"
+#include "G4PhysicalConstants.hh"
 
 #include <cmath>
 
 
 namespace G4FastSim
+/**
+ * @file RunAction.cc
+ * @brief Implementation of the RunAction class.
+ *
+ * The RunAction class is responsible for managing actions that occur during a run of the simulation.
+ * It initializes and defines the analysis manager, creates and fills ntuples for event data, cross-section data,
+ * and differential cross-section data, and performs actions at the beginning and end of a run.
+ */
 {
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
@@ -76,66 +85,95 @@ void RunAction::InitializeNtuples(){
   // Get analysis manager
   auto analysisManager = G4AnalysisManager::Instance();
   if (G4Threading::IsMasterThread()) {
-        analysisManager->SetDefaultFileType("root");
-        analysisManager->OpenFile("G4FastSim");
-        //  
-        analysisManager->SetVerboseLevel(1);
-        // Default settings
-        analysisManager->SetNtupleMerging(true);
+    analysisManager->SetDefaultFileType("root");
+    analysisManager->OpenFile("G4FastSim");
+    //  
+    analysisManager->SetVerboseLevel(1);
+    // Default settings
+    analysisManager->SetNtupleMerging(true);
 
-        analysisManager->CreateH1("cost", "cos theta of Compton", 100, -1.0, +1.0); // id = 0
+    analysisManager->CreateH1("cost", "cos theta of Compton", 100, -1.0, +1.0); // id = 0
 
-        // Creating event data ntuple
-        DefineEventNtuple();
-        // Creating and filling physics data ntuple
-        DefineCrossSectionNtuple();
+    // Creating event data ntuple
+    DefineEventNtuple();
+    // Creating and filling physics data ntuple
+    DefineCrossSectionNtuple();
+    // Creating and filling differential cross-section data ntuple
+    DefineDifferentialCrossSectionNtuple();
+  }
+}
+
+/**
+ * @brief Defines the differential cross-section Ntuple.
+ * 
+ * This function creates an Ntuple to store the differential cross-section data. It retrieves the material table,
+ * creates the necessary columns in the Ntuple, and fills the Ntuple with the differential cross-section values
+ * for each element in each material. The Ntuple columns include the material name, scattering angle, form factor,
+ * Klein-Nishina cross-section, and atomic number of the element.
+ */
+void RunAction::DefineDifferentialCrossSectionNtuple(){
+  auto analysisManager = G4AnalysisManager::Instance();
+
+  // get material table
+  const G4MaterialTable* materialTable = G4Material::GetMaterialTable();
+
+  diffXsecNtupleId = analysisManager->CreateNtuple("diff_xsec", "differential cross-section data");
+  analysisManager->CreateNtupleSColumn(diffXsecNtupleId, "mat");      // column Id = 0
+  analysisManager->CreateNtupleDColumn(diffXsecNtupleId, "cost");     // column Id = 1
+  analysisManager->CreateNtupleDColumn(diffXsecNtupleId, "ff");     // column Id = 2
+  analysisManager->CreateNtupleDColumn(diffXsecNtupleId, "kn");     // column Id = 3
+  analysisManager->CreateNtupleIColumn(diffXsecNtupleId, "Z");     // column Id = 4
+  analysisManager->FinishNtuple(diffXsecNtupleId);
+
+  G4cout <<"RunAction::BeginOfRunAction: Diff Xsec ntuple created. ID = "<< diffXsecNtupleId << G4endl;
+  G4cout <<"RunAction::BeginOfRunAction: Material table size = "<< materialTable->size() << G4endl;
+  G4double e0 = 1.0 * MeV;
+  G4cout <<"RunAction::BeginOfRunAction: create nutple for energy = " << e0/MeV << " MeV" << G4endl;
 
 
-         // get material table
-        const G4MaterialTable* materialTable = G4Material::GetMaterialTable();
+  std::vector<std::string> elements_used;
+  for (size_t i = 0; i < materialTable->size(); ++i) {
 
-        testId = analysisManager->CreateNtuple("xsec", "differential cross-section data");
-        analysisManager->CreateNtupleSColumn(testId, "mat");      // column Id = 0
-        analysisManager->CreateNtupleDColumn(testId, "cost");     // column Id = 1
-        analysisManager->CreateNtupleDColumn(testId, "form");     // column Id = 2
-        analysisManager->CreateNtupleDColumn(testId, "dsig");     // column Id = 3
+    G4Material* material = (*materialTable)[i];
+    auto* comptonModel = fGammaRayHelper->GetComptonModel(material);
+    G4MaterialCutsCouple* cuts = new G4MaterialCutsCouple(material, 0);
 
-        analysisManager->FinishNtuple(testId);
-        G4cout <<"RunAction::BeginOfRunAction: Test  ntuple created. ID = "<< testId << G4endl;
+    G4DynamicParticle* gamma = new G4DynamicParticle(G4Gamma::Gamma(), G4ThreeVector(1,0,0), e0);
+    G4ParticleDefinition *particle = gamma->GetDefinition();
 
-        for (size_t i = 0; i < materialTable->size(); ++i) {
-          G4Material* material = (*materialTable)[i];
-          auto* comptonModel = fGammaRayHelper->GetComptonModel(material);
-          G4MaterialCutsCouple* cuts = new G4MaterialCutsCouple(material, 0);
-          G4DynamicParticle* gamma = new G4DynamicParticle(G4Gamma::Gamma(), G4ThreeVector(1,0,0), 0.1*MeV);
-          G4ParticleDefinition *particle = gamma->GetDefinition();
+    // sloop over all elements in a material
+    const G4ElementVector* elementVector = material->GetElementVector();
+    for (size_t i = 0; i < material->GetNumberOfElements(); ++i) {
+      const G4Element* elm = (*elementVector)[i];
+      if (std::find(elements_used.begin(), elements_used.end(), elm->GetName()) == elements_used.end()) {
 
-          // select which element to scatter to.... based on cross section and relative amount in the material
-          const G4Element* elm = comptonModel->SelectRandomAtom(cuts,particle,0.1*MeV);
+        for (G4double theta = 0; theta < pi; theta += 0.001) {
+          // get scatter function
+          G4double ff = comptonModel->FormFactor(elm, gamma, theta);
+          // get differential cross-section (Klein-Nishina)
+          G4double kn = comptonModel->KleinNishina(gamma, theta);
 
-          for (G4double theta = 0; theta < 3.14; theta += 0.01) {
-            // get scatter function
-            G4double s = comptonModel->FormFactor(elm, gamma, theta);
-            // get differential cross-section
-            G4double dsig = comptonModel->KleinNishina(gamma, theta);
-
-            analysisManager->FillNtupleSColumn(testId, 0, material->GetName());
-            analysisManager->FillNtupleDColumn(testId, 1, std::cos(theta));
-            analysisManager->FillNtupleDColumn(testId, 2, s);
-            analysisManager->FillNtupleDColumn(testId, 3, dsig);
-
-            analysisManager->AddNtupleRow(testId);
-
-          }
-        } 
-
+          analysisManager->FillNtupleSColumn(diffXsecNtupleId, 0, elm->GetName());
+          analysisManager->FillNtupleDColumn(diffXsecNtupleId, 1, std::cos(theta));
+          analysisManager->FillNtupleDColumn(diffXsecNtupleId, 2, ff);
+          analysisManager->FillNtupleDColumn(diffXsecNtupleId, 3, kn);
+          analysisManager->FillNtupleIColumn(diffXsecNtupleId, 4, elm->GetZ());
+          analysisManager->AddNtupleRow(diffXsecNtupleId);
+        }
+        elements_used.push_back(elm->GetName());
       }
     }
-
+  }
+}
 //}
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
+/**
+ * @brief Defines the event ntuple for data analysis.
+ * 
+ * This function creates an event ntuple using the G4AnalysisManager class. The ntuple contains columns for storing energy deposition (Edep), x-coordinate (xh), and y-coordinate (yh) of each event. The ntuple is finished and assigned an ID.
+ */
 void RunAction::DefineEventNtuple(){
   // Creating ntuple
   auto analysisManager = G4AnalysisManager::Instance();
@@ -143,11 +181,13 @@ void RunAction::DefineEventNtuple(){
   G4cout << "RunAction::BeginOfRunAction: Creating event data ntuple" << G4endl;
 
   eventNtupleId = analysisManager->CreateNtuple("ev", "G4FastSim ntuple");
-  analysisManager->CreateNtupleDColumn(eventNtupleId, "Edep");     // column Id = 0
-  analysisManager                                   // column Id = 1
-    ->CreateNtupleDColumn(eventNtupleId, "xh", fEventAction->GetX());
-  analysisManager                                   // column Id = 2
-    ->CreateNtupleDColumn(eventNtupleId, "yh", fEventAction->GetY());
+  analysisManager->CreateNtupleDColumn(eventNtupleId, "Edep"); // column Id = 0
+  analysisManager->CreateNtupleDColumn(eventNtupleId, "xp");   // column Id = 1
+  analysisManager->CreateNtupleDColumn(eventNtupleId, "yp");   // column Id = 2
+  analysisManager->CreateNtupleDColumn(eventNtupleId, "zp");   // column Id = 3  
+  analysisManager->CreateNtupleDColumn(eventNtupleId, "xh", fEventAction->GetX()); // column Id = 4
+  analysisManager->CreateNtupleDColumn(eventNtupleId, "yh", fEventAction->GetY()); // column Id = 5
+  analysisManager->CreateNtupleDColumn(eventNtupleId, "zh", fEventAction->GetZ()); // column Id = 6
   analysisManager->FinishNtuple(eventNtupleId);
   G4cout <<"RunAction::BeginOfRunAction: Event data ntuple created. ID = "<< eventNtupleId << G4endl;
 }

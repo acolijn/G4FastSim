@@ -52,6 +52,7 @@ class EventAction : public G4UserEventAction
 
     std::vector<G4double>& GetX(){return fX;};
     std::vector<G4double>& GetY(){return fY;};
+    std::vector<G4double>& GetZ(){return fZ;};
 
     void AddEdep(G4double edep) { fEdep += edep; }
 
@@ -63,6 +64,10 @@ class EventAction : public G4UserEventAction
     static thread_local std::vector<G4double> fEd;
     static thread_local std::vector<G4double> fX;
     static thread_local std::vector<G4double> fY;
+    static thread_local std::vector<G4double> fZ;
+    static thread_local G4double fXp;
+    static thread_local G4double fYp;
+    static thread_local G4double fZp;
 
     static std::mutex mtx; // Mutex for thread safety
 

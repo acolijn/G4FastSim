@@ -160,7 +160,7 @@ void DetectorConstruction::ConstructOuterCryostat(){
 
   G4Material* stainless_steel = G4Material::GetMaterial("StainlessSteel");
   auto solidOuterCryostat = new G4Tubs("OuterCryostat",           // its name
-    0., outer_cryostat_radius, outer_cryostat_height / 2., 0. * deg, 360. * deg);  // its size
+    0, outer_cryostat_radius, outer_cryostat_height / 2., 0. * deg, 360. * deg);  // its size
 
   fOuterCryostatLogical = new G4LogicalVolume(solidOuterCryostat,  // its solid
     stainless_steel,                                         // its material

@@ -39,6 +39,11 @@
 #include "G4SystemOfUnits.hh"
 #include "Randomize.hh"
 
+
+#include "G4TransportationManager.hh"
+#include "G4Navigator.hh"
+#include "G4VPhysicalVolume.hh"
+
 namespace G4FastSim
 {
 
@@ -48,13 +53,13 @@ PrimaryGeneratorAction::PrimaryGeneratorAction()
 {
   G4int n_particle = 1;
   fParticleGun  = new G4GeneralParticleSource();
-
+/*
   // default particle kinematic
   G4ParticleTable* particleTable = G4ParticleTable::GetParticleTable();
   G4String particleName;
   G4ParticleDefinition* particle
     = particleTable->FindParticle(particleName="geantino");
-  fParticleGun->SetParticleDefinition(particle);
+  fParticleGun->SetParticleDefinition(particle); */
   //fParticleGun->SetParticleMomentumDirection(G4ThreeVector(1.,0.,0));
   //fParticleGun->SetParticleEnergy(6.*MeV);
 }
@@ -68,16 +73,41 @@ PrimaryGeneratorAction::~PrimaryGeneratorAction()
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
+// Function to get the name of the physical volume at a given position
+
+
+G4String GetVolumeNameAtPosition(const G4ThreeVector& position) {
+    // Get the transportation manager
+    G4TransportationManager* transportationManager = G4TransportationManager::GetTransportationManager();
+
+    // Get the navigator
+    G4Navigator* navigator = transportationManager->GetNavigatorForTracking();
+
+    // Locate the volume at the given position
+    G4VPhysicalVolume* physicalVolume = navigator->LocateGlobalPointAndSetup(position);
+
+    // Check if a volume was found
+    if (physicalVolume) {
+        // Return the name of the physical volume
+        return physicalVolume->GetName();
+    } else {
+        // Return an empty string if no volume was found
+        return "";
+    }
+}
+
 void PrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
 {
-  //this function is called at the begining of ecah event
+  //this function is called at the begining of each event
   //
-
-
-
-//  fParticleGun->SetParticlePosition(G4ThreeVector(-6*m,0,0));
+  G4ThreeVector xprim;
+  G4String volumeName="";
 
   fParticleGun->GeneratePrimaryVertex(anEvent);
+  xprim = fParticleGun->GetParticlePosition();
+  volumeName = GetVolumeNameAtPosition(xprim);
+
+  G4cout << "Primary particle generated at position " << xprim << " in volume " << volumeName << G4endl;
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......

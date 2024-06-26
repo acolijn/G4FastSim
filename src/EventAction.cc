@@ -43,7 +43,13 @@ namespace G4FastSim
 // Define thread-local variables
 thread_local std::vector<G4double> EventAction::fX;
 thread_local std::vector<G4double> EventAction::fY;
+thread_local std::vector<G4double> EventAction::fZ;
+
 thread_local G4double EventAction::fEdep = 0.;
+thread_local G4double EventAction::fXp = 0.;
+thread_local G4double EventAction::fYp = 0.;
+thread_local G4double EventAction::fZp = 0.;
+
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 std::mutex EventAction::mtx;
@@ -57,16 +63,24 @@ EventAction::EventAction()
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-void EventAction::BeginOfEventAction(const G4Event*)
+void EventAction::BeginOfEventAction(const G4Event* event)
 {
   fEdep = 1.2345;
   fX.clear();
   fY.clear();
+
+  G4cout<<"EventAction::BeginOfEventAction next event...."<<G4endl;
+  G4PrimaryVertex* primaryVertex = event->GetPrimaryVertex();
+  G4cout<<"EventAction::BeginOfEventAction primaryVertex->GetPosition() = "<<primaryVertex->GetPosition()<<G4endl;
+  fXp = primaryVertex->GetPosition().x();
+  fYp = primaryVertex->GetPosition().y();
+  fZp = primaryVertex->GetPosition().z();
+
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-void EventAction::EndOfEventAction(const G4Event*)
+void EventAction::EndOfEventAction(const G4Event* event)
 {
   // accumulate statistics in run action
   fX.push_back(0.1);
@@ -89,8 +103,11 @@ void EventAction::EndOfEventAction(const G4Event*)
     // Protect the following section with a mutex to ensure thread safety
   //{
   //    G4AutoLock lock(&mtx); // Use G4AutoLock for thread-safe initialization
-  std::lock_guard<std::mutex> lock(mtx);
+  //std::lock_guard<std::mutex> lock(mtx);
   analysisManager->FillNtupleDColumn(0, 0, fEdep);
+  analysisManager->FillNtupleDColumn(0, 1, fXp);
+  analysisManager->FillNtupleDColumn(0, 2, fYp);
+  analysisManager->FillNtupleDColumn(0, 3, fZp);
   analysisManager->AddNtupleRow(0);
 
   //G4cout<<"EventAction::EndOfEventAction: fX.size() = "<<fX.size()<<G4endl;
