@@ -59,15 +59,16 @@ class EventAction : public G4UserEventAction
   private:
     // define here all the variables that you want to store for each event in the 
     // ntuple tree  
-    static thread_local G4double fEdep;
+    G4double fEdep;
+    G4double fXp;
+    G4double fYp;
+    G4double fZp;
 
-    static thread_local std::vector<G4double> fEd;
-    static thread_local std::vector<G4double> fX;
-    static thread_local std::vector<G4double> fY;
-    static thread_local std::vector<G4double> fZ;
-    static thread_local G4double fXp;
-    static thread_local G4double fYp;
-    static thread_local G4double fZp;
+    std::vector<G4double> fEd;
+    std::vector<G4double> fX;
+    std::vector<G4double> fY;
+    std::vector<G4double> fZ;
+
 
     static std::mutex mtx; // Mutex for thread safety
 

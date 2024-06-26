@@ -53,12 +53,15 @@ class SteppingAction : public G4UserSteppingAction
 
     // method from the base class
     void UserSteppingAction(const G4Step*) override;
+    void SetVerbosity(G4int level) { verbosityLevel = level; }  
 
   private:
     EventAction* fEventAction;
     G4LogicalVolume* fScoringVolume;
     G4ParticleTable* particleTable;
     GammaRayHelper* fGammaRayHelper;
+
+    G4int verbosityLevel=2;
 
 };
 

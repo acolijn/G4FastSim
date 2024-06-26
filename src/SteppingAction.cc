@@ -73,36 +73,40 @@ SteppingAction::~SteppingAction()
 
 void SteppingAction::UserSteppingAction(const G4Step* step)
 {
-  G4cout <<"Entering SteppingAction::UserSteppingAction"<<G4endl;
+  if (verbosityLevel >= 2){
+    G4cout <<"Entering SteppingAction::UserSteppingAction"<<G4endl;
+  }
   //if (!fScoringVolume) {
   //  const auto detConstruction = static_cast<const DetectorConstruction*>(
   //    G4RunManager::GetRunManager()->GetUserDetectorConstruction());
   //  fScoringVolume = detConstruction->GetScoringVolume();
   //}
-  // get volume of the current step
-  G4LogicalVolume* volume_pre = step->GetPreStepPoint()->GetTouchableHandle()->GetVolume()->GetLogicalVolume();
-  auto poststep = step->GetPostStepPoint()->GetTouchableHandle()->GetVolume();
-
-  if(!poststep) {
-    G4cout << "No post step volume......" << G4endl;
-    return;
-  }
-  G4LogicalVolume* volume_post = step->GetPostStepPoint()->GetTouchableHandle()->GetVolume()->GetLogicalVolume();
-
-
-  G4Material* material = volume_pre->GetMaterial();
-
-  G4cout << "track ID: " << step->GetTrack()->GetTrackID() << G4endl;
-  G4cout << "  volume_pre: " << volume_pre->GetName() << G4endl;
-  G4cout << "  volume_post: " << volume_post->GetName() << G4endl;
-  G4cout << "  material: " << material->GetName() << " Attenuation length:" <<  fGammaRayHelper->GetAttenuationLength(1.0 * MeV, material) /cm << " cm" << G4endl;
-  // get the track information
 
   G4Track* track = step->GetTrack();
+
+  // get volume of the current step
+  G4LogicalVolume* volume_pre = step->GetPreStepPoint()->GetTouchableHandle()->GetVolume()->GetLogicalVolume();
+  G4Material* material = volume_pre->GetMaterial();
+
+  auto poststep = step->GetPostStepPoint()->GetTouchableHandle()->GetVolume();
+  // if you leave the Geant4 World volume.... do nothing
+  G4LogicalVolume* volume_post = nullptr;
+  if(poststep) {
+    volume_post  = step->GetPostStepPoint()->GetTouchableHandle()->GetVolume()->GetLogicalVolume();
+  }
+
+  // if Verbose level >=2 print this information
+  if(verbosityLevel >= 2 )
+  {
+    G4cout << "track ID: " << track->GetTrackID() << G4endl;
+    G4cout << "  volume_pre: " << volume_pre->GetName() << G4endl;
+    G4cout << "  material: " << material->GetName() << " Attenuation length:" <<  fGammaRayHelper->GetAttenuationLength(1.0 * MeV, material) /cm << " cm" << G4endl;
+  }
+  
+  // get the track information
+
   G4ParticleDefinition* particle = track->GetDefinition();
   G4String particleName = particle->GetParticleName();
-
-
 
   // change direction of teh track
   //G4ThreeVector direction = track->GetMomentumDirection();
@@ -169,12 +173,11 @@ void SteppingAction::UserSteppingAction(const G4Step* step)
 
     // Add the new track to the list of secondaries
     G4TrackVector* secondaries = const_cast<G4TrackVector*>(step->GetSecondary());
-    G4cout << "Adding secondary particle" << G4endl;
+
     secondaries->push_back(newTrack);
 
     track->SetTrackStatus(fStopAndKill);
   }
-  G4cout << "Step length: " << step->GetStepLength() << G4endl;	
 
 
 }

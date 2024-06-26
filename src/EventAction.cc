@@ -41,14 +41,14 @@
 namespace G4FastSim
 {
 // Define thread-local variables
-thread_local std::vector<G4double> EventAction::fX;
-thread_local std::vector<G4double> EventAction::fY;
-thread_local std::vector<G4double> EventAction::fZ;
+//thread_local std::vector<G4double> EventAction::fX;
+//thread_local std::vector<G4double> EventAction::fY;
+//thread_local std::vector<G4double> EventAction::fZ;
 
-thread_local G4double EventAction::fEdep = 0.;
-thread_local G4double EventAction::fXp = 0.;
-thread_local G4double EventAction::fYp = 0.;
-thread_local G4double EventAction::fZp = 0.;
+//thread_local G4double EventAction::fEdep = 0.;
+//thread_local G4double EventAction::fXp = 0.;
+//thread_local G4double EventAction::fYp = 0.;
+//thread_local G4double EventAction::fZp = 0.;
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
@@ -65,23 +65,32 @@ EventAction::EventAction()
 
 void EventAction::BeginOfEventAction(const G4Event* event)
 {
+  G4cout << "EventAction::BeginOfEventAction..... NEXT" << G4endl;	
   fEdep = 1.2345;
   fX.clear();
   fY.clear();
 
-  G4cout<<"EventAction::BeginOfEventAction next event...."<<G4endl;
+  //G4cout<<"EventAction::BeginOfEventAction next event...."<<G4endl;
   G4PrimaryVertex* primaryVertex = event->GetPrimaryVertex();
-  G4cout<<"EventAction::BeginOfEventAction primaryVertex->GetPosition() = "<<primaryVertex->GetPosition()<<G4endl;
   fXp = primaryVertex->GetPosition().x();
   fYp = primaryVertex->GetPosition().y();
   fZp = primaryVertex->GetPosition().z();
 
+  auto def =  event->GetPrimaryVertex()->GetPrimary()->GetParticleDefinition();
+  G4cout << " def = " << def->GetParticleName() << G4endl;
+  G4cout << " p = "<<event->GetPrimaryVertex()->GetPrimary()->GetMomentumDirection() << G4endl;
+  // Kill the event if the particle does not point to the fiducial volume
+  //if (TBD) {
+  //  G4cout<<"EventAction::BeginOfEventAction: Killing event with fZp = "<<fZp<<G4endl;
+  //  G4RunManager::GetRunManager()->AbortEvent();
+  //}
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 void EventAction::EndOfEventAction(const G4Event* event)
 {
+  G4cout << "EventAction::EndOfEventAction..... " << G4endl;
   // accumulate statistics in run action
   fX.push_back(0.1);
   fY.push_back(0.2);

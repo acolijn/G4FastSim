@@ -3,6 +3,13 @@
 # To be run preferably in batch, without graphics:
 # % exampleB4[a,b,c,d] run2.mac
 #
+/control/verbose 2
+/control/saveHistory
+/run/verbose 2
+/stepping/verbose 2
+
+/run/initialize
+
 /gps/particle geantino
 /gps/pos/type Volume
 /gps/pos/shape Cylinder
@@ -17,11 +24,12 @@
 #/run/numberOfThreads 4
 #/control/cout/ignoreThreadsExcept 0
 #
-/run/initialize
+# /run/initialize
 #
 # Default kinemtics: 
 # electron 50 MeV in direction (0.,0.,1.)
 # 1000 events
 #
 /run/printProgress 100
-/run/beamOn 1
+/run/beamOn 10000
+
