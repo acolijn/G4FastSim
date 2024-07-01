@@ -6,7 +6,17 @@
 /control/verbose 2
 /control/saveHistory
 /run/verbose 2
-/stepping/verbose 2
+
+/detector/setOuterCryostatRadius 50 cm
+/detector/setOuterCryostatHeight 100 cm
+/detector/setOuterCryostatWallThickness 2 cm
+
+/detector/setInnerCryostatRadius 45 cm
+/detector/setInnerCryostatHeight 90 cm
+/detector/setInnerCryostatWallThickness 1.5 cm
+
+/detector/setFiducialRadius 40 cm
+/detector/setFiducialHeight 80 cm
 
 /run/initialize
 

@@ -1,6 +1,7 @@
 /// \file G4FastSim.cc
 /// \brief Main program of the B1 example
 #include "DetectorConstruction.hh"
+#include "DetectorConstructionMessenger.hh"
 #include "ActionInitialization.hh"
 
 #include "G4RunManagerFactory.hh"
@@ -20,7 +21,6 @@
 //#include "TTree.h"
 
 using namespace G4FastSim;
-
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 int main(int argc,char** argv)
@@ -93,6 +93,8 @@ int main(int argc,char** argv)
 
   delete visManager;
   delete runManager;
+
+  return 0;
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo.....

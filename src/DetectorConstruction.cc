@@ -28,6 +28,7 @@
 /// \brief Implementation of the B1::DetectorConstruction class
 
 #include "DetectorConstruction.hh"
+#include "DetectorConstructionMessenger.hh"
 #include "Materials.hh"
 #include "GammaRayHelper.hh"
 
@@ -41,18 +42,21 @@
 #include "G4Material.hh"
 #include "G4AnalysisManager.hh"
 
-
-
-namespace G4FastSim
-{
-
+namespace G4FastSim{
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 DetectorConstruction::DetectorConstruction(GammaRayHelper* helper)
   : G4VUserDetectorConstruction(),
   fGammaRayHelper(helper){
 
-  }
+  fMessenger = new DetectorConstructionMessenger(this);
+
+}
+
+DetectorConstruction::~DetectorConstruction()
+{
+  delete fMessenger;
+}
 
 G4VPhysicalVolume* DetectorConstruction::Construct()
 {
@@ -79,9 +83,18 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
   //
   ConstructOuterCryostat();
   //
-  // Construct inner cryostat and fill with LXe
+  // Construct inner cryostat 
   //
   ConstructInnerCryostat();
+  //
+  // Fill with Liquid xenon, PTFE field cage, and inner fiducial volume
+  //
+  ConstructLXe();
+  //
+  // Define the inner fiducial volume
+  //
+  ConstructFiducialVolume();
+
   //
   // Initialize the gamma ray helper class with all the materials that have been defined
   //
@@ -131,6 +144,9 @@ void DetectorConstruction::ConstructWaterTank(){
   //
   G4double tank_radius = 5*m;
   G4double tank_height = 10*m;
+  G4cout << "DetectorConstruction::ConstructWaterTank Constructing water tank" << G4endl;
+  G4cout << "DetectorConstruction::ConstructWaterTank tank_radius = " << tank_radius/cm << " cm"<<G4endl;
+  G4cout << "DetectorConstruction::ConstructWaterTank tank_height = " << tank_height/cm << " cm"<<G4endl;
 
   G4Material* water = G4Material::GetMaterial("G4_WATER");
   auto solidWaterTank = new G4Tubs("WaterTank",           // its name
@@ -154,11 +170,18 @@ void DetectorConstruction::ConstructOuterCryostat(){
   //
   // Outer cryostat
   //
-  G4double outer_cryostat_radius = 1.3*m;
-  G4double outer_cryostat_height = 2.0*m;
-  G4double wall_thickness = 1*cm;
+/*   outer_cryostat_radius = 1.3*m;
+  outer_cryostat_height = 2.0*m;
+  outer_cryostat_wall_thickness = 1*cm; */
+
+  G4cout << "DetectorConstruction::ConstructOuterCryostat Constructing outer cryostat" << G4endl;	
+  G4cout << "DetectorConstruction::ConstructOuterCryostat outer_cryostat_radius = " << outer_cryostat_radius/cm << " cm"<<G4endl;
+  G4cout << "DetectorConstruction::ConstructOuterCryostat outer_cryostat_height = " << outer_cryostat_height/cm << " cm"<<G4endl;
+  G4cout << "DetectorConstruction::ConstructOuterCryostat outer_cryostat_wall_thickness = " << outer_cryostat_wall_thickness/cm << "/cm"<<G4endl;
 
   G4Material* stainless_steel = G4Material::GetMaterial("StainlessSteel");
+
+
   auto solidOuterCryostat = new G4Tubs("OuterCryostat",           // its name
     0, outer_cryostat_radius, outer_cryostat_height / 2., 0. * deg, 360. * deg);  // its size
 
@@ -178,7 +201,7 @@ void DetectorConstruction::ConstructOuterCryostat(){
   // Fill the outer cryostat with vacuum
   G4Material* vacuum = G4Material::GetMaterial("Vacuum");
   auto solidVacuum = new G4Tubs("Vacuum",           // its name
-    0., outer_cryostat_radius - wall_thickness, outer_cryostat_height / 2. - wall_thickness, 0. * deg, 360. * deg);  // its size  
+    0., outer_cryostat_radius - outer_cryostat_wall_thickness, outer_cryostat_height / 2. - outer_cryostat_wall_thickness, 0. * deg, 360. * deg);  // its size  
 
   fVacuumLogical = new G4LogicalVolume(solidVacuum,  // its solid
     vacuum,                                         // its material
@@ -199,11 +222,17 @@ void DetectorConstruction::ConstructInnerCryostat(){
   //
   // Construct inner cryostat and fill with LXe
   //
-  G4double inner_cryostat_radius = 1.2*m;
-  G4double inner_cryostat_height = 1.8*m;
-  G4double wall_thickness = 0.5*cm;
+/*   inner_cryostat_radius = 1.2*m;
+  inner_cryostat_height = 1.8*m;
+  inner_cryostat_wall_thickness = 0.5*cm; */
 
   // the vessel
+
+  G4cout << "DetectorConstruction::ConstructInnerCryostat Constructing inner cryostat" << G4endl;
+  G4cout << "DetectorConstruction::ConstructInnerCryostat inner_cryostat_radius = " << inner_cryostat_radius/cm << " cm"<<G4endl;
+  G4cout << "DetectorConstruction::ConstructInnerCryostat inner_cryostat_height = " << inner_cryostat_height/cm << " cm"<<G4endl;
+  G4cout << "DetectorConstruction::ConstructInnerCryostat inner_cryostat_wall_thickness = " << inner_cryostat_wall_thickness/cm << "/cm"<<G4endl;
+
   G4Material* stainless_steel = G4Material::GetMaterial("StainlessSteel");
   auto solidInnerCryostat = new G4Tubs("InnerCryostat",           // its name
     0., inner_cryostat_radius, inner_cryostat_height / 2., 0. * deg, 360. * deg);  // its size
@@ -220,11 +249,17 @@ void DetectorConstruction::ConstructInnerCryostat(){
     false,                    // no boolean operation
     0,                        // copy number
     fCheckOverlaps);           // overlaps checking
+}
 
+//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
+void DetectorConstruction::ConstructLXe(){
   // the liquid xenon
+
+  G4cout << "DetectorConstruction::ConstructLXe Constructing LXe" << G4endl;
+
   G4Material* lXe = G4Material::GetMaterial("LXe");
   auto solidLXe = new G4Tubs("LXe",           // its name
-    0., inner_cryostat_radius - wall_thickness, inner_cryostat_height / 2. - wall_thickness, 0. * deg, 360. * deg);  // its size
+    0., inner_cryostat_radius - inner_cryostat_wall_thickness, inner_cryostat_height / 2. - inner_cryostat_wall_thickness, 0. * deg, 360. * deg);  // its size
 
   fLXeLogical = new G4LogicalVolume(solidLXe,  // its solid
     lXe,                                         // its material
@@ -239,7 +274,37 @@ void DetectorConstruction::ConstructInnerCryostat(){
     0,                        // copy number
     fCheckOverlaps);           // overlaps checking
 }
+//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
+void DetectorConstruction::ConstructFiducialVolume(){
+
+  // the liquid xenon fiducial volume
+
+  G4cout << "DetectorConstruction::ConstructFiducialVolume Constructing LXe fiducial volume" << G4endl;
+  G4cout << "DetectorConstruction::ConstructFiducialVolume fiducial_radius = " << fiducial_radius/cm << " cm"<<G4endl;
+  G4cout << "DetectorConstruction::ConstructFiducialVolume fiducial_height = " << fiducial_height/cm << " cm"<<G4endl;
+
+  G4Material* lXe = G4Material::GetMaterial("LXe");
+/*   fiducial_radius = 0.8*m;
+  fiducial_height = 1.0*m; */
+
+  auto solidLXeFiducial = new G4Tubs("LXeFiducial",           // its name
+    0., fiducial_radius, fiducial_height / 2., 0. * deg, 360. * deg);  // its size
+
+  fLXeFiducialLogical = new G4LogicalVolume(solidLXeFiducial,  // its solid
+    lXe,                                         // its material
+    "LXeFiducial");                                    // its name
+
+  fLXeFiducialPhysical = new G4PVPlacement(nullptr,  // no rotation
+    G4ThreeVector(),          // at (0,0,0)
+    fLXeFiducialLogical,       // its logical volume
+    "LXeFiducial",            // its name
+    fLXeLogical,               // its mother  volume
+    false,                    // no boolean operation
+    0,                        // copy number
+    fCheckOverlaps);           // overlaps checking 
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
+
+}
 
 }
