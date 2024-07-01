@@ -40,16 +40,6 @@
 
 namespace G4FastSim
 {
-// Define thread-local variables
-//thread_local std::vector<G4double> EventAction::fX;
-//thread_local std::vector<G4double> EventAction::fY;
-//thread_local std::vector<G4double> EventAction::fZ;
-
-//thread_local G4double EventAction::fEdep = 0.;
-//thread_local G4double EventAction::fXp = 0.;
-//thread_local G4double EventAction::fYp = 0.;
-//thread_local G4double EventAction::fZp = 0.;
-
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 std::mutex EventAction::mtx;
@@ -75,6 +65,8 @@ void EventAction::BeginOfEventAction(const G4Event* event)
   fXp = primaryVertex->GetPosition().x();
   fYp = primaryVertex->GetPosition().y();
   fZp = primaryVertex->GetPosition().z();
+
+
 
   auto def =  event->GetPrimaryVertex()->GetPrimary()->GetParticleDefinition();
   G4cout << " def = " << def->GetParticleName() << G4endl;

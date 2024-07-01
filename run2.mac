@@ -7,39 +7,34 @@
 /control/saveHistory
 /run/verbose 2
 
-/detector/setOuterCryostatRadius 50 cm
-/detector/setOuterCryostatHeight 100 cm
-/detector/setOuterCryostatWallThickness 2 cm
+# define the detector geometry
+/detector/setOuterCryostatRadius 150 cm
+/detector/setOuterCryostatHeight 140 cm
+/detector/setOuterCryostatWallThickness 10 mm
 
-/detector/setInnerCryostatRadius 45 cm
-/detector/setInnerCryostatHeight 90 cm
-/detector/setInnerCryostatWallThickness 1.5 cm
+/detector/setInnerCryostatRadius 120 cm
+/detector/setInnerCryostatHeight 120 cm
+/detector/setInnerCryostatWallThickness 6 mm
 
 /detector/setFiducialRadius 40 cm
 /detector/setFiducialHeight 80 cm
 
 /run/initialize
 
+# define the particle gun settings
 /gps/particle geantino
 /gps/pos/type Volume
 /gps/pos/shape Cylinder
 /gps/pos/centre 0. 0. 0. cm
-/gps/pos/radius 1.4 m
+/gps/pos/radius 1.6 m
 /gps/pos/halfz 1.1 m
 /gps/pos/confine OuterCryostat
 /gps/ang/type iso
 
-#/gps/direction 1. 0. 0.
-#/gps/position -6. 0. 0. m
-#/run/numberOfThreads 4
-#/control/cout/ignoreThreadsExcept 0
-#
-# /run/initialize
-#
-# Default kinemtics: 
-# electron 50 MeV in direction (0.,0.,1.)
-# 1000 events
-#
+# fast simulation?
+/run/setFastSimulation true
+
+# run the thing...............
 /run/printProgress 100
-/run/beamOn 10000
+/run/beamOn 2
 

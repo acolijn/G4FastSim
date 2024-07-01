@@ -36,6 +36,7 @@
 #include "G4AnalysisManager.hh"
 #include "globals.hh"
 #include "GammaRayHelper.hh"
+#include "RunActionMessenger.hh"
 
 class G4Run;
 
@@ -46,12 +47,13 @@ namespace G4FastSim
 {
 
 class EventAction;
+class RunActionMessenger;
 
 class RunAction : public G4UserRunAction
 {
   public:
     RunAction(EventAction *eventAction, GammaRayHelper *helper);
-    ~RunAction() override = default;
+    ~RunAction();
 
     void BeginOfRunAction(const G4Run*) override;
     void   EndOfRunAction(const G4Run*) override;
@@ -61,13 +63,20 @@ class RunAction : public G4UserRunAction
     void DefineCrossSectionNtuple();
     void DefineDifferentialCrossSectionNtuple();
 
+    void SetFastSimulation(G4bool value) { fFastSimulation = value; }
+
+
   private:
     EventAction* fEventAction = nullptr;
     GammaRayHelper* fGammaRayHelper = nullptr;
+    RunActionMessenger* fMessenger;
+
 
     int eventNtupleId = -1;
     int crossSectionNtupleId = -1;
     int diffXsecNtupleId = -1;
+
+    G4bool fFastSimulation = false;
 };
 
 }

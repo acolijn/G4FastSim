@@ -5,6 +5,11 @@
 
 namespace G4FastSim{
 
+/**
+ * @brief Constructor for the DetectorConstructionMessenger class.
+ * 
+ * @param detector A pointer to the DetectorConstruction object.
+ */
 DetectorConstructionMessenger::DetectorConstructionMessenger(DetectorConstruction* detector)
     : fDetectorConstruction(detector) {
 
@@ -71,7 +76,17 @@ DetectorConstructionMessenger::~DetectorConstructionMessenger() {
     delete fFiducialHeightCmd;
 }
 
+/**
+ * @brief Sets the new value for a given command.
+ *
+ * This function is called when a new value is assigned to a command in the user interface.
+ * It checks which command is being modified and calls the corresponding setter function in the `DetectorConstruction` class.
+ *
+ * @param command The command being modified.
+ * @param newValue The new value assigned to the command.
+ */
 void DetectorConstructionMessenger::SetNewValue(G4UIcommand* command, G4String newValue) {
+
     if (command == fOuterCryostatRadiusCmd) {
         fDetectorConstruction->SetOuterCryostatRadius(fOuterCryostatRadiusCmd->GetNewDoubleValue(newValue));
     } else if (command == fOuterCryostatHeightCmd) {

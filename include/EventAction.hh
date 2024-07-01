@@ -55,6 +55,8 @@ class EventAction : public G4UserEventAction
     std::vector<G4double>& GetZ(){return fZ;};
 
     void AddEdep(G4double edep) { fEdep += edep; }
+    void SetFastSimulation(G4bool fast) { fFastSimulation = fast; }
+    G4bool IsFastSimulation() { return fFastSimulation; }
 
   private:
     // define here all the variables that you want to store for each event in the 
@@ -69,6 +71,7 @@ class EventAction : public G4UserEventAction
     std::vector<G4double> fY;
     std::vector<G4double> fZ;
 
+    G4bool fFastSimulation = false;
 
     static std::mutex mtx; // Mutex for thread safety
 

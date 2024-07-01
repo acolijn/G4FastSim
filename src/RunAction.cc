@@ -70,14 +70,28 @@ RunAction::RunAction(EventAction* eventAction, GammaRayHelper* helper)
 
   // Create the generic analysis manager
   auto analysisManager = G4AnalysisManager::Instance();
+
+  fMessenger = new RunActionMessenger(this);
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 void RunAction::BeginOfRunAction(const G4Run*)
 {
+  // initialize the analysis manager and ntuples
   InitializeNtuples();
+
+  G4cout <<"RunAction::BeginOfRunAction: FastSimulation = "<< fFastSimulation << G4endl;
+  fEventAction->SetFastSimulation(fFastSimulation);
+
 }
+
+//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
+RunAction::~RunAction()
+{
+  delete fMessenger;
+}
+
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 void RunAction::InitializeNtuples(){

@@ -44,6 +44,11 @@ namespace G4FastSim
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
+/**
+ * @brief Constructor for the PrimaryGeneratorAction class.
+ * 
+ * This constructor initializes the PrimaryGeneratorAction object by creating a new instance of the G4GeneralParticleSource class.
+ */
 PrimaryGeneratorAction::PrimaryGeneratorAction()
 {
   fParticleGun  = new G4GeneralParticleSource();
