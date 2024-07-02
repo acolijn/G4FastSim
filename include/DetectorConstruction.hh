@@ -42,8 +42,8 @@ class DetectorConstructionMessenger;
 
 /// Detector construction class to define materials and geometry.
 
-namespace G4FastSim
-{
+///namespace G4FastSim
+///{
 
 class DetectorConstruction : public G4VUserDetectorConstruction
 {
@@ -118,7 +118,7 @@ class DetectorConstruction : public G4VUserDetectorConstruction
 
 };
 
-}
+///}
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 

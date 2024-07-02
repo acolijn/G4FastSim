@@ -43,8 +43,8 @@ class G4Box;
 /// The default kinematic is a 6 MeV gamma, randomly distribued
 /// in front of the phantom across 80% of the (X,Y) phantom size.
 
-namespace G4FastSim
-{
+///namespace G4FastSim
+///{
 
 class PrimaryGeneratorAction : public G4VUserPrimaryGeneratorAction
 {
@@ -63,7 +63,7 @@ class PrimaryGeneratorAction : public G4VUserPrimaryGeneratorAction
     G4Box* fEnvelopeBox = nullptr;
 };
 
-}
+///}
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 

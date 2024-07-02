@@ -36,8 +36,8 @@
 #include "SteppingAction.hh"
 #include "GammaRayHelper.hh"
 
-namespace G4FastSim
-{
+///namespace G4FastSim
+///{
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
@@ -72,4 +72,4 @@ void ActionInitialization::Build() const
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-}
+///}

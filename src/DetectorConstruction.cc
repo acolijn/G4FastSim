@@ -42,7 +42,7 @@
 #include "G4Material.hh"
 #include "G4AnalysisManager.hh"
 
-namespace G4FastSim{
+///namespace G4FastSim{
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 DetectorConstruction::DetectorConstruction(GammaRayHelper* helper)
@@ -331,4 +331,4 @@ void DetectorConstruction::ConstructFiducialVolume(){
 
 }
 
-}
+///}

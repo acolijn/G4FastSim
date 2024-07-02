@@ -38,8 +38,8 @@
 /// Event action class
 ///
 
-namespace G4FastSim
-{
+///namespace G4FastSim
+///{
 
 class EventAction : public G4UserEventAction
 {
@@ -77,7 +77,7 @@ class EventAction : public G4UserEventAction
 
 };
 
-}
+///}
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 

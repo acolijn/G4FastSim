@@ -7,7 +7,7 @@
 #include "globals.hh"
 
 
-namespace G4FastSim {
+///namespace G4FastSim {
 
 class RunAction;
 
@@ -24,6 +24,6 @@ private:
     G4UIcmdWithABool* fFastSimulationCmd;
 };
 
-} // namespace G4FastSim
+///} // namespace G4FastSim
 
 #endif

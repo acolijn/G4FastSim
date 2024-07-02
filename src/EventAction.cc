@@ -36,10 +36,8 @@
 
 #include "GammaRayHelper.hh"
 
-
-
-namespace G4FastSim
-{
+///namespace G4FastSim
+///{
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 std::mutex EventAction::mtx;
@@ -65,8 +63,6 @@ void EventAction::BeginOfEventAction(const G4Event* event)
   fXp = primaryVertex->GetPosition().x();
   fYp = primaryVertex->GetPosition().y();
   fZp = primaryVertex->GetPosition().z();
-
-
 
   auto def =  event->GetPrimaryVertex()->GetPrimary()->GetParticleDefinition();
   G4cout << " def = " << def->GetParticleName() << G4endl;
@@ -116,4 +112,4 @@ void EventAction::EndOfEventAction(const G4Event* event)
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-}
+///}

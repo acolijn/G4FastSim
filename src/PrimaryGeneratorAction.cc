@@ -39,8 +39,8 @@
 #include "G4SystemOfUnits.hh"
 #include "Randomize.hh"
 
-namespace G4FastSim
-{
+///namespace G4FastSim
+///{
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
@@ -76,6 +76,6 @@ void PrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-}
+///}
 
 

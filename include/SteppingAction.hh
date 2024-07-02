@@ -40,8 +40,8 @@ class G4LogicalVolume;
 /// Stepping action class
 ///
 
-namespace G4FastSim
-{
+///namespace G4FastSim
+///{
 
 class EventAction;
 
@@ -65,7 +65,7 @@ class SteppingAction : public G4UserSteppingAction
 
 };
 
-}
+///}
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 

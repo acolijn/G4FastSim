@@ -2,7 +2,7 @@
 #include "RunAction.hh"
 #include "G4UIcmdWithABool.hh"
 
-using namespace G4FastSim;
+///using namespace G4FastSim;
 
 RunActionMessenger::RunActionMessenger(RunAction* action)
     : fRunAction(action) {

@@ -49,7 +49,7 @@
 #include <cmath>
 
 
-namespace G4FastSim
+///namespace G4FastSim{
 /**
  * @file RunAction.cc
  * @brief Implementation of the RunAction class.
@@ -58,7 +58,7 @@ namespace G4FastSim
  * It initializes and defines the analysis manager, creates and fills ntuples for event data, cross-section data,
  * and differential cross-section data, and performs actions at the beginning and end of a run.
  */
-{
+
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
@@ -81,7 +81,7 @@ void RunAction::BeginOfRunAction(const G4Run*)
   // initialize the analysis manager and ntuples
   InitializeNtuples();
 
-  G4cout <<"RunAction::BeginOfRunAction: FastSimulation = "<< fFastSimulation << G4endl;
+  G4cout <<"RunAction::BeginOfRunAction: Normal (0) - or - FastSimulation (1) = "<< fFastSimulation << G4endl;
   fEventAction->SetFastSimulation(fFastSimulation);
 
 }
@@ -132,7 +132,7 @@ void RunAction::DefineDifferentialCrossSectionNtuple(){
   const G4MaterialTable* materialTable = G4Material::GetMaterialTable();
 
   diffXsecNtupleId = analysisManager->CreateNtuple("diff_xsec", "differential cross-section data");
-  analysisManager->CreateNtupleSColumn(diffXsecNtupleId, "mat");      // column Id = 0
+  analysisManager->CreateNtupleSColumn(diffXsecNtupleId, "mat");    // column Id = 0
   analysisManager->CreateNtupleDColumn(diffXsecNtupleId, "cost");     // column Id = 1
   analysisManager->CreateNtupleDColumn(diffXsecNtupleId, "ff");     // column Id = 2
   analysisManager->CreateNtupleDColumn(diffXsecNtupleId, "kn");     // column Id = 3
@@ -285,4 +285,4 @@ void RunAction::EndOfRunAction(const G4Run* run)
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-}
+///}

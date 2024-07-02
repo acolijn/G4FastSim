@@ -3,7 +3,7 @@
 #include "G4UIdirectory.hh"
 #include "G4UIcmdWithADoubleAndUnit.hh"
 
-namespace G4FastSim{
+///namespace G4FastSim{
 
 /**
  * @brief Constructor for the DetectorConstructionMessenger class.
@@ -106,4 +106,4 @@ void DetectorConstructionMessenger::SetNewValue(G4UIcommand* command, G4String n
     }
 }
 
-}
+///}

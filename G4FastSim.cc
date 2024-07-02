@@ -20,7 +20,7 @@
 
 //#include "TTree.h"
 
-using namespace G4FastSim;
+///using namespace G4FastSim;
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 int main(int argc,char** argv)
