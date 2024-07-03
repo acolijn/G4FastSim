@@ -7,9 +7,9 @@
 
 namespace G4FastSim {
 
-SensitiveDetector::SensitiveDetector(const G4String& name)
+SensitiveDetector::SensitiveDetector(const G4String& name, const G4String& hitsCollectionName)
     : G4VSensitiveDetector(name), fHitsCollection(nullptr), fTotalEnergyDeposit(0.) {
-    collectionName.insert("HitsCollection");
+    collectionName.insert(hitsCollectionName);
 }
 
 SensitiveDetector::~SensitiveDetector() {}
@@ -48,8 +48,8 @@ void SensitiveDetector::EndOfEvent(G4HCofThisEvent* hce) {
 
     // Example of processing hits at the end of the event
     G4int numHits = fHitsCollection->entries();
-    G4cout << "End of event: total energy deposited in sensitive detector: "
-           << fTotalEnergyDeposit / CLHEP::MeV << " MeV" << G4endl;
+    //G4cout << "End of event: total energy deposited in sensitive detector: "
+    //       << fTotalEnergyDeposit / CLHEP::MeV << " MeV" << G4endl;
 }
 
 }

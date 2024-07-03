@@ -38,8 +38,14 @@
 /// Event action class
 ///
 
-///namespace G4FastSim
-///{
+class G4Event;
+class G4HCofThisEvent;
+class G4VHitsCollection;
+
+namespace G4FastSim
+{
+
+
 
 class EventAction : public G4UserEventAction
 {
@@ -47,8 +53,8 @@ class EventAction : public G4UserEventAction
     EventAction();
     ~EventAction() override = default;
 
-    void BeginOfEventAction(const G4Event* event) override;
-    void EndOfEventAction(const G4Event* event) override;
+    void BeginOfEventAction(const G4Event* event);// override;
+    void EndOfEventAction(const G4Event* event);// override;
 
     std::vector<G4double>& GetX(){return fX;};
     std::vector<G4double>& GetY(){return fY;};
@@ -56,6 +62,7 @@ class EventAction : public G4UserEventAction
 
     void AddEdep(G4double edep) { fEdep += edep; }
     void SetFastSimulation(G4bool fast) { fFastSimulation = fast; }
+    void StandardMonteCarloAnalysis(const G4Event* event);
     G4bool IsFastSimulation() { return fFastSimulation; }
 
   private:
@@ -73,11 +80,12 @@ class EventAction : public G4UserEventAction
 
     G4bool fFastSimulation = false;
 
-    static std::mutex mtx; // Mutex for thread safety
+    //static std::mutex mtx; // Mutex for thread safety
 
+    std::vector<G4String> fHitsCollectionNames;
 };
 
-///}
+}
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 

@@ -42,13 +42,13 @@ class DetectorConstructionMessenger;
 
 /// Detector construction class to define materials and geometry.
 
-///namespace G4FastSim
-///{
+namespace G4FastSim
+{
 
 class DetectorConstruction : public G4VUserDetectorConstruction
 {
   public:
-    DetectorConstruction(GammaRayHelper *gammaRayHelper);
+    DetectorConstruction(G4FastSim::GammaRayHelper *gammaRayHelper);
     ~DetectorConstruction();//override = default;
 
     G4VPhysicalVolume* Construct() override;
@@ -58,6 +58,7 @@ class DetectorConstruction : public G4VUserDetectorConstruction
     void ConstructInnerCryostat();    
     void ConstructLXe();
     void ConstructFiducialVolume();
+    void DefineSensitiveDetector();
 
     G4LogicalVolume* GetScoringVolume() const { return fScoringVolume; }
     GammaRayHelper* GetGammaRayHelper() const { return fGammaRayHelper; }
@@ -118,7 +119,7 @@ class DetectorConstruction : public G4VUserDetectorConstruction
 
 };
 
-///}
+}
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 

@@ -14,6 +14,8 @@ namespace {
     G4Mutex mutex = G4MUTEX_INITIALIZER;
 }
 
+namespace G4FastSim {
+
 GammaRayHelper& GammaRayHelper::Instance() {
     static thread_local GammaRayHelper instance;
     return instance;
@@ -178,5 +180,5 @@ G4ThreeVector GammaRayHelper::GenerateComptonScatteringDirection(
     return newDirection;
 }
 
-
+}
  

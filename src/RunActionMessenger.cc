@@ -3,6 +3,7 @@
 #include "G4UIcmdWithABool.hh"
 
 ///using namespace G4FastSim;
+namespace G4FastSim {
 
 RunActionMessenger::RunActionMessenger(RunAction* action)
     : fRunAction(action) {
@@ -23,4 +24,4 @@ void RunActionMessenger::SetNewValue(G4UIcommand* command, G4String newValue) {
     }
 }
 
-//} // namespace G4FastSim
+} // namespace G4FastSim

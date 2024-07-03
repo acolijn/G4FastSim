@@ -1,0 +1,41 @@
+# Macro file for example B4
+# 
+# To be run preferably in batch, without graphics:
+# % exampleB4[a,b,c,d] run2.mac
+#
+/control/verbose 2
+/control/saveHistory
+/run/verbose 2
+
+# define the detector geometry
+/detector/setOuterCryostatRadius 150 cm
+/detector/setOuterCryostatHeight 140 cm
+/detector/setOuterCryostatWallThickness 10 mm
+
+/detector/setInnerCryostatRadius 120 cm
+/detector/setInnerCryostatHeight 120 cm
+/detector/setInnerCryostatWallThickness 6 mm
+
+/detector/setFiducialRadius 115 cm
+/detector/setFiducialHeight 115 cm
+
+/run/initialize
+
+# define the particle gun settings
+/gps/particle gamma
+/gps/energy 1.0 MeV
+/gps/pos/type Volume
+/gps/pos/shape Cylinder
+/gps/pos/centre 0. 0. 0. cm
+/gps/pos/radius 1.6 m
+/gps/pos/halfz 1.1 m
+/gps/pos/confine InnerCryostat
+/gps/ang/type iso
+
+# fast simulation?
+/run/setFastSimulation false
+
+# run the thing...............
+/run/printProgress 100
+/run/beamOn 10000
+

@@ -32,11 +32,12 @@
 
 #include "G4VUserActionInitialization.hh"
 #include "GammaRayHelper.hh"
+#include "EventAction.hh"
 
 /// Action initialization class.
 
-///namespace G4FastSim
-///{
+namespace G4FastSim
+{
 
 class ActionInitialization : public G4VUserActionInitialization
 {
@@ -50,7 +51,7 @@ class ActionInitialization : public G4VUserActionInitialization
     GammaRayHelper* fGammaRayHelper;
 };
 
-///}
+}
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 

@@ -48,8 +48,7 @@
 
 #include <cmath>
 
-
-///namespace G4FastSim{
+namespace G4FastSim{
 /**
  * @file RunAction.cc
  * @brief Implementation of the RunAction class.
@@ -285,4 +284,4 @@ void RunAction::EndOfRunAction(const G4Run* run)
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-///}
+}

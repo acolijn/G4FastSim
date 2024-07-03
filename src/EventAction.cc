@@ -33,20 +33,27 @@
 #include "G4Event.hh"
 #include "G4RunManager.hh"
 #include "G4AnalysisManager.hh"
-
+#include "G4SDManager.hh"
+#include "Hit.hh"
 #include "GammaRayHelper.hh"
 
 ///namespace G4FastSim
 ///{
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-std::mutex EventAction::mtx;
+//using namespace G4FastSim;
 
+namespace G4FastSim {
+
+//std::mutex EventAction::mtx;
 
 EventAction::EventAction()
 {
   // set printing per each event
   G4RunManager::GetRunManager()->SetPrintProgress(1);
+
+  fHitsCollectionNames.push_back("HitsCollection1");
+  fHitsCollectionNames.push_back("HitsCollection2");
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
@@ -57,6 +64,7 @@ void EventAction::BeginOfEventAction(const G4Event* event)
   fEdep = 1.2345;
   fX.clear();
   fY.clear();
+  fZ.clear();
 
   //G4cout<<"EventAction::BeginOfEventAction next event...."<<G4endl;
   G4PrimaryVertex* primaryVertex = event->GetPrimaryVertex();
@@ -79,27 +87,16 @@ void EventAction::BeginOfEventAction(const G4Event* event)
 void EventAction::EndOfEventAction(const G4Event* event)
 {
   G4cout << "EventAction::EndOfEventAction..... " << G4endl;
-  // accumulate statistics in run action
-  fX.push_back(0.1);
-  fY.push_back(0.2);
 
-  fX.push_back(0.3);
-  fY.push_back(0.4);
-  
-  fX.push_back(-1.1);
-  fY.push_back(-1.2);
-
+  if (!fFastSimulation) {
+    G4cout << "EventAction::EndOfEventAction: Standard Monte Carlo simulation" << G4endl;
+    StandardMonteCarloAnalysis(event);
+  } else {
+    G4cout << "EventAction::EndOfEventAction: Fast simulation" << G4endl;
+  }
 
   // Get analysis manager
   auto analysisManager = G4AnalysisManager::Instance();
-
-  // Fill histograms
-  // Fill ntuple
-  //G4cout<<"EventAction::EndOfEventAction: fEdep = "<<fEdep<<G4endl;
-
-    // Protect the following section with a mutex to ensure thread safety
-  //{
-  //    G4AutoLock lock(&mtx); // Use G4AutoLock for thread-safe initialization
   //std::lock_guard<std::mutex> lock(mtx);
   analysisManager->FillNtupleDColumn(0, 0, fEdep);
   analysisManager->FillNtupleDColumn(0, 1, fXp);
@@ -110,6 +107,32 @@ void EventAction::EndOfEventAction(const G4Event* event)
   //G4cout<<"EventAction::EndOfEventAction: fX.size() = "<<fX.size()<<G4endl;
 }
 
+void EventAction::StandardMonteCarloAnalysis(const G4Event* event) {
+  // Get hits collections
+  G4HCofThisEvent* HCE = event->GetHCofThisEvent();
+  if (!HCE) {
+    G4ExceptionDescription msg;
+    msg << "No hits collection of this event found." << G4endl;
+    G4Exception("EventAction::EndOfEventAction()", "MyCode0001", JustWarning, msg);
+    return;
+  }
+
+  for (size_t i = 0; i < fHitsCollectionNames.size(); ++i) {
+      G4int hcID = G4SDManager::GetSDMpointer()->GetCollectionID(fHitsCollectionNames[i]);
+      auto *fHitsCollection = static_cast<G4FastSim::HitsCollection*>(HCE->GetHC(hcID));
+      
+      if (!fHitsCollection) continue;
+
+      G4int n_hit = fHitsCollection->entries();
+
+      for (G4int j = 0; j < n_hit; ++j) {
+          G4FastSim::Hit* hit = (*fHitsCollection)[j];
+          fX.push_back(hit->position.x());
+          fY.push_back(hit->position.y());
+          fZ.push_back(hit->position.z());
+      }
+  }
+} 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-///}
+}

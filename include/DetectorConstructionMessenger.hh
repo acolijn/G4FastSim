@@ -6,7 +6,7 @@
 #include "globals.hh"
 
 
-///namespace G4FastSim {
+namespace G4FastSim {
 
 class DetectorConstruction;
 
@@ -30,5 +30,5 @@ class DetectorConstructionMessenger : public G4UImessenger {
         G4UIcmdWithADoubleAndUnit* fFiducialHeightCmd;
 };
 
-///}
+}
 #endif // DETECTORCONSTRUCTIONMESSENGER_HH

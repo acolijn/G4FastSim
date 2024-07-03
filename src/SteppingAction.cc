@@ -51,8 +51,8 @@ namespace {
     G4Mutex mutex = G4MUTEX_INITIALIZER;
 }
 
-///namespace G4FastSim
-///{
+namespace G4FastSim
+{
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
@@ -73,6 +73,10 @@ SteppingAction::~SteppingAction()
 
 void SteppingAction::UserSteppingAction(const G4Step* step)
 {
+  if (!fEventAction->IsFastSimulation()) {
+    return;
+  }
+
   if (verbosityLevel >= 2){
     G4cout <<"Entering SteppingAction::UserSteppingAction"<<G4endl;
   }
@@ -184,4 +188,4 @@ void SteppingAction::UserSteppingAction(const G4Step* step)
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-///}
+}

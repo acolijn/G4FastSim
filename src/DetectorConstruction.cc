@@ -29,6 +29,7 @@
 
 #include "DetectorConstruction.hh"
 #include "DetectorConstructionMessenger.hh"
+#include "SensitiveDetector.hh"
 #include "Materials.hh"
 #include "GammaRayHelper.hh"
 
@@ -41,8 +42,9 @@
 #include "G4SystemOfUnits.hh"
 #include "G4Material.hh"
 #include "G4AnalysisManager.hh"
+#include "G4SDManager.hh"
 
-///namespace G4FastSim{
+namespace G4FastSim{
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 DetectorConstruction::DetectorConstruction(GammaRayHelper* helper)
@@ -118,6 +120,10 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
   // Define the inner fiducial volume
   //
   ConstructFiducialVolume();
+  // 
+  // Define the sensitive detector
+  //
+  DefineSensitiveDetector();
 
   //
   // Initialize the gamma ray helper class with all the materials that have been defined
@@ -131,13 +137,31 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
       fGammaRayHelper->Initialize(material);
       //G4cout << "Material: " << material->GetName() << " Attenuation length:" <<  fGammaRayHelper->GetAttenuationLength(1.0 * MeV, material) /cm << " cm" << G4endl;
   }
-
-  
   //
   //always return the physical World
   //
   return fWorldPhysical;
 }
+//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
+void DetectorConstruction::DefineSensitiveDetector(){
+  //
+  // Define the sensitive detector
+  //
+
+  G4SDManager* sdManager = G4SDManager::GetSDMpointer();
+  auto* lXeSD = new G4FastSim::SensitiveDetector("LXeSD","HitsCollection1");
+  auto* lXeFiducialSD = new G4FastSim::SensitiveDetector("LXeFiducialSD","HitsCollection2");
+
+  // make both the liquid xenon and the fiducial volume sensitive
+  // this is only relevant for the standard Monte Carlo. The fast simulation will 
+  // use the energy deposition directly.
+  sdManager->AddNewDetector(lXeSD);
+  sdManager->AddNewDetector(lXeFiducialSD);
+
+  fLXeLogical->SetSensitiveDetector(lXeSD);
+  fLXeFiducialLogical->SetSensitiveDetector(lXeFiducialSD);
+}
+
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 void DetectorConstruction::ConstructWorld(){
@@ -331,4 +355,4 @@ void DetectorConstruction::ConstructFiducialVolume(){
 
 }
 
-///}
+}

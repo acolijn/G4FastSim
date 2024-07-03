@@ -15,6 +15,9 @@
 #include <map>
 #include <mutex>
 
+namespace G4FastSim {
+
+
 class GammaRayHelper {
 public:
     static thread_local GammaRayHelper& Instance();
@@ -52,4 +55,5 @@ private:
     std::mutex initMutex; // Mutex for thread-safe initialization
 };
 
+}
 #endif // GAMMA_RAY_HELPER_H

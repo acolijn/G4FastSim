@@ -9,7 +9,7 @@ namespace G4FastSim {
 
 class SensitiveDetector : public G4VSensitiveDetector {
 public:
-    SensitiveDetector(const G4String& name);
+    SensitiveDetector(const G4String& name, const G4String& hitsCollectionName);
     virtual ~SensitiveDetector();
 
     virtual void Initialize(G4HCofThisEvent* hce) override;

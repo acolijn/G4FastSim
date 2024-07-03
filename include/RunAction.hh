@@ -42,8 +42,8 @@ class G4Run;
 
 /// Run action class
 
-///namespace G4FastSim
-///{
+namespace G4FastSim
+{
 
 class EventAction;
 class RunActionMessenger;
@@ -78,7 +78,7 @@ class RunAction : public G4UserRunAction
     G4bool fFastSimulation = false;
 };
 
-///}
+}
 
 #endif
 
