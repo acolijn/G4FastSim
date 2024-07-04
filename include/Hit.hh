@@ -22,6 +22,9 @@ public:
     G4int parentID;
     G4ThreeVector momentum;
     G4String particleType;
+    
+    // Print function to print hit details
+    void Print() const;
 
     // Operators
     inline void* operator new(size_t);

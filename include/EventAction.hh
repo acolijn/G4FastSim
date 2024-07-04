@@ -31,6 +31,10 @@
 #define EventAction_h 1
 
 #include "G4UserEventAction.hh"
+#include "G4ThreeVector.hh"	
+#include "G4String.hh"
+#include "G4Types.hh"
+#include "Cluster.hh"
 #include "globals.hh"
 #include <vector>
 #include <mutex>
@@ -59,13 +63,22 @@ class EventAction : public G4UserEventAction
     std::vector<G4double>& GetX(){return fX;};
     std::vector<G4double>& GetY(){return fY;};
     std::vector<G4double>& GetZ(){return fZ;};
+    std::vector<G4double>& GetE(){return fEd;};
+
 
     void AddEdep(G4double edep) { fEdep += edep; }
     void SetFastSimulation(G4bool fast) { fFastSimulation = fast; }
-    void StandardMonteCarloAnalysis(const G4Event* event);
+    void AnalyzeHits(const G4Event* event);
     G4bool IsFastSimulation() { return fFastSimulation; }
 
   private:
+    //
+    // functions for hit clustering
+    //
+    void ClusterHits(std::vector<G4FastSim::Hit*>& hits, G4double spatialThreshold, G4double timeThreshold, std::vector<Cluster>& clusters);
+    G4double CalculateDistance(const G4ThreeVector& pos1, const G4ThreeVector& pos2);
+    G4double CalculateTimeDifference(G4double time1, G4double time2);
+
     // define here all the variables that you want to store for each event in the 
     // ntuple tree  
     G4double fEdep;
@@ -83,6 +96,7 @@ class EventAction : public G4UserEventAction
     //static std::mutex mtx; // Mutex for thread safety
 
     std::vector<G4String> fHitsCollectionNames;
+
 };
 
 }

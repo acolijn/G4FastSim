@@ -62,6 +62,7 @@ void EventAction::BeginOfEventAction(const G4Event* event)
 {
   G4cout << "EventAction::BeginOfEventAction..... NEXT" << G4endl;	
   fEdep = 1.2345;
+  fEd.clear();
   fX.clear();
   fY.clear();
   fZ.clear();
@@ -72,9 +73,9 @@ void EventAction::BeginOfEventAction(const G4Event* event)
   fYp = primaryVertex->GetPosition().y();
   fZp = primaryVertex->GetPosition().z();
 
-  auto def =  event->GetPrimaryVertex()->GetPrimary()->GetParticleDefinition();
-  G4cout << " def = " << def->GetParticleName() << G4endl;
-  G4cout << " p = "<<event->GetPrimaryVertex()->GetPrimary()->GetMomentumDirection() << G4endl;
+  //auto def =  event->GetPrimaryVertex()->GetPrimary()->GetParticleDefinition();
+  //G4cout << " def = " << def->GetParticleName() << G4endl;
+  //G4cout << " p = "<<event->GetPrimaryVertex()->GetPrimary()->GetMomentumDirection() << G4endl;
   // Kill the event if the particle does not point to the fiducial volume
   //if (TBD) {
   //  G4cout<<"EventAction::BeginOfEventAction: Killing event with fZp = "<<fZp<<G4endl;
@@ -86,14 +87,8 @@ void EventAction::BeginOfEventAction(const G4Event* event)
 
 void EventAction::EndOfEventAction(const G4Event* event)
 {
-  G4cout << "EventAction::EndOfEventAction..... " << G4endl;
-
-  if (!fFastSimulation) {
-    G4cout << "EventAction::EndOfEventAction: Standard Monte Carlo simulation" << G4endl;
-    StandardMonteCarloAnalysis(event);
-  } else {
-    G4cout << "EventAction::EndOfEventAction: Fast simulation" << G4endl;
-  }
+  G4cout << "EventAction::EndOfEventAction..... Analyze hits and cluster...." << G4endl;
+  AnalyzeHits(event);
 
   // Get analysis manager
   auto analysisManager = G4AnalysisManager::Instance();
@@ -104,35 +99,104 @@ void EventAction::EndOfEventAction(const G4Event* event)
   analysisManager->FillNtupleDColumn(0, 3, fZp);
   analysisManager->AddNtupleRow(0);
 
-  //G4cout<<"EventAction::EndOfEventAction: fX.size() = "<<fX.size()<<G4endl;
 }
 
-void EventAction::StandardMonteCarloAnalysis(const G4Event* event) {
-  // Get hits collections
+/**
+ * Analyzes the hits in the event.
+ *
+ * @param event The G4Event object representing the current event.
+ */
+void EventAction::AnalyzeHits(const G4Event* event) {
   G4HCofThisEvent* HCE = event->GetHCofThisEvent();
   if (!HCE) {
-    G4ExceptionDescription msg;
-    msg << "No hits collection of this event found." << G4endl;
-    G4Exception("EventAction::EndOfEventAction()", "MyCode0001", JustWarning, msg);
-    return;
+      G4ExceptionDescription msg;
+      msg << "No hits collection of this event found." << G4endl;
+      G4Exception("EventAction::EndOfEventAction()", "MyCode0001", JustWarning, msg);
+      return;
   }
+
+  std::vector<Hit*> allHits;
 
   for (size_t i = 0; i < fHitsCollectionNames.size(); ++i) {
       G4int hcID = G4SDManager::GetSDMpointer()->GetCollectionID(fHitsCollectionNames[i]);
-      auto *fHitsCollection = static_cast<G4FastSim::HitsCollection*>(HCE->GetHC(hcID));
+      auto *fHitsCollection = static_cast<HitsCollection*>(HCE->GetHC(hcID));
       
       if (!fHitsCollection) continue;
 
       G4int n_hit = fHitsCollection->entries();
-
+      G4cout << "Hits Collection: " << fHitsCollectionNames[i] << " has " << n_hit << " hits." << G4endl;
       for (G4int j = 0; j < n_hit; ++j) {
-          G4FastSim::Hit* hit = (*fHitsCollection)[j];
-          fX.push_back(hit->position.x());
-          fY.push_back(hit->position.y());
-          fZ.push_back(hit->position.z());
+          Hit* hit = (*fHitsCollection)[j];
+          hit->Print();
+          allHits.push_back(hit);
       }
   }
-} 
+
+  // cluster hits based on spatial and time thresholds
+  std::vector<Cluster> fClusters;
+  G4double spatialThreshold = 50.0 * mm;
+  G4double timeThreshold = 10.0 * ns;
+  ClusterHits(allHits, spatialThreshold, timeThreshold, fClusters); 
+}
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
+G4double EventAction::CalculateDistance(const G4ThreeVector& pos1, const G4ThreeVector& pos2) {
+    return (pos1 - pos2).mag();
 }
+
+//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
+
+G4double EventAction::CalculateTimeDifference(G4double time1, G4double time2) {
+    return std::fabs(time1 - time2);
+}
+
+//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
+
+
+/**
+ * @brief Clusters hits based on spatial and time thresholds.
+ * 
+ * This function takes a vector of hits and clusters them based on their spatial and time proximity.
+ * Hits that are within the specified spatial and time thresholds are added to the same cluster.
+ * If a hit does not belong to any existing cluster, a new cluster is created for that hit.
+ * 
+ * @param hits The vector of hits to be clustered.
+ * @param spatialThreshold The maximum spatial distance for hits to be considered part of the same cluster.
+ * @param timeThreshold The maximum time difference for hits to be considered part of the same cluster.
+ * @param clusters The vector of clusters to store the clustered hits.
+ */
+void EventAction::ClusterHits(std::vector<Hit*>& hits, G4double spatialThreshold, G4double timeThreshold, std::vector<Cluster>& clusters) {
+
+    for (auto& hit : hits) {
+        bool addedToCluster = false;
+        for (auto& cluster : clusters) {
+            if (CalculateDistance(hit->position, cluster.position) < spatialThreshold &&
+                CalculateTimeDifference(hit->time, cluster.time) < timeThreshold) {
+                  
+                G4int clusterSize = cluster.hits.size();
+                cluster.position = (cluster.position * clusterSize + hit->position) / (clusterSize + 1);
+                cluster.energyDeposit += hit->energyDeposit; // Sum energy deposits
+                cluster.time = (cluster.time * clusterSize + hit->time) / (clusterSize + 1); // Update average time
+                cluster.hits.push_back(hit);
+                addedToCluster = true;
+                break;
+            }
+        }
+        if (!addedToCluster) {
+            clusters.push_back(Cluster{hit->position, hit->energyDeposit, hit->time, {hit}});
+        }
+    }
+
+    G4cout << "Number of clusters: " << clusters.size() << G4endl;
+    // Calculate cluster positions and store into ntuple variables
+    for (auto& cluster : clusters) {
+        //cluster.position /= cluster.hits.size();
+        fEd.push_back(cluster.energyDeposit);
+        fX.push_back(cluster.position.x());
+        fY.push_back(cluster.position.y());
+        fZ.push_back(cluster.position.z());
+    }
+}
+
+
+} // namespace G4FastSim

@@ -198,9 +198,10 @@ void RunAction::DefineEventNtuple(){
   analysisManager->CreateNtupleDColumn(eventNtupleId, "xp");   // column Id = 1
   analysisManager->CreateNtupleDColumn(eventNtupleId, "yp");   // column Id = 2
   analysisManager->CreateNtupleDColumn(eventNtupleId, "zp");   // column Id = 3  
-  analysisManager->CreateNtupleDColumn(eventNtupleId, "xh", fEventAction->GetX()); // column Id = 4
-  analysisManager->CreateNtupleDColumn(eventNtupleId, "yh", fEventAction->GetY()); // column Id = 5
-  analysisManager->CreateNtupleDColumn(eventNtupleId, "zh", fEventAction->GetZ()); // column Id = 6
+  analysisManager->CreateNtupleDColumn(eventNtupleId, "eh", fEventAction->GetE()); // column Id = 4
+  analysisManager->CreateNtupleDColumn(eventNtupleId, "xh", fEventAction->GetX()); // column Id = 5
+  analysisManager->CreateNtupleDColumn(eventNtupleId, "yh", fEventAction->GetY()); // column Id = 6
+  analysisManager->CreateNtupleDColumn(eventNtupleId, "zh", fEventAction->GetZ()); // column Id = 7
   analysisManager->FinishNtuple(eventNtupleId);
   G4cout <<"RunAction::BeginOfRunAction: Event data ntuple created. ID = "<< eventNtupleId << G4endl;
 }
