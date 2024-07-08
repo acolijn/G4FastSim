@@ -42,6 +42,7 @@
 #include "G4DynamicParticle.hh"
 #include "G4AutoLock.hh"
 #include "G4AnalysisManager.hh"
+#include "G4SDManager.hh"
 #include "GammaRayHelper.hh"
 
 #include <vector>
@@ -61,8 +62,9 @@ SteppingAction::SteppingAction(EventAction* eventAction, GammaRayHelper* helper)
       fEventAction(eventAction),
       fScoringVolume(nullptr),
       particleTable(G4ParticleTable::GetParticleTable()),
-      fGammaRayHelper(helper) {
-      
+      fGammaRayHelper(helper), 
+      fHitsCollectionInitialized(false){
+
 }
 
 
@@ -80,6 +82,44 @@ void SteppingAction::UserSteppingAction(const G4Step* step)
   if (verbosityLevel >= 2){
     G4cout <<"Entering SteppingAction::UserSteppingAction"<<G4endl;
   }
+
+  // get volume of the current step
+  G4LogicalVolume* volume_pre = step->GetPreStepPoint()->GetTouchableHandle()->GetVolume()->GetLogicalVolume();
+  
+  // if (1) we deal with the original gamma ray and (2) we are inside the fiducial volume and (3) we have not reached the maximum number of scatters ==> go scatter dude!
+  G4int number_of_scatters = fEventAction->GetNumberOfScatters();
+  if( (step->GetTrack()->GetTrackID() == 1) && 
+      (volume_pre->GetName() == "LXeFiducial") && 
+      (number_of_scatters < fEventAction->GetNumberOfScattersMax())) {
+    // generate a scatter somewhere in the LXeFiducial volume
+
+    // 1. determine the hit location
+
+    // 2. scattering:
+    //     - if the maximum allowed energy is above the photo-peak, generate a PE or Compton scatter, based on the relative cross sections
+    //     - if the maximum allowed energy is below the photo-peak ->
+    //                  i) ignore PE effect and assign a weight. Then just do COmpton scatter
+    //                  ii) calculate the maximum scattering angle possible and generate a Compton scatter. Calculate the event weight based on the non-sampled scattering angles
+
+
+    // Create a new hit based on the energy deposit in the scattering event
+    Hit* newHit = new Hit();
+    newHit->energyDeposit = 10.* keV;
+    newHit->position = G4ThreeVector(10., 20., -30.);
+    newHit->time = 1. ;
+    newHit->trackID = -1;
+    newHit->parentID = -1;
+    newHit->momentum = G4ThreeVector(0., 0., 0.);
+    newHit->particleType = "manual";
+
+    // the event to the hits collection
+    AddHitToCollection(newHit, "LXeFiducialCollection");
+
+    fEventAction->SetNumberOfScatters(number_of_scatters + 1);
+  } else {
+    // 1. update the event weight based on the traversed material
+  }
+
   //if (!fScoringVolume) {
   //  const auto detConstruction = static_cast<const DetectorConstruction*>(
   //    G4RunManager::GetRunManager()->GetUserDetectorConstruction());
@@ -87,10 +127,9 @@ void SteppingAction::UserSteppingAction(const G4Step* step)
   //}
 
   G4Track* track = step->GetTrack();
-
-  // get volume of the current step
-  G4LogicalVolume* volume_pre = step->GetPreStepPoint()->GetTouchableHandle()->GetVolume()->GetLogicalVolume();
   G4Material* material = volume_pre->GetMaterial();
+
+
 
   auto poststep = step->GetPostStepPoint()->GetTouchableHandle()->GetVolume();
   // if you leave the Geant4 World volume.... do nothing
@@ -103,7 +142,13 @@ void SteppingAction::UserSteppingAction(const G4Step* step)
   if(verbosityLevel >= 2 )
   {
     G4cout << "track ID: " << track->GetTrackID() << G4endl;
-    G4cout << "  volume_pre: " << volume_pre->GetName() << G4endl;
+    G4cout << "  volume_pre name      : " << volume_pre->GetName() << G4endl;
+    G4cout << "  volume_pre position  : " << step->GetPreStepPoint()->GetPosition()/cm << " cm"<<G4endl;
+    if(poststep) {
+      G4cout << "  volume_post name     : " << volume_post->GetName() << G4endl;
+      G4cout << "  volume_post position : " << step->GetPostStepPoint()->GetPosition()/cm << " cm"<<G4endl;
+    }
+
     G4cout << "  material: " << material->GetName() << " Attenuation length:" <<  fGammaRayHelper->GetAttenuationLength(1.0 * MeV, material) /cm << " cm" << G4endl;
   }
   
@@ -178,14 +223,69 @@ void SteppingAction::UserSteppingAction(const G4Step* step)
     // Add the new track to the list of secondaries
     G4TrackVector* secondaries = const_cast<G4TrackVector*>(step->GetSecondary());
 
-    secondaries->push_back(newTrack);
+    //secondaries->push_back(newTrack);
 
-    track->SetTrackStatus(fStopAndKill);
+    //track->SetTrackStatus(fStopAndKill);
   }
 
 
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
+
+/**
+ * @brief Adds a hit to the specified hits collection.
+ *
+ * This function adds the given hit to the hits collection with the specified collection name.
+ * If the hits collection has not been initialized, it initializes the hits collection IDs.
+ * If the hits collection ID is not found for the given collection name, an error message is printed and the function returns.
+ * If the hits collection ID is -1 for the given collection name, an error message is printed and the function returns.
+ * If the hits collection is not found for the given collection name, it retrieves the hits collection from the current event.
+ * If the hits collection is still not found, an error message is printed and the function returns.
+ *
+ * @param newHit The hit to be added to the hits collection.
+ * @param collectionName The name of the hits collection.
+ */
+void SteppingAction::AddHitToCollection(Hit* newHit, G4String collectionName){
+
+     if (!fHitsCollectionInitialized) {
+        G4SDManager* SDman = G4SDManager::GetSDMpointer();
+        fHitsCollectionIDs["LXeCollection"] = SDman->GetCollectionID("LXeCollection");
+        fHitsCollectionIDs["LXeFiducialCollection"] = SDman->GetCollectionID("LXeFiducialCollection");
+
+        // Add more collections here if needed
+        fHitsCollectionInitialized = true;
+    }
+
+    if (fHitsCollectionIDs.find(collectionName) == fHitsCollectionIDs.end()) {
+        G4cerr << "Error: Hits collection ID not found for collection name: " << collectionName << G4endl;
+        return;
+    }
+
+    G4int hcID = fHitsCollectionIDs[collectionName];
+
+    if (hcID == -1) {
+        G4cerr << "Error: Hits collection ID is -1 for collection name: " << collectionName << G4endl;
+        return;
+    }
+
+    if (fHitsCollections.find(collectionName) == fHitsCollections.end()) {
+        const G4Event* evt = G4RunManager::GetRunManager()->GetCurrentEvent();
+        G4HCofThisEvent* HCE = evt->GetHCofThisEvent();
+        if (HCE) {
+            fHitsCollections[collectionName] = static_cast<HitsCollection*>(HCE->GetHC(hcID));
+        }
+    }
+
+    if (fHitsCollections[collectionName] == nullptr) {
+        G4cerr << "Error: Hits collection not found for collection name: " << collectionName << G4endl;
+        return;
+    }
+
+    // Add the hit to the collection
+    fHitsCollections[collectionName]->insert(newHit);
+
+}
+
 
 }

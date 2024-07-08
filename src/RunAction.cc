@@ -83,6 +83,9 @@ void RunAction::BeginOfRunAction(const G4Run*)
   G4cout <<"RunAction::BeginOfRunAction: Normal (0) - or - FastSimulation (1) = "<< fFastSimulation << G4endl;
   fEventAction->SetFastSimulation(fFastSimulation);
 
+  G4cout <<"RunAction::BeginOfRunAction: Maximum number of scatters = "<< fNumberOfScattersMax << G4endl;
+  fEventAction->SetNumberOfScattersMax(fNumberOfScattersMax);
+
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
@@ -195,13 +198,14 @@ void RunAction::DefineEventNtuple(){
 
   eventNtupleId = analysisManager->CreateNtuple("ev", "G4FastSim ntuple");
   analysisManager->CreateNtupleDColumn(eventNtupleId, "Edep"); // column Id = 0
-  analysisManager->CreateNtupleDColumn(eventNtupleId, "xp");   // column Id = 1
-  analysisManager->CreateNtupleDColumn(eventNtupleId, "yp");   // column Id = 2
-  analysisManager->CreateNtupleDColumn(eventNtupleId, "zp");   // column Id = 3  
-  analysisManager->CreateNtupleDColumn(eventNtupleId, "eh", fEventAction->GetE()); // column Id = 4
-  analysisManager->CreateNtupleDColumn(eventNtupleId, "xh", fEventAction->GetX()); // column Id = 5
-  analysisManager->CreateNtupleDColumn(eventNtupleId, "yh", fEventAction->GetY()); // column Id = 6
-  analysisManager->CreateNtupleDColumn(eventNtupleId, "zh", fEventAction->GetZ()); // column Id = 7
+  analysisManager->CreateNtupleDColumn(eventNtupleId, "w");    // column Id = 1
+  analysisManager->CreateNtupleDColumn(eventNtupleId, "xp");   // column Id = 2
+  analysisManager->CreateNtupleDColumn(eventNtupleId, "yp");   // column Id = 3
+  analysisManager->CreateNtupleDColumn(eventNtupleId, "zp");   // column Id = 4  
+  analysisManager->CreateNtupleDColumn(eventNtupleId, "eh", fEventAction->GetE()); // column Id = 5
+  analysisManager->CreateNtupleDColumn(eventNtupleId, "xh", fEventAction->GetX()); // column Id = 6
+  analysisManager->CreateNtupleDColumn(eventNtupleId, "yh", fEventAction->GetY()); // column Id = 7
+  analysisManager->CreateNtupleDColumn(eventNtupleId, "zh", fEventAction->GetZ()); // column Id = 8
   analysisManager->FinishNtuple(eventNtupleId);
   G4cout <<"RunAction::BeginOfRunAction: Event data ntuple created. ID = "<< eventNtupleId << G4endl;
 }

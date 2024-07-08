@@ -67,9 +67,15 @@ class EventAction : public G4UserEventAction
 
 
     void AddEdep(G4double edep) { fEdep += edep; }
+    void AddWeight(G4double weight) { fWeight *= weight; }
     void SetFastSimulation(G4bool fast) { fFastSimulation = fast; }
     void AnalyzeHits(const G4Event* event);
     G4bool IsFastSimulation() { return fFastSimulation; }
+    G4int GetNumberOfScatters() { return fEd.size();}
+    void SetNumberOfScatters(G4int n) { fNumberOfScatters = n; }
+
+    G4int GetNumberOfScattersMax() { return fNumberOfScattersMax; }
+    void SetNumberOfScattersMax(G4int n) { fNumberOfScattersMax = n; }
 
   private:
     //
@@ -81,6 +87,7 @@ class EventAction : public G4UserEventAction
 
     // define here all the variables that you want to store for each event in the 
     // ntuple tree  
+    G4double fWeight;
     G4double fEdep;
     G4double fXp;
     G4double fYp;
@@ -92,6 +99,8 @@ class EventAction : public G4UserEventAction
     std::vector<G4double> fZ;
 
     G4bool fFastSimulation = false;
+    G4int fNumberOfScattersMax = 0;
+    G4int fNumberOfScatters = 0;
 
     //static std::mutex mtx; // Mutex for thread safety
 

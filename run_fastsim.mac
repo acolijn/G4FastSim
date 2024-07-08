@@ -28,11 +28,14 @@
 /gps/pos/centre 0. 0. 0. cm
 /gps/pos/radius 1.6 m
 /gps/pos/halfz 1.1 m
-/gps/pos/confine OuterCryostat
+/gps/pos/confine InnerCryostat
+#/gps/pos/confine OuterCryostat
+
 /gps/ang/type iso
 
 # fast simulation?
 /run/setFastSimulation true
+/run/setNumberOfScatters 1
 
 # run the thing...............
 /run/printProgress 100

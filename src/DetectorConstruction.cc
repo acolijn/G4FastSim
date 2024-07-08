@@ -149,8 +149,8 @@ void DetectorConstruction::DefineSensitiveDetector(){
   //
 
   G4SDManager* sdManager = G4SDManager::GetSDMpointer();
-  auto* lXeSD = new G4FastSim::SensitiveDetector("LXeSD","HitsCollection1");
-  auto* lXeFiducialSD = new G4FastSim::SensitiveDetector("LXeFiducialSD","HitsCollection2");
+  auto* lXeSD = new G4FastSim::SensitiveDetector("LXeSD","LXeCollection");
+  auto* lXeFiducialSD = new G4FastSim::SensitiveDetector("LXeFiducialSD","LXeFiducialCollection");
 
   // make both the liquid xenon and the fiducial volume sensitive
   // this is only relevant for the standard Monte Carlo. The fast simulation will 

@@ -52,8 +52,8 @@ EventAction::EventAction()
   // set printing per each event
   G4RunManager::GetRunManager()->SetPrintProgress(1);
 
-  fHitsCollectionNames.push_back("HitsCollection1");
-  fHitsCollectionNames.push_back("HitsCollection2");
+  fHitsCollectionNames.push_back("LXeCollection");
+  fHitsCollectionNames.push_back("LXeFiducialCollection");
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
@@ -61,7 +61,10 @@ EventAction::EventAction()
 void EventAction::BeginOfEventAction(const G4Event* event)
 {
   G4cout << "EventAction::BeginOfEventAction..... NEXT" << G4endl;	
-  fEdep = 1.2345;
+
+  fNumberOfScatters = 0;
+  fWeight = 1.0;
+  fEdep = 0.0;
   fEd.clear();
   fX.clear();
   fY.clear();
@@ -75,7 +78,8 @@ void EventAction::BeginOfEventAction(const G4Event* event)
 
   //auto def =  event->GetPrimaryVertex()->GetPrimary()->GetParticleDefinition();
   //G4cout << " def = " << def->GetParticleName() << G4endl;
-  //G4cout << " p = "<<event->GetPrimaryVertex()->GetPrimary()->GetMomentumDirection() << G4endl;
+  G4cout << "   Primary vertex: x = "<< primaryVertex->GetPosition() / cm << " (cm)"<<G4endl;
+  G4cout << "   Primary vertex: p = "<<event->GetPrimaryVertex()->GetPrimary()->GetMomentumDirection() << G4endl;
   // Kill the event if the particle does not point to the fiducial volume
   //if (TBD) {
   //  G4cout<<"EventAction::BeginOfEventAction: Killing event with fZp = "<<fZp<<G4endl;
@@ -94,12 +98,15 @@ void EventAction::EndOfEventAction(const G4Event* event)
   auto analysisManager = G4AnalysisManager::Instance();
   //std::lock_guard<std::mutex> lock(mtx);
   analysisManager->FillNtupleDColumn(0, 0, fEdep);
-  analysisManager->FillNtupleDColumn(0, 1, fXp);
-  analysisManager->FillNtupleDColumn(0, 2, fYp);
-  analysisManager->FillNtupleDColumn(0, 3, fZp);
+  analysisManager->FillNtupleDColumn(0, 1, fWeight);
+  analysisManager->FillNtupleDColumn(0, 2, fXp);
+  analysisManager->FillNtupleDColumn(0, 3, fYp);
+  analysisManager->FillNtupleDColumn(0, 4, fZp);
   analysisManager->AddNtupleRow(0);
 
 }
+
+//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 /**
  * Analyzes the hits in the event.
@@ -191,6 +198,7 @@ void EventAction::ClusterHits(std::vector<Hit*>& hits, G4double spatialThreshold
     // Calculate cluster positions and store into ntuple variables
     for (auto& cluster : clusters) {
         //cluster.position /= cluster.hits.size();
+        fEdep += cluster.energyDeposit;
         fEd.push_back(cluster.energyDeposit);
         fX.push_back(cluster.position.x());
         fY.push_back(cluster.position.y());

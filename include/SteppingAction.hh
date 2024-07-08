@@ -34,6 +34,10 @@
 #include "G4ParticleTable.hh"
 #include "globals.hh"
 #include "GammaRayHelper.hh"
+#include "Hit.hh"
+#include "SensitiveDetector.hh"
+#include <map>
+#include <vector>
 
 class G4LogicalVolume;
 
@@ -54,6 +58,7 @@ class SteppingAction : public G4UserSteppingAction
     // method from the base class
     void UserSteppingAction(const G4Step*) override;
     void SetVerbosity(G4int level) { verbosityLevel = level; }  
+    void AddHitToCollection(Hit *newhit, G4String collectionName);
 
   private:
     EventAction* fEventAction;
@@ -62,6 +67,9 @@ class SteppingAction : public G4UserSteppingAction
     GammaRayHelper* fGammaRayHelper;
 
     G4int verbosityLevel=2;
+    std::map<G4String, HitsCollection*> fHitsCollections;
+    std::map<G4String, G4int> fHitsCollectionIDs;
+    G4bool fHitsCollectionInitialized;
 
 };
 

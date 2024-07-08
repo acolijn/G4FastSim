@@ -4,6 +4,7 @@
 #include "G4UImessenger.hh"
 #include "RunAction.hh"
 #include "G4UIcmdWithABool.hh"
+#include "G4UIcmdWithAnInteger.hh"
 #include "globals.hh"
 
 
@@ -22,6 +23,8 @@ private:
     RunAction* fRunAction;
 
     G4UIcmdWithABool* fFastSimulationCmd;
+    G4UIcmdWithAnInteger* fNumberOfScattersCmd;
+
 };
 
 } // namespace G4FastSim
