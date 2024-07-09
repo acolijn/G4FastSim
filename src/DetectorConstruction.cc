@@ -131,12 +131,13 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
 
   // WARNING: do not define ay new materials after this point, as the helper class will not be aware of them
   
-  const G4MaterialTable* materialTable = G4Material::GetMaterialTable();
-  for (size_t i = 0; i < materialTable->size(); ++i) {
-      G4Material* material = (*materialTable)[i];
-      fGammaRayHelper->Initialize(material);
-      //G4cout << "Material: " << material->GetName() << " Attenuation length:" <<  fGammaRayHelper->GetAttenuationLength(1.0 * MeV, material) /cm << " cm" << G4endl;
-  }
+//  const G4MaterialTable* materialTable = G4Material::GetMaterialTable();
+//  for (size_t i = 0; i < materialTable->size(); ++i) {
+//      G4Material* material = (*materialTable)[i];
+//      
+//      //G4cout << "Material: " << material->GetName() << " Attenuation length:" <<  fGammaRayHelper->GetAttenuationLength(1.0 * MeV, material) /cm << " cm" << G4endl;
+//  }
+//  fGammaRayHelper->Initialize();
   //
   //always return the physical World
   //

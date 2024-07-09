@@ -20,7 +20,9 @@ public:
 
 private:
     HitsCollection* fHitsCollection;
+    //G4THitsCollection<Hit>* fHitsCollection;
     G4double fTotalEnergyDeposit;
+    G4int fHitsCollectionID;
 };
 
 }

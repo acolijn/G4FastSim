@@ -77,6 +77,9 @@ RunAction::RunAction(EventAction* eventAction, GammaRayHelper* helper)
 
 void RunAction::BeginOfRunAction(const G4Run*)
 {
+  // Initialize the gamma-ray helper
+  fGammaRayHelper->Initialize();
+
   // initialize the analysis manager and ntuples
   InitializeNtuples();
 
@@ -153,7 +156,7 @@ void RunAction::DefineDifferentialCrossSectionNtuple(){
   for (size_t i = 0; i < materialTable->size(); ++i) {
 
     G4Material* material = (*materialTable)[i];
-    auto* comptonModel = fGammaRayHelper->GetComptonModel(material);
+    //auto* comptonModel = fGammaRayHelper->GetComptonModel(material);
     G4MaterialCutsCouple* cuts = new G4MaterialCutsCouple(material, 0);
 
     G4DynamicParticle* gamma = new G4DynamicParticle(G4Gamma::Gamma(), G4ThreeVector(1,0,0), e0);
@@ -167,9 +170,9 @@ void RunAction::DefineDifferentialCrossSectionNtuple(){
 
         for (G4double theta = 0; theta < pi; theta += 0.001) {
           // get scatter function
-          G4double ff = comptonModel->FormFactor(elm, gamma, theta);
+          G4double ff = fGammaRayHelper->GetComptonModel()->FormFactor(elm, gamma, theta);
           // get differential cross-section (Klein-Nishina)
-          G4double kn = comptonModel->KleinNishina(gamma, theta);
+          G4double kn = fGammaRayHelper->GetComptonModel()->KleinNishina(gamma, theta);
 
           analysisManager->FillNtupleSColumn(diffXsecNtupleId, 0, elm->GetName());
           analysisManager->FillNtupleDColumn(diffXsecNtupleId, 1, std::cos(theta));
@@ -229,7 +232,6 @@ void RunAction::DefineCrossSectionNtuple(){
   G4cout <<"RunAction::BeginOfRunAction: Cross-section data ntuple created. ID = "<< crossSectionNtupleId << G4endl;
 
   //analysisManager->OpenFile();
-
   // Calculate the cross-sections and fill the HDF5 ntuple
   const G4MaterialTable* materialTable = G4Material::GetMaterialTable();
   G4Material* material = (*materialTable)[2];

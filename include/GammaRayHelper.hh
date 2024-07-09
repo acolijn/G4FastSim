@@ -21,7 +21,7 @@ namespace G4FastSim {
 class GammaRayHelper {
 public:
     static thread_local GammaRayHelper& Instance();
-    void Initialize(G4Material* material);
+    void Initialize();
     //~GammaRayHelper();
 
     G4ThreeVector GenerateComptonScatteringDirection(
@@ -39,8 +39,12 @@ public:
     G4double GetAttenuationLength(G4double energy, G4Material* material); 
     G4double GetMassAttenuationCoefficient(G4double energy, G4Material* material);
 
-    ExtendedLivermoreComptonModel* GetComptonModel(G4Material* material){
-        return comptonModels[material];
+    ExtendedLivermoreComptonModel* GetComptonModel(){
+        return comptonModel;
+    };
+
+    G4LivermorePhotoElectricModel* GetPhotoelectricModel(){
+        return photoelectricModel;
     };
 
 private:
@@ -50,9 +54,9 @@ private:
     GammaRayHelper(const GammaRayHelper&) = delete;
     GammaRayHelper& operator=(const GammaRayHelper&) = delete;
 
-    std::map<G4Material*, ExtendedLivermoreComptonModel*> comptonModels;
-    std::map<G4Material*, G4LivermorePhotoElectricModel*> photoelectricModels;
-    std::mutex initMutex; // Mutex for thread-safe initialization
+    ExtendedLivermoreComptonModel* comptonModel;
+    G4LivermorePhotoElectricModel* photoelectricModel;
+    //std::mutex initMutex; // Mutex for thread-safe initialization
 };
 
 }

@@ -8,7 +8,7 @@
 namespace G4FastSim {
 
 SensitiveDetector::SensitiveDetector(const G4String& name, const G4String& hitsCollectionName)
-    : G4VSensitiveDetector(name), fHitsCollection(nullptr), fTotalEnergyDeposit(0.) {
+    : G4VSensitiveDetector(name), fHitsCollection(nullptr), fHitsCollectionID(-1), fTotalEnergyDeposit(0.) {
     collectionName.insert(hitsCollectionName);
 }
 
@@ -17,6 +17,11 @@ SensitiveDetector::~SensitiveDetector() {}
 void SensitiveDetector::Initialize(G4HCofThisEvent* hce) {
     
     fHitsCollection = new HitsCollection(SensitiveDetectorName, collectionName[0]);
+    if (fHitsCollectionID < 0) {
+        fHitsCollectionID = G4SDManager::GetSDMpointer()->GetCollectionID(fHitsCollection);
+    }
+    //fHitsCollection = new G4THitsCollection<Hit>(SensitiveDetectorName, collectionName[0]);
+
     G4int hcID = G4SDManager::GetSDMpointer()->GetCollectionID(collectionName[0]);
     hce->AddHitsCollection(hcID, fHitsCollection);
     fTotalEnergyDeposit = 0.;  // Reset total energy deposit

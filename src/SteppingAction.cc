@@ -65,6 +65,9 @@ SteppingAction::SteppingAction(EventAction* eventAction, GammaRayHelper* helper)
       fGammaRayHelper(helper), 
       fHitsCollectionInitialized(false){
 
+
+  fHitsCollectionInitialized = false;
+
 }
 
 
@@ -121,6 +124,27 @@ void SteppingAction::UserSteppingAction(const G4Step* step)
     // the event to the hits collection
     AddHitToCollection(newHit, "LXeFiducialCollection");
 
+    Hit* newHit1 = new Hit();
+    newHit1->energyDeposit = 20.* keV;
+    newHit1->position = G4ThreeVector(10., 20., -30.);
+    newHit1->time = 1. ;
+    newHit1->trackID = -1;
+    newHit1->parentID = -1;
+    newHit1->momentum = G4ThreeVector(0., 0., 0.);
+    newHit1->particleType = "manual";
+    AddHitToCollection(newHit1, "LXeCollection");
+
+    Hit* newHit2 = new Hit();
+    newHit2->energyDeposit = 30.* keV;
+    newHit2->position = G4ThreeVector(10., 20., -30.);
+    newHit2->time = 1. ;
+    newHit2->trackID = -1;
+    newHit2->parentID = -1;
+    newHit2->momentum = G4ThreeVector(0., 0., 0.);
+    newHit2->particleType = "manual";
+    AddHitToCollection(newHit2, "LXeCollection");
+
+
     // update the number of scatters
     fEventAction->SetNumberOfScatters(number_of_scatters + 1);
   } else {
@@ -130,6 +154,7 @@ void SteppingAction::UserSteppingAction(const G4Step* step)
     fGammaRayHelper->GenerateComptonScatteringDirection(volume_pre->GetMaterial(), step);
   }
 
+  return;
   //if (!fScoringVolume) {
   //  const auto detConstruction = static_cast<const DetectorConstruction*>(
   //    G4RunManager::GetRunManager()->GetUserDetectorConstruction());
@@ -137,6 +162,7 @@ void SteppingAction::UserSteppingAction(const G4Step* step)
   //}
 
   G4Track* track = step->GetTrack();
+  
   G4Material* material = volume_pre->GetMaterial();
 
   auto poststep = step->GetPostStepPoint()->GetTouchableHandle()->GetVolume();
@@ -260,10 +286,12 @@ void SteppingAction::UserSteppingAction(const G4Step* step)
 void SteppingAction::AddHitToCollection(Hit* newHit, G4String collectionName){
 
      if (!fHitsCollectionInitialized) {
+        G4cout << "Initializing hits collections" << G4endl;
         G4SDManager* SDman = G4SDManager::GetSDMpointer();
         fHitsCollectionIDs["LXeCollection"] = SDman->GetCollectionID("LXeCollection");
         fHitsCollectionIDs["LXeFiducialCollection"] = SDman->GetCollectionID("LXeFiducialCollection");
-
+        G4cout << "Hits collection ID for LXeCollection: " << fHitsCollectionIDs["LXeCollection"] << G4endl;
+        G4cout << "Hits collection ID for LXeFiducialCollection: " << fHitsCollectionIDs["LXeFiducialCollection"] << G4endl;
         // Add more collections here if needed
         fHitsCollectionInitialized = true;
     }
@@ -280,12 +308,11 @@ void SteppingAction::AddHitToCollection(Hit* newHit, G4String collectionName){
         return;
     }
 
-    if (fHitsCollections.find(collectionName) == fHitsCollections.end()) {
-        const G4Event* evt = G4RunManager::GetRunManager()->GetCurrentEvent();
-        G4HCofThisEvent* HCE = evt->GetHCofThisEvent();
-        if (HCE) {
-            fHitsCollections[collectionName] = static_cast<HitsCollection*>(HCE->GetHC(hcID));
-        }
+    const G4Event* evt = G4RunManager::GetRunManager()->GetCurrentEvent();
+    G4HCofThisEvent* HCE = evt->GetHCofThisEvent();
+
+    if (HCE) {
+        fHitsCollections[collectionName] = static_cast<G4THitsCollection<Hit>*>(HCE->GetHC(hcID));
     }
 
     if (fHitsCollections[collectionName] == nullptr) {

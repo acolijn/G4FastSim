@@ -16,8 +16,8 @@
 /detector/setInnerCryostatHeight 120 cm
 /detector/setInnerCryostatWallThickness 6 mm
 
-/detector/setFiducialRadius 40 cm
-/detector/setFiducialHeight 80 cm
+/detector/setFiducialRadius 115 cm
+/detector/setFiducialHeight 115 cm
 
 /run/initialize
 
@@ -43,5 +43,5 @@
 
 # run the thing...............
 /run/printProgress 100
-/run/beamOn 2
+/run/beamOn 1000
 

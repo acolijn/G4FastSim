@@ -25,25 +25,20 @@ GammaRayHelper& GammaRayHelper::Instance() {
 GammaRayHelper::GammaRayHelper() {}
 
 /**
- * Initialize the Compton and photoelectric models for a given material.
- * @param mat The material to initialize the models for.
+ * Initialize the Compton and photoelectric models.
  */
-void GammaRayHelper::Initialize(G4Material* mat) {
-    G4AutoLock lock(&mutex); // Use G4AutoLock for thread-safe initialization
-    if (comptonModels.find(mat) == comptonModels.end()) {
-        G4cout << "GammaRayHelper::Initializing Compton and photoelectric models for material " << mat->GetName() << G4endl;
-        //G4LivermoreComptonModel* comptonModel = new G4LivermoreComptonModel();
-        ExtendedLivermoreComptonModel* comptonModel = new ExtendedLivermoreComptonModel();
-        G4LivermorePhotoElectricModel* photoelectricModel = new G4LivermorePhotoElectricModel();
+void GammaRayHelper::Initialize() {
 
-        G4DataVector cuts;
-        cuts.push_back(1.0 * keV); // Example cut value, adjust as needed
-        comptonModel->Initialise(G4Gamma::Gamma(), cuts);
-        photoelectricModel->Initialise(G4Gamma::Gamma(), cuts);
+    G4cout << "GammaRayHelper::Initializing Compton and photoelectric models " << G4endl;
 
-        comptonModels[mat] = comptonModel;
-        photoelectricModels[mat] = photoelectricModel;
-    }
+    comptonModel = new ExtendedLivermoreComptonModel();
+    photoelectricModel = new G4LivermorePhotoElectricModel();
+
+    G4DataVector cuts;
+    cuts.push_back(1.0 * keV); // Example cut value, adjust as needed
+    comptonModel->Initialise(G4Gamma::Gamma(), cuts);
+    photoelectricModel->Initialise(G4Gamma::Gamma(), cuts);
+
 } 
 
 /**
@@ -54,7 +49,6 @@ void GammaRayHelper::Initialize(G4Material* mat) {
  */
 G4double GammaRayHelper::GetComptonCrossSection(G4double energy, G4Material* material) {
     //G4AutoLock lock(&mutex); // Ensure thread-safe access
-    auto& comptonModel = comptonModels[material];
     G4double crossSection = 0.0;
     const G4ElementVector* elementVector = material->GetElementVector();
     const G4double* fractionVector = material->GetFractionVector();
@@ -73,8 +67,6 @@ G4double GammaRayHelper::GetComptonCrossSection(G4double energy, G4Material* mat
  */
 G4double GammaRayHelper::GetPhotoelectricCrossSection(G4double energy, G4Material* material) {
     //G4AutoLock lock(&mutex); // Ensure thread-safe access
-
-    auto& photoelectricModel = photoelectricModels[material];
     G4double crossSection = 0.0;
     const G4ElementVector* elementVector = material->GetElementVector();
     const G4double* fractionVector = material->GetFractionVector();
@@ -126,9 +118,6 @@ G4double GammaRayHelper::GetMassAttenuationCoefficient(G4double energy, G4Materi
     */
     G4double att = 0; 
 
-    auto& photoelectricModel = photoelectricModels[material];
-    auto& comptonModel = comptonModels[material];
-
     const G4ElementVector* elementVector = material->GetElementVector();
     const G4double* fractionVector = material->GetFractionVector();
 
@@ -166,13 +155,15 @@ G4ThreeVector GammaRayHelper::GenerateComptonScatteringDirection(
     //G4double& weight,
     G4Material* material, const G4Step *step)
 {
-    auto& comptonModel = comptonModels[material];
 
-    // first select the material to which you want to scatter......    
-    G4MaterialCutsCouple* couple = new G4MaterialCutsCouple(material, 0);
+    // first select the material to which you want to scatter......   
+
+    G4cout << "GammaRayHelper::GenerateComptonScatteringDirection" << G4endl; 
+
+    const G4MaterialCutsCouple* couple = step->GetPreStepPoint()->GetMaterialCutsCouple();
     G4double energy0 = 1.1 * MeV;
     const G4ParticleDefinition* particle = G4Gamma::Gamma();
-    const G4Element *element = comptonModel->SelectRandomAtom(couple, particle, energy0);
+    const G4Element *element = GetComptonModel()->SelectRandomAtom(couple, particle, energy0);
 
     //   G4cout << "Selected element: " << element->GetName() << G4endl;
 

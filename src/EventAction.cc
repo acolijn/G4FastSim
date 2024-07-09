@@ -105,7 +105,8 @@ void EventAction::EndOfEventAction(const G4Event* event)
 {
   G4cout << "EventAction::EndOfEventAction..... Analyze hits and cluster...." << G4endl;
   AnalyzeHits(event);
-
+  
+  G4cout << "EventAction::EndOfEventAction..... Fill ntuple...." << G4endl;
   // Get analysis manager
   auto analysisManager = G4AnalysisManager::Instance();
   //std::lock_guard<std::mutex> lock(mtx);
@@ -115,6 +116,8 @@ void EventAction::EndOfEventAction(const G4Event* event)
   analysisManager->FillNtupleDColumn(0, 3, fYp);
   analysisManager->FillNtupleDColumn(0, 4, fZp);
   analysisManager->AddNtupleRow(0);
+
+  G4cout << "EventAction::EndOfEventAction: Done...." << G4endl;	
 
 }
 
@@ -146,6 +149,7 @@ void EventAction::AnalyzeHits(const G4Event* event) {
       G4cout << "Hits Collection: " << fHitsCollectionNames[i] << " has " << n_hit << " hits." << G4endl;
       for (G4int j = 0; j < n_hit; ++j) {
           Hit* hit = (*fHitsCollection)[j];
+          G4cout << "Hit " << j << ": Energy =" <<hit->energyDeposit << G4endl;
           hit->Print();
           allHits.push_back(hit);
       }
