@@ -64,6 +64,7 @@ class RunAction : public G4UserRunAction
 
     void SetFastSimulation(G4bool value) { fFastSimulation = value; }
     void SetNumberOfScatters(G4int value) { fNumberOfScattersMax = value; }
+    void SetMaxEnergy(G4double value) { fMaxEnergy = value; }
 
 
   private:
@@ -71,13 +72,13 @@ class RunAction : public G4UserRunAction
     GammaRayHelper* fGammaRayHelper = nullptr;
     RunActionMessenger* fMessenger;
 
-
     int eventNtupleId = -1;
     int crossSectionNtupleId = -1;
     int diffXsecNtupleId = -1;
 
     G4bool fFastSimulation = false;
     G4int fNumberOfScattersMax = 0;
+    G4double fMaxEnergy = 0.0;
 };
 
 }

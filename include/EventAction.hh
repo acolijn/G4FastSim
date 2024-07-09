@@ -65,17 +65,22 @@ class EventAction : public G4UserEventAction
     std::vector<G4double>& GetZ(){return fZ;};
     std::vector<G4double>& GetE(){return fEd;};
 
-
     void AddEdep(G4double edep) { fEdep += edep; }
     void AddWeight(G4double weight) { fWeight *= weight; }
-    void SetFastSimulation(G4bool fast) { fFastSimulation = fast; }
     void AnalyzeHits(const G4Event* event);
+    void ResetVariables();
+
     G4bool IsFastSimulation() { return fFastSimulation; }
     G4int GetNumberOfScatters() { return fEd.size();}
-    void SetNumberOfScatters(G4int n) { fNumberOfScatters = n; }
-
+    G4double GetMaxEnergy() { return fMaxEnergy; }
     G4int GetNumberOfScattersMax() { return fNumberOfScattersMax; }
+
     void SetNumberOfScattersMax(G4int n) { fNumberOfScattersMax = n; }
+    void SetFastSimulation(G4bool fast) { fFastSimulation = fast; }
+    void SetNumberOfScatters(G4int n) { fNumberOfScatters = n; }
+    void SetMaxEnergy(G4double e) { fMaxEnergy = e; }
+
+
 
   private:
     //
@@ -101,6 +106,7 @@ class EventAction : public G4UserEventAction
     G4bool fFastSimulation = false;
     G4int fNumberOfScattersMax = 0;
     G4int fNumberOfScatters = 0;
+    G4double fMaxEnergy = 0.0;
 
     //static std::mutex mtx; // Mutex for thread safety
 

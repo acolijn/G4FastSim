@@ -62,13 +62,8 @@ void EventAction::BeginOfEventAction(const G4Event* event)
 {
   G4cout << "EventAction::BeginOfEventAction..... NEXT" << G4endl;	
 
-  fNumberOfScatters = 0;
-  fWeight = 1.0;
-  fEdep = 0.0;
-  fEd.clear();
-  fX.clear();
-  fY.clear();
-  fZ.clear();
+  // Reset variables
+  ResetVariables();
 
   //G4cout<<"EventAction::BeginOfEventAction next event...."<<G4endl;
   G4PrimaryVertex* primaryVertex = event->GetPrimaryVertex();
@@ -78,13 +73,30 @@ void EventAction::BeginOfEventAction(const G4Event* event)
 
   //auto def =  event->GetPrimaryVertex()->GetPrimary()->GetParticleDefinition();
   //G4cout << " def = " << def->GetParticleName() << G4endl;
-  G4cout << "   Primary vertex: x = "<< primaryVertex->GetPosition() / cm << " (cm)"<<G4endl;
-  G4cout << "   Primary vertex: p = "<<event->GetPrimaryVertex()->GetPrimary()->GetMomentumDirection() << G4endl;
+  G4cout << "EventAction::BeginOfEventAction Primary vertex: x = "<< primaryVertex->GetPosition() / cm << " (cm)"<<G4endl;
+  G4cout << "                                                p = "<< primaryVertex->GetPrimary()->GetMomentumDirection() << G4endl;
+  G4cout << "                                                E = "<< primaryVertex->GetPrimary()->GetKineticEnergy() / keV << " keV"<< G4endl;
+
   // Kill the event if the particle does not point to the fiducial volume
   //if (TBD) {
   //  G4cout<<"EventAction::BeginOfEventAction: Killing event with fZp = "<<fZp<<G4endl;
   //  G4RunManager::GetRunManager()->AbortEvent();
   //}
+}
+
+//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
+void EventAction::ResetVariables() {
+  fNumberOfScatters = 0;
+
+  fEdep = 0.0;
+  fWeight = 1.0;
+  fXp = 0.0;
+  fYp = 0.0;
+  fZp = 0.0;
+  fEd.clear();
+  fX.clear();
+  fY.clear();
+  fZ.clear();
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......

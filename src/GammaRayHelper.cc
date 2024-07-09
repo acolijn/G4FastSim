@@ -6,6 +6,7 @@
 #include "G4AutoLock.hh"
 #include "G4DynamicParticle.hh"
 #include "G4MaterialCutsCouple.hh"
+#include "G4LivermoreComptonModel.hh"
 #include <thread>
 #include <vector>
 
@@ -157,24 +158,29 @@ G4double GammaRayHelper::GetMassAttenuationCoefficient(G4double energy, G4Materi
  * @return The direction of the scattered gamma ray.
  */
 G4ThreeVector GammaRayHelper::GenerateComptonScatteringDirection(
-    const G4ThreeVector& initialDirection,
-    G4double initialEnergy,
-    G4double& scatteredEnergy,
-    G4double minAngle,
-    G4double maxAngle,
-    G4double& weight,
+    //const G4ThreeVector& initialDirection,
+    //G4double initialEnergy,
+    //G4double& scatteredEnergy,
+    //G4double minAngle,
+    //G4double maxAngle,
+    //G4double& weight,
     G4Material* material, const G4Step *step)
 {
     auto& comptonModel = comptonModels[material];
 
-    std::vector<G4DynamicParticle*>* fv = new std::vector<G4DynamicParticle*>();
-    G4MaterialCutsCouple* cuts = new G4MaterialCutsCouple(material, 0);
+    // first select the material to which you want to scatter......    
+    G4MaterialCutsCouple* couple = new G4MaterialCutsCouple(material, 0);
+    G4double energy0 = 1.1 * MeV;
+    const G4ParticleDefinition* particle = G4Gamma::Gamma();
+    const G4Element *element = comptonModel->SelectRandomAtom(couple, particle, energy0);
 
-    G4DynamicParticle* gamma = new G4DynamicParticle(G4Gamma::Gamma(), initialDirection, initialEnergy);
-    comptonModel->SampleSecondaries(fv, cuts, gamma, 0,0);
+    //   G4cout << "Selected element: " << element->GetName() << G4endl;
 
-    G4DynamicParticle* electron = (*fv)[0];
-    scatteredEnergy = electron->GetKineticEnergy();
+    //G4DynamicParticle* gamma = new G4DynamicParticle(G4Gamma::Gamma(), initialDirection, initialEnergy);
+    //comptonModel->SampleSecondaries(fv, cuts, gamma, 0,0);
+
+    //G4DynamicParticle* electron = (*fv)[0];
+    //scatteredEnergy = electron->GetKineticEnergy();
 
     G4ThreeVector newDirection = G4ThreeVector(0,0,1.);
     return newDirection;

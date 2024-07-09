@@ -80,11 +80,13 @@ void RunAction::BeginOfRunAction(const G4Run*)
   // initialize the analysis manager and ntuples
   InitializeNtuples();
 
+  // passing some parameters to the event action
   G4cout <<"RunAction::BeginOfRunAction: Normal (0) - or - FastSimulation (1) = "<< fFastSimulation << G4endl;
   fEventAction->SetFastSimulation(fFastSimulation);
-
   G4cout <<"RunAction::BeginOfRunAction: Maximum number of scatters = "<< fNumberOfScattersMax << G4endl;
   fEventAction->SetNumberOfScattersMax(fNumberOfScattersMax);
+  G4cout <<"RunAction::BeginOfRunAction: Maximum energy deposit = "<< fMaxEnergy << G4endl;
+  fEventAction->SetMaxEnergy(fMaxEnergy);
 
 }
 

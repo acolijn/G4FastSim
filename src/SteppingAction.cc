@@ -91,18 +91,24 @@ void SteppingAction::UserSteppingAction(const G4Step* step)
   if( (step->GetTrack()->GetTrackID() == 1) && 
       (volume_pre->GetName() == "LXeFiducial") && 
       (number_of_scatters < fEventAction->GetNumberOfScattersMax())) {
-    // generate a scatter somewhere in the LXeFiducial volume
+    //
+    // Generate an interaction somewhere in the LXeFiducial volume
+    //
 
-    // 1. determine the hit location
+    //
+    // 1. generate the hit location
+    //
 
     // 2. scattering:
     //     - if the maximum allowed energy is above the photo-peak, generate a PE or Compton scatter, based on the relative cross sections
     //     - if the maximum allowed energy is below the photo-peak ->
-    //                  i) ignore PE effect and assign a weight. Then just do COmpton scatter
+    //                  i) ignore PE effect and assign a weight. Then just do Compton scatter
     //                  ii) calculate the maximum scattering angle possible and generate a Compton scatter. Calculate the event weight based on the non-sampled scattering angles
 
 
     // Create a new hit based on the energy deposit in the scattering event
+
+    // this is just for testing .......
     Hit* newHit = new Hit();
     newHit->energyDeposit = 10.* keV;
     newHit->position = G4ThreeVector(10., 20., -30.);
@@ -115,9 +121,13 @@ void SteppingAction::UserSteppingAction(const G4Step* step)
     // the event to the hits collection
     AddHitToCollection(newHit, "LXeFiducialCollection");
 
+    // update the number of scatters
     fEventAction->SetNumberOfScatters(number_of_scatters + 1);
   } else {
     // 1. update the event weight based on the traversed material
+
+    // testing...
+    fGammaRayHelper->GenerateComptonScatteringDirection(volume_pre->GetMaterial(), step);
   }
 
   //if (!fScoringVolume) {
@@ -129,8 +139,6 @@ void SteppingAction::UserSteppingAction(const G4Step* step)
   G4Track* track = step->GetTrack();
   G4Material* material = volume_pre->GetMaterial();
 
-
-
   auto poststep = step->GetPostStepPoint()->GetTouchableHandle()->GetVolume();
   // if you leave the Geant4 World volume.... do nothing
   G4LogicalVolume* volume_post = nullptr;
@@ -141,7 +149,10 @@ void SteppingAction::UserSteppingAction(const G4Step* step)
   // if Verbose level >=2 print this information
   if(verbosityLevel >= 2 )
   {
-    G4cout << "track ID: " << track->GetTrackID() << G4endl;
+    G4cout << "track ID        : " << track->GetTrackID() << G4endl;
+    G4cout << "track parent ID : " << track->GetParentID() << G4endl;
+    G4cout << "  particle name        : " << track->GetParticleDefinition()->GetParticleName() << G4endl;
+    G4cout << "  energy               : " << track->GetKineticEnergy() / keV << " keV"<< G4endl;
     G4cout << "  volume_pre name      : " << volume_pre->GetName() << G4endl;
     G4cout << "  volume_pre position  : " << step->GetPreStepPoint()->GetPosition()/cm << " cm"<<G4endl;
     if(poststep) {

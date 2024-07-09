@@ -25,12 +25,12 @@ public:
     //~GammaRayHelper();
 
     G4ThreeVector GenerateComptonScatteringDirection(
-        const G4ThreeVector& initialDirection,
-        G4double initialEnergy,
-        G4double& scatteredEnergy,
-        G4double minAngle,
-        G4double maxAngle,
-        G4double& weight,
+        //const G4ThreeVector& initialDirection,
+        //G4double initialEnergy,
+        //G4double& scatteredEnergy,
+        //G4double minAngle,
+        //G4double maxAngle,
+        //G4double& weight,
         G4Material* material, const G4Step *step);
 
     G4double GetComptonCrossSection(G4double energy, G4Material* material);

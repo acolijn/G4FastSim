@@ -18,6 +18,11 @@ RunActionMessenger::RunActionMessenger(RunAction* action)
     fNumberOfScattersCmd->SetParameterName("numberOfScattersMax", false);
     fNumberOfScattersCmd->SetDefaultValue(0);
 
+    fMaxEnergyCmd = new G4UIcmdWithADoubleAndUnit("/run/setMaxEnergy", this);
+    fMaxEnergyCmd->SetGuidance("Set the maximum energy deposit for fast MC.");    
+    fMaxEnergyCmd->SetParameterName("maxEnergy", false);
+    fMaxEnergyCmd->SetDefaultValue(0.0);
+    fMaxEnergyCmd->SetDefaultUnit("MeV");
 }
 
 RunActionMessenger::~RunActionMessenger() {
@@ -29,6 +34,8 @@ void RunActionMessenger::SetNewValue(G4UIcommand* command, G4String newValue) {
         fRunAction->SetFastSimulation(fFastSimulationCmd->GetNewBoolValue(newValue));
     } else if (command == fNumberOfScattersCmd) {
         fRunAction->SetNumberOfScatters(fNumberOfScattersCmd->GetNewIntValue(newValue));
+    } else if (command == fMaxEnergyCmd) {
+        fRunAction->SetMaxEnergy(fMaxEnergyCmd->GetNewDoubleValue(newValue));
     }
 }
 
