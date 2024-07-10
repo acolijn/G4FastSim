@@ -11,8 +11,10 @@ class ExtendedLivermoreComptonModel : public G4LivermoreComptonModel {
         ExtendedLivermoreComptonModel();
         virtual ~ExtendedLivermoreComptonModel();
 
-        G4double FormFactor(const G4Element* , const G4DynamicParticle* aDynamicGamma, G4double theta);
-        G4double KleinNishina(const G4DynamicParticle* aDynamicGamma, G4double theta);
+        G4double FormFactor(const G4Element* , const G4DynamicParticle* aDynamicGamma, G4double cosTheta);
+        G4double KleinNishina(const G4DynamicParticle* aDynamicGamma, G4double cosTheta);
+        G4double DifferentialCrossSection(const G4Element* element, const G4DynamicParticle* aDynamicGamma, G4double cossTheta);
+
     private:
         G4VEMDataSet* scatterFunctionData;
 };

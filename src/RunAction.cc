@@ -77,6 +77,12 @@ RunAction::RunAction(EventAction* eventAction, GammaRayHelper* helper)
 
 void RunAction::BeginOfRunAction(const G4Run*)
 {
+
+  // Get the initial energy from the primary generator action
+  const PrimaryGeneratorAction* primaryGeneratorAction = static_cast<const PrimaryGeneratorAction*>(
+    G4RunManager::GetRunManager()->GetUserPrimaryGeneratorAction());
+
+  G4cout << "Runaction::BeginOfRunAction: E0 = " << primaryGeneratorAction->GetInitialEnergy() / keV << " keV" << G4endl;
   // Initialize the gamma-ray helper
   fGammaRayHelper->Initialize();
 
@@ -113,14 +119,15 @@ void RunAction::InitializeNtuples(){
     // Default settings
     analysisManager->SetNtupleMerging(true);
 
-    analysisManager->CreateH1("cost", "cos theta of Compton", 100, -1.0, +1.0); // id = 0
+    // Creating histograms
+    analysisManager->CreateH1("cost", "cos theta of Compton", 500, -1.1, +1.1); // id = 0
 
     // Creating event data ntuple
     DefineEventNtuple();
     // Creating and filling physics data ntuple
     DefineCrossSectionNtuple();
     // Creating and filling differential cross-section data ntuple
-    DefineDifferentialCrossSectionNtuple();
+    // done from EventAction at the first event: since we the know the energy of the gamma rays. DefineDifferentialCrossSectionNtuple();
   }
 }
 
@@ -132,7 +139,7 @@ void RunAction::InitializeNtuples(){
  * for each element in each material. The Ntuple columns include the material name, scattering angle, form factor,
  * Klein-Nishina cross-section, and atomic number of the element.
  */
-void RunAction::DefineDifferentialCrossSectionNtuple(){
+void RunAction::DefineDifferentialCrossSectionNtuple(G4double e0) const {
   auto analysisManager = G4AnalysisManager::Instance();
 
   // get material table
@@ -148,7 +155,6 @@ void RunAction::DefineDifferentialCrossSectionNtuple(){
 
   G4cout <<"RunAction::BeginOfRunAction: Diff Xsec ntuple created. ID = "<< diffXsecNtupleId << G4endl;
   G4cout <<"RunAction::BeginOfRunAction: Material table size = "<< materialTable->size() << G4endl;
-  G4double e0 = 1.0 * MeV;
   G4cout <<"RunAction::BeginOfRunAction: create nutple for energy = " << e0/MeV << " MeV" << G4endl;
 
 
@@ -168,14 +174,14 @@ void RunAction::DefineDifferentialCrossSectionNtuple(){
       const G4Element* elm = (*elementVector)[i];
       if (std::find(elements_used.begin(), elements_used.end(), elm->GetName()) == elements_used.end()) {
 
-        for (G4double theta = 0; theta < pi; theta += 0.001) {
+        for (G4double cost = -1.0; cost < 1.0; cost += 0.001) {
           // get scatter function
-          G4double ff = fGammaRayHelper->GetComptonModel()->FormFactor(elm, gamma, theta);
+          G4double ff = fGammaRayHelper->GetComptonModel()->FormFactor(elm, gamma, cost);
           // get differential cross-section (Klein-Nishina)
-          G4double kn = fGammaRayHelper->GetComptonModel()->KleinNishina(gamma, theta);
+          G4double kn = fGammaRayHelper->GetComptonModel()->KleinNishina(gamma, cost);
 
           analysisManager->FillNtupleSColumn(diffXsecNtupleId, 0, elm->GetName());
-          analysisManager->FillNtupleDColumn(diffXsecNtupleId, 1, std::cos(theta));
+          analysisManager->FillNtupleDColumn(diffXsecNtupleId, 1, cost);
           analysisManager->FillNtupleDColumn(diffXsecNtupleId, 2, ff);
           analysisManager->FillNtupleDColumn(diffXsecNtupleId, 3, kn);
           analysisManager->FillNtupleIColumn(diffXsecNtupleId, 4, elm->GetZ());
@@ -236,7 +242,7 @@ void RunAction::DefineCrossSectionNtuple(){
   const G4MaterialTable* materialTable = G4Material::GetMaterialTable();
   G4Material* material = (*materialTable)[2];
   
-  double startEnergy = 0.001 * MeV;
+  double startEnergy =  1 * keV;
   double endEnergy = 10.0 * MeV;
   int numSteps = 1000;
   double factor = std::pow(endEnergy / startEnergy, 1.0 / (numSteps - 1));
@@ -261,18 +267,18 @@ void RunAction::DefineCrossSectionNtuple(){
         if (processName == "att") {
           analysisManager->FillNtupleDColumn(crossSectionNtupleId, 3, fGammaRayHelper->GetMassAttenuationCoefficient(energy, mat)/cm2);
         } else {
-          analysisManager->FillNtupleDColumn(crossSectionNtupleId, 3, crossSection);
+          analysisManager->FillNtupleDColumn(crossSectionNtupleId, 3, crossSection / barn);
         }
 
         analysisManager->AddNtupleRow(crossSectionNtupleId);
       }
     }
-    G4cout << mat->GetName() <<" density = "<< mat->GetDensity() / (g/cm3) <<" attenutation at 1 MeV: " << fGammaRayHelper->GetMassAttenuationCoefficient(1.0 * MeV, mat) / (cm2/g)  << " " << G4endl;
-    G4double thickness = 1.0 * cm;
-    G4double att = fGammaRayHelper->GetMassAttenuationCoefficient(1.0 * MeV, mat) * mat->GetDensity() * thickness;
-    G4cout << mat->GetName() <<" linear attenuation at 1 MeV for 1 cm thickness: " << att << " " << G4endl;
+    //G4cout << mat->GetName() <<" density = "<< mat->GetDensity() / (g/cm3) <<" attenutation at 1 MeV: " << fGammaRayHelper->GetMassAttenuationCoefficient(1.0 * MeV, mat) / (cm2/g)  << " " << G4endl;
+    //G4double thickness = 1.0 * cm;
+    //G4double att = fGammaRayHelper->GetMassAttenuationCoefficient(1.0 * MeV, mat) * mat->GetDensity() * thickness;
+    //G4cout << mat->GetName() <<" linear attenuation at 1 MeV for 1 cm thickness: " << att << " " << G4endl;
   }
-  G4cout << "units.... cm="<< cm << " MeV=" << MeV << " g= "<<g<<G4endl; 
+  //G4cout << "units.... cm="<< cm << " MeV=" << MeV << " g= "<<g<<G4endl; 
 }
 
 

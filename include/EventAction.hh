@@ -36,6 +36,8 @@
 #include "G4Types.hh"
 #include "Cluster.hh"
 #include "globals.hh"
+
+#include "GammaRayHelper.hh"
 #include <vector>
 #include <mutex>
 
@@ -104,6 +106,7 @@ class EventAction : public G4UserEventAction
     std::vector<G4double> fZ;
 
     G4bool fFastSimulation = false;
+    G4bool fInitializedGraphs = false;
     G4int fNumberOfScattersMax = 0;
     G4int fNumberOfScatters = 0;
     G4double fMaxEnergy = 0.0;
@@ -111,6 +114,9 @@ class EventAction : public G4UserEventAction
     //static std::mutex mtx; // Mutex for thread safety
 
     std::vector<G4String> fHitsCollectionNames;
+
+    GammaRayHelper* fGammaRayHelper;
+
 
 };
 

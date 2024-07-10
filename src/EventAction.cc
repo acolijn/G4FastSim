@@ -47,7 +47,7 @@ namespace G4FastSim {
 
 //std::mutex EventAction::mtx;
 
-EventAction::EventAction()
+EventAction::EventAction() : G4UserEventAction(), fGammaRayHelper(&GammaRayHelper::Instance())
 {
   // set printing per each event
   G4RunManager::GetRunManager()->SetPrintProgress(1);
@@ -76,12 +76,23 @@ void EventAction::BeginOfEventAction(const G4Event* event)
   G4cout << "EventAction::BeginOfEventAction Primary vertex: x = "<< primaryVertex->GetPosition() / cm << " (cm)"<<G4endl;
   G4cout << "                                                p = "<< primaryVertex->GetPrimary()->GetMomentumDirection() << G4endl;
   G4cout << "                                                E = "<< primaryVertex->GetPrimary()->GetKineticEnergy() / keV << " keV"<< G4endl;
+  
+  if(IsFastSimulation()) {
+    fGammaRayHelper->InitializeCDFs(primaryVertex->GetPrimary()->GetKineticEnergy());  // only when here for first time we do the initialization
 
-  // Kill the event if the particle does not point to the fiducial volume
-  //if (TBD) {
-  //  G4cout<<"EventAction::BeginOfEventAction: Killing event with fZp = "<<fZp<<G4endl;
-  //  G4RunManager::GetRunManager()->AbortEvent();
-  //}
+    if(!fInitializedGraphs) {
+      // Get the RunAction instance
+      const RunAction* runAction = static_cast<const RunAction*>(G4RunManager::GetRunManager()->GetUserRunAction());
+      G4double e0 = primaryVertex->GetPrimary()->GetKineticEnergy();
+      runAction->DefineDifferentialCrossSectionNtuple(e0);
+      fInitializedGraphs = true;
+    }
+  }
+    // Kill the event if the particle does not point to the fiducial volume
+    //if (TBD) {
+    //  G4cout<<"EventAction::BeginOfEventAction: Killing event with fZp = "<<fZp<<G4endl;
+    //  G4RunManager::GetRunManager()->AbortEvent();
+    //}
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......

@@ -23,7 +23,7 @@
 
 # define the particle gun settings
 /gps/particle geantino
-/gps/energy 0.9 MeV
+/gps/energy 1.1 MeV
 /gps/pos/type Volume
 /gps/pos/shape Cylinder
 /gps/pos/centre 0. 0. 0. cm
@@ -43,5 +43,5 @@
 
 # run the thing...............
 /run/printProgress 100
-/run/beamOn 1000
+/run/beamOn 10000
 

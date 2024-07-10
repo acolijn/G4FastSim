@@ -57,10 +57,14 @@ class PrimaryGeneratorAction : public G4VUserPrimaryGeneratorAction
 
     // method to access particle gun
     const G4GeneralParticleSource* GetParticleGun() const { return fParticleGun; }
+    
+    G4double GetInitialEnergy() const;
+
 
   private:
     G4GeneralParticleSource* fParticleGun = nullptr; // pointer a to G4 gun class
     G4Box* fEnvelopeBox = nullptr;
+    G4double fInitialEnergy = 0;
 };
 
 ///}

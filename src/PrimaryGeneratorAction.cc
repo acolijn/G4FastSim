@@ -74,6 +74,10 @@ void PrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
   fParticleGun->GeneratePrimaryVertex(anEvent);
 }
 
+G4double PrimaryGeneratorAction::GetInitialEnergy() const {
+    return fInitialEnergy;
+}
+
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 ///}

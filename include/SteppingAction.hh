@@ -38,6 +38,7 @@
 #include "SensitiveDetector.hh"
 #include <map>
 #include <vector>
+#include <utility>
 
 class G4LogicalVolume;
 
@@ -58,9 +59,11 @@ class SteppingAction : public G4UserSteppingAction
     // method from the base class
     void UserSteppingAction(const G4Step*) override;
     void SetVerbosity(G4int level) { verbosityLevel = level; }  
+    void Print(const G4Step* step);
 
   private:
     void AddHitToCollection(Hit *newhit, G4String collectionName);
+    std::pair<G4ThreeVector, G4double> GenerateInteractionPoint(G4ThreeVector x0, G4ThreeVector x1, G4double att);
 
 
     EventAction* fEventAction;

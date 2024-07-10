@@ -60,7 +60,7 @@ class RunAction : public G4UserRunAction
     void InitializeNtuples();
     void DefineEventNtuple();
     void DefineCrossSectionNtuple();
-    void DefineDifferentialCrossSectionNtuple();
+    void DefineDifferentialCrossSectionNtuple(G4double energy) const;
 
     void SetFastSimulation(G4bool value) { fFastSimulation = value; }
     void SetNumberOfScatters(G4int value) { fNumberOfScattersMax = value; }
@@ -74,7 +74,7 @@ class RunAction : public G4UserRunAction
 
     int eventNtupleId = -1;
     int crossSectionNtupleId = -1;
-    int diffXsecNtupleId = -1;
+    mutable int diffXsecNtupleId = -1;
 
     G4bool fFastSimulation = false;
     G4int fNumberOfScattersMax = 0;

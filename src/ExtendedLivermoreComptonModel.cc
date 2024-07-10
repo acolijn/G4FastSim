@@ -30,6 +30,18 @@ ExtendedLivermoreComptonModel::~ExtendedLivermoreComptonModel() {
 }
 
 /**
+ * Calculates the differential cross section for Compton scattering.
+ *
+ * @param element The element being scattered off.
+ * @param aDynamicGamma The dynamic gamma particle.
+ * @param cosTheta The cosine of the scattering angle.
+ * @return The calculated differential cross section.
+ */
+G4double ExtendedLivermoreComptonModel::DifferentialCrossSection(const G4Element* element, const G4DynamicParticle* aDynamicGamma, G4double cosTheta) {
+    return KleinNishina(aDynamicGamma, cosTheta) * FormFactor(element, aDynamicGamma, cosTheta);
+}
+
+/**
  * Calculates the scatter function for Compton scattering in the Extended Livermore model.
  * 
  * @param elm The element to calculate the scatter function for.
@@ -37,7 +49,7 @@ ExtendedLivermoreComptonModel::~ExtendedLivermoreComptonModel() {
  * @param theta The scattering angle.
  * @return The scatter function value.
  */
-G4double ExtendedLivermoreComptonModel::FormFactor(const G4Element* elm, const G4DynamicParticle* aDynamicGamma, G4double theta) {
+G4double ExtendedLivermoreComptonModel::FormFactor(const G4Element* elm, const G4DynamicParticle* aDynamicGamma, G4double cosTheta) {
     // Get the energy of the gamma
     G4double photonEnergy0 = aDynamicGamma->GetKineticEnergy();
 
@@ -48,7 +60,7 @@ G4double ExtendedLivermoreComptonModel::FormFactor(const G4Element* elm, const G
 
     // Calculate the wavelength of the photon
     G4double wlPhoton = h_Planck*c_light/photonEnergy0;
-    G4double oneCost = 1-std::cos(theta);
+    G4double oneCost = 1-cosTheta;
     G4double x = std::sqrt(oneCost/2.) / (wlPhoton/cm);
 
     // return the scatter function value
@@ -64,16 +76,15 @@ G4double ExtendedLivermoreComptonModel::FormFactor(const G4Element* elm, const G
  * @param theta The scattering angle in radians.
  * @return The Klein-Nishina scattering function value.
  */
-G4double ExtendedLivermoreComptonModel::KleinNishina(const G4DynamicParticle* aDynamicGamma, G4double theta) {
+G4double ExtendedLivermoreComptonModel::KleinNishina(const G4DynamicParticle* aDynamicGamma, G4double cosTheta) {
 
     // Get the energy of the gamma
     G4double photonEnergy0 = aDynamicGamma->GetKineticEnergy();
     // Calculate the wavelength of the photon
-    G4double cost = std::cos(theta);
     G4double e0m = photonEnergy0/electron_mass_c2;
 
-    G4double ff = 1 + e0m*(1-cost);
-    G4double kn = (1. + cost*cost + e0m*e0m*(1.-cost)*(1.-cost)/ff)/(ff*ff)/2.;
+    G4double ff = 1 + e0m*(1-cosTheta);
+    G4double kn = (1. + cosTheta*cosTheta + e0m*e0m*(1.-cosTheta)*(1.-cosTheta)/ff)/(ff*ff)/2.;
 
     // return the scatter function value
     return kn;

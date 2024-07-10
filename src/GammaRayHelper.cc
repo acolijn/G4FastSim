@@ -22,7 +22,9 @@ GammaRayHelper& GammaRayHelper::Instance() {
     return instance;
 }
 
-GammaRayHelper::GammaRayHelper() {}
+//GammaRayHelper::GammaRayHelper() {}
+GammaRayHelper::GammaRayHelper() : comptonModel(nullptr), photoelectricModel(nullptr), cdfsInitialized(false) {}
+
 
 /**
  * Initialize the Compton and photoelectric models.
@@ -35,11 +37,78 @@ void GammaRayHelper::Initialize() {
     photoelectricModel = new G4LivermorePhotoElectricModel();
 
     G4DataVector cuts;
-    cuts.push_back(1.0 * keV); // Example cut value, adjust as needed
+    cuts.push_back(1 * keV); // Example cut value, adjust as needed?? what it means? find out.....
     comptonModel->Initialise(G4Gamma::Gamma(), cuts);
     photoelectricModel->Initialise(G4Gamma::Gamma(), cuts);
-
 } 
+
+/**
+ * @brief Initializes the cumulative distribution functions (CDFs) for gamma rays.
+ * 
+ * This function initializes the CDFs for gamma rays based on the given energy.
+ * It checks if the CDFs have already been initialized and if not, performs the initialization.
+ * The CDFs are created for each element used in the material table.
+ * 
+ * @param energy The energy of the gamma rays.
+ */
+void GammaRayHelper::InitializeCDFs(G4double energy) {
+
+    fInitialEnergy = energy;
+
+    if (!cdfsInitialized) {
+        Initialize();
+        fElementsUsed.clear();
+        G4MaterialTable* materialTable = G4Material::GetMaterialTable();
+        for (size_t i = 0; i < materialTable->size(); ++i) {
+            G4Material* material = (*materialTable)[i];
+            const G4ElementVector* elementVector = material->GetElementVector();
+            for (size_t j = 0; j < material->GetNumberOfElements(); ++j) {
+                const G4Element* elm = (*elementVector)[j];
+                if (std::find(fElementsUsed.begin(), fElementsUsed.end(), elm->GetName()) == fElementsUsed.end()) {
+                    fElementsUsed.push_back(elm->GetName());
+                    cdfDataMap[elm] = CreateCDF(elm, energy); // Create initial CDF for a typical energy
+                }
+            }
+        }
+        cdfsInitialized = true;
+    }
+}
+
+/**
+ * Create a cumulative distribution function (CDF) for a given element and energy.
+ * @param element The element to create the CDF for.
+ * @param energy The energy of the gamma ray.
+ * @return The CDF data.
+ */
+CDFData GammaRayHelper::CreateCDF(const G4Element* element, G4double energy) {
+    G4int nPoints = 1000;
+    G4double cosThetaMin = -1.0;
+    G4double cosThetaMax =  1.0;
+    G4double dCosTheta = (cosThetaMax - cosThetaMin) / nPoints;
+
+    std::vector<G4double> cdf(nPoints + 1);
+    std::vector<G4double> cosTheta(nPoints + 1);
+
+    G4double sum = 0.0;
+    for (G4int i = 0; i <= nPoints; ++i) {
+        G4double cosThetaVal = cosThetaMin + i * dCosTheta;
+        cosTheta[i] = cosThetaVal;
+        G4double diffCrossSection = comptonModel->DifferentialCrossSection(element, new G4DynamicParticle(G4Gamma::Gamma(), G4ThreeVector(1,0,0), energy), cosThetaVal) * dCosTheta;
+        sum += diffCrossSection;
+        cdf[i] = sum;
+    }
+
+    for (G4int i = 0; i <= nPoints; ++i) {
+        cdf[i] /= sum;
+    }
+
+    CDFData cdfData;
+    cdfData.cdf = cdf;
+    cdfData.cosTheta = cosTheta;
+
+    return cdfData;
+}
+
 
 /**
  * Get the Compton cross section for a given energy and material.
@@ -134,47 +203,38 @@ G4double GammaRayHelper::GetMassAttenuationCoefficient(G4double energy, G4Materi
     return att;
 }
 
-/**
- * Generate the direction of a Compton-scattered gamma ray.
- * @param initialDirection The initial direction of the gamma ray.
- * @param initialEnergy The initial energy of the gamma ray.
- * @param scatteredEnergy The energy of the scattered gamma ray (output parameter).
- * @param minAngle The minimum scattering angle.
- * @param maxAngle The maximum scattering angle.
- * @param weight The weight of the scattered gamma ray (output parameter).
- * @param material The material in which the scattering occurs.
- * @param step The step in which the scattering occurs.
- * @return The direction of the scattered gamma ray.
- */
-G4ThreeVector GammaRayHelper::GenerateComptonScatteringDirection(
-    //const G4ThreeVector& initialDirection,
-    //G4double initialEnergy,
-    //G4double& scatteredEnergy,
-    //G4double minAngle,
-    //G4double maxAngle,
-    //G4double& weight,
-    G4Material* material, const G4Step *step)
-{
-
-    // first select the material to which you want to scatter......   
-
-    G4cout << "GammaRayHelper::GenerateComptonScatteringDirection" << G4endl; 
+G4double GammaRayHelper::GenerateComptonAngle(const G4Step* step) {
 
     const G4MaterialCutsCouple* couple = step->GetPreStepPoint()->GetMaterialCutsCouple();
-    G4double energy0 = 1.1 * MeV;
+    G4double energy0 = step->GetPreStepPoint()->GetKineticEnergy();
     const G4ParticleDefinition* particle = G4Gamma::Gamma();
-    const G4Element *element = GetComptonModel()->SelectRandomAtom(couple, particle, energy0);
+    const G4Element* element = comptonModel->SelectRandomAtom(couple, particle, energy0);
 
-    //   G4cout << "Selected element: " << element->GetName() << G4endl;
+    // Check if a new CDF needs to be generated
+    CDFData cdfData;
+    if (energy0 != fInitialEnergy) {
+        cdfData = CreateCDF(element, energy0);
+    } else {
+        cdfData = cdfDataMap[element];
+    }
 
-    //G4DynamicParticle* gamma = new G4DynamicParticle(G4Gamma::Gamma(), initialDirection, initialEnergy);
-    //comptonModel->SampleSecondaries(fv, cuts, gamma, 0,0);
+    G4double rand = G4UniformRand();
+    const std::vector<G4double>& cdf = cdfData.cdf;
+    const std::vector<G4double>& cosTheta = cdfData.cosTheta;
 
-    //G4DynamicParticle* electron = (*fv)[0];
-    //scatteredEnergy = electron->GetKineticEnergy();
+    auto it = std::lower_bound(cdf.begin(), cdf.end(), rand);
+    G4int idx = std::distance(cdf.begin(), it);
 
-    G4ThreeVector newDirection = G4ThreeVector(0,0,1.);
-    return newDirection;
+    G4double cosThetaVal = cosTheta.back();
+    if (idx > 0 && idx < cdf.size()) {
+        G4double t1 = cdf[idx - 1];
+        G4double t2 = cdf[idx];
+        G4double cosTheta1 = cosTheta[idx - 1];
+        G4double cosTheta2 = cosTheta[idx];
+        cosThetaVal = cosTheta1 + (cosTheta2 - cosTheta1) * (rand - t1) / (t2 - t1);
+    }
+
+    return cosThetaVal;
 }
 
 }

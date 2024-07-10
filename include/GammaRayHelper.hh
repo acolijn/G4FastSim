@@ -17,21 +17,19 @@
 
 namespace G4FastSim {
 
+struct CDFData {
+    std::vector<G4double> cdf;
+    std::vector<G4double> cosTheta;
+};
 
 class GammaRayHelper {
 public:
     static thread_local GammaRayHelper& Instance();
     void Initialize();
+    void InitializeCDFs(G4double energy);
     //~GammaRayHelper();
 
-    G4ThreeVector GenerateComptonScatteringDirection(
-        //const G4ThreeVector& initialDirection,
-        //G4double initialEnergy,
-        //G4double& scatteredEnergy,
-        //G4double minAngle,
-        //G4double maxAngle,
-        //G4double& weight,
-        G4Material* material, const G4Step *step);
+    G4double GenerateComptonAngle(const G4Step* step);
 
     G4double GetComptonCrossSection(G4double energy, G4Material* material);
     G4double GetPhotoelectricCrossSection(G4double energy, G4Material* material);
@@ -50,12 +48,24 @@ public:
 private:
     GammaRayHelper();
     ~GammaRayHelper() = default;
+    
+    CDFData CreateCDF(const G4Element* element, G4double energy);
+
 
     GammaRayHelper(const GammaRayHelper&) = delete;
     GammaRayHelper& operator=(const GammaRayHelper&) = delete;
 
     ExtendedLivermoreComptonModel* comptonModel;
     G4LivermorePhotoElectricModel* photoelectricModel;
+
+    std::vector<std::string> fElementsUsed;
+
+    std::map<const G4Element*, CDFData> cdfDataMap; // CDFs for each element
+
+    bool cdfsInitialized;
+    G4double fInitialEnergy;
+
+
     //std::mutex initMutex; // Mutex for thread-safe initialization
 };
 
