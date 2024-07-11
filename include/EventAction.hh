@@ -68,21 +68,22 @@ class EventAction : public G4UserEventAction
     std::vector<G4double>& GetE(){return fEd;};
 
     void AddEdep(G4double edep) { fEdep += edep; }
-    void AddWeight(G4double weight) { fWeight *= weight; }
+    void AddWeight(G4double weight) { fLogWeight += weight; }
     void AnalyzeHits(const G4Event* event);
     void ResetVariables();
 
     G4bool IsFastSimulation() { return fFastSimulation; }
-    G4int GetNumberOfScatters() { return fEd.size();}
+    G4int GetNumberOfScatters() { return fNumberOfScatters;}
     G4double GetMaxEnergy() { return fMaxEnergy; }
     G4int GetNumberOfScattersMax() { return fNumberOfScattersMax; }
+    G4double GetAvailableEnergy() { return fAvailableEnergy; }
 
     void SetNumberOfScattersMax(G4int n) { fNumberOfScattersMax = n; }
     void SetFastSimulation(G4bool fast) { fFastSimulation = fast; }
     void SetNumberOfScatters(G4int n) { fNumberOfScatters = n; }
     void SetMaxEnergy(G4double e) { fMaxEnergy = e; }
-
-
+    void SetAvailableEnergy(G4double e) { fAvailableEnergy = e; }
+    void ReduceAvailableEnergy(G4double e) { fAvailableEnergy -= e; } 
 
   private:
     //
@@ -94,7 +95,7 @@ class EventAction : public G4UserEventAction
 
     // define here all the variables that you want to store for each event in the 
     // ntuple tree  
-    G4double fWeight;
+    G4double fLogWeight;
     G4double fEdep;
     G4double fXp;
     G4double fYp;
@@ -109,7 +110,11 @@ class EventAction : public G4UserEventAction
     G4bool fInitializedGraphs = false;
     G4int fNumberOfScattersMax = 0;
     G4int fNumberOfScatters = 0;
+
+    // maximum energy deposit that is allowed: /run/setMaxEnergy
     G4double fMaxEnergy = 0.0;
+    // avaliable energy for scattering energy deposits (relevant for muliple scattering events)
+    G4double fAvailableEnergy = 0.0;
 
     //static std::mutex mtx; // Mutex for thread safety
 

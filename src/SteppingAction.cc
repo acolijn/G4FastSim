@@ -81,7 +81,6 @@ void SteppingAction::UserSteppingAction(const G4Step* step)
   if (!fEventAction->IsFastSimulation()) {
     return;
   }
-  G4AnalysisManager* analysisManager = G4AnalysisManager::Instance();
 
 
   if (verbosityLevel >= 2){
@@ -93,103 +92,151 @@ void SteppingAction::UserSteppingAction(const G4Step* step)
   // get volume of the current step
   G4LogicalVolume* volume_pre = step->GetPreStepPoint()->GetTouchableHandle()->GetVolume()->GetLogicalVolume();
   G4Material* material        = volume_pre->GetMaterial();
-  G4double attenuation_length = fGammaRayHelper->GetAttenuationLength(energy, material);
-
-  // get the entrance and exit points of the step in the current volume
-  G4ThreeVector entrance = step->GetPreStepPoint()->GetPosition();
-  G4ThreeVector exit = step->GetPostStepPoint()->GetPosition();
-
   // get the attenuation length of the material for the gamma ray at the current energy
-  G4double globalTime = step->GetPreStepPoint()->GetGlobalTime();
+  G4double attenuation_length = fGammaRayHelper->GetAttenuationLength(energy, material);
+  G4String particleName = step->GetTrack()->GetParticleDefinition()->GetParticleName();
 
-  Print(step);
+  // kill track if it is in the big bad world.....
+  if(volume_pre->GetName() == "World") {
+    step->GetTrack()->SetTrackStatus(fStopAndKill);
+    return;
+  }
 
+  if (verbosityLevel >= 2) Print(step);
   // if (1) we deal with the original gamma ray and (2) we are inside the fiducial volume and (3) we have not reached the maximum number of scatters ==> go scatter dude!
   G4int number_of_scatters = fEventAction->GetNumberOfScatters();
-  if( (step->GetTrack()->GetTrackID() == 1) && 
+  if( (particleName == "geantino") &&
       (volume_pre->GetName() == "LXeFiducial") && 
       (number_of_scatters < fEventAction->GetNumberOfScattersMax())) {
     //
     // * Generate an interaction somewhere in the LXeFiducial volume
     //
-    auto result = GenerateInteractionPoint(entrance, exit, attenuation_length);
+    auto result = fGammaRayHelper->GenerateInteractionPoint(step);
     G4ThreeVector interactionPoint = result.first;
-    G4double weight = result.second;
+    // calculate the weight of the event and add it to teh event sum of logs
+    fEventAction->AddWeight(std::log(result.second));
 
     // * scattering:
     //     - if the maximum allowed energy is above the photo-peak, generate a PE or Compton scatter, based on the relative cross sections
     //     - if the maximum allowed energy is below the photo-peak ->
     //                  i) ignore PE effect and assign a weight. Then just do Compton scatter
     //                  ii) calculate the maximum scattering angle possible and generate a Compton scatter. Calculate the event weight based on the non-sampled scattering angles
+    G4double weight = DoScatter(step, interactionPoint);
+    fEventAction->AddWeight(std::log(weight));
+    // update the number of scatters
+    fEventAction->SetNumberOfScatters(number_of_scatters + 1);
+
+  } else {
+    //  Update the event weight based on the traversed material. Once the geantino leaves the
+    //  active vlume of the TPC the track will be killed and no further weights need to be calculated
+    //  NOTE: at a later stage we could generate a gamma ray with the appropriate energy at the boundary
+    //  of the active volume. This can facilitate generation of events that bounce back into the fiducial 
+    //  volume
+    
+    // check if the particle is a geantino
+    if (particleName == "geantino") {
+      G4double weight = std::exp(-step->GetStepLength() / attenuation_length);
+      fEventAction->AddWeight(std::log(weight));
+
+      // if the next volume is the InnerCryostat and the geantino has undergone one or multiple scatters, 
+      // we want to kill the track
+      G4String nextVolume = step->GetPostStepPoint()->GetTouchableHandle()->GetVolume()->GetLogicalVolume()->GetName();
+      if ((nextVolume == "InnerCryostat") && (number_of_scatters > 0)){
+        step->GetTrack()->SetTrackStatus(fStopAndKill);
+      }
+
+    } else {
+      // not a geantino.... so nothing special needs to be done here.
+      return;
+    }
+    
+  }
 
 
+}
+//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
+/**
+ * Performs scattering of particles based on their energy and material properties.
+ * 
+ * @param step The G4Step object containing information about the current step.
+ * @param x0 The position vector of the current step.
+ */
+G4double SteppingAction::DoScatter(const G4Step* step, G4ThreeVector x0){
+  G4AnalysisManager* analysisManager = G4AnalysisManager::Instance();
 
-    // interaction point
-    G4ThreeVector momentumDirection = G4ThreeVector(0., 0., 1.);
+  // get the energy of the particle
+  G4double energy = step->GetPreStepPoint()->GetKineticEnergy();
+  G4double energyDeposit = 0.0;
+  G4double weight = 1.0;
 
+  // get the volume of the current step
+  G4LogicalVolume* volume_pre = step->GetPreStepPoint()->GetTouchableHandle()->GetVolume()->GetLogicalVolume();
+  G4Material* material        = volume_pre->GetMaterial();
+
+  G4double photoelectricCrossSection = fGammaRayHelper->GetPhotoelectricCrossSection(energy, material);
+  G4double comptonCrossSection       = fGammaRayHelper->GetComptonCrossSection(energy, material);
+  G4double ratio = comptonCrossSection / (photoelectricCrossSection + comptonCrossSection);
+
+  G4double maxEnergy = fEventAction->GetAvailableEnergy();
+
+  G4double rand = G4UniformRand();
+
+  //G4cout << "DoScatter:: PE cross section: " << photoelectricCrossSection << G4endl;
+  //G4cout << "DoScatter:: Compton cross section: " << comptonCrossSection << G4endl;
+  //G4cout << "DoScatter:: Random number: " << rand << G4endl;
+  
+  if ( (rand > ratio) && (energy < maxEnergy) ){
+    // generate a PE scatter: we make an energy deposit with the full energyand kill the track
+    energyDeposit = energy;
+  } else {
+    // take into account that we ignored the PE effect and assign a weight
+    // generate a Compton scatter and update the energy deposit
+    InteractionData compton = fGammaRayHelper->DoComptonScatter(step, x0, maxEnergy);
+    energyDeposit = compton.energyDeposited;
+
+    if(energy > maxEnergy) {
+      weight *= ratio; // take into account ignored PE effect
+      weight *= compton.weight; // take into account the Compton scatter weight, only if the maximum allowed energy deposit is somewhere in the Compton region
+    } 
+
+    //
+    // make a secondary track
+    //
     G4ParticleTable* particleTable = G4ParticleTable::GetParticleTable();
     G4ParticleDefinition* particleDefinition = particleTable->FindParticle("geantino");
     // Create the dynamic particle
-    G4DynamicParticle* dynamicParticle = new G4DynamicParticle(particleDefinition, momentumDirection, energy);
-    // Create the new track
-    G4Track* newTrack = new G4Track(dynamicParticle, globalTime, interactionPoint);
+    G4DynamicParticle* dynamicParticle = new G4DynamicParticle(particleDefinition, compton.dir, compton.energy);
+    G4Track* newTrack = new G4Track(dynamicParticle, 0.0, x0);
     // Set additional properties of the new track if needed
+
     G4Track* track = step->GetTrack();
     newTrack->SetParentID(track->GetTrackID());
     newTrack->SetGoodForTrackingFlag(true);
-
-    // Add the new track to the list of secondaries
+    // add new track to collection of secondaries
     G4TrackVector* secondaries = const_cast<G4TrackVector*>(step->GetSecondary());
     secondaries->push_back(newTrack);
-    track->SetTrackStatus(fStopAndKill);
 
-
-    // Create a new hit based on the energy deposit in the scattering event
-
-    // this is just for testing .......
-    Hit* newHit = new Hit();
-    newHit->energyDeposit = 10.* MeV;
-    newHit->position = interactionPoint;
-    newHit->time = 1. ;
-    newHit->trackID = -1;
-    newHit->parentID = -1;
-    newHit->momentum = momentumDirection;
-    newHit->particleType = "manual";
-
-    // the event to the hits collection
-    AddHitToCollection(newHit, "LXeFiducialCollection");
-    // update the number of scatters
-    fEventAction->SetNumberOfScatters(number_of_scatters + 1);
-  } else {
-    // 1. update the event weight based on the traversed material
-
-    // testing...
-    // // //fGammaRayHelper->GenerateComptonScatteringDirection(volume_pre->GetMaterial(), step);
+    analysisManager->FillH1(0, compton.cosTheta);
   }
-}
-//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-/**
- * Generates an interaction point along a line segment between two points.
- *
- * @param entrance The entrance point of the line segment.
- * @param exit The exit point of the line segment.
- * @param attenuation_length The attenuation length of the material.
- * @return The generated interaction point.
- */
-std::pair<G4ThreeVector, G4double> SteppingAction::GenerateInteractionPoint(G4ThreeVector entrance, G4ThreeVector exit, G4double attenuation_length) {
+  // update the available energy
+  fEventAction->ReduceAvailableEnergy(energy);  
+  // kill the track!
+  G4Track* track = step->GetTrack();
+  track->SetTrackStatus(fStopAndKill);
 
-  // maximum possible distance....
-  G4double maxDistance = (exit - entrance).mag();
+    // create a new hit
+  Hit* newHit = new Hit();
+  newHit->energyDeposit = energyDeposit;
+  newHit->position = x0;
+  newHit->time = step->GetPreStepPoint()->GetGlobalTime();
+  newHit->trackID = step->GetTrack()->GetTrackID();
+  newHit->parentID = step->GetTrack()->GetParentID();
+  newHit->particleType = "manual";
 
-  // generate a random distance along the line segment
-  G4double rand = G4UniformRand();
-  G4double maxCDF = 1 - std::exp(-maxDistance / attenuation_length);
-  G4double adjustedRand = rand * maxCDF;
-  G4double distance = -attenuation_length * std::log(1 - adjustedRand);
-  G4ThreeVector interactionPoint = entrance + (exit - entrance).unit() * distance;
+  AddHitToCollection(newHit, "LXeFiducialCollection");
 
-  return std::make_pair(interactionPoint,maxCDF);
+  return weight;
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
@@ -206,13 +253,13 @@ void SteppingAction::Print(const G4Step* step) {
 
   // if Verbose level >=2 print this information
 
-  G4cout << "track ID        : " << track->GetTrackID() << G4endl;
-  G4cout << "track parent ID : " << track->GetParentID() << G4endl;
-  G4cout << "  particle name        : " << track->GetParticleDefinition()->GetParticleName() << G4endl;
-  G4cout << "  energy               : " << track->GetKineticEnergy() / keV << " keV"<< G4endl;
-  G4cout << "  volume_pre name      : " << volume_pre->GetName() << G4endl;
-  G4cout << "  volume_pre position  : " << step->GetPreStepPoint()->GetPosition()/cm << " cm"<<G4endl;
-  G4cout << "  volume_post position : " << step->GetPostStepPoint()->GetPosition()/cm << " cm"<<G4endl;
+  G4cout << "SteppingAction::Print track ID             : " << track->GetTrackID() << G4endl;
+  G4cout << "                      track parent ID      : " << track->GetParentID() << G4endl;
+  G4cout << "                      particle name        : " << track->GetParticleDefinition()->GetParticleName() << G4endl;
+  G4cout << "                      energy               : " << track->GetKineticEnergy() / keV << " keV"<< G4endl;
+  G4cout << "                      volume_pre name      : " << volume_pre->GetName() << G4endl;
+  G4cout << "                      volume_pre position  : " << step->GetPreStepPoint()->GetPosition()/cm << " cm"<<G4endl;
+  G4cout << "                      volume_post position : " << step->GetPostStepPoint()->GetPosition()/cm << " cm"<<G4endl;
 }
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 

@@ -98,9 +98,12 @@ void EventAction::BeginOfEventAction(const G4Event* event)
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 void EventAction::ResetVariables() {
   fNumberOfScatters = 0;
+  // the avalaible energy is the maximum energy that can be deposited in the event
+  // it will be reduced after every energy deposit
+  fAvailableEnergy = fMaxEnergy;
 
   fEdep = 0.0;
-  fWeight = 1.0;
+  fLogWeight = 0.0;
   fXp = 0.0;
   fYp = 0.0;
   fZp = 0.0;
@@ -116,13 +119,17 @@ void EventAction::EndOfEventAction(const G4Event* event)
 {
   G4cout << "EventAction::EndOfEventAction..... Analyze hits and cluster...." << G4endl;
   AnalyzeHits(event);
+
+  // if no scatters were made we are dealing with an event that did nothing inside the fiducial volume
+  // such an event should have a weight=1.0
+  if(fNumberOfScatters == 0) fLogWeight = 0.0;
   
   G4cout << "EventAction::EndOfEventAction..... Fill ntuple...." << G4endl;
   // Get analysis manager
   auto analysisManager = G4AnalysisManager::Instance();
   //std::lock_guard<std::mutex> lock(mtx);
   analysisManager->FillNtupleDColumn(0, 0, fEdep);
-  analysisManager->FillNtupleDColumn(0, 1, fWeight);
+  analysisManager->FillNtupleDColumn(0, 1, fLogWeight);
   analysisManager->FillNtupleDColumn(0, 2, fXp);
   analysisManager->FillNtupleDColumn(0, 3, fYp);
   analysisManager->FillNtupleDColumn(0, 4, fZp);

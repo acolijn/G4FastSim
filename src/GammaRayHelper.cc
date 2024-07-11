@@ -203,7 +203,14 @@ G4double GammaRayHelper::GetMassAttenuationCoefficient(G4double energy, G4Materi
     return att;
 }
 
-G4double GammaRayHelper::GenerateComptonAngle(const G4Step* step) {
+
+/**
+ * Generates a Compton scattering angle for a gamma ray.
+ * @param step The G4Step object containing information about the current step.
+ * @param energy_max The maximum energy deposition allowed for the gamma ray.
+ * @return The cosine of the scattering angle.
+ */
+std::pair<G4double,G4double> GammaRayHelper::GenerateComptonAngle(const G4Step* step, G4double energy_max) {
 
     const G4MaterialCutsCouple* couple = step->GetPreStepPoint()->GetMaterialCutsCouple();
     G4double energy0 = step->GetPreStepPoint()->GetKineticEnergy();
@@ -218,7 +225,20 @@ G4double GammaRayHelper::GenerateComptonAngle(const G4Step* step) {
         cdfData = cdfDataMap[element];
     }
 
-    G4double rand = G4UniformRand();
+    // get the minimal value of cos(theta)
+    G4double cosThetaMin = CalculateMinCosTheta(energy0, energy_max);
+    // get corresponding CDF value..
+    G4double cdfMin = 0;
+    auto it0 = std::lower_bound(cdfData.cosTheta.begin(), cdfData.cosTheta.end(), cosThetaMin);
+    if (it0 != cdfData.cosTheta.end()) {
+        G4int idx = std::distance(cdfData.cosTheta.begin(), it0);
+        cdfMin = cdfData.cdf[idx];
+    }
+    G4double weight = 1 - cdfMin;
+    G4cout<<"CDF min = "<<cdfMin<<" cosThetaMin = "<<cosThetaMin<<G4endl;
+
+    // Generate a random number between cdfMin and 1
+    G4double rand = G4UniformRand() * (1 - cdfMin) + cdfMin;
     const std::vector<G4double>& cdf = cdfData.cdf;
     const std::vector<G4double>& cosTheta = cdfData.cosTheta;
 
@@ -234,8 +254,134 @@ G4double GammaRayHelper::GenerateComptonAngle(const G4Step* step) {
         cosThetaVal = cosTheta1 + (cosTheta2 - cosTheta1) * (rand - t1) / (t2 - t1);
     }
 
-    return cosThetaVal;
+  return std::make_pair(cosThetaVal,weight);
 }
 
+/**
+ * Calculates the energy of the scattered gamma ray after a Compton scattering event.
+ *
+ * @param energy0 The initial energy of the gamma ray.
+ * @param cosTheta The scattering angle of the gamma ray.
+ * @return The energy of the scattered gamma ray.
+ */
+G4double GammaRayHelper::CalculateComptonEnergy(G4double energy0, G4double cosTheta) {
+    G4double energy1 = energy0 / (1 + energy0 / (511 * keV) * (1 - cosTheta));
+    return energy1; 
 }
- 
+
+/**
+ * Calculates the minimum cosine of the scattering angle for a gamma ray.
+ *
+ * @param energy0 The initial energy of the gamma ray.
+ * @param maxDeposition The maximum energy deposition allowed for the gamma ray.
+ * @return The minimum cosine of the scattering angle.
+ */
+G4double GammaRayHelper::CalculateMinCosTheta(G4double energy0, G4double maxDeposition) {
+    // if maxDeposition is larger than the energy, the minimum cosTheta is -1
+    if (maxDeposition >= energy0) {
+        return -1;
+    }
+    G4double minCosTheta = 1.0 - 511 * keV * maxDeposition / energy0 / (energy0 - maxDeposition);
+
+    if (minCosTheta > 1) {
+        minCosTheta = 1;
+    } else if (minCosTheta < -1) {
+        minCosTheta = -1;
+    }
+
+    return minCosTheta;
+}
+
+/**
+ * Calculates the new direction of the particle after a Compton scatter.
+ *
+ * @param step The G4Step object containing information about the current step.
+ * @param cosTheta The cosine of the scattering angle.
+ * @return The new direction of the particle.
+ */
+G4ThreeVector GammaRayHelper::CalculateNewDirection(G4ThreeVector direction, G4double cosTheta) {
+  
+  G4double phi = twopi * G4UniformRand();
+  G4double cosPhi = std::cos(phi);
+  G4double sinPhi = std::sin(phi);
+  G4double sinTheta = std::sqrt(1 - cosTheta * cosTheta);
+
+  G4ThreeVector newDirection(sinTheta * cosPhi, sinTheta * sinPhi, cosTheta);
+  // now the magic happens. The new direction rotated towards the original direction
+  G4ThreeVector rotationAxis = G4ThreeVector(0, 0, 1).cross(direction);
+  G4double rotationAngle = std::acos(G4ThreeVector(0, 0, 1).dot(direction));
+
+  G4RotationMatrix rotationMatrix;
+  rotationMatrix.rotate(rotationAngle, rotationAxis);
+  // Transform the new direction back to the original coordinate system
+  newDirection = rotationMatrix * newDirection;
+
+  return newDirection;
+}
+
+InteractionData GammaRayHelper::DoComptonScatter(const G4Step* step, G4ThreeVector x0, G4double energy_max) {
+    // Get the gamma ray energy
+    G4double energy0 = step->GetPreStepPoint()->GetKineticEnergy();
+    // Generate the Compton scattering angle
+    auto result = GenerateComptonAngle(step, energy_max);
+    G4double cosTheta = result.first;
+    G4double weight = result.second;
+    // Calculate the energy of the scattered gamma ray
+    G4double energy1 = CalculateComptonEnergy(energy0, cosTheta);
+    // Calculate the new direction of the gamma ray
+    G4ThreeVector direction = CalculateNewDirection(step->GetPreStepPoint()->GetMomentumDirection(), cosTheta);
+    // 
+    // // G4cout << "Compton scattering: " << energy0/keV << " -> " << energy1/keV << " cos(theta) = " << cosTheta << " weight = " << weight << " emax = "<<energy_max/keV<<G4endl;
+
+    InteractionData data;
+    data.x0 = x0;
+    data.dir = direction;
+    data.energy = energy1;
+    data.energyDeposited = energy0 - energy1;
+    data.cosTheta = cosTheta;
+    data.weight = weight;
+    data.hit = new Hit();
+
+    return data;
+}
+
+
+/**
+ * Generates an interaction point along a line segment between two points.
+ *
+ * @param entrance The entrance point of the line segment.
+ * @param exit The exit point of the line segment.
+ * @param attenuation_length The attenuation length of the material.
+ * @return The generated interaction point.
+ */
+std::pair<G4ThreeVector, G4double> GammaRayHelper::GenerateInteractionPoint(const G4Step *step) {
+
+  // get the energy of the particle
+  G4double energy = step->GetPreStepPoint()->GetKineticEnergy();
+  
+  G4LogicalVolume* volume_pre = step->GetPreStepPoint()->GetTouchableHandle()->GetVolume()->GetLogicalVolume();
+  G4Material* material        = volume_pre->GetMaterial();
+  G4double attenuation_length = GetAttenuationLength(energy, material);
+
+  // maximum possible distance....
+  G4double maxDistance = step->GetStepLength();
+
+  // get the entrance and exit points of the step
+  G4ThreeVector entrance = step->GetPreStepPoint()->GetPosition();
+  G4ThreeVector exit = step->GetPostStepPoint()->GetPosition();
+
+  // generate a random distance along the line segment
+  G4double rand = G4UniformRand();
+  // We want to generate a hit inside teh fiducial volume. 
+  // Therefore there is a maximum to the CDF that we can generate: this is returned for weighing the event
+  G4double maxCDF = 1 - std::exp(-maxDistance / attenuation_length);
+  G4double adjustedRand = rand * maxCDF;
+  G4double distance = -attenuation_length * std::log(1 - adjustedRand);
+  G4ThreeVector interactionPoint = entrance + (exit - entrance).unit() * distance;
+
+  return std::make_pair(interactionPoint,maxCDF);
+}
+
+
+
+}

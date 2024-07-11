@@ -9,26 +9,26 @@
 
 # define the detector geometry
 /detector/setOuterCryostatRadius 150 cm
-/detector/setOuterCryostatHeight 140 cm
+/detector/setOuterCryostatHeight 300 cm
 /detector/setOuterCryostatWallThickness 10 mm
 
 /detector/setInnerCryostatRadius 120 cm
-/detector/setInnerCryostatHeight 120 cm
+/detector/setInnerCryostatHeight 240 cm
 /detector/setInnerCryostatWallThickness 6 mm
 
-/detector/setFiducialRadius 115 cm
-/detector/setFiducialHeight 115 cm
+/detector/setFiducialRadius 100 cm
+/detector/setFiducialHeight 200 cm
 
 /run/initialize
 
 # define the particle gun settings
 /gps/particle geantino
-/gps/energy 1.1 MeV
+/gps/energy 1. MeV
 /gps/pos/type Volume
 /gps/pos/shape Cylinder
 /gps/pos/centre 0. 0. 0. cm
 /gps/pos/radius 1.6 m
-/gps/pos/halfz 1.1 m
+/gps/pos/halfz 1.3 m
 /gps/pos/confine InnerCryostat
 #/gps/pos/confine OuterCryostat
 
@@ -39,9 +39,9 @@
 # maximum number of scatters inside fiducial
 /run/setNumberOfScatters 1
 # maximum energy deposit
-/run/setMaxEnergy 120 keV
+/run/setMaxEnergy 1100 keV
 
 # run the thing...............
 /run/printProgress 100
-/run/beamOn 10000
+/run/beamOn 1000000
 

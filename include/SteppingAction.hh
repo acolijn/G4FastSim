@@ -63,7 +63,7 @@ class SteppingAction : public G4UserSteppingAction
 
   private:
     void AddHitToCollection(Hit *newhit, G4String collectionName);
-    std::pair<G4ThreeVector, G4double> GenerateInteractionPoint(G4ThreeVector x0, G4ThreeVector x1, G4double att);
+    G4double DoScatter(const G4Step* step, G4ThreeVector x0);
 
 
     EventAction* fEventAction;
