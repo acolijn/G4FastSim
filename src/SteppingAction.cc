@@ -82,7 +82,6 @@ void SteppingAction::UserSteppingAction(const G4Step* step)
     return;
   }
 
-
   if (verbosityLevel >= 2){
     G4cout <<"Entering SteppingAction::UserSteppingAction"<<G4endl;
   }
@@ -279,12 +278,14 @@ void SteppingAction::Print(const G4Step* step) {
 void SteppingAction::AddHitToCollection(Hit* newHit, G4String collectionName){
 
      if (!fHitsCollectionInitialized) {
-        G4cout << "Initializing hits collections" << G4endl;
+        if (verbosityLevel >=2) G4cout << "Initializing hits collections" << G4endl;
         G4SDManager* SDman = G4SDManager::GetSDMpointer();
         fHitsCollectionIDs["LXeCollection"] = SDman->GetCollectionID("LXeCollection");
         fHitsCollectionIDs["LXeFiducialCollection"] = SDman->GetCollectionID("LXeFiducialCollection");
-        G4cout << "Hits collection ID for LXeCollection: " << fHitsCollectionIDs["LXeCollection"] << G4endl;
-        G4cout << "Hits collection ID for LXeFiducialCollection: " << fHitsCollectionIDs["LXeFiducialCollection"] << G4endl;
+        if (verbosityLevel >=2){
+          G4cout << "Hits collection ID for LXeCollection: " << fHitsCollectionIDs["LXeCollection"] << G4endl;
+          G4cout << "Hits collection ID for LXeFiducialCollection: " << fHitsCollectionIDs["LXeFiducialCollection"] << G4endl;
+        }
         // Add more collections here if needed
         fHitsCollectionInitialized = true;
     }

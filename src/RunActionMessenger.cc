@@ -1,6 +1,5 @@
 #include "RunActionMessenger.hh"
 #include "RunAction.hh"
-#include "G4UIcmdWithABool.hh"
 
 ///using namespace G4FastSim;
 namespace G4FastSim {
@@ -23,6 +22,12 @@ RunActionMessenger::RunActionMessenger(RunAction* action)
     fMaxEnergyCmd->SetParameterName("maxEnergy", false);
     fMaxEnergyCmd->SetDefaultValue(0.0);
     fMaxEnergyCmd->SetDefaultUnit("MeV");
+
+    fOutputFileNameCmd = new G4UIcmdWithAString("/run/setOutputFileName", this);
+    fOutputFileNameCmd->SetGuidance("Set the output file name.");
+    fOutputFileNameCmd->SetParameterName("outputFileName", false);
+    fOutputFileNameCmd->SetDefaultValue("G4FastSim.root");
+
 }
 
 RunActionMessenger::~RunActionMessenger() {
@@ -36,6 +41,8 @@ void RunActionMessenger::SetNewValue(G4UIcommand* command, G4String newValue) {
         fRunAction->SetNumberOfScatters(fNumberOfScattersCmd->GetNewIntValue(newValue));
     } else if (command == fMaxEnergyCmd) {
         fRunAction->SetMaxEnergy(fMaxEnergyCmd->GetNewDoubleValue(newValue));
+    } else if (command == fOutputFileNameCmd) {
+        fRunAction->SetOutputFileName(newValue);
     }
 }
 

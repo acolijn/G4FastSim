@@ -6,6 +6,7 @@
 #include "G4UIcmdWithABool.hh"
 #include "G4UIcmdWithAnInteger.hh"
 #include "G4UIcmdWithADoubleAndUnit.hh"
+#include "G4UIcmdWithAString.hh"
 #include "globals.hh"
 
 
@@ -26,6 +27,7 @@ private:
     G4UIcmdWithABool* fFastSimulationCmd;
     G4UIcmdWithAnInteger* fNumberOfScattersCmd;
     G4UIcmdWithADoubleAndUnit* fMaxEnergyCmd;
+    G4UIcmdWithAString* fOutputFileNameCmd;
 
 };
 

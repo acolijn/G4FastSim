@@ -97,6 +97,8 @@ class EventAction : public G4UserEventAction
     // ntuple tree  
     G4double fLogWeight;
     G4double fEdep;
+    G4int fNclusters;
+    G4int fEventID;
     G4double fXp;
     G4double fYp;
     G4double fZp;
@@ -122,7 +124,7 @@ class EventAction : public G4UserEventAction
 
     GammaRayHelper* fGammaRayHelper;
 
-
+    G4int verbosityLevel=0;
 };
 
 }

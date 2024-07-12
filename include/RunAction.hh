@@ -27,8 +27,8 @@
 /// \file B1/include/RunAction.hh
 /// \brief Definition of the B1::RunAction class
 
-#ifndef B1RunAction_h
-#define B1RunAction_h 1
+#ifndef _RunAction_h
+#define _RunAction_h 1
 
 #include "G4UserEventAction.hh"
 #include "G4UserRunAction.hh"
@@ -65,7 +65,7 @@ class RunAction : public G4UserRunAction
     void SetFastSimulation(G4bool value) { fFastSimulation = value; }
     void SetNumberOfScatters(G4int value) { fNumberOfScattersMax = value; }
     void SetMaxEnergy(G4double value) { fMaxEnergy = value; }
-
+    void SetOutputFileName(G4String value) { fOutputFileName = value; }
 
   private:
     EventAction* fEventAction = nullptr;
@@ -79,6 +79,7 @@ class RunAction : public G4UserRunAction
     G4bool fFastSimulation = false;
     G4int fNumberOfScattersMax = 0;
     G4double fMaxEnergy = 0.0;
+    G4String fOutputFileName = "G4FastSim.root";
 };
 
 }

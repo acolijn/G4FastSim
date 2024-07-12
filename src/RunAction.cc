@@ -65,7 +65,7 @@ RunAction::RunAction(EventAction* eventAction, GammaRayHelper* helper)
   : fEventAction(eventAction), fGammaRayHelper(helper)
 {
   // set printing event number per each event
-  G4RunManager::GetRunManager()->SetPrintProgress(1);
+  G4RunManager::GetRunManager()->SetPrintProgress(1000);
 
   // Create the generic analysis manager
   auto analysisManager = G4AnalysisManager::Instance();
@@ -113,7 +113,7 @@ void RunAction::InitializeNtuples(){
   auto analysisManager = G4AnalysisManager::Instance();
   if (G4Threading::IsMasterThread()) {
     analysisManager->SetDefaultFileType("root");
-    analysisManager->OpenFile("G4FastSim");
+    analysisManager->OpenFile(fOutputFileName);
     //  
     analysisManager->SetVerboseLevel(1);
     // Default settings
@@ -208,11 +208,13 @@ void RunAction::DefineEventNtuple(){
   G4cout << "RunAction::BeginOfRunAction: Creating event data ntuple" << G4endl;
 
   eventNtupleId = analysisManager->CreateNtuple("ev", "G4FastSim ntuple");
-  analysisManager->CreateNtupleDColumn(eventNtupleId, "Edep"); // column Id = 0
-  analysisManager->CreateNtupleDColumn(eventNtupleId, "w");    // column Id = 1
-  analysisManager->CreateNtupleDColumn(eventNtupleId, "xp");   // column Id = 2
-  analysisManager->CreateNtupleDColumn(eventNtupleId, "yp");   // column Id = 3
-  analysisManager->CreateNtupleDColumn(eventNtupleId, "zp");   // column Id = 4  
+  analysisManager->CreateNtupleDColumn(eventNtupleId, "ev");   // column Id = 0
+  analysisManager->CreateNtupleDColumn(eventNtupleId, "nc");   // column Id = 1
+  analysisManager->CreateNtupleDColumn(eventNtupleId, "e");    // column Id = 2
+  analysisManager->CreateNtupleDColumn(eventNtupleId, "w");    // column Id = 3
+  analysisManager->CreateNtupleDColumn(eventNtupleId, "xp");   // column Id = 4
+  analysisManager->CreateNtupleDColumn(eventNtupleId, "yp");   // column Id = 5
+  analysisManager->CreateNtupleDColumn(eventNtupleId, "zp");   // column Id = 6
   analysisManager->CreateNtupleDColumn(eventNtupleId, "eh", fEventAction->GetE()); // column Id = 5
   analysisManager->CreateNtupleDColumn(eventNtupleId, "xh", fEventAction->GetX()); // column Id = 6
   analysisManager->CreateNtupleDColumn(eventNtupleId, "yh", fEventAction->GetY()); // column Id = 7

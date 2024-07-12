@@ -34,14 +34,16 @@
 
 /gps/ang/type iso
 
+# output filename
+/run/setOutputFileName /data/xenon/acolijn/G4FastSim/fast/fastsim_max100keV.root
 # fast simulation?
 /run/setFastSimulation true
 # maximum number of scatters inside fiducial
 /run/setNumberOfScatters 1
 # maximum energy deposit
-/run/setMaxEnergy 1100 keV
+/run/setMaxEnergy 100 keV
 
 # run the thing...............
-/run/printProgress 100
-/run/beamOn 1000000
+/run/printProgress 10000
+/run/beamOn 10000000
 

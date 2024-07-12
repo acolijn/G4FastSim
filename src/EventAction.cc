@@ -60,7 +60,8 @@ EventAction::EventAction() : G4UserEventAction(), fGammaRayHelper(&GammaRayHelpe
 
 void EventAction::BeginOfEventAction(const G4Event* event)
 {
-  G4cout << "EventAction::BeginOfEventAction..... NEXT" << G4endl;	
+  if (verbosityLevel > 0)
+    G4cout << "EventAction::BeginOfEventAction..... NEXT" << G4endl;	
 
   // Reset variables
   ResetVariables();
@@ -73,10 +74,12 @@ void EventAction::BeginOfEventAction(const G4Event* event)
 
   //auto def =  event->GetPrimaryVertex()->GetPrimary()->GetParticleDefinition();
   //G4cout << " def = " << def->GetParticleName() << G4endl;
-  G4cout << "EventAction::BeginOfEventAction Primary vertex: x = "<< primaryVertex->GetPosition() / cm << " (cm)"<<G4endl;
-  G4cout << "                                                p = "<< primaryVertex->GetPrimary()->GetMomentumDirection() << G4endl;
-  G4cout << "                                                E = "<< primaryVertex->GetPrimary()->GetKineticEnergy() / keV << " keV"<< G4endl;
-  
+  if (verbosityLevel > 0){
+    G4cout << "EventAction::BeginOfEventAction Primary vertex: x = "<< primaryVertex->GetPosition() / cm << " (cm)"<<G4endl;
+    G4cout << "                                                p = "<< primaryVertex->GetPrimary()->GetMomentumDirection() << G4endl;
+    G4cout << "                                                E = "<< primaryVertex->GetPrimary()->GetKineticEnergy() / keV << " keV"<< G4endl;
+  }
+
   if(IsFastSimulation()) {
     fGammaRayHelper->InitializeCDFs(primaryVertex->GetPrimary()->GetKineticEnergy());  // only when here for first time we do the initialization
 
@@ -100,10 +103,14 @@ void EventAction::ResetVariables() {
   fNumberOfScatters = 0;
   // the avalaible energy is the maximum energy that can be deposited in the event
   // it will be reduced after every energy deposit
+
   fAvailableEnergy = fMaxEnergy;
+  //G4cout << "EventAction::ResetVariables: fAvailableEnergy = " << fAvailableEnergy << G4endl;
+  //G4cout << "EventAction::ResetVariables: fMaxEnergy = " << fMaxEnergy << G4endl;
 
   fEdep = 0.0;
   fLogWeight = 0.0;
+  fNclusters = 0;
   fXp = 0.0;
   fYp = 0.0;
   fZp = 0.0;
@@ -117,25 +124,29 @@ void EventAction::ResetVariables() {
 
 void EventAction::EndOfEventAction(const G4Event* event)
 {
-  G4cout << "EventAction::EndOfEventAction..... Analyze hits and cluster...." << G4endl;
+  if(verbosityLevel>0) G4cout << "EventAction::EndOfEventAction..... Analyze hits and cluster...." << G4endl;
   AnalyzeHits(event);
 
   // if no scatters were made we are dealing with an event that did nothing inside the fiducial volume
   // such an event should have a weight=1.0
   if(fNumberOfScatters == 0) fLogWeight = 0.0;
+  const G4Event* currentEvent = G4EventManager::GetEventManager()->GetConstCurrentEvent();
+  fEventID = currentEvent->GetEventID();
   
-  G4cout << "EventAction::EndOfEventAction..... Fill ntuple...." << G4endl;
+  if(verbosityLevel<0) G4cout << "EventAction::EndOfEventAction..... Fill ntuple...." << G4endl;
   // Get analysis manager
   auto analysisManager = G4AnalysisManager::Instance();
   //std::lock_guard<std::mutex> lock(mtx);
-  analysisManager->FillNtupleDColumn(0, 0, fEdep);
-  analysisManager->FillNtupleDColumn(0, 1, fLogWeight);
-  analysisManager->FillNtupleDColumn(0, 2, fXp);
-  analysisManager->FillNtupleDColumn(0, 3, fYp);
-  analysisManager->FillNtupleDColumn(0, 4, fZp);
+  analysisManager->FillNtupleDColumn(0, 0, fEventID);
+  analysisManager->FillNtupleDColumn(0, 1, fNclusters);
+  analysisManager->FillNtupleDColumn(0, 2, fEdep);
+  analysisManager->FillNtupleDColumn(0, 3, fLogWeight);
+  analysisManager->FillNtupleDColumn(0, 4, fXp);
+  analysisManager->FillNtupleDColumn(0, 5, fYp);
+  analysisManager->FillNtupleDColumn(0, 6, fZp);
   analysisManager->AddNtupleRow(0);
 
-  G4cout << "EventAction::EndOfEventAction: Done...." << G4endl;	
+  if(verbosityLevel>0) G4cout << "EventAction::EndOfEventAction: Done...." << G4endl;	
 
 }
 
@@ -164,18 +175,17 @@ void EventAction::AnalyzeHits(const G4Event* event) {
       if (!fHitsCollection) continue;
 
       G4int n_hit = fHitsCollection->entries();
-      G4cout << "Hits Collection: " << fHitsCollectionNames[i] << " has " << n_hit << " hits." << G4endl;
+      if(verbosityLevel>0) G4cout << "Hits Collection: " << fHitsCollectionNames[i] << " has " << n_hit << " hits." << G4endl;
       for (G4int j = 0; j < n_hit; ++j) {
           Hit* hit = (*fHitsCollection)[j];
-          G4cout << "Hit " << j << ": Energy =" <<hit->energyDeposit << G4endl;
-          hit->Print();
+          if(verbosityLevel>0) hit->Print();
           allHits.push_back(hit);
       }
   }
 
   // cluster hits based on spatial and time thresholds
   std::vector<Cluster> fClusters;
-  G4double spatialThreshold = 50.0 * mm;
+  G4double spatialThreshold = 10.0 * mm;
   G4double timeThreshold = 10.0 * ns;
   ClusterHits(allHits, spatialThreshold, timeThreshold, fClusters); 
 }
@@ -228,8 +238,10 @@ void EventAction::ClusterHits(std::vector<Hit*>& hits, G4double spatialThreshold
         }
     }
 
-    G4cout << "Number of clusters: " << clusters.size() << G4endl;
+    if(verbosityLevel>0) G4cout << "Number of clusters: " << clusters.size() << G4endl;
     // Calculate cluster positions and store into ntuple variables
+    fNclusters = clusters.size();
+
     for (auto& cluster : clusters) {
         //cluster.position /= cluster.hits.size();
         fEdep += cluster.energyDeposit;

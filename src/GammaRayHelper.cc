@@ -235,7 +235,6 @@ std::pair<G4double,G4double> GammaRayHelper::GenerateComptonAngle(const G4Step* 
         cdfMin = cdfData.cdf[idx];
     }
     G4double weight = 1 - cdfMin;
-    G4cout<<"CDF min = "<<cdfMin<<" cosThetaMin = "<<cosThetaMin<<G4endl;
 
     // Generate a random number between cdfMin and 1
     G4double rand = G4UniformRand() * (1 - cdfMin) + cdfMin;
