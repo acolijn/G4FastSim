@@ -33,6 +33,11 @@
 #include "G4Event.hh"
 #include "G4RunManager.hh"
 #include "G4AnalysisManager.hh"
+#include "G4EventManager.hh"
+#include "G4TransportationManager.hh"
+#include "G4VPhysicalVolume.hh"
+#include "G4LogicalVolume.hh"
+#include "G4Navigator.hh"
 #include "G4SDManager.hh"
 #include "Hit.hh"
 #include "GammaRayHelper.hh"
@@ -82,21 +87,49 @@ void EventAction::BeginOfEventAction(const G4Event* event)
 
   if(IsFastSimulation()) {
     fGammaRayHelper->InitializeCDFs(primaryVertex->GetPrimary()->GetKineticEnergy());  // only when here for first time we do the initialization
-
-    if(!fInitializedGraphs) {
-      // Get the RunAction instance
-      const RunAction* runAction = static_cast<const RunAction*>(G4RunManager::GetRunManager()->GetUserRunAction());
-      G4double e0 = primaryVertex->GetPrimary()->GetKineticEnergy();
-      runAction->DefineDifferentialCrossSectionNtuple(e0);
-      fInitializedGraphs = true;
-    }
-  }
+  
     // Kill the event if the particle does not point to the fiducial volume
-    //if (TBD) {
-    //  G4cout<<"EventAction::BeginOfEventAction: Killing event with fZp = "<<fZp<<G4endl;
+    //if (!IsWithinFiducialVolume(primaryVertex->GetPosition(), primaryVertex->GetPrimary()->GetMomentumDirection())){
+    //  G4cout<<"EventAction::BeginOfEventAction: Killing event..."<<G4endl;
     //  G4RunManager::GetRunManager()->AbortEvent();
     //}
+  }
+  if(!fInitializedGraphs) {
+    // Get the RunAction instance
+    const RunAction* runAction = static_cast<const RunAction*>(G4RunManager::GetRunManager()->GetUserRunAction());
+    G4double e0 = primaryVertex->GetPrimary()->GetKineticEnergy();
+    runAction->DefineDifferentialCrossSectionNtuple(e0);
+    fInitializedGraphs = true;
+  }
 }
+
+
+
+bool EventAction::IsWithinFiducialVolume(const G4ThreeVector& position, const G4ThreeVector& direction) {
+    G4Navigator* navigator = G4TransportationManager::GetTransportationManager()->GetNavigatorForTracking();
+
+    // Define a point far along the direction to ensure it goes through the volume if it intersects
+    G4ThreeVector farPoint = position + 1000 * cm * direction;
+
+    G4ThreeVector intersectionPoint;
+    G4double stepLength;
+
+    // Check for intersection with the fiducial volume
+    if (navigator->LocateGlobalPointAndSetup(position, 0, false)->GetLogicalVolume() == fFiducialVolume) {
+        return true;
+    }
+
+    // Check if the far point intersects the fiducial volume
+    if (navigator->ComputeStep(position, direction, 1000 * cm, stepLength) > 0) {
+        intersectionPoint = position + stepLength * direction;
+        if (navigator->LocateGlobalPointAndSetup(intersectionPoint, 0, false)->GetLogicalVolume() == fFiducialVolume) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 void EventAction::ResetVariables() {
@@ -118,6 +151,7 @@ void EventAction::ResetVariables() {
   fX.clear();
   fY.clear();
   fZ.clear();
+  fW.clear();
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
@@ -185,8 +219,8 @@ void EventAction::AnalyzeHits(const G4Event* event) {
 
   // cluster hits based on spatial and time thresholds
   std::vector<Cluster> fClusters;
-  G4double spatialThreshold = 10.0 * mm;
-  G4double timeThreshold = 10.0 * ns;
+  G4double spatialThreshold = 50.0 * mm;
+  G4double timeThreshold = 100.0 * ns;
   ClusterHits(allHits, spatialThreshold, timeThreshold, fClusters); 
 }
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
@@ -249,6 +283,7 @@ void EventAction::ClusterHits(std::vector<Hit*>& hits, G4double spatialThreshold
         fX.push_back(cluster.position.x());
         fY.push_back(cluster.position.y());
         fZ.push_back(cluster.position.z());
+        fW.push_back(fLogWeight);
     }
 }
 

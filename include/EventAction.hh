@@ -66,6 +66,8 @@ class EventAction : public G4UserEventAction
     std::vector<G4double>& GetY(){return fY;};
     std::vector<G4double>& GetZ(){return fZ;};
     std::vector<G4double>& GetE(){return fEd;};
+    std::vector<G4double>& GetW(){return fW;};
+
 
     void AddEdep(G4double edep) { fEdep += edep; }
     void AddWeight(G4double weight) { fLogWeight += weight; }
@@ -77,6 +79,7 @@ class EventAction : public G4UserEventAction
     G4double GetMaxEnergy() { return fMaxEnergy; }
     G4int GetNumberOfScattersMax() { return fNumberOfScattersMax; }
     G4double GetAvailableEnergy() { return fAvailableEnergy; }
+    G4double GetWeight() { return fLogWeight; }
 
     void SetNumberOfScattersMax(G4int n) { fNumberOfScattersMax = n; }
     void SetFastSimulation(G4bool fast) { fFastSimulation = fast; }
@@ -90,6 +93,8 @@ class EventAction : public G4UserEventAction
     // functions for hit clustering
     //
     void ClusterHits(std::vector<G4FastSim::Hit*>& hits, G4double spatialThreshold, G4double timeThreshold, std::vector<Cluster>& clusters);
+    bool IsWithinFiducialVolume(const G4ThreeVector& position, const G4ThreeVector& direction);
+
     G4double CalculateDistance(const G4ThreeVector& pos1, const G4ThreeVector& pos2);
     G4double CalculateTimeDifference(G4double time1, G4double time2);
 
@@ -107,6 +112,7 @@ class EventAction : public G4UserEventAction
     std::vector<G4double> fX;
     std::vector<G4double> fY;
     std::vector<G4double> fZ;
+    std::vector<G4double> fW;
 
     G4bool fFastSimulation = false;
     G4bool fInitializedGraphs = false;
@@ -123,6 +129,8 @@ class EventAction : public G4UserEventAction
     std::vector<G4String> fHitsCollectionNames;
 
     GammaRayHelper* fGammaRayHelper;
+
+    G4LogicalVolume* fFiducialVolume;
 
     G4int verbosityLevel=0;
 };

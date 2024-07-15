@@ -71,10 +71,11 @@ class SteppingAction : public G4UserSteppingAction
     G4ParticleTable* particleTable;
     GammaRayHelper* fGammaRayHelper;
 
-    G4int verbosityLevel=0;
     std::map<G4String, HitsCollection*> fHitsCollections;
     std::map<G4String, G4int> fHitsCollectionIDs;
     G4bool fHitsCollectionInitialized;
+
+    G4int verbosityLevel=0;
 
 };
 

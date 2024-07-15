@@ -120,7 +120,7 @@ void RunAction::InitializeNtuples(){
     analysisManager->SetNtupleMerging(true);
 
     // Creating histograms
-    analysisManager->CreateH1("cost", "cos theta of Compton", 500, -1.1, +1.1); // id = 0
+    analysisManager->CreateH1("cost", "cos theta of Compton", 2200, -1.1, +1.1); // id = 0
 
     // Creating event data ntuple
     DefineEventNtuple();
@@ -174,7 +174,7 @@ void RunAction::DefineDifferentialCrossSectionNtuple(G4double e0) const {
       const G4Element* elm = (*elementVector)[i];
       if (std::find(elements_used.begin(), elements_used.end(), elm->GetName()) == elements_used.end()) {
 
-        for (G4double cost = -1.0; cost < 1.0; cost += 0.001) {
+        for (G4double cost = -1.0; cost <= 1.0; cost += 0.001) {
           // get scatter function
           G4double ff = fGammaRayHelper->GetComptonModel()->FormFactor(elm, gamma, cost);
           // get differential cross-section (Klein-Nishina)
@@ -219,6 +219,8 @@ void RunAction::DefineEventNtuple(){
   analysisManager->CreateNtupleDColumn(eventNtupleId, "xh", fEventAction->GetX()); // column Id = 6
   analysisManager->CreateNtupleDColumn(eventNtupleId, "yh", fEventAction->GetY()); // column Id = 7
   analysisManager->CreateNtupleDColumn(eventNtupleId, "zh", fEventAction->GetZ()); // column Id = 8
+  analysisManager->CreateNtupleDColumn(eventNtupleId, "wh", fEventAction->GetW()); // column Id = 9
+
   analysisManager->FinishNtuple(eventNtupleId);
   G4cout <<"RunAction::BeginOfRunAction: Event data ntuple created. ID = "<< eventNtupleId << G4endl;
 }

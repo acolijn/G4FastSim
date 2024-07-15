@@ -16,8 +16,8 @@
 /detector/setInnerCryostatHeight 240 cm
 /detector/setInnerCryostatWallThickness 6 mm
 
-/detector/setFiducialRadius 100 cm
-/detector/setFiducialHeight 200 cm
+/detector/setFiducialRadius 119.4 cm
+/detector/setFiducialHeight 238.8 cm
 
 /run/initialize
 
@@ -35,15 +35,15 @@
 /gps/ang/type iso
 
 # output filename
-/run/setOutputFileName /data/xenon/acolijn/G4FastSim/fast/fastsim_max100keV.root
+/run/setOutputFileName /data/xenon/acolijn/G4FastSim/fast/fast_large_fiducial.root
 # fast simulation?
 /run/setFastSimulation true
 # maximum number of scatters inside fiducial
 /run/setNumberOfScatters 1
 # maximum energy deposit
-/run/setMaxEnergy 100 keV
+/run/setMaxEnergy 1100 keV
 
 # run the thing...............
 /run/printProgress 10000
-/run/beamOn 10000000
+/run/beamOn 100000
 

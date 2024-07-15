@@ -81,7 +81,7 @@ void GammaRayHelper::InitializeCDFs(G4double energy) {
  * @return The CDF data.
  */
 CDFData GammaRayHelper::CreateCDF(const G4Element* element, G4double energy) {
-    G4int nPoints = 1000;
+    G4int nPoints = 10000;
     G4double cosThetaMin = -1.0;
     G4double cosThetaMax =  1.0;
     G4double dCosTheta = (cosThetaMax - cosThetaMin) / nPoints;
@@ -215,6 +215,7 @@ std::pair<G4double,G4double> GammaRayHelper::GenerateComptonAngle(const G4Step* 
     const G4MaterialCutsCouple* couple = step->GetPreStepPoint()->GetMaterialCutsCouple();
     G4double energy0 = step->GetPreStepPoint()->GetKineticEnergy();
     const G4ParticleDefinition* particle = G4Gamma::Gamma();
+
     const G4Element* element = comptonModel->SelectRandomAtom(couple, particle, energy0);
 
     // Check if a new CDF needs to be generated

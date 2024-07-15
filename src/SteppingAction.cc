@@ -122,6 +122,7 @@ void SteppingAction::UserSteppingAction(const G4Step* step)
     //                  ii) calculate the maximum scattering angle possible and generate a Compton scatter. Calculate the event weight based on the non-sampled scattering angles
     G4double weight = DoScatter(step, interactionPoint);
     fEventAction->AddWeight(std::log(weight));
+
     // update the number of scatters
     fEventAction->SetNumberOfScatters(number_of_scatters + 1);
 
@@ -219,7 +220,7 @@ G4double SteppingAction::DoScatter(const G4Step* step, G4ThreeVector x0){
   }
 
   // update the available energy
-  fEventAction->ReduceAvailableEnergy(energy);  
+  fEventAction->ReduceAvailableEnergy(energyDeposit);  
   // kill the track!
   G4Track* track = step->GetTrack();
   track->SetTrackStatus(fStopAndKill);
