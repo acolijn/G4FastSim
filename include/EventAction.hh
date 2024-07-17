@@ -103,6 +103,8 @@ class EventAction : public G4UserEventAction
     G4double fLogWeight;
     G4double fEdep;
     G4int fNclusters;
+    G4int fNphot;
+    G4int fNcomp;
     G4int fEventID;
     G4double fXp;
     G4double fYp;

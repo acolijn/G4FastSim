@@ -144,6 +144,8 @@ void EventAction::ResetVariables() {
   fEdep = 0.0;
   fLogWeight = 0.0;
   fNclusters = 0;
+  fNphot = 0;
+  fNcomp = 0;
   fXp = 0.0;
   fYp = 0.0;
   fZp = 0.0;
@@ -171,13 +173,17 @@ void EventAction::EndOfEventAction(const G4Event* event)
   // Get analysis manager
   auto analysisManager = G4AnalysisManager::Instance();
   //std::lock_guard<std::mutex> lock(mtx);
+  
+  // get the energy depositis in keV
   analysisManager->FillNtupleDColumn(0, 0, fEventID);
   analysisManager->FillNtupleDColumn(0, 1, fNclusters);
-  analysisManager->FillNtupleDColumn(0, 2, fEdep);
-  analysisManager->FillNtupleDColumn(0, 3, fLogWeight);
-  analysisManager->FillNtupleDColumn(0, 4, fXp);
-  analysisManager->FillNtupleDColumn(0, 5, fYp);
-  analysisManager->FillNtupleDColumn(0, 6, fZp);
+  analysisManager->FillNtupleDColumn(0, 2, fNphot);
+  analysisManager->FillNtupleDColumn(0, 3, fNcomp);
+  analysisManager->FillNtupleDColumn(0, 4, fEdep);
+  analysisManager->FillNtupleDColumn(0, 5, fLogWeight);
+  analysisManager->FillNtupleDColumn(0, 6, fXp);
+  analysisManager->FillNtupleDColumn(0, 7, fYp);
+  analysisManager->FillNtupleDColumn(0, 8, fZp);
   analysisManager->AddNtupleRow(0);
 
   if(verbosityLevel>0) G4cout << "EventAction::EndOfEventAction: Done...." << G4endl;	
@@ -219,8 +225,8 @@ void EventAction::AnalyzeHits(const G4Event* event) {
 
   // cluster hits based on spatial and time thresholds
   std::vector<Cluster> fClusters;
-  G4double spatialThreshold = 50.0 * mm;
-  G4double timeThreshold = 100.0 * ns;
+  G4double spatialThreshold = 5 * cm;
+  G4double timeThreshold = 0.25 * ns;
   ClusterHits(allHits, spatialThreshold, timeThreshold, fClusters); 
 }
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
@@ -252,19 +258,32 @@ G4double EventAction::CalculateTimeDifference(G4double time1, G4double time2) {
  */
 void EventAction::ClusterHits(std::vector<Hit*>& hits, G4double spatialThreshold, G4double timeThreshold, std::vector<Cluster>& clusters) {
 
+    //G4cout<<G4endl;
+    //G4cout<<"ClusterHits: hits.size() = "<<hits.size()<<G4endl;
     for (auto& hit : hits) {
+        // count the number of compton and pe scatters from the primary gamma ray
+        G4String process = hit->processType;
+        G4int trackID = hit->trackID;
+        if((trackID == 1) && (process == "compt")) fNcomp++;
+        if((trackID == 1) && (process == "phot")) fNphot++;
+        
+        //if(process == "compt" || process == "phot") hit->Print();
+
         bool addedToCluster = false;
         for (auto& cluster : clusters) {
             if (CalculateDistance(hit->position, cluster.position) < spatialThreshold &&
                 CalculateTimeDifference(hit->time, cluster.time) < timeThreshold) {
-                  
-                G4int clusterSize = cluster.hits.size();
-                cluster.position = (cluster.position * clusterSize + hit->position) / (clusterSize + 1);
-                cluster.energyDeposit += hit->energyDeposit; // Sum energy deposits
-                cluster.time = (cluster.time * clusterSize + hit->time) / (clusterSize + 1); // Update average time
-                cluster.hits.push_back(hit);
-                addedToCluster = true;
-                break;
+                
+                G4double energyDeposit = hit->energyDeposit;
+                if(energyDeposit > 0*eV) {
+                  G4int clusterSize = cluster.hits.size();
+                  cluster.position = (cluster.position * clusterSize + hit->position) / (clusterSize + 1);
+                  cluster.energyDeposit += energyDeposit; // Sum energy deposits
+                  cluster.time = (cluster.time * clusterSize + hit->time) / (clusterSize + 1); // Update average time
+                  cluster.hits.push_back(hit);
+                  addedToCluster = true;
+                  break;
+                }
             }
         }
         if (!addedToCluster) {
@@ -272,18 +291,27 @@ void EventAction::ClusterHits(std::vector<Hit*>& hits, G4double spatialThreshold
         }
     }
 
-    if(verbosityLevel>0) G4cout << "Number of clusters: " << clusters.size() << G4endl;
+    //G4cout << "Number of clusters: " << clusters.size() << G4endl;
     // Calculate cluster positions and store into ntuple variables
-    fNclusters = clusters.size();
+    fNclusters = 0;
 
     for (auto& cluster : clusters) {
-        //cluster.position /= cluster.hits.size();
-        fEdep += cluster.energyDeposit;
-        fEd.push_back(cluster.energyDeposit);
+      if(verbosityLevel>1) {
+        G4cout <<"Cluster: " << G4endl;
+        G4cout <<"                 position: " << cluster.position << G4endl;
+        G4cout <<"                 energyDeposit: " << cluster.energyDeposit << G4endl;
+        G4cout <<"                 weight: " << fLogWeight << G4endl;
+      }
+      //cluster.position /= cluster.hits.size();
+      if (cluster.energyDeposit > 0*eV) {
+        fNclusters++;
+        fEdep += cluster.energyDeposit / keV;
+        fEd.push_back(cluster.energyDeposit / keV);
         fX.push_back(cluster.position.x());
         fY.push_back(cluster.position.y());
         fZ.push_back(cluster.position.z());
         fW.push_back(fLogWeight);
+      }
     }
 }
 

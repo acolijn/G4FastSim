@@ -37,7 +37,7 @@ void GammaRayHelper::Initialize() {
     photoelectricModel = new G4LivermorePhotoElectricModel();
 
     G4DataVector cuts;
-    cuts.push_back(1 * keV); // Example cut value, adjust as needed?? what it means? find out.....
+    cuts.push_back(0 * keV); // Example cut value, adjust as needed?? what it means? find out.....
     comptonModel->Initialise(G4Gamma::Gamma(), cuts);
     photoelectricModel->Initialise(G4Gamma::Gamma(), cuts);
 } 
@@ -165,10 +165,28 @@ G4double GammaRayHelper::GetTotalCrossSection(G4double energy, G4Material* mater
  * @return The attenuation length.
  */
 G4double GammaRayHelper::GetAttenuationLength(G4double energy, G4Material* material) {
-    //G4AutoLock lock(&mutex); // Ensure thread-safe access
-    
-    G4double crossSection = GetComptonCrossSection(energy, material) + GetPhotoelectricCrossSection(energy, material);
-    return 1.0 / (crossSection * material->GetDensity());
+
+    const G4ElementVector* elementVector = material->GetElementVector();
+    const G4double* fractionVector = material->GetFractionVector();
+    G4double mass_attenuation = 0.0;
+    for (size_t i = 0; i < material->GetNumberOfElements(); ++i) {
+        const G4Element* element = (*elementVector)[i];
+        G4double xsec = photoelectricModel->ComputeCrossSectionPerAtom(G4Gamma::Gamma(), energy, element->GetZ()) + 
+                        comptonModel->ComputeCrossSectionPerAtom(G4Gamma::Gamma(), energy, element->GetZ());
+        G4double A = element->GetA();
+        //G4cout << i<<" Element: " << element->GetName() << " xsec: " << xsec << " A: " << A << " r ="<< comptonModel->ComputeCrossSectionPerAtom(G4Gamma::Gamma(), energy, element->GetZ())/xsec<<G4endl;
+        mass_attenuation += fractionVector[i] * xsec * Avogadro / A ;
+        
+    }
+    G4double rho = material->GetDensity();
+    G4double attenuationLength = 1/(rho*mass_attenuation);
+
+    //G4cout << "Material: " << material->GetName() << G4endl;
+    //G4cout << "Energy: " << energy/keV << " keV"<<G4endl;
+    //G4cout << "Density: " << material->GetDensity() / (g / cm3)<< " g/cm3"<< G4endl;
+    //G4cout << "Attenuation length: " << attenuationLength / cm<< " cm"<<G4endl;
+
+    return attenuationLength;
 }
 
 /**

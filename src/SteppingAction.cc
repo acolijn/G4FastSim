@@ -79,8 +79,17 @@ SteppingAction::~SteppingAction()
 void SteppingAction::UserSteppingAction(const G4Step* step)
 {
   if (!fEventAction->IsFastSimulation()) {
+    // kill a gamma ray if there is a compton scatter of the primary particle outside the xenon.......
+    G4int trackID = step->GetTrack()->GetTrackID();
+    G4String processType = step->GetPostStepPoint()->GetProcessDefinedStep()->GetProcessName();
+    G4String volume_name = step->GetPreStepPoint()->GetTouchableHandle()->GetVolume()->GetLogicalVolume()->GetName();
+
+    if ((trackID == 1) && (processType == "compt") && ((volume_name != "LXeFiducial") && (volume_name != "LXe"))) {
+      step->GetTrack()->SetTrackStatus(fStopAndKill);
+    }
+
     return;
-  }
+  } 
 
   if (verbosityLevel >= 2){
     G4cout <<"Entering SteppingAction::UserSteppingAction"<<G4endl;
@@ -114,6 +123,7 @@ void SteppingAction::UserSteppingAction(const G4Step* step)
     G4ThreeVector interactionPoint = result.first;
     // calculate the weight of the event and add it to teh event sum of logs
     fEventAction->AddWeight(std::log(result.second));
+    //G4cout << "   weight interaction point = " << result.second << G4endl;	
 
     // * scattering:
     //     - if the maximum allowed energy is above the photo-peak, generate a PE or Compton scatter, based on the relative cross sections
@@ -122,6 +132,7 @@ void SteppingAction::UserSteppingAction(const G4Step* step)
     //                  ii) calculate the maximum scattering angle possible and generate a Compton scatter. Calculate the event weight based on the non-sampled scattering angles
     G4double weight = DoScatter(step, interactionPoint);
     fEventAction->AddWeight(std::log(weight));
+    //G4cout <<   "   weight scatter = " << weight << G4endl; 
 
     // update the number of scatters
     fEventAction->SetNumberOfScatters(number_of_scatters + 1);
@@ -137,6 +148,7 @@ void SteppingAction::UserSteppingAction(const G4Step* step)
     if (particleName == "geantino") {
       G4double weight = std::exp(-step->GetStepLength() / attenuation_length);
       fEventAction->AddWeight(std::log(weight));
+      //G4cout << fEventAction->GetNumberOfScatters()<<"    weight transport = "<<weight<<G4endl;
 
       // if the next volume is the InnerCryostat and the geantino has undergone one or multiple scatters, 
       // we want to kill the track
@@ -176,19 +188,21 @@ G4double SteppingAction::DoScatter(const G4Step* step, G4ThreeVector x0){
   G4double photoelectricCrossSection = fGammaRayHelper->GetPhotoelectricCrossSection(energy, material);
   G4double comptonCrossSection       = fGammaRayHelper->GetComptonCrossSection(energy, material);
   G4double ratio = comptonCrossSection / (photoelectricCrossSection + comptonCrossSection);
-
-  G4double maxEnergy = fEventAction->GetAvailableEnergy();
-
-  G4double rand = G4UniformRand();
-
+  //G4cout << "DoScatter:: Energy: " << energy/MeV << G4endl;
   //G4cout << "DoScatter:: PE cross section: " << photoelectricCrossSection << G4endl;
   //G4cout << "DoScatter:: Compton cross section: " << comptonCrossSection << G4endl;
-  //G4cout << "DoScatter:: Random number: " << rand << G4endl;
-  
+  //G4cout << "DoScatter:: Ratio: " << ratio << G4endl;
+
+  G4double maxEnergy = fEventAction->GetAvailableEnergy();
+  G4double rand = G4UniformRand();
+
+  G4String process = "";
   if ( (rand > ratio) && (energy < maxEnergy) ){
+    process = "phot";
     // generate a PE scatter: we make an energy deposit with the full energyand kill the track
     energyDeposit = energy;
   } else {
+    process = "compt";
     // take into account that we ignored the PE effect and assign a weight
     // generate a Compton scatter and update the energy deposit
     InteractionData compton = fGammaRayHelper->DoComptonScatter(step, x0, maxEnergy);
@@ -198,7 +212,12 @@ G4double SteppingAction::DoScatter(const G4Step* step, G4ThreeVector x0){
       weight *= ratio; // take into account ignored PE effect
       weight *= compton.weight; // take into account the Compton scatter weight, only if the maximum allowed energy deposit is somewhere in the Compton region
     } 
-
+    
+    //G4cout <<G4endl;  
+    //G4cout << "Compton scatter: energy = " << compton.energy << " MeV, cosTheta = " << compton.cosTheta << G4endl;
+    //G4cout << "Compton scatter: direction = " << compton.dir << G4endl;
+    //G4cout << "Compton scatter: weight = " << compton.weight << G4endl;
+    
     //
     // make a secondary track
     //
@@ -233,6 +252,7 @@ G4double SteppingAction::DoScatter(const G4Step* step, G4ThreeVector x0){
   newHit->trackID = step->GetTrack()->GetTrackID();
   newHit->parentID = step->GetTrack()->GetParentID();
   newHit->particleType = "manual";
+  newHit->processType = process;
 
   AddHitToCollection(newHit, "LXeFiducialCollection");
 

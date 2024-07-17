@@ -76,7 +76,6 @@ class SteppingAction : public G4UserSteppingAction
     G4bool fHitsCollectionInitialized;
 
     G4int verbosityLevel=0;
-
 };
 
 }

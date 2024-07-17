@@ -34,7 +34,7 @@
 /gps/ang/type iso
 
 # output filename
-/run/setOutputFileName /data/xenon/acolijn/G4FastSim/standard/standard_100k.root
+/run/setOutputFileName /data/xenon/acolijn/G4FastSim/standard/standard_test.root
 # fast simulation?
 /run/setFastSimulation false
 

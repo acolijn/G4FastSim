@@ -9,21 +9,37 @@
 
 namespace G4FastSim {
 
+/**
+ * @brief The Hit class represents a hit in the detector.
+ * 
+ * It inherits from the G4VHit class and contains properties such as energy deposit, position, time, track ID, parent ID,
+ * momentum, particle type, and process type.
+ */
 class Hit : public G4VHit {
 public:
+    /**
+     * @brief Default constructor for the Hit class.
+     */
     Hit();
+
+    /**
+     * @brief Destructor for the Hit class.
+     */
     virtual ~Hit();
 
     // Hit properties
-    G4double energyDeposit;
-    G4ThreeVector position;
-    G4double time;
-    G4int trackID;
-    G4int parentID;
-    G4ThreeVector momentum;
-    G4String particleType;
+    G4double energyDeposit; /**< Energy deposit of the hit. */
+    G4ThreeVector position; /**< Position of the hit. */
+    G4double time; /**< Time of the hit. */
+    G4int trackID; /**< Track ID of the hit. */
+    G4int parentID; /**< Parent ID of the hit. */
+    G4ThreeVector momentum; /**< Momentum of the hit. */
+    G4String particleType; /**< Particle type of the hit. */
+    G4String processType; /**< Process type of the hit. */
     
-    // Print function to print hit details
+    /**
+     * @brief Print function to print the details of the hit.
+     */
     void Print() const;
 
     // Operators

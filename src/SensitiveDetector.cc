@@ -3,6 +3,10 @@
 #include "G4Step.hh"
 #include "G4SDManager.hh"
 #include "G4ios.hh"
+#include "G4SystemOfUnits.hh"
+#include "G4PhysicalConstants.hh"
+#include "G4ThreeVector.hh"
+#include "G4VProcess.hh"
 #include "Hit.hh"
 
 namespace G4FastSim {
@@ -41,6 +45,15 @@ G4bool SensitiveDetector::ProcessHits(G4Step* step, G4TouchableHistory*) {
     newHit->parentID = step->GetTrack()->GetParentID();
     newHit->momentum = step->GetPreStepPoint()->GetMomentum();
     newHit->particleType = step->GetTrack()->GetDefinition()->GetParticleName();
+    newHit->processType = step->GetPostStepPoint()->GetProcessDefinedStep()->GetProcessName();
+    
+
+    //if (newHit->trackID == 1){
+    //    newHit->Print();
+    //    // get the track energy before the step
+    //    G4cout << newHit->processType<<" SensitiveDetector::ProcessHits: track energy before: " << step->GetPreStepPoint()->GetKineticEnergy() / keV << " keV"<<G4endl;
+    //    G4cout << newHit->processType<<" SensitiveDetector::ProcessHits: track energy after: " << step->GetTrack()->GetKineticEnergy() / keV << " keV" <<G4endl;
+    //}
 
     fHitsCollection->insert(newHit);
     fTotalEnergyDeposit += edep;  // Accumulate total energy deposit
