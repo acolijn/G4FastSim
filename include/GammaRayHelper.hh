@@ -4,6 +4,7 @@
 #include "G4LivermoreComptonModel.hh"
 #include "ExtendedLivermoreComptonModel.hh"
 #include "G4LivermorePhotoElectricModel.hh"
+#include "G4LivermoreRayleighModel.hh"
 #include "G4Material.hh"
 #include "G4ThreeVector.hh"
 #include "G4PhysicalConstants.hh"
@@ -75,6 +76,7 @@ private:
 
     ExtendedLivermoreComptonModel* comptonModel;
     G4LivermorePhotoElectricModel* photoelectricModel;
+    G4LivermoreRayleighModel* rayleighModel;
 
     std::vector<std::string> fElementsUsed;
 

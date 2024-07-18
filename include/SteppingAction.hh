@@ -64,7 +64,7 @@ class SteppingAction : public G4UserSteppingAction
   private:
     void AddHitToCollection(Hit *newhit, G4String collectionName);
     G4double DoScatter(const G4Step* step, G4ThreeVector x0);
-
+    void AnalyzeStandardStep(const G4Step* step);
 
     EventAction* fEventAction;
     G4LogicalVolume* fScoringVolume;

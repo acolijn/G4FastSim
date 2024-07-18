@@ -7,6 +7,7 @@
 #include "G4DynamicParticle.hh"
 #include "G4MaterialCutsCouple.hh"
 #include "G4LivermoreComptonModel.hh"
+#include "G4LivermoreRayleighModel.hh"
 #include <thread>
 #include <vector>
 
@@ -23,7 +24,7 @@ GammaRayHelper& GammaRayHelper::Instance() {
 }
 
 //GammaRayHelper::GammaRayHelper() {}
-GammaRayHelper::GammaRayHelper() : comptonModel(nullptr), photoelectricModel(nullptr), cdfsInitialized(false) {}
+GammaRayHelper::GammaRayHelper() : comptonModel(nullptr), photoelectricModel(nullptr), rayleighModel(nullptr), cdfsInitialized(false) {}
 
 
 /**
@@ -35,11 +36,14 @@ void GammaRayHelper::Initialize() {
 
     comptonModel = new ExtendedLivermoreComptonModel();
     photoelectricModel = new G4LivermorePhotoElectricModel();
+    rayleighModel = new G4LivermoreRayleighModel();
 
     G4DataVector cuts;
     cuts.push_back(0 * keV); // Example cut value, adjust as needed?? what it means? find out.....
+
     comptonModel->Initialise(G4Gamma::Gamma(), cuts);
     photoelectricModel->Initialise(G4Gamma::Gamma(), cuts);
+    rayleighModel->Initialise(G4Gamma::Gamma(), cuts);
 } 
 
 /**
@@ -171,9 +175,16 @@ G4double GammaRayHelper::GetAttenuationLength(G4double energy, G4Material* mater
     G4double mass_attenuation = 0.0;
     for (size_t i = 0; i < material->GetNumberOfElements(); ++i) {
         const G4Element* element = (*elementVector)[i];
+        //G4double xsec = photoelectricModel->ComputeCrossSectionPerAtom(G4Gamma::Gamma(), energy, element->GetZ()) + 
+        //                comptonModel->ComputeCrossSectionPerAtom(G4Gamma::Gamma(), energy, element->GetZ()) +
+        //                rayleighModel->ComputeCrossSectionPerAtom(G4Gamma::Gamma(), energy, element->GetZ());
         G4double xsec = photoelectricModel->ComputeCrossSectionPerAtom(G4Gamma::Gamma(), energy, element->GetZ()) + 
                         comptonModel->ComputeCrossSectionPerAtom(G4Gamma::Gamma(), energy, element->GetZ());
         G4double A = element->GetA();
+        //G4cout << i << " Element: " << element->GetName() << " xsec: " << xsec << " A: " << A << G4endl;
+        //G4cout << i << "             phot  = " << comptonModel->ComputeCrossSectionPerAtom(G4Gamma::Gamma(), energy, element->GetZ())  << G4endl;
+        //G4cout << i << "             compt = " << comptonModel->ComputeCrossSectionPerAtom(G4Gamma::Gamma(), energy, element->GetZ())  << G4endl;
+        //G4cout << i << "             rayl  = " << rayleighModel->ComputeCrossSectionPerAtom(G4Gamma::Gamma(), energy, element->GetZ())  << G4endl;
         //G4cout << i<<" Element: " << element->GetName() << " xsec: " << xsec << " A: " << A << " r ="<< comptonModel->ComputeCrossSectionPerAtom(G4Gamma::Gamma(), energy, element->GetZ())/xsec<<G4endl;
         mass_attenuation += fractionVector[i] * xsec * Avogadro / A ;
         

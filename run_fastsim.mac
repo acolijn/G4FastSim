@@ -1,11 +1,7 @@
-# Macro file for example B4
-# 
-# To be run preferably in batch, without graphics:
-# % exampleB4[a,b,c,d] run2.mac
 #
-/control/verbose 2
+/control/verbose 0
 /control/saveHistory
-/run/verbose 2
+/run/verbose 0
 
 # define the detector geometry
 /detector/setOuterCryostatRadius 150 cm
@@ -41,7 +37,7 @@
 # maximum number of scatters inside fiducial
 /run/setNumberOfScatters 1
 # maximum energy deposit
-/run/setMaxEnergy 1100 keV
+/run/setMaxEnergy 1200 keV
 
 # run the thing...............
 /run/printProgress 10000

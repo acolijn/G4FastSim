@@ -75,34 +75,35 @@ SteppingAction::~SteppingAction()
 {}
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
-
+/**
+ * @brief Performs the user-defined stepping action for each step of a particle in the simulation.
+ *
+ * This function is called for each step of a particle in the simulation. It checks if the event is a fast simulation event,
+ * and if not, it calls the `AnalyzeStandardStep` function to analyze the standard step. If the event is a fast simulation event,
+ * it performs various operations based on the particle's properties and the current volume.
+ *
+ * @param step The G4Step object representing the current step of the particle.
+ */
 void SteppingAction::UserSteppingAction(const G4Step* step)
 {
+  // check if the event is a fast simulation event
   if (!fEventAction->IsFastSimulation()) {
-    // kill a gamma ray if there is a compton scatter of the primary particle outside the xenon.......
-    G4int trackID = step->GetTrack()->GetTrackID();
-    G4String processType = step->GetPostStepPoint()->GetProcessDefinedStep()->GetProcessName();
-    G4String volume_name = step->GetPreStepPoint()->GetTouchableHandle()->GetVolume()->GetLogicalVolume()->GetName();
-
-    if ((trackID == 1) && (processType == "compt") && ((volume_name != "LXeFiducial") && (volume_name != "LXe"))) {
-      step->GetTrack()->SetTrackStatus(fStopAndKill);
-    }
-
+    // analyze standard step
+    AnalyzeStandardStep(step);
     return;
   } 
 
   if (verbosityLevel >= 2){
-    G4cout <<"Entering SteppingAction::UserSteppingAction"<<G4endl;
+    G4cout <<"SteppingAction::UserSteppingAction"<<G4endl;
   }
 
-  // get the energy of the particle
-  G4double energy = step->GetPreStepPoint()->GetKineticEnergy();
+
   // get volume of the current step
   G4LogicalVolume* volume_pre = step->GetPreStepPoint()->GetTouchableHandle()->GetVolume()->GetLogicalVolume();
-  G4Material* material        = volume_pre->GetMaterial();
-  // get the attenuation length of the material for the gamma ray at the current energy
-  G4double attenuation_length = fGammaRayHelper->GetAttenuationLength(energy, material);
+
   G4String particleName = step->GetTrack()->GetParticleDefinition()->GetParticleName();
+  // check if the particle is a geantino
+  if (particleName != "geantino") return;
 
   // kill track if it is in the big bad world.....
   if(volume_pre->GetName() == "World") {
@@ -111,10 +112,12 @@ void SteppingAction::UserSteppingAction(const G4Step* step)
   }
 
   if (verbosityLevel >= 2) Print(step);
-  // if (1) we deal with the original gamma ray and (2) we are inside the fiducial volume and (3) we have not reached the maximum number of scatters ==> go scatter dude!
+  // if (1) we are inside the fiducial volume and 
+  //    (2) we have not reached the maximum number of scatters 
+  //    ===========> go scatter dude!
+  //
   G4int number_of_scatters = fEventAction->GetNumberOfScatters();
-  if( (particleName == "geantino") &&
-      (volume_pre->GetName() == "LXeFiducial") && 
+  if( (volume_pre->GetName() == "LXeFiducial") && 
       (number_of_scatters < fEventAction->GetNumberOfScattersMax())) {
     //
     // * Generate an interaction somewhere in the LXeFiducial volume
@@ -123,7 +126,10 @@ void SteppingAction::UserSteppingAction(const G4Step* step)
     G4ThreeVector interactionPoint = result.first;
     // calculate the weight of the event and add it to teh event sum of logs
     fEventAction->AddWeight(std::log(result.second));
-    //G4cout << "   weight interaction point = " << result.second << G4endl;	
+    if (verbosityLevel >= 2){
+      G4cout << "SteppingAction::UserSteppingAction   Interaction point        : " << interactionPoint/cm << G4endl;
+      G4cout << "SteppingAction::UserSteppingAction   Interaction point weight : " << result.second << G4endl;
+    }
 
     // * scattering:
     //     - if the maximum allowed energy is above the photo-peak, generate a PE or Compton scatter, based on the relative cross sections
@@ -132,7 +138,9 @@ void SteppingAction::UserSteppingAction(const G4Step* step)
     //                  ii) calculate the maximum scattering angle possible and generate a Compton scatter. Calculate the event weight based on the non-sampled scattering angles
     G4double weight = DoScatter(step, interactionPoint);
     fEventAction->AddWeight(std::log(weight));
-    //G4cout <<   "   weight scatter = " << weight << G4endl; 
+    if (verbosityLevel >= 2){
+      G4cout << "SteppingAction::UserSteppingAction   Scatter weight           : " << weight << G4endl;
+    }
 
     // update the number of scatters
     fEventAction->SetNumberOfScatters(number_of_scatters + 1);
@@ -146,10 +154,18 @@ void SteppingAction::UserSteppingAction(const G4Step* step)
     
     // check if the particle is a geantino
     if (particleName == "geantino") {
+      // get the attenuation length of the material for the gamma ray at the current energy
+      G4double attenuation_length = fGammaRayHelper->GetAttenuationLength(step->GetPreStepPoint()->GetKineticEnergy(), 
+                                                                          volume_pre->GetMaterial());
       G4double weight = std::exp(-step->GetStepLength() / attenuation_length);
-      fEventAction->AddWeight(std::log(weight));
-      //G4cout << fEventAction->GetNumberOfScatters()<<"    weight transport = "<<weight<<G4endl;
+      
+      if (verbosityLevel>=2){
+        G4cout << "SteppingAction::UserSteppingAction   Transport material       : " << volume_pre->GetMaterial()->GetName() << G4endl;
+        G4cout << "SteppingAction::UserSteppingAction   Attenuation length       : " << attenuation_length / cm << G4endl;
+        G4cout << "SteppingAction::UserSteppingAction   Transport weight         : " << weight << G4endl;
+      }
 
+      fEventAction->AddWeight(std::log(weight));
       // if the next volume is the InnerCryostat and the geantino has undergone one or multiple scatters, 
       // we want to kill the track
       G4String nextVolume = step->GetPostStepPoint()->GetTouchableHandle()->GetVolume()->GetLogicalVolume()->GetName();
@@ -157,12 +173,9 @@ void SteppingAction::UserSteppingAction(const G4Step* step)
         step->GetTrack()->SetTrackStatus(fStopAndKill);
       }
 
-    } else {
-      // not a geantino.... so nothing special needs to be done here.
-      return;
-    }
+    } // end of if: geantino
     
-  }
+  } // end of if: in Fiducial volume & number of scatters
 
 
 }
@@ -188,14 +201,11 @@ G4double SteppingAction::DoScatter(const G4Step* step, G4ThreeVector x0){
   G4double photoelectricCrossSection = fGammaRayHelper->GetPhotoelectricCrossSection(energy, material);
   G4double comptonCrossSection       = fGammaRayHelper->GetComptonCrossSection(energy, material);
   G4double ratio = comptonCrossSection / (photoelectricCrossSection + comptonCrossSection);
-  //G4cout << "DoScatter:: Energy: " << energy/MeV << G4endl;
-  //G4cout << "DoScatter:: PE cross section: " << photoelectricCrossSection << G4endl;
-  //G4cout << "DoScatter:: Compton cross section: " << comptonCrossSection << G4endl;
-  //G4cout << "DoScatter:: Ratio: " << ratio << G4endl;
-
+  
   G4double maxEnergy = fEventAction->GetAvailableEnergy();
   G4double rand = G4UniformRand();
 
+  G4Track* track = step->GetTrack();
   G4String process = "";
   if ( (rand > ratio) && (energy < maxEnergy) ){
     process = "phot";
@@ -207,44 +217,54 @@ G4double SteppingAction::DoScatter(const G4Step* step, G4ThreeVector x0){
     // generate a Compton scatter and update the energy deposit
     InteractionData compton = fGammaRayHelper->DoComptonScatter(step, x0, maxEnergy);
     energyDeposit = compton.energyDeposited;
+    analysisManager->FillH1(0, compton.cosTheta);
 
+    // take into account the Compton scatter weight, only if the maximum allowed energy deposit is somewhere in the Compton region
     if(energy > maxEnergy) {
       weight *= ratio; // take into account ignored PE effect
       weight *= compton.weight; // take into account the Compton scatter weight, only if the maximum allowed energy deposit is somewhere in the Compton region
     } 
-    
-    //G4cout <<G4endl;  
-    //G4cout << "Compton scatter: energy = " << compton.energy << " MeV, cosTheta = " << compton.cosTheta << G4endl;
-    //G4cout << "Compton scatter: direction = " << compton.dir << G4endl;
-    //G4cout << "Compton scatter: weight = " << compton.weight << G4endl;
-    
     //
-    // make a secondary track
+    // Make a secondary track
     //
     G4ParticleTable* particleTable = G4ParticleTable::GetParticleTable();
     G4ParticleDefinition* particleDefinition = particleTable->FindParticle("geantino");
+    //
     // Create the dynamic particle
+    //
+    //  - the particle is again a geantino and it can be used to further track
+    //  - the direction of the particle is the direction after the Compton scatter
+    //  - the energy of the particle is the energy after the Compton scatter
+    //
     G4DynamicParticle* dynamicParticle = new G4DynamicParticle(particleDefinition, compton.dir, compton.energy);
+    //
+    // Create the new track
+    //
+    //  - use the newly created dynamic particle
+    //  - start the track at the position of the Compton scatter
+    //
     G4Track* newTrack = new G4Track(dynamicParticle, 0.0, x0);
-    // Set additional properties of the new track if needed
-
-    G4Track* track = step->GetTrack();
-    newTrack->SetParentID(track->GetTrackID());
+    //
+    // Set additional properties of the new track:
+    //  - the inheritance of the track ID
+    //  - the track is good for tracking
+    //
+    newTrack->SetParentID(track->GetParentID());
     newTrack->SetGoodForTrackingFlag(true);
     // add new track to collection of secondaries
     G4TrackVector* secondaries = const_cast<G4TrackVector*>(step->GetSecondary());
     secondaries->push_back(newTrack);
 
-    analysisManager->FillH1(0, compton.cosTheta);
   }
 
   // update the available energy
   fEventAction->ReduceAvailableEnergy(energyDeposit);  
-  // kill the track!
-  G4Track* track = step->GetTrack();
+  // kill the original track. the new track will be tracked further
   track->SetTrackStatus(fStopAndKill);
 
-    // create a new hit
+  //
+  // create a new hit
+  //
   Hit* newHit = new Hit();
   newHit->energyDeposit = energyDeposit;
   newHit->position = x0;
@@ -253,7 +273,9 @@ G4double SteppingAction::DoScatter(const G4Step* step, G4ThreeVector x0){
   newHit->parentID = step->GetTrack()->GetParentID();
   newHit->particleType = "manual";
   newHit->processType = process;
-
+  //
+  // add the hit to the collection
+  //
   AddHitToCollection(newHit, "LXeFiducialCollection");
 
   return weight;
@@ -340,7 +362,40 @@ void SteppingAction::AddHitToCollection(Hit* newHit, G4String collectionName){
     //
     fHitsCollections[collectionName]->insert(newHit);
 
+} // end of AddHitToCollection
+
+/**
+ * Analyzes a standard step in the simulation.
+ *
+ * This function is responsible for analyzing a standard step in the simulation.
+ * It identifies a gamma ray with a Compton scatter outside the primary particle outside the xenon.
+ * It sets the event type to SCATTERED_GAMMA if the track ID is 1, the process type is "compt",
+ * and the particle has not been in the xenon volume before.
+ * It also checks if the particle is inside the xenon volume and sets the flag indicating that
+ * the particle has been in the xenon volume.
+ *
+ * @param step The G4Step object representing the step in the simulation.
+ */
+void SteppingAction::AnalyzeStandardStep(const G4Step* step){
+    
+  // identify a gamma ray with a compton scatter outside the primary particle outside the xenon.......
+
+  G4int trackID = step->GetTrack()->GetTrackID();
+  G4String processType = step->GetPostStepPoint()->GetProcessDefinedStep()->GetProcessName();
+  G4String volume_name = step->GetPreStepPoint()->GetTouchableHandle()->GetVolume()->GetLogicalVolume()->GetName();
+
+  // check if particle is inside the xenon volume
+  if ((volume_name == "LXeFiducial") || (volume_name == "LXe")) {
+    // check if the particle is a geantino
+    fEventAction->SetHasBeenInXenon(true);
+  }
+
+  // after checking if the particle is inside the xenon volume, check if the track ID is 1, the process type is "compt",
+  if ((trackID == 1) && (processType == "compt") && (!fEventAction->HasBeenInXenon())) {
+    fEventAction->SetEventType(SCATTERED_GAMMA);
+  }
+
 }
 
 
-}
+} // namespace G4FastSim

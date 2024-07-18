@@ -41,6 +41,7 @@
 #include <vector>
 #include <mutex>
 
+///
 /// Event action class
 ///
 
@@ -51,7 +52,11 @@ class G4VHitsCollection;
 namespace G4FastSim
 {
 
-
+// Use enum to define the constants
+enum EventType {
+    DIRECT_GAMMA = 0,
+    SCATTERED_GAMMA = 1
+};
 
 class EventAction : public G4UserEventAction
 {
@@ -80,6 +85,8 @@ class EventAction : public G4UserEventAction
     G4int GetNumberOfScattersMax() { return fNumberOfScattersMax; }
     G4double GetAvailableEnergy() { return fAvailableEnergy; }
     G4double GetWeight() { return fLogWeight; }
+    G4bool HasBeenInXenon() { return fHasBeenInXenon; }
+    G4int GetEventType() { return fEventType; }
 
     void SetNumberOfScattersMax(G4int n) { fNumberOfScattersMax = n; }
     void SetFastSimulation(G4bool fast) { fFastSimulation = fast; }
@@ -87,6 +94,8 @@ class EventAction : public G4UserEventAction
     void SetMaxEnergy(G4double e) { fMaxEnergy = e; }
     void SetAvailableEnergy(G4double e) { fAvailableEnergy = e; }
     void ReduceAvailableEnergy(G4double e) { fAvailableEnergy -= e; } 
+    void SetHasBeenInXenon(G4bool b) { fHasBeenInXenon = b; }
+    void SetEventType(G4int type) { fEventType = type; }
 
   private:
     //
@@ -106,6 +115,7 @@ class EventAction : public G4UserEventAction
     G4int fNphot;
     G4int fNcomp;
     G4int fEventID;
+    G4int fEventType;
     G4double fXp;
     G4double fYp;
     G4double fZp;
@@ -120,6 +130,7 @@ class EventAction : public G4UserEventAction
     G4bool fInitializedGraphs = false;
     G4int fNumberOfScattersMax = 0;
     G4int fNumberOfScatters = 0;
+    G4bool fHasBeenInXenon = false;
 
     // maximum energy deposit that is allowed: /run/setMaxEnergy
     G4double fMaxEnergy = 0.0;

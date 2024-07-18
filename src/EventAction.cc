@@ -134,6 +134,11 @@ bool EventAction::IsWithinFiducialVolume(const G4ThreeVector& position, const G4
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 void EventAction::ResetVariables() {
   fNumberOfScatters = 0;
+  // this is used in the standard MC to see if the gamma ray has already been in xenon or not
+  fHasBeenInXenon = false;
+  // set the type of event: "direct_gamma (=0)",  "scattered_gamma (=1)",
+  // this is set to "direct_gamma" in the beginning and changed to "scattered_gamma" if a scatter is made	prior to entering the xenon target	
+  fEventType = DIRECT_GAMMA;
   // the avalaible energy is the maximum energy that can be deposited in the event
   // it will be reduced after every energy deposit
 
@@ -181,9 +186,10 @@ void EventAction::EndOfEventAction(const G4Event* event)
   analysisManager->FillNtupleDColumn(0, 3, fNcomp);
   analysisManager->FillNtupleDColumn(0, 4, fEdep);
   analysisManager->FillNtupleDColumn(0, 5, fLogWeight);
-  analysisManager->FillNtupleDColumn(0, 6, fXp);
-  analysisManager->FillNtupleDColumn(0, 7, fYp);
-  analysisManager->FillNtupleDColumn(0, 8, fZp);
+  analysisManager->FillNtupleDColumn(0, 6, fEventType);
+  analysisManager->FillNtupleDColumn(0, 7, fXp);
+  analysisManager->FillNtupleDColumn(0, 8, fYp);
+  analysisManager->FillNtupleDColumn(0, 9, fZp);
   analysisManager->AddNtupleRow(0);
 
   if(verbosityLevel>0) G4cout << "EventAction::EndOfEventAction: Done...." << G4endl;	

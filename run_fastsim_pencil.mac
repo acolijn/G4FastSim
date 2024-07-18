@@ -1,11 +1,7 @@
-# Macro file for example B4
-# 
-# To be run preferably in batch, without graphics:
-# % exampleB4[a,b,c,d] run2.mac
 #
-/control/verbose 2
+/control/verbose 0
 /control/saveHistory
-/run/verbose 2
+/run/verbose 0
 
 # define the detector geometry
 /detector/setOuterCryostatRadius 150 cm
@@ -16,7 +12,8 @@
 /detector/setInnerCryostatHeight 240 cm
 /detector/setInnerCryostatWallThickness 6 mm
 
-/detector/setFiducialRadius 119.4 cm
+#/detector/setFiducialRadius 119.4 cm
+/detector/setFiducialRadius 80.0 cm
 /detector/setFiducialHeight 238.8 cm
 
 /run/initialize
@@ -25,7 +22,7 @@
 /gps/particle geantino
 /gps/energy 1.0 MeV
 /gps/pos/type Point
-/gps/pos/centre 1194. 0. 0. mm
+/gps/pos/centre 1193.99 0. 0. mm
 /gps/direction -1 0 0
 
 # output filename

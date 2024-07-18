@@ -17,6 +17,7 @@
 
 #include "Randomize.hh"
 #include "GammaRayHelper.hh"
+#include "CustomEmPhysics.hh"
 
 //#include "TTree.h"
 
@@ -55,9 +56,8 @@ int main(int argc,char** argv)
   G4PhysListFactory factory;
   G4VModularPhysicsList* physicsList = factory.GetReferencePhysList("FTFP_BERT_HP");
   physicsList->ReplacePhysics(new G4EmLivermorePhysics());
-  
+  //if you want to mess with the Em physics list ...... physicsList->ReplacePhysics(new CustomEmPhysics());
   runManager->SetUserInitialization(physicsList);
-
   // User action initialization
   runManager->SetUserInitialization(new ActionInitialization(helper));
 
