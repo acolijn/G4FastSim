@@ -12,8 +12,10 @@
 /detector/setInnerCryostatHeight 240 cm
 /detector/setInnerCryostatWallThickness 6 mm
 
-/detector/setFiducialRadius 119.4 cm
-/detector/setFiducialHeight 238.8 cm
+#/detector/setFiducialRadius 119.4 cm
+#/detector/setFiducialHeight 238.8 cm
+/detector/setFiducialRadius 115 cm
+/detector/setFiducialHeight 220 cm
 
 /run/initialize
 
@@ -37,9 +39,9 @@
 # maximum number of scatters inside fiducial
 /run/setNumberOfScatters 1
 # maximum energy deposit
-/run/setMaxEnergy 1200 keV
+/run/setMaxEnergy 300 keV
 
 # run the thing...............
 /run/printProgress 10000
-/run/beamOn 100000
+/run/beamOn 1000000
 

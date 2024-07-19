@@ -57,7 +57,7 @@ EventAction::EventAction() : G4UserEventAction(), fGammaRayHelper(&GammaRayHelpe
   // set printing per each event
   G4RunManager::GetRunManager()->SetPrintProgress(1);
 
-  fHitsCollectionNames.push_back("LXeCollection");
+  //fHitsCollectionNames.push_back("LXeCollection");
   fHitsCollectionNames.push_back("LXeFiducialCollection");
 }
 

@@ -323,10 +323,10 @@ void SteppingAction::AddHitToCollection(Hit* newHit, G4String collectionName){
      if (!fHitsCollectionInitialized) {
         if (verbosityLevel >=2) G4cout << "Initializing hits collections" << G4endl;
         G4SDManager* SDman = G4SDManager::GetSDMpointer();
-        fHitsCollectionIDs["LXeCollection"] = SDman->GetCollectionID("LXeCollection");
+        // // fHitsCollectionIDs["LXeCollection"] = SDman->GetCollectionID("LXeCollection");
         fHitsCollectionIDs["LXeFiducialCollection"] = SDman->GetCollectionID("LXeFiducialCollection");
         if (verbosityLevel >=2){
-          G4cout << "Hits collection ID for LXeCollection: " << fHitsCollectionIDs["LXeCollection"] << G4endl;
+          // // G4cout << "Hits collection ID for LXeCollection: " << fHitsCollectionIDs["LXeCollection"] << G4endl;
           G4cout << "Hits collection ID for LXeFiducialCollection: " << fHitsCollectionIDs["LXeFiducialCollection"] << G4endl;
         }
         // Add more collections here if needed
@@ -381,20 +381,33 @@ void SteppingAction::AnalyzeStandardStep(const G4Step* step){
   // identify a gamma ray with a compton scatter outside the primary particle outside the xenon.......
 
   G4int trackID = step->GetTrack()->GetTrackID();
-  G4String processType = step->GetPostStepPoint()->GetProcessDefinedStep()->GetProcessName();
-  G4String volume_name = step->GetPreStepPoint()->GetTouchableHandle()->GetVolume()->GetLogicalVolume()->GetName();
 
-  // check if particle is inside the xenon volume
-  if ((volume_name == "LXeFiducial") || (volume_name == "LXe")) {
-    // check if the particle is a geantino
-    fEventAction->SetHasBeenInXenon(true);
+  // check the primary gamma ray....
+  if (trackID == 1){
+    G4String processType = step->GetPostStepPoint()->GetProcessDefinedStep()->GetProcessName();
+    G4String volume_name = step->GetPreStepPoint()->GetTouchableHandle()->GetVolume()->GetLogicalVolume()->GetName();
+
+    // check if particle is inside the xenon volume
+    if ((volume_name == "LXeFiducial") || (volume_name == "LXe")) {
+      // check if the particle is a geantino
+      fEventAction->SetHasBeenInXenon(true);
+      G4String volume_post = step->GetPostStepPoint()->GetTouchableHandle()->GetVolume()->GetLogicalVolume()->GetName();
+
+      // if this gamma leaves the xenon volume..... just kill it to make sure it never comes back.
+      if (volume_post == "InnerCryostat") {
+        step->GetTrack()->SetTrackStatus(fStopAndKill);
+      }
+    }
+
+    // after checking if the particle is/has been inside the xenon volume, check if the track ID is 1, the process type is "compt",
+    if ((processType == "compt") && (!fEventAction->HasBeenInXenon())) {
+      fEventAction->SetEventType(SCATTERED_GAMMA);
+    }
+
+    //if ((processType == "compt") || processType == "phot") && (fEventAction->HasBeenInXenon()) {
+    //  fEventAction->SetEventType(DIRECT_GAMMA);
+    //}
   }
-
-  // after checking if the particle is inside the xenon volume, check if the track ID is 1, the process type is "compt",
-  if ((trackID == 1) && (processType == "compt") && (!fEventAction->HasBeenInXenon())) {
-    fEventAction->SetEventType(SCATTERED_GAMMA);
-  }
-
 }
 
 
