@@ -231,8 +231,8 @@ void EventAction::AnalyzeHits(const G4Event* event) {
 
   // cluster hits based on spatial and time thresholds
   std::vector<Cluster> fClusters;
-  G4double spatialThreshold = 5 * cm;
-  G4double timeThreshold = 0.25 * ns;
+  G4double spatialThreshold = 10 * cm;
+  G4double timeThreshold = 2.0 * ns;
   ClusterHits(allHits, spatialThreshold, timeThreshold, fClusters); 
 }
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
@@ -266,14 +266,32 @@ void EventAction::ClusterHits(std::vector<Hit*>& hits, G4double spatialThreshold
 
     //G4cout<<G4endl;
     //G4cout<<"ClusterHits: hits.size() = "<<hits.size()<<G4endl;
+    // 
+    // Finding the cluster seeds. A cluster seed is a hit from a primary track doing a Compton or photoelectric interaction.
+    // For the fast simulation the primary track can have another trackID, so we do not need to check the ID.
+    //
+    for (auto& hit : hits){      
+      G4String process = hit->processType;
+      G4int trackID = hit->trackID;
+
+      G4bool isRelevantProcess = (process == "compt" || process == "phot");
+      G4bool isPrimaryTrack = (trackID == 1);
+
+      if (IsFastSimulation() || isPrimaryTrack) {
+          if (process == "compt") fNcomp++;
+          if (process == "phot") fNphot++;
+          if (isRelevantProcess) {
+              clusters.push_back(Cluster{hit->position, hit->energyDeposit, hit->time, {hit}});
+              hit->used = true;
+          }
+      }
+    }
+
+    //
+    // Clustering the hits, with the seeds already in the cluster vector
+    //
     for (auto& hit : hits) {
-        // count the number of compton and pe scatters from the primary gamma ray
-        G4String process = hit->processType;
-        G4int trackID = hit->trackID;
-        if((trackID == 1) && (process == "compt")) fNcomp++;
-        if((trackID == 1) && (process == "phot")) fNphot++;
-        
-        //if(process == "compt" || process == "phot") hit->Print();
+        if (hit->used) continue;
 
         bool addedToCluster = false;
         for (auto& cluster : clusters) {
@@ -292,6 +310,7 @@ void EventAction::ClusterHits(std::vector<Hit*>& hits, G4double spatialThreshold
                 }
             }
         }
+        // If the hit was not added to any existing cluster, create a new cluster
         if (!addedToCluster) {
             clusters.push_back(Cluster{hit->position, hit->energyDeposit, hit->time, {hit}});
         }

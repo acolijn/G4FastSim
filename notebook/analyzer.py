@@ -35,6 +35,7 @@ class Geant4Analyzer:
         file = uproot.open(self.file_path)
         self.raw = file["ev"].arrays()
         # add derived variables
+
         # radius
         self.raw['r'] = np.sqrt(self.raw['xh']**2 + self.raw['yh']**2)
 
@@ -74,7 +75,7 @@ class Geant4Analyzer:
             self.data[field] = ak.to_numpy(data_field)
 
 
-    def plot_histogram(self, variable, ax=None, bins=50, range=(0,1), show=True):
+    def plot_histogram(self, variable, ax=None, bins=50, range=None, show=True):
         """
         Plots a histogram of the given variable.
 
@@ -100,7 +101,9 @@ class Geant4Analyzer:
 
         # use the event weights for the event variables, otherwise use the hit weights
         weights = self.data['w'] if len(self.data['w']) == len(self.data[variable]) else self.data['wh']
+
         ax.hist(self.data[variable], weights=np.exp(weights), bins=bins, range=range, histtype='step', label=self.label)
+
         if variable == 'r':
             ax.set_xlabel('radius (mm)')
         elif (variable == 'xp') or (variable == 'xh'):
