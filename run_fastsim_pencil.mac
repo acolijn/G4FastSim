@@ -13,7 +13,7 @@
 /detector/setInnerCryostatWallThickness 6 mm
 
 #/detector/setFiducialRadius 119.4 cm
-/detector/setFiducialRadius 80.0 cm
+/detector/setFiducialRadius 95.0 cm
 /detector/setFiducialHeight 238.8 cm
 
 /run/initialize

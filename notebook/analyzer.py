@@ -1,50 +1,124 @@
-#
-# make an analyzer class. It should read the root files that were create
-#
 import uproot
 import numpy as np
 import awkward as ak
 import matplotlib.pyplot as plt
+from matplotlib.colors import LogNorm
+
+def is_jagged(array):
+    """Check if the given array is a jagged array."""
+    return isinstance(array, ak.highlevel.Array) and isinstance(array.layout, ak.contents.ListOffsetArray)
 
 class Geant4Analyzer:
     def __init__(self, file_path, label=""):
+        """
+        Initializes the analyzer with the given file path.
+
+        Args:
+            file_path (str): The path to the ROOT file.
+            label (str, optional): The label to use for the plot.
+        """
+
         self.file_path = file_path
         self.label = label
-        self.data = None
-        self.preprocessed_data = {}
+        self.raw = None
+        self.data = {}
 
         self.load_data()
 
     def load_data(self):
+        """
+        Loads the raw data from the file.
+
+        Raises:
+            FileNotFoundError: If the file is not found.
+        """
         file = uproot.open(self.file_path)
-        self.data = file["ev"].arrays()
+        self.raw = file["ev"].arrays()
+        # add derived variables
+        # radius
+        self.raw['r'] = np.sqrt(self.raw['xh']**2 + self.raw['yh']**2)
+
         print(f"Data loaded from {self.file_path}")
 
-    def preprocess_data(self):
+    def preprocess_data(self, cut=None, cut_hit=None):
+        """
+        Preprocesses the raw data by applying filters and converting it to a format suitable for analysis.
+
+        Args:
+            cut (array-like, optional): The primary cut to apply to the data.
+            cut_hit (array-like, optional): Additional cut for jagged arrays.
         
-        if self.data is None:
+        Raises:
+            ValueError: If the data is not loaded. Call load_data() first.
+        """
+        if self.raw is None:
             raise ValueError("Data not loaded. Call load_data() first.")
         
-        cut = (self.data['ncomp'] + self.data['nphot'] == 1) & (self.data['type'] == 0)
-        cute = (self.data['eh'] > 1.)
+        if cut is None:
+            cut = (self.raw['ncomp'] + self.raw['nphot'] == 1) & \
+                  (self.raw['type'] == 0)
+        else:
+            cut = cut(self.raw)
+            
+        if cut_hit is None:
+            cut_hit = cut & (self.raw['eh'] > 1.)
+        else:
+            cut_hit = cut_hit(self.raw) & cut & (self.raw['eh'] > 1.)
 
-        self.preprocessed_data['x'] = ak.to_numpy(ak.flatten(self.data['xh'][cut & cute]))
-        self.preprocessed_data['y'] = ak.to_numpy(ak.flatten(self.data['yh'][cut & cute]))
-        self.preprocessed_data['z'] = ak.to_numpy(ak.flatten(self.data['zh'][cut & cute]))
-        self.preprocessed_data['e'] = ak.to_numpy(ak.flatten(self.data['eh'][cut & cute]))
+        for field in self.raw.fields:
+            data_field = self.raw[field]
+            if is_jagged(data_field):
+                data_field = ak.flatten(data_field[cut_hit])
+            else:
+                data_field = data_field[cut]
+            self.data[field] = ak.to_numpy(data_field)
 
-    def plot_histogram(self, variable, bins=50, alpha=0.5, show=True):
-        if variable not in self.preprocessed_data:
+
+    def plot_histogram(self, variable, ax=None, bins=50, range=(0,1), show=True):
+        """
+        Plots a histogram of the given variable.
+
+        Args:
+
+            variable (str): The variable to plot.
+            ax (matplotlib.axes.Axes, optional): The axis to plot on. If None, a new figure is created.
+            bins (int or array-like, optional): The number of bins or bin edges.
+            range (tuple, optional): The range of the histogram.
+            show (bool, optional): Whether to display the plot.
+
+        Returns:
+            matplotlib.axes.Axes: The axis object.
+
+        Raises:
+            ValueError: If the variable is not found in the preprocessed data.
+        """ 
+        if variable not in self.data:
             raise ValueError(f"Variable '{variable}' not found in preprocessed data.")
 
-        fig, ax = plt.subplots()
-        ax.hist(self.preprocessed_data[variable], bins=bins, alpha=alpha, label=self.label)
-        ax.set_xlabel(variable)
+        if ax is None:
+            fig, ax = plt.subplots()
+
+        # use the event weights for the event variables, otherwise use the hit weights
+        weights = self.data['w'] if len(self.data['w']) == len(self.data[variable]) else self.data['wh']
+        ax.hist(self.data[variable], weights=np.exp(weights), bins=bins, range=range, histtype='step', label=self.label)
+        if variable == 'r':
+            ax.set_xlabel('radius (mm)')
+        elif (variable == 'xp') or (variable == 'xh'):
+            ax.set_xlabel('x (mm)')
+        elif (variable == 'yp') or (variable == 'yh'):
+            ax.set_xlabel('y (mm)')
+        elif (variable == 'zp') or (variable == 'zh'):
+            ax.set_xlabel('z (mm)')
+        elif (variable == 'eh') or (variable == 'e'):
+            ax.set_xlabel('Energy (keV)')
+        else:
+            ax.set_xlabel(variable)
+    
         ax.set_ylabel('Counts')
-        ax.legend()
-        ax.set_title(f'Histogram of {variable}')
 
         if show:
+            ax.legend(frameon=False)
             plt.show()
 
         return ax
+
