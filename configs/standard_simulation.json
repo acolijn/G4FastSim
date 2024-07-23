@@ -1,0 +1,27 @@
+{
+    "verbose": 0,
+    "outerCryostatRadius": "150 cm",
+    "outerCryostatHeight": "300 cm",
+    "outerCryostatWallThickness": "10 mm",
+    "innerCryostatRadius": "120 cm",
+    "innerCryostatHeight": "240 cm",
+    "innerCryostatWallThickness": "6 mm",
+    "fiducialRadius": "119.4 cm",
+    "fiducialHeight": "238.8 cm",
+    "gpsSettings": {
+        "particle": "gamma",
+        "energy": "1. MeV",
+        "posType": "Volume",
+        "posShape": "Cylinder",
+        "posCentre": "0. 0. 0. cm",
+        "posRadius": "1.6 m",
+        "posHalfz": "1.3 m",
+        "posConfine": "OuterCryostat",
+        "angType": "iso"
+    },
+    "outputFileName": "std.root",
+    "fastSimulation": "false",
+    "numberOfScatters": -999,
+    "maxEnergy": "-1 MeV",
+    "printProgress": 10000
+}

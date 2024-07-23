@@ -4,12 +4,14 @@ import awkward as ak
 import matplotlib.pyplot as plt
 from matplotlib.colors import LogNorm
 
+from RunManager import RunManager
+
 def is_jagged(array):
     """Check if the given array is a jagged array."""
     return isinstance(array, ak.highlevel.Array) and isinstance(array.layout, ak.contents.ListOffsetArray)
 
 class Geant4Analyzer:
-    def __init__(self, file_path, label=""):
+    def __init__(self, run_id, label=""):
         """
         Initializes the analyzer with the given file path.
 
@@ -18,7 +20,10 @@ class Geant4Analyzer:
             label (str, optional): The label to use for the plot.
         """
 
-        self.file_path = file_path
+        manager = RunManager("../scripts/config.json")
+
+        self.file_path = manager.get_output_root_file(run_id)
+        self.settings = manager.get_run_settings(run_id, convert_to_mm=True)
         self.label = label
         self.raw = None
         self.data = {}
@@ -101,6 +106,9 @@ class Geant4Analyzer:
 
         # use the event weights for the event variables, otherwise use the hit weights
         weights = self.data['w'] if len(self.data['w']) == len(self.data[variable]) else self.data['wh']
+
+        hist, _ = np.histogram(self.data[variable], weights=np.exp(weights), bins=bins, range=range)
+        print("integral =",np.sum(hist))
 
         ax.hist(self.data[variable], weights=np.exp(weights), bins=bins, range=range, histtype='step', label=self.label)
 
