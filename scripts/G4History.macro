@@ -18,12 +18,12 @@
 /gps/pos/halfz 1.3 m
 /gps/pos/confine OuterCryostat
 /gps/ang/type iso
-/random/setSeeds 11227 11228
-/run/setOutputFileName /data/xenon/acolijn/G4FastSim/20240723_234446/fast.root
+/random/setSeeds 81209 81210
+/run/setOutputFileName /data/xenon/acolijn/G4FastSim/20240725_133805/fast_1
 /run/setFastSimulation true
 /run/setNumberOfScatters 1
 /run/setMaxEnergy 1.2 MeV
 /run/printProgress 10000
-/run/beamOn 1000000
+/run/beamOn 10000
 /analysis/h1/getVector
 /analysis/h2/getVector

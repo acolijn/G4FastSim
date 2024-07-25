@@ -56,24 +56,29 @@ class RunManager:
         else:
             return self.runs_df[self.runs_df['status'] != 'deleted']
 
-    def get_output_root_file(self, run_id):
+
+    def get_output_root_files(self, run_id, first_only=False):
         """
-        Retrieves the path of the output ROOT file associated with the given run ID.
+        Retrieves the paths of the output ROOT files associated with the given run ID.
 
         Args:
             run_id (int): The ID of the run.
+            first_only (bool): If True, return only the first ROOT file. If False, return all ROOT files.
 
         Returns:
-            str or None: The path of the output ROOT file if it exists, otherwise None.
+            list or str or None: A list of paths to the output ROOT files if they exist, otherwise an empty list.
+                                If first_only is True, returns the path to the first ROOT file as a string.
         """
         run = self.get_run_by_id(run_id)
         if run and run.get("status") != "deleted":
             output_dir = run.get("outputDir")
             if output_dir:
-                root_files = [file for file in os.listdir(output_dir) if file.endswith(".root")]
-                if root_files:
-                    return os.path.join(output_dir, root_files[0])
-        return None
+                root_files = [os.path.join(output_dir, file) for file in os.listdir(output_dir) if file.endswith(".root")]
+                if first_only:
+                    return root_files[0] if root_files else None
+                return root_files
+        return [] if not first_only else None
+
 
     def get_run_settings(self, run_id, convert_to_mm=False):
         """

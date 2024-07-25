@@ -7,7 +7,7 @@
     "innerCryostatHeight": "240 cm",
     "innerCryostatWallThickness": "6 mm",
     "fiducialRadius": "115.0 cm",
-    "fiducialHeight": "220.0 cm",
+    "fiducialHeight": "230.0 cm",
     "gpsSettings": {
         "particle": "geantino",
         "energy": "1. MeV",
@@ -16,10 +16,10 @@
         "posCentre": "0. 0. 0. cm",
         "posRadius": "1.6 m",
         "posHalfz": "1.3 m",
-        "posConfine": "OuterCryostat",
+        "posConfine": "InnerCryostat",
         "angType": "iso"
     },
-    "outputFileName": "fast.root",
+    "outputFileName": "fast",
     "fastSimulation": "true",
     "numberOfScatters": 1,
     "maxEnergy": "1.2 MeV",

@@ -11,7 +11,7 @@ def is_jagged(array):
     return isinstance(array, ak.highlevel.Array) and isinstance(array.layout, ak.contents.ListOffsetArray)
 
 class Geant4Analyzer:
-    def __init__(self, run_id, label=""):
+    def __init__(self, run_id, label="", first_only=True):
         """
         Initializes the analyzer with the given file path.
 
@@ -22,7 +22,7 @@ class Geant4Analyzer:
 
         manager = RunManager("../scripts/config.json")
 
-        self.file_path = manager.get_output_root_file(run_id)
+        self.file_paths = manager.get_output_root_files(run_id, first_only=first_only)
         self.settings = manager.get_run_settings(run_id, convert_to_mm=True)
         self.label = label
         self.raw = None
@@ -32,19 +32,59 @@ class Geant4Analyzer:
 
     def load_data(self):
         """
+        Loads the raw data from the file or list of files.
+
+        Args:
+            file_paths (str or list): Path or list of paths to the ROOT files.
+
+        Raises:
+            FileNotFoundError: If any file is not found.
+        """
+        if isinstance(self.file_paths, str):
+            self.file_paths = [self.file_paths]
+
+        data_list = []
+
+        for file_path in self.file_paths:
+            try:
+                print(f"Loading {file_path}")
+                root = uproot.open(file_path)
+                data = root["ev"].arrays(library="ak")  # Use awkward array
+                data_list.append(data)
+            except FileNotFoundError:
+                raise FileNotFoundError(f"File not found: {file_path}")
+
+        if data_list:
+            # Concatenate awkward arrays
+            self.raw = ak.concatenate(data_list, axis=0)
+
+            # Add derived variables
+            self.raw['r'] = np.sqrt(self.raw['xh']**2 + self.raw['yh']**2)
+
+            print(f"Data loaded from {len(self.file_paths)} files")
+        else:
+            print("No data loaded")
+
+
+    def load_data_obsolete(self):
+        """
         Loads the raw data from the file.
 
         Raises:
             FileNotFoundError: If the file is not found.
         """
-        file = uproot.open(self.file_path)
-        self.raw = file["ev"].arrays()
-        # add derived variables
+        if isinstance(self.file_paths, str):
+            self.file_paths = [self.file_paths]
 
-        # radius
-        self.raw['r'] = np.sqrt(self.raw['xh']**2 + self.raw['yh']**2)
+        for file in self.file_paths:
 
-        print(f"Data loaded from {self.file_path}")
+            root = uproot.open(file)
+            self.raw = root["ev"].arrays()
+            # add derived variables
+            # radius
+            self.raw['r'] = np.sqrt(self.raw['xh']**2 + self.raw['yh']**2)
+
+        print(f"Data loaded from {self.file_paths}")
 
     def preprocess_data(self, cut=None, cut_hit=None):
         """

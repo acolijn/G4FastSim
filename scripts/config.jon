@@ -1,0 +1,16 @@
+{
+    "runs": [
+        {
+            "id": "run_01",
+            "particle": "geantino",
+            "energy": "1.MeV",
+            "fastSimulation": "true",
+            "maxScatters": 1,
+            "maxEnergy": "1.2 MeV",
+            "sourceVolume": "OuterCryostat",
+            "outputDir": "/user/z37/g4/G4FastSim/scripts/../output/20240724_205520_geantino_1.MeV_true",
+            "numEvents": 10000,
+            "status": "active"
+        }
+    ]
+}
