@@ -12,12 +12,12 @@
         "particle": "gamma",
         "energy": "1. MeV",
         "posType": "Point",
-        "posCentre": "1193.99 0. 0. cm",
+        "posCentre": "119.45 0. 0. cm",
         "direction": "-1. 0. 0."
     },
-    "outputFileName": "std.root",
+    "outputFileName": "std",
     "fastSimulation": "false",
     "numberOfScatters": -999,
-    "maxEnergy": "-1 MeV",
+    "maxEnergy": "-1.0 MeV",
     "printProgress": 10000
 }

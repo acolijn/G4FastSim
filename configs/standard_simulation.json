@@ -15,11 +15,11 @@
         "posShape": "Cylinder",
         "posCentre": "0. 0. 0. cm",
         "posRadius": "1.6 m",
-        "posHalfz": "1.3 m",
+        "posHalfz": "1.6 m",
         "posConfine": "InnerCryostat",
         "angType": "iso"
     },
-    "outputFileName": "std.root",
+    "outputFileName": "std",
     "fastSimulation": "false",
     "numberOfScatters": -999,
     "maxEnergy": "-1 MeV",

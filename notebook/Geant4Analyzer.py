@@ -23,8 +23,16 @@ class Geant4Analyzer:
         manager = RunManager("../scripts/config.json")
 
         self.file_paths = manager.get_output_root_files(run_id, first_only=first_only)
-        self.settings = manager.get_run_settings(run_id, convert_to_mm=True)
-        self.label = label
+        self.settings = manager.get_run_settings(run_id, convert_units=True)
+        self.label = ""
+        if label == "":
+            if self.settings['fastSimulation'] == "true":
+                self.label = "Accelerated MC"
+            elif self.settings['fastSimulation'] == "false":
+                self.label = "Geant4 standard"
+        else:
+            self.label = label
+
         self.raw = None
         self.data = {}
 

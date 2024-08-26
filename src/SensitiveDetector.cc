@@ -39,13 +39,17 @@ G4bool SensitiveDetector::ProcessHits(G4Step* step, G4TouchableHistory*) {
     G4FastSim::Hit* newHit = new G4FastSim::Hit();
     //Hit* newHit = new Hit();
     newHit->energyDeposit = edep;
-    newHit->position = step->GetPreStepPoint()->GetPosition();
-    newHit->time = step->GetPreStepPoint()->GetGlobalTime();
+    //newHit->position = step->GetPreStepPoint()->GetPosition();
+    newHit->position = step->GetPostStepPoint()->GetPosition();
+    newHit->time = step->GetPostStepPoint()->GetGlobalTime();
     newHit->trackID = step->GetTrack()->GetTrackID();
     newHit->parentID = step->GetTrack()->GetParentID();
     newHit->momentum = step->GetPreStepPoint()->GetMomentum();
     newHit->particleType = step->GetTrack()->GetDefinition()->GetParticleName();
     newHit->processType = step->GetPostStepPoint()->GetProcessDefinedStep()->GetProcessName();
+    newHit->particleEnergy0 = step->GetPreStepPoint()->GetKineticEnergy();
+    newHit->particleEnergy1 = step->GetPostStepPoint()->GetKineticEnergy(); 
+
     
 
     //if (newHit->trackID == 1){

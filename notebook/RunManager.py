@@ -80,7 +80,7 @@ class RunManager:
         return [] if not first_only else None
 
 
-    def get_run_settings(self, run_id, convert_to_mm=False):
+    def get_run_settings(self, run_id, convert_units=False):
         """
         Retrieves the settings for a specific run.
 
@@ -97,29 +97,32 @@ class RunManager:
             if os.path.exists(settings_file):
                 with open(settings_file, 'r') as file:
                     settings = json.load(file)
-                if convert_to_mm:
-                    settings = self.convert_distances_to_mm(settings)
+                if convert_units:
+                    settings = self.convert_units(settings)
                 return settings
         return None
 
-    def convert_distances_to_mm(self, settings):
+    def convert_units(self, settings):
         """
-        Convert all distance-related settings in the given settings dictionary to millimeters.
+        Convert all units in the given settings dictionary
 
         Args:
             settings (dict): The settings dictionary.
 
         Returns:
-            dict: The settings dictionary with all distances converted to millimeters.
+            dict: The settings dictionary with all distances converted to mm and keV.
         """
         conversion_factors = {
             "mm": 1,
             "cm": 10,
-            "m": 1000
+            "m": 1000,
+            "keV": 1,
+            "MeV": 1000
         }
         for key, value in settings.items():
             if isinstance(value, str) and any(unit in value for unit in conversion_factors):
                 for unit, factor in conversion_factors.items():
+                    #print(key, unit, factor)
                     if value.endswith(unit):
                         number = float(value.replace(unit, "").strip())
                         settings[key] = number * factor

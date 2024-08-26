@@ -292,6 +292,7 @@ void SteppingAction::Print(const G4Step* step) {
 
   G4Track* track = step->GetTrack();
   G4LogicalVolume* volume_pre = step->GetPreStepPoint()->GetTouchableHandle()->GetVolume()->GetLogicalVolume();
+  G4String processType = step->GetPostStepPoint()->GetProcessDefinedStep()->GetProcessName();
 
   // if Verbose level >=2 print this information
 
@@ -302,6 +303,7 @@ void SteppingAction::Print(const G4Step* step) {
   G4cout << "                      volume_pre name      : " << volume_pre->GetName() << G4endl;
   G4cout << "                      volume_pre position  : " << step->GetPreStepPoint()->GetPosition()/cm << " cm"<<G4endl;
   G4cout << "                      volume_post position : " << step->GetPostStepPoint()->GetPosition()/cm << " cm"<<G4endl;
+  G4cout << "                      process type         : " << processType << G4endl;
 }
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
@@ -382,6 +384,8 @@ void SteppingAction::AnalyzeStandardStep(const G4Step* step){
 
   G4int trackID = step->GetTrack()->GetTrackID();
 
+  if(verbosityLevel >= 2) Print(step);
+
   // check the primary gamma ray....
   if (trackID == 1){
     G4String processType = step->GetPostStepPoint()->GetProcessDefinedStep()->GetProcessName();
@@ -389,8 +393,9 @@ void SteppingAction::AnalyzeStandardStep(const G4Step* step){
 
     // check if particle is inside the xenon volume
     if ((volume_name == "LXeFiducial") || (volume_name == "LXe")) {
-      // check if the particle is a geantino
+      // the particle saw liquid xenon
       fEventAction->SetHasBeenInXenon(true);
+
       G4String volume_post = step->GetPostStepPoint()->GetTouchableHandle()->GetVolume()->GetLogicalVolume()->GetName();
 
       // if this gamma leaves the xenon volume..... just kill it to make sure it never comes back.
@@ -400,14 +405,21 @@ void SteppingAction::AnalyzeStandardStep(const G4Step* step){
     }
 
     // after checking if the particle is/has been inside the xenon volume, check if the track ID is 1, the process type is "compt",
-    if ((processType == "compt") && (!fEventAction->HasBeenInXenon())) {
+    //if ((processType == "compt") && (!fEventAction->HasBeenInXenon())) {
+    if ((processType == "compt") && ((volume_name != "LXeFiducial") && (volume_name != "LXe"))) {
       fEventAction->SetEventType(SCATTERED_GAMMA);
     }
-
     //if ((processType == "compt") || processType == "phot") && (fEventAction->HasBeenInXenon()) {
     //  fEventAction->SetEventType(DIRECT_GAMMA);
     //}
-  }
+  } 
+  //G4String vol0 = step->GetPreStepPoint()->GetTouchableHandle()->GetVolume()->GetLogicalVolume()->GetName();
+  //G4String vol1 = step->GetPostStepPoint()->GetTouchableHandle()->GetVolume()->GetLogicalVolume()->GetName();
+  //G4String process = step->GetPostStepPoint()->GetProcessDefinedStep()->GetProcessName();
+  //G4String particleName = step->GetTrack()->GetParticleDefinition()->GetParticleName();
+  //if ( ( trackID !=1 ) && (particleName == "gamma") && (vol0 == "LXeFiducial") && (vol1 != "LXeFiducial") ){
+  //  G4cout << "SteppingAction::AnalyzeStandardStep   Secondary Compton scatter outside LXeFiducial volume" << G4endl;
+  //}
 }
 
 

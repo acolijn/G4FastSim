@@ -36,7 +36,10 @@ public:
     G4ThreeVector momentum; /**< Momentum of the hit. */
     G4String particleType; /**< Particle type of the hit. */
     G4String processType; /**< Process type of the hit. */
+    G4double particleEnergy0; /**< Energy of the particle at the beginning of a step */
+    G4double particleEnergy1; /**< Energy of the particle after the step */
     G4bool used; /**< Flag to indicate if the hit has been used in a cluster. */
+
     
     /**
      * @brief Print function to print the details of the hit.

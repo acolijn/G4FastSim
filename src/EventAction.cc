@@ -224,7 +224,7 @@ void EventAction::AnalyzeHits(const G4Event* event) {
       if(verbosityLevel>0) G4cout << "Hits Collection: " << fHitsCollectionNames[i] << " has " << n_hit << " hits." << G4endl;
       for (G4int j = 0; j < n_hit; ++j) {
           Hit* hit = (*fHitsCollection)[j];
-          if(verbosityLevel>0) hit->Print();
+          //if(verbosityLevel>0) hit->Print();
           allHits.push_back(hit);
       }
   }
@@ -291,6 +291,7 @@ void EventAction::ClusterHits(std::vector<Hit*>& hits, G4double spatialThreshold
     // Clustering the hits, with the seeds already in the cluster vector
     //
     for (auto& hit : hits) {
+        if(verbosityLevel>0 && (fNcomp+fNphot == 1)) hit->Print();
         if (hit->used) continue;
 
         bool addedToCluster = false;
@@ -321,7 +322,7 @@ void EventAction::ClusterHits(std::vector<Hit*>& hits, G4double spatialThreshold
     fNclusters = 0;
 
     for (auto& cluster : clusters) {
-      if(verbosityLevel>1) {
+      if(verbosityLevel>1  && (fNcomp+fNphot == 1)){
         G4cout <<"Cluster: " << G4endl;
         G4cout <<"                 position: " << cluster.position << G4endl;
         G4cout <<"                 energyDeposit: " << cluster.energyDeposit << G4endl;
@@ -338,6 +339,27 @@ void EventAction::ClusterHits(std::vector<Hit*>& hits, G4double spatialThreshold
         fW.push_back(fLogWeight);
       }
     }
+
+    // these are the weird events that I do not understand.......
+    if ((fEdep < 800.0) && (fEdep > 0.0) && (fNphot == 1 ) && (fEventType == DIRECT_GAMMA) && (fNcomp == 0)) {
+      G4cout << G4endl;
+      G4cout << "EventAction::ClusterHits: fEdep = " << fEdep << G4endl;
+      G4cout << "EventAction::ClusterHits: fNphot = " << fNphot << G4endl;
+      G4cout << "EventAction::ClusterHits: fNcomp = " << fNcomp << G4endl;
+      G4cout << "EventAction::ClusterHits: fEventType = " << fEventType << G4endl;
+      G4cout << "EventAction::ClusterHits: fNclusters = " << fNclusters << G4endl;
+      for (auto& cluster : clusters) {
+        G4cout << "Cluster: " << G4endl;
+        G4cout << "                 position: " << cluster.position << G4endl;
+        G4cout << "                 energyDeposit: " << cluster.energyDeposit << G4endl;
+        G4cout << "                 weight: " << fLogWeight << G4endl;
+      }
+      G4cout << G4endl;
+      for (auto& hit : hits) {
+        hit->Print();
+      }
+    }
+
 }
 
 

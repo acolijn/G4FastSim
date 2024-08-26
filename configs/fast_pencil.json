@@ -6,22 +6,18 @@
     "innerCryostatRadius": "120 cm",
     "innerCryostatHeight": "240 cm",
     "innerCryostatWallThickness": "6 mm",
-    "fiducialRadius": "115.0 cm",
-    "fiducialHeight": "230.0 cm",
+    "fiducialRadius": "119.4 cm",
+    "fiducialHeight": "238.8 cm",
     "gpsSettings": {
         "particle": "geantino",
         "energy": "1. MeV",
-        "posType": "Volume",
-        "posShape": "Cylinder",
-        "posCentre": "0. 0. 0. cm",
-        "posRadius": "1.6 m",
-        "posHalfz": "1.3 m",
-        "posConfine": "InnerCryostat",
-        "angType": "iso"
+        "posType": "Point",
+        "posCentre": "119.45 0. 0. cm",
+        "direction": "-1. 0. 0."
     },
     "outputFileName": "fast",
     "fastSimulation": "true",
     "numberOfScatters": 1,
-    "maxEnergy": "0.2 MeV",
+    "maxEnergy": "1.2 MeV",
     "printProgress": 10000
 }

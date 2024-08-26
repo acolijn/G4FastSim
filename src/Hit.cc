@@ -12,14 +12,17 @@ Hit::Hit()
 Hit::~Hit() {}
 
 void Hit::Print() const {
-    G4cout << "TrackID: " << trackID
-           << ", ParentID: " << parentID
-           << ", Process: " << processType
-           << ", Particle: " << particleType
-           << ", Position: " << position / cm << " cm"
-           << ", Energy Deposit: " << energyDeposit / eV << " eV"
-           << ", Time: " << time / ns << " ns"
-           << ", Momentum: " << momentum << G4endl;
+    G4cout << "ID: " << trackID
+           << ", ID: " << parentID
+           << ", Proc: " << processType
+           << ", Ptcl: " << particleType
+           << ", E0: " << particleEnergy0 / keV << " keV"
+           << ", E1: " << particleEnergy1 / keV << " keV"
+           << ", dE: " << energyDeposit / keV << " keV"
+           << ", pos: " << position / cm << " cm"
+           << ", t: " << time / ns << " ns"
+           << G4endl;
+    //       << ", p: " << momentum << G4endl;
 }
 
 }
