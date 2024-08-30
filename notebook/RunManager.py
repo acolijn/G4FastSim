@@ -6,7 +6,7 @@ import shutil
 class RunManager:
     def __init__(self, config_file="config.json"):
         """
-        Initializes a RunManager object.
+        Initializes a RunManager object!
 
         Args:
             config_file (str): The path to the configuration file. Default is "config.json".
