@@ -47,6 +47,22 @@
             "randomSeed": 875058,
             "settingsFile": "settings.json",
             "status": "active"
+        },
+        {
+            "id": "run_04",
+            "particle": "gamma",
+            "energy": "1. MeV",
+            "fastSimulation": "false",
+            "maxScatters": -999,
+            "maxEnergy": "-1.0 MeV",
+            "sourceVolume": "",
+            "outputDir": "/data/xenon/acolijn/G4FastSim/20240904_111658",
+            "outputFile": "std",
+            "numEvents": 10000000,
+            "numJobs": 10,
+            "randomSeed": 333104,
+            "settingsFile": "settings.json",
+            "status": "active"
         }
     ]
 }
