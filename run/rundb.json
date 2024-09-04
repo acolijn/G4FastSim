@@ -1,0 +1,52 @@
+{
+    "runs": [
+        {
+            "id": "run_01",
+            "particle": "gamma",
+            "energy": "1. MeV",
+            "fastSimulation": "false",
+            "maxScatters": -999,
+            "maxEnergy": "-1.0 MeV",
+            "sourceVolume": "",
+            "outputDir": "/data/xenon/acolijn/G4FastSim/20240904_110048",
+            "outputFile": "std",
+            "numEvents": 10000,
+            "numJobs": 1,
+            "randomSeed": 839146,
+            "settingsFile": "settings.json",
+            "status": "active"
+        },
+        {
+            "id": "run_02",
+            "particle": "geantino",
+            "energy": "1. MeV",
+            "fastSimulation": "true",
+            "maxScatters": 1,
+            "maxEnergy": "1.2 MeV",
+            "sourceVolume": "",
+            "outputDir": "/data/xenon/acolijn/G4FastSim/20240904_110129",
+            "outputFile": "fast",
+            "numEvents": 10000,
+            "numJobs": 1,
+            "randomSeed": 230842,
+            "settingsFile": "settings.json",
+            "status": "active"
+        },
+        {
+            "id": "run_03",
+            "particle": "geantino",
+            "energy": "1. MeV",
+            "fastSimulation": "true",
+            "maxScatters": 1,
+            "maxEnergy": "1.2 MeV",
+            "sourceVolume": "",
+            "outputDir": "/data/xenon/acolijn/G4FastSim/20240904_110319",
+            "outputFile": "fast",
+            "numEvents": 10000,
+            "numJobs": 1,
+            "randomSeed": 875058,
+            "settingsFile": "settings.json",
+            "status": "active"
+        }
+    ]
+}

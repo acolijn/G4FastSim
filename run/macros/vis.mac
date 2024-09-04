@@ -17,7 +17,7 @@
 /run/initialize
 
 # define the particle gun settings
-/gps/particle geantino
+/gps/particle gamma
 /gps/energy 1. MeV
 /gps/pos/type Volume
 /gps/pos/shape Cylinder
@@ -30,7 +30,7 @@
 /gps/ang/type iso
 
 # fast simulation?
-/run/setFastSimulation true
+/run/setFastSimulation false
 # maximum number of scatters inside fiducial
 /run/setNumberOfScatters 1
 # maximum energy deposit

@@ -1,0 +1,31 @@
+{
+    "verbose": 0,
+    "geometry_settings": {
+        "outerCryostatRadius": "150 cm",
+        "outerCryostatHeight": "300 cm",
+        "outerCryostatWallThickness": "10 mm",
+        "innerCryostatRadius": "120 cm",
+        "innerCryostatHeight": "240 cm",
+        "innerCryostatWallThickness": "6 mm",
+        "fiducialRadius": "115.0 cm",
+        "fiducialHeight": "230.0 cm"
+    },
+    "gpsSettings": {
+        "particle": "geantino",
+        "energy": "1. MeV",
+        "posType": "Volume",
+        "posShape": "Cylinder",
+        "posCentre": "0. 0. 0. cm",
+        "posRadius": "1.6 m",
+        "posHalfz": "1.3 m",
+        "posConfine": "InnerCryostat",
+        "angType": "iso"
+    },
+    "run_settings":{	
+        "outputFileName": "fast",
+        "fastSimulation": "true",
+        "numberOfScatters": 1,
+        "maxEnergy": "0.2 MeV",
+        "printProgress": 10000
+    }
+}
