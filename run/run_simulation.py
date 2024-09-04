@@ -219,6 +219,7 @@ queue
 
     # Create job script
     script_content = f"""#!/bin/bash
+source /user/z37/.bashrc
 conda activate g4
 cd {path_manager.jobs_dir}
 /user/z37/g4/G4FastSim/build/G4FastSim {mac_file}

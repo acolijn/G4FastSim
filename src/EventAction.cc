@@ -231,7 +231,7 @@ void EventAction::AnalyzeHits(const G4Event* event) {
 
   // cluster hits based on spatial and time thresholds
   std::vector<Cluster> fClusters;
-  G4double spatialThreshold = 10 * cm;
+  G4double spatialThreshold = 0.5 * cm;
   G4double timeThreshold = 2.0 * ns;
   ClusterHits(allHits, spatialThreshold, timeThreshold, fClusters); 
 }
@@ -378,7 +378,7 @@ void EventAction::ClusterHits(std::vector<Hit*>& hits, G4double spatialThreshold
     }
 
     // these are the weird events that I do not understand.......
-    if ((fEdep < 800.0) && (fEdep > 0.0) && (fNphot == 1 ) && (fEventType == DIRECT_GAMMA) && (fNcomp == 0)) {
+    if ((1==0) && (fEdep < 800.0) && (fEdep > 0.0) && (fNphot == 1 ) && (fEventType == DIRECT_GAMMA) && (fNcomp == 0)) {
       G4cout << G4endl;
       G4cout << "EventAction::ClusterHits: fEdep = " << fEdep << G4endl;
       G4cout << "EventAction::ClusterHits: fNphot = " << fNphot << G4endl;

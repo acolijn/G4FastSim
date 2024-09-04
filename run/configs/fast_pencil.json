@@ -7,8 +7,8 @@
         "innerCryostatRadius": "120 cm",
         "innerCryostatHeight": "240 cm",
         "innerCryostatWallThickness": "6 mm",
-        "fiducialRadius": "119.4 cm",
-        "fiducialHeight": "238.8 cm"
+        "fiducialRadius": "110 cm",
+        "fiducialHeight": "220 cm"
     },
     "gpsSettings": {
         "particle": "geantino",
