@@ -264,6 +264,21 @@ G4double EventAction::CalculateTimeDifference(G4double time1, G4double time2) {
  */
 void EventAction::ClusterHits(std::vector<Hit*>& hits, G4double spatialThreshold, G4double timeThreshold, std::vector<Cluster>& clusters) {
 
+    if (hits.empty()) return;  // No hits, nothing to do.
+
+    // Find the earliest hit time to normalize times relative to the start of the event.
+    G4double startTime = hits[0]->time;
+    for (const auto& hit : hits) {
+        if (hit->time < startTime) {
+            startTime = hit->time;
+        }
+    }
+
+    // Normalize hit times to the start of the event.
+    for (auto& hit : hits) {
+        hit->time -= startTime;
+    }
+
     //G4cout<<G4endl;
     //G4cout<<"ClusterHits: hits.size() = "<<hits.size()<<G4endl;
     // 
@@ -314,6 +329,28 @@ void EventAction::ClusterHits(std::vector<Hit*>& hits, G4double spatialThreshold
         // If the hit was not added to any existing cluster, create a new cluster
         if (!addedToCluster) {
             clusters.push_back(Cluster{hit->position, hit->energyDeposit, hit->time, {hit}});
+        }
+    }
+
+    // Merge close clusters
+
+    for (size_t i = 0; i < clusters.size(); ++i) {
+        for (size_t j = i + 1; j < clusters.size(); ) {
+            if (CalculateDistance(clusters[i].position, clusters[j].position) < spatialThreshold &&
+                CalculateTimeDifference(clusters[i].time, clusters[j].time) < timeThreshold) {
+
+                // Merge cluster j into cluster i
+                G4int totalHits = clusters[i].hits.size() + clusters[j].hits.size();
+                clusters[i].position = (clusters[i].position * clusters[i].hits.size() + clusters[j].position * clusters[j].hits.size()) / totalHits;
+                clusters[i].energyDeposit += clusters[j].energyDeposit;
+                clusters[i].time = (clusters[i].time * clusters[i].hits.size() + clusters[j].time * clusters[j].hits.size()) / totalHits;
+                clusters[i].hits.insert(clusters[i].hits.end(), clusters[j].hits.begin(), clusters[j].hits.end());
+
+                // Remove cluster j
+                clusters.erase(clusters.begin() + j);
+            } else {
+                ++j; // Only increment if no merge
+            }
         }
     }
 

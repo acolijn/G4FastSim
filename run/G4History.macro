@@ -1,0 +1,25 @@
+/run/verbose 0
+/tracking/verbose 0
+/detector/setOuterCryostatRadius 150 cm
+/detector/setOuterCryostatHeight 300 cm
+/detector/setOuterCryostatWallThickness 10 mm
+/detector/setInnerCryostatRadius 120 cm
+/detector/setInnerCryostatHeight 240 cm
+/detector/setInnerCryostatWallThickness 6 mm
+/detector/setFiducialRadius 119.4 cm
+/detector/setFiducialHeight 238.8 cm
+/run/initialize
+/gps/particle geantino
+/gps/energy 1. MeV
+/gps/pos/type Point
+/gps/pos/centre 119.45 0. 0. cm
+/gps/direction -1. 0. 0.
+/run/setOutputFileName /data/xenon/acolijn/G4FastSim/20240904_110319/fast_0
+/run/setFastSimulation true
+/run/setNumberOfScatters 1
+/run/setMaxEnergy 1.2 MeV
+/run/printProgress 10000
+/random/setSeeds 875058 875059
+/run/beamOn 10000
+/analysis/h1/getVector
+/analysis/h2/getVector
