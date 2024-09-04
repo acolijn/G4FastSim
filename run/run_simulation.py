@@ -170,7 +170,6 @@ def generate_mac_file(settings, path_manager, beam_on, random_seed1, job_id):
     # Combine all the sections into the final macro content
     mac_content = "\n".join([
         f"/control/verbose {settings['verbose']}",
-        f"/control/saveHistory",
         f"/run/verbose {settings['verbose']}",
         f"/tracking/verbose {settings['verbose']}",
         "# define the detector geometry",

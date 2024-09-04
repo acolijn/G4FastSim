@@ -1,10 +1,16 @@
 # G4FastSim
 Variance reduction for gamma ray MC in Geant4
 
-## Installation:
+## Compilation:
 
 mkdir build
 
 cd build/
 
-cmake -DCMAKE_PREFIX_DIR=[Geant4_installation_dir] ../
+cmake -DCMAKE_PREFIX_PATH=<Geant4_installation_dir> ../
+
+## Running:
+
+cd run
+
+python run_simulation.py <arguments>
