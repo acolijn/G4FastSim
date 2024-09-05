@@ -1,7 +1,7 @@
 API Reference
 =============
 
-.. automodule:: your_module_name
+.. automodule:: RunManager
    :members:
    :undoc-members:
    :show-inheritance:

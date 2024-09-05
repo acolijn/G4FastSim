@@ -1,3 +1,10 @@
+import os
+import sys
+sys.path.insert(0, os.path.abspath('../../analysis'))  # Point this to your code directory if needed
+sys.path.insert(0, os.path.abspath('../'))       # Points to the docs directory
+sys.path.insert(0, os.path.abspath('.'))  # Points to the source directory where your .rst files are
+
+
 # Configuration file for the Sphinx documentation builder.
 #
 # For the full list of built-in configuration values, see the documentation:
