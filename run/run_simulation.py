@@ -72,7 +72,7 @@ def save_settings(settings, json_file):
 
 def generate_gps_settings(gps_settings):
     """
-    Generate GPS commands based on the given gpsSettings.
+    Generate GPS commands based on the given gps_settings.
     """
     commands = [
         f"/gps/particle {gps_settings['particle']}",
@@ -162,7 +162,7 @@ def generate_mac_file(settings, path_manager, beam_on, random_seed1, job_id):
         str: The path to the generated macro file.
     """
     # Generate different sections of the macro file
-    gps_commands = generate_gps_settings(settings["gpsSettings"])
+    gps_commands = generate_gps_settings(settings["gps_settings"])
     geometry_commands = generate_geometry_settings(settings["geometry_settings"])
     run_commands = generate_run_settings(settings["run_settings"], path_manager, job_id)
     run_section = generate_run_control(beam_on, random_seed1, random_seed1 + 1)
@@ -330,7 +330,7 @@ def update_master_rundb(rundb, settings, path_manager, args):
         None
 
     """
-    gps_settings = settings["gpsSettings"]
+    gps_settings = settings["gps_settings"]
     run_settings = settings["run_settings"]
     new_run = {
         "id": f"run_{len(rundb['runs']) + 1:02}",
