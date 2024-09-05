@@ -1,3 +1,6 @@
 pandas
 uproot
+matplotlib
+numpy
+awkward
 -e .
