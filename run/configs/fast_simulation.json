@@ -10,7 +10,7 @@
         "fiducialRadius": "115.0 cm",
         "fiducialHeight": "230.0 cm"
     },
-    "gpsSettings": {
+    "gps_settings": {
         "particle": "geantino",
         "energy": "1. MeV",
         "posType": "Volume",
