@@ -5,7 +5,7 @@ API Reference
 RunManager
 ----------
 
-.. automodule:: RunManager
+.. automodule:: RunManager.RunManager
    :members:
    :undoc-members:
    :show-inheritance:
@@ -13,7 +13,7 @@ RunManager
 Geant4Analyzer
 --------------
 
-.. automodule:: Geant4Analyzer
+.. automodule:: Geant4Analyzer.Geant4Analyzer
    :members:
    :undoc-members:
    :show-inheritance:
