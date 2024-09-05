@@ -13,7 +13,11 @@ author = 'Auke Colijn'
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
-extensions = []
+extensions = [
+    'sphinx.ext.autodoc',   # Auto-generates documentation from docstrings
+    'sphinx.ext.napoleon',  # Supports Google-style and NumPy-style docstrings
+    'sphinx.ext.viewcode',  # Links to the source code in the documentation
+]
 
 templates_path = ['_templates']
 exclude_patterns = []
