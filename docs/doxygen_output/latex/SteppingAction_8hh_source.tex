@@ -2,86 +2,53 @@
 \hypertarget{SteppingAction_8hh_source}{}\label{SteppingAction_8hh_source}\index{include/SteppingAction.hh@{include/SteppingAction.hh}}
 \mbox{\hyperlink{SteppingAction_8hh}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00001\ \textcolor{comment}{//}}
-\DoxyCodeLine{00002\ \textcolor{comment}{//\ ********************************************************************}}
-\DoxyCodeLine{00003\ \textcolor{comment}{//\ *\ License\ and\ Disclaimer\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *}}
-\DoxyCodeLine{00004\ \textcolor{comment}{//\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *}}
-\DoxyCodeLine{00005\ \textcolor{comment}{//\ *\ The\ \ Geant4\ software\ \ is\ \ copyright\ of\ the\ Copyright\ Holders\ \ of\ *}}
-\DoxyCodeLine{00006\ \textcolor{comment}{//\ *\ the\ Geant4\ Collaboration.\ \ It\ is\ provided\ \ under\ \ the\ terms\ \ and\ *}}
-\DoxyCodeLine{00007\ \textcolor{comment}{//\ *\ conditions\ of\ the\ Geant4\ Software\ License,\ \ included\ in\ the\ file\ *}}
-\DoxyCodeLine{00008\ \textcolor{comment}{//\ *\ LICENSE\ and\ available\ at\ \ http://cern.ch/geant4/license\ .\ \ These\ *}}
-\DoxyCodeLine{00009\ \textcolor{comment}{//\ *\ include\ a\ list\ of\ copyright\ holders.\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *}}
-\DoxyCodeLine{00010\ \textcolor{comment}{//\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *}}
-\DoxyCodeLine{00011\ \textcolor{comment}{//\ *\ Neither\ the\ authors\ of\ this\ software\ system,\ nor\ their\ employing\ *}}
-\DoxyCodeLine{00012\ \textcolor{comment}{//\ *\ institutes,nor\ the\ agencies\ providing\ financial\ support\ for\ this\ *}}
-\DoxyCodeLine{00013\ \textcolor{comment}{//\ *\ work\ \ make\ \ any\ representation\ or\ \ warranty,\ express\ or\ implied,\ *}}
-\DoxyCodeLine{00014\ \textcolor{comment}{//\ *\ regarding\ \ this\ \ software\ system\ or\ assume\ any\ liability\ for\ its\ *}}
-\DoxyCodeLine{00015\ \textcolor{comment}{//\ *\ use.\ \ Please\ see\ the\ license\ in\ the\ file\ \ LICENSE\ \ and\ URL\ above\ *}}
-\DoxyCodeLine{00016\ \textcolor{comment}{//\ *\ for\ the\ full\ disclaimer\ and\ the\ limitation\ of\ liability.\ \ \ \ \ \ \ \ \ *}}
-\DoxyCodeLine{00017\ \textcolor{comment}{//\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *}}
-\DoxyCodeLine{00018\ \textcolor{comment}{//\ *\ This\ \ code\ \ implementation\ is\ the\ result\ of\ \ the\ \ scientific\ and\ *}}
-\DoxyCodeLine{00019\ \textcolor{comment}{//\ *\ technical\ work\ of\ the\ GEANT4\ collaboration.\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *}}
-\DoxyCodeLine{00020\ \textcolor{comment}{//\ *\ By\ using,\ \ copying,\ \ modifying\ or\ \ distributing\ the\ software\ (or\ *}}
-\DoxyCodeLine{00021\ \textcolor{comment}{//\ *\ any\ work\ based\ \ on\ the\ software)\ \ you\ \ agree\ \ to\ acknowledge\ its\ *}}
-\DoxyCodeLine{00022\ \textcolor{comment}{//\ *\ use\ \ in\ \ resulting\ \ scientific\ \ publications,\ \ and\ indicate\ your\ *}}
-\DoxyCodeLine{00023\ \textcolor{comment}{//\ *\ acceptance\ of\ all\ terms\ of\ the\ Geant4\ Software\ license.\ \ \ \ \ \ \ \ \ \ *}}
-\DoxyCodeLine{00024\ \textcolor{comment}{//\ ********************************************************************}}
-\DoxyCodeLine{00025\ \textcolor{comment}{//}}
-\DoxyCodeLine{00026\ \textcolor{comment}{//}}
-\DoxyCodeLine{00029\ }
-\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#ifndef\ B1SteppingAction\_h}}
-\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#define\ B1SteppingAction\_h\ 1}}
-\DoxyCodeLine{00032\ }
-\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#include\ "{}G4UserSteppingAction.hh"{}}}
-\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#include\ "{}G4ParticleTable.hh"{}}}
-\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#include\ "{}globals.hh"{}}}
-\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{GammaRayHelper_8hh}{GammaRayHelper.hh}}"{}}}
-\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Hit_8hh}{Hit.hh}}"{}}}
-\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{SensitiveDetector_8hh}{SensitiveDetector.hh}}"{}}}
-\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#include\ <map>}}
-\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#include\ <vector>}}
-\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#include\ <utility>}}
-\DoxyCodeLine{00042\ }
-\DoxyCodeLine{00043\ \textcolor{keyword}{class\ }G4LogicalVolume;}
-\DoxyCodeLine{00044\ }
-\DoxyCodeLine{00047\ }
-\DoxyCodeLine{00048\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceG4FastSim}{G4FastSim}}}
-\DoxyCodeLine{00049\ \{}
-\DoxyCodeLine{00050\ }
-\DoxyCodeLine{00051\ \textcolor{keyword}{class\ }EventAction;}
-\DoxyCodeLine{00052\ }
-\DoxyCodeLine{00053\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classG4FastSim_1_1SteppingAction}{SteppingAction}}\ :\ \textcolor{keyword}{public}\ G4UserSteppingAction}
-\DoxyCodeLine{00054\ \{}
-\DoxyCodeLine{00055\ \ \ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00056\ \ \ \ \ \mbox{\hyperlink{classG4FastSim_1_1SteppingAction_ad9d07e48fe9696277eb14f9e6218ea66}{SteppingAction}}(\mbox{\hyperlink{classG4FastSim_1_1EventAction}{EventAction}}*\ eventAction,\ \mbox{\hyperlink{classGammaRayHelper}{GammaRayHelper}}*\ helper);}
-\DoxyCodeLine{00057\ \ \ \ \ \mbox{\hyperlink{classG4FastSim_1_1SteppingAction_a14f0205c8adfb5d2b93bba18124c7e0b}{\string~SteppingAction}}();\textcolor{comment}{//\ override\ =\ default;}}
-\DoxyCodeLine{00058\ }
-\DoxyCodeLine{00059\ \ \ \ \ \textcolor{comment}{//\ method\ from\ the\ base\ class}}
-\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classG4FastSim_1_1SteppingAction_aaeddad78c5a0294d2e4bea7d10523ca2}{UserSteppingAction}}(\textcolor{keyword}{const}\ G4Step*)\ \textcolor{keyword}{override};}
-\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classG4FastSim_1_1SteppingAction_acedce0206842916adf0fce67e0d348a4}{SetVerbosity}}(G4int\ level)\ \{\ verbosityLevel\ =\ level;\ \}\ \ }
-\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classG4FastSim_1_1SteppingAction_af74195411272f886407f01a18c91e9f3}{Print}}(\textcolor{keyword}{const}\ G4Step*\ step);}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ \_SteppingAction\_h}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ \_SteppingAction\_h\ 1}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}G4UserSteppingAction.hh"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}G4ParticleTable.hh"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}globals.hh"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{GammaRayHelper_8hh}{GammaRayHelper.hh}}"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Hit_8hh}{Hit.hh}}"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{SensitiveDetector_8hh}{SensitiveDetector.hh}}"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <utility>}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }G4LogicalVolume;}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00036\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classSteppingAction}{SteppingAction}}\ :\ \textcolor{keyword}{public}\ G4UserSteppingAction}
+\DoxyCodeLine{00037\ \{}
+\DoxyCodeLine{00038\ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00039\ \ \ \ \ \mbox{\hyperlink{classSteppingAction_a374afa1d769bcc5ba9d771cb83332a24}{SteppingAction}}(\mbox{\hyperlink{classEventAction}{EventAction}}*\ eventAction,\ \mbox{\hyperlink{classGammaRayHelper}{GammaRayHelper}}*\ helper);}
+\DoxyCodeLine{00040\ \ \ \ \ \mbox{\hyperlink{classSteppingAction_ace65491c5f93bdf39d14914767f896bf}{\string~SteppingAction}}();\textcolor{comment}{//\ override\ =\ default;}}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{comment}{//\ method\ from\ the\ base\ class}}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSteppingAction_a4c685bf7180779d18c143c6ad1cce3fb}{UserSteppingAction}}(\textcolor{keyword}{const}\ G4Step*)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSteppingAction_af086c296da316989ad94c24227a88c5f}{SetVerbosity}}(G4int\ level)\ \{\ verbosityLevel\ =\ level;\ \}\ \ }
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSteppingAction_a0c02224c420b2e569e0fd73a15f27857}{Print}}(\textcolor{keyword}{const}\ G4Step*\ step);}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{void}\ AddHitToCollection(Hit\ *newhit,\ G4String\ collectionName);}
+\DoxyCodeLine{00049\ \ \ \ \ G4double\ DoScatter(\textcolor{keyword}{const}\ G4Step*\ step,\ G4ThreeVector\ x0);}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{void}\ AnalyzeStandardStep(\textcolor{keyword}{const}\ G4Step*\ step);}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ \mbox{\hyperlink{classEventAction}{EventAction}}*\ fEventAction;}
+\DoxyCodeLine{00053\ \ \ \ \ G4LogicalVolume*\ fScoringVolume;}
+\DoxyCodeLine{00054\ \ \ \ \ G4ParticleTable*\ particleTable;}
+\DoxyCodeLine{00055\ \ \ \ \ \mbox{\hyperlink{classGammaRayHelper}{GammaRayHelper}}*\ fGammaRayHelper;}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \ \ \ \ std::map<G4String,\ HitsCollection*>\ fHitsCollections;}
+\DoxyCodeLine{00058\ \ \ \ \ std::map<G4String,\ G4int>\ fHitsCollectionIDs;}
+\DoxyCodeLine{00059\ \ \ \ \ G4bool\ fHitsCollectionInitialized;}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \ \ \ \ G4int\ verbosityLevel=0;}
+\DoxyCodeLine{00062\ \};}
 \DoxyCodeLine{00063\ }
-\DoxyCodeLine{00064\ \ \ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{void}\ AddHitToCollection(\mbox{\hyperlink{classG4FastSim_1_1Hit}{Hit}}\ *newhit,\ G4String\ collectionName);}
-\DoxyCodeLine{00066\ \ \ \ \ G4double\ DoScatter(\textcolor{keyword}{const}\ G4Step*\ step,\ G4ThreeVector\ x0);}
-\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordtype}{void}\ AnalyzeStandardStep(\textcolor{keyword}{const}\ G4Step*\ step);}
-\DoxyCodeLine{00068\ }
-\DoxyCodeLine{00069\ \ \ \ \ \mbox{\hyperlink{classG4FastSim_1_1EventAction}{EventAction}}*\ fEventAction;}
-\DoxyCodeLine{00070\ \ \ \ \ G4LogicalVolume*\ fScoringVolume;}
-\DoxyCodeLine{00071\ \ \ \ \ G4ParticleTable*\ particleTable;}
-\DoxyCodeLine{00072\ \ \ \ \ \mbox{\hyperlink{classGammaRayHelper}{GammaRayHelper}}*\ fGammaRayHelper;}
-\DoxyCodeLine{00073\ }
-\DoxyCodeLine{00074\ \ \ \ \ std::map<G4String,\ HitsCollection*>\ fHitsCollections;}
-\DoxyCodeLine{00075\ \ \ \ \ std::map<G4String,\ G4int>\ fHitsCollectionIDs;}
-\DoxyCodeLine{00076\ \ \ \ \ G4bool\ fHitsCollectionInitialized;}
-\DoxyCodeLine{00077\ }
-\DoxyCodeLine{00078\ \ \ \ \ G4int\ verbosityLevel=0;}
-\DoxyCodeLine{00079\ \};}
-\DoxyCodeLine{00080\ }
-\DoxyCodeLine{00081\ \}}
-\DoxyCodeLine{00082\ }
-\DoxyCodeLine{00083\ \textcolor{comment}{//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......}}
-\DoxyCodeLine{00084\ }
-\DoxyCodeLine{00085\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00064\ \}}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \textcolor{comment}{//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......}}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

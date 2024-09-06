@@ -1,0 +1,276 @@
+\doxysection{Event\+Action Class Reference}
+\hypertarget{classEventAction}{}\label{classEventAction}\index{EventAction@{EventAction}}
+
+
+Class responsible for defining actions to be taken at the beginning and end of each event.  
+
+
+
+
+{\ttfamily \#include $<$Event\+Action.\+hh$>$}
+
+Inheritance diagram for Event\+Action\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classEventAction}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classEventAction_a9a8515b9069293b94b72a6863c48e6ba}{Event\+Action}} ()
+\item 
+\mbox{\hyperlink{classEventAction_abe8cfbded2bc9fbed9be246d0cac7613}{\texorpdfstring{$\sim$}{\string~}\+Event\+Action}} () override=default
+\item 
+void \mbox{\hyperlink{classEventAction_a30ca6a1995cd73bcd15bb9818c49fda0}{Begin\+Of\+Event\+Action}} (const G4\+Event \texorpdfstring{$\ast$}{*}event)
+\item 
+void \mbox{\hyperlink{classEventAction_ac644b336bd2c1ab896db5c2089a06364}{End\+Of\+Event\+Action}} (const G4\+Event \texorpdfstring{$\ast$}{*}event)
+\item 
+std\+::vector$<$ G4double $>$ \& \mbox{\hyperlink{classEventAction_af8857fbd57edd5fc0d37c5e8b9e525b7}{GetX}} ()
+\item 
+std\+::vector$<$ G4double $>$ \& \mbox{\hyperlink{classEventAction_a1a0126ddfd9f40c81e21a26a066a38c1}{GetY}} ()
+\item 
+std\+::vector$<$ G4double $>$ \& \mbox{\hyperlink{classEventAction_a5278ccd32f797baaf89d00bbb90df337}{GetZ}} ()
+\item 
+std\+::vector$<$ G4double $>$ \& \mbox{\hyperlink{classEventAction_a3d02fe96a5b633cc661a5c2b32ddc010}{GetE}} ()
+\item 
+std\+::vector$<$ G4double $>$ \& \mbox{\hyperlink{classEventAction_a4a69ea0a164a3b11ab5d9b5327561315}{GetW}} ()
+\item 
+void \mbox{\hyperlink{classEventAction_a7d8e2a557734526f2a4f85b48d172fd7}{Add\+Edep}} (G4double edep)
+\item 
+void \mbox{\hyperlink{classEventAction_acefd80fbd497f9ff3d16f8bae126a789}{Add\+Weight}} (G4double weight)
+\item 
+void \mbox{\hyperlink{classEventAction_ac561e43e535456a5d2bb2958e6c7c0af}{Analyze\+Hits}} (const G4\+Event \texorpdfstring{$\ast$}{*}event)
+\item 
+void \mbox{\hyperlink{classEventAction_af34ccf5d78e8a4139f865954c309f0f6}{Reset\+Variables}} ()
+\item 
+G4bool \mbox{\hyperlink{classEventAction_aadb449a0f7a833b44e0136055950c37c}{Is\+Fast\+Simulation}} ()
+\item 
+G4int \mbox{\hyperlink{classEventAction_a162c883989911ba148346423d4a9bdd0}{Get\+Number\+Of\+Scatters}} ()
+\item 
+G4double \mbox{\hyperlink{classEventAction_a86fb3f239095db11bdd995069d2c5193}{Get\+Max\+Energy}} ()
+\item 
+G4int \mbox{\hyperlink{classEventAction_a4c1398a7a16eeb76a5a41b5e5b69c087}{Get\+Number\+Of\+Scatters\+Max}} ()
+\item 
+G4double \mbox{\hyperlink{classEventAction_ade7a5b71891eaabe7e89a9016cb94006}{Get\+Available\+Energy}} ()
+\item 
+G4double \mbox{\hyperlink{classEventAction_ab6b4690bbabda1ed84dea08fa4bd3cfd}{Get\+Weight}} ()
+\item 
+G4bool \mbox{\hyperlink{classEventAction_a6099c95c87b8600459a40682b038dfe3}{Has\+Been\+In\+Xenon}} ()
+\item 
+G4int \mbox{\hyperlink{classEventAction_aa466f4334ca1467fe27498239dd271c7}{Get\+Event\+Type}} ()
+\item 
+void \mbox{\hyperlink{classEventAction_af8c03c77f2ba2750a9b83aff3c878f04}{Set\+Number\+Of\+Scatters\+Max}} (G4int n)
+\item 
+void \mbox{\hyperlink{classEventAction_acccde4e4cdd865967221a6099b6dd3a2}{Set\+Fast\+Simulation}} (G4bool fast)
+\item 
+void \mbox{\hyperlink{classEventAction_a820c16a2f7cc5d0c0880f73595cddea1}{Set\+Number\+Of\+Scatters}} (G4int n)
+\item 
+void \mbox{\hyperlink{classEventAction_afdfda3e8d09c30a3277ce9bdeacbee0b}{Set\+Max\+Energy}} (G4double e)
+\item 
+void \mbox{\hyperlink{classEventAction_a19fbe4d39b2ff364d6160ec0bcb82fb4}{Set\+Available\+Energy}} (G4double e)
+\item 
+void \mbox{\hyperlink{classEventAction_ab28b59f1baa9fc2362717d03e650c73d}{Reduce\+Available\+Energy}} (G4double e)
+\item 
+void \mbox{\hyperlink{classEventAction_a735b3d728f508a8106995b4dab6ea08d}{Set\+Has\+Been\+In\+Xenon}} (G4bool b)
+\item 
+void \mbox{\hyperlink{classEventAction_a405cc1d9e62dd3ba5209f1c8933536db}{Set\+Event\+Type}} (G4int type)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class responsible for defining actions to be taken at the beginning and end of each event. 
+
+This class inherits from G4\+User\+Event\+Action and is used to define the actions to be taken at the beginning and end of each event. It provides methods to analyze the hits in the event, reset the variables for each event, and access the variables stored in the ntuple tree. It also provides methods to set and get the number of scatters, maximum energy, available energy, weight, and event type. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classEventAction_a9a8515b9069293b94b72a6863c48e6ba}\label{classEventAction_a9a8515b9069293b94b72a6863c48e6ba} 
+\index{EventAction@{EventAction}!EventAction@{EventAction}}
+\index{EventAction@{EventAction}!EventAction@{EventAction}}
+\doxysubsubsection{\texorpdfstring{EventAction()}{EventAction()}}
+{\footnotesize\ttfamily Event\+Action\+::\+Event\+Action (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{classEventAction_abe8cfbded2bc9fbed9be246d0cac7613}\label{classEventAction_abe8cfbded2bc9fbed9be246d0cac7613} 
+\index{EventAction@{EventAction}!````~EventAction@{\texorpdfstring{$\sim$}{\string~}EventAction}}
+\index{````~EventAction@{\texorpdfstring{$\sim$}{\string~}EventAction}!EventAction@{EventAction}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}EventAction()}{\string~EventAction()}}
+{\footnotesize\ttfamily Event\+Action\+::\texorpdfstring{$\sim$}{\string~}\+Event\+Action (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [default]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classEventAction_a7d8e2a557734526f2a4f85b48d172fd7}\label{classEventAction_a7d8e2a557734526f2a4f85b48d172fd7} 
+\index{EventAction@{EventAction}!AddEdep@{AddEdep}}
+\index{AddEdep@{AddEdep}!EventAction@{EventAction}}
+\doxysubsubsection{\texorpdfstring{AddEdep()}{AddEdep()}}
+{\footnotesize\ttfamily void Event\+Action\+::\+Add\+Edep (\begin{DoxyParamCaption}\item[{G4double}]{edep }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classEventAction_acefd80fbd497f9ff3d16f8bae126a789}\label{classEventAction_acefd80fbd497f9ff3d16f8bae126a789} 
+\index{EventAction@{EventAction}!AddWeight@{AddWeight}}
+\index{AddWeight@{AddWeight}!EventAction@{EventAction}}
+\doxysubsubsection{\texorpdfstring{AddWeight()}{AddWeight()}}
+{\footnotesize\ttfamily void Event\+Action\+::\+Add\+Weight (\begin{DoxyParamCaption}\item[{G4double}]{weight }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classEventAction_ac561e43e535456a5d2bb2958e6c7c0af}\label{classEventAction_ac561e43e535456a5d2bb2958e6c7c0af} 
+\index{EventAction@{EventAction}!AnalyzeHits@{AnalyzeHits}}
+\index{AnalyzeHits@{AnalyzeHits}!EventAction@{EventAction}}
+\doxysubsubsection{\texorpdfstring{AnalyzeHits()}{AnalyzeHits()}}
+{\footnotesize\ttfamily void Event\+Action\+::\+Analyze\+Hits (\begin{DoxyParamCaption}\item[{const G4\+Event \texorpdfstring{$\ast$}{*}}]{event }\end{DoxyParamCaption})}
+
+Analyzes the hits in the event.
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & The G4\+Event object representing the current event. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classEventAction_a30ca6a1995cd73bcd15bb9818c49fda0}\label{classEventAction_a30ca6a1995cd73bcd15bb9818c49fda0} 
+\index{EventAction@{EventAction}!BeginOfEventAction@{BeginOfEventAction}}
+\index{BeginOfEventAction@{BeginOfEventAction}!EventAction@{EventAction}}
+\doxysubsubsection{\texorpdfstring{BeginOfEventAction()}{BeginOfEventAction()}}
+{\footnotesize\ttfamily void Event\+Action\+::\+Begin\+Of\+Event\+Action (\begin{DoxyParamCaption}\item[{const G4\+Event \texorpdfstring{$\ast$}{*}}]{event }\end{DoxyParamCaption})}
+
+\Hypertarget{classEventAction_ac644b336bd2c1ab896db5c2089a06364}\label{classEventAction_ac644b336bd2c1ab896db5c2089a06364} 
+\index{EventAction@{EventAction}!EndOfEventAction@{EndOfEventAction}}
+\index{EndOfEventAction@{EndOfEventAction}!EventAction@{EventAction}}
+\doxysubsubsection{\texorpdfstring{EndOfEventAction()}{EndOfEventAction()}}
+{\footnotesize\ttfamily void Event\+Action\+::\+End\+Of\+Event\+Action (\begin{DoxyParamCaption}\item[{const G4\+Event \texorpdfstring{$\ast$}{*}}]{event }\end{DoxyParamCaption})}
+
+\Hypertarget{classEventAction_ade7a5b71891eaabe7e89a9016cb94006}\label{classEventAction_ade7a5b71891eaabe7e89a9016cb94006} 
+\index{EventAction@{EventAction}!GetAvailableEnergy@{GetAvailableEnergy}}
+\index{GetAvailableEnergy@{GetAvailableEnergy}!EventAction@{EventAction}}
+\doxysubsubsection{\texorpdfstring{GetAvailableEnergy()}{GetAvailableEnergy()}}
+{\footnotesize\ttfamily G4double Event\+Action\+::\+Get\+Available\+Energy (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classEventAction_a3d02fe96a5b633cc661a5c2b32ddc010}\label{classEventAction_a3d02fe96a5b633cc661a5c2b32ddc010} 
+\index{EventAction@{EventAction}!GetE@{GetE}}
+\index{GetE@{GetE}!EventAction@{EventAction}}
+\doxysubsubsection{\texorpdfstring{GetE()}{GetE()}}
+{\footnotesize\ttfamily std\+::vector$<$ G4double $>$ \& Event\+Action\+::\+GetE (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classEventAction_aa466f4334ca1467fe27498239dd271c7}\label{classEventAction_aa466f4334ca1467fe27498239dd271c7} 
+\index{EventAction@{EventAction}!GetEventType@{GetEventType}}
+\index{GetEventType@{GetEventType}!EventAction@{EventAction}}
+\doxysubsubsection{\texorpdfstring{GetEventType()}{GetEventType()}}
+{\footnotesize\ttfamily G4int Event\+Action\+::\+Get\+Event\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classEventAction_a86fb3f239095db11bdd995069d2c5193}\label{classEventAction_a86fb3f239095db11bdd995069d2c5193} 
+\index{EventAction@{EventAction}!GetMaxEnergy@{GetMaxEnergy}}
+\index{GetMaxEnergy@{GetMaxEnergy}!EventAction@{EventAction}}
+\doxysubsubsection{\texorpdfstring{GetMaxEnergy()}{GetMaxEnergy()}}
+{\footnotesize\ttfamily G4double Event\+Action\+::\+Get\+Max\+Energy (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classEventAction_a162c883989911ba148346423d4a9bdd0}\label{classEventAction_a162c883989911ba148346423d4a9bdd0} 
+\index{EventAction@{EventAction}!GetNumberOfScatters@{GetNumberOfScatters}}
+\index{GetNumberOfScatters@{GetNumberOfScatters}!EventAction@{EventAction}}
+\doxysubsubsection{\texorpdfstring{GetNumberOfScatters()}{GetNumberOfScatters()}}
+{\footnotesize\ttfamily G4int Event\+Action\+::\+Get\+Number\+Of\+Scatters (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classEventAction_a4c1398a7a16eeb76a5a41b5e5b69c087}\label{classEventAction_a4c1398a7a16eeb76a5a41b5e5b69c087} 
+\index{EventAction@{EventAction}!GetNumberOfScattersMax@{GetNumberOfScattersMax}}
+\index{GetNumberOfScattersMax@{GetNumberOfScattersMax}!EventAction@{EventAction}}
+\doxysubsubsection{\texorpdfstring{GetNumberOfScattersMax()}{GetNumberOfScattersMax()}}
+{\footnotesize\ttfamily G4int Event\+Action\+::\+Get\+Number\+Of\+Scatters\+Max (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classEventAction_a4a69ea0a164a3b11ab5d9b5327561315}\label{classEventAction_a4a69ea0a164a3b11ab5d9b5327561315} 
+\index{EventAction@{EventAction}!GetW@{GetW}}
+\index{GetW@{GetW}!EventAction@{EventAction}}
+\doxysubsubsection{\texorpdfstring{GetW()}{GetW()}}
+{\footnotesize\ttfamily std\+::vector$<$ G4double $>$ \& Event\+Action\+::\+GetW (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classEventAction_ab6b4690bbabda1ed84dea08fa4bd3cfd}\label{classEventAction_ab6b4690bbabda1ed84dea08fa4bd3cfd} 
+\index{EventAction@{EventAction}!GetWeight@{GetWeight}}
+\index{GetWeight@{GetWeight}!EventAction@{EventAction}}
+\doxysubsubsection{\texorpdfstring{GetWeight()}{GetWeight()}}
+{\footnotesize\ttfamily G4double Event\+Action\+::\+Get\+Weight (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classEventAction_af8857fbd57edd5fc0d37c5e8b9e525b7}\label{classEventAction_af8857fbd57edd5fc0d37c5e8b9e525b7} 
+\index{EventAction@{EventAction}!GetX@{GetX}}
+\index{GetX@{GetX}!EventAction@{EventAction}}
+\doxysubsubsection{\texorpdfstring{GetX()}{GetX()}}
+{\footnotesize\ttfamily std\+::vector$<$ G4double $>$ \& Event\+Action\+::\+GetX (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classEventAction_a1a0126ddfd9f40c81e21a26a066a38c1}\label{classEventAction_a1a0126ddfd9f40c81e21a26a066a38c1} 
+\index{EventAction@{EventAction}!GetY@{GetY}}
+\index{GetY@{GetY}!EventAction@{EventAction}}
+\doxysubsubsection{\texorpdfstring{GetY()}{GetY()}}
+{\footnotesize\ttfamily std\+::vector$<$ G4double $>$ \& Event\+Action\+::\+GetY (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classEventAction_a5278ccd32f797baaf89d00bbb90df337}\label{classEventAction_a5278ccd32f797baaf89d00bbb90df337} 
+\index{EventAction@{EventAction}!GetZ@{GetZ}}
+\index{GetZ@{GetZ}!EventAction@{EventAction}}
+\doxysubsubsection{\texorpdfstring{GetZ()}{GetZ()}}
+{\footnotesize\ttfamily std\+::vector$<$ G4double $>$ \& Event\+Action\+::\+GetZ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classEventAction_a6099c95c87b8600459a40682b038dfe3}\label{classEventAction_a6099c95c87b8600459a40682b038dfe3} 
+\index{EventAction@{EventAction}!HasBeenInXenon@{HasBeenInXenon}}
+\index{HasBeenInXenon@{HasBeenInXenon}!EventAction@{EventAction}}
+\doxysubsubsection{\texorpdfstring{HasBeenInXenon()}{HasBeenInXenon()}}
+{\footnotesize\ttfamily G4bool Event\+Action\+::\+Has\+Been\+In\+Xenon (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classEventAction_aadb449a0f7a833b44e0136055950c37c}\label{classEventAction_aadb449a0f7a833b44e0136055950c37c} 
+\index{EventAction@{EventAction}!IsFastSimulation@{IsFastSimulation}}
+\index{IsFastSimulation@{IsFastSimulation}!EventAction@{EventAction}}
+\doxysubsubsection{\texorpdfstring{IsFastSimulation()}{IsFastSimulation()}}
+{\footnotesize\ttfamily G4bool Event\+Action\+::\+Is\+Fast\+Simulation (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classEventAction_ab28b59f1baa9fc2362717d03e650c73d}\label{classEventAction_ab28b59f1baa9fc2362717d03e650c73d} 
+\index{EventAction@{EventAction}!ReduceAvailableEnergy@{ReduceAvailableEnergy}}
+\index{ReduceAvailableEnergy@{ReduceAvailableEnergy}!EventAction@{EventAction}}
+\doxysubsubsection{\texorpdfstring{ReduceAvailableEnergy()}{ReduceAvailableEnergy()}}
+{\footnotesize\ttfamily void Event\+Action\+::\+Reduce\+Available\+Energy (\begin{DoxyParamCaption}\item[{G4double}]{e }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classEventAction_af34ccf5d78e8a4139f865954c309f0f6}\label{classEventAction_af34ccf5d78e8a4139f865954c309f0f6} 
+\index{EventAction@{EventAction}!ResetVariables@{ResetVariables}}
+\index{ResetVariables@{ResetVariables}!EventAction@{EventAction}}
+\doxysubsubsection{\texorpdfstring{ResetVariables()}{ResetVariables()}}
+{\footnotesize\ttfamily void Event\+Action\+::\+Reset\+Variables (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{classEventAction_a19fbe4d39b2ff364d6160ec0bcb82fb4}\label{classEventAction_a19fbe4d39b2ff364d6160ec0bcb82fb4} 
+\index{EventAction@{EventAction}!SetAvailableEnergy@{SetAvailableEnergy}}
+\index{SetAvailableEnergy@{SetAvailableEnergy}!EventAction@{EventAction}}
+\doxysubsubsection{\texorpdfstring{SetAvailableEnergy()}{SetAvailableEnergy()}}
+{\footnotesize\ttfamily void Event\+Action\+::\+Set\+Available\+Energy (\begin{DoxyParamCaption}\item[{G4double}]{e }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classEventAction_a405cc1d9e62dd3ba5209f1c8933536db}\label{classEventAction_a405cc1d9e62dd3ba5209f1c8933536db} 
+\index{EventAction@{EventAction}!SetEventType@{SetEventType}}
+\index{SetEventType@{SetEventType}!EventAction@{EventAction}}
+\doxysubsubsection{\texorpdfstring{SetEventType()}{SetEventType()}}
+{\footnotesize\ttfamily void Event\+Action\+::\+Set\+Event\+Type (\begin{DoxyParamCaption}\item[{G4int}]{type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classEventAction_acccde4e4cdd865967221a6099b6dd3a2}\label{classEventAction_acccde4e4cdd865967221a6099b6dd3a2} 
+\index{EventAction@{EventAction}!SetFastSimulation@{SetFastSimulation}}
+\index{SetFastSimulation@{SetFastSimulation}!EventAction@{EventAction}}
+\doxysubsubsection{\texorpdfstring{SetFastSimulation()}{SetFastSimulation()}}
+{\footnotesize\ttfamily void Event\+Action\+::\+Set\+Fast\+Simulation (\begin{DoxyParamCaption}\item[{G4bool}]{fast }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classEventAction_a735b3d728f508a8106995b4dab6ea08d}\label{classEventAction_a735b3d728f508a8106995b4dab6ea08d} 
+\index{EventAction@{EventAction}!SetHasBeenInXenon@{SetHasBeenInXenon}}
+\index{SetHasBeenInXenon@{SetHasBeenInXenon}!EventAction@{EventAction}}
+\doxysubsubsection{\texorpdfstring{SetHasBeenInXenon()}{SetHasBeenInXenon()}}
+{\footnotesize\ttfamily void Event\+Action\+::\+Set\+Has\+Been\+In\+Xenon (\begin{DoxyParamCaption}\item[{G4bool}]{b }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classEventAction_afdfda3e8d09c30a3277ce9bdeacbee0b}\label{classEventAction_afdfda3e8d09c30a3277ce9bdeacbee0b} 
+\index{EventAction@{EventAction}!SetMaxEnergy@{SetMaxEnergy}}
+\index{SetMaxEnergy@{SetMaxEnergy}!EventAction@{EventAction}}
+\doxysubsubsection{\texorpdfstring{SetMaxEnergy()}{SetMaxEnergy()}}
+{\footnotesize\ttfamily void Event\+Action\+::\+Set\+Max\+Energy (\begin{DoxyParamCaption}\item[{G4double}]{e }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classEventAction_a820c16a2f7cc5d0c0880f73595cddea1}\label{classEventAction_a820c16a2f7cc5d0c0880f73595cddea1} 
+\index{EventAction@{EventAction}!SetNumberOfScatters@{SetNumberOfScatters}}
+\index{SetNumberOfScatters@{SetNumberOfScatters}!EventAction@{EventAction}}
+\doxysubsubsection{\texorpdfstring{SetNumberOfScatters()}{SetNumberOfScatters()}}
+{\footnotesize\ttfamily void Event\+Action\+::\+Set\+Number\+Of\+Scatters (\begin{DoxyParamCaption}\item[{G4int}]{n }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classEventAction_af8c03c77f2ba2750a9b83aff3c878f04}\label{classEventAction_af8c03c77f2ba2750a9b83aff3c878f04} 
+\index{EventAction@{EventAction}!SetNumberOfScattersMax@{SetNumberOfScattersMax}}
+\index{SetNumberOfScattersMax@{SetNumberOfScattersMax}!EventAction@{EventAction}}
+\doxysubsubsection{\texorpdfstring{SetNumberOfScattersMax()}{SetNumberOfScattersMax()}}
+{\footnotesize\ttfamily void Event\+Action\+::\+Set\+Number\+Of\+Scatters\+Max (\begin{DoxyParamCaption}\item[{G4int}]{n }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{EventAction_8hh}{Event\+Action.\+hh}}\item 
+src/\mbox{\hyperlink{EventAction_8cc}{Event\+Action.\+cc}}\end{DoxyCompactItemize}

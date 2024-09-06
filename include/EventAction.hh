@@ -49,6 +49,10 @@ class G4Event;
 class G4HCofThisEvent;
 class G4VHitsCollection;
 
+/**
+ * @namespace G4FastSim
+ * @brief A namespace for fast simulation classes in Geant4.
+/*/
 namespace G4FastSim
 {
 
@@ -58,6 +62,14 @@ enum EventType {
     SCATTERED_GAMMA = 1
 };
 
+/**
+ * @class EventAction
+ * @brief Class responsible for defining actions to be taken at the beginning and end of each event.
+ *
+ * This class inherits from G4UserEventAction and is used to define the actions to be taken at the beginning and end of each event.
+ * It provides methods to analyze the hits in the event, reset the variables for each event, and access the variables stored in the ntuple tree.
+ * It also provides methods to set and get the number of scatters, maximum energy, available energy, weight, and event type.
+ */
 class EventAction : public G4UserEventAction
 {
   public:

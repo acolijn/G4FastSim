@@ -6,7 +6,7 @@
     <includes refid="DetectorConstructionMessenger_8hh" local="no">DetectorConstructionMessenger.hh</includes>
     <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classG4FastSim_1_1DetectorConstructionMessenger_1a56d94b045310919b4da79b66e6a82d15" prot="private" static="no" mutable="no">
-        <type><ref refid="classG4FastSim_1_1DetectorConstruction" kindref="compound">DetectorConstruction</ref> *</type>
+        <type><ref refid="classDetectorConstruction" kindref="compound">DetectorConstruction</ref> *</type>
         <definition>DetectorConstruction* G4FastSim::DetectorConstructionMessenger::fDetectorConstruction</definition>
         <argsstring></argsstring>
         <name>fDetectorConstruction</name>
@@ -140,7 +140,7 @@
         <name>DetectorConstructionMessenger</name>
         <qualifiedname>G4FastSim::DetectorConstructionMessenger::DetectorConstructionMessenger</qualifiedname>
         <param>
-          <type><ref refid="classG4FastSim_1_1DetectorConstruction" kindref="compound">DetectorConstruction</ref> *</type>
+          <type><ref refid="classDetectorConstruction" kindref="compound">DetectorConstruction</ref> *</type>
           <declname>detector</declname>
         </param>
         <briefdescription>
@@ -152,7 +152,7 @@
 <parametername>detector</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>A pointer to the <ref refid="classG4FastSim_1_1DetectorConstruction" kindref="compound">DetectorConstruction</ref> object. </para>
+<para>A pointer to the <ref refid="classDetectorConstruction" kindref="compound">DetectorConstruction</ref> object. </para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
@@ -194,7 +194,7 @@
 <para>Sets the new value for a given command. </para>
         </briefdescription>
         <detaileddescription>
-<para>This function is called when a new value is assigned to a command in the user interface. It checks which command is being modified and calls the corresponding setter function in the <computeroutput><ref refid="classG4FastSim_1_1DetectorConstruction" kindref="compound">DetectorConstruction</ref></computeroutput> class.</para>
+<para>This function is called when a new value is assigned to a command in the user interface. It checks which command is being modified and calls the corresponding setter function in the <computeroutput><ref refid="classDetectorConstruction" kindref="compound">DetectorConstruction</ref></computeroutput> class.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>command</parametername>

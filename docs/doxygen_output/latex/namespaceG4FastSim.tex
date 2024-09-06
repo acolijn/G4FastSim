@@ -2,45 +2,26 @@
 \hypertarget{namespaceG4FastSim}{}\label{namespaceG4FastSim}\index{G4FastSim@{G4FastSim}}
 
 
-Action initialization class.  
+A namespace for fast simulation classes in Geant4. /\texorpdfstring{$\ast$}{*}/ namespace \doxylink{namespaceG4FastSim}{G4\+Fast\+Sim} \{.  
 
 
 \doxysubsubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
-class \mbox{\hyperlink{classG4FastSim_1_1ActionInitialization}{Action\+Initialization}}
-\item 
 struct \mbox{\hyperlink{structG4FastSim_1_1Cluster}{Cluster}}
 \item 
-class \mbox{\hyperlink{classG4FastSim_1_1DetectorConstruction}{Detector\+Construction}}
-\item 
 class \mbox{\hyperlink{classG4FastSim_1_1DetectorConstructionMessenger}{Detector\+Construction\+Messenger}}
-\item 
-class \mbox{\hyperlink{classG4FastSim_1_1EventAction}{Event\+Action}}
 \item 
 class \mbox{\hyperlink{classG4FastSim_1_1Hit}{Hit}}
 \begin{DoxyCompactList}\small\item\em The \doxylink{classG4FastSim_1_1Hit}{Hit} class represents a hit in the detector. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classG4FastSim_1_1Materials}{Materials}}
 \item 
-class \mbox{\hyperlink{classG4FastSim_1_1RunAction}{Run\+Action}}
-\item 
 class \mbox{\hyperlink{classG4FastSim_1_1RunActionMessenger}{Run\+Action\+Messenger}}
-\item 
-class \mbox{\hyperlink{classG4FastSim_1_1SensitiveDetector}{Sensitive\+Detector}}
-\item 
-class \mbox{\hyperlink{classG4FastSim_1_1SteppingAction}{Stepping\+Action}}
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
 typedef G4\+THits\+Collection$<$ \mbox{\hyperlink{classG4FastSim_1_1Hit}{Hit}} $>$ \mbox{\hyperlink{namespaceG4FastSim_a03dccfbb4e25fe6f2ab3468c33175a36}{Hits\+Collection}}
-\end{DoxyCompactItemize}
-\doxysubsubsection*{Enumerations}
-\begin{DoxyCompactItemize}
-\item 
-enum \mbox{\hyperlink{namespaceG4FastSim_a05ee3770e81fff7d8cd8d8cab21317d8}{Event\+Type}} \{ \mbox{\hyperlink{namespaceG4FastSim_a05ee3770e81fff7d8cd8d8cab21317d8ae51bfe7822492a220dcdc2f264cc51c7}{DIRECT\+\_\+\+GAMMA}} = 0
-, \mbox{\hyperlink{namespaceG4FastSim_a05ee3770e81fff7d8cd8d8cab21317d8a7bd13a2486be1506ada95bed246cca91}{SCATTERED\+\_\+\+GAMMA}} = 1
- \}
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Variables}
 \begin{DoxyCompactItemize}
@@ -50,15 +31,15 @@ G4\+Thread\+Local G4\+Allocator$<$ \mbox{\hyperlink{classG4FastSim_1_1Hit}{Hit}}
 
 
 \doxysubsection{Detailed Description}
-Action initialization class. 
+A namespace for fast simulation classes in Geant4. /\texorpdfstring{$\ast$}{*}/ namespace \doxylink{namespaceG4FastSim}{G4\+Fast\+Sim} \{. 
 
 using namespace \doxylink{namespaceG4FastSim}{G4\+Fast\+Sim};
 
-Run action class.
+/\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}
 
-A namespace for fast simulation classes in Geant4. /\texorpdfstring{$\ast$}{*}/ namespace \doxylink{namespaceG4FastSim}{G4\+Fast\+Sim} \{.
+Use enum to define the constants enum Event\+Type \{ DIRECT\+\_\+\+GAMMA = 0, SCATTERED\+\_\+\+GAMMA = 1 \};
 
-Detector construction class to define materials and geometry.
+/\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}
 
 struct CDFData \{ std\+::vector$<$\+G4double$>$ cdf; std\+::vector$<$\+G4double$>$ cos\+Theta; \};
 
@@ -66,7 +47,13 @@ struct Interaction\+Data \{ G4\+Three\+Vector x0; G4\+Three\+Vector dir; G4doubl
 
 /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}
 
-Stepping action class
+class \doxylink{classEventAction}{Event\+Action}; class \doxylink{classG4FastSim_1_1RunActionMessenger}{Run\+Action\+Messenger};
+
+/\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}
+
+class \doxylink{classEventAction}{Event\+Action};
+
+/\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}
 
 namespace \doxylink{namespaceG4FastSim}{G4\+Fast\+Sim} \{ 
 
@@ -77,25 +64,6 @@ namespace \doxylink{namespaceG4FastSim}{G4\+Fast\+Sim} \{
 \doxysubsubsection{\texorpdfstring{HitsCollection}{HitsCollection}}
 {\footnotesize\ttfamily typedef G4\+THits\+Collection$<$\mbox{\hyperlink{classG4FastSim_1_1Hit}{Hit}}$>$ \mbox{\hyperlink{namespaceG4FastSim_a03dccfbb4e25fe6f2ab3468c33175a36}{G4\+Fast\+Sim\+::\+Hits\+Collection}}}
 
-
-
-\doxysubsection{Enumeration Type Documentation}
-\Hypertarget{namespaceG4FastSim_a05ee3770e81fff7d8cd8d8cab21317d8}\label{namespaceG4FastSim_a05ee3770e81fff7d8cd8d8cab21317d8} 
-\index{G4FastSim@{G4FastSim}!EventType@{EventType}}
-\index{EventType@{EventType}!G4FastSim@{G4FastSim}}
-\doxysubsubsection{\texorpdfstring{EventType}{EventType}}
-{\footnotesize\ttfamily enum \mbox{\hyperlink{namespaceG4FastSim_a05ee3770e81fff7d8cd8d8cab21317d8}{G4\+Fast\+Sim\+::\+Event\+Type}}}
-
-\begin{DoxyEnumFields}{Enumerator}
-\raisebox{\heightof{T}}[0pt][0pt]{\index{DIRECT\_GAMMA@{DIRECT\_GAMMA}!G4FastSim@{G4FastSim}}\index{G4FastSim@{G4FastSim}!DIRECT\_GAMMA@{DIRECT\_GAMMA}}}\Hypertarget{namespaceG4FastSim_a05ee3770e81fff7d8cd8d8cab21317d8ae51bfe7822492a220dcdc2f264cc51c7}\label{namespaceG4FastSim_a05ee3770e81fff7d8cd8d8cab21317d8ae51bfe7822492a220dcdc2f264cc51c7} 
-DIRECT\+\_\+\+GAMMA&\\
-\hline
-
-\raisebox{\heightof{T}}[0pt][0pt]{\index{SCATTERED\_GAMMA@{SCATTERED\_GAMMA}!G4FastSim@{G4FastSim}}\index{G4FastSim@{G4FastSim}!SCATTERED\_GAMMA@{SCATTERED\_GAMMA}}}\Hypertarget{namespaceG4FastSim_a05ee3770e81fff7d8cd8d8cab21317d8a7bd13a2486be1506ada95bed246cca91}\label{namespaceG4FastSim_a05ee3770e81fff7d8cd8d8cab21317d8a7bd13a2486be1506ada95bed246cca91} 
-SCATTERED\+\_\+\+GAMMA&\\
-\hline
-
-\end{DoxyEnumFields}
 
 
 \doxysubsection{Variable Documentation}

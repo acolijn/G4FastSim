@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/EventAction.hh" line="112" column="14" bodyfile="include/EventAction.hh" bodystart="112" bodyend="-1"/>
+        <location file="include/EventAction.hh" line="124" column="14" bodyfile="include/EventAction.hh" bodystart="124" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classG4FastSim_1_1EventAction_1a41c9dc093c7137f7e59cd18aadbfd6be" prot="private" static="no" mutable="no">
         <type>G4double</type>
@@ -31,7 +31,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/EventAction.hh" line="113" column="14" bodyfile="include/EventAction.hh" bodystart="113" bodyend="-1"/>
+        <location file="include/EventAction.hh" line="125" column="14" bodyfile="include/EventAction.hh" bodystart="125" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classG4FastSim_1_1EventAction_1a240a5e697b0a82b9c5ebd221f9acc09f" prot="private" static="no" mutable="no">
         <type>G4int</type>
@@ -45,7 +45,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/EventAction.hh" line="114" column="11" bodyfile="include/EventAction.hh" bodystart="114" bodyend="-1"/>
+        <location file="include/EventAction.hh" line="126" column="11" bodyfile="include/EventAction.hh" bodystart="126" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classG4FastSim_1_1EventAction_1a9180cbaec40303315968a7d32da06614" prot="private" static="no" mutable="no">
         <type>G4int</type>
@@ -59,7 +59,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/EventAction.hh" line="115" column="11" bodyfile="include/EventAction.hh" bodystart="115" bodyend="-1"/>
+        <location file="include/EventAction.hh" line="127" column="11" bodyfile="include/EventAction.hh" bodystart="127" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classG4FastSim_1_1EventAction_1a1556839c7fa3ed559b7b84965f189fa4" prot="private" static="no" mutable="no">
         <type>G4int</type>
@@ -73,7 +73,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/EventAction.hh" line="116" column="11" bodyfile="include/EventAction.hh" bodystart="116" bodyend="-1"/>
+        <location file="include/EventAction.hh" line="128" column="11" bodyfile="include/EventAction.hh" bodystart="128" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classG4FastSim_1_1EventAction_1a22773d5fd32937317595ce00473b52cf" prot="private" static="no" mutable="no">
         <type>G4int</type>
@@ -87,7 +87,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/EventAction.hh" line="117" column="11" bodyfile="include/EventAction.hh" bodystart="117" bodyend="-1"/>
+        <location file="include/EventAction.hh" line="129" column="11" bodyfile="include/EventAction.hh" bodystart="129" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classG4FastSim_1_1EventAction_1af3f5c798657ab7b11764cfa1b011a6c1" prot="private" static="no" mutable="no">
         <type>G4int</type>
@@ -101,7 +101,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/EventAction.hh" line="118" column="11" bodyfile="include/EventAction.hh" bodystart="118" bodyend="-1"/>
+        <location file="include/EventAction.hh" line="130" column="11" bodyfile="include/EventAction.hh" bodystart="130" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classG4FastSim_1_1EventAction_1a37bf9013dbd05b66dffdd12bb0520533" prot="private" static="no" mutable="no">
         <type>G4double</type>
@@ -115,7 +115,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/EventAction.hh" line="119" column="14" bodyfile="include/EventAction.hh" bodystart="119" bodyend="-1"/>
+        <location file="include/EventAction.hh" line="131" column="14" bodyfile="include/EventAction.hh" bodystart="131" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classG4FastSim_1_1EventAction_1a020d2869c4fcedffb31683143e3d0b21" prot="private" static="no" mutable="no">
         <type>G4double</type>
@@ -129,7 +129,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/EventAction.hh" line="120" column="14" bodyfile="include/EventAction.hh" bodystart="120" bodyend="-1"/>
+        <location file="include/EventAction.hh" line="132" column="14" bodyfile="include/EventAction.hh" bodystart="132" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classG4FastSim_1_1EventAction_1a5d34246911770851b35dae2b275edcb9" prot="private" static="no" mutable="no">
         <type>G4double</type>
@@ -143,7 +143,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/EventAction.hh" line="121" column="14" bodyfile="include/EventAction.hh" bodystart="121" bodyend="-1"/>
+        <location file="include/EventAction.hh" line="133" column="14" bodyfile="include/EventAction.hh" bodystart="133" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classG4FastSim_1_1EventAction_1abdb1d349d12ee5ee1becc636b9449d78" prot="private" static="no" mutable="no">
         <type>std::vector&lt; G4double &gt;</type>
@@ -157,7 +157,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/EventAction.hh" line="123" column="17" bodyfile="include/EventAction.hh" bodystart="123" bodyend="-1"/>
+        <location file="include/EventAction.hh" line="135" column="17" bodyfile="include/EventAction.hh" bodystart="135" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classG4FastSim_1_1EventAction_1a8db2c9bf9010e6de0aef310a515cd6a4" prot="private" static="no" mutable="no">
         <type>std::vector&lt; G4double &gt;</type>
@@ -171,7 +171,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/EventAction.hh" line="124" column="17" bodyfile="include/EventAction.hh" bodystart="124" bodyend="-1"/>
+        <location file="include/EventAction.hh" line="136" column="17" bodyfile="include/EventAction.hh" bodystart="136" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classG4FastSim_1_1EventAction_1ac9f825b0cade7b76f41cb43989d84fd2" prot="private" static="no" mutable="no">
         <type>std::vector&lt; G4double &gt;</type>
@@ -185,7 +185,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/EventAction.hh" line="125" column="17" bodyfile="include/EventAction.hh" bodystart="125" bodyend="-1"/>
+        <location file="include/EventAction.hh" line="137" column="17" bodyfile="include/EventAction.hh" bodystart="137" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classG4FastSim_1_1EventAction_1a9c0c86e1e5629b8bd78b2b4fff94e537" prot="private" static="no" mutable="no">
         <type>std::vector&lt; G4double &gt;</type>
@@ -199,7 +199,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/EventAction.hh" line="126" column="17" bodyfile="include/EventAction.hh" bodystart="126" bodyend="-1"/>
+        <location file="include/EventAction.hh" line="138" column="17" bodyfile="include/EventAction.hh" bodystart="138" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classG4FastSim_1_1EventAction_1aed9835cd7bdc33c6f6eb32a1f9716822" prot="private" static="no" mutable="no">
         <type>std::vector&lt; G4double &gt;</type>
@@ -213,7 +213,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/EventAction.hh" line="127" column="17" bodyfile="include/EventAction.hh" bodystart="127" bodyend="-1"/>
+        <location file="include/EventAction.hh" line="139" column="17" bodyfile="include/EventAction.hh" bodystart="139" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classG4FastSim_1_1EventAction_1af161744847ff48843973c7829a372fba" prot="private" static="no" mutable="no">
         <type>G4bool</type>
@@ -228,7 +228,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/EventAction.hh" line="129" column="12" bodyfile="include/EventAction.hh" bodystart="129" bodyend="-1"/>
+        <location file="include/EventAction.hh" line="141" column="12" bodyfile="include/EventAction.hh" bodystart="141" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classG4FastSim_1_1EventAction_1a8cf5e1e2820b30042cd4c72fb53dd7ff" prot="private" static="no" mutable="no">
         <type>G4bool</type>
@@ -243,7 +243,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/EventAction.hh" line="130" column="12" bodyfile="include/EventAction.hh" bodystart="130" bodyend="-1"/>
+        <location file="include/EventAction.hh" line="142" column="12" bodyfile="include/EventAction.hh" bodystart="142" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classG4FastSim_1_1EventAction_1adf8994cbd5ea908c2bbc6d76a2d4217b" prot="private" static="no" mutable="no">
         <type>G4int</type>
@@ -258,7 +258,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/EventAction.hh" line="131" column="11" bodyfile="include/EventAction.hh" bodystart="131" bodyend="-1"/>
+        <location file="include/EventAction.hh" line="143" column="11" bodyfile="include/EventAction.hh" bodystart="143" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classG4FastSim_1_1EventAction_1a58082024c9ac196511501341515df164" prot="private" static="no" mutable="no">
         <type>G4int</type>
@@ -273,7 +273,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/EventAction.hh" line="132" column="11" bodyfile="include/EventAction.hh" bodystart="132" bodyend="-1"/>
+        <location file="include/EventAction.hh" line="144" column="11" bodyfile="include/EventAction.hh" bodystart="144" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classG4FastSim_1_1EventAction_1a3e380592d4e416732c6279330b2b5443" prot="private" static="no" mutable="no">
         <type>G4bool</type>
@@ -288,7 +288,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/EventAction.hh" line="133" column="12" bodyfile="include/EventAction.hh" bodystart="133" bodyend="-1"/>
+        <location file="include/EventAction.hh" line="145" column="12" bodyfile="include/EventAction.hh" bodystart="145" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classG4FastSim_1_1EventAction_1a5818690ff1cdb3ace37c63ce7b66d9e5" prot="private" static="no" mutable="no">
         <type>G4double</type>
@@ -303,7 +303,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/EventAction.hh" line="136" column="14" bodyfile="include/EventAction.hh" bodystart="136" bodyend="-1"/>
+        <location file="include/EventAction.hh" line="148" column="14" bodyfile="include/EventAction.hh" bodystart="148" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classG4FastSim_1_1EventAction_1af2606a7442a97440c5d22defe007ae81" prot="private" static="no" mutable="no">
         <type>G4double</type>
@@ -318,7 +318,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/EventAction.hh" line="138" column="14" bodyfile="include/EventAction.hh" bodystart="138" bodyend="-1"/>
+        <location file="include/EventAction.hh" line="150" column="14" bodyfile="include/EventAction.hh" bodystart="150" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classG4FastSim_1_1EventAction_1a14ab0f7ba6104d5c350b03b90c4a0f8c" prot="private" static="no" mutable="no">
         <type>std::vector&lt; G4String &gt;</type>
@@ -332,7 +332,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/EventAction.hh" line="142" column="17" bodyfile="include/EventAction.hh" bodystart="142" bodyend="-1"/>
+        <location file="include/EventAction.hh" line="154" column="17" bodyfile="include/EventAction.hh" bodystart="154" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classG4FastSim_1_1EventAction_1af65a0f7c54bad6a835bcdbb130cfaeda" prot="private" static="no" mutable="no">
         <type><ref refid="classGammaRayHelper" kindref="compound">GammaRayHelper</ref> *</type>
@@ -346,7 +346,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/EventAction.hh" line="144" column="20" bodyfile="include/EventAction.hh" bodystart="144" bodyend="-1"/>
+        <location file="include/EventAction.hh" line="156" column="20" bodyfile="include/EventAction.hh" bodystart="156" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classG4FastSim_1_1EventAction_1ab213bd3faaee0e62dad9ba2884f29cb9" prot="private" static="no" mutable="no">
         <type>G4LogicalVolume *</type>
@@ -360,7 +360,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/EventAction.hh" line="146" column="21" bodyfile="include/EventAction.hh" bodystart="146" bodyend="-1"/>
+        <location file="include/EventAction.hh" line="158" column="21" bodyfile="include/EventAction.hh" bodystart="158" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classG4FastSim_1_1EventAction_1aa88a720d0b7462ba448c065ca26179ab" prot="private" static="no" mutable="no">
         <type>G4int</type>
@@ -375,7 +375,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/EventAction.hh" line="148" column="11" bodyfile="include/EventAction.hh" bodystart="148" bodyend="-1"/>
+        <location file="include/EventAction.hh" line="160" column="11" bodyfile="include/EventAction.hh" bodystart="160" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -391,7 +391,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/EventAction.hh" line="64" column="5" bodyfile="src/EventAction.cc" bodystart="55" bodyend="62"/>
+        <location file="include/EventAction.hh" line="76" column="5" bodyfile="src/EventAction.cc" bodystart="55" bodyend="62"/>
       </memberdef>
       <memberdef kind="function" id="classG4FastSim_1_1EventAction_1adb4415861c5cdd0a55b2e14990e13da6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -405,7 +405,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/EventAction.hh" line="65" column="5"/>
+        <location file="include/EventAction.hh" line="77" column="5"/>
       </memberdef>
       <memberdef kind="function" id="classG4FastSim_1_1EventAction_1aa0a1ce1d279c7071217c445fc761bbad" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -423,7 +423,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/EventAction.hh" line="67" column="10" bodyfile="src/EventAction.cc" bodystart="66" bodyend="104"/>
+        <location file="include/EventAction.hh" line="79" column="10" bodyfile="src/EventAction.cc" bodystart="66" bodyend="104"/>
       </memberdef>
       <memberdef kind="function" id="classG4FastSim_1_1EventAction_1a43bd94959a1efa3612b0a6324bca406c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -441,7 +441,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/EventAction.hh" line="68" column="10" bodyfile="src/EventAction.cc" bodystart="166" bodyend="197"/>
+        <location file="include/EventAction.hh" line="80" column="10" bodyfile="src/EventAction.cc" bodystart="166" bodyend="197"/>
       </memberdef>
       <memberdef kind="function" id="classG4FastSim_1_1EventAction_1adeb4e093143f249cf5a556a8246653d3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>std::vector&lt; G4double &gt; &amp;</type>
@@ -455,7 +455,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/EventAction.hh" line="70" column="17" bodyfile="include/EventAction.hh" bodystart="70" bodyend="70"/>
+        <location file="include/EventAction.hh" line="82" column="17" bodyfile="include/EventAction.hh" bodystart="82" bodyend="82"/>
       </memberdef>
       <memberdef kind="function" id="classG4FastSim_1_1EventAction_1a52568c351e9ab62edccb891c0bf8f421" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>std::vector&lt; G4double &gt; &amp;</type>
@@ -469,7 +469,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/EventAction.hh" line="71" column="17" bodyfile="include/EventAction.hh" bodystart="71" bodyend="71"/>
+        <location file="include/EventAction.hh" line="83" column="17" bodyfile="include/EventAction.hh" bodystart="83" bodyend="83"/>
       </memberdef>
       <memberdef kind="function" id="classG4FastSim_1_1EventAction_1a01b9c8dc9d9839413cd5c07484aaf248" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>std::vector&lt; G4double &gt; &amp;</type>
@@ -483,7 +483,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/EventAction.hh" line="72" column="17" bodyfile="include/EventAction.hh" bodystart="72" bodyend="72"/>
+        <location file="include/EventAction.hh" line="84" column="17" bodyfile="include/EventAction.hh" bodystart="84" bodyend="84"/>
       </memberdef>
       <memberdef kind="function" id="classG4FastSim_1_1EventAction_1ace2d3844304533e215785778ef46fe90" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>std::vector&lt; G4double &gt; &amp;</type>
@@ -497,7 +497,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/EventAction.hh" line="73" column="17" bodyfile="include/EventAction.hh" bodystart="73" bodyend="73"/>
+        <location file="include/EventAction.hh" line="85" column="17" bodyfile="include/EventAction.hh" bodystart="85" bodyend="85"/>
       </memberdef>
       <memberdef kind="function" id="classG4FastSim_1_1EventAction_1ac0331ec9e7c100627ec72b86857f173e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>std::vector&lt; G4double &gt; &amp;</type>
@@ -511,7 +511,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/EventAction.hh" line="74" column="17" bodyfile="include/EventAction.hh" bodystart="74" bodyend="74"/>
+        <location file="include/EventAction.hh" line="86" column="17" bodyfile="include/EventAction.hh" bodystart="86" bodyend="86"/>
       </memberdef>
       <memberdef kind="function" id="classG4FastSim_1_1EventAction_1aebd5b408875e402cf38a33a84410fb0d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -529,7 +529,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/EventAction.hh" line="77" column="10" bodyfile="include/EventAction.hh" bodystart="77" bodyend="77"/>
+        <location file="include/EventAction.hh" line="89" column="10" bodyfile="include/EventAction.hh" bodystart="89" bodyend="89"/>
       </memberdef>
       <memberdef kind="function" id="classG4FastSim_1_1EventAction_1a25cfe5dde9e5abd4d30c255fb521724d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -547,7 +547,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/EventAction.hh" line="78" column="10" bodyfile="include/EventAction.hh" bodystart="78" bodyend="78"/>
+        <location file="include/EventAction.hh" line="90" column="10" bodyfile="include/EventAction.hh" bodystart="90" bodyend="90"/>
       </memberdef>
       <memberdef kind="function" id="classG4FastSim_1_1EventAction_1a06e4d9a81df350b8a49c4d3c77c5b154" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -576,7 +576,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/EventAction.hh" line="79" column="10" bodyfile="src/EventAction.cc" bodystart="206" bodyend="237"/>
+        <location file="include/EventAction.hh" line="91" column="10" bodyfile="src/EventAction.cc" bodystart="206" bodyend="237"/>
       </memberdef>
       <memberdef kind="function" id="classG4FastSim_1_1EventAction_1a3da7908738b2228320ef78abf83763a8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -590,7 +590,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/EventAction.hh" line="80" column="10" bodyfile="src/EventAction.cc" bodystart="135" bodyend="162"/>
+        <location file="include/EventAction.hh" line="92" column="10" bodyfile="src/EventAction.cc" bodystart="135" bodyend="162"/>
       </memberdef>
       <memberdef kind="function" id="classG4FastSim_1_1EventAction_1a0a5957019bc5a3844c9c10be44f04880" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>G4bool</type>
@@ -604,7 +604,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/EventAction.hh" line="82" column="12" bodyfile="include/EventAction.hh" bodystart="82" bodyend="82"/>
+        <location file="include/EventAction.hh" line="94" column="12" bodyfile="include/EventAction.hh" bodystart="94" bodyend="94"/>
       </memberdef>
       <memberdef kind="function" id="classG4FastSim_1_1EventAction_1afd2e1cdcd5f4320967274b27bc06e6e0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>G4int</type>
@@ -618,7 +618,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/EventAction.hh" line="83" column="11" bodyfile="include/EventAction.hh" bodystart="83" bodyend="83"/>
+        <location file="include/EventAction.hh" line="95" column="11" bodyfile="include/EventAction.hh" bodystart="95" bodyend="95"/>
       </memberdef>
       <memberdef kind="function" id="classG4FastSim_1_1EventAction_1a6e7b195f21b29162210a1fd4f1395b4d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>G4double</type>
@@ -632,7 +632,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/EventAction.hh" line="84" column="14" bodyfile="include/EventAction.hh" bodystart="84" bodyend="84"/>
+        <location file="include/EventAction.hh" line="96" column="14" bodyfile="include/EventAction.hh" bodystart="96" bodyend="96"/>
       </memberdef>
       <memberdef kind="function" id="classG4FastSim_1_1EventAction_1a29578ed86497866f4e76647cff46def8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>G4int</type>
@@ -646,7 +646,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/EventAction.hh" line="85" column="11" bodyfile="include/EventAction.hh" bodystart="85" bodyend="85"/>
+        <location file="include/EventAction.hh" line="97" column="11" bodyfile="include/EventAction.hh" bodystart="97" bodyend="97"/>
       </memberdef>
       <memberdef kind="function" id="classG4FastSim_1_1EventAction_1aa0f4b11d80547c902f0b72cfab9be7a3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>G4double</type>
@@ -660,7 +660,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/EventAction.hh" line="86" column="14" bodyfile="include/EventAction.hh" bodystart="86" bodyend="86"/>
+        <location file="include/EventAction.hh" line="98" column="14" bodyfile="include/EventAction.hh" bodystart="98" bodyend="98"/>
       </memberdef>
       <memberdef kind="function" id="classG4FastSim_1_1EventAction_1ae1cd2d1c9fd5002c4f22483481d46cc7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>G4double</type>
@@ -674,7 +674,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/EventAction.hh" line="87" column="14" bodyfile="include/EventAction.hh" bodystart="87" bodyend="87"/>
+        <location file="include/EventAction.hh" line="99" column="14" bodyfile="include/EventAction.hh" bodystart="99" bodyend="99"/>
       </memberdef>
       <memberdef kind="function" id="classG4FastSim_1_1EventAction_1a85489f607916912fadf7d58891c5b55b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>G4bool</type>
@@ -688,7 +688,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/EventAction.hh" line="88" column="12" bodyfile="include/EventAction.hh" bodystart="88" bodyend="88"/>
+        <location file="include/EventAction.hh" line="100" column="12" bodyfile="include/EventAction.hh" bodystart="100" bodyend="100"/>
       </memberdef>
       <memberdef kind="function" id="classG4FastSim_1_1EventAction_1a4d03ac81dc8d0fcb225ded25bd7f6b73" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>G4int</type>
@@ -702,7 +702,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/EventAction.hh" line="89" column="11" bodyfile="include/EventAction.hh" bodystart="89" bodyend="89"/>
+        <location file="include/EventAction.hh" line="101" column="11" bodyfile="include/EventAction.hh" bodystart="101" bodyend="101"/>
       </memberdef>
       <memberdef kind="function" id="classG4FastSim_1_1EventAction_1ab0990d80db3bd9e4c88279d1490a4dc4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -720,7 +720,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/EventAction.hh" line="91" column="10" bodyfile="include/EventAction.hh" bodystart="91" bodyend="91"/>
+        <location file="include/EventAction.hh" line="103" column="10" bodyfile="include/EventAction.hh" bodystart="103" bodyend="103"/>
       </memberdef>
       <memberdef kind="function" id="classG4FastSim_1_1EventAction_1ab10d97afcb735c75e77447f118297668" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -738,7 +738,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/EventAction.hh" line="92" column="10" bodyfile="include/EventAction.hh" bodystart="92" bodyend="92"/>
+        <location file="include/EventAction.hh" line="104" column="10" bodyfile="include/EventAction.hh" bodystart="104" bodyend="104"/>
       </memberdef>
       <memberdef kind="function" id="classG4FastSim_1_1EventAction_1a1ac50be580de9273ef1e58095798bc16" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -756,7 +756,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/EventAction.hh" line="93" column="10" bodyfile="include/EventAction.hh" bodystart="93" bodyend="93"/>
+        <location file="include/EventAction.hh" line="105" column="10" bodyfile="include/EventAction.hh" bodystart="105" bodyend="105"/>
       </memberdef>
       <memberdef kind="function" id="classG4FastSim_1_1EventAction_1a0497268c7d7eaf9f9f1ef8cf8808a1e7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -774,7 +774,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/EventAction.hh" line="94" column="10" bodyfile="include/EventAction.hh" bodystart="94" bodyend="94"/>
+        <location file="include/EventAction.hh" line="106" column="10" bodyfile="include/EventAction.hh" bodystart="106" bodyend="106"/>
       </memberdef>
       <memberdef kind="function" id="classG4FastSim_1_1EventAction_1a828bd5efac02e28a0cbe6e296898e4f1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -792,7 +792,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/EventAction.hh" line="95" column="10" bodyfile="include/EventAction.hh" bodystart="95" bodyend="95"/>
+        <location file="include/EventAction.hh" line="107" column="10" bodyfile="include/EventAction.hh" bodystart="107" bodyend="107"/>
       </memberdef>
       <memberdef kind="function" id="classG4FastSim_1_1EventAction_1abc1c3a1d617575f8e1329ecafeda4b45" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -810,7 +810,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/EventAction.hh" line="96" column="10" bodyfile="include/EventAction.hh" bodystart="96" bodyend="96"/>
+        <location file="include/EventAction.hh" line="108" column="10" bodyfile="include/EventAction.hh" bodystart="108" bodyend="108"/>
       </memberdef>
       <memberdef kind="function" id="classG4FastSim_1_1EventAction_1a77d54ea8c5f1afe66e9bfa2330dfee27" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -828,7 +828,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/EventAction.hh" line="97" column="10" bodyfile="include/EventAction.hh" bodystart="97" bodyend="97"/>
+        <location file="include/EventAction.hh" line="109" column="10" bodyfile="include/EventAction.hh" bodystart="109" bodyend="109"/>
       </memberdef>
       <memberdef kind="function" id="classG4FastSim_1_1EventAction_1a964a668626874db354cad50145b6f441" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -846,7 +846,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/EventAction.hh" line="98" column="10" bodyfile="include/EventAction.hh" bodystart="98" bodyend="98"/>
+        <location file="include/EventAction.hh" line="110" column="10" bodyfile="include/EventAction.hh" bodystart="110" bodyend="110"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-func">
@@ -914,7 +914,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/EventAction.hh" line="104" column="10" bodyfile="src/EventAction.cc" bodystart="265" bodyend="400"/>
+        <location file="include/EventAction.hh" line="116" column="10" bodyfile="src/EventAction.cc" bodystart="265" bodyend="400"/>
       </memberdef>
       <memberdef kind="function" id="classG4FastSim_1_1EventAction_1a7b5f4425356f54ec3801eb47cddc7c97" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -936,7 +936,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/EventAction.hh" line="105" column="10" bodyfile="src/EventAction.cc" bodystart="108" bodyend="131"/>
+        <location file="include/EventAction.hh" line="117" column="10" bodyfile="src/EventAction.cc" bodystart="108" bodyend="131"/>
       </memberdef>
       <memberdef kind="function" id="classG4FastSim_1_1EventAction_1a902f3346d6e56cc7361e55cab035cf70" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>G4double</type>
@@ -958,7 +958,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/EventAction.hh" line="107" column="14" bodyfile="src/EventAction.cc" bodystart="240" bodyend="242"/>
+        <location file="include/EventAction.hh" line="119" column="14" bodyfile="src/EventAction.cc" bodystart="240" bodyend="242"/>
       </memberdef>
       <memberdef kind="function" id="classG4FastSim_1_1EventAction_1a6d420ce29b24ed6096a8bda329dcd362" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>G4double</type>
@@ -980,12 +980,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/EventAction.hh" line="108" column="14" bodyfile="src/EventAction.cc" bodystart="246" bodyend="248"/>
+        <location file="include/EventAction.hh" line="120" column="14" bodyfile="src/EventAction.cc" bodystart="246" bodyend="248"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
+<para>Class responsible for defining actions to be taken at the beginning and end of each event. </para>
     </briefdescription>
     <detaileddescription>
+<para>This class inherits from G4UserEventAction and is used to define the actions to be taken at the beginning and end of each event. It provides methods to analyze the hits in the event, reset the variables for each event, and access the variables stored in the ntuple tree. It also provides methods to set and get the number of scatters, maximum energy, available energy, weight, and event type. </para>
     </detaileddescription>
     <inheritancegraph>
       <node id="1">
@@ -1009,7 +1011,7 @@
         <label>G4UserEventAction</label>
       </node>
     </collaborationgraph>
-    <location file="include/EventAction.hh" line="61" column="1" bodyfile="include/EventAction.hh" bodystart="62" bodyend="149"/>
+    <location file="include/EventAction.hh" line="73" column="1" bodyfile="include/EventAction.hh" bodystart="74" bodyend="161"/>
     <listofallmembers>
       <member refid="classG4FastSim_1_1EventAction_1aebd5b408875e402cf38a33a84410fb0d" prot="public" virt="non-virtual"><scope>G4FastSim::EventAction</scope><name>AddEdep</name></member>
       <member refid="classG4FastSim_1_1EventAction_1a25cfe5dde9e5abd4d30c255fb521724d" prot="public" virt="non-virtual"><scope>G4FastSim::EventAction</scope><name>AddWeight</name></member>

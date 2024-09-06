@@ -353,10 +353,10 @@
     </incdepgraph>
     <innernamespace refid="namespaceG4FastSim">G4FastSim</innernamespace>
     <briefdescription>
-<para>Implementation of the RunAction class. </para>
+<para>Implementation of the <ref refid="classRunAction" kindref="compound">RunAction</ref> class. </para>
     </briefdescription>
     <detaileddescription>
-<para>The RunAction class is responsible for managing actions that occur during a run of the simulation. It initializes and defines the analysis manager, creates and fills ntuples for event data, cross-section data, and differential cross-section data, and performs actions at the beginning and end of a run. </para>
+<para>The <ref refid="classRunAction" kindref="compound">RunAction</ref> class is responsible for managing actions that occur during a run of the simulation. It initializes and defines the analysis manager, creates and fills ntuples for event data, cross-section data, and differential cross-section data, and performs actions at the beginning and end of a run. </para>
     </detaileddescription>
     <programlisting>
 <codeline lineno="1"><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
@@ -410,7 +410,7 @@
 <codeline lineno="51"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceG4FastSim" kindref="compound">G4FastSim</ref>{</highlight></codeline>
 <codeline lineno="62"><highlight class="normal"></highlight><highlight class="comment">//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="63"><highlight class="normal"></highlight></codeline>
-<codeline lineno="64"><highlight class="normal"><ref refid="classG4FastSim_1_1RunAction_1a37d112d13613a875c701fa713a8578d6" kindref="member">RunAction::RunAction</ref>(EventAction*<sp/>eventAction,<sp/><ref refid="classGammaRayHelper" kindref="compound">GammaRayHelper</ref>*<sp/>helper)</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><ref refid="classRunAction_1aa81cf71d5d0400634291277473de27b7" kindref="member">RunAction::RunAction</ref>(<ref refid="classEventAction" kindref="compound">EventAction</ref>*<sp/>eventAction,<sp/><ref refid="classGammaRayHelper" kindref="compound">GammaRayHelper</ref>*<sp/>helper)</highlight></codeline>
 <codeline lineno="65"><highlight class="normal"><sp/><sp/>:<sp/>fEventAction(eventAction),<sp/>fGammaRayHelper(helper)</highlight></codeline>
 <codeline lineno="66"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="67"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>set<sp/>printing<sp/>event<sp/>number<sp/>per<sp/>each<sp/>event</highlight><highlight class="normal"></highlight></codeline>
@@ -424,7 +424,7 @@
 <codeline lineno="75"><highlight class="normal"></highlight></codeline>
 <codeline lineno="76"><highlight class="normal"></highlight><highlight class="comment">//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="77"><highlight class="normal"></highlight></codeline>
-<codeline lineno="78"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>RunAction::BeginOfRunAction(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>G4Run*)</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classRunAction_1a4f622bac2655e90f7c638906cdf5d3d3" kindref="member">RunAction::BeginOfRunAction</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>G4Run*)</highlight></codeline>
 <codeline lineno="79"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="80"><highlight class="normal"></highlight></codeline>
 <codeline lineno="81"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Get<sp/>the<sp/>initial<sp/>energy<sp/>from<sp/>the<sp/>primary<sp/>generator<sp/>action</highlight><highlight class="normal"></highlight></codeline>
@@ -433,30 +433,30 @@
 <codeline lineno="84"><highlight class="normal"></highlight></codeline>
 <codeline lineno="85"><highlight class="normal"><sp/><sp/>G4cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Runaction::BeginOfRunAction:<sp/>E0<sp/>=<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>primaryGeneratorAction-&gt;<ref refid="classPrimaryGeneratorAction_1a88f13d40da2e2083ac230991a735ddd6" kindref="member">GetInitialEnergy</ref>()<sp/>/<sp/>keV<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>keV&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>G4endl;</highlight></codeline>
 <codeline lineno="86"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Initialize<sp/>the<sp/>gamma-ray<sp/>helper</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="87"><highlight class="normal"><sp/><sp/>fGammaRayHelper-&gt;Initialize();</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/>fGammaRayHelper-&gt;<ref refid="classGammaRayHelper_1abaae1ae4a540ea36d89e6a3147ef3e7a" kindref="member">Initialize</ref>();</highlight></codeline>
 <codeline lineno="88"><highlight class="normal"></highlight></codeline>
 <codeline lineno="89"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>initialize<sp/>the<sp/>analysis<sp/>manager<sp/>and<sp/>ntuples</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="90"><highlight class="normal"><sp/><sp/>InitializeNtuples();</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><ref refid="classRunAction_1a4e10f453c5a4a4694364a0c02df345fe" kindref="member">InitializeNtuples</ref>();</highlight></codeline>
 <codeline lineno="91"><highlight class="normal"></highlight></codeline>
 <codeline lineno="92"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>passing<sp/>some<sp/>parameters<sp/>to<sp/>the<sp/>event<sp/>action</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="93"><highlight class="normal"><sp/><sp/>G4cout<sp/>&lt;&lt;</highlight><highlight class="stringliteral">&quot;RunAction::BeginOfRunAction:<sp/>Normal<sp/>(0)<sp/>-<sp/>or<sp/>-<sp/>FastSimulation<sp/>(1)<sp/>=<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;<sp/>fFastSimulation<sp/>&lt;&lt;<sp/>G4endl;</highlight></codeline>
-<codeline lineno="94"><highlight class="normal"><sp/><sp/>fEventAction-&gt;SetFastSimulation(fFastSimulation);</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/>fEventAction-&gt;<ref refid="classEventAction_1acccde4e4cdd865967221a6099b6dd3a2" kindref="member">SetFastSimulation</ref>(fFastSimulation);</highlight></codeline>
 <codeline lineno="95"><highlight class="normal"><sp/><sp/>G4cout<sp/>&lt;&lt;</highlight><highlight class="stringliteral">&quot;RunAction::BeginOfRunAction:<sp/>Maximum<sp/>number<sp/>of<sp/>scatters<sp/>=<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;<sp/>fNumberOfScattersMax<sp/>&lt;&lt;<sp/>G4endl;</highlight></codeline>
-<codeline lineno="96"><highlight class="normal"><sp/><sp/>fEventAction-&gt;SetNumberOfScattersMax(fNumberOfScattersMax);</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/>fEventAction-&gt;<ref refid="classEventAction_1af8c03c77f2ba2750a9b83aff3c878f04" kindref="member">SetNumberOfScattersMax</ref>(fNumberOfScattersMax);</highlight></codeline>
 <codeline lineno="97"><highlight class="normal"><sp/><sp/>G4cout<sp/>&lt;&lt;</highlight><highlight class="stringliteral">&quot;RunAction::BeginOfRunAction:<sp/>Maximum<sp/>energy<sp/>deposit<sp/>=<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;<sp/>fMaxEnergy<sp/>&lt;&lt;<sp/>G4endl;</highlight></codeline>
-<codeline lineno="98"><highlight class="normal"><sp/><sp/>fEventAction-&gt;SetMaxEnergy(fMaxEnergy);</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/>fEventAction-&gt;<ref refid="classEventAction_1afdfda3e8d09c30a3277ce9bdeacbee0b" kindref="member">SetMaxEnergy</ref>(fMaxEnergy);</highlight></codeline>
 <codeline lineno="99"><highlight class="normal"></highlight></codeline>
 <codeline lineno="100"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="101"><highlight class="normal"></highlight></codeline>
 <codeline lineno="102"><highlight class="normal"></highlight><highlight class="comment">//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="103"><highlight class="normal">RunAction::~RunAction()</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><ref refid="classRunAction_1a6c584eb414c62a6238d5ea9a55601e1c" kindref="member">RunAction::~RunAction</ref>()</highlight></codeline>
 <codeline lineno="104"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="105"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal"><sp/>fMessenger;</highlight></codeline>
 <codeline lineno="106"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="107"><highlight class="normal"></highlight></codeline>
 <codeline lineno="108"><highlight class="normal"></highlight><highlight class="comment">//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="109"><highlight class="normal"></highlight></codeline>
-<codeline lineno="110"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>RunAction::InitializeNtuples(){</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classRunAction_1a4e10f453c5a4a4694364a0c02df345fe" kindref="member">RunAction::InitializeNtuples</ref>(){</highlight></codeline>
 <codeline lineno="111"><highlight class="normal"></highlight></codeline>
 <codeline lineno="112"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Get<sp/>analysis<sp/>manager</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="113"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>analysisManager<sp/>=<sp/>G4AnalysisManager::Instance();</highlight></codeline>
@@ -472,15 +472,15 @@
 <codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/>analysisManager-&gt;CreateH1(</highlight><highlight class="stringliteral">&quot;cost&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;cos<sp/>theta<sp/>of<sp/>Compton&quot;</highlight><highlight class="normal">,<sp/>2200,<sp/>-1.1,<sp/>+1.1);<sp/></highlight><highlight class="comment">//<sp/>id<sp/>=<sp/>0</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="124"><highlight class="normal"></highlight></codeline>
 <codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Creating<sp/>event<sp/>data<sp/>ntuple</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/>DefineEventNtuple();</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classRunAction_1a492c9c6f070cb17027ea9d61bd6e4294" kindref="member">DefineEventNtuple</ref>();</highlight></codeline>
 <codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Creating<sp/>and<sp/>filling<sp/>physics<sp/>data<sp/>ntuple</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/>DefineCrossSectionNtuple();</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classRunAction_1a2b7cb09d1a9ea147f96a9c4cdb5adb90" kindref="member">DefineCrossSectionNtuple</ref>();</highlight></codeline>
 <codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Creating<sp/>and<sp/>filling<sp/>differential<sp/>cross-section<sp/>data<sp/>ntuple</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>done<sp/>from<sp/>EventAction<sp/>at<sp/>the<sp/>first<sp/>event:<sp/>since<sp/>we<sp/>the<sp/>know<sp/>the<sp/>energy<sp/>of<sp/>the<sp/>gamma<sp/>rays.<sp/>DefineDifferentialCrossSectionNtuple();</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="131"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="132"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="133"><highlight class="normal"></highlight></codeline>
-<codeline lineno="142"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>RunAction::DefineDifferentialCrossSectionNtuple(G4double<sp/>e0)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classRunAction_1a12a1675453301619429fa2b9864ec6d3" kindref="member">RunAction::DefineDifferentialCrossSectionNtuple</ref>(G4double<sp/>e0)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
 <codeline lineno="143"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>analysisManager<sp/>=<sp/>G4AnalysisManager::Instance();</highlight></codeline>
 <codeline lineno="144"><highlight class="normal"></highlight></codeline>
 <codeline lineno="145"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>get<sp/>material<sp/>table</highlight><highlight class="normal"></highlight></codeline>
@@ -517,9 +517,9 @@
 <codeline lineno="176"><highlight class="normal"></highlight></codeline>
 <codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(G4double<sp/>cost<sp/>=<sp/>-1.0;<sp/>cost<sp/>&lt;=<sp/>1.0;<sp/>cost<sp/>+=<sp/>0.001)<sp/>{</highlight></codeline>
 <codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>get<sp/>scatter<sp/>function</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>G4double<sp/>ff<sp/>=<sp/>fGammaRayHelper-&gt;GetComptonModel()-&gt;FormFactor(elm,<sp/>gamma,<sp/>cost);</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>G4double<sp/>ff<sp/>=<sp/>fGammaRayHelper-&gt;<ref refid="classGammaRayHelper_1aaf6f8d24a59c684d5c5b7f63548f1016" kindref="member">GetComptonModel</ref>()-&gt;<ref refid="classExtendedLivermoreComptonModel_1aefcaa8e5384a9d3d36b7b09aea0fd5c2" kindref="member">FormFactor</ref>(elm,<sp/>gamma,<sp/>cost);</highlight></codeline>
 <codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>get<sp/>differential<sp/>cross-section<sp/>(Klein-Nishina)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>G4double<sp/>kn<sp/>=<sp/>fGammaRayHelper-&gt;GetComptonModel()-&gt;KleinNishina(gamma,<sp/>cost);</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>G4double<sp/>kn<sp/>=<sp/>fGammaRayHelper-&gt;<ref refid="classGammaRayHelper_1aaf6f8d24a59c684d5c5b7f63548f1016" kindref="member">GetComptonModel</ref>()-&gt;<ref refid="classExtendedLivermoreComptonModel_1ae31d98e10efd833f6371e423b65ca17d" kindref="member">KleinNishina</ref>(gamma,<sp/>cost);</highlight></codeline>
 <codeline lineno="182"><highlight class="normal"></highlight></codeline>
 <codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>analysisManager-&gt;FillNtupleSColumn(diffXsecNtupleId,<sp/>0,<sp/>elm-&gt;GetName());</highlight></codeline>
 <codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>analysisManager-&gt;FillNtupleDColumn(diffXsecNtupleId,<sp/>1,<sp/>cost);</highlight></codeline>
@@ -537,7 +537,7 @@
 <codeline lineno="196"><highlight class="normal"></highlight></codeline>
 <codeline lineno="197"><highlight class="normal"></highlight><highlight class="comment">//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="198"><highlight class="normal"></highlight></codeline>
-<codeline lineno="204"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>RunAction::DefineEventNtuple(){</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classRunAction_1a492c9c6f070cb17027ea9d61bd6e4294" kindref="member">RunAction::DefineEventNtuple</ref>(){</highlight></codeline>
 <codeline lineno="205"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Creating<sp/>ntuple</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="206"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>analysisManager<sp/>=<sp/>G4AnalysisManager::Instance();</highlight></codeline>
 <codeline lineno="207"><highlight class="normal"></highlight></codeline>
@@ -554,11 +554,11 @@
 <codeline lineno="218"><highlight class="normal"><sp/><sp/>analysisManager-&gt;CreateNtupleDColumn(eventNtupleId,<sp/></highlight><highlight class="stringliteral">&quot;xp&quot;</highlight><highlight class="normal">);<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>column<sp/>Id<sp/>=<sp/>7</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="219"><highlight class="normal"><sp/><sp/>analysisManager-&gt;CreateNtupleDColumn(eventNtupleId,<sp/></highlight><highlight class="stringliteral">&quot;yp&quot;</highlight><highlight class="normal">);<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>column<sp/>Id<sp/>=<sp/>8</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="220"><highlight class="normal"><sp/><sp/>analysisManager-&gt;CreateNtupleDColumn(eventNtupleId,<sp/></highlight><highlight class="stringliteral">&quot;zp&quot;</highlight><highlight class="normal">);<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>column<sp/>Id<sp/>=<sp/>9</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="221"><highlight class="normal"><sp/><sp/>analysisManager-&gt;CreateNtupleDColumn(eventNtupleId,<sp/></highlight><highlight class="stringliteral">&quot;eh&quot;</highlight><highlight class="normal">,<sp/>fEventAction-&gt;GetE());<sp/></highlight><highlight class="comment">//<sp/>column<sp/>Id<sp/>=<sp/>10</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="222"><highlight class="normal"><sp/><sp/>analysisManager-&gt;CreateNtupleDColumn(eventNtupleId,<sp/></highlight><highlight class="stringliteral">&quot;xh&quot;</highlight><highlight class="normal">,<sp/>fEventAction-&gt;GetX());<sp/></highlight><highlight class="comment">//<sp/>column<sp/>Id<sp/>=<sp/>11</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="223"><highlight class="normal"><sp/><sp/>analysisManager-&gt;CreateNtupleDColumn(eventNtupleId,<sp/></highlight><highlight class="stringliteral">&quot;yh&quot;</highlight><highlight class="normal">,<sp/>fEventAction-&gt;GetY());<sp/></highlight><highlight class="comment">//<sp/>column<sp/>Id<sp/>=<sp/>12</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="224"><highlight class="normal"><sp/><sp/>analysisManager-&gt;CreateNtupleDColumn(eventNtupleId,<sp/></highlight><highlight class="stringliteral">&quot;zh&quot;</highlight><highlight class="normal">,<sp/>fEventAction-&gt;GetZ());<sp/></highlight><highlight class="comment">//<sp/>column<sp/>Id<sp/>=<sp/>13</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="225"><highlight class="normal"><sp/><sp/>analysisManager-&gt;CreateNtupleDColumn(eventNtupleId,<sp/></highlight><highlight class="stringliteral">&quot;wh&quot;</highlight><highlight class="normal">,<sp/>fEventAction-&gt;GetW());<sp/></highlight><highlight class="comment">//<sp/>column<sp/>Id<sp/>=<sp/>14</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/>analysisManager-&gt;CreateNtupleDColumn(eventNtupleId,<sp/></highlight><highlight class="stringliteral">&quot;eh&quot;</highlight><highlight class="normal">,<sp/>fEventAction-&gt;<ref refid="classEventAction_1a3d02fe96a5b633cc661a5c2b32ddc010" kindref="member">GetE</ref>());<sp/></highlight><highlight class="comment">//<sp/>column<sp/>Id<sp/>=<sp/>10</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/>analysisManager-&gt;CreateNtupleDColumn(eventNtupleId,<sp/></highlight><highlight class="stringliteral">&quot;xh&quot;</highlight><highlight class="normal">,<sp/>fEventAction-&gt;<ref refid="classEventAction_1af8857fbd57edd5fc0d37c5e8b9e525b7" kindref="member">GetX</ref>());<sp/></highlight><highlight class="comment">//<sp/>column<sp/>Id<sp/>=<sp/>11</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/>analysisManager-&gt;CreateNtupleDColumn(eventNtupleId,<sp/></highlight><highlight class="stringliteral">&quot;yh&quot;</highlight><highlight class="normal">,<sp/>fEventAction-&gt;<ref refid="classEventAction_1a1a0126ddfd9f40c81e21a26a066a38c1" kindref="member">GetY</ref>());<sp/></highlight><highlight class="comment">//<sp/>column<sp/>Id<sp/>=<sp/>12</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/>analysisManager-&gt;CreateNtupleDColumn(eventNtupleId,<sp/></highlight><highlight class="stringliteral">&quot;zh&quot;</highlight><highlight class="normal">,<sp/>fEventAction-&gt;<ref refid="classEventAction_1a5278ccd32f797baaf89d00bbb90df337" kindref="member">GetZ</ref>());<sp/></highlight><highlight class="comment">//<sp/>column<sp/>Id<sp/>=<sp/>13</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/>analysisManager-&gt;CreateNtupleDColumn(eventNtupleId,<sp/></highlight><highlight class="stringliteral">&quot;wh&quot;</highlight><highlight class="normal">,<sp/>fEventAction-&gt;<ref refid="classEventAction_1a4a69ea0a164a3b11ab5d9b5327561315" kindref="member">GetW</ref>());<sp/></highlight><highlight class="comment">//<sp/>column<sp/>Id<sp/>=<sp/>14</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="226"><highlight class="normal"></highlight></codeline>
 <codeline lineno="227"><highlight class="normal"><sp/><sp/>analysisManager-&gt;FinishNtuple(eventNtupleId);</highlight></codeline>
 <codeline lineno="228"><highlight class="normal"><sp/><sp/>G4cout<sp/>&lt;&lt;</highlight><highlight class="stringliteral">&quot;RunAction::BeginOfRunAction:<sp/>Event<sp/>data<sp/>ntuple<sp/>created.<sp/>ID<sp/>=<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;<sp/>eventNtupleId<sp/>&lt;&lt;<sp/>G4endl;</highlight></codeline>
@@ -566,7 +566,7 @@
 <codeline lineno="230"><highlight class="normal"></highlight></codeline>
 <codeline lineno="231"><highlight class="normal"></highlight><highlight class="comment">//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="232"><highlight class="normal"></highlight></codeline>
-<codeline lineno="233"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>RunAction::DefineCrossSectionNtuple(){</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classRunAction_1a2b7cb09d1a9ea147f96a9c4cdb5adb90" kindref="member">RunAction::DefineCrossSectionNtuple</ref>(){</highlight></codeline>
 <codeline lineno="234"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Get<sp/>analysis<sp/>manager</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="235"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>analysisManager<sp/>=<sp/>G4AnalysisManager::Instance();</highlight></codeline>
 <codeline lineno="236"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Create<sp/>ntuple<sp/>for<sp/>cross-section<sp/>data</highlight><highlight class="normal"></highlight></codeline>
@@ -598,17 +598,17 @@
 <codeline lineno="262"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>energy<sp/>=<sp/>startEnergy<sp/>*<sp/>std::pow(factor,<sp/>i);</highlight></codeline>
 <codeline lineno="263"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>crossSection<sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(processName<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;compton&quot;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
-<codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>crossSection<sp/>=<sp/>fGammaRayHelper-&gt;GetComptonCrossSection(energy,<sp/>mat);</highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>crossSection<sp/>=<sp/>fGammaRayHelper-&gt;<ref refid="classGammaRayHelper_1a9210941982409cb5cc915759d7a0472a" kindref="member">GetComptonCrossSection</ref>(energy,<sp/>mat);</highlight></codeline>
 <codeline lineno="266"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(processName<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;phot&quot;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
-<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>crossSection<sp/>=<sp/>fGammaRayHelper-&gt;GetPhotoelectricCrossSection(energy,<sp/>mat);</highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>crossSection<sp/>=<sp/>fGammaRayHelper-&gt;<ref refid="classGammaRayHelper_1a904bd1187ecd382072b9e98ac5051646" kindref="member">GetPhotoelectricCrossSection</ref>(energy,<sp/>mat);</highlight></codeline>
 <codeline lineno="268"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(processName<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;tot&quot;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
-<codeline lineno="269"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>crossSection<sp/>=<sp/>fGammaRayHelper-&gt;GetTotalCrossSection(energy,<sp/>mat);</highlight></codeline>
+<codeline lineno="269"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>crossSection<sp/>=<sp/>fGammaRayHelper-&gt;<ref refid="classGammaRayHelper_1a1dcb9b960c9c14b230ff4a1e26d3f012" kindref="member">GetTotalCrossSection</ref>(energy,<sp/>mat);</highlight></codeline>
 <codeline lineno="270"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="271"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>analysisManager-&gt;FillNtupleSColumn(crossSectionNtupleId,<sp/>0,<sp/>mat-&gt;GetName());</highlight></codeline>
 <codeline lineno="272"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>analysisManager-&gt;FillNtupleSColumn(crossSectionNtupleId,<sp/>1,<sp/>processName);</highlight></codeline>
 <codeline lineno="273"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>analysisManager-&gt;FillNtupleDColumn(crossSectionNtupleId,<sp/>2,<sp/>energy<sp/>/<sp/>MeV);</highlight></codeline>
 <codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(processName<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;att&quot;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
-<codeline lineno="275"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>analysisManager-&gt;FillNtupleDColumn(crossSectionNtupleId,<sp/>3,<sp/>fGammaRayHelper-&gt;GetMassAttenuationCoefficient(energy,<sp/>mat)/cm2);</highlight></codeline>
+<codeline lineno="275"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>analysisManager-&gt;FillNtupleDColumn(crossSectionNtupleId,<sp/>3,<sp/>fGammaRayHelper-&gt;<ref refid="classGammaRayHelper_1aaa1dae5e87643fb8af5672b8d3cdf981" kindref="member">GetMassAttenuationCoefficient</ref>(energy,<sp/>mat)/cm2);</highlight></codeline>
 <codeline lineno="276"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
 <codeline lineno="277"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>analysisManager-&gt;FillNtupleDColumn(crossSectionNtupleId,<sp/>3,<sp/>crossSection<sp/>/<sp/>barn);</highlight></codeline>
 <codeline lineno="278"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
@@ -627,7 +627,7 @@
 <codeline lineno="291"><highlight class="normal"></highlight></codeline>
 <codeline lineno="292"><highlight class="normal"></highlight><highlight class="comment">//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="293"><highlight class="normal"></highlight></codeline>
-<codeline lineno="294"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>RunAction::EndOfRunAction(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>G4Run*<sp/>run)</highlight></codeline>
+<codeline lineno="294"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classRunAction_1a9773114939d92193afd5f48c456ba1b4" kindref="member">RunAction::EndOfRunAction</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>G4Run*<sp/>run)</highlight></codeline>
 <codeline lineno="295"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="296"><highlight class="normal"></highlight></codeline>
 <codeline lineno="297"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>save<sp/>histograms<sp/>&amp;<sp/>ntuple</highlight><highlight class="normal"></highlight></codeline>

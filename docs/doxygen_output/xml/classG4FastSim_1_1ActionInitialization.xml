@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/ActionInitialization.hh" line="51" column="20" bodyfile="include/ActionInitialization.hh" bodystart="51" bodyend="-1"/>
+        <location file="include/ActionInitialization.hh" line="32" column="20" bodyfile="include/ActionInitialization.hh" bodystart="32" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -37,7 +37,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/ActionInitialization.hh" line="45" column="5" bodyfile="src/ActionInitialization.cc" bodystart="45" bodyend="48"/>
+        <location file="include/ActionInitialization.hh" line="26" column="5" bodyfile="src/ActionInitialization.cc" bodystart="45" bodyend="48"/>
       </memberdef>
       <memberdef kind="function" id="classG4FastSim_1_1ActionInitialization_1a96bd985a2dfb920d9ca1a27a2d8e3338" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -51,7 +51,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/ActionInitialization.hh" line="46" column="5"/>
+        <location file="include/ActionInitialization.hh" line="27" column="5"/>
       </memberdef>
       <memberdef kind="function" id="classG4FastSim_1_1ActionInitialization_1ab607b2e8d232714e21e6cd7b1114e37f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -65,7 +65,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/ActionInitialization.hh" line="48" column="10" bodyfile="src/ActionInitialization.cc" bodystart="51" bodyend="55"/>
+        <location file="include/ActionInitialization.hh" line="29" column="10" bodyfile="src/ActionInitialization.cc" bodystart="51" bodyend="55"/>
       </memberdef>
       <memberdef kind="function" id="classG4FastSim_1_1ActionInitialization_1ab6ca50863fc4b38ea398568e36edc607" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -79,12 +79,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/ActionInitialization.hh" line="49" column="10" bodyfile="src/ActionInitialization.cc" bodystart="59" bodyend="72"/>
+        <location file="include/ActionInitialization.hh" line="30" column="10" bodyfile="src/ActionInitialization.cc" bodystart="59" bodyend="72"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
+<para>Initializes the actions for the simulation. </para>
     </briefdescription>
     <detaileddescription>
+<para>This class is responsible for initializing the actions required for the simulation. It provides methods to build the actions for the master thread and for worker threads. The actions are built based on a <ref refid="classGammaRayHelper" kindref="compound">GammaRayHelper</ref> object. </para>
     </detaileddescription>
     <inheritancegraph>
       <node id="1">
@@ -108,7 +110,7 @@
         <label>G4VUserActionInitialization</label>
       </node>
     </collaborationgraph>
-    <location file="include/ActionInitialization.hh" line="42" column="1" bodyfile="include/ActionInitialization.hh" bodystart="43" bodyend="52"/>
+    <location file="include/ActionInitialization.hh" line="23" column="1" bodyfile="include/ActionInitialization.hh" bodystart="24" bodyend="33"/>
     <listofallmembers>
       <member refid="classG4FastSim_1_1ActionInitialization_1a2a40c012ffed42fd9111b8844894b2eb" prot="public" virt="non-virtual"><scope>G4FastSim::ActionInitialization</scope><name>ActionInitialization</name></member>
       <member refid="classG4FastSim_1_1ActionInitialization_1ab6ca50863fc4b38ea398568e36edc607" prot="public" virt="non-virtual"><scope>G4FastSim::ActionInitialization</scope><name>Build</name></member>

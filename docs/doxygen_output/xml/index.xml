@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygenindex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="index.xsd" version="1.10.0" xml:lang="en-US">
-  <compound refid="classG4FastSim_1_1ActionInitialization" kind="class"><name>G4FastSim::ActionInitialization</name>
-    <member refid="classG4FastSim_1_1ActionInitialization_1a843f0cc674ee77987cf0dfb6bcd318bb" kind="variable"><name>fGammaRayHelper</name></member>
-    <member refid="classG4FastSim_1_1ActionInitialization_1a2a40c012ffed42fd9111b8844894b2eb" kind="function"><name>ActionInitialization</name></member>
-    <member refid="classG4FastSim_1_1ActionInitialization_1a96bd985a2dfb920d9ca1a27a2d8e3338" kind="function"><name>~ActionInitialization</name></member>
-    <member refid="classG4FastSim_1_1ActionInitialization_1ab607b2e8d232714e21e6cd7b1114e37f" kind="function"><name>BuildForMaster</name></member>
-    <member refid="classG4FastSim_1_1ActionInitialization_1ab6ca50863fc4b38ea398568e36edc607" kind="function"><name>Build</name></member>
+  <compound refid="classActionInitialization" kind="class"><name>ActionInitialization</name>
+    <member refid="classActionInitialization_1a8f41679c70166e343186864ff1b9bc6a" kind="variable"><name>fGammaRayHelper</name></member>
+    <member refid="classActionInitialization_1a830a40ce32fd943b81fe844198634486" kind="function"><name>ActionInitialization</name></member>
+    <member refid="classActionInitialization_1ad9283cbbeef0cb53435510cd55e45e0c" kind="function"><name>~ActionInitialization</name></member>
+    <member refid="classActionInitialization_1aa993a3da72fb9ba53b26fece140499ba" kind="function"><name>BuildForMaster</name></member>
+    <member refid="classActionInitialization_1a39e586ef116f8f2cce1b4fee424849ea" kind="function"><name>Build</name></member>
   </compound>
   <compound refid="structG4FastSim_1_1Cluster" kind="struct"><name>G4FastSim::Cluster</name>
     <member refid="structG4FastSim_1_1Cluster_1af91df29b60a0d451789783df227e9da5" kind="variable"><name>position</name></member>
@@ -18,56 +18,56 @@
     <member refid="classCustomEmPhysics_1af2f3accfd989168b491d6d67a3a7d9b0" kind="function"><name>~CustomEmPhysics</name></member>
     <member refid="classCustomEmPhysics_1a423b1f2c38c026e1b8ff7ee41679223c" kind="function"><name>ConstructProcess</name></member>
   </compound>
-  <compound refid="classG4FastSim_1_1DetectorConstruction" kind="class"><name>G4FastSim::DetectorConstruction</name>
-    <member refid="classG4FastSim_1_1DetectorConstruction_1ac455f16f54b79f2f21983e1926515b01" kind="variable"><name>fMaterials</name></member>
-    <member refid="classG4FastSim_1_1DetectorConstruction_1acc417507952f0d7a3139310d69619276" kind="variable"><name>fGammaRayHelper</name></member>
-    <member refid="classG4FastSim_1_1DetectorConstruction_1a53deb7e94ecba0ac4fde8f3e83734dc8" kind="variable"><name>fCheckOverlaps</name></member>
-    <member refid="classG4FastSim_1_1DetectorConstruction_1a5e5237356d4b35fd0b97a469ac4a13ec" kind="variable"><name>outer_cryostat_radius</name></member>
-    <member refid="classG4FastSim_1_1DetectorConstruction_1acbef4a4428fb59f3de4853abaec64171" kind="variable"><name>outer_cryostat_height</name></member>
-    <member refid="classG4FastSim_1_1DetectorConstruction_1a2066193c1f1423838fe5ad76633c5a2d" kind="variable"><name>outer_cryostat_wall_thickness</name></member>
-    <member refid="classG4FastSim_1_1DetectorConstruction_1a6fb0d02010897ff2f2793a41f618e376" kind="variable"><name>inner_cryostat_radius</name></member>
-    <member refid="classG4FastSim_1_1DetectorConstruction_1a7b92c46c7e2cb28783c0ede10c1e190c" kind="variable"><name>inner_cryostat_height</name></member>
-    <member refid="classG4FastSim_1_1DetectorConstruction_1a7ba66bf931e9eeb1f0c6623f88568471" kind="variable"><name>inner_cryostat_wall_thickness</name></member>
-    <member refid="classG4FastSim_1_1DetectorConstruction_1abc32a99034a11cbbf2f9fbfc7e7d2754" kind="variable"><name>fiducial_radius</name></member>
-    <member refid="classG4FastSim_1_1DetectorConstruction_1ac80e832e723a85caf35907aecd69fedc" kind="variable"><name>fiducial_height</name></member>
-    <member refid="classG4FastSim_1_1DetectorConstruction_1a4b1f8ea240ae8d0cee34a62512cecbe7" kind="variable"><name>fWorldLogical</name></member>
-    <member refid="classG4FastSim_1_1DetectorConstruction_1a495707fea07fa429a15dcd462b29fa24" kind="variable"><name>fWaterTankLogical</name></member>
-    <member refid="classG4FastSim_1_1DetectorConstruction_1ac55828ded32404ff341a1c8815acd6fd" kind="variable"><name>fOuterCryostatLogical</name></member>
-    <member refid="classG4FastSim_1_1DetectorConstruction_1a76de733b9ff905478248520ea9e04acd" kind="variable"><name>fVacuumLogical</name></member>
-    <member refid="classG4FastSim_1_1DetectorConstruction_1a6e98f00d4043992a8bdac4929f59e3c3" kind="variable"><name>fInnerCryostatLogical</name></member>
-    <member refid="classG4FastSim_1_1DetectorConstruction_1ad6562ff2fe87d970ef3193c07b3b70af" kind="variable"><name>fLXeLogical</name></member>
-    <member refid="classG4FastSim_1_1DetectorConstruction_1a1b7be514b69bb79d68f397b007900623" kind="variable"><name>fPTFELogical</name></member>
-    <member refid="classG4FastSim_1_1DetectorConstruction_1ae9a48cc9801b85043db6d482068d8261" kind="variable"><name>fLXeFiducialLogical</name></member>
-    <member refid="classG4FastSim_1_1DetectorConstruction_1ad842a3510e5505eaf964fed010e4dd43" kind="variable"><name>fWorldPhysical</name></member>
-    <member refid="classG4FastSim_1_1DetectorConstruction_1accd11f4e2f79679bdc4b00e65816e21b" kind="variable"><name>fWaterTankPhysical</name></member>
-    <member refid="classG4FastSim_1_1DetectorConstruction_1ab75207226628e899eaf32a294387061a" kind="variable"><name>fOuterCryostatPhysical</name></member>
-    <member refid="classG4FastSim_1_1DetectorConstruction_1a0fd8f6e12415c247135eedd125ad4ea4" kind="variable"><name>fVacuumPhysical</name></member>
-    <member refid="classG4FastSim_1_1DetectorConstruction_1a72bd5a4b6c8d1233abadc021b000a084" kind="variable"><name>fInnerCryostatPhysical</name></member>
-    <member refid="classG4FastSim_1_1DetectorConstruction_1ae4df0149d77aad324af8d39adc879cc7" kind="variable"><name>fLXePhysical</name></member>
-    <member refid="classG4FastSim_1_1DetectorConstruction_1ad24f40ba80a83044e0e77f03d53720c8" kind="variable"><name>fPTFEPhysical</name></member>
-    <member refid="classG4FastSim_1_1DetectorConstruction_1a1c17754a59380e2133382adabd564f5e" kind="variable"><name>fLXeFiducialPhysical</name></member>
-    <member refid="classG4FastSim_1_1DetectorConstruction_1a6eb404ead02476fc40a4678d28acb921" kind="variable"><name>fScoringVolume</name></member>
-    <member refid="classG4FastSim_1_1DetectorConstruction_1ab0fa1fabca4339bf27bc74c56a7f1d5b" kind="variable"><name>fMessenger</name></member>
-    <member refid="classG4FastSim_1_1DetectorConstruction_1aa17a113299f7697c31fda911e666e177" kind="function"><name>DetectorConstruction</name></member>
-    <member refid="classG4FastSim_1_1DetectorConstruction_1a039ec9979648c6e28e98659464823761" kind="function"><name>~DetectorConstruction</name></member>
-    <member refid="classG4FastSim_1_1DetectorConstruction_1a825525c706b36c849485028d6f138102" kind="function"><name>Construct</name></member>
-    <member refid="classG4FastSim_1_1DetectorConstruction_1a0b6d42fb3252aef821846b808df83787" kind="function"><name>ConstructWorld</name></member>
-    <member refid="classG4FastSim_1_1DetectorConstruction_1a8ff92616a62089b555e2cfad4818286f" kind="function"><name>ConstructWaterTank</name></member>
-    <member refid="classG4FastSim_1_1DetectorConstruction_1af4745b2e22d743cf52f98c5ca366b3df" kind="function"><name>ConstructOuterCryostat</name></member>
-    <member refid="classG4FastSim_1_1DetectorConstruction_1a1dd93079f2b7408756bf3f9f96ae58d0" kind="function"><name>ConstructInnerCryostat</name></member>
-    <member refid="classG4FastSim_1_1DetectorConstruction_1a2809d771bcb94d38ab7802a0e517df83" kind="function"><name>ConstructLXe</name></member>
-    <member refid="classG4FastSim_1_1DetectorConstruction_1aba89d601be1c4c5c3a862a0d8147a3a6" kind="function"><name>ConstructFiducialVolume</name></member>
-    <member refid="classG4FastSim_1_1DetectorConstruction_1a98e849746130d557d122e86534795cb8" kind="function"><name>DefineSensitiveDetector</name></member>
-    <member refid="classG4FastSim_1_1DetectorConstruction_1a0635cbbeb6f0834113db4c369a75ce62" kind="function"><name>GetScoringVolume</name></member>
-    <member refid="classG4FastSim_1_1DetectorConstruction_1ac17bb2313f403e6bf33f417eacc2f62b" kind="function"><name>GetGammaRayHelper</name></member>
-    <member refid="classG4FastSim_1_1DetectorConstruction_1ae027aaad114262a32135d05bfb7ee621" kind="function"><name>SetOuterCryostatRadius</name></member>
-    <member refid="classG4FastSim_1_1DetectorConstruction_1a3a88428057e9c9e17d308650b8a3350f" kind="function"><name>SetOuterCryostatHeight</name></member>
-    <member refid="classG4FastSim_1_1DetectorConstruction_1a8617ce150d576a831bd6894d6d4ebb0f" kind="function"><name>SetOuterCryostatWallThickness</name></member>
-    <member refid="classG4FastSim_1_1DetectorConstruction_1af79b446ceec64127e74443ec0de833c8" kind="function"><name>SetInnerCryostatRadius</name></member>
-    <member refid="classG4FastSim_1_1DetectorConstruction_1a217e2c69978b6eda39a8aa3da03f2024" kind="function"><name>SetInnerCryostatHeight</name></member>
-    <member refid="classG4FastSim_1_1DetectorConstruction_1a23fcc95da41a3623165d4003212a2c8f" kind="function"><name>SetInnerCryostatWallThickness</name></member>
-    <member refid="classG4FastSim_1_1DetectorConstruction_1a68adc113fced37c0eadddeff3ca8cf64" kind="function"><name>SetFiducialRadius</name></member>
-    <member refid="classG4FastSim_1_1DetectorConstruction_1aa421d8fb67601dda45475f9e0ad77389" kind="function"><name>SetFiducialHeight</name></member>
+  <compound refid="classDetectorConstruction" kind="class"><name>DetectorConstruction</name>
+    <member refid="classDetectorConstruction_1a7bd7b453b4ce3f613b3e7b3c58781d14" kind="variable"><name>fMaterials</name></member>
+    <member refid="classDetectorConstruction_1ae9388f6178da5610d69e55d36e74a8d7" kind="variable"><name>fGammaRayHelper</name></member>
+    <member refid="classDetectorConstruction_1acd9ca668fcc3043166e767794f56bb04" kind="variable"><name>fCheckOverlaps</name></member>
+    <member refid="classDetectorConstruction_1a17b9240318358ad5cb5a20ec133ea5f8" kind="variable"><name>outer_cryostat_radius</name></member>
+    <member refid="classDetectorConstruction_1a0cf4d1dcefbf88517e8cfc6e99f529ef" kind="variable"><name>outer_cryostat_height</name></member>
+    <member refid="classDetectorConstruction_1a3ea0eab2316a58bc285b3a7e1c0d6bd2" kind="variable"><name>outer_cryostat_wall_thickness</name></member>
+    <member refid="classDetectorConstruction_1a73059f04501656e4669270af76738dc1" kind="variable"><name>inner_cryostat_radius</name></member>
+    <member refid="classDetectorConstruction_1aae6afb415b8e312af79733c1713ed350" kind="variable"><name>inner_cryostat_height</name></member>
+    <member refid="classDetectorConstruction_1a903e74330d534a711a60ec8d9a175847" kind="variable"><name>inner_cryostat_wall_thickness</name></member>
+    <member refid="classDetectorConstruction_1ae0b089ece4cc42c61e4662e0c2f41cc0" kind="variable"><name>fiducial_radius</name></member>
+    <member refid="classDetectorConstruction_1ad3ea0f455c35f28405cdc427dcec551a" kind="variable"><name>fiducial_height</name></member>
+    <member refid="classDetectorConstruction_1a50ef3dc1895dc441fc8c36e740666367" kind="variable"><name>fWorldLogical</name></member>
+    <member refid="classDetectorConstruction_1aa2082f491d7a440f597b68a44530f9ae" kind="variable"><name>fWaterTankLogical</name></member>
+    <member refid="classDetectorConstruction_1ad6919f222895c9c63eb942bf5586071d" kind="variable"><name>fOuterCryostatLogical</name></member>
+    <member refid="classDetectorConstruction_1ac709bdd0800eb7b9573f84a730a21b93" kind="variable"><name>fVacuumLogical</name></member>
+    <member refid="classDetectorConstruction_1aaf3b90f7abc9b494a4146f9f08bbd422" kind="variable"><name>fInnerCryostatLogical</name></member>
+    <member refid="classDetectorConstruction_1aad5f66c782da4c22e0bf8f06b5f61745" kind="variable"><name>fLXeLogical</name></member>
+    <member refid="classDetectorConstruction_1aaf3d7c478a8863154eacca1873609379" kind="variable"><name>fPTFELogical</name></member>
+    <member refid="classDetectorConstruction_1a90254ccd5a8f0d0b60816b8150157c7c" kind="variable"><name>fLXeFiducialLogical</name></member>
+    <member refid="classDetectorConstruction_1adafbffb235ddfbb91ef6c26d7f282eb8" kind="variable"><name>fWorldPhysical</name></member>
+    <member refid="classDetectorConstruction_1aaaba813e6cfef8a01f64796f5f34deb0" kind="variable"><name>fWaterTankPhysical</name></member>
+    <member refid="classDetectorConstruction_1af2ef7f6c7e52238824487bfa2660d615" kind="variable"><name>fOuterCryostatPhysical</name></member>
+    <member refid="classDetectorConstruction_1a0d17aedef4995a6a7fac3d430a815ecc" kind="variable"><name>fVacuumPhysical</name></member>
+    <member refid="classDetectorConstruction_1ad7af74afa3f08108e390c1ba92c93640" kind="variable"><name>fInnerCryostatPhysical</name></member>
+    <member refid="classDetectorConstruction_1a31bfd8caa818aea0d26b7a283757dab4" kind="variable"><name>fLXePhysical</name></member>
+    <member refid="classDetectorConstruction_1a987b2c2bbc4c7df7734737f1635c636e" kind="variable"><name>fPTFEPhysical</name></member>
+    <member refid="classDetectorConstruction_1a7015c30ae26e4506b0bc9bcb25dc0fde" kind="variable"><name>fLXeFiducialPhysical</name></member>
+    <member refid="classDetectorConstruction_1af6940211128f81e6a78373c85fc91b47" kind="variable"><name>fScoringVolume</name></member>
+    <member refid="classDetectorConstruction_1a96575b0909c4ad85ffc288e2a6d97485" kind="variable"><name>fMessenger</name></member>
+    <member refid="classDetectorConstruction_1a77459885d5160221abb0ad5b3ac0115d" kind="function"><name>DetectorConstruction</name></member>
+    <member refid="classDetectorConstruction_1a73013cab35a2b470338da2e4686edea3" kind="function"><name>~DetectorConstruction</name></member>
+    <member refid="classDetectorConstruction_1a8fbfdf639b888b7206772e80365b0c93" kind="function"><name>Construct</name></member>
+    <member refid="classDetectorConstruction_1aa87cafdbc955fc4fe79d8fbff3091a17" kind="function"><name>ConstructWorld</name></member>
+    <member refid="classDetectorConstruction_1a137d36dfd57694c5a2845511ac83287a" kind="function"><name>ConstructWaterTank</name></member>
+    <member refid="classDetectorConstruction_1aea315d8cfe311e3b2fbe982cf9909cde" kind="function"><name>ConstructOuterCryostat</name></member>
+    <member refid="classDetectorConstruction_1a9e28cb4ac5464dd67986dee2e57a696b" kind="function"><name>ConstructInnerCryostat</name></member>
+    <member refid="classDetectorConstruction_1a01b81cc97eda6d7a68ebfba0344cfef0" kind="function"><name>ConstructLXe</name></member>
+    <member refid="classDetectorConstruction_1a69f00930d70474a7e405ca60aec5f3a7" kind="function"><name>ConstructFiducialVolume</name></member>
+    <member refid="classDetectorConstruction_1a02bdbafdcb7a4739e9ae00b543b63cf2" kind="function"><name>DefineSensitiveDetector</name></member>
+    <member refid="classDetectorConstruction_1a9ff944831d0a858fa0849d4510fda65b" kind="function"><name>GetScoringVolume</name></member>
+    <member refid="classDetectorConstruction_1a530125a91be4466279b659f1a1b61165" kind="function"><name>GetGammaRayHelper</name></member>
+    <member refid="classDetectorConstruction_1a7a2bcb940ae069ff4e5a9354bb250e97" kind="function"><name>SetOuterCryostatRadius</name></member>
+    <member refid="classDetectorConstruction_1a3625003760476b66ed28627781677724" kind="function"><name>SetOuterCryostatHeight</name></member>
+    <member refid="classDetectorConstruction_1af37c8aacd6d0024a8dd372626877e149" kind="function"><name>SetOuterCryostatWallThickness</name></member>
+    <member refid="classDetectorConstruction_1af7fb456c0147cd7f5f9a2902240b0aff" kind="function"><name>SetInnerCryostatRadius</name></member>
+    <member refid="classDetectorConstruction_1afb62726c74b352cd25915e9feac8f7b5" kind="function"><name>SetInnerCryostatHeight</name></member>
+    <member refid="classDetectorConstruction_1ac1a6bcba2a3807974aa48170f577fb67" kind="function"><name>SetInnerCryostatWallThickness</name></member>
+    <member refid="classDetectorConstruction_1a72d0399f00ee6c039e846a8bd558202c" kind="function"><name>SetFiducialRadius</name></member>
+    <member refid="classDetectorConstruction_1aef4ad7ff3921c8ad3c5ff927e85095b1" kind="function"><name>SetFiducialHeight</name></member>
   </compound>
   <compound refid="classG4FastSim_1_1DetectorConstructionMessenger" kind="class"><name>G4FastSim::DetectorConstructionMessenger</name>
     <member refid="classG4FastSim_1_1DetectorConstructionMessenger_1a56d94b045310919b4da79b66e6a82d15" kind="variable"><name>fDetectorConstruction</name></member>
@@ -83,66 +83,66 @@
     <member refid="classG4FastSim_1_1DetectorConstructionMessenger_1a51453a61e4bb06fc4c23031e5dbf7ccb" kind="function"><name>~DetectorConstructionMessenger</name></member>
     <member refid="classG4FastSim_1_1DetectorConstructionMessenger_1a9843aeb75968abb9ac95e69fa704ca57" kind="function"><name>SetNewValue</name></member>
   </compound>
-  <compound refid="classG4FastSim_1_1EventAction" kind="class"><name>G4FastSim::EventAction</name>
-    <member refid="classG4FastSim_1_1EventAction_1a2a96349ee89272b4576398a7ac538695" kind="variable"><name>fLogWeight</name></member>
-    <member refid="classG4FastSim_1_1EventAction_1a41c9dc093c7137f7e59cd18aadbfd6be" kind="variable"><name>fEdep</name></member>
-    <member refid="classG4FastSim_1_1EventAction_1a240a5e697b0a82b9c5ebd221f9acc09f" kind="variable"><name>fNclusters</name></member>
-    <member refid="classG4FastSim_1_1EventAction_1a9180cbaec40303315968a7d32da06614" kind="variable"><name>fNphot</name></member>
-    <member refid="classG4FastSim_1_1EventAction_1a1556839c7fa3ed559b7b84965f189fa4" kind="variable"><name>fNcomp</name></member>
-    <member refid="classG4FastSim_1_1EventAction_1a22773d5fd32937317595ce00473b52cf" kind="variable"><name>fEventID</name></member>
-    <member refid="classG4FastSim_1_1EventAction_1af3f5c798657ab7b11764cfa1b011a6c1" kind="variable"><name>fEventType</name></member>
-    <member refid="classG4FastSim_1_1EventAction_1a37bf9013dbd05b66dffdd12bb0520533" kind="variable"><name>fXp</name></member>
-    <member refid="classG4FastSim_1_1EventAction_1a020d2869c4fcedffb31683143e3d0b21" kind="variable"><name>fYp</name></member>
-    <member refid="classG4FastSim_1_1EventAction_1a5d34246911770851b35dae2b275edcb9" kind="variable"><name>fZp</name></member>
-    <member refid="classG4FastSim_1_1EventAction_1abdb1d349d12ee5ee1becc636b9449d78" kind="variable"><name>fEd</name></member>
-    <member refid="classG4FastSim_1_1EventAction_1a8db2c9bf9010e6de0aef310a515cd6a4" kind="variable"><name>fX</name></member>
-    <member refid="classG4FastSim_1_1EventAction_1ac9f825b0cade7b76f41cb43989d84fd2" kind="variable"><name>fY</name></member>
-    <member refid="classG4FastSim_1_1EventAction_1a9c0c86e1e5629b8bd78b2b4fff94e537" kind="variable"><name>fZ</name></member>
-    <member refid="classG4FastSim_1_1EventAction_1aed9835cd7bdc33c6f6eb32a1f9716822" kind="variable"><name>fW</name></member>
-    <member refid="classG4FastSim_1_1EventAction_1af161744847ff48843973c7829a372fba" kind="variable"><name>fFastSimulation</name></member>
-    <member refid="classG4FastSim_1_1EventAction_1a8cf5e1e2820b30042cd4c72fb53dd7ff" kind="variable"><name>fInitializedGraphs</name></member>
-    <member refid="classG4FastSim_1_1EventAction_1adf8994cbd5ea908c2bbc6d76a2d4217b" kind="variable"><name>fNumberOfScattersMax</name></member>
-    <member refid="classG4FastSim_1_1EventAction_1a58082024c9ac196511501341515df164" kind="variable"><name>fNumberOfScatters</name></member>
-    <member refid="classG4FastSim_1_1EventAction_1a3e380592d4e416732c6279330b2b5443" kind="variable"><name>fHasBeenInXenon</name></member>
-    <member refid="classG4FastSim_1_1EventAction_1a5818690ff1cdb3ace37c63ce7b66d9e5" kind="variable"><name>fMaxEnergy</name></member>
-    <member refid="classG4FastSim_1_1EventAction_1af2606a7442a97440c5d22defe007ae81" kind="variable"><name>fAvailableEnergy</name></member>
-    <member refid="classG4FastSim_1_1EventAction_1a14ab0f7ba6104d5c350b03b90c4a0f8c" kind="variable"><name>fHitsCollectionNames</name></member>
-    <member refid="classG4FastSim_1_1EventAction_1af65a0f7c54bad6a835bcdbb130cfaeda" kind="variable"><name>fGammaRayHelper</name></member>
-    <member refid="classG4FastSim_1_1EventAction_1ab213bd3faaee0e62dad9ba2884f29cb9" kind="variable"><name>fFiducialVolume</name></member>
-    <member refid="classG4FastSim_1_1EventAction_1aa88a720d0b7462ba448c065ca26179ab" kind="variable"><name>verbosityLevel</name></member>
-    <member refid="classG4FastSim_1_1EventAction_1aa1f321b88b89f16c67b65da6727a52d6" kind="function"><name>EventAction</name></member>
-    <member refid="classG4FastSim_1_1EventAction_1adb4415861c5cdd0a55b2e14990e13da6" kind="function"><name>~EventAction</name></member>
-    <member refid="classG4FastSim_1_1EventAction_1aa0a1ce1d279c7071217c445fc761bbad" kind="function"><name>BeginOfEventAction</name></member>
-    <member refid="classG4FastSim_1_1EventAction_1a43bd94959a1efa3612b0a6324bca406c" kind="function"><name>EndOfEventAction</name></member>
-    <member refid="classG4FastSim_1_1EventAction_1adeb4e093143f249cf5a556a8246653d3" kind="function"><name>GetX</name></member>
-    <member refid="classG4FastSim_1_1EventAction_1a52568c351e9ab62edccb891c0bf8f421" kind="function"><name>GetY</name></member>
-    <member refid="classG4FastSim_1_1EventAction_1a01b9c8dc9d9839413cd5c07484aaf248" kind="function"><name>GetZ</name></member>
-    <member refid="classG4FastSim_1_1EventAction_1ace2d3844304533e215785778ef46fe90" kind="function"><name>GetE</name></member>
-    <member refid="classG4FastSim_1_1EventAction_1ac0331ec9e7c100627ec72b86857f173e" kind="function"><name>GetW</name></member>
-    <member refid="classG4FastSim_1_1EventAction_1aebd5b408875e402cf38a33a84410fb0d" kind="function"><name>AddEdep</name></member>
-    <member refid="classG4FastSim_1_1EventAction_1a25cfe5dde9e5abd4d30c255fb521724d" kind="function"><name>AddWeight</name></member>
-    <member refid="classG4FastSim_1_1EventAction_1a06e4d9a81df350b8a49c4d3c77c5b154" kind="function"><name>AnalyzeHits</name></member>
-    <member refid="classG4FastSim_1_1EventAction_1a3da7908738b2228320ef78abf83763a8" kind="function"><name>ResetVariables</name></member>
-    <member refid="classG4FastSim_1_1EventAction_1a0a5957019bc5a3844c9c10be44f04880" kind="function"><name>IsFastSimulation</name></member>
-    <member refid="classG4FastSim_1_1EventAction_1afd2e1cdcd5f4320967274b27bc06e6e0" kind="function"><name>GetNumberOfScatters</name></member>
-    <member refid="classG4FastSim_1_1EventAction_1a6e7b195f21b29162210a1fd4f1395b4d" kind="function"><name>GetMaxEnergy</name></member>
-    <member refid="classG4FastSim_1_1EventAction_1a29578ed86497866f4e76647cff46def8" kind="function"><name>GetNumberOfScattersMax</name></member>
-    <member refid="classG4FastSim_1_1EventAction_1aa0f4b11d80547c902f0b72cfab9be7a3" kind="function"><name>GetAvailableEnergy</name></member>
-    <member refid="classG4FastSim_1_1EventAction_1ae1cd2d1c9fd5002c4f22483481d46cc7" kind="function"><name>GetWeight</name></member>
-    <member refid="classG4FastSim_1_1EventAction_1a85489f607916912fadf7d58891c5b55b" kind="function"><name>HasBeenInXenon</name></member>
-    <member refid="classG4FastSim_1_1EventAction_1a4d03ac81dc8d0fcb225ded25bd7f6b73" kind="function"><name>GetEventType</name></member>
-    <member refid="classG4FastSim_1_1EventAction_1ab0990d80db3bd9e4c88279d1490a4dc4" kind="function"><name>SetNumberOfScattersMax</name></member>
-    <member refid="classG4FastSim_1_1EventAction_1ab10d97afcb735c75e77447f118297668" kind="function"><name>SetFastSimulation</name></member>
-    <member refid="classG4FastSim_1_1EventAction_1a1ac50be580de9273ef1e58095798bc16" kind="function"><name>SetNumberOfScatters</name></member>
-    <member refid="classG4FastSim_1_1EventAction_1a0497268c7d7eaf9f9f1ef8cf8808a1e7" kind="function"><name>SetMaxEnergy</name></member>
-    <member refid="classG4FastSim_1_1EventAction_1a828bd5efac02e28a0cbe6e296898e4f1" kind="function"><name>SetAvailableEnergy</name></member>
-    <member refid="classG4FastSim_1_1EventAction_1abc1c3a1d617575f8e1329ecafeda4b45" kind="function"><name>ReduceAvailableEnergy</name></member>
-    <member refid="classG4FastSim_1_1EventAction_1a77d54ea8c5f1afe66e9bfa2330dfee27" kind="function"><name>SetHasBeenInXenon</name></member>
-    <member refid="classG4FastSim_1_1EventAction_1a964a668626874db354cad50145b6f441" kind="function"><name>SetEventType</name></member>
-    <member refid="classG4FastSim_1_1EventAction_1a1574fcdd2b9a2aca1a2205a4c0b21ad3" kind="function"><name>ClusterHits</name></member>
-    <member refid="classG4FastSim_1_1EventAction_1a7b5f4425356f54ec3801eb47cddc7c97" kind="function"><name>IsWithinFiducialVolume</name></member>
-    <member refid="classG4FastSim_1_1EventAction_1a902f3346d6e56cc7361e55cab035cf70" kind="function"><name>CalculateDistance</name></member>
-    <member refid="classG4FastSim_1_1EventAction_1a6d420ce29b24ed6096a8bda329dcd362" kind="function"><name>CalculateTimeDifference</name></member>
+  <compound refid="classEventAction" kind="class"><name>EventAction</name>
+    <member refid="classEventAction_1a8cbd8c76ec4d7f08a2a9e7591d4079f5" kind="variable"><name>fLogWeight</name></member>
+    <member refid="classEventAction_1afd62820d7f6920451158dd19f02d771e" kind="variable"><name>fEdep</name></member>
+    <member refid="classEventAction_1afd03e89de11e046abe25fc95f5a2d765" kind="variable"><name>fNclusters</name></member>
+    <member refid="classEventAction_1a8ecae31740b8b02a0f96608b2c6a3e47" kind="variable"><name>fNphot</name></member>
+    <member refid="classEventAction_1af3671274799ef28a77ce9c47b0f7edfc" kind="variable"><name>fNcomp</name></member>
+    <member refid="classEventAction_1a6985bde9a202f6b5079547c80faf7559" kind="variable"><name>fEventID</name></member>
+    <member refid="classEventAction_1ace47883fd4993c8e821441cded4fb1d2" kind="variable"><name>fEventType</name></member>
+    <member refid="classEventAction_1adc197ed5ee468c618312126192184586" kind="variable"><name>fXp</name></member>
+    <member refid="classEventAction_1aa31d856293034f5c2a3afff1df071ad9" kind="variable"><name>fYp</name></member>
+    <member refid="classEventAction_1a9fd7667a705adf5a6d52d967e1825098" kind="variable"><name>fZp</name></member>
+    <member refid="classEventAction_1aa1c85b9a5527a183ea1595c4c433ecd5" kind="variable"><name>fEd</name></member>
+    <member refid="classEventAction_1a2f45df67559178029b3766160146cc60" kind="variable"><name>fX</name></member>
+    <member refid="classEventAction_1ac34b9cc86f386f1d8266b19272149004" kind="variable"><name>fY</name></member>
+    <member refid="classEventAction_1ac41f423b70fe3b093fc1e62269dcbace" kind="variable"><name>fZ</name></member>
+    <member refid="classEventAction_1a6d8119e0ae5ee505f4f1e0722fff2d60" kind="variable"><name>fW</name></member>
+    <member refid="classEventAction_1a4740d8613c1ffa6268e17181ec0412f6" kind="variable"><name>fFastSimulation</name></member>
+    <member refid="classEventAction_1a34931a32b27c20e07a44001bac0779b6" kind="variable"><name>fInitializedGraphs</name></member>
+    <member refid="classEventAction_1a7a0790741fc4545782ba3f05e1215ccb" kind="variable"><name>fNumberOfScattersMax</name></member>
+    <member refid="classEventAction_1ae18ba57f852afb3bb4386558102fd11b" kind="variable"><name>fNumberOfScatters</name></member>
+    <member refid="classEventAction_1a3cd9cfbd45353521c2cb881c024ab0c6" kind="variable"><name>fHasBeenInXenon</name></member>
+    <member refid="classEventAction_1a4ffe180d0107631fe9516b48306c39b1" kind="variable"><name>fMaxEnergy</name></member>
+    <member refid="classEventAction_1aa0486252156fa5c7cf91ca075a05b3a8" kind="variable"><name>fAvailableEnergy</name></member>
+    <member refid="classEventAction_1ac3803040c59cf62f3731cb95e82535be" kind="variable"><name>fHitsCollectionNames</name></member>
+    <member refid="classEventAction_1af2dd3a525fa2dddbf3b0a64c193c634b" kind="variable"><name>fGammaRayHelper</name></member>
+    <member refid="classEventAction_1a753242f3c098497427e88e8ac90ad96b" kind="variable"><name>fFiducialVolume</name></member>
+    <member refid="classEventAction_1a41a85c07874a3b696f6000e18062d374" kind="variable"><name>verbosityLevel</name></member>
+    <member refid="classEventAction_1a9a8515b9069293b94b72a6863c48e6ba" kind="function"><name>EventAction</name></member>
+    <member refid="classEventAction_1abe8cfbded2bc9fbed9be246d0cac7613" kind="function"><name>~EventAction</name></member>
+    <member refid="classEventAction_1a30ca6a1995cd73bcd15bb9818c49fda0" kind="function"><name>BeginOfEventAction</name></member>
+    <member refid="classEventAction_1ac644b336bd2c1ab896db5c2089a06364" kind="function"><name>EndOfEventAction</name></member>
+    <member refid="classEventAction_1af8857fbd57edd5fc0d37c5e8b9e525b7" kind="function"><name>GetX</name></member>
+    <member refid="classEventAction_1a1a0126ddfd9f40c81e21a26a066a38c1" kind="function"><name>GetY</name></member>
+    <member refid="classEventAction_1a5278ccd32f797baaf89d00bbb90df337" kind="function"><name>GetZ</name></member>
+    <member refid="classEventAction_1a3d02fe96a5b633cc661a5c2b32ddc010" kind="function"><name>GetE</name></member>
+    <member refid="classEventAction_1a4a69ea0a164a3b11ab5d9b5327561315" kind="function"><name>GetW</name></member>
+    <member refid="classEventAction_1a7d8e2a557734526f2a4f85b48d172fd7" kind="function"><name>AddEdep</name></member>
+    <member refid="classEventAction_1acefd80fbd497f9ff3d16f8bae126a789" kind="function"><name>AddWeight</name></member>
+    <member refid="classEventAction_1ac561e43e535456a5d2bb2958e6c7c0af" kind="function"><name>AnalyzeHits</name></member>
+    <member refid="classEventAction_1af34ccf5d78e8a4139f865954c309f0f6" kind="function"><name>ResetVariables</name></member>
+    <member refid="classEventAction_1aadb449a0f7a833b44e0136055950c37c" kind="function"><name>IsFastSimulation</name></member>
+    <member refid="classEventAction_1a162c883989911ba148346423d4a9bdd0" kind="function"><name>GetNumberOfScatters</name></member>
+    <member refid="classEventAction_1a86fb3f239095db11bdd995069d2c5193" kind="function"><name>GetMaxEnergy</name></member>
+    <member refid="classEventAction_1a4c1398a7a16eeb76a5a41b5e5b69c087" kind="function"><name>GetNumberOfScattersMax</name></member>
+    <member refid="classEventAction_1ade7a5b71891eaabe7e89a9016cb94006" kind="function"><name>GetAvailableEnergy</name></member>
+    <member refid="classEventAction_1ab6b4690bbabda1ed84dea08fa4bd3cfd" kind="function"><name>GetWeight</name></member>
+    <member refid="classEventAction_1a6099c95c87b8600459a40682b038dfe3" kind="function"><name>HasBeenInXenon</name></member>
+    <member refid="classEventAction_1aa466f4334ca1467fe27498239dd271c7" kind="function"><name>GetEventType</name></member>
+    <member refid="classEventAction_1af8c03c77f2ba2750a9b83aff3c878f04" kind="function"><name>SetNumberOfScattersMax</name></member>
+    <member refid="classEventAction_1acccde4e4cdd865967221a6099b6dd3a2" kind="function"><name>SetFastSimulation</name></member>
+    <member refid="classEventAction_1a820c16a2f7cc5d0c0880f73595cddea1" kind="function"><name>SetNumberOfScatters</name></member>
+    <member refid="classEventAction_1afdfda3e8d09c30a3277ce9bdeacbee0b" kind="function"><name>SetMaxEnergy</name></member>
+    <member refid="classEventAction_1a19fbe4d39b2ff364d6160ec0bcb82fb4" kind="function"><name>SetAvailableEnergy</name></member>
+    <member refid="classEventAction_1ab28b59f1baa9fc2362717d03e650c73d" kind="function"><name>ReduceAvailableEnergy</name></member>
+    <member refid="classEventAction_1a735b3d728f508a8106995b4dab6ea08d" kind="function"><name>SetHasBeenInXenon</name></member>
+    <member refid="classEventAction_1a405cc1d9e62dd3ba5209f1c8933536db" kind="function"><name>SetEventType</name></member>
+    <member refid="classEventAction_1a1fb1df63c28b185efdea7a137051edf5" kind="function"><name>ClusterHits</name></member>
+    <member refid="classEventAction_1a2c605c079c0494345d547515b4e63016" kind="function"><name>IsWithinFiducialVolume</name></member>
+    <member refid="classEventAction_1aa3c7d3d45ae8d7295e7fcad78ca1ccd6" kind="function"><name>CalculateDistance</name></member>
+    <member refid="classEventAction_1a4983bf9a72f5e200ae253e7b68454033" kind="function"><name>CalculateTimeDifference</name></member>
   </compound>
   <compound refid="classExtendedLivermoreComptonModel" kind="class"><name>ExtendedLivermoreComptonModel</name>
     <member refid="classExtendedLivermoreComptonModel_1a7e76b4926db11e61b73dedbd1e03f1bf" kind="variable"><name>scatterFunctionData</name></member>
@@ -215,29 +215,29 @@
     <member refid="classPrimaryGeneratorAction_1a1dc3a828c828af205d3acda93f57b67e" kind="function"><name>GetParticleGun</name></member>
     <member refid="classPrimaryGeneratorAction_1a88f13d40da2e2083ac230991a735ddd6" kind="function"><name>GetInitialEnergy</name></member>
   </compound>
-  <compound refid="classG4FastSim_1_1RunAction" kind="class"><name>G4FastSim::RunAction</name>
-    <member refid="classG4FastSim_1_1RunAction_1ab566f85843f3ac2639057a4491ec469f" kind="variable"><name>fEventAction</name></member>
-    <member refid="classG4FastSim_1_1RunAction_1a2656f6725a4f98059944fefca9dc3060" kind="variable"><name>fGammaRayHelper</name></member>
-    <member refid="classG4FastSim_1_1RunAction_1abcc934e5202975ff2d9103502ea94442" kind="variable"><name>fMessenger</name></member>
-    <member refid="classG4FastSim_1_1RunAction_1a8aee2706fd55078bd290efcefe12bcc0" kind="variable"><name>eventNtupleId</name></member>
-    <member refid="classG4FastSim_1_1RunAction_1a09449b40ac07ede53d3154073de46f4d" kind="variable"><name>crossSectionNtupleId</name></member>
-    <member refid="classG4FastSim_1_1RunAction_1a5d02dd9af0c5db7daae1b2e817fb090a" kind="variable"><name>diffXsecNtupleId</name></member>
-    <member refid="classG4FastSim_1_1RunAction_1a96ec48dae9d23afb58c664ec8a21fad6" kind="variable"><name>fFastSimulation</name></member>
-    <member refid="classG4FastSim_1_1RunAction_1a196dca6d7a8b5a2555c0706f00ea7ffe" kind="variable"><name>fNumberOfScattersMax</name></member>
-    <member refid="classG4FastSim_1_1RunAction_1a495e38b0ac75b1e24e17c1ba2a3afded" kind="variable"><name>fMaxEnergy</name></member>
-    <member refid="classG4FastSim_1_1RunAction_1a0989728f8e02f351116be884ddf92b7a" kind="variable"><name>fOutputFileName</name></member>
-    <member refid="classG4FastSim_1_1RunAction_1a37d112d13613a875c701fa713a8578d6" kind="function"><name>RunAction</name></member>
-    <member refid="classG4FastSim_1_1RunAction_1a60a2332ed4605207febad1b0d8e651a8" kind="function"><name>~RunAction</name></member>
-    <member refid="classG4FastSim_1_1RunAction_1a56d7c56a7c026ffc3f06113c7329f7fc" kind="function"><name>BeginOfRunAction</name></member>
-    <member refid="classG4FastSim_1_1RunAction_1a3bb1dc31bdbfdd5488955f67edf30187" kind="function"><name>EndOfRunAction</name></member>
-    <member refid="classG4FastSim_1_1RunAction_1a2760a1df3ffa37b3bae82417e464b988" kind="function"><name>InitializeNtuples</name></member>
-    <member refid="classG4FastSim_1_1RunAction_1a5f2e9b091de890f715f382f00f978f58" kind="function"><name>DefineEventNtuple</name></member>
-    <member refid="classG4FastSim_1_1RunAction_1a5234e8dcae186de76af503dd88394481" kind="function"><name>DefineCrossSectionNtuple</name></member>
-    <member refid="classG4FastSim_1_1RunAction_1a882e8082b1a86d880ad497e24880072e" kind="function"><name>DefineDifferentialCrossSectionNtuple</name></member>
-    <member refid="classG4FastSim_1_1RunAction_1a5bd335f430b8ebd2107da1e3c113ef30" kind="function"><name>SetFastSimulation</name></member>
-    <member refid="classG4FastSim_1_1RunAction_1a070c9263a8b4d9c9b8b0e99f52f500c9" kind="function"><name>SetNumberOfScatters</name></member>
-    <member refid="classG4FastSim_1_1RunAction_1a544642e65c03425b5c6131676b6cd65e" kind="function"><name>SetMaxEnergy</name></member>
-    <member refid="classG4FastSim_1_1RunAction_1a8a1efe0b0726343d4974e98efd66f31d" kind="function"><name>SetOutputFileName</name></member>
+  <compound refid="classRunAction" kind="class"><name>RunAction</name>
+    <member refid="classRunAction_1a586f1b04e33638212e6d57be97311a7c" kind="variable"><name>fEventAction</name></member>
+    <member refid="classRunAction_1a4d0ec69c786e3035f0501b3cd949d3d9" kind="variable"><name>fGammaRayHelper</name></member>
+    <member refid="classRunAction_1afa256006e6171ca04f25dcb7028827eb" kind="variable"><name>fMessenger</name></member>
+    <member refid="classRunAction_1aa9dbe010f097f07ab445890a0773999c" kind="variable"><name>eventNtupleId</name></member>
+    <member refid="classRunAction_1ae988b40d0ea4230cdf2c7a350134c7f8" kind="variable"><name>crossSectionNtupleId</name></member>
+    <member refid="classRunAction_1a4f955ec4262ff4a53efc06945cea44ce" kind="variable"><name>diffXsecNtupleId</name></member>
+    <member refid="classRunAction_1a89767b66465a9d73f559c0b4bc869171" kind="variable"><name>fFastSimulation</name></member>
+    <member refid="classRunAction_1abec36c83e7c50a424d078a8e418ae938" kind="variable"><name>fNumberOfScattersMax</name></member>
+    <member refid="classRunAction_1a9557c35f186ffe6640dc464bbda5adaa" kind="variable"><name>fMaxEnergy</name></member>
+    <member refid="classRunAction_1a3159884d817346a100301e81ca426379" kind="variable"><name>fOutputFileName</name></member>
+    <member refid="classRunAction_1aa81cf71d5d0400634291277473de27b7" kind="function"><name>RunAction</name></member>
+    <member refid="classRunAction_1a6c584eb414c62a6238d5ea9a55601e1c" kind="function"><name>~RunAction</name></member>
+    <member refid="classRunAction_1a4f622bac2655e90f7c638906cdf5d3d3" kind="function"><name>BeginOfRunAction</name></member>
+    <member refid="classRunAction_1a9773114939d92193afd5f48c456ba1b4" kind="function"><name>EndOfRunAction</name></member>
+    <member refid="classRunAction_1a4e10f453c5a4a4694364a0c02df345fe" kind="function"><name>InitializeNtuples</name></member>
+    <member refid="classRunAction_1a492c9c6f070cb17027ea9d61bd6e4294" kind="function"><name>DefineEventNtuple</name></member>
+    <member refid="classRunAction_1a2b7cb09d1a9ea147f96a9c4cdb5adb90" kind="function"><name>DefineCrossSectionNtuple</name></member>
+    <member refid="classRunAction_1a12a1675453301619429fa2b9864ec6d3" kind="function"><name>DefineDifferentialCrossSectionNtuple</name></member>
+    <member refid="classRunAction_1a54fa8942b1a54707fa9a427648e33815" kind="function"><name>SetFastSimulation</name></member>
+    <member refid="classRunAction_1a10c6e26c4e12192b4d2a98e86f321f5d" kind="function"><name>SetNumberOfScatters</name></member>
+    <member refid="classRunAction_1ae55dd280821fae8873369106ae19118b" kind="function"><name>SetMaxEnergy</name></member>
+    <member refid="classRunAction_1a042efd6063bebdfb1779ff8cf5f2305a" kind="function"><name>SetOutputFileName</name></member>
   </compound>
   <compound refid="classG4FastSim_1_1RunActionMessenger" kind="class"><name>G4FastSim::RunActionMessenger</name>
     <member refid="classG4FastSim_1_1RunActionMessenger_1a2ba2569571125b523cd783a9a375b8a3" kind="variable"><name>fRunAction</name></member>
@@ -249,45 +249,51 @@
     <member refid="classG4FastSim_1_1RunActionMessenger_1ae73a6a37e9ec805ea9965168283a89af" kind="function"><name>~RunActionMessenger</name></member>
     <member refid="classG4FastSim_1_1RunActionMessenger_1a9f892e9a20fe5ef2c33726ef418fcd13" kind="function"><name>SetNewValue</name></member>
   </compound>
-  <compound refid="classG4FastSim_1_1SensitiveDetector" kind="class"><name>G4FastSim::SensitiveDetector</name>
-    <member refid="classG4FastSim_1_1SensitiveDetector_1afbb6e8a602f7ced3499568aa46ac6c70" kind="variable"><name>fHitsCollection</name></member>
-    <member refid="classG4FastSim_1_1SensitiveDetector_1a625637e6dc78c6e9256e024bd37292e2" kind="variable"><name>fTotalEnergyDeposit</name></member>
-    <member refid="classG4FastSim_1_1SensitiveDetector_1a5d8f8d866e82b6521e1704a2bda320fa" kind="variable"><name>fHitsCollectionID</name></member>
-    <member refid="classG4FastSim_1_1SensitiveDetector_1a5fdabfdde5883e065d3c4aa727ed867f" kind="function"><name>SensitiveDetector</name></member>
-    <member refid="classG4FastSim_1_1SensitiveDetector_1a9838a8cf0a79004537a2eb31e53b9441" kind="function"><name>~SensitiveDetector</name></member>
-    <member refid="classG4FastSim_1_1SensitiveDetector_1a797eadef69127beaf56db6a40892d573" kind="function"><name>Initialize</name></member>
-    <member refid="classG4FastSim_1_1SensitiveDetector_1a9f1ee01db87f4fd63a32582b776948f3" kind="function"><name>ProcessHits</name></member>
-    <member refid="classG4FastSim_1_1SensitiveDetector_1a004428b7dcc084c318806c9acf6b9404" kind="function"><name>EndOfEvent</name></member>
-    <member refid="classG4FastSim_1_1SensitiveDetector_1ad48c34216783811b827089daef04c6a1" kind="function"><name>GetTotalEnergyDeposit</name></member>
+  <compound refid="classSensitiveDetector" kind="class"><name>SensitiveDetector</name>
+    <member refid="classSensitiveDetector_1aaacf8a7c1947d822e3e48cfc461621d2" kind="variable"><name>fHitsCollection</name></member>
+    <member refid="classSensitiveDetector_1a77b19bd32a0fa963c61134eb68ae2775" kind="variable"><name>fTotalEnergyDeposit</name></member>
+    <member refid="classSensitiveDetector_1a395ed0e8e574ae964bc58c69c0fa8ca7" kind="variable"><name>fHitsCollectionID</name></member>
+    <member refid="classSensitiveDetector_1ac88a17313a09d79b33525ebd71d0bcfd" kind="function"><name>SensitiveDetector</name></member>
+    <member refid="classSensitiveDetector_1a5dc10461c84d3c7189048117a2faf0dc" kind="function"><name>~SensitiveDetector</name></member>
+    <member refid="classSensitiveDetector_1ab5bc98d3cbaf6b281c2992abf259fb40" kind="function"><name>Initialize</name></member>
+    <member refid="classSensitiveDetector_1a4fdcd8f76a8d7768998c24caff22319b" kind="function"><name>ProcessHits</name></member>
+    <member refid="classSensitiveDetector_1a73694eae5247a59958fa3c4ae936a512" kind="function"><name>EndOfEvent</name></member>
+    <member refid="classSensitiveDetector_1a974b5cdeaf0b3bd50820eb4e5d207b7c" kind="function"><name>GetTotalEnergyDeposit</name></member>
   </compound>
-  <compound refid="classG4FastSim_1_1SteppingAction" kind="class"><name>G4FastSim::SteppingAction</name>
-    <member refid="classG4FastSim_1_1SteppingAction_1ad1a859f4aed845490055c2ddc3fdd296" kind="variable"><name>fEventAction</name></member>
-    <member refid="classG4FastSim_1_1SteppingAction_1a19b82387b50c2562603bce8248b4cd45" kind="variable"><name>fScoringVolume</name></member>
-    <member refid="classG4FastSim_1_1SteppingAction_1ab4f1789fc7aa2e3c5b9b89d54b1ce537" kind="variable"><name>particleTable</name></member>
-    <member refid="classG4FastSim_1_1SteppingAction_1a704bc9311a41c1093c5a77dcce511d15" kind="variable"><name>fGammaRayHelper</name></member>
-    <member refid="classG4FastSim_1_1SteppingAction_1abfc9c758b41acf0bcbb30587edb4f787" kind="variable"><name>fHitsCollections</name></member>
-    <member refid="classG4FastSim_1_1SteppingAction_1a38ac3ff38c20f67d0595f5c190c482ce" kind="variable"><name>fHitsCollectionIDs</name></member>
-    <member refid="classG4FastSim_1_1SteppingAction_1a6313a73535b336fd53e0f0b5c862a985" kind="variable"><name>fHitsCollectionInitialized</name></member>
-    <member refid="classG4FastSim_1_1SteppingAction_1a0a416e1446b7f34221bf4e6c92d4d448" kind="variable"><name>verbosityLevel</name></member>
-    <member refid="classG4FastSim_1_1SteppingAction_1ad9d07e48fe9696277eb14f9e6218ea66" kind="function"><name>SteppingAction</name></member>
-    <member refid="classG4FastSim_1_1SteppingAction_1a14f0205c8adfb5d2b93bba18124c7e0b" kind="function"><name>~SteppingAction</name></member>
-    <member refid="classG4FastSim_1_1SteppingAction_1aaeddad78c5a0294d2e4bea7d10523ca2" kind="function"><name>UserSteppingAction</name></member>
-    <member refid="classG4FastSim_1_1SteppingAction_1acedce0206842916adf0fce67e0d348a4" kind="function"><name>SetVerbosity</name></member>
-    <member refid="classG4FastSim_1_1SteppingAction_1af74195411272f886407f01a18c91e9f3" kind="function"><name>Print</name></member>
-    <member refid="classG4FastSim_1_1SteppingAction_1afcbc39506d8d0cb4bff1740965d724e0" kind="function"><name>AddHitToCollection</name></member>
-    <member refid="classG4FastSim_1_1SteppingAction_1afe52713c533c40e120f5f2674c1bd04a" kind="function"><name>DoScatter</name></member>
-    <member refid="classG4FastSim_1_1SteppingAction_1aa4e82d6f05a9d029e1c5992eee58509c" kind="function"><name>AnalyzeStandardStep</name></member>
+  <compound refid="classSteppingAction" kind="class"><name>SteppingAction</name>
+    <member refid="classSteppingAction_1a8f5c4e4b885642d3cc0ca681c38f0340" kind="variable"><name>fEventAction</name></member>
+    <member refid="classSteppingAction_1aba7b9ae2c404ceaece4aa0991c63217a" kind="variable"><name>fScoringVolume</name></member>
+    <member refid="classSteppingAction_1af2b690fcb053e3c5f1ce03e561cf8086" kind="variable"><name>particleTable</name></member>
+    <member refid="classSteppingAction_1a149f997161089e11f103e9e9bfdee53e" kind="variable"><name>fGammaRayHelper</name></member>
+    <member refid="classSteppingAction_1ae88e42f95d1e6c77a57145a1309813fc" kind="variable"><name>fHitsCollections</name></member>
+    <member refid="classSteppingAction_1a4ff73ceabca5a8cd10eb794ffca5a343" kind="variable"><name>fHitsCollectionIDs</name></member>
+    <member refid="classSteppingAction_1ab2c82a9eb7af0ac0d31d014eb607b9a8" kind="variable"><name>fHitsCollectionInitialized</name></member>
+    <member refid="classSteppingAction_1aad3eb30fac1c139f9b1df376d0d6d6ed" kind="variable"><name>verbosityLevel</name></member>
+    <member refid="classSteppingAction_1a374afa1d769bcc5ba9d771cb83332a24" kind="function"><name>SteppingAction</name></member>
+    <member refid="classSteppingAction_1ace65491c5f93bdf39d14914767f896bf" kind="function"><name>~SteppingAction</name></member>
+    <member refid="classSteppingAction_1a4c685bf7180779d18c143c6ad1cce3fb" kind="function"><name>UserSteppingAction</name></member>
+    <member refid="classSteppingAction_1af086c296da316989ad94c24227a88c5f" kind="function"><name>SetVerbosity</name></member>
+    <member refid="classSteppingAction_1a0c02224c420b2e569e0fd73a15f27857" kind="function"><name>Print</name></member>
+    <member refid="classSteppingAction_1a12d328ba10a9139aa4929d651323c92f" kind="function"><name>AddHitToCollection</name></member>
+    <member refid="classSteppingAction_1a8e17fcb7e23da5cb201f9da83c2d50ec" kind="function"><name>DoScatter</name></member>
+    <member refid="classSteppingAction_1a4b014658ef2c03b8315165ac36f921ae" kind="function"><name>AnalyzeStandardStep</name></member>
   </compound>
   <compound refid="namespace_0d21" kind="namespace"><name>@21</name>
   </compound>
   <compound refid="namespace_0d28" kind="namespace"><name>@28</name>
   </compound>
   <compound refid="namespaceG4FastSim" kind="namespace"><name>G4FastSim</name>
-    <member refid="namespaceG4FastSim_1a05ee3770e81fff7d8cd8d8cab21317d8" kind="enum"><name>EventType</name></member>
-    <member refid="namespaceG4FastSim_1a05ee3770e81fff7d8cd8d8cab21317d8ae51bfe7822492a220dcdc2f264cc51c7" kind="enumvalue"><name>DIRECT_GAMMA</name></member>
-    <member refid="namespaceG4FastSim_1a05ee3770e81fff7d8cd8d8cab21317d8a7bd13a2486be1506ada95bed246cca91" kind="enumvalue"><name>SCATTERED_GAMMA</name></member>
     <member refid="namespaceG4FastSim_1a03dccfbb4e25fe6f2ab3468c33175a36" kind="typedef"><name>HitsCollection</name></member>
     <member refid="namespaceG4FastSim_1a4712e98805b7edcf1d64abd59c618d37" kind="variable"><name>HitAllocator</name></member>
+  </compound>
+  <compound refid="namespacesetup" kind="namespace"><name>setup</name>
+    <member refid="namespacesetup_1ab3a7a0638d76a01367c5bc3cc699447f" kind="variable"><name>name</name></member>
+    <member refid="namespacesetup_1a2aa722b36a933088812b50ea79b97a5c" kind="variable"><name>version</name></member>
+    <member refid="namespacesetup_1aff2375a361fd5865c77bd9aa093be747" kind="variable"><name>packages</name></member>
+    <member refid="namespacesetup_1afd7273d426fd6e1796ec17175f6521c3" kind="variable"><name>package_dir</name></member>
+  </compound>
+  <compound refid="G4FastSim_8cc" kind="file"><name>G4FastSim.cc</name>
+    <member refid="G4FastSim_8cc_1a3c04138a5bfe5d72780bb7e82a18e627" kind="function"><name>main</name></member>
   </compound>
   <compound refid="ActionInitialization_8hh" kind="file"><name>ActionInitialization.hh</name>
   </compound>
@@ -319,6 +325,10 @@
   </compound>
   <compound refid="SteppingAction_8hh" kind="file"><name>SteppingAction.hh</name>
   </compound>
+  <compound refid="README_8md" kind="file"><name>README.md</name>
+  </compound>
+  <compound refid="setup_8py" kind="file"><name>setup.py</name>
+  </compound>
   <compound refid="ActionInitialization_8cc" kind="file"><name>ActionInitialization.cc</name>
   </compound>
   <compound refid="CustomEmPhysics_8cc" kind="file"><name>CustomEmPhysics.cc</name>
@@ -346,6 +356,8 @@
   <compound refid="SensitiveDetector_8cc" kind="file"><name>SensitiveDetector.cc</name>
   </compound>
   <compound refid="SteppingAction_8cc" kind="file"><name>SteppingAction.cc</name>
+  </compound>
+  <compound refid="md_README" kind="page"><name>md_README</name>
   </compound>
   <compound refid="dir_d44c64559bbebec7f509842c48db8b23" kind="dir"><name>include</name>
   </compound>

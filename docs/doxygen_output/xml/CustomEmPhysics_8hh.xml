@@ -4,6 +4,7 @@
     <compoundname>CustomEmPhysics.hh</compoundname>
     <includes local="yes">G4VPhysicsConstructor.hh</includes>
     <includes local="yes">G4EmLivermorePhysics.hh</includes>
+    <includedby refid="G4FastSim_8cc" local="yes">G4FastSim.cc</includedby>
     <includedby refid="CustomEmPhysics_8cc" local="yes">src/CustomEmPhysics.cc</includedby>
     <incdepgraph>
       <node id="1">
@@ -22,13 +23,19 @@
       </node>
     </incdepgraph>
     <invincdepgraph>
+      <node id="2">
+        <label>G4FastSim.cc</label>
+        <link refid="G4FastSim_8cc"/>
+      </node>
       <node id="1">
         <label>include/CustomEmPhysics.hh</label>
         <link refid="CustomEmPhysics_8hh"/>
         <childnode refid="2" relation="include">
         </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
       </node>
-      <node id="2">
+      <node id="3">
         <label>src/CustomEmPhysics.cc</label>
         <link refid="CustomEmPhysics_8cc"/>
       </node>

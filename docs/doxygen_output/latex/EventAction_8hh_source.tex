@@ -48,111 +48,102 @@
 \DoxyCodeLine{00049\ \textcolor{keyword}{class\ }G4HCofThisEvent;}
 \DoxyCodeLine{00050\ \textcolor{keyword}{class\ }G4VHitsCollection;}
 \DoxyCodeLine{00051\ }
-\DoxyCodeLine{00052\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceG4FastSim}{G4FastSim}}}
-\DoxyCodeLine{00053\ \{}
-\DoxyCodeLine{00054\ }
-\DoxyCodeLine{00055\ \textcolor{comment}{//\ Use\ enum\ to\ define\ the\ constants}}
-\DoxyCodeLine{00056\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{namespaceG4FastSim_a05ee3770e81fff7d8cd8d8cab21317d8}{EventType}}\ \{}
-\DoxyCodeLine{00057\ \ \ \ \ \mbox{\hyperlink{namespaceG4FastSim_a05ee3770e81fff7d8cd8d8cab21317d8ae51bfe7822492a220dcdc2f264cc51c7}{DIRECT\_GAMMA}}\ =\ 0,}
-\DoxyCodeLine{00058\ \ \ \ \ \mbox{\hyperlink{namespaceG4FastSim_a05ee3770e81fff7d8cd8d8cab21317d8a7bd13a2486be1506ada95bed246cca91}{SCATTERED\_GAMMA}}\ =\ 1}
-\DoxyCodeLine{00059\ \};}
-\DoxyCodeLine{00060\ }
-\DoxyCodeLine{00061\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classG4FastSim_1_1EventAction}{EventAction}}\ :\ \textcolor{keyword}{public}\ G4UserEventAction}
-\DoxyCodeLine{00062\ \{}
-\DoxyCodeLine{00063\ \ \ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00064\ \ \ \ \ \mbox{\hyperlink{classG4FastSim_1_1EventAction_aa1f321b88b89f16c67b65da6727a52d6}{EventAction}}();}
-\DoxyCodeLine{00065\ \ \ \ \ \mbox{\hyperlink{classG4FastSim_1_1EventAction_adb4415861c5cdd0a55b2e14990e13da6}{\string~EventAction}}()\ \textcolor{keyword}{override}\ =\ \textcolor{keywordflow}{default};}
-\DoxyCodeLine{00066\ }
-\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classG4FastSim_1_1EventAction_aa0a1ce1d279c7071217c445fc761bbad}{BeginOfEventAction}}(\textcolor{keyword}{const}\ G4Event*\ event);\textcolor{comment}{//\ override;}}
-\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classG4FastSim_1_1EventAction_a43bd94959a1efa3612b0a6324bca406c}{EndOfEventAction}}(\textcolor{keyword}{const}\ G4Event*\ event);\textcolor{comment}{//\ override;}}
-\DoxyCodeLine{00069\ }
-\DoxyCodeLine{00070\ \ \ \ \ std::vector<G4double>\&\ \mbox{\hyperlink{classG4FastSim_1_1EventAction_adeb4e093143f249cf5a556a8246653d3}{GetX}}()\{\textcolor{keywordflow}{return}\ fX;\};}
-\DoxyCodeLine{00071\ \ \ \ \ std::vector<G4double>\&\ \mbox{\hyperlink{classG4FastSim_1_1EventAction_a52568c351e9ab62edccb891c0bf8f421}{GetY}}()\{\textcolor{keywordflow}{return}\ fY;\};}
-\DoxyCodeLine{00072\ \ \ \ \ std::vector<G4double>\&\ \mbox{\hyperlink{classG4FastSim_1_1EventAction_a01b9c8dc9d9839413cd5c07484aaf248}{GetZ}}()\{\textcolor{keywordflow}{return}\ fZ;\};}
-\DoxyCodeLine{00073\ \ \ \ \ std::vector<G4double>\&\ \mbox{\hyperlink{classG4FastSim_1_1EventAction_ace2d3844304533e215785778ef46fe90}{GetE}}()\{\textcolor{keywordflow}{return}\ fEd;\};}
-\DoxyCodeLine{00074\ \ \ \ \ std::vector<G4double>\&\ \mbox{\hyperlink{classG4FastSim_1_1EventAction_ac0331ec9e7c100627ec72b86857f173e}{GetW}}()\{\textcolor{keywordflow}{return}\ fW;\};}
-\DoxyCodeLine{00075\ }
-\DoxyCodeLine{00076\ }
-\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classG4FastSim_1_1EventAction_aebd5b408875e402cf38a33a84410fb0d}{AddEdep}}(G4double\ edep)\ \{\ fEdep\ +=\ edep;\ \}}
-\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classG4FastSim_1_1EventAction_a25cfe5dde9e5abd4d30c255fb521724d}{AddWeight}}(G4double\ weight)\ \{\ fLogWeight\ +=\ weight;\ \}}
-\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classG4FastSim_1_1EventAction_a06e4d9a81df350b8a49c4d3c77c5b154}{AnalyzeHits}}(\textcolor{keyword}{const}\ G4Event*\ event);}
-\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classG4FastSim_1_1EventAction_a3da7908738b2228320ef78abf83763a8}{ResetVariables}}();}
+\DoxyCodeLine{00073\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classEventAction}{EventAction}}\ :\ \textcolor{keyword}{public}\ G4UserEventAction}
+\DoxyCodeLine{00074\ \{}
+\DoxyCodeLine{00075\ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00076\ \ \ \ \ \mbox{\hyperlink{classEventAction_a9a8515b9069293b94b72a6863c48e6ba}{EventAction}}();}
+\DoxyCodeLine{00077\ \ \ \ \ \mbox{\hyperlink{classEventAction_abe8cfbded2bc9fbed9be246d0cac7613}{\string~EventAction}}()\ \textcolor{keyword}{override}\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classEventAction_a30ca6a1995cd73bcd15bb9818c49fda0}{BeginOfEventAction}}(\textcolor{keyword}{const}\ G4Event*\ event);\textcolor{comment}{//\ override;}}
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classEventAction_ac644b336bd2c1ab896db5c2089a06364}{EndOfEventAction}}(\textcolor{keyword}{const}\ G4Event*\ event);\textcolor{comment}{//\ override;}}
 \DoxyCodeLine{00081\ }
-\DoxyCodeLine{00082\ \ \ \ \ G4bool\ \mbox{\hyperlink{classG4FastSim_1_1EventAction_a0a5957019bc5a3844c9c10be44f04880}{IsFastSimulation}}()\ \{\ \textcolor{keywordflow}{return}\ fFastSimulation;\ \}}
-\DoxyCodeLine{00083\ \ \ \ \ G4int\ \mbox{\hyperlink{classG4FastSim_1_1EventAction_afd2e1cdcd5f4320967274b27bc06e6e0}{GetNumberOfScatters}}()\ \{\ \textcolor{keywordflow}{return}\ fNumberOfScatters;\}}
-\DoxyCodeLine{00084\ \ \ \ \ G4double\ \mbox{\hyperlink{classG4FastSim_1_1EventAction_a6e7b195f21b29162210a1fd4f1395b4d}{GetMaxEnergy}}()\ \{\ \textcolor{keywordflow}{return}\ fMaxEnergy;\ \}}
-\DoxyCodeLine{00085\ \ \ \ \ G4int\ \mbox{\hyperlink{classG4FastSim_1_1EventAction_a29578ed86497866f4e76647cff46def8}{GetNumberOfScattersMax}}()\ \{\ \textcolor{keywordflow}{return}\ fNumberOfScattersMax;\ \}}
-\DoxyCodeLine{00086\ \ \ \ \ G4double\ \mbox{\hyperlink{classG4FastSim_1_1EventAction_aa0f4b11d80547c902f0b72cfab9be7a3}{GetAvailableEnergy}}()\ \{\ \textcolor{keywordflow}{return}\ fAvailableEnergy;\ \}}
-\DoxyCodeLine{00087\ \ \ \ \ G4double\ \mbox{\hyperlink{classG4FastSim_1_1EventAction_ae1cd2d1c9fd5002c4f22483481d46cc7}{GetWeight}}()\ \{\ \textcolor{keywordflow}{return}\ fLogWeight;\ \}}
-\DoxyCodeLine{00088\ \ \ \ \ G4bool\ \mbox{\hyperlink{classG4FastSim_1_1EventAction_a85489f607916912fadf7d58891c5b55b}{HasBeenInXenon}}()\ \{\ \textcolor{keywordflow}{return}\ fHasBeenInXenon;\ \}}
-\DoxyCodeLine{00089\ \ \ \ \ G4int\ \mbox{\hyperlink{classG4FastSim_1_1EventAction_a4d03ac81dc8d0fcb225ded25bd7f6b73}{GetEventType}}()\ \{\ \textcolor{keywordflow}{return}\ fEventType;\ \}}
-\DoxyCodeLine{00090\ }
-\DoxyCodeLine{00091\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classG4FastSim_1_1EventAction_ab0990d80db3bd9e4c88279d1490a4dc4}{SetNumberOfScattersMax}}(G4int\ n)\ \{\ fNumberOfScattersMax\ =\ n;\ \}}
-\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classG4FastSim_1_1EventAction_ab10d97afcb735c75e77447f118297668}{SetFastSimulation}}(G4bool\ fast)\ \{\ fFastSimulation\ =\ fast;\ \}}
-\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classG4FastSim_1_1EventAction_a1ac50be580de9273ef1e58095798bc16}{SetNumberOfScatters}}(G4int\ n)\ \{\ fNumberOfScatters\ =\ n;\ \}}
-\DoxyCodeLine{00094\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classG4FastSim_1_1EventAction_a0497268c7d7eaf9f9f1ef8cf8808a1e7}{SetMaxEnergy}}(G4double\ e)\ \{\ fMaxEnergy\ =\ e;\ \}}
-\DoxyCodeLine{00095\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classG4FastSim_1_1EventAction_a828bd5efac02e28a0cbe6e296898e4f1}{SetAvailableEnergy}}(G4double\ e)\ \{\ fAvailableEnergy\ =\ e;\ \}}
-\DoxyCodeLine{00096\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classG4FastSim_1_1EventAction_abc1c3a1d617575f8e1329ecafeda4b45}{ReduceAvailableEnergy}}(G4double\ e)\ \{\ fAvailableEnergy\ -\/=\ e;\ \}\ }
-\DoxyCodeLine{00097\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classG4FastSim_1_1EventAction_a77d54ea8c5f1afe66e9bfa2330dfee27}{SetHasBeenInXenon}}(G4bool\ b)\ \{\ fHasBeenInXenon\ =\ b;\ \}}
-\DoxyCodeLine{00098\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classG4FastSim_1_1EventAction_a964a668626874db354cad50145b6f441}{SetEventType}}(G4int\ type)\ \{\ fEventType\ =\ type;\ \}}
-\DoxyCodeLine{00099\ }
-\DoxyCodeLine{00100\ \ \ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00101\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00102\ \ \ \ \ \textcolor{comment}{//\ functions\ for\ hit\ clustering}}
-\DoxyCodeLine{00103\ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{00104\ \ \ \ \ \textcolor{keywordtype}{void}\ ClusterHits(std::vector<G4FastSim::Hit*>\&\ hits,\ G4double\ spatialThreshold,\ G4double\ timeThreshold,\ std::vector<Cluster>\&\ clusters);}
-\DoxyCodeLine{00105\ \ \ \ \ \textcolor{keywordtype}{bool}\ IsWithinFiducialVolume(\textcolor{keyword}{const}\ G4ThreeVector\&\ position,\ \textcolor{keyword}{const}\ G4ThreeVector\&\ direction);}
-\DoxyCodeLine{00106\ }
-\DoxyCodeLine{00107\ \ \ \ \ G4double\ CalculateDistance(\textcolor{keyword}{const}\ G4ThreeVector\&\ pos1,\ \textcolor{keyword}{const}\ G4ThreeVector\&\ pos2);}
-\DoxyCodeLine{00108\ \ \ \ \ G4double\ CalculateTimeDifference(G4double\ time1,\ G4double\ time2);}
-\DoxyCodeLine{00109\ }
-\DoxyCodeLine{00110\ \ \ \ \ \textcolor{comment}{//\ define\ here\ all\ the\ variables\ that\ you\ want\ to\ store\ for\ each\ event\ in\ the\ }}
-\DoxyCodeLine{00111\ \ \ \ \ \textcolor{comment}{//\ ntuple\ tree\ \ }}
-\DoxyCodeLine{00112\ \ \ \ \ G4double\ fLogWeight;}
-\DoxyCodeLine{00113\ \ \ \ \ G4double\ fEdep;}
-\DoxyCodeLine{00114\ \ \ \ \ G4int\ fNclusters;}
-\DoxyCodeLine{00115\ \ \ \ \ G4int\ fNphot;}
-\DoxyCodeLine{00116\ \ \ \ \ G4int\ fNcomp;}
-\DoxyCodeLine{00117\ \ \ \ \ G4int\ fEventID;}
-\DoxyCodeLine{00118\ \ \ \ \ G4int\ fEventType;}
-\DoxyCodeLine{00119\ \ \ \ \ G4double\ fXp;}
-\DoxyCodeLine{00120\ \ \ \ \ G4double\ fYp;}
-\DoxyCodeLine{00121\ \ \ \ \ G4double\ fZp;}
-\DoxyCodeLine{00122\ }
-\DoxyCodeLine{00123\ \ \ \ \ std::vector<G4double>\ fEd;}
-\DoxyCodeLine{00124\ \ \ \ \ std::vector<G4double>\ fX;}
-\DoxyCodeLine{00125\ \ \ \ \ std::vector<G4double>\ fY;}
-\DoxyCodeLine{00126\ \ \ \ \ std::vector<G4double>\ fZ;}
-\DoxyCodeLine{00127\ \ \ \ \ std::vector<G4double>\ fW;}
-\DoxyCodeLine{00128\ }
-\DoxyCodeLine{00129\ \ \ \ \ G4bool\ fFastSimulation\ =\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00130\ \ \ \ \ G4bool\ fInitializedGraphs\ =\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00131\ \ \ \ \ G4int\ fNumberOfScattersMax\ =\ 0;}
-\DoxyCodeLine{00132\ \ \ \ \ G4int\ fNumberOfScatters\ =\ 0;}
-\DoxyCodeLine{00133\ \ \ \ \ G4bool\ fHasBeenInXenon\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00082\ \ \ \ \ std::vector<G4double>\&\ \mbox{\hyperlink{classEventAction_af8857fbd57edd5fc0d37c5e8b9e525b7}{GetX}}()\{\textcolor{keywordflow}{return}\ fX;\};}
+\DoxyCodeLine{00083\ \ \ \ \ std::vector<G4double>\&\ \mbox{\hyperlink{classEventAction_a1a0126ddfd9f40c81e21a26a066a38c1}{GetY}}()\{\textcolor{keywordflow}{return}\ fY;\};}
+\DoxyCodeLine{00084\ \ \ \ \ std::vector<G4double>\&\ \mbox{\hyperlink{classEventAction_a5278ccd32f797baaf89d00bbb90df337}{GetZ}}()\{\textcolor{keywordflow}{return}\ fZ;\};}
+\DoxyCodeLine{00085\ \ \ \ \ std::vector<G4double>\&\ \mbox{\hyperlink{classEventAction_a3d02fe96a5b633cc661a5c2b32ddc010}{GetE}}()\{\textcolor{keywordflow}{return}\ fEd;\};}
+\DoxyCodeLine{00086\ \ \ \ \ std::vector<G4double>\&\ \mbox{\hyperlink{classEventAction_a4a69ea0a164a3b11ab5d9b5327561315}{GetW}}()\{\textcolor{keywordflow}{return}\ fW;\};}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classEventAction_a7d8e2a557734526f2a4f85b48d172fd7}{AddEdep}}(G4double\ edep)\ \{\ fEdep\ +=\ edep;\ \}}
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classEventAction_acefd80fbd497f9ff3d16f8bae126a789}{AddWeight}}(G4double\ weight)\ \{\ fLogWeight\ +=\ weight;\ \}}
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classEventAction_ac561e43e535456a5d2bb2958e6c7c0af}{AnalyzeHits}}(\textcolor{keyword}{const}\ G4Event*\ event);}
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classEventAction_af34ccf5d78e8a4139f865954c309f0f6}{ResetVariables}}();}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ \ \ \ \ G4bool\ \mbox{\hyperlink{classEventAction_aadb449a0f7a833b44e0136055950c37c}{IsFastSimulation}}()\ \{\ \textcolor{keywordflow}{return}\ fFastSimulation;\ \}}
+\DoxyCodeLine{00095\ \ \ \ \ G4int\ \mbox{\hyperlink{classEventAction_a162c883989911ba148346423d4a9bdd0}{GetNumberOfScatters}}()\ \{\ \textcolor{keywordflow}{return}\ fNumberOfScatters;\}}
+\DoxyCodeLine{00096\ \ \ \ \ G4double\ \mbox{\hyperlink{classEventAction_a86fb3f239095db11bdd995069d2c5193}{GetMaxEnergy}}()\ \{\ \textcolor{keywordflow}{return}\ fMaxEnergy;\ \}}
+\DoxyCodeLine{00097\ \ \ \ \ G4int\ \mbox{\hyperlink{classEventAction_a4c1398a7a16eeb76a5a41b5e5b69c087}{GetNumberOfScattersMax}}()\ \{\ \textcolor{keywordflow}{return}\ fNumberOfScattersMax;\ \}}
+\DoxyCodeLine{00098\ \ \ \ \ G4double\ \mbox{\hyperlink{classEventAction_ade7a5b71891eaabe7e89a9016cb94006}{GetAvailableEnergy}}()\ \{\ \textcolor{keywordflow}{return}\ fAvailableEnergy;\ \}}
+\DoxyCodeLine{00099\ \ \ \ \ G4double\ \mbox{\hyperlink{classEventAction_ab6b4690bbabda1ed84dea08fa4bd3cfd}{GetWeight}}()\ \{\ \textcolor{keywordflow}{return}\ fLogWeight;\ \}}
+\DoxyCodeLine{00100\ \ \ \ \ G4bool\ \mbox{\hyperlink{classEventAction_a6099c95c87b8600459a40682b038dfe3}{HasBeenInXenon}}()\ \{\ \textcolor{keywordflow}{return}\ fHasBeenInXenon;\ \}}
+\DoxyCodeLine{00101\ \ \ \ \ G4int\ \mbox{\hyperlink{classEventAction_aa466f4334ca1467fe27498239dd271c7}{GetEventType}}()\ \{\ \textcolor{keywordflow}{return}\ fEventType;\ \}}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00103\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classEventAction_af8c03c77f2ba2750a9b83aff3c878f04}{SetNumberOfScattersMax}}(G4int\ n)\ \{\ fNumberOfScattersMax\ =\ n;\ \}}
+\DoxyCodeLine{00104\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classEventAction_acccde4e4cdd865967221a6099b6dd3a2}{SetFastSimulation}}(G4bool\ fast)\ \{\ fFastSimulation\ =\ fast;\ \}}
+\DoxyCodeLine{00105\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classEventAction_a820c16a2f7cc5d0c0880f73595cddea1}{SetNumberOfScatters}}(G4int\ n)\ \{\ fNumberOfScatters\ =\ n;\ \}}
+\DoxyCodeLine{00106\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classEventAction_afdfda3e8d09c30a3277ce9bdeacbee0b}{SetMaxEnergy}}(G4double\ e)\ \{\ fMaxEnergy\ =\ e;\ \}}
+\DoxyCodeLine{00107\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classEventAction_a19fbe4d39b2ff364d6160ec0bcb82fb4}{SetAvailableEnergy}}(G4double\ e)\ \{\ fAvailableEnergy\ =\ e;\ \}}
+\DoxyCodeLine{00108\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classEventAction_ab28b59f1baa9fc2362717d03e650c73d}{ReduceAvailableEnergy}}(G4double\ e)\ \{\ fAvailableEnergy\ -\/=\ e;\ \}\ }
+\DoxyCodeLine{00109\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classEventAction_a735b3d728f508a8106995b4dab6ea08d}{SetHasBeenInXenon}}(G4bool\ b)\ \{\ fHasBeenInXenon\ =\ b;\ \}}
+\DoxyCodeLine{00110\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classEventAction_a405cc1d9e62dd3ba5209f1c8933536db}{SetEventType}}(G4int\ type)\ \{\ fEventType\ =\ type;\ \}}
+\DoxyCodeLine{00111\ }
+\DoxyCodeLine{00112\ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00113\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00114\ \ \ \ \ \textcolor{comment}{//\ functions\ for\ hit\ clustering}}
+\DoxyCodeLine{00115\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00116\ \ \ \ \ \textcolor{keywordtype}{void}\ ClusterHits(std::vector<G4FastSim::Hit*>\&\ hits,\ G4double\ spatialThreshold,\ G4double\ timeThreshold,\ std::vector<Cluster>\&\ clusters);}
+\DoxyCodeLine{00117\ \ \ \ \ \textcolor{keywordtype}{bool}\ IsWithinFiducialVolume(\textcolor{keyword}{const}\ G4ThreeVector\&\ position,\ \textcolor{keyword}{const}\ G4ThreeVector\&\ direction);}
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00119\ \ \ \ \ G4double\ CalculateDistance(\textcolor{keyword}{const}\ G4ThreeVector\&\ pos1,\ \textcolor{keyword}{const}\ G4ThreeVector\&\ pos2);}
+\DoxyCodeLine{00120\ \ \ \ \ G4double\ CalculateTimeDifference(G4double\ time1,\ G4double\ time2);}
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00122\ \ \ \ \ \textcolor{comment}{//\ define\ here\ all\ the\ variables\ that\ you\ want\ to\ store\ for\ each\ event\ in\ the\ }}
+\DoxyCodeLine{00123\ \ \ \ \ \textcolor{comment}{//\ ntuple\ tree\ \ }}
+\DoxyCodeLine{00124\ \ \ \ \ G4double\ fLogWeight;}
+\DoxyCodeLine{00125\ \ \ \ \ G4double\ fEdep;}
+\DoxyCodeLine{00126\ \ \ \ \ G4int\ fNclusters;}
+\DoxyCodeLine{00127\ \ \ \ \ G4int\ fNphot;}
+\DoxyCodeLine{00128\ \ \ \ \ G4int\ fNcomp;}
+\DoxyCodeLine{00129\ \ \ \ \ G4int\ fEventID;}
+\DoxyCodeLine{00130\ \ \ \ \ G4int\ fEventType;}
+\DoxyCodeLine{00131\ \ \ \ \ G4double\ fXp;}
+\DoxyCodeLine{00132\ \ \ \ \ G4double\ fYp;}
+\DoxyCodeLine{00133\ \ \ \ \ G4double\ fZp;}
 \DoxyCodeLine{00134\ }
-\DoxyCodeLine{00135\ \ \ \ \ \textcolor{comment}{//\ maximum\ energy\ deposit\ that\ is\ allowed:\ /run/setMaxEnergy}}
-\DoxyCodeLine{00136\ \ \ \ \ G4double\ fMaxEnergy\ =\ 0.0;}
-\DoxyCodeLine{00137\ \ \ \ \ \textcolor{comment}{//\ avaliable\ energy\ for\ scattering\ energy\ deposits\ (relevant\ for\ muliple\ scattering\ events)}}
-\DoxyCodeLine{00138\ \ \ \ \ G4double\ fAvailableEnergy\ =\ 0.0;}
-\DoxyCodeLine{00139\ }
-\DoxyCodeLine{00140\ \ \ \ \ \textcolor{comment}{//static\ std::mutex\ mtx;\ //\ Mutex\ for\ thread\ safety}}
-\DoxyCodeLine{00141\ }
-\DoxyCodeLine{00142\ \ \ \ \ std::vector<G4String>\ fHitsCollectionNames;}
-\DoxyCodeLine{00143\ }
-\DoxyCodeLine{00144\ \ \ \ \ \mbox{\hyperlink{classGammaRayHelper}{GammaRayHelper}}*\ fGammaRayHelper;}
-\DoxyCodeLine{00145\ }
-\DoxyCodeLine{00146\ \ \ \ \ G4LogicalVolume*\ fFiducialVolume;}
-\DoxyCodeLine{00147\ }
-\DoxyCodeLine{00148\ \ \ \ \ G4int\ verbosityLevel=0;}
-\DoxyCodeLine{00149\ \};}
-\DoxyCodeLine{00150\ }
-\DoxyCodeLine{00151\ \}}
-\DoxyCodeLine{00152\ }
-\DoxyCodeLine{00153\ \textcolor{comment}{//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......}}
-\DoxyCodeLine{00154\ }
-\DoxyCodeLine{00155\ \textcolor{preprocessor}{\#endif}}
-\DoxyCodeLine{00156\ }
+\DoxyCodeLine{00135\ \ \ \ \ std::vector<G4double>\ fEd;}
+\DoxyCodeLine{00136\ \ \ \ \ std::vector<G4double>\ fX;}
+\DoxyCodeLine{00137\ \ \ \ \ std::vector<G4double>\ fY;}
+\DoxyCodeLine{00138\ \ \ \ \ std::vector<G4double>\ fZ;}
+\DoxyCodeLine{00139\ \ \ \ \ std::vector<G4double>\ fW;}
+\DoxyCodeLine{00140\ }
+\DoxyCodeLine{00141\ \ \ \ \ G4bool\ fFastSimulation\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00142\ \ \ \ \ G4bool\ fInitializedGraphs\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00143\ \ \ \ \ G4int\ fNumberOfScattersMax\ =\ 0;}
+\DoxyCodeLine{00144\ \ \ \ \ G4int\ fNumberOfScatters\ =\ 0;}
+\DoxyCodeLine{00145\ \ \ \ \ G4bool\ fHasBeenInXenon\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00146\ }
+\DoxyCodeLine{00147\ \ \ \ \ \textcolor{comment}{//\ maximum\ energy\ deposit\ that\ is\ allowed:\ /run/setMaxEnergy}}
+\DoxyCodeLine{00148\ \ \ \ \ G4double\ fMaxEnergy\ =\ 0.0;}
+\DoxyCodeLine{00149\ \ \ \ \ \textcolor{comment}{//\ avaliable\ energy\ for\ scattering\ energy\ deposits\ (relevant\ for\ muliple\ scattering\ events)}}
+\DoxyCodeLine{00150\ \ \ \ \ G4double\ fAvailableEnergy\ =\ 0.0;}
+\DoxyCodeLine{00151\ }
+\DoxyCodeLine{00152\ \ \ \ \ \textcolor{comment}{//static\ std::mutex\ mtx;\ //\ Mutex\ for\ thread\ safety}}
+\DoxyCodeLine{00153\ }
+\DoxyCodeLine{00154\ \ \ \ \ std::vector<G4String>\ fHitsCollectionNames;}
+\DoxyCodeLine{00155\ }
+\DoxyCodeLine{00156\ \ \ \ \ \mbox{\hyperlink{classGammaRayHelper}{GammaRayHelper}}*\ fGammaRayHelper;}
 \DoxyCodeLine{00157\ }
+\DoxyCodeLine{00158\ \ \ \ \ G4LogicalVolume*\ fFiducialVolume;}
+\DoxyCodeLine{00159\ }
+\DoxyCodeLine{00160\ \ \ \ \ G4int\ verbosityLevel=0;}
+\DoxyCodeLine{00161\ \};}
+\DoxyCodeLine{00162\ }
+\DoxyCodeLine{00163\ \}}
+\DoxyCodeLine{00164\ }
+\DoxyCodeLine{00165\ \textcolor{comment}{//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......}}
+\DoxyCodeLine{00166\ }
+\DoxyCodeLine{00167\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00168\ }
+\DoxyCodeLine{00169\ }
 
 \end{DoxyCode}
