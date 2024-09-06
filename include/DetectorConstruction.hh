@@ -1,32 +1,3 @@
-//
-// ********************************************************************
-// * License and Disclaimer                                           *
-// *                                                                  *
-// * The  Geant4 software  is  copyright of the Copyright Holders  of *
-// * the Geant4 Collaboration.  It is provided  under  the terms  and *
-// * conditions of the Geant4 Software License,  included in the file *
-// * LICENSE and available at  http://cern.ch/geant4/license .  These *
-// * include a list of copyright holders.                             *
-// *                                                                  *
-// * Neither the authors of this software system, nor their employing *
-// * institutes,nor the agencies providing financial support for this *
-// * work  make  any representation or  warranty, express or implied, *
-// * regarding  this  software system or assume any liability for its *
-// * use.  Please see the license in the file  LICENSE  and URL above *
-// * for the full disclaimer and the limitation of liability.         *
-// *                                                                  *
-// * This  code  implementation is the result of  the  scientific and *
-// * technical work of the GEANT4 collaboration.                      *
-// * By using,  copying,  modifying or  distributing the software (or *
-// * any work based  on the software)  you  agree  to acknowledge its *
-// * use  in  resulting  scientific  publications,  and indicate your *
-// * acceptance of all terms of the Geant4 Software license.          *
-// ********************************************************************
-//
-//
-/// \file B1/include/DetectorConstruction.hh
-/// \brief Definition of the B1::DetectorConstruction class
-
 #ifndef __DetectorConstruction__
 #define __DetectorConstruction__ 1
 
@@ -40,11 +11,23 @@ class G4VPhysicalVolume;
 class G4LogicalVolume;
 class DetectorConstructionMessenger;
 
-/// Detector construction class to define materials and geometry.
-
+/**
+ * @namespace G4FastSim
+ * @brief A namespace for fast simulation classes in Geant4.
+/*/
 namespace G4FastSim
 {
 
+/**
+ * @class DetectorConstruction
+ * @brief Class responsible for constructing the detector geometry.
+ *
+ * This class inherits from G4VUserDetectorConstruction and is used to define the geometry of the detector.
+ * It constructs various volumes such as the world volume, water tank, outer cryostat, inner cryostat, LXe, and fiducial volume.
+ * It also defines a sensitive detector and provides methods to access the scoring volume and the GammaRayHelper object.
+ * The dimensions of the various volumes can be set using the provided setter methods.
+ * The class also handles checking for overlaps between volumes.
+ */
 class DetectorConstruction : public G4VUserDetectorConstruction
 {
   public:

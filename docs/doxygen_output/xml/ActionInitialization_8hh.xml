@@ -5,6 +5,7 @@
     <includes local="yes">G4VUserActionInitialization.hh</includes>
     <includes refid="GammaRayHelper_8hh" local="yes">GammaRayHelper.hh</includes>
     <includes refid="EventAction_8hh" local="yes">EventAction.hh</includes>
+    <includedby refid="G4FastSim_8cc" local="yes">G4FastSim.cc</includedby>
     <includedby refid="ActionInitialization_8cc" local="yes">src/ActionInitialization.cc</includedby>
     <incdepgraph>
       <node id="1">
@@ -186,79 +187,54 @@
       </node>
     </incdepgraph>
     <invincdepgraph>
+      <node id="2">
+        <label>G4FastSim.cc</label>
+        <link refid="G4FastSim_8cc"/>
+      </node>
       <node id="1">
         <label>include/ActionInitialization.hh</label>
         <link refid="ActionInitialization_8hh"/>
         <childnode refid="2" relation="include">
         </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
       </node>
-      <node id="2">
+      <node id="3">
         <label>src/ActionInitialization.cc</label>
         <link refid="ActionInitialization_8cc"/>
       </node>
     </invincdepgraph>
-    <innerclass refid="classG4FastSim_1_1ActionInitialization" prot="public">G4FastSim::ActionInitialization</innerclass>
+    <innerclass refid="classActionInitialization" prot="public">ActionInitialization</innerclass>
     <innernamespace refid="namespaceG4FastSim">G4FastSim</innernamespace>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
     <programlisting>
-<codeline lineno="1"><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/>********************************************************************</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/>*<sp/>License<sp/>and<sp/>Disclaimer<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">//<sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="5"><highlight class="normal"></highlight><highlight class="comment">//<sp/>*<sp/>The<sp/><sp/>Geant4<sp/>software<sp/><sp/>is<sp/><sp/>copyright<sp/>of<sp/>the<sp/>Copyright<sp/>Holders<sp/><sp/>of<sp/>*</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//<sp/>*<sp/>the<sp/>Geant4<sp/>Collaboration.<sp/><sp/>It<sp/>is<sp/>provided<sp/><sp/>under<sp/><sp/>the<sp/>terms<sp/><sp/>and<sp/>*</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//<sp/>*<sp/>conditions<sp/>of<sp/>the<sp/>Geant4<sp/>Software<sp/>License,<sp/><sp/>included<sp/>in<sp/>the<sp/>file<sp/>*</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="8"><highlight class="normal"></highlight><highlight class="comment">//<sp/>*<sp/>LICENSE<sp/>and<sp/>available<sp/>at<sp/><sp/>http://cern.ch/geant4/license<sp/>.<sp/><sp/>These<sp/>*</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="9"><highlight class="normal"></highlight><highlight class="comment">//<sp/>*<sp/>include<sp/>a<sp/>list<sp/>of<sp/>copyright<sp/>holders.<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="10"><highlight class="normal"></highlight><highlight class="comment">//<sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="11"><highlight class="normal"></highlight><highlight class="comment">//<sp/>*<sp/>Neither<sp/>the<sp/>authors<sp/>of<sp/>this<sp/>software<sp/>system,<sp/>nor<sp/>their<sp/>employing<sp/>*</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="12"><highlight class="normal"></highlight><highlight class="comment">//<sp/>*<sp/>institutes,nor<sp/>the<sp/>agencies<sp/>providing<sp/>financial<sp/>support<sp/>for<sp/>this<sp/>*</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="13"><highlight class="normal"></highlight><highlight class="comment">//<sp/>*<sp/>work<sp/><sp/>make<sp/><sp/>any<sp/>representation<sp/>or<sp/><sp/>warranty,<sp/>express<sp/>or<sp/>implied,<sp/>*</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="14"><highlight class="normal"></highlight><highlight class="comment">//<sp/>*<sp/>regarding<sp/><sp/>this<sp/><sp/>software<sp/>system<sp/>or<sp/>assume<sp/>any<sp/>liability<sp/>for<sp/>its<sp/>*</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="15"><highlight class="normal"></highlight><highlight class="comment">//<sp/>*<sp/>use.<sp/><sp/>Please<sp/>see<sp/>the<sp/>license<sp/>in<sp/>the<sp/>file<sp/><sp/>LICENSE<sp/><sp/>and<sp/>URL<sp/>above<sp/>*</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="16"><highlight class="normal"></highlight><highlight class="comment">//<sp/>*<sp/>for<sp/>the<sp/>full<sp/>disclaimer<sp/>and<sp/>the<sp/>limitation<sp/>of<sp/>liability.<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="17"><highlight class="normal"></highlight><highlight class="comment">//<sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="18"><highlight class="normal"></highlight><highlight class="comment">//<sp/>*<sp/>This<sp/><sp/>code<sp/><sp/>implementation<sp/>is<sp/>the<sp/>result<sp/>of<sp/><sp/>the<sp/><sp/>scientific<sp/>and<sp/>*</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="19"><highlight class="normal"></highlight><highlight class="comment">//<sp/>*<sp/>technical<sp/>work<sp/>of<sp/>the<sp/>GEANT4<sp/>collaboration.<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="20"><highlight class="normal"></highlight><highlight class="comment">//<sp/>*<sp/>By<sp/>using,<sp/><sp/>copying,<sp/><sp/>modifying<sp/>or<sp/><sp/>distributing<sp/>the<sp/>software<sp/>(or<sp/>*</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="21"><highlight class="normal"></highlight><highlight class="comment">//<sp/>*<sp/>any<sp/>work<sp/>based<sp/><sp/>on<sp/>the<sp/>software)<sp/><sp/>you<sp/><sp/>agree<sp/><sp/>to<sp/>acknowledge<sp/>its<sp/>*</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="22"><highlight class="normal"></highlight><highlight class="comment">//<sp/>*<sp/>use<sp/><sp/>in<sp/><sp/>resulting<sp/><sp/>scientific<sp/><sp/>publications,<sp/><sp/>and<sp/>indicate<sp/>your<sp/>*</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="23"><highlight class="normal"></highlight><highlight class="comment">//<sp/>*<sp/>acceptance<sp/>of<sp/>all<sp/>terms<sp/>of<sp/>the<sp/>Geant4<sp/>Software<sp/>license.<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="24"><highlight class="normal"></highlight><highlight class="comment">//<sp/>********************************************************************</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="25"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="26"><highlight class="normal"></highlight><highlight class="comment">//</highlight></codeline>
-<codeline lineno="29"><highlight class="normal"></highlight></codeline>
-<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>B1ActionInitialization_h</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>B1ActionInitialization_h<sp/>1</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="32"><highlight class="normal"></highlight></codeline>
-<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;G4VUserActionInitialization.hh&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="GammaRayHelper_8hh" kindref="compound">GammaRayHelper.hh</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="EventAction_8hh" kindref="compound">EventAction.hh</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>B1ActionInitialization_h</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>B1ActionInitialization_h<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;G4VUserActionInitialization.hh&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="GammaRayHelper_8hh" kindref="compound">GammaRayHelper.hh</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="EventAction_8hh" kindref="compound">EventAction.hh</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23" refid="classActionInitialization" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classActionInitialization" kindref="compound">ActionInitialization</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>G4VUserActionInitialization</highlight></codeline>
+<codeline lineno="24"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classActionInitialization_1a830a40ce32fd943b81fe844198634486" kindref="member">ActionInitialization</ref>(<ref refid="classGammaRayHelper" kindref="compound">GammaRayHelper</ref>*<sp/>helper);</highlight></codeline>
+<codeline lineno="27" refid="classActionInitialization_1ad9283cbbeef0cb53435510cd55e45e0c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classActionInitialization_1ad9283cbbeef0cb53435510cd55e45e0c" kindref="member">~ActionInitialization</ref>()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal"><sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classActionInitialization_1aa993a3da72fb9ba53b26fece140499ba" kindref="member">BuildForMaster</ref>()<sp/></highlight><highlight class="keyword">const<sp/>override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classActionInitialization_1a39e586ef116f8f2cce1b4fee424849ea" kindref="member">Build</ref>()<sp/></highlight><highlight class="keyword">const<sp/>override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classGammaRayHelper" kindref="compound">GammaRayHelper</ref>*<sp/>fGammaRayHelper;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="comment">//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="38"><highlight class="normal"></highlight></codeline>
-<codeline lineno="39" refid="namespaceG4FastSim" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceG4FastSim" kindref="compound">G4FastSim</ref></highlight></codeline>
-<codeline lineno="40"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="41"><highlight class="normal"></highlight></codeline>
-<codeline lineno="42" refid="classG4FastSim_1_1ActionInitialization" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classG4FastSim_1_1ActionInitialization" kindref="compound">ActionInitialization</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>G4VUserActionInitialization</highlight></codeline>
-<codeline lineno="43"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="44"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classG4FastSim_1_1ActionInitialization_1a2a40c012ffed42fd9111b8844894b2eb" kindref="member">ActionInitialization</ref>(<ref refid="classGammaRayHelper" kindref="compound">GammaRayHelper</ref>*<sp/>helper);</highlight></codeline>
-<codeline lineno="46" refid="classG4FastSim_1_1ActionInitialization_1a96bd985a2dfb920d9ca1a27a2d8e3338" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classG4FastSim_1_1ActionInitialization_1a96bd985a2dfb920d9ca1a27a2d8e3338" kindref="member">~ActionInitialization</ref>()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal"><sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="47"><highlight class="normal"></highlight></codeline>
-<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classG4FastSim_1_1ActionInitialization_1ab607b2e8d232714e21e6cd7b1114e37f" kindref="member">BuildForMaster</ref>()<sp/></highlight><highlight class="keyword">const<sp/>override</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classG4FastSim_1_1ActionInitialization_1ab6ca50863fc4b38ea398568e36edc607" kindref="member">Build</ref>()<sp/></highlight><highlight class="keyword">const<sp/>override</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="50"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classGammaRayHelper" kindref="compound">GammaRayHelper</ref>*<sp/>fGammaRayHelper;</highlight></codeline>
-<codeline lineno="52"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="53"><highlight class="normal"></highlight></codeline>
-<codeline lineno="54"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="55"><highlight class="normal"></highlight></codeline>
-<codeline lineno="56"><highlight class="normal"></highlight><highlight class="comment">//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="57"><highlight class="normal"></highlight></codeline>
-<codeline lineno="58"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
     </programlisting>
     <location file="include/ActionInitialization.hh"/>
   </compounddef>

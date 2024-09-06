@@ -196,7 +196,7 @@
 <codeline lineno="5"><highlight class="normal"></highlight></codeline>
 <codeline lineno="6"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceG4FastSim" kindref="compound">G4FastSim</ref>{</highlight></codeline>
 <codeline lineno="7"><highlight class="normal"></highlight></codeline>
-<codeline lineno="13"><highlight class="normal"><ref refid="classG4FastSim_1_1DetectorConstructionMessenger_1a56d16def755cd3ecb9288893eecf1025" kindref="member">DetectorConstructionMessenger::DetectorConstructionMessenger</ref>(DetectorConstruction*<sp/>detector)</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><ref refid="classG4FastSim_1_1DetectorConstructionMessenger_1a56d16def755cd3ecb9288893eecf1025" kindref="member">DetectorConstructionMessenger::DetectorConstructionMessenger</ref>(<ref refid="classDetectorConstruction" kindref="compound">DetectorConstruction</ref>*<sp/>detector)</highlight></codeline>
 <codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/>fDetectorConstruction(detector)<sp/>{</highlight></codeline>
 <codeline lineno="15"><highlight class="normal"></highlight></codeline>
 <codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>G4UIdirectory*<sp/>dir<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>G4UIdirectory(</highlight><highlight class="stringliteral">&quot;/detector/&quot;</highlight><highlight class="normal">);</highlight></codeline>

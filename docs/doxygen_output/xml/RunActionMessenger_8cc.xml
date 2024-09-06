@@ -211,7 +211,7 @@
 <codeline lineno="3"><highlight class="normal"></highlight></codeline>
 <codeline lineno="5"><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceG4FastSim" kindref="compound">G4FastSim</ref><sp/>{</highlight></codeline>
 <codeline lineno="6"><highlight class="normal"></highlight></codeline>
-<codeline lineno="7"><highlight class="normal"><ref refid="classG4FastSim_1_1RunActionMessenger_1a9fb1df1d404343d1d6b03f3111eff8b7" kindref="member">RunActionMessenger::RunActionMessenger</ref>(RunAction*<sp/>action)</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"><ref refid="classG4FastSim_1_1RunActionMessenger_1a9fb1df1d404343d1d6b03f3111eff8b7" kindref="member">RunActionMessenger::RunActionMessenger</ref>(<ref refid="classRunAction" kindref="compound">RunAction</ref>*<sp/>action)</highlight></codeline>
 <codeline lineno="8"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/>fRunAction(action)<sp/>{</highlight></codeline>
 <codeline lineno="9"><highlight class="normal"></highlight></codeline>
 <codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/>fFastSimulationCmd<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>G4UIcmdWithABool(</highlight><highlight class="stringliteral">&quot;/run/setFastSimulation&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>

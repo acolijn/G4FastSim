@@ -1,0 +1,422 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="classRunAction" kind="class" language="C++" prot="public">
+    <compoundname>RunAction</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">G4UserRunAction</basecompoundref>
+    <includes refid="RunAction_8hh" local="no">RunAction.hh</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classRunAction_1a586f1b04e33638212e6d57be97311a7c" prot="private" static="no" mutable="no">
+        <type><ref refid="classEventAction" kindref="compound">EventAction</ref> *</type>
+        <definition>EventAction* RunAction::fEventAction</definition>
+        <argsstring></argsstring>
+        <name>fEventAction</name>
+        <qualifiedname>RunAction::fEventAction</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/RunAction.hh" line="52" column="17" bodyfile="include/RunAction.hh" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRunAction_1a4d0ec69c786e3035f0501b3cd949d3d9" prot="private" static="no" mutable="no">
+        <type><ref refid="classGammaRayHelper" kindref="compound">GammaRayHelper</ref> *</type>
+        <definition>GammaRayHelper* RunAction::fGammaRayHelper</definition>
+        <argsstring></argsstring>
+        <name>fGammaRayHelper</name>
+        <qualifiedname>RunAction::fGammaRayHelper</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/RunAction.hh" line="53" column="20" bodyfile="include/RunAction.hh" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRunAction_1afa256006e6171ca04f25dcb7028827eb" prot="private" static="no" mutable="no">
+        <type>RunActionMessenger *</type>
+        <definition>RunActionMessenger* RunAction::fMessenger</definition>
+        <argsstring></argsstring>
+        <name>fMessenger</name>
+        <qualifiedname>RunAction::fMessenger</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/RunAction.hh" line="54" column="24" bodyfile="include/RunAction.hh" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRunAction_1aa9dbe010f097f07ab445890a0773999c" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int RunAction::eventNtupleId</definition>
+        <argsstring></argsstring>
+        <name>eventNtupleId</name>
+        <qualifiedname>RunAction::eventNtupleId</qualifiedname>
+        <initializer>= -1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/RunAction.hh" line="56" column="9" bodyfile="include/RunAction.hh" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRunAction_1ae988b40d0ea4230cdf2c7a350134c7f8" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int RunAction::crossSectionNtupleId</definition>
+        <argsstring></argsstring>
+        <name>crossSectionNtupleId</name>
+        <qualifiedname>RunAction::crossSectionNtupleId</qualifiedname>
+        <initializer>= -1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/RunAction.hh" line="57" column="9" bodyfile="include/RunAction.hh" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRunAction_1a4f955ec4262ff4a53efc06945cea44ce" prot="private" static="no" mutable="yes">
+        <type>int</type>
+        <definition>int RunAction::diffXsecNtupleId</definition>
+        <argsstring></argsstring>
+        <name>diffXsecNtupleId</name>
+        <qualifiedname>RunAction::diffXsecNtupleId</qualifiedname>
+        <initializer>= -1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/RunAction.hh" line="58" column="17" bodyfile="include/RunAction.hh" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRunAction_1a89767b66465a9d73f559c0b4bc869171" prot="private" static="no" mutable="no">
+        <type>G4bool</type>
+        <definition>G4bool RunAction::fFastSimulation</definition>
+        <argsstring></argsstring>
+        <name>fFastSimulation</name>
+        <qualifiedname>RunAction::fFastSimulation</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/RunAction.hh" line="60" column="12" bodyfile="include/RunAction.hh" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRunAction_1abec36c83e7c50a424d078a8e418ae938" prot="private" static="no" mutable="no">
+        <type>G4int</type>
+        <definition>G4int RunAction::fNumberOfScattersMax</definition>
+        <argsstring></argsstring>
+        <name>fNumberOfScattersMax</name>
+        <qualifiedname>RunAction::fNumberOfScattersMax</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/RunAction.hh" line="61" column="11" bodyfile="include/RunAction.hh" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRunAction_1a9557c35f186ffe6640dc464bbda5adaa" prot="private" static="no" mutable="no">
+        <type>G4double</type>
+        <definition>G4double RunAction::fMaxEnergy</definition>
+        <argsstring></argsstring>
+        <name>fMaxEnergy</name>
+        <qualifiedname>RunAction::fMaxEnergy</qualifiedname>
+        <initializer>= 0.0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/RunAction.hh" line="62" column="14" bodyfile="include/RunAction.hh" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRunAction_1a3159884d817346a100301e81ca426379" prot="private" static="no" mutable="no">
+        <type>G4String</type>
+        <definition>G4String RunAction::fOutputFileName</definition>
+        <argsstring></argsstring>
+        <name>fOutputFileName</name>
+        <qualifiedname>RunAction::fOutputFileName</qualifiedname>
+        <initializer>= &quot;G4FastSim.root&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/RunAction.hh" line="63" column="14" bodyfile="include/RunAction.hh" bodystart="63" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classRunAction_1aa81cf71d5d0400634291277473de27b7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>RunAction::RunAction</definition>
+        <argsstring>(EventAction *eventAction, GammaRayHelper *helper)</argsstring>
+        <name>RunAction</name>
+        <qualifiedname>RunAction::RunAction</qualifiedname>
+        <param>
+          <type><ref refid="classEventAction" kindref="compound">EventAction</ref> *</type>
+          <declname>eventAction</declname>
+        </param>
+        <param>
+          <type><ref refid="classGammaRayHelper" kindref="compound">GammaRayHelper</ref> *</type>
+          <declname>helper</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/RunAction.hh" line="35" column="5" bodyfile="src/RunAction.cc" bodystart="64" bodyend="74"/>
+      </memberdef>
+      <memberdef kind="function" id="classRunAction_1a6c584eb414c62a6238d5ea9a55601e1c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>RunAction::~RunAction</definition>
+        <argsstring>()</argsstring>
+        <name>~RunAction</name>
+        <qualifiedname>RunAction::~RunAction</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/RunAction.hh" line="36" column="5" bodyfile="src/RunAction.cc" bodystart="103" bodyend="106"/>
+      </memberdef>
+      <memberdef kind="function" id="classRunAction_1a4f622bac2655e90f7c638906cdf5d3d3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void RunAction::BeginOfRunAction</definition>
+        <argsstring>(const G4Run *) override</argsstring>
+        <name>BeginOfRunAction</name>
+        <qualifiedname>RunAction::BeginOfRunAction</qualifiedname>
+        <param>
+          <type>const G4Run *</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/RunAction.hh" line="38" column="10" bodyfile="src/RunAction.cc" bodystart="78" bodyend="100"/>
+      </memberdef>
+      <memberdef kind="function" id="classRunAction_1a9773114939d92193afd5f48c456ba1b4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void RunAction::EndOfRunAction</definition>
+        <argsstring>(const G4Run *) override</argsstring>
+        <name>EndOfRunAction</name>
+        <qualifiedname>RunAction::EndOfRunAction</qualifiedname>
+        <param>
+          <type>const G4Run *</type>
+          <defname>run</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/RunAction.hh" line="39" column="12" bodyfile="src/RunAction.cc" bodystart="294" bodyend="305"/>
+      </memberdef>
+      <memberdef kind="function" id="classRunAction_1a4e10f453c5a4a4694364a0c02df345fe" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void RunAction::InitializeNtuples</definition>
+        <argsstring>()</argsstring>
+        <name>InitializeNtuples</name>
+        <qualifiedname>RunAction::InitializeNtuples</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/RunAction.hh" line="41" column="10" bodyfile="src/RunAction.cc" bodystart="110" bodyend="132"/>
+      </memberdef>
+      <memberdef kind="function" id="classRunAction_1a492c9c6f070cb17027ea9d61bd6e4294" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void RunAction::DefineEventNtuple</definition>
+        <argsstring>()</argsstring>
+        <name>DefineEventNtuple</name>
+        <qualifiedname>RunAction::DefineEventNtuple</qualifiedname>
+        <briefdescription>
+<para>Defines the event ntuple for data analysis. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function creates an event ntuple using the G4AnalysisManager class. The ntuple contains columns for storing energy deposition (Edep), x-coordinate (xh), and y-coordinate (yh) of each event. The ntuple is finished and assigned an ID. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/RunAction.hh" line="42" column="10" bodyfile="src/RunAction.cc" bodystart="204" bodyend="229"/>
+      </memberdef>
+      <memberdef kind="function" id="classRunAction_1a2b7cb09d1a9ea147f96a9c4cdb5adb90" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void RunAction::DefineCrossSectionNtuple</definition>
+        <argsstring>()</argsstring>
+        <name>DefineCrossSectionNtuple</name>
+        <qualifiedname>RunAction::DefineCrossSectionNtuple</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/RunAction.hh" line="43" column="10" bodyfile="src/RunAction.cc" bodystart="233" bodyend="289"/>
+      </memberdef>
+      <memberdef kind="function" id="classRunAction_1a12a1675453301619429fa2b9864ec6d3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void RunAction::DefineDifferentialCrossSectionNtuple</definition>
+        <argsstring>(G4double energy) const</argsstring>
+        <name>DefineDifferentialCrossSectionNtuple</name>
+        <qualifiedname>RunAction::DefineDifferentialCrossSectionNtuple</qualifiedname>
+        <param>
+          <type>G4double</type>
+          <declname>energy</declname>
+          <defname>e0</defname>
+        </param>
+        <briefdescription>
+<para>Defines the differential cross-section Ntuple. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function creates an Ntuple to store the differential cross-section data. It retrieves the material table, creates the necessary columns in the Ntuple, and fills the Ntuple with the differential cross-section values for each element in each material. The Ntuple columns include the material name, scattering angle, form factor, Klein-Nishina cross-section, and atomic number of the element. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/RunAction.hh" line="44" column="10" bodyfile="src/RunAction.cc" bodystart="142" bodyend="194"/>
+      </memberdef>
+      <memberdef kind="function" id="classRunAction_1a54fa8942b1a54707fa9a427648e33815" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void RunAction::SetFastSimulation</definition>
+        <argsstring>(G4bool value)</argsstring>
+        <name>SetFastSimulation</name>
+        <qualifiedname>RunAction::SetFastSimulation</qualifiedname>
+        <param>
+          <type>G4bool</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/RunAction.hh" line="46" column="10" bodyfile="include/RunAction.hh" bodystart="46" bodyend="46"/>
+      </memberdef>
+      <memberdef kind="function" id="classRunAction_1a10c6e26c4e12192b4d2a98e86f321f5d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void RunAction::SetNumberOfScatters</definition>
+        <argsstring>(G4int value)</argsstring>
+        <name>SetNumberOfScatters</name>
+        <qualifiedname>RunAction::SetNumberOfScatters</qualifiedname>
+        <param>
+          <type>G4int</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/RunAction.hh" line="47" column="10" bodyfile="include/RunAction.hh" bodystart="47" bodyend="47"/>
+      </memberdef>
+      <memberdef kind="function" id="classRunAction_1ae55dd280821fae8873369106ae19118b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void RunAction::SetMaxEnergy</definition>
+        <argsstring>(G4double value)</argsstring>
+        <name>SetMaxEnergy</name>
+        <qualifiedname>RunAction::SetMaxEnergy</qualifiedname>
+        <param>
+          <type>G4double</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/RunAction.hh" line="48" column="10" bodyfile="include/RunAction.hh" bodystart="48" bodyend="48"/>
+      </memberdef>
+      <memberdef kind="function" id="classRunAction_1a042efd6063bebdfb1779ff8cf5f2305a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void RunAction::SetOutputFileName</definition>
+        <argsstring>(G4String value)</argsstring>
+        <name>SetOutputFileName</name>
+        <qualifiedname>RunAction::SetOutputFileName</qualifiedname>
+        <param>
+          <type>G4String</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/RunAction.hh" line="49" column="10" bodyfile="include/RunAction.hh" bodystart="49" bodyend="49"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>User-defined run action class for the simulation. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This class inherits from G4UserRunAction and is responsible for defining the actions to be taken at the beginning and end of each run. It also provides methods for initializing and defining various ntuples used for data storage. The class also includes setter methods for configuring the fast simulation, maximum number of scatters, maximum energy, and output file name. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>G4UserRunAction</label>
+      </node>
+      <node id="1">
+        <label>RunAction</label>
+        <link refid="classRunAction"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>G4UserRunAction</label>
+      </node>
+      <node id="1">
+        <label>RunAction</label>
+        <link refid="classRunAction"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/RunAction.hh" line="32" column="1" bodyfile="include/RunAction.hh" bodystart="33" bodyend="64"/>
+    <listofallmembers>
+      <member refid="classRunAction_1a4f622bac2655e90f7c638906cdf5d3d3" prot="public" virt="non-virtual"><scope>RunAction</scope><name>BeginOfRunAction</name></member>
+      <member refid="classRunAction_1ae988b40d0ea4230cdf2c7a350134c7f8" prot="private" virt="non-virtual"><scope>RunAction</scope><name>crossSectionNtupleId</name></member>
+      <member refid="classRunAction_1a2b7cb09d1a9ea147f96a9c4cdb5adb90" prot="public" virt="non-virtual"><scope>RunAction</scope><name>DefineCrossSectionNtuple</name></member>
+      <member refid="classRunAction_1a12a1675453301619429fa2b9864ec6d3" prot="public" virt="non-virtual"><scope>RunAction</scope><name>DefineDifferentialCrossSectionNtuple</name></member>
+      <member refid="classRunAction_1a492c9c6f070cb17027ea9d61bd6e4294" prot="public" virt="non-virtual"><scope>RunAction</scope><name>DefineEventNtuple</name></member>
+      <member refid="classRunAction_1a4f955ec4262ff4a53efc06945cea44ce" prot="private" virt="non-virtual"><scope>RunAction</scope><name>diffXsecNtupleId</name></member>
+      <member refid="classRunAction_1a9773114939d92193afd5f48c456ba1b4" prot="public" virt="non-virtual"><scope>RunAction</scope><name>EndOfRunAction</name></member>
+      <member refid="classRunAction_1aa9dbe010f097f07ab445890a0773999c" prot="private" virt="non-virtual"><scope>RunAction</scope><name>eventNtupleId</name></member>
+      <member refid="classRunAction_1a586f1b04e33638212e6d57be97311a7c" prot="private" virt="non-virtual"><scope>RunAction</scope><name>fEventAction</name></member>
+      <member refid="classRunAction_1a89767b66465a9d73f559c0b4bc869171" prot="private" virt="non-virtual"><scope>RunAction</scope><name>fFastSimulation</name></member>
+      <member refid="classRunAction_1a4d0ec69c786e3035f0501b3cd949d3d9" prot="private" virt="non-virtual"><scope>RunAction</scope><name>fGammaRayHelper</name></member>
+      <member refid="classRunAction_1a9557c35f186ffe6640dc464bbda5adaa" prot="private" virt="non-virtual"><scope>RunAction</scope><name>fMaxEnergy</name></member>
+      <member refid="classRunAction_1afa256006e6171ca04f25dcb7028827eb" prot="private" virt="non-virtual"><scope>RunAction</scope><name>fMessenger</name></member>
+      <member refid="classRunAction_1abec36c83e7c50a424d078a8e418ae938" prot="private" virt="non-virtual"><scope>RunAction</scope><name>fNumberOfScattersMax</name></member>
+      <member refid="classRunAction_1a3159884d817346a100301e81ca426379" prot="private" virt="non-virtual"><scope>RunAction</scope><name>fOutputFileName</name></member>
+      <member refid="classRunAction_1a4e10f453c5a4a4694364a0c02df345fe" prot="public" virt="non-virtual"><scope>RunAction</scope><name>InitializeNtuples</name></member>
+      <member refid="classRunAction_1aa81cf71d5d0400634291277473de27b7" prot="public" virt="non-virtual"><scope>RunAction</scope><name>RunAction</name></member>
+      <member refid="classRunAction_1a54fa8942b1a54707fa9a427648e33815" prot="public" virt="non-virtual"><scope>RunAction</scope><name>SetFastSimulation</name></member>
+      <member refid="classRunAction_1ae55dd280821fae8873369106ae19118b" prot="public" virt="non-virtual"><scope>RunAction</scope><name>SetMaxEnergy</name></member>
+      <member refid="classRunAction_1a10c6e26c4e12192b4d2a98e86f321f5d" prot="public" virt="non-virtual"><scope>RunAction</scope><name>SetNumberOfScatters</name></member>
+      <member refid="classRunAction_1a042efd6063bebdfb1779ff8cf5f2305a" prot="public" virt="non-virtual"><scope>RunAction</scope><name>SetOutputFileName</name></member>
+      <member refid="classRunAction_1a6c584eb414c62a6238d5ea9a55601e1c" prot="public" virt="non-virtual"><scope>RunAction</scope><name>~RunAction</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,100 @@
+\doxysection{Stepping\+Action Class Reference}
+\hypertarget{classSteppingAction}{}\label{classSteppingAction}\index{SteppingAction@{SteppingAction}}
+
+
+Class responsible for handling the stepping action of particles in the simulation.  
+
+
+
+
+{\ttfamily \#include $<$Stepping\+Action.\+hh$>$}
+
+Inheritance diagram for Stepping\+Action\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classSteppingAction}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classSteppingAction_a374afa1d769bcc5ba9d771cb83332a24}{Stepping\+Action}} (\mbox{\hyperlink{classEventAction}{Event\+Action}} \texorpdfstring{$\ast$}{*}event\+Action, \mbox{\hyperlink{classGammaRayHelper}{Gamma\+Ray\+Helper}} \texorpdfstring{$\ast$}{*}helper)
+\item 
+\mbox{\hyperlink{classSteppingAction_ace65491c5f93bdf39d14914767f896bf}{\texorpdfstring{$\sim$}{\string~}\+Stepping\+Action}} ()
+\item 
+void \mbox{\hyperlink{classSteppingAction_a4c685bf7180779d18c143c6ad1cce3fb}{User\+Stepping\+Action}} (const G4\+Step \texorpdfstring{$\ast$}{*}) override
+\begin{DoxyCompactList}\small\item\em Performs the user-\/defined stepping action for each step of a particle in the simulation. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSteppingAction_af086c296da316989ad94c24227a88c5f}{Set\+Verbosity}} (G4int level)
+\item 
+void \mbox{\hyperlink{classSteppingAction_a0c02224c420b2e569e0fd73a15f27857}{Print}} (const G4\+Step \texorpdfstring{$\ast$}{*}step)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class responsible for handling the stepping action of particles in the simulation. 
+
+This class inherits from the G4\+User\+Stepping\+Action class and implements the User\+Stepping\+Action method. It also provides methods for setting the verbosity level, printing step information, adding hits to collections, performing scattering calculations, and analyzing standard steps.
+
+\begin{DoxyNote}{Note}
+The \doxylink{classSteppingAction}{Stepping\+Action} class requires an \doxylink{classEventAction}{Event\+Action} object and a \doxylink{classGammaRayHelper}{Gamma\+Ray\+Helper} object to be passed to its constructor. These objects are used for event-\/level actions and gamma ray calculations, respectively. 
+\end{DoxyNote}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classSteppingAction_a374afa1d769bcc5ba9d771cb83332a24}\label{classSteppingAction_a374afa1d769bcc5ba9d771cb83332a24} 
+\index{SteppingAction@{SteppingAction}!SteppingAction@{SteppingAction}}
+\index{SteppingAction@{SteppingAction}!SteppingAction@{SteppingAction}}
+\doxysubsubsection{\texorpdfstring{SteppingAction()}{SteppingAction()}}
+{\footnotesize\ttfamily Stepping\+Action\+::\+Stepping\+Action (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classEventAction}{Event\+Action}} \texorpdfstring{$\ast$}{*}}]{event\+Action,  }\item[{\mbox{\hyperlink{classGammaRayHelper}{Gamma\+Ray\+Helper}} \texorpdfstring{$\ast$}{*}}]{helper }\end{DoxyParamCaption})}
+
+\Hypertarget{classSteppingAction_ace65491c5f93bdf39d14914767f896bf}\label{classSteppingAction_ace65491c5f93bdf39d14914767f896bf} 
+\index{SteppingAction@{SteppingAction}!````~SteppingAction@{\texorpdfstring{$\sim$}{\string~}SteppingAction}}
+\index{````~SteppingAction@{\texorpdfstring{$\sim$}{\string~}SteppingAction}!SteppingAction@{SteppingAction}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}SteppingAction()}{\string~SteppingAction()}}
+{\footnotesize\ttfamily Stepping\+Action\+::\texorpdfstring{$\sim$}{\string~}\+Stepping\+Action (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classSteppingAction_a0c02224c420b2e569e0fd73a15f27857}\label{classSteppingAction_a0c02224c420b2e569e0fd73a15f27857} 
+\index{SteppingAction@{SteppingAction}!Print@{Print}}
+\index{Print@{Print}!SteppingAction@{SteppingAction}}
+\doxysubsubsection{\texorpdfstring{Print()}{Print()}}
+{\footnotesize\ttfamily void Stepping\+Action\+::\+Print (\begin{DoxyParamCaption}\item[{const G4\+Step \texorpdfstring{$\ast$}{*}}]{step }\end{DoxyParamCaption})}
+
+Prints information about the given step.
+
+
+\begin{DoxyParams}{Parameters}
+{\em step} & The step for which to print information. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classSteppingAction_af086c296da316989ad94c24227a88c5f}\label{classSteppingAction_af086c296da316989ad94c24227a88c5f} 
+\index{SteppingAction@{SteppingAction}!SetVerbosity@{SetVerbosity}}
+\index{SetVerbosity@{SetVerbosity}!SteppingAction@{SteppingAction}}
+\doxysubsubsection{\texorpdfstring{SetVerbosity()}{SetVerbosity()}}
+{\footnotesize\ttfamily void Stepping\+Action\+::\+Set\+Verbosity (\begin{DoxyParamCaption}\item[{G4int}]{level }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classSteppingAction_a4c685bf7180779d18c143c6ad1cce3fb}\label{classSteppingAction_a4c685bf7180779d18c143c6ad1cce3fb} 
+\index{SteppingAction@{SteppingAction}!UserSteppingAction@{UserSteppingAction}}
+\index{UserSteppingAction@{UserSteppingAction}!SteppingAction@{SteppingAction}}
+\doxysubsubsection{\texorpdfstring{UserSteppingAction()}{UserSteppingAction()}}
+{\footnotesize\ttfamily void Stepping\+Action\+::\+User\+Stepping\+Action (\begin{DoxyParamCaption}\item[{const G4\+Step \texorpdfstring{$\ast$}{*}}]{step }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+
+
+Performs the user-\/defined stepping action for each step of a particle in the simulation. 
+
+This function is called for each step of a particle in the simulation. It checks if the event is a fast simulation event, and if not, it calls the {\ttfamily Analyze\+Standard\+Step} function to analyze the standard step. If the event is a fast simulation event, it performs various operations based on the particle\textquotesingle{}s properties and the current volume.
+
+
+\begin{DoxyParams}{Parameters}
+{\em step} & The G4\+Step object representing the current step of the particle. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{SteppingAction_8hh}{Stepping\+Action.\+hh}}\item 
+src/\mbox{\hyperlink{SteppingAction_8cc}{Stepping\+Action.\+cc}}\end{DoxyCompactItemize}

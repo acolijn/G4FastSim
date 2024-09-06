@@ -2,6 +2,11 @@
 \hypertarget{classG4FastSim_1_1DetectorConstruction}{}\label{classG4FastSim_1_1DetectorConstruction}\index{G4FastSim::DetectorConstruction@{G4FastSim::DetectorConstruction}}
 
 
+Class responsible for constructing the detector geometry.  
+
+
+
+
 {\ttfamily \#include $<$Detector\+Construction.\+hh$>$}
 
 Inheritance diagram for G4\+Fast\+Sim\+::Detector\+Construction\+:\begin{figure}[H]
@@ -61,6 +66,11 @@ G4\+Logical\+Volume \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classG4FastSim_1
 \mbox{\hyperlink{classG4FastSim_1_1DetectorConstructionMessenger}{Detector\+Construction\+Messenger}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classG4FastSim_1_1DetectorConstruction_ab0fa1fabca4339bf27bc74c56a7f1d5b}{f\+Messenger}}
 \end{DoxyCompactItemize}
 
+
+\doxysubsection{Detailed Description}
+Class responsible for constructing the detector geometry. 
+
+This class inherits from G4\+VUser\+Detector\+Construction and is used to define the geometry of the detector. It constructs various volumes such as the world volume, water tank, outer cryostat, inner cryostat, LXe, and fiducial volume. It also defines a sensitive detector and provides methods to access the scoring volume and the \doxylink{classGammaRayHelper}{Gamma\+Ray\+Helper} object. The dimensions of the various volumes can be set using the provided setter methods. The class also handles checking for overlaps between volumes. 
 
 \doxysubsection{Constructor \& Destructor Documentation}
 \Hypertarget{classG4FastSim_1_1DetectorConstruction_aa17a113299f7697c31fda911e666e177}\label{classG4FastSim_1_1DetectorConstruction_aa17a113299f7697c31fda911e666e177} 

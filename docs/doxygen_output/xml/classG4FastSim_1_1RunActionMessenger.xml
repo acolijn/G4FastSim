@@ -6,7 +6,7 @@
     <includes refid="RunActionMessenger_8hh" local="no">RunActionMessenger.hh</includes>
     <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classG4FastSim_1_1RunActionMessenger_1a2ba2569571125b523cd783a9a375b8a3" prot="private" static="no" mutable="no">
-        <type><ref refid="classG4FastSim_1_1RunAction" kindref="compound">RunAction</ref> *</type>
+        <type><ref refid="classRunAction" kindref="compound">RunAction</ref> *</type>
         <definition>RunAction* G4FastSim::RunActionMessenger::fRunAction</definition>
         <argsstring></argsstring>
         <name>fRunAction</name>
@@ -84,7 +84,7 @@
         <name>RunActionMessenger</name>
         <qualifiedname>G4FastSim::RunActionMessenger::RunActionMessenger</qualifiedname>
         <param>
-          <type><ref refid="classG4FastSim_1_1RunAction" kindref="compound">RunAction</ref> *</type>
+          <type><ref refid="classRunAction" kindref="compound">RunAction</ref> *</type>
           <declname>action</declname>
         </param>
         <briefdescription>

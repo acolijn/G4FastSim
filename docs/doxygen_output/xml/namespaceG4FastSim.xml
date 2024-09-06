@@ -2,47 +2,11 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
   <compounddef id="namespaceG4FastSim" kind="namespace" language="C++">
     <compoundname>G4FastSim</compoundname>
-    <innerclass refid="classG4FastSim_1_1ActionInitialization" prot="public">G4FastSim::ActionInitialization</innerclass>
     <innerclass refid="structG4FastSim_1_1Cluster" prot="public">G4FastSim::Cluster</innerclass>
-    <innerclass refid="classG4FastSim_1_1DetectorConstruction" prot="public">G4FastSim::DetectorConstruction</innerclass>
     <innerclass refid="classG4FastSim_1_1DetectorConstructionMessenger" prot="public">G4FastSim::DetectorConstructionMessenger</innerclass>
-    <innerclass refid="classG4FastSim_1_1EventAction" prot="public">G4FastSim::EventAction</innerclass>
     <innerclass refid="classG4FastSim_1_1Hit" prot="public">G4FastSim::Hit</innerclass>
     <innerclass refid="classG4FastSim_1_1Materials" prot="public">G4FastSim::Materials</innerclass>
-    <innerclass refid="classG4FastSim_1_1RunAction" prot="public">G4FastSim::RunAction</innerclass>
     <innerclass refid="classG4FastSim_1_1RunActionMessenger" prot="public">G4FastSim::RunActionMessenger</innerclass>
-    <innerclass refid="classG4FastSim_1_1SensitiveDetector" prot="public">G4FastSim::SensitiveDetector</innerclass>
-    <innerclass refid="classG4FastSim_1_1SteppingAction" prot="public">G4FastSim::SteppingAction</innerclass>
-    <sectiondef kind="enum">
-      <memberdef kind="enum" id="namespaceG4FastSim_1a05ee3770e81fff7d8cd8d8cab21317d8" prot="public" static="no" strong="no">
-        <type></type>
-        <name>EventType</name>
-        <qualifiedname>G4FastSim::EventType</qualifiedname>
-        <enumvalue id="namespaceG4FastSim_1a05ee3770e81fff7d8cd8d8cab21317d8ae51bfe7822492a220dcdc2f264cc51c7" prot="public">
-          <name>DIRECT_GAMMA</name>
-          <initializer>= 0</initializer>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
-        </enumvalue>
-        <enumvalue id="namespaceG4FastSim_1a05ee3770e81fff7d8cd8d8cab21317d8a7bd13a2486be1506ada95bed246cca91" prot="public">
-          <name>SCATTERED_GAMMA</name>
-          <initializer>= 1</initializer>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
-        </enumvalue>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/EventAction.hh" line="56" column="1" bodyfile="include/EventAction.hh" bodystart="56" bodyend="59"/>
-      </memberdef>
-    </sectiondef>
     <sectiondef kind="typedef">
       <memberdef kind="typedef" id="namespaceG4FastSim_1a03dccfbb4e25fe6f2ab3468c33175a36" prot="public" static="no">
         <type>G4THitsCollection&lt; <ref refid="classG4FastSim_1_1Hit" kindref="compound">Hit</ref> &gt;</type>
@@ -77,19 +41,22 @@
       </memberdef>
     </sectiondef>
     <briefdescription>
-<para>Action initialization class. </para>
+<para>A namespace for fast simulation classes in Geant4. /*/ namespace <ref refid="namespaceG4FastSim" kindref="compound">G4FastSim</ref> {. </para>
     </briefdescription>
     <detaileddescription>
 <para>using namespace <ref refid="namespaceG4FastSim" kindref="compound">G4FastSim</ref>;</para>
-<para>Run action class.</para>
-<para>A namespace for fast simulation classes in Geant4. /*/ namespace <ref refid="namespaceG4FastSim" kindref="compound">G4FastSim</ref> {.</para>
-<para>Detector construction class to define materials and geometry.</para>
+<para>/**</para>
+<para>Use enum to define the constants enum EventType { DIRECT_GAMMA = 0, SCATTERED_GAMMA = 1 };</para>
+<para>/**</para>
 <para>struct CDFData { std::vector&lt;G4double&gt; cdf; std::vector&lt;G4double&gt; cosTheta; };</para>
 <para>struct InteractionData { G4ThreeVector x0; G4ThreeVector dir; G4double energy; G4double energyDeposited; G4double cosTheta; G4double weight; Hit* hit; };</para>
 <para>/**</para>
-<para>Stepping action class</para>
+<para>class <ref refid="classEventAction" kindref="compound">EventAction</ref>; class <ref refid="classG4FastSim_1_1RunActionMessenger" kindref="compound">RunActionMessenger</ref>;</para>
+<para>/**</para>
+<para>class <ref refid="classEventAction" kindref="compound">EventAction</ref>;</para>
+<para>/**</para>
 <para>namespace <ref refid="namespaceG4FastSim" kindref="compound">G4FastSim</ref> { </para>
     </detaileddescription>
-    <location file="include/ActionInitialization.hh" line="39" column="1"/>
+    <location file="include/ActionInitialization.hh" line="9" column="1"/>
   </compounddef>
 </doxygen>

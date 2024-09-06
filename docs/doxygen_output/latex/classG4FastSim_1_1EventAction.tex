@@ -2,6 +2,11 @@
 \hypertarget{classG4FastSim_1_1EventAction}{}\label{classG4FastSim_1_1EventAction}\index{G4FastSim::EventAction@{G4FastSim::EventAction}}
 
 
+Class responsible for defining actions to be taken at the beginning and end of each event.  
+
+
+
+
 {\ttfamily \#include $<$Event\+Action.\+hh$>$}
 
 Inheritance diagram for G4\+Fast\+Sim\+::Event\+Action\+:\begin{figure}[H]
@@ -72,6 +77,11 @@ void \mbox{\hyperlink{classG4FastSim_1_1EventAction_a77d54ea8c5f1afe66e9bfa2330d
 void \mbox{\hyperlink{classG4FastSim_1_1EventAction_a964a668626874db354cad50145b6f441}{Set\+Event\+Type}} (G4int type)
 \end{DoxyCompactItemize}
 
+
+\doxysubsection{Detailed Description}
+Class responsible for defining actions to be taken at the beginning and end of each event. 
+
+This class inherits from G4\+User\+Event\+Action and is used to define the actions to be taken at the beginning and end of each event. It provides methods to analyze the hits in the event, reset the variables for each event, and access the variables stored in the ntuple tree. It also provides methods to set and get the number of scatters, maximum energy, available energy, weight, and event type. 
 
 \doxysubsection{Constructor \& Destructor Documentation}
 \Hypertarget{classG4FastSim_1_1EventAction_aa1f321b88b89f16c67b65da6727a52d6}\label{classG4FastSim_1_1EventAction_aa1f321b88b89f16c67b65da6727a52d6} 

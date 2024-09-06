@@ -1,0 +1,843 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="classDetectorConstruction" kind="class" language="C++" prot="public">
+    <compoundname>DetectorConstruction</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">G4VUserDetectorConstruction</basecompoundref>
+    <includes refid="DetectorConstruction_8hh" local="no">DetectorConstruction.hh</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classDetectorConstruction_1a7bd7b453b4ce3f613b3e7b3c58781d14" prot="private" static="no" mutable="no">
+        <type>Materials *</type>
+        <definition>Materials* DetectorConstruction::fMaterials</definition>
+        <argsstring></argsstring>
+        <name>fMaterials</name>
+        <qualifiedname>DetectorConstruction::fMaterials</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/DetectorConstruction.hh" line="59" column="15" bodyfile="include/DetectorConstruction.hh" bodystart="59" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classDetectorConstruction_1ae9388f6178da5610d69e55d36e74a8d7" prot="private" static="no" mutable="no">
+        <type><ref refid="classGammaRayHelper" kindref="compound">GammaRayHelper</ref> *</type>
+        <definition>GammaRayHelper* DetectorConstruction::fGammaRayHelper</definition>
+        <argsstring></argsstring>
+        <name>fGammaRayHelper</name>
+        <qualifiedname>DetectorConstruction::fGammaRayHelper</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/DetectorConstruction.hh" line="61" column="20" bodyfile="include/DetectorConstruction.hh" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classDetectorConstruction_1acd9ca668fcc3043166e767794f56bb04" prot="private" static="no" mutable="no">
+        <type>G4bool</type>
+        <definition>G4bool DetectorConstruction::fCheckOverlaps</definition>
+        <argsstring></argsstring>
+        <name>fCheckOverlaps</name>
+        <qualifiedname>DetectorConstruction::fCheckOverlaps</qualifiedname>
+        <initializer>= true</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/DetectorConstruction.hh" line="64" column="12" bodyfile="include/DetectorConstruction.hh" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classDetectorConstruction_1a17b9240318358ad5cb5a20ec133ea5f8" prot="private" static="no" mutable="no">
+        <type>G4double</type>
+        <definition>G4double DetectorConstruction::outer_cryostat_radius</definition>
+        <argsstring></argsstring>
+        <name>outer_cryostat_radius</name>
+        <qualifiedname>DetectorConstruction::outer_cryostat_radius</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/DetectorConstruction.hh" line="67" column="14" bodyfile="include/DetectorConstruction.hh" bodystart="67" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classDetectorConstruction_1a0cf4d1dcefbf88517e8cfc6e99f529ef" prot="private" static="no" mutable="no">
+        <type>G4double</type>
+        <definition>G4double DetectorConstruction::outer_cryostat_height</definition>
+        <argsstring></argsstring>
+        <name>outer_cryostat_height</name>
+        <qualifiedname>DetectorConstruction::outer_cryostat_height</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/DetectorConstruction.hh" line="68" column="14" bodyfile="include/DetectorConstruction.hh" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classDetectorConstruction_1a3ea0eab2316a58bc285b3a7e1c0d6bd2" prot="private" static="no" mutable="no">
+        <type>G4double</type>
+        <definition>G4double DetectorConstruction::outer_cryostat_wall_thickness</definition>
+        <argsstring></argsstring>
+        <name>outer_cryostat_wall_thickness</name>
+        <qualifiedname>DetectorConstruction::outer_cryostat_wall_thickness</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/DetectorConstruction.hh" line="69" column="14" bodyfile="include/DetectorConstruction.hh" bodystart="69" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classDetectorConstruction_1a73059f04501656e4669270af76738dc1" prot="private" static="no" mutable="no">
+        <type>G4double</type>
+        <definition>G4double DetectorConstruction::inner_cryostat_radius</definition>
+        <argsstring></argsstring>
+        <name>inner_cryostat_radius</name>
+        <qualifiedname>DetectorConstruction::inner_cryostat_radius</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/DetectorConstruction.hh" line="71" column="14" bodyfile="include/DetectorConstruction.hh" bodystart="71" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classDetectorConstruction_1aae6afb415b8e312af79733c1713ed350" prot="private" static="no" mutable="no">
+        <type>G4double</type>
+        <definition>G4double DetectorConstruction::inner_cryostat_height</definition>
+        <argsstring></argsstring>
+        <name>inner_cryostat_height</name>
+        <qualifiedname>DetectorConstruction::inner_cryostat_height</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/DetectorConstruction.hh" line="72" column="14" bodyfile="include/DetectorConstruction.hh" bodystart="72" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classDetectorConstruction_1a903e74330d534a711a60ec8d9a175847" prot="private" static="no" mutable="no">
+        <type>G4double</type>
+        <definition>G4double DetectorConstruction::inner_cryostat_wall_thickness</definition>
+        <argsstring></argsstring>
+        <name>inner_cryostat_wall_thickness</name>
+        <qualifiedname>DetectorConstruction::inner_cryostat_wall_thickness</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/DetectorConstruction.hh" line="73" column="14" bodyfile="include/DetectorConstruction.hh" bodystart="73" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classDetectorConstruction_1ae0b089ece4cc42c61e4662e0c2f41cc0" prot="private" static="no" mutable="no">
+        <type>G4double</type>
+        <definition>G4double DetectorConstruction::fiducial_radius</definition>
+        <argsstring></argsstring>
+        <name>fiducial_radius</name>
+        <qualifiedname>DetectorConstruction::fiducial_radius</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/DetectorConstruction.hh" line="75" column="14" bodyfile="include/DetectorConstruction.hh" bodystart="75" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classDetectorConstruction_1ad3ea0f455c35f28405cdc427dcec551a" prot="private" static="no" mutable="no">
+        <type>G4double</type>
+        <definition>G4double DetectorConstruction::fiducial_height</definition>
+        <argsstring></argsstring>
+        <name>fiducial_height</name>
+        <qualifiedname>DetectorConstruction::fiducial_height</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/DetectorConstruction.hh" line="76" column="14" bodyfile="include/DetectorConstruction.hh" bodystart="76" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classDetectorConstruction_1a50ef3dc1895dc441fc8c36e740666367" prot="private" static="no" mutable="no">
+        <type>G4LogicalVolume *</type>
+        <definition>G4LogicalVolume* DetectorConstruction::fWorldLogical</definition>
+        <argsstring></argsstring>
+        <name>fWorldLogical</name>
+        <qualifiedname>DetectorConstruction::fWorldLogical</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/DetectorConstruction.hh" line="79" column="21" bodyfile="include/DetectorConstruction.hh" bodystart="79" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classDetectorConstruction_1aa2082f491d7a440f597b68a44530f9ae" prot="private" static="no" mutable="no">
+        <type>G4LogicalVolume *</type>
+        <definition>G4LogicalVolume* DetectorConstruction::fWaterTankLogical</definition>
+        <argsstring></argsstring>
+        <name>fWaterTankLogical</name>
+        <qualifiedname>DetectorConstruction::fWaterTankLogical</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/DetectorConstruction.hh" line="80" column="21" bodyfile="include/DetectorConstruction.hh" bodystart="80" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classDetectorConstruction_1ad6919f222895c9c63eb942bf5586071d" prot="private" static="no" mutable="no">
+        <type>G4LogicalVolume *</type>
+        <definition>G4LogicalVolume* DetectorConstruction::fOuterCryostatLogical</definition>
+        <argsstring></argsstring>
+        <name>fOuterCryostatLogical</name>
+        <qualifiedname>DetectorConstruction::fOuterCryostatLogical</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/DetectorConstruction.hh" line="81" column="21" bodyfile="include/DetectorConstruction.hh" bodystart="81" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classDetectorConstruction_1ac709bdd0800eb7b9573f84a730a21b93" prot="private" static="no" mutable="no">
+        <type>G4LogicalVolume *</type>
+        <definition>G4LogicalVolume* DetectorConstruction::fVacuumLogical</definition>
+        <argsstring></argsstring>
+        <name>fVacuumLogical</name>
+        <qualifiedname>DetectorConstruction::fVacuumLogical</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/DetectorConstruction.hh" line="82" column="21" bodyfile="include/DetectorConstruction.hh" bodystart="82" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classDetectorConstruction_1aaf3b90f7abc9b494a4146f9f08bbd422" prot="private" static="no" mutable="no">
+        <type>G4LogicalVolume *</type>
+        <definition>G4LogicalVolume* DetectorConstruction::fInnerCryostatLogical</definition>
+        <argsstring></argsstring>
+        <name>fInnerCryostatLogical</name>
+        <qualifiedname>DetectorConstruction::fInnerCryostatLogical</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/DetectorConstruction.hh" line="83" column="21" bodyfile="include/DetectorConstruction.hh" bodystart="83" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classDetectorConstruction_1aad5f66c782da4c22e0bf8f06b5f61745" prot="private" static="no" mutable="no">
+        <type>G4LogicalVolume *</type>
+        <definition>G4LogicalVolume* DetectorConstruction::fLXeLogical</definition>
+        <argsstring></argsstring>
+        <name>fLXeLogical</name>
+        <qualifiedname>DetectorConstruction::fLXeLogical</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/DetectorConstruction.hh" line="84" column="21" bodyfile="include/DetectorConstruction.hh" bodystart="84" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classDetectorConstruction_1aaf3d7c478a8863154eacca1873609379" prot="private" static="no" mutable="no">
+        <type>G4LogicalVolume *</type>
+        <definition>G4LogicalVolume* DetectorConstruction::fPTFELogical</definition>
+        <argsstring></argsstring>
+        <name>fPTFELogical</name>
+        <qualifiedname>DetectorConstruction::fPTFELogical</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/DetectorConstruction.hh" line="85" column="21" bodyfile="include/DetectorConstruction.hh" bodystart="85" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classDetectorConstruction_1a90254ccd5a8f0d0b60816b8150157c7c" prot="private" static="no" mutable="no">
+        <type>G4LogicalVolume *</type>
+        <definition>G4LogicalVolume* DetectorConstruction::fLXeFiducialLogical</definition>
+        <argsstring></argsstring>
+        <name>fLXeFiducialLogical</name>
+        <qualifiedname>DetectorConstruction::fLXeFiducialLogical</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/DetectorConstruction.hh" line="86" column="21" bodyfile="include/DetectorConstruction.hh" bodystart="86" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classDetectorConstruction_1adafbffb235ddfbb91ef6c26d7f282eb8" prot="private" static="no" mutable="no">
+        <type>G4VPhysicalVolume *</type>
+        <definition>G4VPhysicalVolume* DetectorConstruction::fWorldPhysical</definition>
+        <argsstring></argsstring>
+        <name>fWorldPhysical</name>
+        <qualifiedname>DetectorConstruction::fWorldPhysical</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/DetectorConstruction.hh" line="89" column="23" bodyfile="include/DetectorConstruction.hh" bodystart="89" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classDetectorConstruction_1aaaba813e6cfef8a01f64796f5f34deb0" prot="private" static="no" mutable="no">
+        <type>G4VPhysicalVolume *</type>
+        <definition>G4VPhysicalVolume* DetectorConstruction::fWaterTankPhysical</definition>
+        <argsstring></argsstring>
+        <name>fWaterTankPhysical</name>
+        <qualifiedname>DetectorConstruction::fWaterTankPhysical</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/DetectorConstruction.hh" line="90" column="23" bodyfile="include/DetectorConstruction.hh" bodystart="90" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classDetectorConstruction_1af2ef7f6c7e52238824487bfa2660d615" prot="private" static="no" mutable="no">
+        <type>G4VPhysicalVolume *</type>
+        <definition>G4VPhysicalVolume* DetectorConstruction::fOuterCryostatPhysical</definition>
+        <argsstring></argsstring>
+        <name>fOuterCryostatPhysical</name>
+        <qualifiedname>DetectorConstruction::fOuterCryostatPhysical</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/DetectorConstruction.hh" line="91" column="23" bodyfile="include/DetectorConstruction.hh" bodystart="91" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classDetectorConstruction_1a0d17aedef4995a6a7fac3d430a815ecc" prot="private" static="no" mutable="no">
+        <type>G4VPhysicalVolume *</type>
+        <definition>G4VPhysicalVolume* DetectorConstruction::fVacuumPhysical</definition>
+        <argsstring></argsstring>
+        <name>fVacuumPhysical</name>
+        <qualifiedname>DetectorConstruction::fVacuumPhysical</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/DetectorConstruction.hh" line="92" column="23" bodyfile="include/DetectorConstruction.hh" bodystart="92" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classDetectorConstruction_1ad7af74afa3f08108e390c1ba92c93640" prot="private" static="no" mutable="no">
+        <type>G4VPhysicalVolume *</type>
+        <definition>G4VPhysicalVolume* DetectorConstruction::fInnerCryostatPhysical</definition>
+        <argsstring></argsstring>
+        <name>fInnerCryostatPhysical</name>
+        <qualifiedname>DetectorConstruction::fInnerCryostatPhysical</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/DetectorConstruction.hh" line="93" column="23" bodyfile="include/DetectorConstruction.hh" bodystart="93" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classDetectorConstruction_1a31bfd8caa818aea0d26b7a283757dab4" prot="private" static="no" mutable="no">
+        <type>G4VPhysicalVolume *</type>
+        <definition>G4VPhysicalVolume* DetectorConstruction::fLXePhysical</definition>
+        <argsstring></argsstring>
+        <name>fLXePhysical</name>
+        <qualifiedname>DetectorConstruction::fLXePhysical</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/DetectorConstruction.hh" line="94" column="23" bodyfile="include/DetectorConstruction.hh" bodystart="94" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classDetectorConstruction_1a987b2c2bbc4c7df7734737f1635c636e" prot="private" static="no" mutable="no">
+        <type>G4VPhysicalVolume *</type>
+        <definition>G4VPhysicalVolume* DetectorConstruction::fPTFEPhysical</definition>
+        <argsstring></argsstring>
+        <name>fPTFEPhysical</name>
+        <qualifiedname>DetectorConstruction::fPTFEPhysical</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/DetectorConstruction.hh" line="95" column="23" bodyfile="include/DetectorConstruction.hh" bodystart="95" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classDetectorConstruction_1a7015c30ae26e4506b0bc9bcb25dc0fde" prot="private" static="no" mutable="no">
+        <type>G4VPhysicalVolume *</type>
+        <definition>G4VPhysicalVolume* DetectorConstruction::fLXeFiducialPhysical</definition>
+        <argsstring></argsstring>
+        <name>fLXeFiducialPhysical</name>
+        <qualifiedname>DetectorConstruction::fLXeFiducialPhysical</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/DetectorConstruction.hh" line="96" column="23" bodyfile="include/DetectorConstruction.hh" bodystart="96" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classDetectorConstruction_1af6940211128f81e6a78373c85fc91b47" prot="protected" static="no" mutable="no">
+        <type>G4LogicalVolume *</type>
+        <definition>G4LogicalVolume* DetectorConstruction::fScoringVolume</definition>
+        <argsstring></argsstring>
+        <name>fScoringVolume</name>
+        <qualifiedname>DetectorConstruction::fScoringVolume</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/DetectorConstruction.hh" line="99" column="21" bodyfile="include/DetectorConstruction.hh" bodystart="99" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classDetectorConstruction_1a96575b0909c4ad85ffc288e2a6d97485" prot="protected" static="no" mutable="no">
+        <type>DetectorConstructionMessenger *</type>
+        <definition>DetectorConstructionMessenger* DetectorConstruction::fMessenger</definition>
+        <argsstring></argsstring>
+        <name>fMessenger</name>
+        <qualifiedname>DetectorConstruction::fMessenger</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/DetectorConstruction.hh" line="101" column="35" bodyfile="include/DetectorConstruction.hh" bodystart="101" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classDetectorConstruction_1a77459885d5160221abb0ad5b3ac0115d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DetectorConstruction::DetectorConstruction</definition>
+        <argsstring>(G4FastSim::GammaRayHelper *gammaRayHelper)</argsstring>
+        <name>DetectorConstruction</name>
+        <qualifiedname>DetectorConstruction::DetectorConstruction</qualifiedname>
+        <param>
+          <type>G4FastSim::GammaRayHelper *</type>
+          <declname>gammaRayHelper</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/DetectorConstruction.hh" line="34" column="5" bodyfile="src/DetectorConstruction.cc" bodystart="50" bodyend="71"/>
+      </memberdef>
+      <memberdef kind="function" id="classDetectorConstruction_1a73013cab35a2b470338da2e4686edea3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DetectorConstruction::~DetectorConstruction</definition>
+        <argsstring>()</argsstring>
+        <name>~DetectorConstruction</name>
+        <qualifiedname>DetectorConstruction::~DetectorConstruction</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/DetectorConstruction.hh" line="35" column="5" bodyfile="src/DetectorConstruction.cc" bodystart="73" bodyend="76"/>
+      </memberdef>
+      <memberdef kind="function" id="classDetectorConstruction_1a8fbfdf639b888b7206772e80365b0c93" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>G4VPhysicalVolume *</type>
+        <definition>G4VPhysicalVolume * DetectorConstruction::Construct</definition>
+        <argsstring>() override</argsstring>
+        <name>Construct</name>
+        <qualifiedname>DetectorConstruction::Construct</qualifiedname>
+        <briefdescription>
+<para>Constructs the detector geometry. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function is responsible for constructing the detector geometry by defining materials, constructing various volumes such as the world volume, water tank, cryostats, liquid xenon, and fiducial volume. It also initializes the gamma ray helper class with the defined materials.</para>
+<para><simplesect kind="return"><para>The physical volume of the world. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/DetectorConstruction.hh" line="37" column="23" bodyfile="src/DetectorConstruction.cc" bodystart="87" bodyend="131"/>
+      </memberdef>
+      <memberdef kind="function" id="classDetectorConstruction_1aa87cafdbc955fc4fe79d8fbff3091a17" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void DetectorConstruction::ConstructWorld</definition>
+        <argsstring>()</argsstring>
+        <name>ConstructWorld</name>
+        <qualifiedname>DetectorConstruction::ConstructWorld</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/DetectorConstruction.hh" line="38" column="10" bodyfile="src/DetectorConstruction.cc" bodystart="154" bodyend="173"/>
+      </memberdef>
+      <memberdef kind="function" id="classDetectorConstruction_1a137d36dfd57694c5a2845511ac83287a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void DetectorConstruction::ConstructWaterTank</definition>
+        <argsstring>()</argsstring>
+        <name>ConstructWaterTank</name>
+        <qualifiedname>DetectorConstruction::ConstructWaterTank</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/DetectorConstruction.hh" line="39" column="10" bodyfile="src/DetectorConstruction.cc" bodystart="175" bodyend="201"/>
+      </memberdef>
+      <memberdef kind="function" id="classDetectorConstruction_1aea315d8cfe311e3b2fbe982cf9909cde" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void DetectorConstruction::ConstructOuterCryostat</definition>
+        <argsstring>()</argsstring>
+        <name>ConstructOuterCryostat</name>
+        <qualifiedname>DetectorConstruction::ConstructOuterCryostat</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/DetectorConstruction.hh" line="40" column="10" bodyfile="src/DetectorConstruction.cc" bodystart="203" bodyend="250"/>
+      </memberdef>
+      <memberdef kind="function" id="classDetectorConstruction_1a9e28cb4ac5464dd67986dee2e57a696b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void DetectorConstruction::ConstructInnerCryostat</definition>
+        <argsstring>()</argsstring>
+        <name>ConstructInnerCryostat</name>
+        <qualifiedname>DetectorConstruction::ConstructInnerCryostat</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Constructs the inner cryostat and fills it with LXe. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/DetectorConstruction.hh" line="41" column="10" bodyfile="src/DetectorConstruction.cc" bodystart="255" bodyend="283"/>
+      </memberdef>
+      <memberdef kind="function" id="classDetectorConstruction_1a01b81cc97eda6d7a68ebfba0344cfef0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void DetectorConstruction::ConstructLXe</definition>
+        <argsstring>()</argsstring>
+        <name>ConstructLXe</name>
+        <qualifiedname>DetectorConstruction::ConstructLXe</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Constructs the liquid xenon volume in the detector. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/DetectorConstruction.hh" line="42" column="10" bodyfile="src/DetectorConstruction.cc" bodystart="289" bodyend="310"/>
+      </memberdef>
+      <memberdef kind="function" id="classDetectorConstruction_1a69f00930d70474a7e405ca60aec5f3a7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void DetectorConstruction::ConstructFiducialVolume</definition>
+        <argsstring>()</argsstring>
+        <name>ConstructFiducialVolume</name>
+        <qualifiedname>DetectorConstruction::ConstructFiducialVolume</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Constructs the liquid xenon fiducial volume. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/DetectorConstruction.hh" line="43" column="10" bodyfile="src/DetectorConstruction.cc" bodystart="315" bodyend="343"/>
+      </memberdef>
+      <memberdef kind="function" id="classDetectorConstruction_1a02bdbafdcb7a4739e9ae00b543b63cf2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void DetectorConstruction::DefineSensitiveDetector</definition>
+        <argsstring>()</argsstring>
+        <name>DefineSensitiveDetector</name>
+        <qualifiedname>DetectorConstruction::DefineSensitiveDetector</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/DetectorConstruction.hh" line="44" column="10" bodyfile="src/DetectorConstruction.cc" bodystart="133" bodyend="150"/>
+      </memberdef>
+      <memberdef kind="function" id="classDetectorConstruction_1a9ff944831d0a858fa0849d4510fda65b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>G4LogicalVolume *</type>
+        <definition>G4LogicalVolume * DetectorConstruction::GetScoringVolume</definition>
+        <argsstring>() const</argsstring>
+        <name>GetScoringVolume</name>
+        <qualifiedname>DetectorConstruction::GetScoringVolume</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/DetectorConstruction.hh" line="46" column="21" bodyfile="include/DetectorConstruction.hh" bodystart="46" bodyend="46"/>
+      </memberdef>
+      <memberdef kind="function" id="classDetectorConstruction_1a530125a91be4466279b659f1a1b61165" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classGammaRayHelper" kindref="compound">GammaRayHelper</ref> *</type>
+        <definition>GammaRayHelper * DetectorConstruction::GetGammaRayHelper</definition>
+        <argsstring>() const</argsstring>
+        <name>GetGammaRayHelper</name>
+        <qualifiedname>DetectorConstruction::GetGammaRayHelper</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/DetectorConstruction.hh" line="47" column="20" bodyfile="include/DetectorConstruction.hh" bodystart="47" bodyend="47"/>
+      </memberdef>
+      <memberdef kind="function" id="classDetectorConstruction_1a7a2bcb940ae069ff4e5a9354bb250e97" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void DetectorConstruction::SetOuterCryostatRadius</definition>
+        <argsstring>(G4double radius)</argsstring>
+        <name>SetOuterCryostatRadius</name>
+        <qualifiedname>DetectorConstruction::SetOuterCryostatRadius</qualifiedname>
+        <param>
+          <type>G4double</type>
+          <declname>radius</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/DetectorConstruction.hh" line="49" column="10" bodyfile="include/DetectorConstruction.hh" bodystart="49" bodyend="49"/>
+      </memberdef>
+      <memberdef kind="function" id="classDetectorConstruction_1a3625003760476b66ed28627781677724" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void DetectorConstruction::SetOuterCryostatHeight</definition>
+        <argsstring>(G4double height)</argsstring>
+        <name>SetOuterCryostatHeight</name>
+        <qualifiedname>DetectorConstruction::SetOuterCryostatHeight</qualifiedname>
+        <param>
+          <type>G4double</type>
+          <declname>height</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/DetectorConstruction.hh" line="50" column="10" bodyfile="include/DetectorConstruction.hh" bodystart="50" bodyend="50"/>
+      </memberdef>
+      <memberdef kind="function" id="classDetectorConstruction_1af37c8aacd6d0024a8dd372626877e149" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void DetectorConstruction::SetOuterCryostatWallThickness</definition>
+        <argsstring>(G4double thickness)</argsstring>
+        <name>SetOuterCryostatWallThickness</name>
+        <qualifiedname>DetectorConstruction::SetOuterCryostatWallThickness</qualifiedname>
+        <param>
+          <type>G4double</type>
+          <declname>thickness</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/DetectorConstruction.hh" line="51" column="10" bodyfile="include/DetectorConstruction.hh" bodystart="51" bodyend="51"/>
+      </memberdef>
+      <memberdef kind="function" id="classDetectorConstruction_1af7fb456c0147cd7f5f9a2902240b0aff" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void DetectorConstruction::SetInnerCryostatRadius</definition>
+        <argsstring>(G4double radius)</argsstring>
+        <name>SetInnerCryostatRadius</name>
+        <qualifiedname>DetectorConstruction::SetInnerCryostatRadius</qualifiedname>
+        <param>
+          <type>G4double</type>
+          <declname>radius</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/DetectorConstruction.hh" line="52" column="10" bodyfile="include/DetectorConstruction.hh" bodystart="52" bodyend="52"/>
+      </memberdef>
+      <memberdef kind="function" id="classDetectorConstruction_1afb62726c74b352cd25915e9feac8f7b5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void DetectorConstruction::SetInnerCryostatHeight</definition>
+        <argsstring>(G4double height)</argsstring>
+        <name>SetInnerCryostatHeight</name>
+        <qualifiedname>DetectorConstruction::SetInnerCryostatHeight</qualifiedname>
+        <param>
+          <type>G4double</type>
+          <declname>height</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/DetectorConstruction.hh" line="53" column="10" bodyfile="include/DetectorConstruction.hh" bodystart="53" bodyend="53"/>
+      </memberdef>
+      <memberdef kind="function" id="classDetectorConstruction_1ac1a6bcba2a3807974aa48170f577fb67" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void DetectorConstruction::SetInnerCryostatWallThickness</definition>
+        <argsstring>(G4double thickness)</argsstring>
+        <name>SetInnerCryostatWallThickness</name>
+        <qualifiedname>DetectorConstruction::SetInnerCryostatWallThickness</qualifiedname>
+        <param>
+          <type>G4double</type>
+          <declname>thickness</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/DetectorConstruction.hh" line="54" column="10" bodyfile="include/DetectorConstruction.hh" bodystart="54" bodyend="54"/>
+      </memberdef>
+      <memberdef kind="function" id="classDetectorConstruction_1a72d0399f00ee6c039e846a8bd558202c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void DetectorConstruction::SetFiducialRadius</definition>
+        <argsstring>(G4double radius)</argsstring>
+        <name>SetFiducialRadius</name>
+        <qualifiedname>DetectorConstruction::SetFiducialRadius</qualifiedname>
+        <param>
+          <type>G4double</type>
+          <declname>radius</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/DetectorConstruction.hh" line="55" column="10" bodyfile="include/DetectorConstruction.hh" bodystart="55" bodyend="55"/>
+      </memberdef>
+      <memberdef kind="function" id="classDetectorConstruction_1aef4ad7ff3921c8ad3c5ff927e85095b1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void DetectorConstruction::SetFiducialHeight</definition>
+        <argsstring>(G4double height)</argsstring>
+        <name>SetFiducialHeight</name>
+        <qualifiedname>DetectorConstruction::SetFiducialHeight</qualifiedname>
+        <param>
+          <type>G4double</type>
+          <declname>height</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/DetectorConstruction.hh" line="56" column="10" bodyfile="include/DetectorConstruction.hh" bodystart="56" bodyend="56"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Class responsible for constructing the detector geometry. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This class inherits from G4VUserDetectorConstruction and is used to define the geometry of the detector. It constructs various volumes such as the world volume, water tank, outer cryostat, inner cryostat, LXe, and fiducial volume. It also defines a sensitive detector and provides methods to access the scoring volume and the <ref refid="classGammaRayHelper" kindref="compound">GammaRayHelper</ref> object. The dimensions of the various volumes can be set using the provided setter methods. The class also handles checking for overlaps between volumes. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>DetectorConstruction</label>
+        <link refid="classDetectorConstruction"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>G4VUserDetectorConstruction</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>DetectorConstruction</label>
+        <link refid="classDetectorConstruction"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>G4VUserDetectorConstruction</label>
+      </node>
+    </collaborationgraph>
+    <location file="include/DetectorConstruction.hh" line="31" column="1" bodyfile="include/DetectorConstruction.hh" bodystart="32" bodyend="103"/>
+    <listofallmembers>
+      <member refid="classDetectorConstruction_1a8fbfdf639b888b7206772e80365b0c93" prot="public" virt="non-virtual"><scope>DetectorConstruction</scope><name>Construct</name></member>
+      <member refid="classDetectorConstruction_1a69f00930d70474a7e405ca60aec5f3a7" prot="public" virt="non-virtual"><scope>DetectorConstruction</scope><name>ConstructFiducialVolume</name></member>
+      <member refid="classDetectorConstruction_1a9e28cb4ac5464dd67986dee2e57a696b" prot="public" virt="non-virtual"><scope>DetectorConstruction</scope><name>ConstructInnerCryostat</name></member>
+      <member refid="classDetectorConstruction_1a01b81cc97eda6d7a68ebfba0344cfef0" prot="public" virt="non-virtual"><scope>DetectorConstruction</scope><name>ConstructLXe</name></member>
+      <member refid="classDetectorConstruction_1aea315d8cfe311e3b2fbe982cf9909cde" prot="public" virt="non-virtual"><scope>DetectorConstruction</scope><name>ConstructOuterCryostat</name></member>
+      <member refid="classDetectorConstruction_1a137d36dfd57694c5a2845511ac83287a" prot="public" virt="non-virtual"><scope>DetectorConstruction</scope><name>ConstructWaterTank</name></member>
+      <member refid="classDetectorConstruction_1aa87cafdbc955fc4fe79d8fbff3091a17" prot="public" virt="non-virtual"><scope>DetectorConstruction</scope><name>ConstructWorld</name></member>
+      <member refid="classDetectorConstruction_1a02bdbafdcb7a4739e9ae00b543b63cf2" prot="public" virt="non-virtual"><scope>DetectorConstruction</scope><name>DefineSensitiveDetector</name></member>
+      <member refid="classDetectorConstruction_1a77459885d5160221abb0ad5b3ac0115d" prot="public" virt="non-virtual"><scope>DetectorConstruction</scope><name>DetectorConstruction</name></member>
+      <member refid="classDetectorConstruction_1acd9ca668fcc3043166e767794f56bb04" prot="private" virt="non-virtual"><scope>DetectorConstruction</scope><name>fCheckOverlaps</name></member>
+      <member refid="classDetectorConstruction_1ae9388f6178da5610d69e55d36e74a8d7" prot="private" virt="non-virtual"><scope>DetectorConstruction</scope><name>fGammaRayHelper</name></member>
+      <member refid="classDetectorConstruction_1ad3ea0f455c35f28405cdc427dcec551a" prot="private" virt="non-virtual"><scope>DetectorConstruction</scope><name>fiducial_height</name></member>
+      <member refid="classDetectorConstruction_1ae0b089ece4cc42c61e4662e0c2f41cc0" prot="private" virt="non-virtual"><scope>DetectorConstruction</scope><name>fiducial_radius</name></member>
+      <member refid="classDetectorConstruction_1aaf3b90f7abc9b494a4146f9f08bbd422" prot="private" virt="non-virtual"><scope>DetectorConstruction</scope><name>fInnerCryostatLogical</name></member>
+      <member refid="classDetectorConstruction_1ad7af74afa3f08108e390c1ba92c93640" prot="private" virt="non-virtual"><scope>DetectorConstruction</scope><name>fInnerCryostatPhysical</name></member>
+      <member refid="classDetectorConstruction_1a90254ccd5a8f0d0b60816b8150157c7c" prot="private" virt="non-virtual"><scope>DetectorConstruction</scope><name>fLXeFiducialLogical</name></member>
+      <member refid="classDetectorConstruction_1a7015c30ae26e4506b0bc9bcb25dc0fde" prot="private" virt="non-virtual"><scope>DetectorConstruction</scope><name>fLXeFiducialPhysical</name></member>
+      <member refid="classDetectorConstruction_1aad5f66c782da4c22e0bf8f06b5f61745" prot="private" virt="non-virtual"><scope>DetectorConstruction</scope><name>fLXeLogical</name></member>
+      <member refid="classDetectorConstruction_1a31bfd8caa818aea0d26b7a283757dab4" prot="private" virt="non-virtual"><scope>DetectorConstruction</scope><name>fLXePhysical</name></member>
+      <member refid="classDetectorConstruction_1a7bd7b453b4ce3f613b3e7b3c58781d14" prot="private" virt="non-virtual"><scope>DetectorConstruction</scope><name>fMaterials</name></member>
+      <member refid="classDetectorConstruction_1a96575b0909c4ad85ffc288e2a6d97485" prot="protected" virt="non-virtual"><scope>DetectorConstruction</scope><name>fMessenger</name></member>
+      <member refid="classDetectorConstruction_1ad6919f222895c9c63eb942bf5586071d" prot="private" virt="non-virtual"><scope>DetectorConstruction</scope><name>fOuterCryostatLogical</name></member>
+      <member refid="classDetectorConstruction_1af2ef7f6c7e52238824487bfa2660d615" prot="private" virt="non-virtual"><scope>DetectorConstruction</scope><name>fOuterCryostatPhysical</name></member>
+      <member refid="classDetectorConstruction_1aaf3d7c478a8863154eacca1873609379" prot="private" virt="non-virtual"><scope>DetectorConstruction</scope><name>fPTFELogical</name></member>
+      <member refid="classDetectorConstruction_1a987b2c2bbc4c7df7734737f1635c636e" prot="private" virt="non-virtual"><scope>DetectorConstruction</scope><name>fPTFEPhysical</name></member>
+      <member refid="classDetectorConstruction_1af6940211128f81e6a78373c85fc91b47" prot="protected" virt="non-virtual"><scope>DetectorConstruction</scope><name>fScoringVolume</name></member>
+      <member refid="classDetectorConstruction_1ac709bdd0800eb7b9573f84a730a21b93" prot="private" virt="non-virtual"><scope>DetectorConstruction</scope><name>fVacuumLogical</name></member>
+      <member refid="classDetectorConstruction_1a0d17aedef4995a6a7fac3d430a815ecc" prot="private" virt="non-virtual"><scope>DetectorConstruction</scope><name>fVacuumPhysical</name></member>
+      <member refid="classDetectorConstruction_1aa2082f491d7a440f597b68a44530f9ae" prot="private" virt="non-virtual"><scope>DetectorConstruction</scope><name>fWaterTankLogical</name></member>
+      <member refid="classDetectorConstruction_1aaaba813e6cfef8a01f64796f5f34deb0" prot="private" virt="non-virtual"><scope>DetectorConstruction</scope><name>fWaterTankPhysical</name></member>
+      <member refid="classDetectorConstruction_1a50ef3dc1895dc441fc8c36e740666367" prot="private" virt="non-virtual"><scope>DetectorConstruction</scope><name>fWorldLogical</name></member>
+      <member refid="classDetectorConstruction_1adafbffb235ddfbb91ef6c26d7f282eb8" prot="private" virt="non-virtual"><scope>DetectorConstruction</scope><name>fWorldPhysical</name></member>
+      <member refid="classDetectorConstruction_1a530125a91be4466279b659f1a1b61165" prot="public" virt="non-virtual"><scope>DetectorConstruction</scope><name>GetGammaRayHelper</name></member>
+      <member refid="classDetectorConstruction_1a9ff944831d0a858fa0849d4510fda65b" prot="public" virt="non-virtual"><scope>DetectorConstruction</scope><name>GetScoringVolume</name></member>
+      <member refid="classDetectorConstruction_1aae6afb415b8e312af79733c1713ed350" prot="private" virt="non-virtual"><scope>DetectorConstruction</scope><name>inner_cryostat_height</name></member>
+      <member refid="classDetectorConstruction_1a73059f04501656e4669270af76738dc1" prot="private" virt="non-virtual"><scope>DetectorConstruction</scope><name>inner_cryostat_radius</name></member>
+      <member refid="classDetectorConstruction_1a903e74330d534a711a60ec8d9a175847" prot="private" virt="non-virtual"><scope>DetectorConstruction</scope><name>inner_cryostat_wall_thickness</name></member>
+      <member refid="classDetectorConstruction_1a0cf4d1dcefbf88517e8cfc6e99f529ef" prot="private" virt="non-virtual"><scope>DetectorConstruction</scope><name>outer_cryostat_height</name></member>
+      <member refid="classDetectorConstruction_1a17b9240318358ad5cb5a20ec133ea5f8" prot="private" virt="non-virtual"><scope>DetectorConstruction</scope><name>outer_cryostat_radius</name></member>
+      <member refid="classDetectorConstruction_1a3ea0eab2316a58bc285b3a7e1c0d6bd2" prot="private" virt="non-virtual"><scope>DetectorConstruction</scope><name>outer_cryostat_wall_thickness</name></member>
+      <member refid="classDetectorConstruction_1aef4ad7ff3921c8ad3c5ff927e85095b1" prot="public" virt="non-virtual"><scope>DetectorConstruction</scope><name>SetFiducialHeight</name></member>
+      <member refid="classDetectorConstruction_1a72d0399f00ee6c039e846a8bd558202c" prot="public" virt="non-virtual"><scope>DetectorConstruction</scope><name>SetFiducialRadius</name></member>
+      <member refid="classDetectorConstruction_1afb62726c74b352cd25915e9feac8f7b5" prot="public" virt="non-virtual"><scope>DetectorConstruction</scope><name>SetInnerCryostatHeight</name></member>
+      <member refid="classDetectorConstruction_1af7fb456c0147cd7f5f9a2902240b0aff" prot="public" virt="non-virtual"><scope>DetectorConstruction</scope><name>SetInnerCryostatRadius</name></member>
+      <member refid="classDetectorConstruction_1ac1a6bcba2a3807974aa48170f577fb67" prot="public" virt="non-virtual"><scope>DetectorConstruction</scope><name>SetInnerCryostatWallThickness</name></member>
+      <member refid="classDetectorConstruction_1a3625003760476b66ed28627781677724" prot="public" virt="non-virtual"><scope>DetectorConstruction</scope><name>SetOuterCryostatHeight</name></member>
+      <member refid="classDetectorConstruction_1a7a2bcb940ae069ff4e5a9354bb250e97" prot="public" virt="non-virtual"><scope>DetectorConstruction</scope><name>SetOuterCryostatRadius</name></member>
+      <member refid="classDetectorConstruction_1af37c8aacd6d0024a8dd372626877e149" prot="public" virt="non-virtual"><scope>DetectorConstruction</scope><name>SetOuterCryostatWallThickness</name></member>
+      <member refid="classDetectorConstruction_1a73013cab35a2b470338da2e4686edea3" prot="public" virt="non-virtual"><scope>DetectorConstruction</scope><name>~DetectorConstruction</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

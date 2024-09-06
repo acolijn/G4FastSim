@@ -303,7 +303,7 @@
 <codeline lineno="47"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceG4FastSim" kindref="compound">G4FastSim</ref>{</highlight></codeline>
 <codeline lineno="48"><highlight class="normal"></highlight><highlight class="comment">//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="49"><highlight class="normal"></highlight></codeline>
-<codeline lineno="50"><highlight class="normal"><ref refid="classG4FastSim_1_1DetectorConstruction_1aa17a113299f7697c31fda911e666e177" kindref="member">DetectorConstruction::DetectorConstruction</ref>(<ref refid="classGammaRayHelper" kindref="compound">GammaRayHelper</ref>*<sp/>helper)</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><ref refid="classDetectorConstruction_1a77459885d5160221abb0ad5b3ac0115d" kindref="member">DetectorConstruction::DetectorConstruction</ref>(<ref refid="classGammaRayHelper" kindref="compound">GammaRayHelper</ref>*<sp/>helper)</highlight></codeline>
 <codeline lineno="51"><highlight class="normal"><sp/><sp/>:<sp/>G4VUserDetectorConstruction(),</highlight></codeline>
 <codeline lineno="52"><highlight class="normal"><sp/><sp/>fGammaRayHelper(helper){</highlight></codeline>
 <codeline lineno="53"><highlight class="normal"></highlight></codeline>
@@ -326,12 +326,12 @@
 <codeline lineno="70"><highlight class="normal"></highlight></codeline>
 <codeline lineno="71"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="72"><highlight class="normal"></highlight></codeline>
-<codeline lineno="73"><highlight class="normal">DetectorConstruction::~DetectorConstruction()</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><ref refid="classDetectorConstruction_1a73013cab35a2b470338da2e4686edea3" kindref="member">DetectorConstruction::~DetectorConstruction</ref>()</highlight></codeline>
 <codeline lineno="74"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="75"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal"><sp/>fMessenger;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal"><sp/><ref refid="classDetectorConstruction_1a96575b0909c4ad85ffc288e2a6d97485" kindref="member">fMessenger</ref>;</highlight></codeline>
 <codeline lineno="76"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="77"><highlight class="normal"></highlight></codeline>
-<codeline lineno="87"><highlight class="normal">G4VPhysicalVolume*<sp/>DetectorConstruction::Construct()</highlight></codeline>
+<codeline lineno="87"><highlight class="normal">G4VPhysicalVolume*<sp/><ref refid="classDetectorConstruction_1a8fbfdf639b888b7206772e80365b0c93" kindref="member">DetectorConstruction::Construct</ref>()</highlight></codeline>
 <codeline lineno="88"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="89"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//fGammaRayHelper<sp/>=<sp/>&amp;GammaRayHelper::Instance();</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="90"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
@@ -346,45 +346,45 @@
 <codeline lineno="99"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="100"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Construct<sp/>world<sp/>volume</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="101"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="102"><highlight class="normal"><sp/><sp/>ConstructWorld();</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><ref refid="classDetectorConstruction_1aa87cafdbc955fc4fe79d8fbff3091a17" kindref="member">ConstructWorld</ref>();</highlight></codeline>
 <codeline lineno="103"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="104"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Construct<sp/>water<sp/>tank</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="105"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="106"><highlight class="normal"><sp/><sp/>ConstructWaterTank();</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><ref refid="classDetectorConstruction_1a137d36dfd57694c5a2845511ac83287a" kindref="member">ConstructWaterTank</ref>();</highlight></codeline>
 <codeline lineno="107"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="108"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Construct<sp/>outer<sp/>cryostat<sp/>and<sp/>fill<sp/>with<sp/>vacuum</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="109"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="110"><highlight class="normal"><sp/><sp/>ConstructOuterCryostat();</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><ref refid="classDetectorConstruction_1aea315d8cfe311e3b2fbe982cf9909cde" kindref="member">ConstructOuterCryostat</ref>();</highlight></codeline>
 <codeline lineno="111"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="112"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Construct<sp/>inner<sp/>cryostat<sp/></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="113"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="114"><highlight class="normal"><sp/><sp/>ConstructInnerCryostat();</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><ref refid="classDetectorConstruction_1a9e28cb4ac5464dd67986dee2e57a696b" kindref="member">ConstructInnerCryostat</ref>();</highlight></codeline>
 <codeline lineno="115"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="116"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Fill<sp/>with<sp/>Liquid<sp/>xenon,<sp/>PTFE<sp/>field<sp/>cage,<sp/>and<sp/>inner<sp/>fiducial<sp/>volume</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="117"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="118"><highlight class="normal"><sp/><sp/>ConstructLXe();</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><ref refid="classDetectorConstruction_1a01b81cc97eda6d7a68ebfba0344cfef0" kindref="member">ConstructLXe</ref>();</highlight></codeline>
 <codeline lineno="119"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="120"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Define<sp/>the<sp/>inner<sp/>fiducial<sp/>volume</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="121"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="122"><highlight class="normal"><sp/><sp/>ConstructFiducialVolume();</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><ref refid="classDetectorConstruction_1a69f00930d70474a7e405ca60aec5f3a7" kindref="member">ConstructFiducialVolume</ref>();</highlight></codeline>
 <codeline lineno="123"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="124"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Define<sp/>the<sp/>sensitive<sp/>detector</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="125"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="126"><highlight class="normal"><sp/><sp/>DefineSensitiveDetector();</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><ref refid="classDetectorConstruction_1a02bdbafdcb7a4739e9ae00b543b63cf2" kindref="member">DefineSensitiveDetector</ref>();</highlight></codeline>
 <codeline lineno="127"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="128"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//always<sp/>return<sp/>the<sp/>physical<sp/>World</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="129"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="130"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>fWorldPhysical;</highlight></codeline>
 <codeline lineno="131"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="132"><highlight class="normal"></highlight><highlight class="comment">//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="133"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>DetectorConstruction::DefineSensitiveDetector(){</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classDetectorConstruction_1a02bdbafdcb7a4739e9ae00b543b63cf2" kindref="member">DetectorConstruction::DefineSensitiveDetector</ref>(){</highlight></codeline>
 <codeline lineno="134"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="135"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Define<sp/>the<sp/>sensitive<sp/>detector</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="136"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="137"><highlight class="normal"></highlight></codeline>
 <codeline lineno="138"><highlight class="normal"><sp/><sp/>G4SDManager*<sp/>sdManager<sp/>=<sp/>G4SDManager::GetSDMpointer();</highlight></codeline>
 <codeline lineno="139"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>//<sp/>auto*<sp/>lXeSD<sp/>=<sp/>new<sp/>G4FastSim::SensitiveDetector(&quot;LXeSD&quot;,&quot;LXeCollection&quot;);</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="140"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal">*<sp/>lXeFiducialSD<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/><ref refid="classG4FastSim_1_1SensitiveDetector" kindref="compound">G4FastSim::SensitiveDetector</ref>(</highlight><highlight class="stringliteral">&quot;LXeFiducialSD&quot;</highlight><highlight class="normal">,</highlight><highlight class="stringliteral">&quot;LXeFiducialCollection&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal">*<sp/>lXeFiducialSD<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>G4FastSim::SensitiveDetector(</highlight><highlight class="stringliteral">&quot;LXeFiducialSD&quot;</highlight><highlight class="normal">,</highlight><highlight class="stringliteral">&quot;LXeFiducialCollection&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="141"><highlight class="normal"></highlight></codeline>
 <codeline lineno="142"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>make<sp/>both<sp/>the<sp/>liquid<sp/>xenon<sp/>and<sp/>the<sp/>fiducial<sp/>volume<sp/>sensitive</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="143"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>this<sp/>is<sp/>only<sp/>relevant<sp/>for<sp/>the<sp/>standard<sp/>Monte<sp/>Carlo.<sp/>The<sp/>fast<sp/>simulation<sp/>will<sp/></highlight><highlight class="normal"></highlight></codeline>
@@ -398,7 +398,7 @@
 <codeline lineno="151"><highlight class="normal"></highlight></codeline>
 <codeline lineno="152"><highlight class="normal"></highlight></codeline>
 <codeline lineno="153"><highlight class="normal"></highlight><highlight class="comment">//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="154"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>DetectorConstruction::ConstructWorld(){</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classDetectorConstruction_1aa87cafdbc955fc4fe79d8fbff3091a17" kindref="member">DetectorConstruction::ConstructWorld</ref>(){</highlight></codeline>
 <codeline lineno="155"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="156"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Construct<sp/>the<sp/>world<sp/>volume</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="157"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
@@ -419,7 +419,7 @@
 <codeline lineno="172"><highlight class="normal"></highlight></codeline>
 <codeline lineno="173"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="174"><highlight class="normal"></highlight><highlight class="comment">//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="175"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>DetectorConstruction::ConstructWaterTank(){</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classDetectorConstruction_1a137d36dfd57694c5a2845511ac83287a" kindref="member">DetectorConstruction::ConstructWaterTank</ref>(){</highlight></codeline>
 <codeline lineno="176"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="177"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Water<sp/>tank</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="178"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
@@ -447,7 +447,7 @@
 <codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/>fCheckOverlaps);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>overlaps<sp/>checking</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="201"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="202"><highlight class="normal"></highlight><highlight class="comment">//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="203"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>DetectorConstruction::ConstructOuterCryostat(){</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classDetectorConstruction_1aea315d8cfe311e3b2fbe982cf9909cde" kindref="member">DetectorConstruction::ConstructOuterCryostat</ref>(){</highlight></codeline>
 <codeline lineno="204"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="205"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Outer<sp/>cryostat</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="206"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
@@ -496,7 +496,7 @@
 <codeline lineno="249"><highlight class="normal"></highlight></codeline>
 <codeline lineno="250"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="251"><highlight class="normal"></highlight><highlight class="comment">//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......</highlight></codeline>
-<codeline lineno="255"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>DetectorConstruction::ConstructInnerCryostat(){</highlight></codeline>
+<codeline lineno="255"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classDetectorConstruction_1a9e28cb4ac5464dd67986dee2e57a696b" kindref="member">DetectorConstruction::ConstructInnerCryostat</ref>(){</highlight></codeline>
 <codeline lineno="256"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="257"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Construct<sp/>inner<sp/>cryostat<sp/>and<sp/>fill<sp/>with<sp/>LXe</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="258"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
@@ -527,7 +527,7 @@
 <codeline lineno="283"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="284"><highlight class="normal"></highlight></codeline>
 <codeline lineno="285"><highlight class="normal"></highlight><highlight class="comment">//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......</highlight></codeline>
-<codeline lineno="289"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>DetectorConstruction::ConstructLXe(){</highlight></codeline>
+<codeline lineno="289"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classDetectorConstruction_1a01b81cc97eda6d7a68ebfba0344cfef0" kindref="member">DetectorConstruction::ConstructLXe</ref>(){</highlight></codeline>
 <codeline lineno="290"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>liquid<sp/>xenon</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="291"><highlight class="normal"></highlight></codeline>
 <codeline lineno="292"><highlight class="normal"><sp/><sp/>G4cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;DetectorConstruction::ConstructLXe<sp/>Constructing<sp/>LXe&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>G4endl;</highlight></codeline>
@@ -550,7 +550,7 @@
 <codeline lineno="309"><highlight class="normal"><sp/><sp/><sp/><sp/>fCheckOverlaps);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>overlaps<sp/>checking</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="310"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="311"><highlight class="normal"></highlight><highlight class="comment">//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......</highlight></codeline>
-<codeline lineno="315"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>DetectorConstruction::ConstructFiducialVolume(){</highlight></codeline>
+<codeline lineno="315"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classDetectorConstruction_1a69f00930d70474a7e405ca60aec5f3a7" kindref="member">DetectorConstruction::ConstructFiducialVolume</ref>(){</highlight></codeline>
 <codeline lineno="316"><highlight class="normal"></highlight></codeline>
 <codeline lineno="317"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>liquid<sp/>xenon<sp/>fiducial<sp/>volume</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="318"><highlight class="normal"></highlight></codeline>

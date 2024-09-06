@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxyfile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="doxyfile.xsd" version="1.10.0" xml:lang="en-US">
   <option  id='DOXYFILE_ENCODING' default='yes' type='string'><value><![CDATA[UTF-8]]></value></option>
-  <option  id='PROJECT_NAME' default='yes' type='string'><value><![CDATA["My Project"]]></value></option>
+  <option  id='PROJECT_NAME' default='no' type='string'><value><![CDATA[G4FastSim]]></value></option>
   <option  id='PROJECT_NUMBER' default='yes' type='string'><value><![CDATA[]]></value></option>
   <option  id='PROJECT_BRIEF' default='yes' type='string'><value><![CDATA[]]></value></option>
   <option  id='PROJECT_LOGO' default='yes' type='string'><value><![CDATA[]]></value></option>
@@ -122,8 +122,9 @@
   <option  id='WARN_LINE_FORMAT' default='yes' type='string'><value><![CDATA["at line $line of file $file"]]></value></option>
   <option  id='WARN_LOGFILE' default='yes' type='string'><value><![CDATA[]]></value></option>
   <option  id='INPUT' default='no' type='stringlist'>
-    <value><![CDATA[include]]></value>
-    <value><![CDATA[src]]></value>
+    <value><![CDATA[./include]]></value>
+    <value><![CDATA[./src]]></value>
+    <value><![CDATA[./]]></value>
   </option>
   <option  id='INPUT_ENCODING' default='yes' type='string'><value><![CDATA[UTF-8]]></value></option>
   <option  id='INPUT_FILE_ENCODING' default='yes' type='stringlist'>

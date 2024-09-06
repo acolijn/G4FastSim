@@ -2,60 +2,29 @@
 \hypertarget{ActionInitialization_8hh_source}{}\label{ActionInitialization_8hh_source}\index{include/ActionInitialization.hh@{include/ActionInitialization.hh}}
 \mbox{\hyperlink{ActionInitialization_8hh}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00001\ \textcolor{comment}{//}}
-\DoxyCodeLine{00002\ \textcolor{comment}{//\ ********************************************************************}}
-\DoxyCodeLine{00003\ \textcolor{comment}{//\ *\ License\ and\ Disclaimer\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *}}
-\DoxyCodeLine{00004\ \textcolor{comment}{//\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *}}
-\DoxyCodeLine{00005\ \textcolor{comment}{//\ *\ The\ \ Geant4\ software\ \ is\ \ copyright\ of\ the\ Copyright\ Holders\ \ of\ *}}
-\DoxyCodeLine{00006\ \textcolor{comment}{//\ *\ the\ Geant4\ Collaboration.\ \ It\ is\ provided\ \ under\ \ the\ terms\ \ and\ *}}
-\DoxyCodeLine{00007\ \textcolor{comment}{//\ *\ conditions\ of\ the\ Geant4\ Software\ License,\ \ included\ in\ the\ file\ *}}
-\DoxyCodeLine{00008\ \textcolor{comment}{//\ *\ LICENSE\ and\ available\ at\ \ http://cern.ch/geant4/license\ .\ \ These\ *}}
-\DoxyCodeLine{00009\ \textcolor{comment}{//\ *\ include\ a\ list\ of\ copyright\ holders.\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *}}
-\DoxyCodeLine{00010\ \textcolor{comment}{//\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *}}
-\DoxyCodeLine{00011\ \textcolor{comment}{//\ *\ Neither\ the\ authors\ of\ this\ software\ system,\ nor\ their\ employing\ *}}
-\DoxyCodeLine{00012\ \textcolor{comment}{//\ *\ institutes,nor\ the\ agencies\ providing\ financial\ support\ for\ this\ *}}
-\DoxyCodeLine{00013\ \textcolor{comment}{//\ *\ work\ \ make\ \ any\ representation\ or\ \ warranty,\ express\ or\ implied,\ *}}
-\DoxyCodeLine{00014\ \textcolor{comment}{//\ *\ regarding\ \ this\ \ software\ system\ or\ assume\ any\ liability\ for\ its\ *}}
-\DoxyCodeLine{00015\ \textcolor{comment}{//\ *\ use.\ \ Please\ see\ the\ license\ in\ the\ file\ \ LICENSE\ \ and\ URL\ above\ *}}
-\DoxyCodeLine{00016\ \textcolor{comment}{//\ *\ for\ the\ full\ disclaimer\ and\ the\ limitation\ of\ liability.\ \ \ \ \ \ \ \ \ *}}
-\DoxyCodeLine{00017\ \textcolor{comment}{//\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *}}
-\DoxyCodeLine{00018\ \textcolor{comment}{//\ *\ This\ \ code\ \ implementation\ is\ the\ result\ of\ \ the\ \ scientific\ and\ *}}
-\DoxyCodeLine{00019\ \textcolor{comment}{//\ *\ technical\ work\ of\ the\ GEANT4\ collaboration.\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *}}
-\DoxyCodeLine{00020\ \textcolor{comment}{//\ *\ By\ using,\ \ copying,\ \ modifying\ or\ \ distributing\ the\ software\ (or\ *}}
-\DoxyCodeLine{00021\ \textcolor{comment}{//\ *\ any\ work\ based\ \ on\ the\ software)\ \ you\ \ agree\ \ to\ acknowledge\ its\ *}}
-\DoxyCodeLine{00022\ \textcolor{comment}{//\ *\ use\ \ in\ \ resulting\ \ scientific\ \ publications,\ \ and\ indicate\ your\ *}}
-\DoxyCodeLine{00023\ \textcolor{comment}{//\ *\ acceptance\ of\ all\ terms\ of\ the\ Geant4\ Software\ license.\ \ \ \ \ \ \ \ \ \ *}}
-\DoxyCodeLine{00024\ \textcolor{comment}{//\ ********************************************************************}}
-\DoxyCodeLine{00025\ \textcolor{comment}{//}}
-\DoxyCodeLine{00026\ \textcolor{comment}{//}}
-\DoxyCodeLine{00029\ }
-\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#ifndef\ B1ActionInitialization\_h}}
-\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#define\ B1ActionInitialization\_h\ 1}}
-\DoxyCodeLine{00032\ }
-\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#include\ "{}G4VUserActionInitialization.hh"{}}}
-\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{GammaRayHelper_8hh}{GammaRayHelper.hh}}"{}}}
-\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{EventAction_8hh}{EventAction.hh}}"{}}}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ B1ActionInitialization\_h}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ B1ActionInitialization\_h\ 1}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}G4VUserActionInitialization.hh"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{GammaRayHelper_8hh}{GammaRayHelper.hh}}"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{EventAction_8hh}{EventAction.hh}}"{}}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classActionInitialization}{ActionInitialization}}\ :\ \textcolor{keyword}{public}\ G4VUserActionInitialization}
+\DoxyCodeLine{00024\ \{}
+\DoxyCodeLine{00025\ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00026\ \ \ \ \ \mbox{\hyperlink{classActionInitialization_a830a40ce32fd943b81fe844198634486}{ActionInitialization}}(\mbox{\hyperlink{classGammaRayHelper}{GammaRayHelper}}*\ helper);}
+\DoxyCodeLine{00027\ \ \ \ \ \mbox{\hyperlink{classActionInitialization_ad9283cbbeef0cb53435510cd55e45e0c}{\string~ActionInitialization}}()\ \textcolor{keyword}{override}\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classActionInitialization_aa993a3da72fb9ba53b26fece140499ba}{BuildForMaster}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classActionInitialization_a39e586ef116f8f2cce1b4fee424849ea}{Build}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00031\ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00032\ \ \ \ \ \mbox{\hyperlink{classGammaRayHelper}{GammaRayHelper}}*\ fGammaRayHelper;}
+\DoxyCodeLine{00033\ \};}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \}}
 \DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \textcolor{comment}{//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......}}
 \DoxyCodeLine{00038\ }
-\DoxyCodeLine{00039\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceG4FastSim}{G4FastSim}}}
-\DoxyCodeLine{00040\ \{}
-\DoxyCodeLine{00041\ }
-\DoxyCodeLine{00042\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classG4FastSim_1_1ActionInitialization}{ActionInitialization}}\ :\ \textcolor{keyword}{public}\ G4VUserActionInitialization}
-\DoxyCodeLine{00043\ \{}
-\DoxyCodeLine{00044\ \ \ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00045\ \ \ \ \ \mbox{\hyperlink{classG4FastSim_1_1ActionInitialization_a2a40c012ffed42fd9111b8844894b2eb}{ActionInitialization}}(\mbox{\hyperlink{classGammaRayHelper}{GammaRayHelper}}*\ helper);}
-\DoxyCodeLine{00046\ \ \ \ \ \mbox{\hyperlink{classG4FastSim_1_1ActionInitialization_a96bd985a2dfb920d9ca1a27a2d8e3338}{\string~ActionInitialization}}()\ \textcolor{keyword}{override}\ =\ \textcolor{keywordflow}{default};}
-\DoxyCodeLine{00047\ }
-\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classG4FastSim_1_1ActionInitialization_ab607b2e8d232714e21e6cd7b1114e37f}{BuildForMaster}}()\ \textcolor{keyword}{const\ override};}
-\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classG4FastSim_1_1ActionInitialization_ab6ca50863fc4b38ea398568e36edc607}{Build}}()\ \textcolor{keyword}{const\ override};}
-\DoxyCodeLine{00050\ \ \ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00051\ \ \ \ \ \mbox{\hyperlink{classGammaRayHelper}{GammaRayHelper}}*\ fGammaRayHelper;}
-\DoxyCodeLine{00052\ \};}
-\DoxyCodeLine{00053\ }
-\DoxyCodeLine{00054\ \}}
-\DoxyCodeLine{00055\ }
-\DoxyCodeLine{00056\ \textcolor{comment}{//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......}}
-\DoxyCodeLine{00057\ }
-\DoxyCodeLine{00058\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

@@ -392,7 +392,7 @@
 <codeline lineno="58"><highlight class="normal"></highlight></codeline>
 <codeline lineno="59"><highlight class="normal"></highlight><highlight class="comment">//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="60"><highlight class="normal"></highlight></codeline>
-<codeline lineno="61"><highlight class="normal"><ref refid="classG4FastSim_1_1SteppingAction_1ad9d07e48fe9696277eb14f9e6218ea66" kindref="member">SteppingAction::SteppingAction</ref>(EventAction*<sp/>eventAction,<sp/><ref refid="classGammaRayHelper" kindref="compound">GammaRayHelper</ref>*<sp/>helper)</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><ref refid="classSteppingAction_1a374afa1d769bcc5ba9d771cb83332a24" kindref="member">SteppingAction::SteppingAction</ref>(<ref refid="classEventAction" kindref="compound">EventAction</ref>*<sp/>eventAction,<sp/><ref refid="classGammaRayHelper" kindref="compound">GammaRayHelper</ref>*<sp/>helper)</highlight></codeline>
 <codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/>G4UserSteppingAction(),</highlight></codeline>
 <codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>fEventAction(eventAction),</highlight></codeline>
 <codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>fScoringVolume(nullptr),</highlight></codeline>
@@ -405,14 +405,14 @@
 <codeline lineno="71"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="72"><highlight class="normal"></highlight></codeline>
 <codeline lineno="73"><highlight class="normal"></highlight></codeline>
-<codeline lineno="74"><highlight class="normal">SteppingAction::~SteppingAction()</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><ref refid="classSteppingAction_1ace65491c5f93bdf39d14914767f896bf" kindref="member">SteppingAction::~SteppingAction</ref>()</highlight></codeline>
 <codeline lineno="75"><highlight class="normal">{}</highlight></codeline>
 <codeline lineno="76"><highlight class="normal"></highlight></codeline>
 <codeline lineno="77"><highlight class="normal"></highlight><highlight class="comment">//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......</highlight></codeline>
-<codeline lineno="87"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>SteppingAction::UserSteppingAction(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>G4Step*<sp/>step)</highlight></codeline>
+<codeline lineno="87"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classSteppingAction_1a4c685bf7180779d18c143c6ad1cce3fb" kindref="member">SteppingAction::UserSteppingAction</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>G4Step*<sp/>step)</highlight></codeline>
 <codeline lineno="88"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="89"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>check<sp/>if<sp/>the<sp/>event<sp/>is<sp/>a<sp/>fast<sp/>simulation<sp/>event</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="90"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!fEventAction-&gt;IsFastSimulation())<sp/>{</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!fEventAction-&gt;<ref refid="classEventAction_1aadb449a0f7a833b44e0136055950c37c" kindref="member">IsFastSimulation</ref>())<sp/>{</highlight></codeline>
 <codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>analyze<sp/>standard<sp/>step</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/>AnalyzeStandardStep(step);</highlight></codeline>
 <codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
@@ -436,21 +436,21 @@
 <codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="112"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="113"><highlight class="normal"></highlight></codeline>
-<codeline lineno="114"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(verbosityLevel<sp/>&gt;=<sp/>2)<sp/>Print(step);</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(verbosityLevel<sp/>&gt;=<sp/>2)<sp/><ref refid="classSteppingAction_1a0c02224c420b2e569e0fd73a15f27857" kindref="member">Print</ref>(step);</highlight></codeline>
 <codeline lineno="115"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>if<sp/>(1)<sp/>we<sp/>are<sp/>inside<sp/>the<sp/>fiducial<sp/>volume<sp/>and<sp/></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="116"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>(2)<sp/>we<sp/>have<sp/>not<sp/>reached<sp/>the<sp/>maximum<sp/>number<sp/>of<sp/>scatters<sp/></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="117"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>===========&gt;<sp/>go<sp/>scatter<sp/>dude!</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="118"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="119"><highlight class="normal"><sp/><sp/>G4int<sp/>number_of_scatters<sp/>=<sp/>fEventAction-&gt;GetNumberOfScatters();</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/>G4int<sp/>number_of_scatters<sp/>=<sp/>fEventAction-&gt;<ref refid="classEventAction_1a162c883989911ba148346423d4a9bdd0" kindref="member">GetNumberOfScatters</ref>();</highlight></codeline>
 <codeline lineno="120"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<sp/>(volume_pre-&gt;GetName()<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;LXeFiducial&quot;</highlight><highlight class="normal">)<sp/>&amp;&amp;<sp/></highlight></codeline>
 <codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>(number_of_scatters<sp/>&lt;<sp/>fEventAction-&gt;GetNumberOfScattersMax()))<sp/>{</highlight></codeline>
 <codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>*<sp/>Generate<sp/>an<sp/>interaction<sp/>somewhere<sp/>in<sp/>the<sp/>LXeFiducial<sp/>volume</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>result<sp/>=<sp/>fGammaRayHelper-&gt;GenerateInteractionPoint(step);</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>result<sp/>=<sp/>fGammaRayHelper-&gt;<ref refid="classGammaRayHelper_1a749f2c6ac264a6065ca97de71443e9f0" kindref="member">GenerateInteractionPoint</ref>(step);</highlight></codeline>
 <codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/>G4ThreeVector<sp/>interactionPoint<sp/>=<sp/>result.first;</highlight></codeline>
 <codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>calculate<sp/>the<sp/>weight<sp/>of<sp/>the<sp/>event<sp/>and<sp/>add<sp/>it<sp/>to<sp/>teh<sp/>event<sp/>sum<sp/>of<sp/>logs</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/>fEventAction-&gt;AddWeight(std::log(result.second));</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/>fEventAction-&gt;<ref refid="classEventAction_1acefd80fbd497f9ff3d16f8bae126a789" kindref="member">AddWeight</ref>(std::log(result.second));</highlight></codeline>
 <codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(verbosityLevel<sp/>&gt;=<sp/>2){</highlight></codeline>
 <codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>G4cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;SteppingAction::UserSteppingAction<sp/><sp/><sp/>Interaction<sp/>point<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>interactionPoint/cm<sp/>&lt;&lt;<sp/>G4endl;</highlight></codeline>
 <codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>G4cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;SteppingAction::UserSteppingAction<sp/><sp/><sp/>Interaction<sp/>point<sp/>weight<sp/>:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>result.second<sp/>&lt;&lt;<sp/>G4endl;</highlight></codeline>
@@ -462,13 +462,13 @@
 <codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>i)<sp/>ignore<sp/>PE<sp/>effect<sp/>and<sp/>assign<sp/>a<sp/>weight.<sp/>Then<sp/>just<sp/>do<sp/>Compton<sp/>scatter</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ii)<sp/>calculate<sp/>the<sp/>maximum<sp/>scattering<sp/>angle<sp/>possible<sp/>and<sp/>generate<sp/>a<sp/>Compton<sp/>scatter.<sp/>Calculate<sp/>the<sp/>event<sp/>weight<sp/>based<sp/>on<sp/>the<sp/>non-sampled<sp/>scattering<sp/>angles</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/>G4double<sp/>weight<sp/>=<sp/>DoScatter(step,<sp/>interactionPoint);</highlight></codeline>
-<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/>fEventAction-&gt;AddWeight(std::log(weight));</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/>fEventAction-&gt;<ref refid="classEventAction_1acefd80fbd497f9ff3d16f8bae126a789" kindref="member">AddWeight</ref>(std::log(weight));</highlight></codeline>
 <codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(verbosityLevel<sp/>&gt;=<sp/>2){</highlight></codeline>
 <codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>G4cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;SteppingAction::UserSteppingAction<sp/><sp/><sp/>Scatter<sp/>weight<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>weight<sp/>&lt;&lt;<sp/>G4endl;</highlight></codeline>
 <codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="144"><highlight class="normal"></highlight></codeline>
 <codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>update<sp/>the<sp/>number<sp/>of<sp/>scatters</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/>fEventAction-&gt;SetNumberOfScatters(number_of_scatters<sp/>+<sp/>1);</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/>fEventAction-&gt;<ref refid="classEventAction_1a820c16a2f7cc5d0c0880f73595cddea1" kindref="member">SetNumberOfScatters</ref>(number_of_scatters<sp/>+<sp/>1);</highlight></codeline>
 <codeline lineno="147"><highlight class="normal"></highlight></codeline>
 <codeline lineno="148"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
 <codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>Update<sp/>the<sp/>event<sp/>weight<sp/>based<sp/>on<sp/>the<sp/>traversed<sp/>material.<sp/>Once<sp/>the<sp/>geantino<sp/>leaves<sp/>the</highlight><highlight class="normal"></highlight></codeline>
@@ -480,7 +480,7 @@
 <codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>check<sp/>if<sp/>the<sp/>particle<sp/>is<sp/>a<sp/>geantino</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(particleName<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;geantino&quot;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
 <codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>get<sp/>the<sp/>attenuation<sp/>length<sp/>of<sp/>the<sp/>material<sp/>for<sp/>the<sp/>gamma<sp/>ray<sp/>at<sp/>the<sp/>current<sp/>energy</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>G4double<sp/>attenuation_length<sp/>=<sp/>fGammaRayHelper-&gt;GetAttenuationLength(step-&gt;GetPreStepPoint()-&gt;GetKineticEnergy(),<sp/></highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>G4double<sp/>attenuation_length<sp/>=<sp/>fGammaRayHelper-&gt;<ref refid="classGammaRayHelper_1aac1da704b4d19dc2aef4546db557cce9" kindref="member">GetAttenuationLength</ref>(step-&gt;GetPreStepPoint()-&gt;GetKineticEnergy(),<sp/></highlight></codeline>
 <codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>volume_pre-&gt;GetMaterial());</highlight></codeline>
 <codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>G4double<sp/>weight<sp/>=<sp/>std::exp(-step-&gt;GetStepLength()<sp/>/<sp/>attenuation_length);</highlight></codeline>
 <codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
@@ -490,7 +490,7 @@
 <codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>G4cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;SteppingAction::UserSteppingAction<sp/><sp/><sp/>Transport<sp/>weight<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>weight<sp/>&lt;&lt;<sp/>G4endl;</highlight></codeline>
 <codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="167"><highlight class="normal"></highlight></codeline>
-<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>fEventAction-&gt;AddWeight(std::log(weight));</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>fEventAction-&gt;<ref refid="classEventAction_1acefd80fbd497f9ff3d16f8bae126a789" kindref="member">AddWeight</ref>(std::log(weight));</highlight></codeline>
 <codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>if<sp/>the<sp/>next<sp/>volume<sp/>is<sp/>the<sp/>InnerCryostat<sp/>and<sp/>the<sp/>geantino<sp/>has<sp/>undergone<sp/>one<sp/>or<sp/>multiple<sp/>scatters,<sp/></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>we<sp/>want<sp/>to<sp/>kill<sp/>the<sp/>track</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>G4String<sp/>nextVolume<sp/>=<sp/>step-&gt;GetPostStepPoint()-&gt;GetTouchableHandle()-&gt;GetVolume()-&gt;GetLogicalVolume()-&gt;GetName();</highlight></codeline>
@@ -517,11 +517,11 @@
 <codeline lineno="198"><highlight class="normal"><sp/><sp/>G4LogicalVolume*<sp/>volume_pre<sp/>=<sp/>step-&gt;GetPreStepPoint()-&gt;GetTouchableHandle()-&gt;GetVolume()-&gt;GetLogicalVolume();</highlight></codeline>
 <codeline lineno="199"><highlight class="normal"><sp/><sp/>G4Material*<sp/>material<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>volume_pre-&gt;GetMaterial();</highlight></codeline>
 <codeline lineno="200"><highlight class="normal"></highlight></codeline>
-<codeline lineno="201"><highlight class="normal"><sp/><sp/>G4double<sp/>photoelectricCrossSection<sp/>=<sp/>fGammaRayHelper-&gt;GetPhotoelectricCrossSection(energy,<sp/>material);</highlight></codeline>
-<codeline lineno="202"><highlight class="normal"><sp/><sp/>G4double<sp/>comptonCrossSection<sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>fGammaRayHelper-&gt;GetComptonCrossSection(energy,<sp/>material);</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/>G4double<sp/>photoelectricCrossSection<sp/>=<sp/>fGammaRayHelper-&gt;<ref refid="classGammaRayHelper_1a904bd1187ecd382072b9e98ac5051646" kindref="member">GetPhotoelectricCrossSection</ref>(energy,<sp/>material);</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/>G4double<sp/>comptonCrossSection<sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>fGammaRayHelper-&gt;<ref refid="classGammaRayHelper_1a9210941982409cb5cc915759d7a0472a" kindref="member">GetComptonCrossSection</ref>(energy,<sp/>material);</highlight></codeline>
 <codeline lineno="203"><highlight class="normal"><sp/><sp/>G4double<sp/>ratio<sp/>=<sp/>comptonCrossSection<sp/>/<sp/>(photoelectricCrossSection<sp/>+<sp/>comptonCrossSection);</highlight></codeline>
 <codeline lineno="204"><highlight class="normal"><sp/><sp/></highlight></codeline>
-<codeline lineno="205"><highlight class="normal"><sp/><sp/>G4double<sp/>maxEnergy<sp/>=<sp/>fEventAction-&gt;GetAvailableEnergy();</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/>G4double<sp/>maxEnergy<sp/>=<sp/>fEventAction-&gt;<ref refid="classEventAction_1ade7a5b71891eaabe7e89a9016cb94006" kindref="member">GetAvailableEnergy</ref>();</highlight></codeline>
 <codeline lineno="206"><highlight class="normal"><sp/><sp/>G4double<sp/>rand<sp/>=<sp/>G4UniformRand();</highlight></codeline>
 <codeline lineno="207"><highlight class="normal"></highlight></codeline>
 <codeline lineno="208"><highlight class="normal"><sp/><sp/>G4Track*<sp/>track<sp/>=<sp/>step-&gt;GetTrack();</highlight></codeline>
@@ -534,7 +534,7 @@
 <codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/>process<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;compt&quot;</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>take<sp/>into<sp/>account<sp/>that<sp/>we<sp/>ignored<sp/>the<sp/>PE<sp/>effect<sp/>and<sp/>assign<sp/>a<sp/>weight</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>generate<sp/>a<sp/>Compton<sp/>scatter<sp/>and<sp/>update<sp/>the<sp/>energy<sp/>deposit</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/>InteractionData<sp/>compton<sp/>=<sp/>fGammaRayHelper-&gt;DoComptonScatter(step,<sp/>x0,<sp/>maxEnergy);</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/>InteractionData<sp/>compton<sp/>=<sp/>fGammaRayHelper-&gt;<ref refid="classGammaRayHelper_1a5f490056674be18ba926a76bf683a521" kindref="member">DoComptonScatter</ref>(step,<sp/>x0,<sp/>maxEnergy);</highlight></codeline>
 <codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/>energyDeposit<sp/>=<sp/>compton.energyDeposited;</highlight></codeline>
 <codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/>analysisManager-&gt;FillH1(0,<sp/>compton.cosTheta);</highlight></codeline>
 <codeline lineno="221"><highlight class="normal"></highlight></codeline>
@@ -577,7 +577,7 @@
 <codeline lineno="258"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="259"><highlight class="normal"></highlight></codeline>
 <codeline lineno="260"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>update<sp/>the<sp/>available<sp/>energy</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="261"><highlight class="normal"><sp/><sp/>fEventAction-&gt;ReduceAvailableEnergy(energyDeposit);<sp/><sp/></highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><sp/><sp/>fEventAction-&gt;<ref refid="classEventAction_1ab28b59f1baa9fc2362717d03e650c73d" kindref="member">ReduceAvailableEnergy</ref>(energyDeposit);<sp/><sp/></highlight></codeline>
 <codeline lineno="262"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>kill<sp/>the<sp/>original<sp/>track.<sp/>the<sp/>new<sp/>track<sp/>will<sp/>be<sp/>tracked<sp/>further</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="263"><highlight class="normal"><sp/><sp/>track-&gt;SetTrackStatus(fStopAndKill);</highlight></codeline>
 <codeline lineno="264"><highlight class="normal"></highlight></codeline>
@@ -602,7 +602,7 @@
 <codeline lineno="283"><highlight class="normal"></highlight></codeline>
 <codeline lineno="284"><highlight class="normal"></highlight><highlight class="comment">//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="285"><highlight class="normal"></highlight></codeline>
-<codeline lineno="291"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>SteppingAction::Print(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>G4Step*<sp/>step)<sp/>{</highlight></codeline>
+<codeline lineno="291"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classSteppingAction_1a0c02224c420b2e569e0fd73a15f27857" kindref="member">SteppingAction::Print</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>G4Step*<sp/>step)<sp/>{</highlight></codeline>
 <codeline lineno="292"><highlight class="normal"></highlight></codeline>
 <codeline lineno="293"><highlight class="normal"><sp/><sp/>G4Track*<sp/>track<sp/>=<sp/>step-&gt;GetTrack();</highlight></codeline>
 <codeline lineno="294"><highlight class="normal"><sp/><sp/>G4LogicalVolume*<sp/>volume_pre<sp/>=<sp/>step-&gt;GetPreStepPoint()-&gt;GetTouchableHandle()-&gt;GetVolume()-&gt;GetLogicalVolume();</highlight></codeline>
@@ -673,7 +673,7 @@
 <codeline lineno="384"><highlight class="normal"></highlight></codeline>
 <codeline lineno="385"><highlight class="normal"><sp/><sp/>G4int<sp/>trackID<sp/>=<sp/>step-&gt;GetTrack()-&gt;GetTrackID();</highlight></codeline>
 <codeline lineno="386"><highlight class="normal"></highlight></codeline>
-<codeline lineno="387"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(verbosityLevel<sp/>&gt;=<sp/>2)<sp/>Print(step);</highlight></codeline>
+<codeline lineno="387"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(verbosityLevel<sp/>&gt;=<sp/>2)<sp/><ref refid="classSteppingAction_1a0c02224c420b2e569e0fd73a15f27857" kindref="member">Print</ref>(step);</highlight></codeline>
 <codeline lineno="388"><highlight class="normal"></highlight></codeline>
 <codeline lineno="389"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>check<sp/>the<sp/>primary<sp/>gamma<sp/>ray....</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="390"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(trackID<sp/>==<sp/>1){</highlight></codeline>
@@ -683,7 +683,7 @@
 <codeline lineno="394"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>check<sp/>if<sp/>particle<sp/>is<sp/>inside<sp/>the<sp/>xenon<sp/>volume</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="395"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((volume_name<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;LXeFiducial&quot;</highlight><highlight class="normal">)<sp/>||<sp/>(volume_name<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;LXe&quot;</highlight><highlight class="normal">))<sp/>{</highlight></codeline>
 <codeline lineno="396"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>particle<sp/>saw<sp/>liquid<sp/>xenon</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="397"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>fEventAction-&gt;SetHasBeenInXenon(</highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="397"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>fEventAction-&gt;<ref refid="classEventAction_1a735b3d728f508a8106995b4dab6ea08d" kindref="member">SetHasBeenInXenon</ref>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="398"><highlight class="normal"></highlight></codeline>
 <codeline lineno="399"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>G4String<sp/>volume_post<sp/>=<sp/>step-&gt;GetPostStepPoint()-&gt;GetTouchableHandle()-&gt;GetVolume()-&gt;GetLogicalVolume()-&gt;GetName();</highlight></codeline>
 <codeline lineno="400"><highlight class="normal"></highlight></codeline>
@@ -696,7 +696,7 @@
 <codeline lineno="407"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>after<sp/>checking<sp/>if<sp/>the<sp/>particle<sp/>is/has<sp/>been<sp/>inside<sp/>the<sp/>xenon<sp/>volume,<sp/>check<sp/>if<sp/>the<sp/>track<sp/>ID<sp/>is<sp/>1,<sp/>the<sp/>process<sp/>type<sp/>is<sp/>&quot;compt&quot;,</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="408"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//if<sp/>((processType<sp/>==<sp/>&quot;compt&quot;)<sp/>&amp;&amp;<sp/>(!fEventAction-&gt;HasBeenInXenon()))<sp/>{</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="409"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((processType<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;compt&quot;</highlight><highlight class="normal">)<sp/>&amp;&amp;<sp/>((volume_name<sp/>!=<sp/></highlight><highlight class="stringliteral">&quot;LXeFiducial&quot;</highlight><highlight class="normal">)<sp/>&amp;&amp;<sp/>(volume_name<sp/>!=<sp/></highlight><highlight class="stringliteral">&quot;LXe&quot;</highlight><highlight class="normal">)))<sp/>{</highlight></codeline>
-<codeline lineno="410"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>fEventAction-&gt;SetEventType(SCATTERED_GAMMA);</highlight></codeline>
+<codeline lineno="410"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>fEventAction-&gt;<ref refid="classEventAction_1a405cc1d9e62dd3ba5209f1c8933536db" kindref="member">SetEventType</ref>(SCATTERED_GAMMA);</highlight></codeline>
 <codeline lineno="411"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="412"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//if<sp/>((processType<sp/>==<sp/>&quot;compt&quot;)<sp/>||<sp/>processType<sp/>==<sp/>&quot;phot&quot;)<sp/>&amp;&amp;<sp/>(fEventAction-&gt;HasBeenInXenon())<sp/>{</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="413"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>fEventAction-&gt;SetEventType(DIRECT_GAMMA);</highlight><highlight class="normal"></highlight></codeline>
