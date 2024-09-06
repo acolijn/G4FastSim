@@ -1,0 +1,131 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="SensitiveDetector_8hh" kind="file" language="C++">
+    <compoundname>SensitiveDetector.hh</compoundname>
+    <includes local="yes">G4VSensitiveDetector.hh</includes>
+    <includes local="yes">G4THitsCollection.hh</includes>
+    <includes refid="Hit_8hh" local="yes">Hit.hh</includes>
+    <includedby refid="SteppingAction_8hh" local="yes">include/SteppingAction.hh</includedby>
+    <includedby refid="DetectorConstruction_8cc" local="yes">src/DetectorConstruction.cc</includedby>
+    <includedby refid="SensitiveDetector_8cc" local="yes">src/SensitiveDetector.cc</includedby>
+    <incdepgraph>
+      <node id="4">
+        <label>Hit.hh</label>
+        <link refid="Hit_8hh"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>include/SensitiveDetector.hh</label>
+        <link refid="SensitiveDetector_8hh"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>G4Allocator.hh</label>
+      </node>
+      <node id="8">
+        <label>G4String.hh</label>
+      </node>
+      <node id="3">
+        <label>G4THitsCollection.hh</label>
+      </node>
+      <node id="6">
+        <label>G4ThreeVector.hh</label>
+      </node>
+      <node id="5">
+        <label>G4VHit.hh</label>
+      </node>
+      <node id="2">
+        <label>G4VSensitiveDetector.hh</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="1">
+        <label>include/SensitiveDetector.hh</label>
+        <link refid="SensitiveDetector_8hh"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>include/SteppingAction.hh</label>
+        <link refid="SteppingAction_8hh"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>src/ActionInitialization.cc</label>
+        <link refid="ActionInitialization_8cc"/>
+      </node>
+      <node id="5">
+        <label>src/DetectorConstruction.cc</label>
+        <link refid="DetectorConstruction_8cc"/>
+      </node>
+      <node id="6">
+        <label>src/SensitiveDetector.cc</label>
+        <link refid="SensitiveDetector_8cc"/>
+      </node>
+      <node id="4">
+        <label>src/SteppingAction.cc</label>
+        <link refid="SteppingAction_8cc"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classG4FastSim_1_1SensitiveDetector" prot="public">G4FastSim::SensitiveDetector</innerclass>
+    <innernamespace refid="namespaceG4FastSim">G4FastSim</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>SENSITIVEDETECTOR_HH</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SENSITIVEDETECTOR_HH</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;G4VSensitiveDetector.hh&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;G4THitsCollection.hh&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Hit_8hh" kindref="compound">Hit.hh</ref>&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="comment">//<sp/>Include<sp/>the<sp/>Hit<sp/>class</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceG4FastSim" kindref="compound">G4FastSim</ref><sp/>{</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10" refid="classG4FastSim_1_1SensitiveDetector" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classG4FastSim_1_1SensitiveDetector" kindref="compound">SensitiveDetector</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>G4VSensitiveDetector<sp/>{</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classG4FastSim_1_1SensitiveDetector_1a5fdabfdde5883e065d3c4aa727ed867f" kindref="member">SensitiveDetector</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>G4String&amp;<sp/>name,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>G4String&amp;<sp/>hitsCollectionName);</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classG4FastSim_1_1SensitiveDetector_1a9838a8cf0a79004537a2eb31e53b9441" kindref="member">~SensitiveDetector</ref>();</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classG4FastSim_1_1SensitiveDetector_1a797eadef69127beaf56db6a40892d573" kindref="member">Initialize</ref>(G4HCofThisEvent*<sp/>hce)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>G4bool<sp/><ref refid="classG4FastSim_1_1SensitiveDetector_1a9f1ee01db87f4fd63a32582b776948f3" kindref="member">ProcessHits</ref>(G4Step*<sp/>step,<sp/>G4TouchableHistory*<sp/>history)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classG4FastSim_1_1SensitiveDetector_1a004428b7dcc084c318806c9acf6b9404" kindref="member">EndOfEvent</ref>(G4HCofThisEvent*<sp/>hce)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19" refid="classG4FastSim_1_1SensitiveDetector_1ad48c34216783811b827089daef04c6a1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>G4double<sp/><ref refid="classG4FastSim_1_1SensitiveDetector_1ad48c34216783811b827089daef04c6a1" kindref="member">GetTotalEnergyDeposit</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>fTotalEnergyDeposit;<sp/>}</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceG4FastSim_1a03dccfbb4e25fe6f2ab3468c33175a36" kindref="member">HitsCollection</ref>*<sp/>fHitsCollection;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//G4THitsCollection&lt;Hit&gt;*<sp/>fHitsCollection;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>G4double<sp/>fTotalEnergyDeposit;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>G4int<sp/>fHitsCollectionID;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="include/SensitiveDetector.hh"/>
+  </compounddef>
+</doxygen>

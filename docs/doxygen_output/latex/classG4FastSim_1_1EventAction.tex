@@ -1,0 +1,266 @@
+\doxysection{G4\+Fast\+Sim\+::Event\+Action Class Reference}
+\hypertarget{classG4FastSim_1_1EventAction}{}\label{classG4FastSim_1_1EventAction}\index{G4FastSim::EventAction@{G4FastSim::EventAction}}
+
+
+{\ttfamily \#include $<$Event\+Action.\+hh$>$}
+
+Inheritance diagram for G4\+Fast\+Sim\+::Event\+Action\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classG4FastSim_1_1EventAction}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classG4FastSim_1_1EventAction_aa1f321b88b89f16c67b65da6727a52d6}{Event\+Action}} ()
+\item 
+\mbox{\hyperlink{classG4FastSim_1_1EventAction_adb4415861c5cdd0a55b2e14990e13da6}{\texorpdfstring{$\sim$}{\string~}\+Event\+Action}} () override=default
+\item 
+void \mbox{\hyperlink{classG4FastSim_1_1EventAction_aa0a1ce1d279c7071217c445fc761bbad}{Begin\+Of\+Event\+Action}} (const G4\+Event \texorpdfstring{$\ast$}{*}event)
+\item 
+void \mbox{\hyperlink{classG4FastSim_1_1EventAction_a43bd94959a1efa3612b0a6324bca406c}{End\+Of\+Event\+Action}} (const G4\+Event \texorpdfstring{$\ast$}{*}event)
+\item 
+std\+::vector$<$ G4double $>$ \& \mbox{\hyperlink{classG4FastSim_1_1EventAction_adeb4e093143f249cf5a556a8246653d3}{GetX}} ()
+\item 
+std\+::vector$<$ G4double $>$ \& \mbox{\hyperlink{classG4FastSim_1_1EventAction_a52568c351e9ab62edccb891c0bf8f421}{GetY}} ()
+\item 
+std\+::vector$<$ G4double $>$ \& \mbox{\hyperlink{classG4FastSim_1_1EventAction_a01b9c8dc9d9839413cd5c07484aaf248}{GetZ}} ()
+\item 
+std\+::vector$<$ G4double $>$ \& \mbox{\hyperlink{classG4FastSim_1_1EventAction_ace2d3844304533e215785778ef46fe90}{GetE}} ()
+\item 
+std\+::vector$<$ G4double $>$ \& \mbox{\hyperlink{classG4FastSim_1_1EventAction_ac0331ec9e7c100627ec72b86857f173e}{GetW}} ()
+\item 
+void \mbox{\hyperlink{classG4FastSim_1_1EventAction_aebd5b408875e402cf38a33a84410fb0d}{Add\+Edep}} (G4double edep)
+\item 
+void \mbox{\hyperlink{classG4FastSim_1_1EventAction_a25cfe5dde9e5abd4d30c255fb521724d}{Add\+Weight}} (G4double weight)
+\item 
+void \mbox{\hyperlink{classG4FastSim_1_1EventAction_a06e4d9a81df350b8a49c4d3c77c5b154}{Analyze\+Hits}} (const G4\+Event \texorpdfstring{$\ast$}{*}event)
+\item 
+void \mbox{\hyperlink{classG4FastSim_1_1EventAction_a3da7908738b2228320ef78abf83763a8}{Reset\+Variables}} ()
+\item 
+G4bool \mbox{\hyperlink{classG4FastSim_1_1EventAction_a0a5957019bc5a3844c9c10be44f04880}{Is\+Fast\+Simulation}} ()
+\item 
+G4int \mbox{\hyperlink{classG4FastSim_1_1EventAction_afd2e1cdcd5f4320967274b27bc06e6e0}{Get\+Number\+Of\+Scatters}} ()
+\item 
+G4double \mbox{\hyperlink{classG4FastSim_1_1EventAction_a6e7b195f21b29162210a1fd4f1395b4d}{Get\+Max\+Energy}} ()
+\item 
+G4int \mbox{\hyperlink{classG4FastSim_1_1EventAction_a29578ed86497866f4e76647cff46def8}{Get\+Number\+Of\+Scatters\+Max}} ()
+\item 
+G4double \mbox{\hyperlink{classG4FastSim_1_1EventAction_aa0f4b11d80547c902f0b72cfab9be7a3}{Get\+Available\+Energy}} ()
+\item 
+G4double \mbox{\hyperlink{classG4FastSim_1_1EventAction_ae1cd2d1c9fd5002c4f22483481d46cc7}{Get\+Weight}} ()
+\item 
+G4bool \mbox{\hyperlink{classG4FastSim_1_1EventAction_a85489f607916912fadf7d58891c5b55b}{Has\+Been\+In\+Xenon}} ()
+\item 
+G4int \mbox{\hyperlink{classG4FastSim_1_1EventAction_a4d03ac81dc8d0fcb225ded25bd7f6b73}{Get\+Event\+Type}} ()
+\item 
+void \mbox{\hyperlink{classG4FastSim_1_1EventAction_ab0990d80db3bd9e4c88279d1490a4dc4}{Set\+Number\+Of\+Scatters\+Max}} (G4int n)
+\item 
+void \mbox{\hyperlink{classG4FastSim_1_1EventAction_ab10d97afcb735c75e77447f118297668}{Set\+Fast\+Simulation}} (G4bool fast)
+\item 
+void \mbox{\hyperlink{classG4FastSim_1_1EventAction_a1ac50be580de9273ef1e58095798bc16}{Set\+Number\+Of\+Scatters}} (G4int n)
+\item 
+void \mbox{\hyperlink{classG4FastSim_1_1EventAction_a0497268c7d7eaf9f9f1ef8cf8808a1e7}{Set\+Max\+Energy}} (G4double e)
+\item 
+void \mbox{\hyperlink{classG4FastSim_1_1EventAction_a828bd5efac02e28a0cbe6e296898e4f1}{Set\+Available\+Energy}} (G4double e)
+\item 
+void \mbox{\hyperlink{classG4FastSim_1_1EventAction_abc1c3a1d617575f8e1329ecafeda4b45}{Reduce\+Available\+Energy}} (G4double e)
+\item 
+void \mbox{\hyperlink{classG4FastSim_1_1EventAction_a77d54ea8c5f1afe66e9bfa2330dfee27}{Set\+Has\+Been\+In\+Xenon}} (G4bool b)
+\item 
+void \mbox{\hyperlink{classG4FastSim_1_1EventAction_a964a668626874db354cad50145b6f441}{Set\+Event\+Type}} (G4int type)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classG4FastSim_1_1EventAction_aa1f321b88b89f16c67b65da6727a52d6}\label{classG4FastSim_1_1EventAction_aa1f321b88b89f16c67b65da6727a52d6} 
+\index{G4FastSim::EventAction@{G4FastSim::EventAction}!EventAction@{EventAction}}
+\index{EventAction@{EventAction}!G4FastSim::EventAction@{G4FastSim::EventAction}}
+\doxysubsubsection{\texorpdfstring{EventAction()}{EventAction()}}
+{\footnotesize\ttfamily G4\+Fast\+Sim\+::\+Event\+Action\+::\+Event\+Action (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{classG4FastSim_1_1EventAction_adb4415861c5cdd0a55b2e14990e13da6}\label{classG4FastSim_1_1EventAction_adb4415861c5cdd0a55b2e14990e13da6} 
+\index{G4FastSim::EventAction@{G4FastSim::EventAction}!````~EventAction@{\texorpdfstring{$\sim$}{\string~}EventAction}}
+\index{````~EventAction@{\texorpdfstring{$\sim$}{\string~}EventAction}!G4FastSim::EventAction@{G4FastSim::EventAction}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}EventAction()}{\string~EventAction()}}
+{\footnotesize\ttfamily G4\+Fast\+Sim\+::\+Event\+Action\+::\texorpdfstring{$\sim$}{\string~}\+Event\+Action (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [default]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classG4FastSim_1_1EventAction_aebd5b408875e402cf38a33a84410fb0d}\label{classG4FastSim_1_1EventAction_aebd5b408875e402cf38a33a84410fb0d} 
+\index{G4FastSim::EventAction@{G4FastSim::EventAction}!AddEdep@{AddEdep}}
+\index{AddEdep@{AddEdep}!G4FastSim::EventAction@{G4FastSim::EventAction}}
+\doxysubsubsection{\texorpdfstring{AddEdep()}{AddEdep()}}
+{\footnotesize\ttfamily void G4\+Fast\+Sim\+::\+Event\+Action\+::\+Add\+Edep (\begin{DoxyParamCaption}\item[{G4double}]{edep }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classG4FastSim_1_1EventAction_a25cfe5dde9e5abd4d30c255fb521724d}\label{classG4FastSim_1_1EventAction_a25cfe5dde9e5abd4d30c255fb521724d} 
+\index{G4FastSim::EventAction@{G4FastSim::EventAction}!AddWeight@{AddWeight}}
+\index{AddWeight@{AddWeight}!G4FastSim::EventAction@{G4FastSim::EventAction}}
+\doxysubsubsection{\texorpdfstring{AddWeight()}{AddWeight()}}
+{\footnotesize\ttfamily void G4\+Fast\+Sim\+::\+Event\+Action\+::\+Add\+Weight (\begin{DoxyParamCaption}\item[{G4double}]{weight }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classG4FastSim_1_1EventAction_a06e4d9a81df350b8a49c4d3c77c5b154}\label{classG4FastSim_1_1EventAction_a06e4d9a81df350b8a49c4d3c77c5b154} 
+\index{G4FastSim::EventAction@{G4FastSim::EventAction}!AnalyzeHits@{AnalyzeHits}}
+\index{AnalyzeHits@{AnalyzeHits}!G4FastSim::EventAction@{G4FastSim::EventAction}}
+\doxysubsubsection{\texorpdfstring{AnalyzeHits()}{AnalyzeHits()}}
+{\footnotesize\ttfamily void G4\+Fast\+Sim\+::\+Event\+Action\+::\+Analyze\+Hits (\begin{DoxyParamCaption}\item[{const G4\+Event \texorpdfstring{$\ast$}{*}}]{event }\end{DoxyParamCaption})}
+
+Analyzes the hits in the event.
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & The G4\+Event object representing the current event. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classG4FastSim_1_1EventAction_aa0a1ce1d279c7071217c445fc761bbad}\label{classG4FastSim_1_1EventAction_aa0a1ce1d279c7071217c445fc761bbad} 
+\index{G4FastSim::EventAction@{G4FastSim::EventAction}!BeginOfEventAction@{BeginOfEventAction}}
+\index{BeginOfEventAction@{BeginOfEventAction}!G4FastSim::EventAction@{G4FastSim::EventAction}}
+\doxysubsubsection{\texorpdfstring{BeginOfEventAction()}{BeginOfEventAction()}}
+{\footnotesize\ttfamily void G4\+Fast\+Sim\+::\+Event\+Action\+::\+Begin\+Of\+Event\+Action (\begin{DoxyParamCaption}\item[{const G4\+Event \texorpdfstring{$\ast$}{*}}]{event }\end{DoxyParamCaption})}
+
+\Hypertarget{classG4FastSim_1_1EventAction_a43bd94959a1efa3612b0a6324bca406c}\label{classG4FastSim_1_1EventAction_a43bd94959a1efa3612b0a6324bca406c} 
+\index{G4FastSim::EventAction@{G4FastSim::EventAction}!EndOfEventAction@{EndOfEventAction}}
+\index{EndOfEventAction@{EndOfEventAction}!G4FastSim::EventAction@{G4FastSim::EventAction}}
+\doxysubsubsection{\texorpdfstring{EndOfEventAction()}{EndOfEventAction()}}
+{\footnotesize\ttfamily void G4\+Fast\+Sim\+::\+Event\+Action\+::\+End\+Of\+Event\+Action (\begin{DoxyParamCaption}\item[{const G4\+Event \texorpdfstring{$\ast$}{*}}]{event }\end{DoxyParamCaption})}
+
+\Hypertarget{classG4FastSim_1_1EventAction_aa0f4b11d80547c902f0b72cfab9be7a3}\label{classG4FastSim_1_1EventAction_aa0f4b11d80547c902f0b72cfab9be7a3} 
+\index{G4FastSim::EventAction@{G4FastSim::EventAction}!GetAvailableEnergy@{GetAvailableEnergy}}
+\index{GetAvailableEnergy@{GetAvailableEnergy}!G4FastSim::EventAction@{G4FastSim::EventAction}}
+\doxysubsubsection{\texorpdfstring{GetAvailableEnergy()}{GetAvailableEnergy()}}
+{\footnotesize\ttfamily G4double G4\+Fast\+Sim\+::\+Event\+Action\+::\+Get\+Available\+Energy (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classG4FastSim_1_1EventAction_ace2d3844304533e215785778ef46fe90}\label{classG4FastSim_1_1EventAction_ace2d3844304533e215785778ef46fe90} 
+\index{G4FastSim::EventAction@{G4FastSim::EventAction}!GetE@{GetE}}
+\index{GetE@{GetE}!G4FastSim::EventAction@{G4FastSim::EventAction}}
+\doxysubsubsection{\texorpdfstring{GetE()}{GetE()}}
+{\footnotesize\ttfamily std\+::vector$<$ G4double $>$ \& G4\+Fast\+Sim\+::\+Event\+Action\+::\+GetE (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classG4FastSim_1_1EventAction_a4d03ac81dc8d0fcb225ded25bd7f6b73}\label{classG4FastSim_1_1EventAction_a4d03ac81dc8d0fcb225ded25bd7f6b73} 
+\index{G4FastSim::EventAction@{G4FastSim::EventAction}!GetEventType@{GetEventType}}
+\index{GetEventType@{GetEventType}!G4FastSim::EventAction@{G4FastSim::EventAction}}
+\doxysubsubsection{\texorpdfstring{GetEventType()}{GetEventType()}}
+{\footnotesize\ttfamily G4int G4\+Fast\+Sim\+::\+Event\+Action\+::\+Get\+Event\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classG4FastSim_1_1EventAction_a6e7b195f21b29162210a1fd4f1395b4d}\label{classG4FastSim_1_1EventAction_a6e7b195f21b29162210a1fd4f1395b4d} 
+\index{G4FastSim::EventAction@{G4FastSim::EventAction}!GetMaxEnergy@{GetMaxEnergy}}
+\index{GetMaxEnergy@{GetMaxEnergy}!G4FastSim::EventAction@{G4FastSim::EventAction}}
+\doxysubsubsection{\texorpdfstring{GetMaxEnergy()}{GetMaxEnergy()}}
+{\footnotesize\ttfamily G4double G4\+Fast\+Sim\+::\+Event\+Action\+::\+Get\+Max\+Energy (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classG4FastSim_1_1EventAction_afd2e1cdcd5f4320967274b27bc06e6e0}\label{classG4FastSim_1_1EventAction_afd2e1cdcd5f4320967274b27bc06e6e0} 
+\index{G4FastSim::EventAction@{G4FastSim::EventAction}!GetNumberOfScatters@{GetNumberOfScatters}}
+\index{GetNumberOfScatters@{GetNumberOfScatters}!G4FastSim::EventAction@{G4FastSim::EventAction}}
+\doxysubsubsection{\texorpdfstring{GetNumberOfScatters()}{GetNumberOfScatters()}}
+{\footnotesize\ttfamily G4int G4\+Fast\+Sim\+::\+Event\+Action\+::\+Get\+Number\+Of\+Scatters (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classG4FastSim_1_1EventAction_a29578ed86497866f4e76647cff46def8}\label{classG4FastSim_1_1EventAction_a29578ed86497866f4e76647cff46def8} 
+\index{G4FastSim::EventAction@{G4FastSim::EventAction}!GetNumberOfScattersMax@{GetNumberOfScattersMax}}
+\index{GetNumberOfScattersMax@{GetNumberOfScattersMax}!G4FastSim::EventAction@{G4FastSim::EventAction}}
+\doxysubsubsection{\texorpdfstring{GetNumberOfScattersMax()}{GetNumberOfScattersMax()}}
+{\footnotesize\ttfamily G4int G4\+Fast\+Sim\+::\+Event\+Action\+::\+Get\+Number\+Of\+Scatters\+Max (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classG4FastSim_1_1EventAction_ac0331ec9e7c100627ec72b86857f173e}\label{classG4FastSim_1_1EventAction_ac0331ec9e7c100627ec72b86857f173e} 
+\index{G4FastSim::EventAction@{G4FastSim::EventAction}!GetW@{GetW}}
+\index{GetW@{GetW}!G4FastSim::EventAction@{G4FastSim::EventAction}}
+\doxysubsubsection{\texorpdfstring{GetW()}{GetW()}}
+{\footnotesize\ttfamily std\+::vector$<$ G4double $>$ \& G4\+Fast\+Sim\+::\+Event\+Action\+::\+GetW (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classG4FastSim_1_1EventAction_ae1cd2d1c9fd5002c4f22483481d46cc7}\label{classG4FastSim_1_1EventAction_ae1cd2d1c9fd5002c4f22483481d46cc7} 
+\index{G4FastSim::EventAction@{G4FastSim::EventAction}!GetWeight@{GetWeight}}
+\index{GetWeight@{GetWeight}!G4FastSim::EventAction@{G4FastSim::EventAction}}
+\doxysubsubsection{\texorpdfstring{GetWeight()}{GetWeight()}}
+{\footnotesize\ttfamily G4double G4\+Fast\+Sim\+::\+Event\+Action\+::\+Get\+Weight (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classG4FastSim_1_1EventAction_adeb4e093143f249cf5a556a8246653d3}\label{classG4FastSim_1_1EventAction_adeb4e093143f249cf5a556a8246653d3} 
+\index{G4FastSim::EventAction@{G4FastSim::EventAction}!GetX@{GetX}}
+\index{GetX@{GetX}!G4FastSim::EventAction@{G4FastSim::EventAction}}
+\doxysubsubsection{\texorpdfstring{GetX()}{GetX()}}
+{\footnotesize\ttfamily std\+::vector$<$ G4double $>$ \& G4\+Fast\+Sim\+::\+Event\+Action\+::\+GetX (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classG4FastSim_1_1EventAction_a52568c351e9ab62edccb891c0bf8f421}\label{classG4FastSim_1_1EventAction_a52568c351e9ab62edccb891c0bf8f421} 
+\index{G4FastSim::EventAction@{G4FastSim::EventAction}!GetY@{GetY}}
+\index{GetY@{GetY}!G4FastSim::EventAction@{G4FastSim::EventAction}}
+\doxysubsubsection{\texorpdfstring{GetY()}{GetY()}}
+{\footnotesize\ttfamily std\+::vector$<$ G4double $>$ \& G4\+Fast\+Sim\+::\+Event\+Action\+::\+GetY (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classG4FastSim_1_1EventAction_a01b9c8dc9d9839413cd5c07484aaf248}\label{classG4FastSim_1_1EventAction_a01b9c8dc9d9839413cd5c07484aaf248} 
+\index{G4FastSim::EventAction@{G4FastSim::EventAction}!GetZ@{GetZ}}
+\index{GetZ@{GetZ}!G4FastSim::EventAction@{G4FastSim::EventAction}}
+\doxysubsubsection{\texorpdfstring{GetZ()}{GetZ()}}
+{\footnotesize\ttfamily std\+::vector$<$ G4double $>$ \& G4\+Fast\+Sim\+::\+Event\+Action\+::\+GetZ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classG4FastSim_1_1EventAction_a85489f607916912fadf7d58891c5b55b}\label{classG4FastSim_1_1EventAction_a85489f607916912fadf7d58891c5b55b} 
+\index{G4FastSim::EventAction@{G4FastSim::EventAction}!HasBeenInXenon@{HasBeenInXenon}}
+\index{HasBeenInXenon@{HasBeenInXenon}!G4FastSim::EventAction@{G4FastSim::EventAction}}
+\doxysubsubsection{\texorpdfstring{HasBeenInXenon()}{HasBeenInXenon()}}
+{\footnotesize\ttfamily G4bool G4\+Fast\+Sim\+::\+Event\+Action\+::\+Has\+Been\+In\+Xenon (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classG4FastSim_1_1EventAction_a0a5957019bc5a3844c9c10be44f04880}\label{classG4FastSim_1_1EventAction_a0a5957019bc5a3844c9c10be44f04880} 
+\index{G4FastSim::EventAction@{G4FastSim::EventAction}!IsFastSimulation@{IsFastSimulation}}
+\index{IsFastSimulation@{IsFastSimulation}!G4FastSim::EventAction@{G4FastSim::EventAction}}
+\doxysubsubsection{\texorpdfstring{IsFastSimulation()}{IsFastSimulation()}}
+{\footnotesize\ttfamily G4bool G4\+Fast\+Sim\+::\+Event\+Action\+::\+Is\+Fast\+Simulation (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classG4FastSim_1_1EventAction_abc1c3a1d617575f8e1329ecafeda4b45}\label{classG4FastSim_1_1EventAction_abc1c3a1d617575f8e1329ecafeda4b45} 
+\index{G4FastSim::EventAction@{G4FastSim::EventAction}!ReduceAvailableEnergy@{ReduceAvailableEnergy}}
+\index{ReduceAvailableEnergy@{ReduceAvailableEnergy}!G4FastSim::EventAction@{G4FastSim::EventAction}}
+\doxysubsubsection{\texorpdfstring{ReduceAvailableEnergy()}{ReduceAvailableEnergy()}}
+{\footnotesize\ttfamily void G4\+Fast\+Sim\+::\+Event\+Action\+::\+Reduce\+Available\+Energy (\begin{DoxyParamCaption}\item[{G4double}]{e }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classG4FastSim_1_1EventAction_a3da7908738b2228320ef78abf83763a8}\label{classG4FastSim_1_1EventAction_a3da7908738b2228320ef78abf83763a8} 
+\index{G4FastSim::EventAction@{G4FastSim::EventAction}!ResetVariables@{ResetVariables}}
+\index{ResetVariables@{ResetVariables}!G4FastSim::EventAction@{G4FastSim::EventAction}}
+\doxysubsubsection{\texorpdfstring{ResetVariables()}{ResetVariables()}}
+{\footnotesize\ttfamily void G4\+Fast\+Sim\+::\+Event\+Action\+::\+Reset\+Variables (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{classG4FastSim_1_1EventAction_a828bd5efac02e28a0cbe6e296898e4f1}\label{classG4FastSim_1_1EventAction_a828bd5efac02e28a0cbe6e296898e4f1} 
+\index{G4FastSim::EventAction@{G4FastSim::EventAction}!SetAvailableEnergy@{SetAvailableEnergy}}
+\index{SetAvailableEnergy@{SetAvailableEnergy}!G4FastSim::EventAction@{G4FastSim::EventAction}}
+\doxysubsubsection{\texorpdfstring{SetAvailableEnergy()}{SetAvailableEnergy()}}
+{\footnotesize\ttfamily void G4\+Fast\+Sim\+::\+Event\+Action\+::\+Set\+Available\+Energy (\begin{DoxyParamCaption}\item[{G4double}]{e }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classG4FastSim_1_1EventAction_a964a668626874db354cad50145b6f441}\label{classG4FastSim_1_1EventAction_a964a668626874db354cad50145b6f441} 
+\index{G4FastSim::EventAction@{G4FastSim::EventAction}!SetEventType@{SetEventType}}
+\index{SetEventType@{SetEventType}!G4FastSim::EventAction@{G4FastSim::EventAction}}
+\doxysubsubsection{\texorpdfstring{SetEventType()}{SetEventType()}}
+{\footnotesize\ttfamily void G4\+Fast\+Sim\+::\+Event\+Action\+::\+Set\+Event\+Type (\begin{DoxyParamCaption}\item[{G4int}]{type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classG4FastSim_1_1EventAction_ab10d97afcb735c75e77447f118297668}\label{classG4FastSim_1_1EventAction_ab10d97afcb735c75e77447f118297668} 
+\index{G4FastSim::EventAction@{G4FastSim::EventAction}!SetFastSimulation@{SetFastSimulation}}
+\index{SetFastSimulation@{SetFastSimulation}!G4FastSim::EventAction@{G4FastSim::EventAction}}
+\doxysubsubsection{\texorpdfstring{SetFastSimulation()}{SetFastSimulation()}}
+{\footnotesize\ttfamily void G4\+Fast\+Sim\+::\+Event\+Action\+::\+Set\+Fast\+Simulation (\begin{DoxyParamCaption}\item[{G4bool}]{fast }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classG4FastSim_1_1EventAction_a77d54ea8c5f1afe66e9bfa2330dfee27}\label{classG4FastSim_1_1EventAction_a77d54ea8c5f1afe66e9bfa2330dfee27} 
+\index{G4FastSim::EventAction@{G4FastSim::EventAction}!SetHasBeenInXenon@{SetHasBeenInXenon}}
+\index{SetHasBeenInXenon@{SetHasBeenInXenon}!G4FastSim::EventAction@{G4FastSim::EventAction}}
+\doxysubsubsection{\texorpdfstring{SetHasBeenInXenon()}{SetHasBeenInXenon()}}
+{\footnotesize\ttfamily void G4\+Fast\+Sim\+::\+Event\+Action\+::\+Set\+Has\+Been\+In\+Xenon (\begin{DoxyParamCaption}\item[{G4bool}]{b }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classG4FastSim_1_1EventAction_a0497268c7d7eaf9f9f1ef8cf8808a1e7}\label{classG4FastSim_1_1EventAction_a0497268c7d7eaf9f9f1ef8cf8808a1e7} 
+\index{G4FastSim::EventAction@{G4FastSim::EventAction}!SetMaxEnergy@{SetMaxEnergy}}
+\index{SetMaxEnergy@{SetMaxEnergy}!G4FastSim::EventAction@{G4FastSim::EventAction}}
+\doxysubsubsection{\texorpdfstring{SetMaxEnergy()}{SetMaxEnergy()}}
+{\footnotesize\ttfamily void G4\+Fast\+Sim\+::\+Event\+Action\+::\+Set\+Max\+Energy (\begin{DoxyParamCaption}\item[{G4double}]{e }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classG4FastSim_1_1EventAction_a1ac50be580de9273ef1e58095798bc16}\label{classG4FastSim_1_1EventAction_a1ac50be580de9273ef1e58095798bc16} 
+\index{G4FastSim::EventAction@{G4FastSim::EventAction}!SetNumberOfScatters@{SetNumberOfScatters}}
+\index{SetNumberOfScatters@{SetNumberOfScatters}!G4FastSim::EventAction@{G4FastSim::EventAction}}
+\doxysubsubsection{\texorpdfstring{SetNumberOfScatters()}{SetNumberOfScatters()}}
+{\footnotesize\ttfamily void G4\+Fast\+Sim\+::\+Event\+Action\+::\+Set\+Number\+Of\+Scatters (\begin{DoxyParamCaption}\item[{G4int}]{n }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classG4FastSim_1_1EventAction_ab0990d80db3bd9e4c88279d1490a4dc4}\label{classG4FastSim_1_1EventAction_ab0990d80db3bd9e4c88279d1490a4dc4} 
+\index{G4FastSim::EventAction@{G4FastSim::EventAction}!SetNumberOfScattersMax@{SetNumberOfScattersMax}}
+\index{SetNumberOfScattersMax@{SetNumberOfScattersMax}!G4FastSim::EventAction@{G4FastSim::EventAction}}
+\doxysubsubsection{\texorpdfstring{SetNumberOfScattersMax()}{SetNumberOfScattersMax()}}
+{\footnotesize\ttfamily void G4\+Fast\+Sim\+::\+Event\+Action\+::\+Set\+Number\+Of\+Scatters\+Max (\begin{DoxyParamCaption}\item[{G4int}]{n }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{EventAction_8hh}{Event\+Action.\+hh}}\item 
+src/\mbox{\hyperlink{EventAction_8cc}{Event\+Action.\+cc}}\end{DoxyCompactItemize}

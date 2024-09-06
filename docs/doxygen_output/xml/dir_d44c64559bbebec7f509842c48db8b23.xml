@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="dir_d44c64559bbebec7f509842c48db8b23" kind="dir">
+    <compoundname>include</compoundname>
+    <innerfile refid="ActionInitialization_8hh">ActionInitialization.hh</innerfile>
+    <innerfile refid="Cluster_8hh">Cluster.hh</innerfile>
+    <innerfile refid="CustomEmPhysics_8hh">CustomEmPhysics.hh</innerfile>
+    <innerfile refid="DetectorConstruction_8hh">DetectorConstruction.hh</innerfile>
+    <innerfile refid="DetectorConstructionMessenger_8hh">DetectorConstructionMessenger.hh</innerfile>
+    <innerfile refid="EventAction_8hh">EventAction.hh</innerfile>
+    <innerfile refid="ExtendedLivermoreComptonModel_8hh">ExtendedLivermoreComptonModel.hh</innerfile>
+    <innerfile refid="GammaRayHelper_8hh">GammaRayHelper.hh</innerfile>
+    <innerfile refid="Hit_8hh">Hit.hh</innerfile>
+    <innerfile refid="Materials_8hh">Materials.hh</innerfile>
+    <innerfile refid="PrimaryGeneratorAction_8hh">PrimaryGeneratorAction.hh</innerfile>
+    <innerfile refid="RunAction_8hh">RunAction.hh</innerfile>
+    <innerfile refid="RunActionMessenger_8hh">RunActionMessenger.hh</innerfile>
+    <innerfile refid="SensitiveDetector_8hh">SensitiveDetector.hh</innerfile>
+    <innerfile refid="SteppingAction_8hh">SteppingAction.hh</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/"/>
+  </compounddef>
+</doxygen>

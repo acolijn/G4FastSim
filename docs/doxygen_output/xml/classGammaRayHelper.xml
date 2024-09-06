@@ -1,0 +1,798 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="classGammaRayHelper" kind="class" language="C++" prot="public">
+    <compoundname>GammaRayHelper</compoundname>
+    <includes refid="GammaRayHelper_8hh" local="no">GammaRayHelper.hh</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classGammaRayHelper_1a57682ec0e3a695927160735273220e42" prot="private" static="no" mutable="no">
+        <type><ref refid="classExtendedLivermoreComptonModel" kindref="compound">ExtendedLivermoreComptonModel</ref> *</type>
+        <definition>ExtendedLivermoreComptonModel* GammaRayHelper::comptonModel</definition>
+        <argsstring></argsstring>
+        <name>comptonModel</name>
+        <qualifiedname>GammaRayHelper::comptonModel</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/GammaRayHelper.hh" line="88" column="35" bodyfile="include/GammaRayHelper.hh" bodystart="88" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classGammaRayHelper_1a76269201bc9a89bf0e1240e7b00a515f" prot="private" static="no" mutable="no">
+        <type>G4LivermorePhotoElectricModel *</type>
+        <definition>G4LivermorePhotoElectricModel* GammaRayHelper::photoelectricModel</definition>
+        <argsstring></argsstring>
+        <name>photoelectricModel</name>
+        <qualifiedname>GammaRayHelper::photoelectricModel</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/GammaRayHelper.hh" line="89" column="35" bodyfile="include/GammaRayHelper.hh" bodystart="89" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classGammaRayHelper_1aacbb3200aa7d8e726553e2622fe430e5" prot="private" static="no" mutable="no">
+        <type>G4LivermoreRayleighModel *</type>
+        <definition>G4LivermoreRayleighModel* GammaRayHelper::rayleighModel</definition>
+        <argsstring></argsstring>
+        <name>rayleighModel</name>
+        <qualifiedname>GammaRayHelper::rayleighModel</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/GammaRayHelper.hh" line="90" column="30" bodyfile="include/GammaRayHelper.hh" bodystart="90" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classGammaRayHelper_1a393c04325a2c76e4538eada107a187e8" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; std::string &gt;</type>
+        <definition>std::vector&lt;std::string&gt; GammaRayHelper::fElementsUsed</definition>
+        <argsstring></argsstring>
+        <name>fElementsUsed</name>
+        <qualifiedname>GammaRayHelper::fElementsUsed</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/GammaRayHelper.hh" line="92" column="17" bodyfile="include/GammaRayHelper.hh" bodystart="92" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classGammaRayHelper_1a37b941d94b023af22d4255ebd143a2c9" prot="private" static="no" mutable="no">
+        <type>std::map&lt; const G4Element *, CDFData &gt;</type>
+        <definition>std::map&lt;const G4Element*, CDFData&gt; GammaRayHelper::cdfDataMap</definition>
+        <argsstring></argsstring>
+        <name>cdfDataMap</name>
+        <qualifiedname>GammaRayHelper::cdfDataMap</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/GammaRayHelper.hh" line="94" column="14" bodyfile="include/GammaRayHelper.hh" bodystart="94" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classGammaRayHelper_1aa08d43beba6321cb7d3666be9e16a165" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool GammaRayHelper::cdfsInitialized</definition>
+        <argsstring></argsstring>
+        <name>cdfsInitialized</name>
+        <qualifiedname>GammaRayHelper::cdfsInitialized</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/GammaRayHelper.hh" line="96" column="10" bodyfile="include/GammaRayHelper.hh" bodystart="96" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classGammaRayHelper_1a5fc60cc05353b0bf6747ed354140af14" prot="private" static="no" mutable="no">
+        <type>G4double</type>
+        <definition>G4double GammaRayHelper::fInitialEnergy</definition>
+        <argsstring></argsstring>
+        <name>fInitialEnergy</name>
+        <qualifiedname>GammaRayHelper::fInitialEnergy</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/GammaRayHelper.hh" line="97" column="14" bodyfile="include/GammaRayHelper.hh" bodystart="97" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classGammaRayHelper_1aa4d80bdef675e4eb3e2084e140521d55" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>thread_local <ref refid="classGammaRayHelper" kindref="compound">GammaRayHelper</ref> &amp;</type>
+        <definition>GammaRayHelper &amp; GammaRayHelper::Instance</definition>
+        <argsstring>()</argsstring>
+        <name>Instance</name>
+        <qualifiedname>GammaRayHelper::Instance</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/GammaRayHelper.hh" line="50" column="40" bodyfile="src/GammaRayHelper.cc" bodystart="21" bodyend="24"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classGammaRayHelper_1abaae1ae4a540ea36d89e6a3147ef3e7a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void GammaRayHelper::Initialize</definition>
+        <argsstring>()</argsstring>
+        <name>Initialize</name>
+        <qualifiedname>GammaRayHelper::Initialize</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Initialize the Compton and photoelectric models. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/GammaRayHelper.hh" line="51" column="10" bodyfile="src/GammaRayHelper.cc" bodystart="33" bodyend="47"/>
+      </memberdef>
+      <memberdef kind="function" id="classGammaRayHelper_1a46237b1c1462735a33f905e7aaa66676" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void GammaRayHelper::InitializeCDFs</definition>
+        <argsstring>(G4double energy)</argsstring>
+        <name>InitializeCDFs</name>
+        <qualifiedname>GammaRayHelper::InitializeCDFs</qualifiedname>
+        <param>
+          <type>G4double</type>
+          <declname>energy</declname>
+        </param>
+        <briefdescription>
+<para>Initializes the cumulative distribution functions (CDFs) for gamma rays. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function initializes the CDFs for gamma rays based on the given energy. It checks if the CDFs have already been initialized and if not, performs the initialization. The CDFs are created for each element used in the material table.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>energy</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The energy of the gamma rays. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/GammaRayHelper.hh" line="52" column="10" bodyfile="src/GammaRayHelper.cc" bodystart="58" bodyend="79"/>
+      </memberdef>
+      <memberdef kind="function" id="classGammaRayHelper_1a9210941982409cb5cc915759d7a0472a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>G4double</type>
+        <definition>G4double GammaRayHelper::GetComptonCrossSection</definition>
+        <argsstring>(G4double energy, G4Material *material)</argsstring>
+        <name>GetComptonCrossSection</name>
+        <qualifiedname>GammaRayHelper::GetComptonCrossSection</qualifiedname>
+        <param>
+          <type>G4double</type>
+          <declname>energy</declname>
+        </param>
+        <param>
+          <type>G4Material *</type>
+          <declname>material</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the Compton cross section for a given energy and material. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>energy</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The energy of the gamma ray. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>material</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The material to calculate the cross section for. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The Compton cross section. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/GammaRayHelper.hh" line="56" column="14" bodyfile="src/GammaRayHelper.cc" bodystart="123" bodyend="133"/>
+      </memberdef>
+      <memberdef kind="function" id="classGammaRayHelper_1a904bd1187ecd382072b9e98ac5051646" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>G4double</type>
+        <definition>G4double GammaRayHelper::GetPhotoelectricCrossSection</definition>
+        <argsstring>(G4double energy, G4Material *material)</argsstring>
+        <name>GetPhotoelectricCrossSection</name>
+        <qualifiedname>GammaRayHelper::GetPhotoelectricCrossSection</qualifiedname>
+        <param>
+          <type>G4double</type>
+          <declname>energy</declname>
+        </param>
+        <param>
+          <type>G4Material *</type>
+          <declname>material</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the photoelectric cross section for a given energy and material. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>energy</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The energy of the gamma ray. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>material</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The material to calculate the cross section for. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The photoelectric cross section. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/GammaRayHelper.hh" line="57" column="14" bodyfile="src/GammaRayHelper.cc" bodystart="141" bodyend="151"/>
+      </memberdef>
+      <memberdef kind="function" id="classGammaRayHelper_1a1dcb9b960c9c14b230ff4a1e26d3f012" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>G4double</type>
+        <definition>G4double GammaRayHelper::GetTotalCrossSection</definition>
+        <argsstring>(G4double energy, G4Material *material)</argsstring>
+        <name>GetTotalCrossSection</name>
+        <qualifiedname>GammaRayHelper::GetTotalCrossSection</qualifiedname>
+        <param>
+          <type>G4double</type>
+          <declname>energy</declname>
+        </param>
+        <param>
+          <type>G4Material *</type>
+          <declname>material</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the total cross section (Compton + photoelectric) for a given energy and material. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>energy</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The energy of the gamma ray. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>material</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The material to calculate the cross section for. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The total cross section. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/GammaRayHelper.hh" line="58" column="14" bodyfile="src/GammaRayHelper.cc" bodystart="159" bodyend="163"/>
+      </memberdef>
+      <memberdef kind="function" id="classGammaRayHelper_1aac1da704b4d19dc2aef4546db557cce9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>G4double</type>
+        <definition>G4double GammaRayHelper::GetAttenuationLength</definition>
+        <argsstring>(G4double energy, G4Material *material)</argsstring>
+        <name>GetAttenuationLength</name>
+        <qualifiedname>GammaRayHelper::GetAttenuationLength</qualifiedname>
+        <param>
+          <type>G4double</type>
+          <declname>energy</declname>
+        </param>
+        <param>
+          <type>G4Material *</type>
+          <declname>material</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the attenuation length for a given energy and material. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>energy</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The energy of the gamma ray. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>material</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The material to calculate the attenuation length for. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The attenuation length. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/GammaRayHelper.hh" line="59" column="14" bodyfile="src/GammaRayHelper.cc" bodystart="171" bodyend="201"/>
+      </memberdef>
+      <memberdef kind="function" id="classGammaRayHelper_1aaa1dae5e87643fb8af5672b8d3cdf981" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>G4double</type>
+        <definition>G4double GammaRayHelper::GetMassAttenuationCoefficient</definition>
+        <argsstring>(G4double energy, G4Material *material)</argsstring>
+        <name>GetMassAttenuationCoefficient</name>
+        <qualifiedname>GammaRayHelper::GetMassAttenuationCoefficient</qualifiedname>
+        <param>
+          <type>G4double</type>
+          <declname>energy</declname>
+        </param>
+        <param>
+          <type>G4Material *</type>
+          <declname>material</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the mass attenuation coefficient for a given energy and material. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>energy</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The energy of the gamma ray. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>material</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The material to calculate the mass attenuation coefficient for. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The mass attenuation coefficient. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/GammaRayHelper.hh" line="60" column="14" bodyfile="src/GammaRayHelper.cc" bodystart="209" bodyend="233"/>
+      </memberdef>
+      <memberdef kind="function" id="classGammaRayHelper_1a749f2c6ac264a6065ca97de71443e9f0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::pair&lt; G4ThreeVector, G4double &gt;</type>
+        <definition>std::pair&lt; G4ThreeVector, G4double &gt; GammaRayHelper::GenerateInteractionPoint</definition>
+        <argsstring>(const G4Step *step)</argsstring>
+        <name>GenerateInteractionPoint</name>
+        <qualifiedname>GammaRayHelper::GenerateInteractionPoint</qualifiedname>
+        <param>
+          <type>const G4Step *</type>
+          <declname>step</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Generates an interaction point along a line segment between two points.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>entrance</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The entrance point of the line segment. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>exit</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The exit point of the line segment. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>attenuation_length</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The attenuation length of the material. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The generated interaction point. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/GammaRayHelper.hh" line="62" column="15" bodyfile="src/GammaRayHelper.cc" bodystart="386" bodyend="412"/>
+      </memberdef>
+      <memberdef kind="function" id="classGammaRayHelper_1a5984998d3bf8181e5ed84e0d26a0d9d0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::pair&lt; G4double, G4double &gt;</type>
+        <definition>std::pair&lt; G4double, G4double &gt; GammaRayHelper::GenerateComptonAngle</definition>
+        <argsstring>(const G4Step *step, G4double energy_max)</argsstring>
+        <name>GenerateComptonAngle</name>
+        <qualifiedname>GammaRayHelper::GenerateComptonAngle</qualifiedname>
+        <param>
+          <type>const G4Step *</type>
+          <declname>step</declname>
+        </param>
+        <param>
+          <type>G4double</type>
+          <declname>energy_max</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Generates a Compton scattering angle for a gamma ray. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>step</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The G4Step object containing information about the current step. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>energy_max</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The maximum energy deposition allowed for the gamma ray. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The cosine of the scattering angle. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/GammaRayHelper.hh" line="63" column="15" bodyfile="src/GammaRayHelper.cc" bodystart="242" bodyend="287"/>
+      </memberdef>
+      <memberdef kind="function" id="classGammaRayHelper_1a5f490056674be18ba926a76bf683a521" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>InteractionData</type>
+        <definition>InteractionData GammaRayHelper::DoComptonScatter</definition>
+        <argsstring>(const G4Step *step, G4ThreeVector x0, G4double energy_max)</argsstring>
+        <name>DoComptonScatter</name>
+        <qualifiedname>GammaRayHelper::DoComptonScatter</qualifiedname>
+        <param>
+          <type>const G4Step *</type>
+          <declname>step</declname>
+        </param>
+        <param>
+          <type>G4ThreeVector</type>
+          <declname>x0</declname>
+        </param>
+        <param>
+          <type>G4double</type>
+          <declname>energy_max</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/GammaRayHelper.hh" line="65" column="21" bodyfile="src/GammaRayHelper.cc" bodystart="351" bodyend="375"/>
+      </memberdef>
+      <memberdef kind="function" id="classGammaRayHelper_1aaf6f8d24a59c684d5c5b7f63548f1016" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classExtendedLivermoreComptonModel" kindref="compound">ExtendedLivermoreComptonModel</ref> *</type>
+        <definition>ExtendedLivermoreComptonModel * GammaRayHelper::GetComptonModel</definition>
+        <argsstring>()</argsstring>
+        <name>GetComptonModel</name>
+        <qualifiedname>GammaRayHelper::GetComptonModel</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/GammaRayHelper.hh" line="68" column="35" bodyfile="include/GammaRayHelper.hh" bodystart="68" bodyend="70"/>
+      </memberdef>
+      <memberdef kind="function" id="classGammaRayHelper_1aeb1b144790c554c971364a2ea267e2b8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>G4LivermorePhotoElectricModel *</type>
+        <definition>G4LivermorePhotoElectricModel * GammaRayHelper::GetPhotoelectricModel</definition>
+        <argsstring>()</argsstring>
+        <name>GetPhotoelectricModel</name>
+        <qualifiedname>GammaRayHelper::GetPhotoelectricModel</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/GammaRayHelper.hh" line="72" column="35" bodyfile="include/GammaRayHelper.hh" bodystart="72" bodyend="74"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classGammaRayHelper_1aeed751580b2f3e943a6fef8bc1fe69fc" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>GammaRayHelper::GammaRayHelper</definition>
+        <argsstring>()</argsstring>
+        <name>GammaRayHelper</name>
+        <qualifiedname>GammaRayHelper::GammaRayHelper</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/GammaRayHelper.hh" line="77" column="5" bodyfile="src/GammaRayHelper.cc" bodystart="27" bodyend="27"/>
+      </memberdef>
+      <memberdef kind="function" id="classGammaRayHelper_1a4a51bc4e1e0b5a55ca95e9f8ea05e2a3" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>GammaRayHelper::~GammaRayHelper</definition>
+        <argsstring>()=default</argsstring>
+        <name>~GammaRayHelper</name>
+        <qualifiedname>GammaRayHelper::~GammaRayHelper</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/GammaRayHelper.hh" line="78" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classGammaRayHelper_1abb6e5617fc40269ccca11ef8b0cb1451" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>CDFData</type>
+        <definition>CDFData GammaRayHelper::CreateCDF</definition>
+        <argsstring>(const G4Element *element, G4double energy)</argsstring>
+        <name>CreateCDF</name>
+        <qualifiedname>GammaRayHelper::CreateCDF</qualifiedname>
+        <param>
+          <type>const G4Element *</type>
+          <declname>element</declname>
+        </param>
+        <param>
+          <type>G4double</type>
+          <declname>energy</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Create a cumulative distribution function (CDF) for a given element and energy. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>element</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The element to create the CDF for. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>energy</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The energy of the gamma ray. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The CDF data. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/GammaRayHelper.hh" line="80" column="13" bodyfile="src/GammaRayHelper.cc" bodystart="87" bodyend="114"/>
+      </memberdef>
+      <memberdef kind="function" id="classGammaRayHelper_1a39b7e6ac7ca662426bd2ebe6d1dcced2" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>G4double</type>
+        <definition>G4double GammaRayHelper::CalculateComptonEnergy</definition>
+        <argsstring>(G4double energy, G4double cosTheta)</argsstring>
+        <name>CalculateComptonEnergy</name>
+        <qualifiedname>GammaRayHelper::CalculateComptonEnergy</qualifiedname>
+        <param>
+          <type>G4double</type>
+          <declname>energy</declname>
+          <defname>energy0</defname>
+        </param>
+        <param>
+          <type>G4double</type>
+          <declname>cosTheta</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Calculates the energy of the scattered gamma ray after a Compton scattering event.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>energy0</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The initial energy of the gamma ray. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>cosTheta</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The scattering angle of the gamma ray. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The energy of the scattered gamma ray. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/GammaRayHelper.hh" line="81" column="14" bodyfile="src/GammaRayHelper.cc" bodystart="296" bodyend="299"/>
+      </memberdef>
+      <memberdef kind="function" id="classGammaRayHelper_1a75f769c218bfb84304e07309f7873e29" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>G4double</type>
+        <definition>G4double GammaRayHelper::CalculateMinCosTheta</definition>
+        <argsstring>(G4double energy, G4double maxDeposition)</argsstring>
+        <name>CalculateMinCosTheta</name>
+        <qualifiedname>GammaRayHelper::CalculateMinCosTheta</qualifiedname>
+        <param>
+          <type>G4double</type>
+          <declname>energy</declname>
+          <defname>energy0</defname>
+        </param>
+        <param>
+          <type>G4double</type>
+          <declname>maxDeposition</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Calculates the minimum cosine of the scattering angle for a gamma ray.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>energy0</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The initial energy of the gamma ray. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>maxDeposition</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The maximum energy deposition allowed for the gamma ray. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The minimum cosine of the scattering angle. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/GammaRayHelper.hh" line="82" column="14" bodyfile="src/GammaRayHelper.cc" bodystart="308" bodyend="322"/>
+      </memberdef>
+      <memberdef kind="function" id="classGammaRayHelper_1aff2e69ae2d0e874ca797f9c8e0f4bf87" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>G4ThreeVector</type>
+        <definition>G4ThreeVector GammaRayHelper::CalculateNewDirection</definition>
+        <argsstring>(G4ThreeVector dir, G4double cosTheta)</argsstring>
+        <name>CalculateNewDirection</name>
+        <qualifiedname>GammaRayHelper::CalculateNewDirection</qualifiedname>
+        <param>
+          <type>G4ThreeVector</type>
+          <declname>dir</declname>
+          <defname>direction</defname>
+        </param>
+        <param>
+          <type>G4double</type>
+          <declname>cosTheta</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Calculates the new direction of the particle after a Compton scatter.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>step</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The G4Step object containing information about the current step. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>cosTheta</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The cosine of the scattering angle. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The new direction of the particle. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/GammaRayHelper.hh" line="83" column="19" bodyfile="src/GammaRayHelper.cc" bodystart="331" bodyend="349"/>
+      </memberdef>
+      <memberdef kind="function" id="classGammaRayHelper_1ac8fee4e103b86716f708d09975eda995" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>GammaRayHelper::GammaRayHelper</definition>
+        <argsstring>(const GammaRayHelper &amp;)=delete</argsstring>
+        <name>GammaRayHelper</name>
+        <qualifiedname>GammaRayHelper::GammaRayHelper</qualifiedname>
+        <param>
+          <type>const <ref refid="classGammaRayHelper" kindref="compound">GammaRayHelper</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/GammaRayHelper.hh" line="85" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classGammaRayHelper_1a7b5af93f5a18e7b5cefe7b4a6c5dfc9e" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classGammaRayHelper" kindref="compound">GammaRayHelper</ref> &amp;</type>
+        <definition>GammaRayHelper &amp; GammaRayHelper::operator=</definition>
+        <argsstring>(const GammaRayHelper &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>GammaRayHelper::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classGammaRayHelper" kindref="compound">GammaRayHelper</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/GammaRayHelper.hh" line="86" column="20"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>A helper class for handling gamma ray interactions. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This class provides methods for calculating gamma ray cross sections, Compton scattering angles, and generating interaction points. </para>
+    </detaileddescription>
+    <location file="include/GammaRayHelper.hh" line="48" column="1" bodyfile="include/GammaRayHelper.hh" bodystart="48" bodyend="101"/>
+    <listofallmembers>
+      <member refid="classGammaRayHelper_1a39b7e6ac7ca662426bd2ebe6d1dcced2" prot="private" virt="non-virtual"><scope>GammaRayHelper</scope><name>CalculateComptonEnergy</name></member>
+      <member refid="classGammaRayHelper_1a75f769c218bfb84304e07309f7873e29" prot="private" virt="non-virtual"><scope>GammaRayHelper</scope><name>CalculateMinCosTheta</name></member>
+      <member refid="classGammaRayHelper_1aff2e69ae2d0e874ca797f9c8e0f4bf87" prot="private" virt="non-virtual"><scope>GammaRayHelper</scope><name>CalculateNewDirection</name></member>
+      <member refid="classGammaRayHelper_1a37b941d94b023af22d4255ebd143a2c9" prot="private" virt="non-virtual"><scope>GammaRayHelper</scope><name>cdfDataMap</name></member>
+      <member refid="classGammaRayHelper_1aa08d43beba6321cb7d3666be9e16a165" prot="private" virt="non-virtual"><scope>GammaRayHelper</scope><name>cdfsInitialized</name></member>
+      <member refid="classGammaRayHelper_1a57682ec0e3a695927160735273220e42" prot="private" virt="non-virtual"><scope>GammaRayHelper</scope><name>comptonModel</name></member>
+      <member refid="classGammaRayHelper_1abb6e5617fc40269ccca11ef8b0cb1451" prot="private" virt="non-virtual"><scope>GammaRayHelper</scope><name>CreateCDF</name></member>
+      <member refid="classGammaRayHelper_1a5f490056674be18ba926a76bf683a521" prot="public" virt="non-virtual"><scope>GammaRayHelper</scope><name>DoComptonScatter</name></member>
+      <member refid="classGammaRayHelper_1a393c04325a2c76e4538eada107a187e8" prot="private" virt="non-virtual"><scope>GammaRayHelper</scope><name>fElementsUsed</name></member>
+      <member refid="classGammaRayHelper_1a5fc60cc05353b0bf6747ed354140af14" prot="private" virt="non-virtual"><scope>GammaRayHelper</scope><name>fInitialEnergy</name></member>
+      <member refid="classGammaRayHelper_1aeed751580b2f3e943a6fef8bc1fe69fc" prot="private" virt="non-virtual"><scope>GammaRayHelper</scope><name>GammaRayHelper</name></member>
+      <member refid="classGammaRayHelper_1ac8fee4e103b86716f708d09975eda995" prot="private" virt="non-virtual"><scope>GammaRayHelper</scope><name>GammaRayHelper</name></member>
+      <member refid="classGammaRayHelper_1a5984998d3bf8181e5ed84e0d26a0d9d0" prot="public" virt="non-virtual"><scope>GammaRayHelper</scope><name>GenerateComptonAngle</name></member>
+      <member refid="classGammaRayHelper_1a749f2c6ac264a6065ca97de71443e9f0" prot="public" virt="non-virtual"><scope>GammaRayHelper</scope><name>GenerateInteractionPoint</name></member>
+      <member refid="classGammaRayHelper_1aac1da704b4d19dc2aef4546db557cce9" prot="public" virt="non-virtual"><scope>GammaRayHelper</scope><name>GetAttenuationLength</name></member>
+      <member refid="classGammaRayHelper_1a9210941982409cb5cc915759d7a0472a" prot="public" virt="non-virtual"><scope>GammaRayHelper</scope><name>GetComptonCrossSection</name></member>
+      <member refid="classGammaRayHelper_1aaf6f8d24a59c684d5c5b7f63548f1016" prot="public" virt="non-virtual"><scope>GammaRayHelper</scope><name>GetComptonModel</name></member>
+      <member refid="classGammaRayHelper_1aaa1dae5e87643fb8af5672b8d3cdf981" prot="public" virt="non-virtual"><scope>GammaRayHelper</scope><name>GetMassAttenuationCoefficient</name></member>
+      <member refid="classGammaRayHelper_1a904bd1187ecd382072b9e98ac5051646" prot="public" virt="non-virtual"><scope>GammaRayHelper</scope><name>GetPhotoelectricCrossSection</name></member>
+      <member refid="classGammaRayHelper_1aeb1b144790c554c971364a2ea267e2b8" prot="public" virt="non-virtual"><scope>GammaRayHelper</scope><name>GetPhotoelectricModel</name></member>
+      <member refid="classGammaRayHelper_1a1dcb9b960c9c14b230ff4a1e26d3f012" prot="public" virt="non-virtual"><scope>GammaRayHelper</scope><name>GetTotalCrossSection</name></member>
+      <member refid="classGammaRayHelper_1abaae1ae4a540ea36d89e6a3147ef3e7a" prot="public" virt="non-virtual"><scope>GammaRayHelper</scope><name>Initialize</name></member>
+      <member refid="classGammaRayHelper_1a46237b1c1462735a33f905e7aaa66676" prot="public" virt="non-virtual"><scope>GammaRayHelper</scope><name>InitializeCDFs</name></member>
+      <member refid="classGammaRayHelper_1aa4d80bdef675e4eb3e2084e140521d55" prot="public" virt="non-virtual"><scope>GammaRayHelper</scope><name>Instance</name></member>
+      <member refid="classGammaRayHelper_1a7b5af93f5a18e7b5cefe7b4a6c5dfc9e" prot="private" virt="non-virtual"><scope>GammaRayHelper</scope><name>operator=</name></member>
+      <member refid="classGammaRayHelper_1a76269201bc9a89bf0e1240e7b00a515f" prot="private" virt="non-virtual"><scope>GammaRayHelper</scope><name>photoelectricModel</name></member>
+      <member refid="classGammaRayHelper_1aacbb3200aa7d8e726553e2622fe430e5" prot="private" virt="non-virtual"><scope>GammaRayHelper</scope><name>rayleighModel</name></member>
+      <member refid="classGammaRayHelper_1a4a51bc4e1e0b5a55ca95e9f8ea05e2a3" prot="private" virt="non-virtual"><scope>GammaRayHelper</scope><name>~GammaRayHelper</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

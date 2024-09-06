@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="classG4FastSim_1_1Materials" kind="class" language="C++" prot="public">
+    <compoundname>G4FastSim::Materials</compoundname>
+    <includes refid="Materials_8hh" local="no">Materials.hh</includes>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classG4FastSim_1_1Materials_1ac1751f59b2c1eb7b22719bf6b99049a7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>G4FastSim::Materials::Materials</definition>
+        <argsstring>()</argsstring>
+        <name>Materials</name>
+        <qualifiedname>G4FastSim::Materials::Materials</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/Materials.hh" line="19" column="9" bodyfile="src/Materials.cc" bodystart="11" bodyend="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classG4FastSim_1_1Materials_1ae5ed292f6259abccf38b0cc6689fc38d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>G4FastSim::Materials::~Materials</definition>
+        <argsstring>()</argsstring>
+        <name>~Materials</name>
+        <qualifiedname>G4FastSim::Materials::~Materials</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/Materials.hh" line="20" column="9" bodyfile="src/Materials.cc" bodystart="15" bodyend="17"/>
+      </memberdef>
+      <memberdef kind="function" id="classG4FastSim_1_1Materials_1a796f131069ba10c41945d693d3e9f131" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void G4FastSim::Materials::DefineMaterials</definition>
+        <argsstring>()</argsstring>
+        <name>DefineMaterials</name>
+        <qualifiedname>G4FastSim::Materials::DefineMaterials</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/Materials.hh" line="21" column="14" bodyfile="src/Materials.cc" bodystart="19" bodyend="75"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/Materials.hh" line="7" column="1" bodyfile="include/Materials.hh" bodystart="7" bodyend="24"/>
+    <listofallmembers>
+      <member refid="classG4FastSim_1_1Materials_1a796f131069ba10c41945d693d3e9f131" prot="public" virt="non-virtual"><scope>G4FastSim::Materials</scope><name>DefineMaterials</name></member>
+      <member refid="classG4FastSim_1_1Materials_1ac1751f59b2c1eb7b22719bf6b99049a7" prot="public" virt="non-virtual"><scope>G4FastSim::Materials</scope><name>Materials</name></member>
+      <member refid="classG4FastSim_1_1Materials_1ae5ed292f6259abccf38b0cc6689fc38d" prot="public" virt="non-virtual"><scope>G4FastSim::Materials</scope><name>~Materials</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

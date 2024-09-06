@@ -1,0 +1,85 @@
+\doxysection{G4\+Fast\+Sim\+::Stepping\+Action Class Reference}
+\hypertarget{classG4FastSim_1_1SteppingAction}{}\label{classG4FastSim_1_1SteppingAction}\index{G4FastSim::SteppingAction@{G4FastSim::SteppingAction}}
+
+
+{\ttfamily \#include $<$Stepping\+Action.\+hh$>$}
+
+Inheritance diagram for G4\+Fast\+Sim\+::Stepping\+Action\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classG4FastSim_1_1SteppingAction}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classG4FastSim_1_1SteppingAction_ad9d07e48fe9696277eb14f9e6218ea66}{Stepping\+Action}} (\mbox{\hyperlink{classG4FastSim_1_1EventAction}{Event\+Action}} \texorpdfstring{$\ast$}{*}event\+Action, \mbox{\hyperlink{classGammaRayHelper}{Gamma\+Ray\+Helper}} \texorpdfstring{$\ast$}{*}helper)
+\item 
+\mbox{\hyperlink{classG4FastSim_1_1SteppingAction_a14f0205c8adfb5d2b93bba18124c7e0b}{\texorpdfstring{$\sim$}{\string~}\+Stepping\+Action}} ()
+\item 
+void \mbox{\hyperlink{classG4FastSim_1_1SteppingAction_aaeddad78c5a0294d2e4bea7d10523ca2}{User\+Stepping\+Action}} (const G4\+Step \texorpdfstring{$\ast$}{*}) override
+\begin{DoxyCompactList}\small\item\em Performs the user-\/defined stepping action for each step of a particle in the simulation. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classG4FastSim_1_1SteppingAction_acedce0206842916adf0fce67e0d348a4}{Set\+Verbosity}} (G4int level)
+\item 
+void \mbox{\hyperlink{classG4FastSim_1_1SteppingAction_af74195411272f886407f01a18c91e9f3}{Print}} (const G4\+Step \texorpdfstring{$\ast$}{*}step)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classG4FastSim_1_1SteppingAction_ad9d07e48fe9696277eb14f9e6218ea66}\label{classG4FastSim_1_1SteppingAction_ad9d07e48fe9696277eb14f9e6218ea66} 
+\index{G4FastSim::SteppingAction@{G4FastSim::SteppingAction}!SteppingAction@{SteppingAction}}
+\index{SteppingAction@{SteppingAction}!G4FastSim::SteppingAction@{G4FastSim::SteppingAction}}
+\doxysubsubsection{\texorpdfstring{SteppingAction()}{SteppingAction()}}
+{\footnotesize\ttfamily G4\+Fast\+Sim\+::\+Stepping\+Action\+::\+Stepping\+Action (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classG4FastSim_1_1EventAction}{Event\+Action}} \texorpdfstring{$\ast$}{*}}]{event\+Action,  }\item[{\mbox{\hyperlink{classGammaRayHelper}{Gamma\+Ray\+Helper}} \texorpdfstring{$\ast$}{*}}]{helper }\end{DoxyParamCaption})}
+
+\Hypertarget{classG4FastSim_1_1SteppingAction_a14f0205c8adfb5d2b93bba18124c7e0b}\label{classG4FastSim_1_1SteppingAction_a14f0205c8adfb5d2b93bba18124c7e0b} 
+\index{G4FastSim::SteppingAction@{G4FastSim::SteppingAction}!````~SteppingAction@{\texorpdfstring{$\sim$}{\string~}SteppingAction}}
+\index{````~SteppingAction@{\texorpdfstring{$\sim$}{\string~}SteppingAction}!G4FastSim::SteppingAction@{G4FastSim::SteppingAction}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}SteppingAction()}{\string~SteppingAction()}}
+{\footnotesize\ttfamily G4\+Fast\+Sim\+::\+Stepping\+Action\+::\texorpdfstring{$\sim$}{\string~}\+Stepping\+Action (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classG4FastSim_1_1SteppingAction_af74195411272f886407f01a18c91e9f3}\label{classG4FastSim_1_1SteppingAction_af74195411272f886407f01a18c91e9f3} 
+\index{G4FastSim::SteppingAction@{G4FastSim::SteppingAction}!Print@{Print}}
+\index{Print@{Print}!G4FastSim::SteppingAction@{G4FastSim::SteppingAction}}
+\doxysubsubsection{\texorpdfstring{Print()}{Print()}}
+{\footnotesize\ttfamily void G4\+Fast\+Sim\+::\+Stepping\+Action\+::\+Print (\begin{DoxyParamCaption}\item[{const G4\+Step \texorpdfstring{$\ast$}{*}}]{step }\end{DoxyParamCaption})}
+
+Prints information about the given step.
+
+
+\begin{DoxyParams}{Parameters}
+{\em step} & The step for which to print information. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classG4FastSim_1_1SteppingAction_acedce0206842916adf0fce67e0d348a4}\label{classG4FastSim_1_1SteppingAction_acedce0206842916adf0fce67e0d348a4} 
+\index{G4FastSim::SteppingAction@{G4FastSim::SteppingAction}!SetVerbosity@{SetVerbosity}}
+\index{SetVerbosity@{SetVerbosity}!G4FastSim::SteppingAction@{G4FastSim::SteppingAction}}
+\doxysubsubsection{\texorpdfstring{SetVerbosity()}{SetVerbosity()}}
+{\footnotesize\ttfamily void G4\+Fast\+Sim\+::\+Stepping\+Action\+::\+Set\+Verbosity (\begin{DoxyParamCaption}\item[{G4int}]{level }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classG4FastSim_1_1SteppingAction_aaeddad78c5a0294d2e4bea7d10523ca2}\label{classG4FastSim_1_1SteppingAction_aaeddad78c5a0294d2e4bea7d10523ca2} 
+\index{G4FastSim::SteppingAction@{G4FastSim::SteppingAction}!UserSteppingAction@{UserSteppingAction}}
+\index{UserSteppingAction@{UserSteppingAction}!G4FastSim::SteppingAction@{G4FastSim::SteppingAction}}
+\doxysubsubsection{\texorpdfstring{UserSteppingAction()}{UserSteppingAction()}}
+{\footnotesize\ttfamily void G4\+Fast\+Sim\+::\+Stepping\+Action\+::\+User\+Stepping\+Action (\begin{DoxyParamCaption}\item[{const G4\+Step \texorpdfstring{$\ast$}{*}}]{step }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+
+
+Performs the user-\/defined stepping action for each step of a particle in the simulation. 
+
+This function is called for each step of a particle in the simulation. It checks if the event is a fast simulation event, and if not, it calls the {\ttfamily Analyze\+Standard\+Step} function to analyze the standard step. If the event is a fast simulation event, it performs various operations based on the particle\textquotesingle{}s properties and the current volume.
+
+
+\begin{DoxyParams}{Parameters}
+{\em step} & The G4\+Step object representing the current step of the particle. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{SteppingAction_8hh}{Stepping\+Action.\+hh}}\item 
+src/\mbox{\hyperlink{SteppingAction_8cc}{Stepping\+Action.\+cc}}\end{DoxyCompactItemize}

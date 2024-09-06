@@ -1,0 +1,399 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="classG4FastSim_1_1SteppingAction" kind="class" language="C++" prot="public">
+    <compoundname>G4FastSim::SteppingAction</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">G4UserSteppingAction</basecompoundref>
+    <includes refid="SteppingAction_8hh" local="no">SteppingAction.hh</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classG4FastSim_1_1SteppingAction_1ad1a859f4aed845490055c2ddc3fdd296" prot="private" static="no" mutable="no">
+        <type><ref refid="classG4FastSim_1_1EventAction" kindref="compound">EventAction</ref> *</type>
+        <definition>EventAction* G4FastSim::SteppingAction::fEventAction</definition>
+        <argsstring></argsstring>
+        <name>fEventAction</name>
+        <qualifiedname>G4FastSim::SteppingAction::fEventAction</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/SteppingAction.hh" line="69" column="17" bodyfile="include/SteppingAction.hh" bodystart="69" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classG4FastSim_1_1SteppingAction_1a19b82387b50c2562603bce8248b4cd45" prot="private" static="no" mutable="no">
+        <type>G4LogicalVolume *</type>
+        <definition>G4LogicalVolume* G4FastSim::SteppingAction::fScoringVolume</definition>
+        <argsstring></argsstring>
+        <name>fScoringVolume</name>
+        <qualifiedname>G4FastSim::SteppingAction::fScoringVolume</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/SteppingAction.hh" line="70" column="21" bodyfile="include/SteppingAction.hh" bodystart="70" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classG4FastSim_1_1SteppingAction_1ab4f1789fc7aa2e3c5b9b89d54b1ce537" prot="private" static="no" mutable="no">
+        <type>G4ParticleTable *</type>
+        <definition>G4ParticleTable* G4FastSim::SteppingAction::particleTable</definition>
+        <argsstring></argsstring>
+        <name>particleTable</name>
+        <qualifiedname>G4FastSim::SteppingAction::particleTable</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/SteppingAction.hh" line="71" column="21" bodyfile="include/SteppingAction.hh" bodystart="71" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classG4FastSim_1_1SteppingAction_1a704bc9311a41c1093c5a77dcce511d15" prot="private" static="no" mutable="no">
+        <type><ref refid="classGammaRayHelper" kindref="compound">GammaRayHelper</ref> *</type>
+        <definition>GammaRayHelper* G4FastSim::SteppingAction::fGammaRayHelper</definition>
+        <argsstring></argsstring>
+        <name>fGammaRayHelper</name>
+        <qualifiedname>G4FastSim::SteppingAction::fGammaRayHelper</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/SteppingAction.hh" line="72" column="20" bodyfile="include/SteppingAction.hh" bodystart="72" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classG4FastSim_1_1SteppingAction_1abfc9c758b41acf0bcbb30587edb4f787" prot="private" static="no" mutable="no">
+        <type>std::map&lt; G4String, <ref refid="namespaceG4FastSim_1a03dccfbb4e25fe6f2ab3468c33175a36" kindref="member">HitsCollection</ref> * &gt;</type>
+        <definition>std::map&lt;G4String, HitsCollection*&gt; G4FastSim::SteppingAction::fHitsCollections</definition>
+        <argsstring></argsstring>
+        <name>fHitsCollections</name>
+        <qualifiedname>G4FastSim::SteppingAction::fHitsCollections</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/SteppingAction.hh" line="74" column="14" bodyfile="include/SteppingAction.hh" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classG4FastSim_1_1SteppingAction_1a38ac3ff38c20f67d0595f5c190c482ce" prot="private" static="no" mutable="no">
+        <type>std::map&lt; G4String, G4int &gt;</type>
+        <definition>std::map&lt;G4String, G4int&gt; G4FastSim::SteppingAction::fHitsCollectionIDs</definition>
+        <argsstring></argsstring>
+        <name>fHitsCollectionIDs</name>
+        <qualifiedname>G4FastSim::SteppingAction::fHitsCollectionIDs</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/SteppingAction.hh" line="75" column="14" bodyfile="include/SteppingAction.hh" bodystart="75" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classG4FastSim_1_1SteppingAction_1a6313a73535b336fd53e0f0b5c862a985" prot="private" static="no" mutable="no">
+        <type>G4bool</type>
+        <definition>G4bool G4FastSim::SteppingAction::fHitsCollectionInitialized</definition>
+        <argsstring></argsstring>
+        <name>fHitsCollectionInitialized</name>
+        <qualifiedname>G4FastSim::SteppingAction::fHitsCollectionInitialized</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/SteppingAction.hh" line="76" column="12" bodyfile="include/SteppingAction.hh" bodystart="76" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classG4FastSim_1_1SteppingAction_1a0a416e1446b7f34221bf4e6c92d4d448" prot="private" static="no" mutable="no">
+        <type>G4int</type>
+        <definition>G4int G4FastSim::SteppingAction::verbosityLevel</definition>
+        <argsstring></argsstring>
+        <name>verbosityLevel</name>
+        <qualifiedname>G4FastSim::SteppingAction::verbosityLevel</qualifiedname>
+        <initializer>=0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/SteppingAction.hh" line="78" column="11" bodyfile="include/SteppingAction.hh" bodystart="78" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classG4FastSim_1_1SteppingAction_1ad9d07e48fe9696277eb14f9e6218ea66" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>G4FastSim::SteppingAction::SteppingAction</definition>
+        <argsstring>(EventAction *eventAction, GammaRayHelper *helper)</argsstring>
+        <name>SteppingAction</name>
+        <qualifiedname>G4FastSim::SteppingAction::SteppingAction</qualifiedname>
+        <param>
+          <type><ref refid="classG4FastSim_1_1EventAction" kindref="compound">EventAction</ref> *</type>
+          <declname>eventAction</declname>
+        </param>
+        <param>
+          <type><ref refid="classGammaRayHelper" kindref="compound">GammaRayHelper</ref> *</type>
+          <declname>helper</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/SteppingAction.hh" line="56" column="5" bodyfile="src/SteppingAction.cc" bodystart="61" bodyend="71"/>
+      </memberdef>
+      <memberdef kind="function" id="classG4FastSim_1_1SteppingAction_1a14f0205c8adfb5d2b93bba18124c7e0b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>G4FastSim::SteppingAction::~SteppingAction</definition>
+        <argsstring>()</argsstring>
+        <name>~SteppingAction</name>
+        <qualifiedname>G4FastSim::SteppingAction::~SteppingAction</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/SteppingAction.hh" line="57" column="5" bodyfile="src/SteppingAction.cc" bodystart="74" bodyend="75"/>
+      </memberdef>
+      <memberdef kind="function" id="classG4FastSim_1_1SteppingAction_1aaeddad78c5a0294d2e4bea7d10523ca2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void G4FastSim::SteppingAction::UserSteppingAction</definition>
+        <argsstring>(const G4Step *) override</argsstring>
+        <name>UserSteppingAction</name>
+        <qualifiedname>G4FastSim::SteppingAction::UserSteppingAction</qualifiedname>
+        <param>
+          <type>const G4Step *</type>
+          <defname>step</defname>
+        </param>
+        <briefdescription>
+<para>Performs the user-defined stepping action for each step of a particle in the simulation. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function is called for each step of a particle in the simulation. It checks if the event is a fast simulation event, and if not, it calls the <computeroutput>AnalyzeStandardStep</computeroutput> function to analyze the standard step. If the event is a fast simulation event, it performs various operations based on the particle&apos;s properties and the current volume.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>step</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The G4Step object representing the current step of the particle. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/SteppingAction.hh" line="60" column="10" bodyfile="src/SteppingAction.cc" bodystart="87" bodyend="181"/>
+      </memberdef>
+      <memberdef kind="function" id="classG4FastSim_1_1SteppingAction_1acedce0206842916adf0fce67e0d348a4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void G4FastSim::SteppingAction::SetVerbosity</definition>
+        <argsstring>(G4int level)</argsstring>
+        <name>SetVerbosity</name>
+        <qualifiedname>G4FastSim::SteppingAction::SetVerbosity</qualifiedname>
+        <param>
+          <type>G4int</type>
+          <declname>level</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/SteppingAction.hh" line="61" column="10" bodyfile="include/SteppingAction.hh" bodystart="61" bodyend="61"/>
+      </memberdef>
+      <memberdef kind="function" id="classG4FastSim_1_1SteppingAction_1af74195411272f886407f01a18c91e9f3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void G4FastSim::SteppingAction::Print</definition>
+        <argsstring>(const G4Step *step)</argsstring>
+        <name>Print</name>
+        <qualifiedname>G4FastSim::SteppingAction::Print</qualifiedname>
+        <param>
+          <type>const G4Step *</type>
+          <declname>step</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Prints information about the given step.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>step</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The step for which to print information. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/SteppingAction.hh" line="62" column="10" bodyfile="src/SteppingAction.cc" bodystart="291" bodyend="307"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classG4FastSim_1_1SteppingAction_1afcbc39506d8d0cb4bff1740965d724e0" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void G4FastSim::SteppingAction::AddHitToCollection</definition>
+        <argsstring>(Hit *newhit, G4String collectionName)</argsstring>
+        <name>AddHitToCollection</name>
+        <qualifiedname>G4FastSim::SteppingAction::AddHitToCollection</qualifiedname>
+        <param>
+          <type><ref refid="classG4FastSim_1_1Hit" kindref="compound">Hit</ref> *</type>
+          <declname>newhit</declname>
+          <defname>newHit</defname>
+        </param>
+        <param>
+          <type>G4String</type>
+          <declname>collectionName</declname>
+        </param>
+        <briefdescription>
+<para>Adds a hit to the specified hits collection. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function adds the given hit to the hits collection with the specified collection name. If the hits collection has not been initialized, it initializes the hits collection IDs. If the hits collection ID is not found for the given collection name, an error message is printed and the function returns. If the hits collection ID is -1 for the given collection name, an error message is printed and the function returns. If the hits collection is not found for the given collection name, it retrieves the hits collection from the current event. If the hits collection is still not found, an error message is printed and the function returns.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>newHit</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The hit to be added to the hits collection. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>collectionName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The name of the hits collection. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/SteppingAction.hh" line="65" column="10" bodyfile="src/SteppingAction.cc" bodystart="323" bodyend="367"/>
+      </memberdef>
+      <memberdef kind="function" id="classG4FastSim_1_1SteppingAction_1afe52713c533c40e120f5f2674c1bd04a" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>G4double</type>
+        <definition>G4double G4FastSim::SteppingAction::DoScatter</definition>
+        <argsstring>(const G4Step *step, G4ThreeVector x0)</argsstring>
+        <name>DoScatter</name>
+        <qualifiedname>G4FastSim::SteppingAction::DoScatter</qualifiedname>
+        <param>
+          <type>const G4Step *</type>
+          <declname>step</declname>
+        </param>
+        <param>
+          <type>G4ThreeVector</type>
+          <declname>x0</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Performs scattering of particles based on their energy and material properties.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>step</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The G4Step object containing information about the current step. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>x0</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The position vector of the current step. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/SteppingAction.hh" line="66" column="14" bodyfile="src/SteppingAction.cc" bodystart="189" bodyend="282"/>
+      </memberdef>
+      <memberdef kind="function" id="classG4FastSim_1_1SteppingAction_1aa4e82d6f05a9d029e1c5992eee58509c" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void G4FastSim::SteppingAction::AnalyzeStandardStep</definition>
+        <argsstring>(const G4Step *step)</argsstring>
+        <name>AnalyzeStandardStep</name>
+        <qualifiedname>G4FastSim::SteppingAction::AnalyzeStandardStep</qualifiedname>
+        <param>
+          <type>const G4Step *</type>
+          <declname>step</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Analyzes a standard step in the simulation.</para>
+<para>This function is responsible for analyzing a standard step in the simulation. It identifies a gamma ray with a Compton scatter outside the primary particle outside the xenon. It sets the event type to SCATTERED_GAMMA if the track ID is 1, the process type is &quot;compt&quot;, and the particle has not been in the xenon volume before. It also checks if the particle is inside the xenon volume and sets the flag indicating that the particle has been in the xenon volume.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>step</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The G4Step object representing the step in the simulation. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/SteppingAction.hh" line="67" column="10" bodyfile="src/SteppingAction.cc" bodystart="381" bodyend="423"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>G4FastSim::SteppingAction</label>
+        <link refid="classG4FastSim_1_1SteppingAction"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>G4UserSteppingAction</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>G4FastSim::SteppingAction</label>
+        <link refid="classG4FastSim_1_1SteppingAction"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>G4UserSteppingAction</label>
+      </node>
+    </collaborationgraph>
+    <location file="include/SteppingAction.hh" line="53" column="1" bodyfile="include/SteppingAction.hh" bodystart="54" bodyend="79"/>
+    <listofallmembers>
+      <member refid="classG4FastSim_1_1SteppingAction_1afcbc39506d8d0cb4bff1740965d724e0" prot="private" virt="non-virtual"><scope>G4FastSim::SteppingAction</scope><name>AddHitToCollection</name></member>
+      <member refid="classG4FastSim_1_1SteppingAction_1aa4e82d6f05a9d029e1c5992eee58509c" prot="private" virt="non-virtual"><scope>G4FastSim::SteppingAction</scope><name>AnalyzeStandardStep</name></member>
+      <member refid="classG4FastSim_1_1SteppingAction_1afe52713c533c40e120f5f2674c1bd04a" prot="private" virt="non-virtual"><scope>G4FastSim::SteppingAction</scope><name>DoScatter</name></member>
+      <member refid="classG4FastSim_1_1SteppingAction_1ad1a859f4aed845490055c2ddc3fdd296" prot="private" virt="non-virtual"><scope>G4FastSim::SteppingAction</scope><name>fEventAction</name></member>
+      <member refid="classG4FastSim_1_1SteppingAction_1a704bc9311a41c1093c5a77dcce511d15" prot="private" virt="non-virtual"><scope>G4FastSim::SteppingAction</scope><name>fGammaRayHelper</name></member>
+      <member refid="classG4FastSim_1_1SteppingAction_1a38ac3ff38c20f67d0595f5c190c482ce" prot="private" virt="non-virtual"><scope>G4FastSim::SteppingAction</scope><name>fHitsCollectionIDs</name></member>
+      <member refid="classG4FastSim_1_1SteppingAction_1a6313a73535b336fd53e0f0b5c862a985" prot="private" virt="non-virtual"><scope>G4FastSim::SteppingAction</scope><name>fHitsCollectionInitialized</name></member>
+      <member refid="classG4FastSim_1_1SteppingAction_1abfc9c758b41acf0bcbb30587edb4f787" prot="private" virt="non-virtual"><scope>G4FastSim::SteppingAction</scope><name>fHitsCollections</name></member>
+      <member refid="classG4FastSim_1_1SteppingAction_1a19b82387b50c2562603bce8248b4cd45" prot="private" virt="non-virtual"><scope>G4FastSim::SteppingAction</scope><name>fScoringVolume</name></member>
+      <member refid="classG4FastSim_1_1SteppingAction_1ab4f1789fc7aa2e3c5b9b89d54b1ce537" prot="private" virt="non-virtual"><scope>G4FastSim::SteppingAction</scope><name>particleTable</name></member>
+      <member refid="classG4FastSim_1_1SteppingAction_1af74195411272f886407f01a18c91e9f3" prot="public" virt="non-virtual"><scope>G4FastSim::SteppingAction</scope><name>Print</name></member>
+      <member refid="classG4FastSim_1_1SteppingAction_1acedce0206842916adf0fce67e0d348a4" prot="public" virt="non-virtual"><scope>G4FastSim::SteppingAction</scope><name>SetVerbosity</name></member>
+      <member refid="classG4FastSim_1_1SteppingAction_1ad9d07e48fe9696277eb14f9e6218ea66" prot="public" virt="non-virtual"><scope>G4FastSim::SteppingAction</scope><name>SteppingAction</name></member>
+      <member refid="classG4FastSim_1_1SteppingAction_1aaeddad78c5a0294d2e4bea7d10523ca2" prot="public" virt="non-virtual"><scope>G4FastSim::SteppingAction</scope><name>UserSteppingAction</name></member>
+      <member refid="classG4FastSim_1_1SteppingAction_1a0a416e1446b7f34221bf4e6c92d4d448" prot="private" virt="non-virtual"><scope>G4FastSim::SteppingAction</scope><name>verbosityLevel</name></member>
+      <member refid="classG4FastSim_1_1SteppingAction_1a14f0205c8adfb5d2b93bba18124c7e0b" prot="public" virt="non-virtual"><scope>G4FastSim::SteppingAction</scope><name>~SteppingAction</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

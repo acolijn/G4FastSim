@@ -1,0 +1,280 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="Hit_8hh" kind="file" language="C++">
+    <compoundname>Hit.hh</compoundname>
+    <includes local="yes">G4VHit.hh</includes>
+    <includes local="yes">G4ThreeVector.hh</includes>
+    <includes local="yes">G4Allocator.hh</includes>
+    <includes local="yes">G4String.hh</includes>
+    <includes local="yes">G4THitsCollection.hh</includes>
+    <includedby refid="Cluster_8hh" local="yes">include/Cluster.hh</includedby>
+    <includedby refid="GammaRayHelper_8hh" local="yes">include/GammaRayHelper.hh</includedby>
+    <includedby refid="SensitiveDetector_8hh" local="yes">include/SensitiveDetector.hh</includedby>
+    <includedby refid="SteppingAction_8hh" local="yes">include/SteppingAction.hh</includedby>
+    <includedby refid="EventAction_8cc" local="yes">src/EventAction.cc</includedby>
+    <includedby refid="Hit_8cc" local="yes">src/Hit.cc</includedby>
+    <includedby refid="SensitiveDetector_8cc" local="yes">src/SensitiveDetector.cc</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>include/Hit.hh</label>
+        <link refid="Hit_8hh"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>G4Allocator.hh</label>
+      </node>
+      <node id="5">
+        <label>G4String.hh</label>
+      </node>
+      <node id="6">
+        <label>G4THitsCollection.hh</label>
+      </node>
+      <node id="3">
+        <label>G4ThreeVector.hh</label>
+      </node>
+      <node id="2">
+        <label>G4VHit.hh</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="4">
+        <label>include/ActionInitialization.hh</label>
+        <link refid="ActionInitialization_8hh"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>include/Cluster.hh</label>
+        <link refid="Cluster_8hh"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>include/DetectorConstruction.hh</label>
+        <link refid="DetectorConstruction_8hh"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>include/EventAction.hh</label>
+        <link refid="EventAction_8hh"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>include/GammaRayHelper.hh</label>
+        <link refid="GammaRayHelper_8hh"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>include/Hit.hh</label>
+        <link refid="Hit_8hh"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>include/RunAction.hh</label>
+        <link refid="RunAction_8hh"/>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>include/RunActionMessenger.hh</label>
+        <link refid="RunActionMessenger_8hh"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>include/SensitiveDetector.hh</label>
+        <link refid="SensitiveDetector_8hh"/>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>include/SteppingAction.hh</label>
+        <link refid="SteppingAction_8hh"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>src/ActionInitialization.cc</label>
+        <link refid="ActionInitialization_8cc"/>
+      </node>
+      <node id="11">
+        <label>src/DetectorConstruction.cc</label>
+        <link refid="DetectorConstruction_8cc"/>
+      </node>
+      <node id="12">
+        <label>src/DetectorConstructionMessenger.cc</label>
+        <link refid="DetectorConstructionMessenger_8cc"/>
+      </node>
+      <node id="6">
+        <label>src/EventAction.cc</label>
+        <link refid="EventAction_8cc"/>
+      </node>
+      <node id="17">
+        <label>src/GammaRayHelper.cc</label>
+        <link refid="GammaRayHelper_8cc"/>
+      </node>
+      <node id="20">
+        <label>src/Hit.cc</label>
+        <link refid="Hit_8cc"/>
+      </node>
+      <node id="7">
+        <label>src/RunAction.cc</label>
+        <link refid="RunAction_8cc"/>
+      </node>
+      <node id="15">
+        <label>src/RunActionMessenger.cc</label>
+        <link refid="RunActionMessenger_8cc"/>
+      </node>
+      <node id="19">
+        <label>src/SensitiveDetector.cc</label>
+        <link refid="SensitiveDetector_8cc"/>
+      </node>
+      <node id="8">
+        <label>src/SteppingAction.cc</label>
+        <link refid="SteppingAction_8cc"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classG4FastSim_1_1Hit" prot="public">G4FastSim::Hit</innerclass>
+    <innernamespace refid="namespaceG4FastSim">G4FastSim</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>HIT_HH</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HIT_HH</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;G4VHit.hh&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;G4ThreeVector.hh&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;G4Allocator.hh&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;G4String.hh&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;G4THitsCollection.hh&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceG4FastSim" kindref="compound">G4FastSim</ref><sp/>{</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18" refid="classG4FastSim_1_1Hit" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classG4FastSim_1_1Hit" kindref="compound">Hit</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>G4VHit<sp/>{</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classG4FastSim_1_1Hit_1acb847bc51e6a3604ca9eda681757af84" kindref="member">Hit</ref>();</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classG4FastSim_1_1Hit_1a3a802fde25a65f859a3c1337f82ba19c" kindref="member">~Hit</ref>();</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Hit<sp/>properties</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31" refid="classG4FastSim_1_1Hit_1a2fcf2ab249ba8b5fc95013ea94001750" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>G4double<sp/><ref refid="classG4FastSim_1_1Hit_1a2fcf2ab249ba8b5fc95013ea94001750" kindref="member">energyDeposit</ref>;<sp/></highlight></codeline>
+<codeline lineno="32" refid="classG4FastSim_1_1Hit_1aa50db143e0803d86e2f01fec22ac313e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>G4ThreeVector<sp/><ref refid="classG4FastSim_1_1Hit_1aa50db143e0803d86e2f01fec22ac313e" kindref="member">position</ref>;<sp/></highlight></codeline>
+<codeline lineno="33" refid="classG4FastSim_1_1Hit_1a4815fe232702658cdb7587a508095b9b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>G4double<sp/><ref refid="classG4FastSim_1_1Hit_1a4815fe232702658cdb7587a508095b9b" kindref="member">time</ref>;<sp/></highlight></codeline>
+<codeline lineno="34" refid="classG4FastSim_1_1Hit_1a9c3ae356721c590ba17b1bb7e3819887" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>G4int<sp/><ref refid="classG4FastSim_1_1Hit_1a9c3ae356721c590ba17b1bb7e3819887" kindref="member">trackID</ref>;<sp/></highlight></codeline>
+<codeline lineno="35" refid="classG4FastSim_1_1Hit_1aa35bfbbddc37bfc7bf860719bdc71821" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>G4int<sp/><ref refid="classG4FastSim_1_1Hit_1aa35bfbbddc37bfc7bf860719bdc71821" kindref="member">parentID</ref>;<sp/></highlight></codeline>
+<codeline lineno="36" refid="classG4FastSim_1_1Hit_1a1ec3a00fb247cb4379083d1e8b88d004" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>G4ThreeVector<sp/><ref refid="classG4FastSim_1_1Hit_1a1ec3a00fb247cb4379083d1e8b88d004" kindref="member">momentum</ref>;<sp/></highlight></codeline>
+<codeline lineno="37" refid="classG4FastSim_1_1Hit_1a5c9609d8d3f775ccddb484c937ec97d7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>G4String<sp/><ref refid="classG4FastSim_1_1Hit_1a5c9609d8d3f775ccddb484c937ec97d7" kindref="member">particleType</ref>;<sp/></highlight></codeline>
+<codeline lineno="38" refid="classG4FastSim_1_1Hit_1a9e05b45ddeb28149a4d2b05bddac2c22" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>G4String<sp/><ref refid="classG4FastSim_1_1Hit_1a9e05b45ddeb28149a4d2b05bddac2c22" kindref="member">processType</ref>;<sp/></highlight></codeline>
+<codeline lineno="39" refid="classG4FastSim_1_1Hit_1a3396684dc1ff80159d2be9a22f2b4b65" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>G4double<sp/><ref refid="classG4FastSim_1_1Hit_1a3396684dc1ff80159d2be9a22f2b4b65" kindref="member">particleEnergy0</ref>;<sp/></highlight></codeline>
+<codeline lineno="40" refid="classG4FastSim_1_1Hit_1a80e65ca8a582d646dbf185bb60417c9d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>G4double<sp/><ref refid="classG4FastSim_1_1Hit_1a80e65ca8a582d646dbf185bb60417c9d" kindref="member">particleEnergy1</ref>;<sp/></highlight></codeline>
+<codeline lineno="41" refid="classG4FastSim_1_1Hit_1ad7a61ec7425d89e4daefb20c1387e234" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>G4bool<sp/><ref refid="classG4FastSim_1_1Hit_1ad7a61ec7425d89e4daefb20c1387e234" kindref="member">used</ref>;<sp/></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classG4FastSim_1_1Hit_1ab4627440228cfa53dea3b1ba5678b720" kindref="member">Print</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Operators</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/></highlight><highlight class="keyword">operator</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal">(size_t);</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">operator</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>hit);</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="54"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>G4ThreadLocal<sp/>G4Allocator&lt;Hit&gt;*<sp/><ref refid="namespaceG4FastSim_1a4712e98805b7edcf1d64abd59c618d37" kindref="member">HitAllocator</ref>;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58" refid="classG4FastSim_1_1Hit_1a91f62d25c54705573cb2fc9a82d4e4ba" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>Hit::operator<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal">(size_t)<sp/>{</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="namespaceG4FastSim_1a4712e98805b7edcf1d64abd59c618d37" kindref="member">HitAllocator</ref>)<sp/><ref refid="namespaceG4FastSim_1a4712e98805b7edcf1d64abd59c618d37" kindref="member">HitAllocator</ref><sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>G4Allocator&lt;Hit&gt;;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*)<ref refid="namespaceG4FastSim_1a4712e98805b7edcf1d64abd59c618d37" kindref="member">HitAllocator</ref>-&gt;MallocSingle();</highlight></codeline>
+<codeline lineno="61"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63" refid="classG4FastSim_1_1Hit_1ab5ebe1bb399d268a9b0c061be15919d8" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>Hit::operator<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>hit)<sp/>{</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceG4FastSim_1a4712e98805b7edcf1d64abd59c618d37" kindref="member">HitAllocator</ref>-&gt;FreeSingle((<ref refid="classG4FastSim_1_1Hit" kindref="compound">Hit</ref>*)hit);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Define<sp/>the<sp/>HitsCollection<sp/>type</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68" refid="namespaceG4FastSim_1a03dccfbb4e25fe6f2ab3468c33175a36" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>G4THitsCollection&lt;Hit&gt;<sp/><ref refid="namespaceG4FastSim_1a03dccfbb4e25fe6f2ab3468c33175a36" kindref="member">HitsCollection</ref>;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="include/Hit.hh"/>
+  </compounddef>
+</doxygen>

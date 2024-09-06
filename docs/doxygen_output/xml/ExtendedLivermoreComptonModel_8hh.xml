@@ -1,0 +1,204 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="ExtendedLivermoreComptonModel_8hh" kind="file" language="C++">
+    <compoundname>ExtendedLivermoreComptonModel.hh</compoundname>
+    <includes local="yes">G4LivermoreComptonModel.hh</includes>
+    <includes local="yes">G4MaterialCutsCouple.hh</includes>
+    <includes local="yes">G4DynamicParticle.hh</includes>
+    <includes local="yes">G4VEMDataSet.hh</includes>
+    <includedby refid="GammaRayHelper_8hh" local="yes">include/GammaRayHelper.hh</includedby>
+    <includedby refid="ExtendedLivermoreComptonModel_8cc" local="yes">src/ExtendedLivermoreComptonModel.cc</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>include/ExtendedLivermoreComptonModel.hh</label>
+        <link refid="ExtendedLivermoreComptonModel_8hh"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>G4DynamicParticle.hh</label>
+      </node>
+      <node id="2">
+        <label>G4LivermoreComptonModel.hh</label>
+      </node>
+      <node id="3">
+        <label>G4MaterialCutsCouple.hh</label>
+      </node>
+      <node id="5">
+        <label>G4VEMDataSet.hh</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="3">
+        <label>include/ActionInitialization.hh</label>
+        <link refid="ActionInitialization_8hh"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>include/DetectorConstruction.hh</label>
+        <link refid="DetectorConstruction_8hh"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>include/EventAction.hh</label>
+        <link refid="EventAction_8hh"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>include/ExtendedLivermoreComptonModel.hh</label>
+        <link refid="ExtendedLivermoreComptonModel_8hh"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>include/GammaRayHelper.hh</label>
+        <link refid="GammaRayHelper_8hh"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>include/RunAction.hh</label>
+        <link refid="RunAction_8hh"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>include/RunActionMessenger.hh</label>
+        <link refid="RunActionMessenger_8hh"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>include/SteppingAction.hh</label>
+        <link refid="SteppingAction_8hh"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>src/ActionInitialization.cc</label>
+        <link refid="ActionInitialization_8cc"/>
+      </node>
+      <node id="6">
+        <label>src/DetectorConstruction.cc</label>
+        <link refid="DetectorConstruction_8cc"/>
+      </node>
+      <node id="7">
+        <label>src/DetectorConstructionMessenger.cc</label>
+        <link refid="DetectorConstructionMessenger_8cc"/>
+      </node>
+      <node id="11">
+        <label>src/EventAction.cc</label>
+        <link refid="EventAction_8cc"/>
+      </node>
+      <node id="17">
+        <label>src/ExtendedLivermoreComptonModel.cc</label>
+        <link refid="ExtendedLivermoreComptonModel_8cc"/>
+      </node>
+      <node id="16">
+        <label>src/GammaRayHelper.cc</label>
+        <link refid="GammaRayHelper_8cc"/>
+      </node>
+      <node id="8">
+        <label>src/RunAction.cc</label>
+        <link refid="RunAction_8cc"/>
+      </node>
+      <node id="14">
+        <label>src/RunActionMessenger.cc</label>
+        <link refid="RunActionMessenger_8cc"/>
+      </node>
+      <node id="9">
+        <label>src/SteppingAction.cc</label>
+        <link refid="SteppingAction_8cc"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classExtendedLivermoreComptonModel" prot="public">ExtendedLivermoreComptonModel</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>__EXTENDED_LIVERMORE_COMPTON_MODEL_H__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__EXTENDED_LIVERMORE_COMPTON_MODEL_H__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;G4LivermoreComptonModel.hh&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;G4MaterialCutsCouple.hh&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;G4DynamicParticle.hh&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;G4VEMDataSet.hh&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9" refid="classExtendedLivermoreComptonModel" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classExtendedLivermoreComptonModel" kindref="compound">ExtendedLivermoreComptonModel</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>G4LivermoreComptonModel<sp/>{</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classExtendedLivermoreComptonModel_1a7aef900331e6061162b3c23741207511" kindref="member">ExtendedLivermoreComptonModel</ref>();</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classExtendedLivermoreComptonModel_1a3763c959944a0427314b339379bf8c2a" kindref="member">~ExtendedLivermoreComptonModel</ref>();</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>G4double<sp/><ref refid="classExtendedLivermoreComptonModel_1aefcaa8e5384a9d3d36b7b09aea0fd5c2" kindref="member">FormFactor</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>G4Element*<sp/>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>G4DynamicParticle*<sp/>aDynamicGamma,<sp/>G4double<sp/>cosTheta);</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>G4double<sp/><ref refid="classExtendedLivermoreComptonModel_1ae31d98e10efd833f6371e423b65ca17d" kindref="member">KleinNishina</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>G4DynamicParticle*<sp/>aDynamicGamma,<sp/>G4double<sp/>cosTheta);</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>G4double<sp/><ref refid="classExtendedLivermoreComptonModel_1a98a23482707a3aabe93e1e069414e171" kindref="member">DifferentialCrossSection</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>G4Element*<sp/>element,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>G4DynamicParticle*<sp/>aDynamicGamma,<sp/>G4double<sp/>cossTheta);</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>G4VEMDataSet*<sp/>scatterFunctionData;</highlight></codeline>
+<codeline lineno="20"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>__EXTENDED_LIVERMORE_COMPTON_MODEL_H__</highlight></codeline>
+    </programlisting>
+    <location file="include/ExtendedLivermoreComptonModel.hh"/>
+  </compounddef>
+</doxygen>

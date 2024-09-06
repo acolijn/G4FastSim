@@ -1,0 +1,173 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="classG4FastSim_1_1RunActionMessenger" kind="class" language="C++" prot="public">
+    <compoundname>G4FastSim::RunActionMessenger</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">G4UImessenger</basecompoundref>
+    <includes refid="RunActionMessenger_8hh" local="no">RunActionMessenger.hh</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classG4FastSim_1_1RunActionMessenger_1a2ba2569571125b523cd783a9a375b8a3" prot="private" static="no" mutable="no">
+        <type><ref refid="classG4FastSim_1_1RunAction" kindref="compound">RunAction</ref> *</type>
+        <definition>RunAction* G4FastSim::RunActionMessenger::fRunAction</definition>
+        <argsstring></argsstring>
+        <name>fRunAction</name>
+        <qualifiedname>G4FastSim::RunActionMessenger::fRunAction</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/RunActionMessenger.hh" line="25" column="15" bodyfile="include/RunActionMessenger.hh" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classG4FastSim_1_1RunActionMessenger_1a7a0321ee29e98a13fe30068b02a3922a" prot="private" static="no" mutable="no">
+        <type>G4UIcmdWithABool *</type>
+        <definition>G4UIcmdWithABool* G4FastSim::RunActionMessenger::fFastSimulationCmd</definition>
+        <argsstring></argsstring>
+        <name>fFastSimulationCmd</name>
+        <qualifiedname>G4FastSim::RunActionMessenger::fFastSimulationCmd</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/RunActionMessenger.hh" line="27" column="22" bodyfile="include/RunActionMessenger.hh" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classG4FastSim_1_1RunActionMessenger_1a215f543838a4bb020bee952c50c44a60" prot="private" static="no" mutable="no">
+        <type>G4UIcmdWithAnInteger *</type>
+        <definition>G4UIcmdWithAnInteger* G4FastSim::RunActionMessenger::fNumberOfScattersCmd</definition>
+        <argsstring></argsstring>
+        <name>fNumberOfScattersCmd</name>
+        <qualifiedname>G4FastSim::RunActionMessenger::fNumberOfScattersCmd</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/RunActionMessenger.hh" line="28" column="26" bodyfile="include/RunActionMessenger.hh" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classG4FastSim_1_1RunActionMessenger_1ae3f5aa9f1027ac377cc356409a2ac969" prot="private" static="no" mutable="no">
+        <type>G4UIcmdWithADoubleAndUnit *</type>
+        <definition>G4UIcmdWithADoubleAndUnit* G4FastSim::RunActionMessenger::fMaxEnergyCmd</definition>
+        <argsstring></argsstring>
+        <name>fMaxEnergyCmd</name>
+        <qualifiedname>G4FastSim::RunActionMessenger::fMaxEnergyCmd</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/RunActionMessenger.hh" line="29" column="31" bodyfile="include/RunActionMessenger.hh" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classG4FastSim_1_1RunActionMessenger_1a6ecbcdf238d9d7b7a8dfbd9e55b0aa10" prot="private" static="no" mutable="no">
+        <type>G4UIcmdWithAString *</type>
+        <definition>G4UIcmdWithAString* G4FastSim::RunActionMessenger::fOutputFileNameCmd</definition>
+        <argsstring></argsstring>
+        <name>fOutputFileNameCmd</name>
+        <qualifiedname>G4FastSim::RunActionMessenger::fOutputFileNameCmd</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/RunActionMessenger.hh" line="30" column="24" bodyfile="include/RunActionMessenger.hh" bodystart="30" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classG4FastSim_1_1RunActionMessenger_1a9fb1df1d404343d1d6b03f3111eff8b7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>G4FastSim::RunActionMessenger::RunActionMessenger</definition>
+        <argsstring>(RunAction *action)</argsstring>
+        <name>RunActionMessenger</name>
+        <qualifiedname>G4FastSim::RunActionMessenger::RunActionMessenger</qualifiedname>
+        <param>
+          <type><ref refid="classG4FastSim_1_1RunAction" kindref="compound">RunAction</ref> *</type>
+          <declname>action</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/RunActionMessenger.hh" line="19" column="5" bodyfile="src/RunActionMessenger.cc" bodystart="7" bodyend="31"/>
+      </memberdef>
+      <memberdef kind="function" id="classG4FastSim_1_1RunActionMessenger_1ae73a6a37e9ec805ea9965168283a89af" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>G4FastSim::RunActionMessenger::~RunActionMessenger</definition>
+        <argsstring>() override</argsstring>
+        <name>~RunActionMessenger</name>
+        <qualifiedname>G4FastSim::RunActionMessenger::~RunActionMessenger</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/RunActionMessenger.hh" line="20" column="5" bodyfile="src/RunActionMessenger.cc" bodystart="33" bodyend="35"/>
+      </memberdef>
+      <memberdef kind="function" id="classG4FastSim_1_1RunActionMessenger_1a9f892e9a20fe5ef2c33726ef418fcd13" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void G4FastSim::RunActionMessenger::SetNewValue</definition>
+        <argsstring>(G4UIcommand *command, G4String newValue) override</argsstring>
+        <name>SetNewValue</name>
+        <qualifiedname>G4FastSim::RunActionMessenger::SetNewValue</qualifiedname>
+        <param>
+          <type>G4UIcommand *</type>
+          <declname>command</declname>
+        </param>
+        <param>
+          <type>G4String</type>
+          <declname>newValue</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/RunActionMessenger.hh" line="22" column="10" bodyfile="src/RunActionMessenger.cc" bodystart="37" bodyend="47"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>G4FastSim::RunActionMessenger</label>
+        <link refid="classG4FastSim_1_1RunActionMessenger"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>G4UImessenger</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>G4FastSim::RunActionMessenger</label>
+        <link refid="classG4FastSim_1_1RunActionMessenger"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>G4UImessenger</label>
+      </node>
+    </collaborationgraph>
+    <location file="include/RunActionMessenger.hh" line="17" column="1" bodyfile="include/RunActionMessenger.hh" bodystart="17" bodyend="32"/>
+    <listofallmembers>
+      <member refid="classG4FastSim_1_1RunActionMessenger_1a7a0321ee29e98a13fe30068b02a3922a" prot="private" virt="non-virtual"><scope>G4FastSim::RunActionMessenger</scope><name>fFastSimulationCmd</name></member>
+      <member refid="classG4FastSim_1_1RunActionMessenger_1ae3f5aa9f1027ac377cc356409a2ac969" prot="private" virt="non-virtual"><scope>G4FastSim::RunActionMessenger</scope><name>fMaxEnergyCmd</name></member>
+      <member refid="classG4FastSim_1_1RunActionMessenger_1a215f543838a4bb020bee952c50c44a60" prot="private" virt="non-virtual"><scope>G4FastSim::RunActionMessenger</scope><name>fNumberOfScattersCmd</name></member>
+      <member refid="classG4FastSim_1_1RunActionMessenger_1a6ecbcdf238d9d7b7a8dfbd9e55b0aa10" prot="private" virt="non-virtual"><scope>G4FastSim::RunActionMessenger</scope><name>fOutputFileNameCmd</name></member>
+      <member refid="classG4FastSim_1_1RunActionMessenger_1a2ba2569571125b523cd783a9a375b8a3" prot="private" virt="non-virtual"><scope>G4FastSim::RunActionMessenger</scope><name>fRunAction</name></member>
+      <member refid="classG4FastSim_1_1RunActionMessenger_1a9fb1df1d404343d1d6b03f3111eff8b7" prot="public" virt="non-virtual"><scope>G4FastSim::RunActionMessenger</scope><name>RunActionMessenger</name></member>
+      <member refid="classG4FastSim_1_1RunActionMessenger_1a9f892e9a20fe5ef2c33726ef418fcd13" prot="public" virt="non-virtual"><scope>G4FastSim::RunActionMessenger</scope><name>SetNewValue</name></member>
+      <member refid="classG4FastSim_1_1RunActionMessenger_1ae73a6a37e9ec805ea9965168283a89af" prot="public" virt="non-virtual"><scope>G4FastSim::RunActionMessenger</scope><name>~RunActionMessenger</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

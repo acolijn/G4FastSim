@@ -1,0 +1,184 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="classPrimaryGeneratorAction" kind="class" language="C++" prot="public">
+    <compoundname>PrimaryGeneratorAction</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">G4VUserPrimaryGeneratorAction</basecompoundref>
+    <includes refid="PrimaryGeneratorAction_8hh" local="no">PrimaryGeneratorAction.hh</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classPrimaryGeneratorAction_1aaa9397e6f8f33c8aacd690771bfdcf72" prot="private" static="no" mutable="no">
+        <type>G4GeneralParticleSource *</type>
+        <definition>G4GeneralParticleSource* PrimaryGeneratorAction::fParticleGun</definition>
+        <argsstring></argsstring>
+        <name>fParticleGun</name>
+        <qualifiedname>PrimaryGeneratorAction::fParticleGun</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/PrimaryGeneratorAction.hh" line="65" column="29" bodyfile="include/PrimaryGeneratorAction.hh" bodystart="65" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPrimaryGeneratorAction_1a2236b5d6766769725803a8278973510b" prot="private" static="no" mutable="no">
+        <type>G4Box *</type>
+        <definition>G4Box* PrimaryGeneratorAction::fEnvelopeBox</definition>
+        <argsstring></argsstring>
+        <name>fEnvelopeBox</name>
+        <qualifiedname>PrimaryGeneratorAction::fEnvelopeBox</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/PrimaryGeneratorAction.hh" line="66" column="11" bodyfile="include/PrimaryGeneratorAction.hh" bodystart="66" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPrimaryGeneratorAction_1a3a3a73e256855923c4aabb9d29270013" prot="private" static="no" mutable="no">
+        <type>G4double</type>
+        <definition>G4double PrimaryGeneratorAction::fInitialEnergy</definition>
+        <argsstring></argsstring>
+        <name>fInitialEnergy</name>
+        <qualifiedname>PrimaryGeneratorAction::fInitialEnergy</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/PrimaryGeneratorAction.hh" line="67" column="14" bodyfile="include/PrimaryGeneratorAction.hh" bodystart="67" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classPrimaryGeneratorAction_1a4bbef83d397d84b434541f8720bf747d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PrimaryGeneratorAction::PrimaryGeneratorAction</definition>
+        <argsstring>()</argsstring>
+        <name>PrimaryGeneratorAction</name>
+        <qualifiedname>PrimaryGeneratorAction::PrimaryGeneratorAction</qualifiedname>
+        <briefdescription>
+<para>Constructor for the <ref refid="classPrimaryGeneratorAction" kindref="compound">PrimaryGeneratorAction</ref> class. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>namespace <ref refid="namespaceG4FastSim" kindref="compound">G4FastSim</ref> { </para>
+<para>This constructor initializes the <ref refid="classPrimaryGeneratorAction" kindref="compound">PrimaryGeneratorAction</ref> object by creating a new instance of the G4GeneralParticleSource class. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/PrimaryGeneratorAction.hh" line="52" column="5" bodyfile="src/PrimaryGeneratorAction.cc" bodystart="52" bodyend="55"/>
+      </memberdef>
+      <memberdef kind="function" id="classPrimaryGeneratorAction_1aef250d66a3c8ceaad8960bae6f6b1a04" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PrimaryGeneratorAction::~PrimaryGeneratorAction</definition>
+        <argsstring>() override</argsstring>
+        <name>~PrimaryGeneratorAction</name>
+        <qualifiedname>PrimaryGeneratorAction::~PrimaryGeneratorAction</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/PrimaryGeneratorAction.hh" line="53" column="5" bodyfile="src/PrimaryGeneratorAction.cc" bodystart="59" bodyend="62"/>
+      </memberdef>
+      <memberdef kind="function" id="classPrimaryGeneratorAction_1aae3d67b4299e228e76c10ba40ff2ae2b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void PrimaryGeneratorAction::GeneratePrimaries</definition>
+        <argsstring>(G4Event *) override</argsstring>
+        <name>GeneratePrimaries</name>
+        <qualifiedname>PrimaryGeneratorAction::GeneratePrimaries</qualifiedname>
+        <param>
+          <type>G4Event *</type>
+          <defname>anEvent</defname>
+        </param>
+        <briefdescription>
+<para>This function is called at the beginning of an event to generate primary particles. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>anEvent</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the G4Event object representing the current event. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/PrimaryGeneratorAction.hh" line="56" column="10" bodyfile="src/PrimaryGeneratorAction.cc" bodystart="71" bodyend="75"/>
+      </memberdef>
+      <memberdef kind="function" id="classPrimaryGeneratorAction_1a1dc3a828c828af205d3acda93f57b67e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const G4GeneralParticleSource *</type>
+        <definition>const G4GeneralParticleSource * PrimaryGeneratorAction::GetParticleGun</definition>
+        <argsstring>() const</argsstring>
+        <name>GetParticleGun</name>
+        <qualifiedname>PrimaryGeneratorAction::GetParticleGun</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/PrimaryGeneratorAction.hh" line="59" column="35" bodyfile="include/PrimaryGeneratorAction.hh" bodystart="59" bodyend="59"/>
+      </memberdef>
+      <memberdef kind="function" id="classPrimaryGeneratorAction_1a88f13d40da2e2083ac230991a735ddd6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>G4double</type>
+        <definition>G4double PrimaryGeneratorAction::GetInitialEnergy</definition>
+        <argsstring>() const</argsstring>
+        <name>GetInitialEnergy</name>
+        <qualifiedname>PrimaryGeneratorAction::GetInitialEnergy</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/PrimaryGeneratorAction.hh" line="61" column="14" bodyfile="src/PrimaryGeneratorAction.cc" bodystart="77" bodyend="79"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>The primary generator action class with particle gun.</para>
+<para>The default kinematic is a 6 MeV gamma, randomly distribued in front of the phantom across 80% of the (X,Y) phantom size. namespace <ref refid="namespaceG4FastSim" kindref="compound">G4FastSim</ref> { </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>G4VUserPrimaryGeneratorAction</label>
+      </node>
+      <node id="1">
+        <label>PrimaryGeneratorAction</label>
+        <link refid="classPrimaryGeneratorAction"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>G4VUserPrimaryGeneratorAction</label>
+      </node>
+      <node id="1">
+        <label>PrimaryGeneratorAction</label>
+        <link refid="classPrimaryGeneratorAction"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/PrimaryGeneratorAction.hh" line="49" column="1" bodyfile="include/PrimaryGeneratorAction.hh" bodystart="50" bodyend="68"/>
+    <listofallmembers>
+      <member refid="classPrimaryGeneratorAction_1a2236b5d6766769725803a8278973510b" prot="private" virt="non-virtual"><scope>PrimaryGeneratorAction</scope><name>fEnvelopeBox</name></member>
+      <member refid="classPrimaryGeneratorAction_1a3a3a73e256855923c4aabb9d29270013" prot="private" virt="non-virtual"><scope>PrimaryGeneratorAction</scope><name>fInitialEnergy</name></member>
+      <member refid="classPrimaryGeneratorAction_1aaa9397e6f8f33c8aacd690771bfdcf72" prot="private" virt="non-virtual"><scope>PrimaryGeneratorAction</scope><name>fParticleGun</name></member>
+      <member refid="classPrimaryGeneratorAction_1aae3d67b4299e228e76c10ba40ff2ae2b" prot="public" virt="non-virtual"><scope>PrimaryGeneratorAction</scope><name>GeneratePrimaries</name></member>
+      <member refid="classPrimaryGeneratorAction_1a88f13d40da2e2083ac230991a735ddd6" prot="public" virt="non-virtual"><scope>PrimaryGeneratorAction</scope><name>GetInitialEnergy</name></member>
+      <member refid="classPrimaryGeneratorAction_1a1dc3a828c828af205d3acda93f57b67e" prot="public" virt="non-virtual"><scope>PrimaryGeneratorAction</scope><name>GetParticleGun</name></member>
+      <member refid="classPrimaryGeneratorAction_1a4bbef83d397d84b434541f8720bf747d" prot="public" virt="non-virtual"><scope>PrimaryGeneratorAction</scope><name>PrimaryGeneratorAction</name></member>
+      <member refid="classPrimaryGeneratorAction_1aef250d66a3c8ceaad8960bae6f6b1a04" prot="public" virt="non-virtual"><scope>PrimaryGeneratorAction</scope><name>~PrimaryGeneratorAction</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

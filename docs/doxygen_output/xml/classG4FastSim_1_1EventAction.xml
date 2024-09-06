@@ -1,0 +1,1075 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="classG4FastSim_1_1EventAction" kind="class" language="C++" prot="public">
+    <compoundname>G4FastSim::EventAction</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">G4UserEventAction</basecompoundref>
+    <includes refid="EventAction_8hh" local="no">EventAction.hh</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classG4FastSim_1_1EventAction_1a2a96349ee89272b4576398a7ac538695" prot="private" static="no" mutable="no">
+        <type>G4double</type>
+        <definition>G4double G4FastSim::EventAction::fLogWeight</definition>
+        <argsstring></argsstring>
+        <name>fLogWeight</name>
+        <qualifiedname>G4FastSim::EventAction::fLogWeight</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/EventAction.hh" line="112" column="14" bodyfile="include/EventAction.hh" bodystart="112" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classG4FastSim_1_1EventAction_1a41c9dc093c7137f7e59cd18aadbfd6be" prot="private" static="no" mutable="no">
+        <type>G4double</type>
+        <definition>G4double G4FastSim::EventAction::fEdep</definition>
+        <argsstring></argsstring>
+        <name>fEdep</name>
+        <qualifiedname>G4FastSim::EventAction::fEdep</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/EventAction.hh" line="113" column="14" bodyfile="include/EventAction.hh" bodystart="113" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classG4FastSim_1_1EventAction_1a240a5e697b0a82b9c5ebd221f9acc09f" prot="private" static="no" mutable="no">
+        <type>G4int</type>
+        <definition>G4int G4FastSim::EventAction::fNclusters</definition>
+        <argsstring></argsstring>
+        <name>fNclusters</name>
+        <qualifiedname>G4FastSim::EventAction::fNclusters</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/EventAction.hh" line="114" column="11" bodyfile="include/EventAction.hh" bodystart="114" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classG4FastSim_1_1EventAction_1a9180cbaec40303315968a7d32da06614" prot="private" static="no" mutable="no">
+        <type>G4int</type>
+        <definition>G4int G4FastSim::EventAction::fNphot</definition>
+        <argsstring></argsstring>
+        <name>fNphot</name>
+        <qualifiedname>G4FastSim::EventAction::fNphot</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/EventAction.hh" line="115" column="11" bodyfile="include/EventAction.hh" bodystart="115" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classG4FastSim_1_1EventAction_1a1556839c7fa3ed559b7b84965f189fa4" prot="private" static="no" mutable="no">
+        <type>G4int</type>
+        <definition>G4int G4FastSim::EventAction::fNcomp</definition>
+        <argsstring></argsstring>
+        <name>fNcomp</name>
+        <qualifiedname>G4FastSim::EventAction::fNcomp</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/EventAction.hh" line="116" column="11" bodyfile="include/EventAction.hh" bodystart="116" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classG4FastSim_1_1EventAction_1a22773d5fd32937317595ce00473b52cf" prot="private" static="no" mutable="no">
+        <type>G4int</type>
+        <definition>G4int G4FastSim::EventAction::fEventID</definition>
+        <argsstring></argsstring>
+        <name>fEventID</name>
+        <qualifiedname>G4FastSim::EventAction::fEventID</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/EventAction.hh" line="117" column="11" bodyfile="include/EventAction.hh" bodystart="117" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classG4FastSim_1_1EventAction_1af3f5c798657ab7b11764cfa1b011a6c1" prot="private" static="no" mutable="no">
+        <type>G4int</type>
+        <definition>G4int G4FastSim::EventAction::fEventType</definition>
+        <argsstring></argsstring>
+        <name>fEventType</name>
+        <qualifiedname>G4FastSim::EventAction::fEventType</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/EventAction.hh" line="118" column="11" bodyfile="include/EventAction.hh" bodystart="118" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classG4FastSim_1_1EventAction_1a37bf9013dbd05b66dffdd12bb0520533" prot="private" static="no" mutable="no">
+        <type>G4double</type>
+        <definition>G4double G4FastSim::EventAction::fXp</definition>
+        <argsstring></argsstring>
+        <name>fXp</name>
+        <qualifiedname>G4FastSim::EventAction::fXp</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/EventAction.hh" line="119" column="14" bodyfile="include/EventAction.hh" bodystart="119" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classG4FastSim_1_1EventAction_1a020d2869c4fcedffb31683143e3d0b21" prot="private" static="no" mutable="no">
+        <type>G4double</type>
+        <definition>G4double G4FastSim::EventAction::fYp</definition>
+        <argsstring></argsstring>
+        <name>fYp</name>
+        <qualifiedname>G4FastSim::EventAction::fYp</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/EventAction.hh" line="120" column="14" bodyfile="include/EventAction.hh" bodystart="120" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classG4FastSim_1_1EventAction_1a5d34246911770851b35dae2b275edcb9" prot="private" static="no" mutable="no">
+        <type>G4double</type>
+        <definition>G4double G4FastSim::EventAction::fZp</definition>
+        <argsstring></argsstring>
+        <name>fZp</name>
+        <qualifiedname>G4FastSim::EventAction::fZp</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/EventAction.hh" line="121" column="14" bodyfile="include/EventAction.hh" bodystart="121" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classG4FastSim_1_1EventAction_1abdb1d349d12ee5ee1becc636b9449d78" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; G4double &gt;</type>
+        <definition>std::vector&lt;G4double&gt; G4FastSim::EventAction::fEd</definition>
+        <argsstring></argsstring>
+        <name>fEd</name>
+        <qualifiedname>G4FastSim::EventAction::fEd</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/EventAction.hh" line="123" column="17" bodyfile="include/EventAction.hh" bodystart="123" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classG4FastSim_1_1EventAction_1a8db2c9bf9010e6de0aef310a515cd6a4" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; G4double &gt;</type>
+        <definition>std::vector&lt;G4double&gt; G4FastSim::EventAction::fX</definition>
+        <argsstring></argsstring>
+        <name>fX</name>
+        <qualifiedname>G4FastSim::EventAction::fX</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/EventAction.hh" line="124" column="17" bodyfile="include/EventAction.hh" bodystart="124" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classG4FastSim_1_1EventAction_1ac9f825b0cade7b76f41cb43989d84fd2" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; G4double &gt;</type>
+        <definition>std::vector&lt;G4double&gt; G4FastSim::EventAction::fY</definition>
+        <argsstring></argsstring>
+        <name>fY</name>
+        <qualifiedname>G4FastSim::EventAction::fY</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/EventAction.hh" line="125" column="17" bodyfile="include/EventAction.hh" bodystart="125" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classG4FastSim_1_1EventAction_1a9c0c86e1e5629b8bd78b2b4fff94e537" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; G4double &gt;</type>
+        <definition>std::vector&lt;G4double&gt; G4FastSim::EventAction::fZ</definition>
+        <argsstring></argsstring>
+        <name>fZ</name>
+        <qualifiedname>G4FastSim::EventAction::fZ</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/EventAction.hh" line="126" column="17" bodyfile="include/EventAction.hh" bodystart="126" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classG4FastSim_1_1EventAction_1aed9835cd7bdc33c6f6eb32a1f9716822" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; G4double &gt;</type>
+        <definition>std::vector&lt;G4double&gt; G4FastSim::EventAction::fW</definition>
+        <argsstring></argsstring>
+        <name>fW</name>
+        <qualifiedname>G4FastSim::EventAction::fW</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/EventAction.hh" line="127" column="17" bodyfile="include/EventAction.hh" bodystart="127" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classG4FastSim_1_1EventAction_1af161744847ff48843973c7829a372fba" prot="private" static="no" mutable="no">
+        <type>G4bool</type>
+        <definition>G4bool G4FastSim::EventAction::fFastSimulation</definition>
+        <argsstring></argsstring>
+        <name>fFastSimulation</name>
+        <qualifiedname>G4FastSim::EventAction::fFastSimulation</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/EventAction.hh" line="129" column="12" bodyfile="include/EventAction.hh" bodystart="129" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classG4FastSim_1_1EventAction_1a8cf5e1e2820b30042cd4c72fb53dd7ff" prot="private" static="no" mutable="no">
+        <type>G4bool</type>
+        <definition>G4bool G4FastSim::EventAction::fInitializedGraphs</definition>
+        <argsstring></argsstring>
+        <name>fInitializedGraphs</name>
+        <qualifiedname>G4FastSim::EventAction::fInitializedGraphs</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/EventAction.hh" line="130" column="12" bodyfile="include/EventAction.hh" bodystart="130" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classG4FastSim_1_1EventAction_1adf8994cbd5ea908c2bbc6d76a2d4217b" prot="private" static="no" mutable="no">
+        <type>G4int</type>
+        <definition>G4int G4FastSim::EventAction::fNumberOfScattersMax</definition>
+        <argsstring></argsstring>
+        <name>fNumberOfScattersMax</name>
+        <qualifiedname>G4FastSim::EventAction::fNumberOfScattersMax</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/EventAction.hh" line="131" column="11" bodyfile="include/EventAction.hh" bodystart="131" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classG4FastSim_1_1EventAction_1a58082024c9ac196511501341515df164" prot="private" static="no" mutable="no">
+        <type>G4int</type>
+        <definition>G4int G4FastSim::EventAction::fNumberOfScatters</definition>
+        <argsstring></argsstring>
+        <name>fNumberOfScatters</name>
+        <qualifiedname>G4FastSim::EventAction::fNumberOfScatters</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/EventAction.hh" line="132" column="11" bodyfile="include/EventAction.hh" bodystart="132" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classG4FastSim_1_1EventAction_1a3e380592d4e416732c6279330b2b5443" prot="private" static="no" mutable="no">
+        <type>G4bool</type>
+        <definition>G4bool G4FastSim::EventAction::fHasBeenInXenon</definition>
+        <argsstring></argsstring>
+        <name>fHasBeenInXenon</name>
+        <qualifiedname>G4FastSim::EventAction::fHasBeenInXenon</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/EventAction.hh" line="133" column="12" bodyfile="include/EventAction.hh" bodystart="133" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classG4FastSim_1_1EventAction_1a5818690ff1cdb3ace37c63ce7b66d9e5" prot="private" static="no" mutable="no">
+        <type>G4double</type>
+        <definition>G4double G4FastSim::EventAction::fMaxEnergy</definition>
+        <argsstring></argsstring>
+        <name>fMaxEnergy</name>
+        <qualifiedname>G4FastSim::EventAction::fMaxEnergy</qualifiedname>
+        <initializer>= 0.0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/EventAction.hh" line="136" column="14" bodyfile="include/EventAction.hh" bodystart="136" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classG4FastSim_1_1EventAction_1af2606a7442a97440c5d22defe007ae81" prot="private" static="no" mutable="no">
+        <type>G4double</type>
+        <definition>G4double G4FastSim::EventAction::fAvailableEnergy</definition>
+        <argsstring></argsstring>
+        <name>fAvailableEnergy</name>
+        <qualifiedname>G4FastSim::EventAction::fAvailableEnergy</qualifiedname>
+        <initializer>= 0.0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/EventAction.hh" line="138" column="14" bodyfile="include/EventAction.hh" bodystart="138" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classG4FastSim_1_1EventAction_1a14ab0f7ba6104d5c350b03b90c4a0f8c" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; G4String &gt;</type>
+        <definition>std::vector&lt;G4String&gt; G4FastSim::EventAction::fHitsCollectionNames</definition>
+        <argsstring></argsstring>
+        <name>fHitsCollectionNames</name>
+        <qualifiedname>G4FastSim::EventAction::fHitsCollectionNames</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/EventAction.hh" line="142" column="17" bodyfile="include/EventAction.hh" bodystart="142" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classG4FastSim_1_1EventAction_1af65a0f7c54bad6a835bcdbb130cfaeda" prot="private" static="no" mutable="no">
+        <type><ref refid="classGammaRayHelper" kindref="compound">GammaRayHelper</ref> *</type>
+        <definition>GammaRayHelper* G4FastSim::EventAction::fGammaRayHelper</definition>
+        <argsstring></argsstring>
+        <name>fGammaRayHelper</name>
+        <qualifiedname>G4FastSim::EventAction::fGammaRayHelper</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/EventAction.hh" line="144" column="20" bodyfile="include/EventAction.hh" bodystart="144" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classG4FastSim_1_1EventAction_1ab213bd3faaee0e62dad9ba2884f29cb9" prot="private" static="no" mutable="no">
+        <type>G4LogicalVolume *</type>
+        <definition>G4LogicalVolume* G4FastSim::EventAction::fFiducialVolume</definition>
+        <argsstring></argsstring>
+        <name>fFiducialVolume</name>
+        <qualifiedname>G4FastSim::EventAction::fFiducialVolume</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/EventAction.hh" line="146" column="21" bodyfile="include/EventAction.hh" bodystart="146" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classG4FastSim_1_1EventAction_1aa88a720d0b7462ba448c065ca26179ab" prot="private" static="no" mutable="no">
+        <type>G4int</type>
+        <definition>G4int G4FastSim::EventAction::verbosityLevel</definition>
+        <argsstring></argsstring>
+        <name>verbosityLevel</name>
+        <qualifiedname>G4FastSim::EventAction::verbosityLevel</qualifiedname>
+        <initializer>=0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/EventAction.hh" line="148" column="11" bodyfile="include/EventAction.hh" bodystart="148" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classG4FastSim_1_1EventAction_1aa1f321b88b89f16c67b65da6727a52d6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>G4FastSim::EventAction::EventAction</definition>
+        <argsstring>()</argsstring>
+        <name>EventAction</name>
+        <qualifiedname>G4FastSim::EventAction::EventAction</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/EventAction.hh" line="64" column="5" bodyfile="src/EventAction.cc" bodystart="55" bodyend="62"/>
+      </memberdef>
+      <memberdef kind="function" id="classG4FastSim_1_1EventAction_1adb4415861c5cdd0a55b2e14990e13da6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>G4FastSim::EventAction::~EventAction</definition>
+        <argsstring>() override=default</argsstring>
+        <name>~EventAction</name>
+        <qualifiedname>G4FastSim::EventAction::~EventAction</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/EventAction.hh" line="65" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classG4FastSim_1_1EventAction_1aa0a1ce1d279c7071217c445fc761bbad" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void G4FastSim::EventAction::BeginOfEventAction</definition>
+        <argsstring>(const G4Event *event)</argsstring>
+        <name>BeginOfEventAction</name>
+        <qualifiedname>G4FastSim::EventAction::BeginOfEventAction</qualifiedname>
+        <param>
+          <type>const G4Event *</type>
+          <declname>event</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/EventAction.hh" line="67" column="10" bodyfile="src/EventAction.cc" bodystart="66" bodyend="104"/>
+      </memberdef>
+      <memberdef kind="function" id="classG4FastSim_1_1EventAction_1a43bd94959a1efa3612b0a6324bca406c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void G4FastSim::EventAction::EndOfEventAction</definition>
+        <argsstring>(const G4Event *event)</argsstring>
+        <name>EndOfEventAction</name>
+        <qualifiedname>G4FastSim::EventAction::EndOfEventAction</qualifiedname>
+        <param>
+          <type>const G4Event *</type>
+          <declname>event</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/EventAction.hh" line="68" column="10" bodyfile="src/EventAction.cc" bodystart="166" bodyend="197"/>
+      </memberdef>
+      <memberdef kind="function" id="classG4FastSim_1_1EventAction_1adeb4e093143f249cf5a556a8246653d3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::vector&lt; G4double &gt; &amp;</type>
+        <definition>std::vector&lt; G4double &gt; &amp; G4FastSim::EventAction::GetX</definition>
+        <argsstring>()</argsstring>
+        <name>GetX</name>
+        <qualifiedname>G4FastSim::EventAction::GetX</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/EventAction.hh" line="70" column="17" bodyfile="include/EventAction.hh" bodystart="70" bodyend="70"/>
+      </memberdef>
+      <memberdef kind="function" id="classG4FastSim_1_1EventAction_1a52568c351e9ab62edccb891c0bf8f421" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::vector&lt; G4double &gt; &amp;</type>
+        <definition>std::vector&lt; G4double &gt; &amp; G4FastSim::EventAction::GetY</definition>
+        <argsstring>()</argsstring>
+        <name>GetY</name>
+        <qualifiedname>G4FastSim::EventAction::GetY</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/EventAction.hh" line="71" column="17" bodyfile="include/EventAction.hh" bodystart="71" bodyend="71"/>
+      </memberdef>
+      <memberdef kind="function" id="classG4FastSim_1_1EventAction_1a01b9c8dc9d9839413cd5c07484aaf248" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::vector&lt; G4double &gt; &amp;</type>
+        <definition>std::vector&lt; G4double &gt; &amp; G4FastSim::EventAction::GetZ</definition>
+        <argsstring>()</argsstring>
+        <name>GetZ</name>
+        <qualifiedname>G4FastSim::EventAction::GetZ</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/EventAction.hh" line="72" column="17" bodyfile="include/EventAction.hh" bodystart="72" bodyend="72"/>
+      </memberdef>
+      <memberdef kind="function" id="classG4FastSim_1_1EventAction_1ace2d3844304533e215785778ef46fe90" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::vector&lt; G4double &gt; &amp;</type>
+        <definition>std::vector&lt; G4double &gt; &amp; G4FastSim::EventAction::GetE</definition>
+        <argsstring>()</argsstring>
+        <name>GetE</name>
+        <qualifiedname>G4FastSim::EventAction::GetE</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/EventAction.hh" line="73" column="17" bodyfile="include/EventAction.hh" bodystart="73" bodyend="73"/>
+      </memberdef>
+      <memberdef kind="function" id="classG4FastSim_1_1EventAction_1ac0331ec9e7c100627ec72b86857f173e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::vector&lt; G4double &gt; &amp;</type>
+        <definition>std::vector&lt; G4double &gt; &amp; G4FastSim::EventAction::GetW</definition>
+        <argsstring>()</argsstring>
+        <name>GetW</name>
+        <qualifiedname>G4FastSim::EventAction::GetW</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/EventAction.hh" line="74" column="17" bodyfile="include/EventAction.hh" bodystart="74" bodyend="74"/>
+      </memberdef>
+      <memberdef kind="function" id="classG4FastSim_1_1EventAction_1aebd5b408875e402cf38a33a84410fb0d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void G4FastSim::EventAction::AddEdep</definition>
+        <argsstring>(G4double edep)</argsstring>
+        <name>AddEdep</name>
+        <qualifiedname>G4FastSim::EventAction::AddEdep</qualifiedname>
+        <param>
+          <type>G4double</type>
+          <declname>edep</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/EventAction.hh" line="77" column="10" bodyfile="include/EventAction.hh" bodystart="77" bodyend="77"/>
+      </memberdef>
+      <memberdef kind="function" id="classG4FastSim_1_1EventAction_1a25cfe5dde9e5abd4d30c255fb521724d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void G4FastSim::EventAction::AddWeight</definition>
+        <argsstring>(G4double weight)</argsstring>
+        <name>AddWeight</name>
+        <qualifiedname>G4FastSim::EventAction::AddWeight</qualifiedname>
+        <param>
+          <type>G4double</type>
+          <declname>weight</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/EventAction.hh" line="78" column="10" bodyfile="include/EventAction.hh" bodystart="78" bodyend="78"/>
+      </memberdef>
+      <memberdef kind="function" id="classG4FastSim_1_1EventAction_1a06e4d9a81df350b8a49c4d3c77c5b154" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void G4FastSim::EventAction::AnalyzeHits</definition>
+        <argsstring>(const G4Event *event)</argsstring>
+        <name>AnalyzeHits</name>
+        <qualifiedname>G4FastSim::EventAction::AnalyzeHits</qualifiedname>
+        <param>
+          <type>const G4Event *</type>
+          <declname>event</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Analyzes the hits in the event.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>event</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The G4Event object representing the current event. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/EventAction.hh" line="79" column="10" bodyfile="src/EventAction.cc" bodystart="206" bodyend="237"/>
+      </memberdef>
+      <memberdef kind="function" id="classG4FastSim_1_1EventAction_1a3da7908738b2228320ef78abf83763a8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void G4FastSim::EventAction::ResetVariables</definition>
+        <argsstring>()</argsstring>
+        <name>ResetVariables</name>
+        <qualifiedname>G4FastSim::EventAction::ResetVariables</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/EventAction.hh" line="80" column="10" bodyfile="src/EventAction.cc" bodystart="135" bodyend="162"/>
+      </memberdef>
+      <memberdef kind="function" id="classG4FastSim_1_1EventAction_1a0a5957019bc5a3844c9c10be44f04880" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>G4bool</type>
+        <definition>G4bool G4FastSim::EventAction::IsFastSimulation</definition>
+        <argsstring>()</argsstring>
+        <name>IsFastSimulation</name>
+        <qualifiedname>G4FastSim::EventAction::IsFastSimulation</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/EventAction.hh" line="82" column="12" bodyfile="include/EventAction.hh" bodystart="82" bodyend="82"/>
+      </memberdef>
+      <memberdef kind="function" id="classG4FastSim_1_1EventAction_1afd2e1cdcd5f4320967274b27bc06e6e0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>G4int</type>
+        <definition>G4int G4FastSim::EventAction::GetNumberOfScatters</definition>
+        <argsstring>()</argsstring>
+        <name>GetNumberOfScatters</name>
+        <qualifiedname>G4FastSim::EventAction::GetNumberOfScatters</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/EventAction.hh" line="83" column="11" bodyfile="include/EventAction.hh" bodystart="83" bodyend="83"/>
+      </memberdef>
+      <memberdef kind="function" id="classG4FastSim_1_1EventAction_1a6e7b195f21b29162210a1fd4f1395b4d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>G4double</type>
+        <definition>G4double G4FastSim::EventAction::GetMaxEnergy</definition>
+        <argsstring>()</argsstring>
+        <name>GetMaxEnergy</name>
+        <qualifiedname>G4FastSim::EventAction::GetMaxEnergy</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/EventAction.hh" line="84" column="14" bodyfile="include/EventAction.hh" bodystart="84" bodyend="84"/>
+      </memberdef>
+      <memberdef kind="function" id="classG4FastSim_1_1EventAction_1a29578ed86497866f4e76647cff46def8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>G4int</type>
+        <definition>G4int G4FastSim::EventAction::GetNumberOfScattersMax</definition>
+        <argsstring>()</argsstring>
+        <name>GetNumberOfScattersMax</name>
+        <qualifiedname>G4FastSim::EventAction::GetNumberOfScattersMax</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/EventAction.hh" line="85" column="11" bodyfile="include/EventAction.hh" bodystart="85" bodyend="85"/>
+      </memberdef>
+      <memberdef kind="function" id="classG4FastSim_1_1EventAction_1aa0f4b11d80547c902f0b72cfab9be7a3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>G4double</type>
+        <definition>G4double G4FastSim::EventAction::GetAvailableEnergy</definition>
+        <argsstring>()</argsstring>
+        <name>GetAvailableEnergy</name>
+        <qualifiedname>G4FastSim::EventAction::GetAvailableEnergy</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/EventAction.hh" line="86" column="14" bodyfile="include/EventAction.hh" bodystart="86" bodyend="86"/>
+      </memberdef>
+      <memberdef kind="function" id="classG4FastSim_1_1EventAction_1ae1cd2d1c9fd5002c4f22483481d46cc7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>G4double</type>
+        <definition>G4double G4FastSim::EventAction::GetWeight</definition>
+        <argsstring>()</argsstring>
+        <name>GetWeight</name>
+        <qualifiedname>G4FastSim::EventAction::GetWeight</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/EventAction.hh" line="87" column="14" bodyfile="include/EventAction.hh" bodystart="87" bodyend="87"/>
+      </memberdef>
+      <memberdef kind="function" id="classG4FastSim_1_1EventAction_1a85489f607916912fadf7d58891c5b55b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>G4bool</type>
+        <definition>G4bool G4FastSim::EventAction::HasBeenInXenon</definition>
+        <argsstring>()</argsstring>
+        <name>HasBeenInXenon</name>
+        <qualifiedname>G4FastSim::EventAction::HasBeenInXenon</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/EventAction.hh" line="88" column="12" bodyfile="include/EventAction.hh" bodystart="88" bodyend="88"/>
+      </memberdef>
+      <memberdef kind="function" id="classG4FastSim_1_1EventAction_1a4d03ac81dc8d0fcb225ded25bd7f6b73" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>G4int</type>
+        <definition>G4int G4FastSim::EventAction::GetEventType</definition>
+        <argsstring>()</argsstring>
+        <name>GetEventType</name>
+        <qualifiedname>G4FastSim::EventAction::GetEventType</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/EventAction.hh" line="89" column="11" bodyfile="include/EventAction.hh" bodystart="89" bodyend="89"/>
+      </memberdef>
+      <memberdef kind="function" id="classG4FastSim_1_1EventAction_1ab0990d80db3bd9e4c88279d1490a4dc4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void G4FastSim::EventAction::SetNumberOfScattersMax</definition>
+        <argsstring>(G4int n)</argsstring>
+        <name>SetNumberOfScattersMax</name>
+        <qualifiedname>G4FastSim::EventAction::SetNumberOfScattersMax</qualifiedname>
+        <param>
+          <type>G4int</type>
+          <declname>n</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/EventAction.hh" line="91" column="10" bodyfile="include/EventAction.hh" bodystart="91" bodyend="91"/>
+      </memberdef>
+      <memberdef kind="function" id="classG4FastSim_1_1EventAction_1ab10d97afcb735c75e77447f118297668" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void G4FastSim::EventAction::SetFastSimulation</definition>
+        <argsstring>(G4bool fast)</argsstring>
+        <name>SetFastSimulation</name>
+        <qualifiedname>G4FastSim::EventAction::SetFastSimulation</qualifiedname>
+        <param>
+          <type>G4bool</type>
+          <declname>fast</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/EventAction.hh" line="92" column="10" bodyfile="include/EventAction.hh" bodystart="92" bodyend="92"/>
+      </memberdef>
+      <memberdef kind="function" id="classG4FastSim_1_1EventAction_1a1ac50be580de9273ef1e58095798bc16" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void G4FastSim::EventAction::SetNumberOfScatters</definition>
+        <argsstring>(G4int n)</argsstring>
+        <name>SetNumberOfScatters</name>
+        <qualifiedname>G4FastSim::EventAction::SetNumberOfScatters</qualifiedname>
+        <param>
+          <type>G4int</type>
+          <declname>n</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/EventAction.hh" line="93" column="10" bodyfile="include/EventAction.hh" bodystart="93" bodyend="93"/>
+      </memberdef>
+      <memberdef kind="function" id="classG4FastSim_1_1EventAction_1a0497268c7d7eaf9f9f1ef8cf8808a1e7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void G4FastSim::EventAction::SetMaxEnergy</definition>
+        <argsstring>(G4double e)</argsstring>
+        <name>SetMaxEnergy</name>
+        <qualifiedname>G4FastSim::EventAction::SetMaxEnergy</qualifiedname>
+        <param>
+          <type>G4double</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/EventAction.hh" line="94" column="10" bodyfile="include/EventAction.hh" bodystart="94" bodyend="94"/>
+      </memberdef>
+      <memberdef kind="function" id="classG4FastSim_1_1EventAction_1a828bd5efac02e28a0cbe6e296898e4f1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void G4FastSim::EventAction::SetAvailableEnergy</definition>
+        <argsstring>(G4double e)</argsstring>
+        <name>SetAvailableEnergy</name>
+        <qualifiedname>G4FastSim::EventAction::SetAvailableEnergy</qualifiedname>
+        <param>
+          <type>G4double</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/EventAction.hh" line="95" column="10" bodyfile="include/EventAction.hh" bodystart="95" bodyend="95"/>
+      </memberdef>
+      <memberdef kind="function" id="classG4FastSim_1_1EventAction_1abc1c3a1d617575f8e1329ecafeda4b45" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void G4FastSim::EventAction::ReduceAvailableEnergy</definition>
+        <argsstring>(G4double e)</argsstring>
+        <name>ReduceAvailableEnergy</name>
+        <qualifiedname>G4FastSim::EventAction::ReduceAvailableEnergy</qualifiedname>
+        <param>
+          <type>G4double</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/EventAction.hh" line="96" column="10" bodyfile="include/EventAction.hh" bodystart="96" bodyend="96"/>
+      </memberdef>
+      <memberdef kind="function" id="classG4FastSim_1_1EventAction_1a77d54ea8c5f1afe66e9bfa2330dfee27" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void G4FastSim::EventAction::SetHasBeenInXenon</definition>
+        <argsstring>(G4bool b)</argsstring>
+        <name>SetHasBeenInXenon</name>
+        <qualifiedname>G4FastSim::EventAction::SetHasBeenInXenon</qualifiedname>
+        <param>
+          <type>G4bool</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/EventAction.hh" line="97" column="10" bodyfile="include/EventAction.hh" bodystart="97" bodyend="97"/>
+      </memberdef>
+      <memberdef kind="function" id="classG4FastSim_1_1EventAction_1a964a668626874db354cad50145b6f441" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void G4FastSim::EventAction::SetEventType</definition>
+        <argsstring>(G4int type)</argsstring>
+        <name>SetEventType</name>
+        <qualifiedname>G4FastSim::EventAction::SetEventType</qualifiedname>
+        <param>
+          <type>G4int</type>
+          <declname>type</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/EventAction.hh" line="98" column="10" bodyfile="include/EventAction.hh" bodystart="98" bodyend="98"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classG4FastSim_1_1EventAction_1a1574fcdd2b9a2aca1a2205a4c0b21ad3" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void G4FastSim::EventAction::ClusterHits</definition>
+        <argsstring>(std::vector&lt; G4FastSim::Hit * &gt; &amp;hits, G4double spatialThreshold, G4double timeThreshold, std::vector&lt; Cluster &gt; &amp;clusters)</argsstring>
+        <name>ClusterHits</name>
+        <qualifiedname>G4FastSim::EventAction::ClusterHits</qualifiedname>
+        <param>
+          <type>std::vector&lt; <ref refid="classG4FastSim_1_1Hit" kindref="compound">G4FastSim::Hit</ref> * &gt; &amp;</type>
+          <declname>hits</declname>
+        </param>
+        <param>
+          <type>G4double</type>
+          <declname>spatialThreshold</declname>
+        </param>
+        <param>
+          <type>G4double</type>
+          <declname>timeThreshold</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; <ref refid="structG4FastSim_1_1Cluster" kindref="compound">Cluster</ref> &gt; &amp;</type>
+          <declname>clusters</declname>
+        </param>
+        <briefdescription>
+<para>Clusters hits based on spatial and time thresholds. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function takes a vector of hits and clusters them based on their spatial and time proximity. Hits that are within the specified spatial and time thresholds are added to the same cluster. If a hit does not belong to any existing cluster, a new cluster is created for that hit.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>hits</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The vector of hits to be clustered. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>spatialThreshold</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The maximum spatial distance for hits to be considered part of the same cluster. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>timeThreshold</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The maximum time difference for hits to be considered part of the same cluster. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>clusters</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The vector of clusters to store the clustered hits. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/EventAction.hh" line="104" column="10" bodyfile="src/EventAction.cc" bodystart="265" bodyend="400"/>
+      </memberdef>
+      <memberdef kind="function" id="classG4FastSim_1_1EventAction_1a7b5f4425356f54ec3801eb47cddc7c97" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool G4FastSim::EventAction::IsWithinFiducialVolume</definition>
+        <argsstring>(const G4ThreeVector &amp;position, const G4ThreeVector &amp;direction)</argsstring>
+        <name>IsWithinFiducialVolume</name>
+        <qualifiedname>G4FastSim::EventAction::IsWithinFiducialVolume</qualifiedname>
+        <param>
+          <type>const G4ThreeVector &amp;</type>
+          <declname>position</declname>
+        </param>
+        <param>
+          <type>const G4ThreeVector &amp;</type>
+          <declname>direction</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/EventAction.hh" line="105" column="10" bodyfile="src/EventAction.cc" bodystart="108" bodyend="131"/>
+      </memberdef>
+      <memberdef kind="function" id="classG4FastSim_1_1EventAction_1a902f3346d6e56cc7361e55cab035cf70" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>G4double</type>
+        <definition>G4double G4FastSim::EventAction::CalculateDistance</definition>
+        <argsstring>(const G4ThreeVector &amp;pos1, const G4ThreeVector &amp;pos2)</argsstring>
+        <name>CalculateDistance</name>
+        <qualifiedname>G4FastSim::EventAction::CalculateDistance</qualifiedname>
+        <param>
+          <type>const G4ThreeVector &amp;</type>
+          <declname>pos1</declname>
+        </param>
+        <param>
+          <type>const G4ThreeVector &amp;</type>
+          <declname>pos2</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/EventAction.hh" line="107" column="14" bodyfile="src/EventAction.cc" bodystart="240" bodyend="242"/>
+      </memberdef>
+      <memberdef kind="function" id="classG4FastSim_1_1EventAction_1a6d420ce29b24ed6096a8bda329dcd362" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>G4double</type>
+        <definition>G4double G4FastSim::EventAction::CalculateTimeDifference</definition>
+        <argsstring>(G4double time1, G4double time2)</argsstring>
+        <name>CalculateTimeDifference</name>
+        <qualifiedname>G4FastSim::EventAction::CalculateTimeDifference</qualifiedname>
+        <param>
+          <type>G4double</type>
+          <declname>time1</declname>
+        </param>
+        <param>
+          <type>G4double</type>
+          <declname>time2</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/EventAction.hh" line="108" column="14" bodyfile="src/EventAction.cc" bodystart="246" bodyend="248"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>G4FastSim::EventAction</label>
+        <link refid="classG4FastSim_1_1EventAction"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>G4UserEventAction</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>G4FastSim::EventAction</label>
+        <link refid="classG4FastSim_1_1EventAction"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>G4UserEventAction</label>
+      </node>
+    </collaborationgraph>
+    <location file="include/EventAction.hh" line="61" column="1" bodyfile="include/EventAction.hh" bodystart="62" bodyend="149"/>
+    <listofallmembers>
+      <member refid="classG4FastSim_1_1EventAction_1aebd5b408875e402cf38a33a84410fb0d" prot="public" virt="non-virtual"><scope>G4FastSim::EventAction</scope><name>AddEdep</name></member>
+      <member refid="classG4FastSim_1_1EventAction_1a25cfe5dde9e5abd4d30c255fb521724d" prot="public" virt="non-virtual"><scope>G4FastSim::EventAction</scope><name>AddWeight</name></member>
+      <member refid="classG4FastSim_1_1EventAction_1a06e4d9a81df350b8a49c4d3c77c5b154" prot="public" virt="non-virtual"><scope>G4FastSim::EventAction</scope><name>AnalyzeHits</name></member>
+      <member refid="classG4FastSim_1_1EventAction_1aa0a1ce1d279c7071217c445fc761bbad" prot="public" virt="non-virtual"><scope>G4FastSim::EventAction</scope><name>BeginOfEventAction</name></member>
+      <member refid="classG4FastSim_1_1EventAction_1a902f3346d6e56cc7361e55cab035cf70" prot="private" virt="non-virtual"><scope>G4FastSim::EventAction</scope><name>CalculateDistance</name></member>
+      <member refid="classG4FastSim_1_1EventAction_1a6d420ce29b24ed6096a8bda329dcd362" prot="private" virt="non-virtual"><scope>G4FastSim::EventAction</scope><name>CalculateTimeDifference</name></member>
+      <member refid="classG4FastSim_1_1EventAction_1a1574fcdd2b9a2aca1a2205a4c0b21ad3" prot="private" virt="non-virtual"><scope>G4FastSim::EventAction</scope><name>ClusterHits</name></member>
+      <member refid="classG4FastSim_1_1EventAction_1a43bd94959a1efa3612b0a6324bca406c" prot="public" virt="non-virtual"><scope>G4FastSim::EventAction</scope><name>EndOfEventAction</name></member>
+      <member refid="classG4FastSim_1_1EventAction_1aa1f321b88b89f16c67b65da6727a52d6" prot="public" virt="non-virtual"><scope>G4FastSim::EventAction</scope><name>EventAction</name></member>
+      <member refid="classG4FastSim_1_1EventAction_1af2606a7442a97440c5d22defe007ae81" prot="private" virt="non-virtual"><scope>G4FastSim::EventAction</scope><name>fAvailableEnergy</name></member>
+      <member refid="classG4FastSim_1_1EventAction_1abdb1d349d12ee5ee1becc636b9449d78" prot="private" virt="non-virtual"><scope>G4FastSim::EventAction</scope><name>fEd</name></member>
+      <member refid="classG4FastSim_1_1EventAction_1a41c9dc093c7137f7e59cd18aadbfd6be" prot="private" virt="non-virtual"><scope>G4FastSim::EventAction</scope><name>fEdep</name></member>
+      <member refid="classG4FastSim_1_1EventAction_1a22773d5fd32937317595ce00473b52cf" prot="private" virt="non-virtual"><scope>G4FastSim::EventAction</scope><name>fEventID</name></member>
+      <member refid="classG4FastSim_1_1EventAction_1af3f5c798657ab7b11764cfa1b011a6c1" prot="private" virt="non-virtual"><scope>G4FastSim::EventAction</scope><name>fEventType</name></member>
+      <member refid="classG4FastSim_1_1EventAction_1af161744847ff48843973c7829a372fba" prot="private" virt="non-virtual"><scope>G4FastSim::EventAction</scope><name>fFastSimulation</name></member>
+      <member refid="classG4FastSim_1_1EventAction_1ab213bd3faaee0e62dad9ba2884f29cb9" prot="private" virt="non-virtual"><scope>G4FastSim::EventAction</scope><name>fFiducialVolume</name></member>
+      <member refid="classG4FastSim_1_1EventAction_1af65a0f7c54bad6a835bcdbb130cfaeda" prot="private" virt="non-virtual"><scope>G4FastSim::EventAction</scope><name>fGammaRayHelper</name></member>
+      <member refid="classG4FastSim_1_1EventAction_1a3e380592d4e416732c6279330b2b5443" prot="private" virt="non-virtual"><scope>G4FastSim::EventAction</scope><name>fHasBeenInXenon</name></member>
+      <member refid="classG4FastSim_1_1EventAction_1a14ab0f7ba6104d5c350b03b90c4a0f8c" prot="private" virt="non-virtual"><scope>G4FastSim::EventAction</scope><name>fHitsCollectionNames</name></member>
+      <member refid="classG4FastSim_1_1EventAction_1a8cf5e1e2820b30042cd4c72fb53dd7ff" prot="private" virt="non-virtual"><scope>G4FastSim::EventAction</scope><name>fInitializedGraphs</name></member>
+      <member refid="classG4FastSim_1_1EventAction_1a2a96349ee89272b4576398a7ac538695" prot="private" virt="non-virtual"><scope>G4FastSim::EventAction</scope><name>fLogWeight</name></member>
+      <member refid="classG4FastSim_1_1EventAction_1a5818690ff1cdb3ace37c63ce7b66d9e5" prot="private" virt="non-virtual"><scope>G4FastSim::EventAction</scope><name>fMaxEnergy</name></member>
+      <member refid="classG4FastSim_1_1EventAction_1a240a5e697b0a82b9c5ebd221f9acc09f" prot="private" virt="non-virtual"><scope>G4FastSim::EventAction</scope><name>fNclusters</name></member>
+      <member refid="classG4FastSim_1_1EventAction_1a1556839c7fa3ed559b7b84965f189fa4" prot="private" virt="non-virtual"><scope>G4FastSim::EventAction</scope><name>fNcomp</name></member>
+      <member refid="classG4FastSim_1_1EventAction_1a9180cbaec40303315968a7d32da06614" prot="private" virt="non-virtual"><scope>G4FastSim::EventAction</scope><name>fNphot</name></member>
+      <member refid="classG4FastSim_1_1EventAction_1a58082024c9ac196511501341515df164" prot="private" virt="non-virtual"><scope>G4FastSim::EventAction</scope><name>fNumberOfScatters</name></member>
+      <member refid="classG4FastSim_1_1EventAction_1adf8994cbd5ea908c2bbc6d76a2d4217b" prot="private" virt="non-virtual"><scope>G4FastSim::EventAction</scope><name>fNumberOfScattersMax</name></member>
+      <member refid="classG4FastSim_1_1EventAction_1aed9835cd7bdc33c6f6eb32a1f9716822" prot="private" virt="non-virtual"><scope>G4FastSim::EventAction</scope><name>fW</name></member>
+      <member refid="classG4FastSim_1_1EventAction_1a8db2c9bf9010e6de0aef310a515cd6a4" prot="private" virt="non-virtual"><scope>G4FastSim::EventAction</scope><name>fX</name></member>
+      <member refid="classG4FastSim_1_1EventAction_1a37bf9013dbd05b66dffdd12bb0520533" prot="private" virt="non-virtual"><scope>G4FastSim::EventAction</scope><name>fXp</name></member>
+      <member refid="classG4FastSim_1_1EventAction_1ac9f825b0cade7b76f41cb43989d84fd2" prot="private" virt="non-virtual"><scope>G4FastSim::EventAction</scope><name>fY</name></member>
+      <member refid="classG4FastSim_1_1EventAction_1a020d2869c4fcedffb31683143e3d0b21" prot="private" virt="non-virtual"><scope>G4FastSim::EventAction</scope><name>fYp</name></member>
+      <member refid="classG4FastSim_1_1EventAction_1a9c0c86e1e5629b8bd78b2b4fff94e537" prot="private" virt="non-virtual"><scope>G4FastSim::EventAction</scope><name>fZ</name></member>
+      <member refid="classG4FastSim_1_1EventAction_1a5d34246911770851b35dae2b275edcb9" prot="private" virt="non-virtual"><scope>G4FastSim::EventAction</scope><name>fZp</name></member>
+      <member refid="classG4FastSim_1_1EventAction_1aa0f4b11d80547c902f0b72cfab9be7a3" prot="public" virt="non-virtual"><scope>G4FastSim::EventAction</scope><name>GetAvailableEnergy</name></member>
+      <member refid="classG4FastSim_1_1EventAction_1ace2d3844304533e215785778ef46fe90" prot="public" virt="non-virtual"><scope>G4FastSim::EventAction</scope><name>GetE</name></member>
+      <member refid="classG4FastSim_1_1EventAction_1a4d03ac81dc8d0fcb225ded25bd7f6b73" prot="public" virt="non-virtual"><scope>G4FastSim::EventAction</scope><name>GetEventType</name></member>
+      <member refid="classG4FastSim_1_1EventAction_1a6e7b195f21b29162210a1fd4f1395b4d" prot="public" virt="non-virtual"><scope>G4FastSim::EventAction</scope><name>GetMaxEnergy</name></member>
+      <member refid="classG4FastSim_1_1EventAction_1afd2e1cdcd5f4320967274b27bc06e6e0" prot="public" virt="non-virtual"><scope>G4FastSim::EventAction</scope><name>GetNumberOfScatters</name></member>
+      <member refid="classG4FastSim_1_1EventAction_1a29578ed86497866f4e76647cff46def8" prot="public" virt="non-virtual"><scope>G4FastSim::EventAction</scope><name>GetNumberOfScattersMax</name></member>
+      <member refid="classG4FastSim_1_1EventAction_1ac0331ec9e7c100627ec72b86857f173e" prot="public" virt="non-virtual"><scope>G4FastSim::EventAction</scope><name>GetW</name></member>
+      <member refid="classG4FastSim_1_1EventAction_1ae1cd2d1c9fd5002c4f22483481d46cc7" prot="public" virt="non-virtual"><scope>G4FastSim::EventAction</scope><name>GetWeight</name></member>
+      <member refid="classG4FastSim_1_1EventAction_1adeb4e093143f249cf5a556a8246653d3" prot="public" virt="non-virtual"><scope>G4FastSim::EventAction</scope><name>GetX</name></member>
+      <member refid="classG4FastSim_1_1EventAction_1a52568c351e9ab62edccb891c0bf8f421" prot="public" virt="non-virtual"><scope>G4FastSim::EventAction</scope><name>GetY</name></member>
+      <member refid="classG4FastSim_1_1EventAction_1a01b9c8dc9d9839413cd5c07484aaf248" prot="public" virt="non-virtual"><scope>G4FastSim::EventAction</scope><name>GetZ</name></member>
+      <member refid="classG4FastSim_1_1EventAction_1a85489f607916912fadf7d58891c5b55b" prot="public" virt="non-virtual"><scope>G4FastSim::EventAction</scope><name>HasBeenInXenon</name></member>
+      <member refid="classG4FastSim_1_1EventAction_1a0a5957019bc5a3844c9c10be44f04880" prot="public" virt="non-virtual"><scope>G4FastSim::EventAction</scope><name>IsFastSimulation</name></member>
+      <member refid="classG4FastSim_1_1EventAction_1a7b5f4425356f54ec3801eb47cddc7c97" prot="private" virt="non-virtual"><scope>G4FastSim::EventAction</scope><name>IsWithinFiducialVolume</name></member>
+      <member refid="classG4FastSim_1_1EventAction_1abc1c3a1d617575f8e1329ecafeda4b45" prot="public" virt="non-virtual"><scope>G4FastSim::EventAction</scope><name>ReduceAvailableEnergy</name></member>
+      <member refid="classG4FastSim_1_1EventAction_1a3da7908738b2228320ef78abf83763a8" prot="public" virt="non-virtual"><scope>G4FastSim::EventAction</scope><name>ResetVariables</name></member>
+      <member refid="classG4FastSim_1_1EventAction_1a828bd5efac02e28a0cbe6e296898e4f1" prot="public" virt="non-virtual"><scope>G4FastSim::EventAction</scope><name>SetAvailableEnergy</name></member>
+      <member refid="classG4FastSim_1_1EventAction_1a964a668626874db354cad50145b6f441" prot="public" virt="non-virtual"><scope>G4FastSim::EventAction</scope><name>SetEventType</name></member>
+      <member refid="classG4FastSim_1_1EventAction_1ab10d97afcb735c75e77447f118297668" prot="public" virt="non-virtual"><scope>G4FastSim::EventAction</scope><name>SetFastSimulation</name></member>
+      <member refid="classG4FastSim_1_1EventAction_1a77d54ea8c5f1afe66e9bfa2330dfee27" prot="public" virt="non-virtual"><scope>G4FastSim::EventAction</scope><name>SetHasBeenInXenon</name></member>
+      <member refid="classG4FastSim_1_1EventAction_1a0497268c7d7eaf9f9f1ef8cf8808a1e7" prot="public" virt="non-virtual"><scope>G4FastSim::EventAction</scope><name>SetMaxEnergy</name></member>
+      <member refid="classG4FastSim_1_1EventAction_1a1ac50be580de9273ef1e58095798bc16" prot="public" virt="non-virtual"><scope>G4FastSim::EventAction</scope><name>SetNumberOfScatters</name></member>
+      <member refid="classG4FastSim_1_1EventAction_1ab0990d80db3bd9e4c88279d1490a4dc4" prot="public" virt="non-virtual"><scope>G4FastSim::EventAction</scope><name>SetNumberOfScattersMax</name></member>
+      <member refid="classG4FastSim_1_1EventAction_1aa88a720d0b7462ba448c065ca26179ab" prot="private" virt="non-virtual"><scope>G4FastSim::EventAction</scope><name>verbosityLevel</name></member>
+      <member refid="classG4FastSim_1_1EventAction_1adb4415861c5cdd0a55b2e14990e13da6" prot="public" virt="non-virtual"><scope>G4FastSim::EventAction</scope><name>~EventAction</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

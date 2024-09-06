@@ -1,0 +1,304 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="classG4FastSim_1_1Hit" kind="class" language="C++" prot="public">
+    <compoundname>G4FastSim::Hit</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">G4VHit</basecompoundref>
+    <includes refid="Hit_8hh" local="no">Hit.hh</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classG4FastSim_1_1Hit_1a2fcf2ab249ba8b5fc95013ea94001750" prot="public" static="no" mutable="no">
+        <type>G4double</type>
+        <definition>G4double G4FastSim::Hit::energyDeposit</definition>
+        <argsstring></argsstring>
+        <name>energyDeposit</name>
+        <qualifiedname>G4FastSim::Hit::energyDeposit</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Energy deposit of the hit. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/Hit.hh" line="31" column="14" bodyfile="include/Hit.hh" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classG4FastSim_1_1Hit_1aa50db143e0803d86e2f01fec22ac313e" prot="public" static="no" mutable="no">
+        <type>G4ThreeVector</type>
+        <definition>G4ThreeVector G4FastSim::Hit::position</definition>
+        <argsstring></argsstring>
+        <name>position</name>
+        <qualifiedname>G4FastSim::Hit::position</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Position of the hit. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/Hit.hh" line="32" column="19" bodyfile="include/Hit.hh" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classG4FastSim_1_1Hit_1a4815fe232702658cdb7587a508095b9b" prot="public" static="no" mutable="no">
+        <type>G4double</type>
+        <definition>G4double G4FastSim::Hit::time</definition>
+        <argsstring></argsstring>
+        <name>time</name>
+        <qualifiedname>G4FastSim::Hit::time</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Time of the hit. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/Hit.hh" line="33" column="14" bodyfile="include/Hit.hh" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classG4FastSim_1_1Hit_1a9c3ae356721c590ba17b1bb7e3819887" prot="public" static="no" mutable="no">
+        <type>G4int</type>
+        <definition>G4int G4FastSim::Hit::trackID</definition>
+        <argsstring></argsstring>
+        <name>trackID</name>
+        <qualifiedname>G4FastSim::Hit::trackID</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Track ID of the hit. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/Hit.hh" line="34" column="11" bodyfile="include/Hit.hh" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classG4FastSim_1_1Hit_1aa35bfbbddc37bfc7bf860719bdc71821" prot="public" static="no" mutable="no">
+        <type>G4int</type>
+        <definition>G4int G4FastSim::Hit::parentID</definition>
+        <argsstring></argsstring>
+        <name>parentID</name>
+        <qualifiedname>G4FastSim::Hit::parentID</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Parent ID of the hit. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/Hit.hh" line="35" column="11" bodyfile="include/Hit.hh" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classG4FastSim_1_1Hit_1a1ec3a00fb247cb4379083d1e8b88d004" prot="public" static="no" mutable="no">
+        <type>G4ThreeVector</type>
+        <definition>G4ThreeVector G4FastSim::Hit::momentum</definition>
+        <argsstring></argsstring>
+        <name>momentum</name>
+        <qualifiedname>G4FastSim::Hit::momentum</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Momentum of the hit. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/Hit.hh" line="36" column="19" bodyfile="include/Hit.hh" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classG4FastSim_1_1Hit_1a5c9609d8d3f775ccddb484c937ec97d7" prot="public" static="no" mutable="no">
+        <type>G4String</type>
+        <definition>G4String G4FastSim::Hit::particleType</definition>
+        <argsstring></argsstring>
+        <name>particleType</name>
+        <qualifiedname>G4FastSim::Hit::particleType</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Particle type of the hit. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/Hit.hh" line="37" column="14" bodyfile="include/Hit.hh" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classG4FastSim_1_1Hit_1a9e05b45ddeb28149a4d2b05bddac2c22" prot="public" static="no" mutable="no">
+        <type>G4String</type>
+        <definition>G4String G4FastSim::Hit::processType</definition>
+        <argsstring></argsstring>
+        <name>processType</name>
+        <qualifiedname>G4FastSim::Hit::processType</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Process type of the hit. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/Hit.hh" line="38" column="14" bodyfile="include/Hit.hh" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classG4FastSim_1_1Hit_1a3396684dc1ff80159d2be9a22f2b4b65" prot="public" static="no" mutable="no">
+        <type>G4double</type>
+        <definition>G4double G4FastSim::Hit::particleEnergy0</definition>
+        <argsstring></argsstring>
+        <name>particleEnergy0</name>
+        <qualifiedname>G4FastSim::Hit::particleEnergy0</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Energy of the particle at the beginning of a step </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/Hit.hh" line="39" column="14" bodyfile="include/Hit.hh" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classG4FastSim_1_1Hit_1a80e65ca8a582d646dbf185bb60417c9d" prot="public" static="no" mutable="no">
+        <type>G4double</type>
+        <definition>G4double G4FastSim::Hit::particleEnergy1</definition>
+        <argsstring></argsstring>
+        <name>particleEnergy1</name>
+        <qualifiedname>G4FastSim::Hit::particleEnergy1</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Energy of the particle after the step </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/Hit.hh" line="40" column="14" bodyfile="include/Hit.hh" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classG4FastSim_1_1Hit_1ad7a61ec7425d89e4daefb20c1387e234" prot="public" static="no" mutable="no">
+        <type>G4bool</type>
+        <definition>G4bool G4FastSim::Hit::used</definition>
+        <argsstring></argsstring>
+        <name>used</name>
+        <qualifiedname>G4FastSim::Hit::used</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Flag to indicate if the hit has been used in a cluster. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/Hit.hh" line="41" column="12" bodyfile="include/Hit.hh" bodystart="41" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classG4FastSim_1_1Hit_1acb847bc51e6a3604ca9eda681757af84" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>G4FastSim::Hit::Hit</definition>
+        <argsstring>()</argsstring>
+        <name>Hit</name>
+        <qualifiedname>G4FastSim::Hit::Hit</qualifiedname>
+        <briefdescription>
+<para>Default constructor for the <ref refid="classG4FastSim_1_1Hit" kindref="compound">Hit</ref> class. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/Hit.hh" line="23" column="5" bodyfile="src/Hit.cc" bodystart="9" bodyend="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classG4FastSim_1_1Hit_1a3a802fde25a65f859a3c1337f82ba19c" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>G4FastSim::Hit::~Hit</definition>
+        <argsstring>()</argsstring>
+        <name>~Hit</name>
+        <qualifiedname>G4FastSim::Hit::~Hit</qualifiedname>
+        <briefdescription>
+<para>Destructor for the <ref refid="classG4FastSim_1_1Hit" kindref="compound">Hit</ref> class. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/Hit.hh" line="28" column="13" bodyfile="src/Hit.cc" bodystart="12" bodyend="12"/>
+      </memberdef>
+      <memberdef kind="function" id="classG4FastSim_1_1Hit_1ab4627440228cfa53dea3b1ba5678b720" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void G4FastSim::Hit::Print</definition>
+        <argsstring>() const</argsstring>
+        <name>Print</name>
+        <qualifiedname>G4FastSim::Hit::Print</qualifiedname>
+        <briefdescription>
+<para>Print function to print the details of the hit. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/Hit.hh" line="47" column="10" bodyfile="src/Hit.cc" bodystart="14" bodyend="26"/>
+      </memberdef>
+      <memberdef kind="function" id="classG4FastSim_1_1Hit_1a91f62d25c54705573cb2fc9a82d4e4ba" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void *</type>
+        <definition>void * G4FastSim::Hit::operator new</definition>
+        <argsstring>(size_t)</argsstring>
+        <name>operator new</name>
+        <qualifiedname>G4FastSim::Hit::operator new</qualifiedname>
+        <param>
+          <type>size_t</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/Hit.hh" line="50" column="17" bodyfile="include/Hit.hh" bodystart="58" bodyend="61"/>
+      </memberdef>
+      <memberdef kind="function" id="classG4FastSim_1_1Hit_1ab5ebe1bb399d268a9b0c061be15919d8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void G4FastSim::Hit::operator delete</definition>
+        <argsstring>(void *hit)</argsstring>
+        <name>operator delete</name>
+        <qualifiedname>G4FastSim::Hit::operator delete</qualifiedname>
+        <param>
+          <type>void *</type>
+          <declname>hit</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/Hit.hh" line="51" column="17" bodyfile="include/Hit.hh" bodystart="63" bodyend="65"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>The <ref refid="classG4FastSim_1_1Hit" kindref="compound">Hit</ref> class represents a hit in the detector. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>It inherits from the G4VHit class and contains properties such as energy deposit, position, time, track ID, parent ID, momentum, particle type, and process type. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>G4FastSim::Hit</label>
+        <link refid="classG4FastSim_1_1Hit"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>G4VHit</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>G4FastSim::Hit</label>
+        <link refid="classG4FastSim_1_1Hit"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>G4VHit</label>
+      </node>
+    </collaborationgraph>
+    <location file="include/Hit.hh" line="18" column="1" bodyfile="include/Hit.hh" bodystart="18" bodyend="54"/>
+    <listofallmembers>
+      <member refid="classG4FastSim_1_1Hit_1a2fcf2ab249ba8b5fc95013ea94001750" prot="public" virt="non-virtual"><scope>G4FastSim::Hit</scope><name>energyDeposit</name></member>
+      <member refid="classG4FastSim_1_1Hit_1acb847bc51e6a3604ca9eda681757af84" prot="public" virt="non-virtual"><scope>G4FastSim::Hit</scope><name>Hit</name></member>
+      <member refid="classG4FastSim_1_1Hit_1a1ec3a00fb247cb4379083d1e8b88d004" prot="public" virt="non-virtual"><scope>G4FastSim::Hit</scope><name>momentum</name></member>
+      <member refid="classG4FastSim_1_1Hit_1ab5ebe1bb399d268a9b0c061be15919d8" prot="public" virt="non-virtual"><scope>G4FastSim::Hit</scope><name>operator delete</name></member>
+      <member refid="classG4FastSim_1_1Hit_1a91f62d25c54705573cb2fc9a82d4e4ba" prot="public" virt="non-virtual"><scope>G4FastSim::Hit</scope><name>operator new</name></member>
+      <member refid="classG4FastSim_1_1Hit_1aa35bfbbddc37bfc7bf860719bdc71821" prot="public" virt="non-virtual"><scope>G4FastSim::Hit</scope><name>parentID</name></member>
+      <member refid="classG4FastSim_1_1Hit_1a3396684dc1ff80159d2be9a22f2b4b65" prot="public" virt="non-virtual"><scope>G4FastSim::Hit</scope><name>particleEnergy0</name></member>
+      <member refid="classG4FastSim_1_1Hit_1a80e65ca8a582d646dbf185bb60417c9d" prot="public" virt="non-virtual"><scope>G4FastSim::Hit</scope><name>particleEnergy1</name></member>
+      <member refid="classG4FastSim_1_1Hit_1a5c9609d8d3f775ccddb484c937ec97d7" prot="public" virt="non-virtual"><scope>G4FastSim::Hit</scope><name>particleType</name></member>
+      <member refid="classG4FastSim_1_1Hit_1aa50db143e0803d86e2f01fec22ac313e" prot="public" virt="non-virtual"><scope>G4FastSim::Hit</scope><name>position</name></member>
+      <member refid="classG4FastSim_1_1Hit_1ab4627440228cfa53dea3b1ba5678b720" prot="public" virt="non-virtual"><scope>G4FastSim::Hit</scope><name>Print</name></member>
+      <member refid="classG4FastSim_1_1Hit_1a9e05b45ddeb28149a4d2b05bddac2c22" prot="public" virt="non-virtual"><scope>G4FastSim::Hit</scope><name>processType</name></member>
+      <member refid="classG4FastSim_1_1Hit_1a4815fe232702658cdb7587a508095b9b" prot="public" virt="non-virtual"><scope>G4FastSim::Hit</scope><name>time</name></member>
+      <member refid="classG4FastSim_1_1Hit_1a9c3ae356721c590ba17b1bb7e3819887" prot="public" virt="non-virtual"><scope>G4FastSim::Hit</scope><name>trackID</name></member>
+      <member refid="classG4FastSim_1_1Hit_1ad7a61ec7425d89e4daefb20c1387e234" prot="public" virt="non-virtual"><scope>G4FastSim::Hit</scope><name>used</name></member>
+      <member refid="classG4FastSim_1_1Hit_1a3a802fde25a65f859a3c1337f82ba19c" prot="public" virt="virtual"><scope>G4FastSim::Hit</scope><name>~Hit</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

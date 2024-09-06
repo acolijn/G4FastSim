@@ -1,0 +1,129 @@
+\doxysection{Detector\+Construction.\+hh}
+\hypertarget{DetectorConstruction_8hh_source}{}\label{DetectorConstruction_8hh_source}\index{include/DetectorConstruction.hh@{include/DetectorConstruction.hh}}
+\mbox{\hyperlink{DetectorConstruction_8hh}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ ********************************************************************}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ *\ License\ and\ Disclaimer\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ *\ The\ \ Geant4\ software\ \ is\ \ copyright\ of\ the\ Copyright\ Holders\ \ of\ *}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ *\ the\ Geant4\ Collaboration.\ \ It\ is\ provided\ \ under\ \ the\ terms\ \ and\ *}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ *\ conditions\ of\ the\ Geant4\ Software\ License,\ \ included\ in\ the\ file\ *}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//\ *\ LICENSE\ and\ available\ at\ \ http://cern.ch/geant4/license\ .\ \ These\ *}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ *\ include\ a\ list\ of\ copyright\ holders.\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//\ *\ Neither\ the\ authors\ of\ this\ software\ system,\ nor\ their\ employing\ *}}
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ *\ institutes,nor\ the\ agencies\ providing\ financial\ support\ for\ this\ *}}
+\DoxyCodeLine{00013\ \textcolor{comment}{//\ *\ work\ \ make\ \ any\ representation\ or\ \ warranty,\ express\ or\ implied,\ *}}
+\DoxyCodeLine{00014\ \textcolor{comment}{//\ *\ regarding\ \ this\ \ software\ system\ or\ assume\ any\ liability\ for\ its\ *}}
+\DoxyCodeLine{00015\ \textcolor{comment}{//\ *\ use.\ \ Please\ see\ the\ license\ in\ the\ file\ \ LICENSE\ \ and\ URL\ above\ *}}
+\DoxyCodeLine{00016\ \textcolor{comment}{//\ *\ for\ the\ full\ disclaimer\ and\ the\ limitation\ of\ liability.\ \ \ \ \ \ \ \ \ *}}
+\DoxyCodeLine{00017\ \textcolor{comment}{//\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *}}
+\DoxyCodeLine{00018\ \textcolor{comment}{//\ *\ This\ \ code\ \ implementation\ is\ the\ result\ of\ \ the\ \ scientific\ and\ *}}
+\DoxyCodeLine{00019\ \textcolor{comment}{//\ *\ technical\ work\ of\ the\ GEANT4\ collaboration.\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *}}
+\DoxyCodeLine{00020\ \textcolor{comment}{//\ *\ By\ using,\ \ copying,\ \ modifying\ or\ \ distributing\ the\ software\ (or\ *}}
+\DoxyCodeLine{00021\ \textcolor{comment}{//\ *\ any\ work\ based\ \ on\ the\ software)\ \ you\ \ agree\ \ to\ acknowledge\ its\ *}}
+\DoxyCodeLine{00022\ \textcolor{comment}{//\ *\ use\ \ in\ \ resulting\ \ scientific\ \ publications,\ \ and\ indicate\ your\ *}}
+\DoxyCodeLine{00023\ \textcolor{comment}{//\ *\ acceptance\ of\ all\ terms\ of\ the\ Geant4\ Software\ license.\ \ \ \ \ \ \ \ \ \ *}}
+\DoxyCodeLine{00024\ \textcolor{comment}{//\ ********************************************************************}}
+\DoxyCodeLine{00025\ \textcolor{comment}{//}}
+\DoxyCodeLine{00026\ \textcolor{comment}{//}}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#ifndef\ \_\_DetectorConstruction\_\_}}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#define\ \_\_DetectorConstruction\_\_\ 1}}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#include\ "{}G4VUserDetectorConstruction.hh"{}}}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{DetectorConstructionMessenger_8hh}{DetectorConstructionMessenger.hh}}"{}}}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{GammaRayHelper_8hh}{GammaRayHelper.hh}}"{}}}
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Materials_8hh}{Materials.hh}}"{}}}
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#include\ "{}globals.hh"{}}}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \textcolor{keyword}{class\ }G4VPhysicalVolume;}
+\DoxyCodeLine{00040\ \textcolor{keyword}{class\ }G4LogicalVolume;}
+\DoxyCodeLine{00041\ \textcolor{keyword}{class\ }DetectorConstructionMessenger;}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceG4FastSim}{G4FastSim}}}
+\DoxyCodeLine{00046\ \{}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classG4FastSim_1_1DetectorConstruction}{DetectorConstruction}}\ :\ \textcolor{keyword}{public}\ G4VUserDetectorConstruction}
+\DoxyCodeLine{00049\ \{}
+\DoxyCodeLine{00050\ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00051\ \ \ \ \ \mbox{\hyperlink{classG4FastSim_1_1DetectorConstruction_aa17a113299f7697c31fda911e666e177}{DetectorConstruction}}(G4FastSim::GammaRayHelper\ *gammaRayHelper);}
+\DoxyCodeLine{00052\ \ \ \ \ \mbox{\hyperlink{classG4FastSim_1_1DetectorConstruction_a039ec9979648c6e28e98659464823761}{\string~DetectorConstruction}}();\textcolor{comment}{//override\ =\ default;}}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \ \ G4VPhysicalVolume*\ \mbox{\hyperlink{classG4FastSim_1_1DetectorConstruction_a825525c706b36c849485028d6f138102}{Construct}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classG4FastSim_1_1DetectorConstruction_a0b6d42fb3252aef821846b808df83787}{ConstructWorld}}();}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classG4FastSim_1_1DetectorConstruction_a8ff92616a62089b555e2cfad4818286f}{ConstructWaterTank}}();}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classG4FastSim_1_1DetectorConstruction_af4745b2e22d743cf52f98c5ca366b3df}{ConstructOuterCryostat}}();}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classG4FastSim_1_1DetectorConstruction_a1dd93079f2b7408756bf3f9f96ae58d0}{ConstructInnerCryostat}}();\ \ \ \ }
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classG4FastSim_1_1DetectorConstruction_a2809d771bcb94d38ab7802a0e517df83}{ConstructLXe}}();}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classG4FastSim_1_1DetectorConstruction_aba89d601be1c4c5c3a862a0d8147a3a6}{ConstructFiducialVolume}}();}
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classG4FastSim_1_1DetectorConstruction_a98e849746130d557d122e86534795cb8}{DefineSensitiveDetector}}();}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \ \ \ \ G4LogicalVolume*\ \mbox{\hyperlink{classG4FastSim_1_1DetectorConstruction_a0635cbbeb6f0834113db4c369a75ce62}{GetScoringVolume}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classG4FastSim_1_1DetectorConstruction_a6eb404ead02476fc40a4678d28acb921}{fScoringVolume}};\ \}}
+\DoxyCodeLine{00064\ \ \ \ \ \mbox{\hyperlink{classGammaRayHelper}{GammaRayHelper}}*\ \mbox{\hyperlink{classG4FastSim_1_1DetectorConstruction_ac17bb2313f403e6bf33f417eacc2f62b}{GetGammaRayHelper}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ fGammaRayHelper;\ \}}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classG4FastSim_1_1DetectorConstruction_ae027aaad114262a32135d05bfb7ee621}{SetOuterCryostatRadius}}(G4double\ radius)\ \{\ outer\_cryostat\_radius\ =\ radius;\ \}}
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classG4FastSim_1_1DetectorConstruction_a3a88428057e9c9e17d308650b8a3350f}{SetOuterCryostatHeight}}(G4double\ height)\ \{\ outer\_cryostat\_height\ =\ height;\ \}}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classG4FastSim_1_1DetectorConstruction_a8617ce150d576a831bd6894d6d4ebb0f}{SetOuterCryostatWallThickness}}(G4double\ thickness)\ \{\ outer\_cryostat\_wall\_thickness\ =\ thickness;\ \}}
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classG4FastSim_1_1DetectorConstruction_af79b446ceec64127e74443ec0de833c8}{SetInnerCryostatRadius}}(G4double\ radius)\ \{\ inner\_cryostat\_radius\ =\ radius;\ \}}
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classG4FastSim_1_1DetectorConstruction_a217e2c69978b6eda39a8aa3da03f2024}{SetInnerCryostatHeight}}(G4double\ height)\ \{\ inner\_cryostat\_height\ =\ height;\ \}}
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classG4FastSim_1_1DetectorConstruction_a23fcc95da41a3623165d4003212a2c8f}{SetInnerCryostatWallThickness}}(G4double\ thickness)\ \{\ inner\_cryostat\_wall\_thickness\ =\ thickness;\ \}}
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classG4FastSim_1_1DetectorConstruction_a68adc113fced37c0eadddeff3ca8cf64}{SetFiducialRadius}}(G4double\ radius)\ \{\ fiducial\_radius\ =\ radius;\ \}}
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classG4FastSim_1_1DetectorConstruction_aa421d8fb67601dda45475f9e0ad77389}{SetFiducialHeight}}(G4double\ height)\ \{\ fiducial\_height\ =\ height;\ \}}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00076\ \ \ \ \ \mbox{\hyperlink{classG4FastSim_1_1Materials}{Materials}}\ *fMaterials\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \ \ \ \ \mbox{\hyperlink{classGammaRayHelper}{GammaRayHelper}}\ *fGammaRayHelper;}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{comment}{//\ check\ for\ overlaps}}
+\DoxyCodeLine{00081\ \ \ \ \ G4bool\ fCheckOverlaps\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{comment}{//dimensions}}
+\DoxyCodeLine{00084\ \ \ \ \ G4double\ outer\_cryostat\_radius;}
+\DoxyCodeLine{00085\ \ \ \ \ G4double\ outer\_cryostat\_height;}
+\DoxyCodeLine{00086\ \ \ \ \ G4double\ outer\_cryostat\_wall\_thickness;}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ \ \ \ \ G4double\ inner\_cryostat\_radius;}
+\DoxyCodeLine{00089\ \ \ \ \ G4double\ inner\_cryostat\_height;}
+\DoxyCodeLine{00090\ \ \ \ \ G4double\ inner\_cryostat\_wall\_thickness;}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00092\ \ \ \ \ G4double\ fiducial\_radius;}
+\DoxyCodeLine{00093\ \ \ \ \ G4double\ fiducial\_height;}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{comment}{//logical\ volumes}}
+\DoxyCodeLine{00096\ \ \ \ \ G4LogicalVolume*\ fWorldLogical\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00097\ \ \ \ \ G4LogicalVolume*\ fWaterTankLogical\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00098\ \ \ \ \ G4LogicalVolume*\ fOuterCryostatLogical\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00099\ \ \ \ \ G4LogicalVolume*\ fVacuumLogical\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00100\ \ \ \ \ G4LogicalVolume*\ fInnerCryostatLogical\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00101\ \ \ \ \ G4LogicalVolume*\ fLXeLogical\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00102\ \ \ \ \ G4LogicalVolume*\ fPTFELogical\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00103\ \ \ \ \ G4LogicalVolume*\ fLXeFiducialLogical\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00105\ \ \ \ \ \textcolor{comment}{//physical\ volumes}}
+\DoxyCodeLine{00106\ \ \ \ \ G4VPhysicalVolume*\ fWorldPhysical\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00107\ \ \ \ \ G4VPhysicalVolume*\ fWaterTankPhysical\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00108\ \ \ \ \ G4VPhysicalVolume*\ fOuterCryostatPhysical\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00109\ \ \ \ \ G4VPhysicalVolume*\ fVacuumPhysical\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00110\ \ \ \ \ G4VPhysicalVolume*\ fInnerCryostatPhysical\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00111\ \ \ \ \ G4VPhysicalVolume*\ fLXePhysical\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00112\ \ \ \ \ G4VPhysicalVolume*\ fPTFEPhysical\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00113\ \ \ \ \ G4VPhysicalVolume*\ fLXeFiducialPhysical\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00115\ \ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00116\ \ \ \ \ G4LogicalVolume*\ \mbox{\hyperlink{classG4FastSim_1_1DetectorConstruction_a6eb404ead02476fc40a4678d28acb921}{fScoringVolume}}\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00118\ \ \ \ \ \mbox{\hyperlink{classG4FastSim_1_1DetectorConstructionMessenger}{DetectorConstructionMessenger}}*\ \mbox{\hyperlink{classG4FastSim_1_1DetectorConstruction_ab0fa1fabca4339bf27bc74c56a7f1d5b}{fMessenger}};}
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00120\ \};}
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00122\ \}}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00124\ \textcolor{comment}{//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......}}
+\DoxyCodeLine{00125\ }
+\DoxyCodeLine{00126\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

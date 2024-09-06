@@ -1,0 +1,218 @@
+\doxysection{G4\+Fast\+Sim\+::Detector\+Construction Class Reference}
+\hypertarget{classG4FastSim_1_1DetectorConstruction}{}\label{classG4FastSim_1_1DetectorConstruction}\index{G4FastSim::DetectorConstruction@{G4FastSim::DetectorConstruction}}
+
+
+{\ttfamily \#include $<$Detector\+Construction.\+hh$>$}
+
+Inheritance diagram for G4\+Fast\+Sim\+::Detector\+Construction\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classG4FastSim_1_1DetectorConstruction}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classG4FastSim_1_1DetectorConstruction_aa17a113299f7697c31fda911e666e177}{Detector\+Construction}} (G4\+Fast\+Sim\+::\+Gamma\+Ray\+Helper \texorpdfstring{$\ast$}{*}gamma\+Ray\+Helper)
+\item 
+\mbox{\hyperlink{classG4FastSim_1_1DetectorConstruction_a039ec9979648c6e28e98659464823761}{\texorpdfstring{$\sim$}{\string~}\+Detector\+Construction}} ()
+\item 
+G4\+VPhysical\+Volume \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classG4FastSim_1_1DetectorConstruction_a825525c706b36c849485028d6f138102}{Construct}} () override
+\begin{DoxyCompactList}\small\item\em Constructs the detector geometry. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classG4FastSim_1_1DetectorConstruction_a0b6d42fb3252aef821846b808df83787}{Construct\+World}} ()
+\item 
+void \mbox{\hyperlink{classG4FastSim_1_1DetectorConstruction_a8ff92616a62089b555e2cfad4818286f}{Construct\+Water\+Tank}} ()
+\item 
+void \mbox{\hyperlink{classG4FastSim_1_1DetectorConstruction_af4745b2e22d743cf52f98c5ca366b3df}{Construct\+Outer\+Cryostat}} ()
+\item 
+void \mbox{\hyperlink{classG4FastSim_1_1DetectorConstruction_a1dd93079f2b7408756bf3f9f96ae58d0}{Construct\+Inner\+Cryostat}} ()
+\item 
+void \mbox{\hyperlink{classG4FastSim_1_1DetectorConstruction_a2809d771bcb94d38ab7802a0e517df83}{Construct\+LXe}} ()
+\item 
+void \mbox{\hyperlink{classG4FastSim_1_1DetectorConstruction_aba89d601be1c4c5c3a862a0d8147a3a6}{Construct\+Fiducial\+Volume}} ()
+\item 
+void \mbox{\hyperlink{classG4FastSim_1_1DetectorConstruction_a98e849746130d557d122e86534795cb8}{Define\+Sensitive\+Detector}} ()
+\item 
+G4\+Logical\+Volume \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classG4FastSim_1_1DetectorConstruction_a0635cbbeb6f0834113db4c369a75ce62}{Get\+Scoring\+Volume}} () const
+\item 
+\mbox{\hyperlink{classGammaRayHelper}{Gamma\+Ray\+Helper}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classG4FastSim_1_1DetectorConstruction_ac17bb2313f403e6bf33f417eacc2f62b}{Get\+Gamma\+Ray\+Helper}} () const
+\item 
+void \mbox{\hyperlink{classG4FastSim_1_1DetectorConstruction_ae027aaad114262a32135d05bfb7ee621}{Set\+Outer\+Cryostat\+Radius}} (G4double radius)
+\item 
+void \mbox{\hyperlink{classG4FastSim_1_1DetectorConstruction_a3a88428057e9c9e17d308650b8a3350f}{Set\+Outer\+Cryostat\+Height}} (G4double height)
+\item 
+void \mbox{\hyperlink{classG4FastSim_1_1DetectorConstruction_a8617ce150d576a831bd6894d6d4ebb0f}{Set\+Outer\+Cryostat\+Wall\+Thickness}} (G4double thickness)
+\item 
+void \mbox{\hyperlink{classG4FastSim_1_1DetectorConstruction_af79b446ceec64127e74443ec0de833c8}{Set\+Inner\+Cryostat\+Radius}} (G4double radius)
+\item 
+void \mbox{\hyperlink{classG4FastSim_1_1DetectorConstruction_a217e2c69978b6eda39a8aa3da03f2024}{Set\+Inner\+Cryostat\+Height}} (G4double height)
+\item 
+void \mbox{\hyperlink{classG4FastSim_1_1DetectorConstruction_a23fcc95da41a3623165d4003212a2c8f}{Set\+Inner\+Cryostat\+Wall\+Thickness}} (G4double thickness)
+\item 
+void \mbox{\hyperlink{classG4FastSim_1_1DetectorConstruction_a68adc113fced37c0eadddeff3ca8cf64}{Set\+Fiducial\+Radius}} (G4double radius)
+\item 
+void \mbox{\hyperlink{classG4FastSim_1_1DetectorConstruction_aa421d8fb67601dda45475f9e0ad77389}{Set\+Fiducial\+Height}} (G4double height)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+G4\+Logical\+Volume \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classG4FastSim_1_1DetectorConstruction_a6eb404ead02476fc40a4678d28acb921}{f\+Scoring\+Volume}} = nullptr
+\item 
+\mbox{\hyperlink{classG4FastSim_1_1DetectorConstructionMessenger}{Detector\+Construction\+Messenger}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classG4FastSim_1_1DetectorConstruction_ab0fa1fabca4339bf27bc74c56a7f1d5b}{f\+Messenger}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classG4FastSim_1_1DetectorConstruction_aa17a113299f7697c31fda911e666e177}\label{classG4FastSim_1_1DetectorConstruction_aa17a113299f7697c31fda911e666e177} 
+\index{G4FastSim::DetectorConstruction@{G4FastSim::DetectorConstruction}!DetectorConstruction@{DetectorConstruction}}
+\index{DetectorConstruction@{DetectorConstruction}!G4FastSim::DetectorConstruction@{G4FastSim::DetectorConstruction}}
+\doxysubsubsection{\texorpdfstring{DetectorConstruction()}{DetectorConstruction()}}
+{\footnotesize\ttfamily G4\+Fast\+Sim\+::\+Detector\+Construction\+::\+Detector\+Construction (\begin{DoxyParamCaption}\item[{G4\+Fast\+Sim\+::\+Gamma\+Ray\+Helper \texorpdfstring{$\ast$}{*}}]{gamma\+Ray\+Helper }\end{DoxyParamCaption})}
+
+\Hypertarget{classG4FastSim_1_1DetectorConstruction_a039ec9979648c6e28e98659464823761}\label{classG4FastSim_1_1DetectorConstruction_a039ec9979648c6e28e98659464823761} 
+\index{G4FastSim::DetectorConstruction@{G4FastSim::DetectorConstruction}!````~DetectorConstruction@{\texorpdfstring{$\sim$}{\string~}DetectorConstruction}}
+\index{````~DetectorConstruction@{\texorpdfstring{$\sim$}{\string~}DetectorConstruction}!G4FastSim::DetectorConstruction@{G4FastSim::DetectorConstruction}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}DetectorConstruction()}{\string~DetectorConstruction()}}
+{\footnotesize\ttfamily G4\+Fast\+Sim\+::\+Detector\+Construction\+::\texorpdfstring{$\sim$}{\string~}\+Detector\+Construction (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classG4FastSim_1_1DetectorConstruction_a825525c706b36c849485028d6f138102}\label{classG4FastSim_1_1DetectorConstruction_a825525c706b36c849485028d6f138102} 
+\index{G4FastSim::DetectorConstruction@{G4FastSim::DetectorConstruction}!Construct@{Construct}}
+\index{Construct@{Construct}!G4FastSim::DetectorConstruction@{G4FastSim::DetectorConstruction}}
+\doxysubsubsection{\texorpdfstring{Construct()}{Construct()}}
+{\footnotesize\ttfamily G4\+VPhysical\+Volume \texorpdfstring{$\ast$}{*} G4\+Fast\+Sim\+::\+Detector\+Construction\+::\+Construct (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+
+
+Constructs the detector geometry. 
+
+This function is responsible for constructing the detector geometry by defining materials, constructing various volumes such as the world volume, water tank, cryostats, liquid xenon, and fiducial volume. It also initializes the gamma ray helper class with the defined materials.
+
+\begin{DoxyReturn}{Returns}
+The physical volume of the world. 
+\end{DoxyReturn}
+\Hypertarget{classG4FastSim_1_1DetectorConstruction_aba89d601be1c4c5c3a862a0d8147a3a6}\label{classG4FastSim_1_1DetectorConstruction_aba89d601be1c4c5c3a862a0d8147a3a6} 
+\index{G4FastSim::DetectorConstruction@{G4FastSim::DetectorConstruction}!ConstructFiducialVolume@{ConstructFiducialVolume}}
+\index{ConstructFiducialVolume@{ConstructFiducialVolume}!G4FastSim::DetectorConstruction@{G4FastSim::DetectorConstruction}}
+\doxysubsubsection{\texorpdfstring{ConstructFiducialVolume()}{ConstructFiducialVolume()}}
+{\footnotesize\ttfamily void G4\+Fast\+Sim\+::\+Detector\+Construction\+::\+Construct\+Fiducial\+Volume (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Constructs the liquid xenon fiducial volume. \Hypertarget{classG4FastSim_1_1DetectorConstruction_a1dd93079f2b7408756bf3f9f96ae58d0}\label{classG4FastSim_1_1DetectorConstruction_a1dd93079f2b7408756bf3f9f96ae58d0} 
+\index{G4FastSim::DetectorConstruction@{G4FastSim::DetectorConstruction}!ConstructInnerCryostat@{ConstructInnerCryostat}}
+\index{ConstructInnerCryostat@{ConstructInnerCryostat}!G4FastSim::DetectorConstruction@{G4FastSim::DetectorConstruction}}
+\doxysubsubsection{\texorpdfstring{ConstructInnerCryostat()}{ConstructInnerCryostat()}}
+{\footnotesize\ttfamily void G4\+Fast\+Sim\+::\+Detector\+Construction\+::\+Construct\+Inner\+Cryostat (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Constructs the inner cryostat and fills it with LXe. \Hypertarget{classG4FastSim_1_1DetectorConstruction_a2809d771bcb94d38ab7802a0e517df83}\label{classG4FastSim_1_1DetectorConstruction_a2809d771bcb94d38ab7802a0e517df83} 
+\index{G4FastSim::DetectorConstruction@{G4FastSim::DetectorConstruction}!ConstructLXe@{ConstructLXe}}
+\index{ConstructLXe@{ConstructLXe}!G4FastSim::DetectorConstruction@{G4FastSim::DetectorConstruction}}
+\doxysubsubsection{\texorpdfstring{ConstructLXe()}{ConstructLXe()}}
+{\footnotesize\ttfamily void G4\+Fast\+Sim\+::\+Detector\+Construction\+::\+Construct\+LXe (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Constructs the liquid xenon volume in the detector. \Hypertarget{classG4FastSim_1_1DetectorConstruction_af4745b2e22d743cf52f98c5ca366b3df}\label{classG4FastSim_1_1DetectorConstruction_af4745b2e22d743cf52f98c5ca366b3df} 
+\index{G4FastSim::DetectorConstruction@{G4FastSim::DetectorConstruction}!ConstructOuterCryostat@{ConstructOuterCryostat}}
+\index{ConstructOuterCryostat@{ConstructOuterCryostat}!G4FastSim::DetectorConstruction@{G4FastSim::DetectorConstruction}}
+\doxysubsubsection{\texorpdfstring{ConstructOuterCryostat()}{ConstructOuterCryostat()}}
+{\footnotesize\ttfamily void G4\+Fast\+Sim\+::\+Detector\+Construction\+::\+Construct\+Outer\+Cryostat (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{classG4FastSim_1_1DetectorConstruction_a8ff92616a62089b555e2cfad4818286f}\label{classG4FastSim_1_1DetectorConstruction_a8ff92616a62089b555e2cfad4818286f} 
+\index{G4FastSim::DetectorConstruction@{G4FastSim::DetectorConstruction}!ConstructWaterTank@{ConstructWaterTank}}
+\index{ConstructWaterTank@{ConstructWaterTank}!G4FastSim::DetectorConstruction@{G4FastSim::DetectorConstruction}}
+\doxysubsubsection{\texorpdfstring{ConstructWaterTank()}{ConstructWaterTank()}}
+{\footnotesize\ttfamily void G4\+Fast\+Sim\+::\+Detector\+Construction\+::\+Construct\+Water\+Tank (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{classG4FastSim_1_1DetectorConstruction_a0b6d42fb3252aef821846b808df83787}\label{classG4FastSim_1_1DetectorConstruction_a0b6d42fb3252aef821846b808df83787} 
+\index{G4FastSim::DetectorConstruction@{G4FastSim::DetectorConstruction}!ConstructWorld@{ConstructWorld}}
+\index{ConstructWorld@{ConstructWorld}!G4FastSim::DetectorConstruction@{G4FastSim::DetectorConstruction}}
+\doxysubsubsection{\texorpdfstring{ConstructWorld()}{ConstructWorld()}}
+{\footnotesize\ttfamily void G4\+Fast\+Sim\+::\+Detector\+Construction\+::\+Construct\+World (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{classG4FastSim_1_1DetectorConstruction_a98e849746130d557d122e86534795cb8}\label{classG4FastSim_1_1DetectorConstruction_a98e849746130d557d122e86534795cb8} 
+\index{G4FastSim::DetectorConstruction@{G4FastSim::DetectorConstruction}!DefineSensitiveDetector@{DefineSensitiveDetector}}
+\index{DefineSensitiveDetector@{DefineSensitiveDetector}!G4FastSim::DetectorConstruction@{G4FastSim::DetectorConstruction}}
+\doxysubsubsection{\texorpdfstring{DefineSensitiveDetector()}{DefineSensitiveDetector()}}
+{\footnotesize\ttfamily void G4\+Fast\+Sim\+::\+Detector\+Construction\+::\+Define\+Sensitive\+Detector (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{classG4FastSim_1_1DetectorConstruction_ac17bb2313f403e6bf33f417eacc2f62b}\label{classG4FastSim_1_1DetectorConstruction_ac17bb2313f403e6bf33f417eacc2f62b} 
+\index{G4FastSim::DetectorConstruction@{G4FastSim::DetectorConstruction}!GetGammaRayHelper@{GetGammaRayHelper}}
+\index{GetGammaRayHelper@{GetGammaRayHelper}!G4FastSim::DetectorConstruction@{G4FastSim::DetectorConstruction}}
+\doxysubsubsection{\texorpdfstring{GetGammaRayHelper()}{GetGammaRayHelper()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classGammaRayHelper}{Gamma\+Ray\+Helper}} \texorpdfstring{$\ast$}{*} G4\+Fast\+Sim\+::\+Detector\+Construction\+::\+Get\+Gamma\+Ray\+Helper (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classG4FastSim_1_1DetectorConstruction_a0635cbbeb6f0834113db4c369a75ce62}\label{classG4FastSim_1_1DetectorConstruction_a0635cbbeb6f0834113db4c369a75ce62} 
+\index{G4FastSim::DetectorConstruction@{G4FastSim::DetectorConstruction}!GetScoringVolume@{GetScoringVolume}}
+\index{GetScoringVolume@{GetScoringVolume}!G4FastSim::DetectorConstruction@{G4FastSim::DetectorConstruction}}
+\doxysubsubsection{\texorpdfstring{GetScoringVolume()}{GetScoringVolume()}}
+{\footnotesize\ttfamily G4\+Logical\+Volume \texorpdfstring{$\ast$}{*} G4\+Fast\+Sim\+::\+Detector\+Construction\+::\+Get\+Scoring\+Volume (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classG4FastSim_1_1DetectorConstruction_aa421d8fb67601dda45475f9e0ad77389}\label{classG4FastSim_1_1DetectorConstruction_aa421d8fb67601dda45475f9e0ad77389} 
+\index{G4FastSim::DetectorConstruction@{G4FastSim::DetectorConstruction}!SetFiducialHeight@{SetFiducialHeight}}
+\index{SetFiducialHeight@{SetFiducialHeight}!G4FastSim::DetectorConstruction@{G4FastSim::DetectorConstruction}}
+\doxysubsubsection{\texorpdfstring{SetFiducialHeight()}{SetFiducialHeight()}}
+{\footnotesize\ttfamily void G4\+Fast\+Sim\+::\+Detector\+Construction\+::\+Set\+Fiducial\+Height (\begin{DoxyParamCaption}\item[{G4double}]{height }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classG4FastSim_1_1DetectorConstruction_a68adc113fced37c0eadddeff3ca8cf64}\label{classG4FastSim_1_1DetectorConstruction_a68adc113fced37c0eadddeff3ca8cf64} 
+\index{G4FastSim::DetectorConstruction@{G4FastSim::DetectorConstruction}!SetFiducialRadius@{SetFiducialRadius}}
+\index{SetFiducialRadius@{SetFiducialRadius}!G4FastSim::DetectorConstruction@{G4FastSim::DetectorConstruction}}
+\doxysubsubsection{\texorpdfstring{SetFiducialRadius()}{SetFiducialRadius()}}
+{\footnotesize\ttfamily void G4\+Fast\+Sim\+::\+Detector\+Construction\+::\+Set\+Fiducial\+Radius (\begin{DoxyParamCaption}\item[{G4double}]{radius }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classG4FastSim_1_1DetectorConstruction_a217e2c69978b6eda39a8aa3da03f2024}\label{classG4FastSim_1_1DetectorConstruction_a217e2c69978b6eda39a8aa3da03f2024} 
+\index{G4FastSim::DetectorConstruction@{G4FastSim::DetectorConstruction}!SetInnerCryostatHeight@{SetInnerCryostatHeight}}
+\index{SetInnerCryostatHeight@{SetInnerCryostatHeight}!G4FastSim::DetectorConstruction@{G4FastSim::DetectorConstruction}}
+\doxysubsubsection{\texorpdfstring{SetInnerCryostatHeight()}{SetInnerCryostatHeight()}}
+{\footnotesize\ttfamily void G4\+Fast\+Sim\+::\+Detector\+Construction\+::\+Set\+Inner\+Cryostat\+Height (\begin{DoxyParamCaption}\item[{G4double}]{height }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classG4FastSim_1_1DetectorConstruction_af79b446ceec64127e74443ec0de833c8}\label{classG4FastSim_1_1DetectorConstruction_af79b446ceec64127e74443ec0de833c8} 
+\index{G4FastSim::DetectorConstruction@{G4FastSim::DetectorConstruction}!SetInnerCryostatRadius@{SetInnerCryostatRadius}}
+\index{SetInnerCryostatRadius@{SetInnerCryostatRadius}!G4FastSim::DetectorConstruction@{G4FastSim::DetectorConstruction}}
+\doxysubsubsection{\texorpdfstring{SetInnerCryostatRadius()}{SetInnerCryostatRadius()}}
+{\footnotesize\ttfamily void G4\+Fast\+Sim\+::\+Detector\+Construction\+::\+Set\+Inner\+Cryostat\+Radius (\begin{DoxyParamCaption}\item[{G4double}]{radius }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classG4FastSim_1_1DetectorConstruction_a23fcc95da41a3623165d4003212a2c8f}\label{classG4FastSim_1_1DetectorConstruction_a23fcc95da41a3623165d4003212a2c8f} 
+\index{G4FastSim::DetectorConstruction@{G4FastSim::DetectorConstruction}!SetInnerCryostatWallThickness@{SetInnerCryostatWallThickness}}
+\index{SetInnerCryostatWallThickness@{SetInnerCryostatWallThickness}!G4FastSim::DetectorConstruction@{G4FastSim::DetectorConstruction}}
+\doxysubsubsection{\texorpdfstring{SetInnerCryostatWallThickness()}{SetInnerCryostatWallThickness()}}
+{\footnotesize\ttfamily void G4\+Fast\+Sim\+::\+Detector\+Construction\+::\+Set\+Inner\+Cryostat\+Wall\+Thickness (\begin{DoxyParamCaption}\item[{G4double}]{thickness }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classG4FastSim_1_1DetectorConstruction_a3a88428057e9c9e17d308650b8a3350f}\label{classG4FastSim_1_1DetectorConstruction_a3a88428057e9c9e17d308650b8a3350f} 
+\index{G4FastSim::DetectorConstruction@{G4FastSim::DetectorConstruction}!SetOuterCryostatHeight@{SetOuterCryostatHeight}}
+\index{SetOuterCryostatHeight@{SetOuterCryostatHeight}!G4FastSim::DetectorConstruction@{G4FastSim::DetectorConstruction}}
+\doxysubsubsection{\texorpdfstring{SetOuterCryostatHeight()}{SetOuterCryostatHeight()}}
+{\footnotesize\ttfamily void G4\+Fast\+Sim\+::\+Detector\+Construction\+::\+Set\+Outer\+Cryostat\+Height (\begin{DoxyParamCaption}\item[{G4double}]{height }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classG4FastSim_1_1DetectorConstruction_ae027aaad114262a32135d05bfb7ee621}\label{classG4FastSim_1_1DetectorConstruction_ae027aaad114262a32135d05bfb7ee621} 
+\index{G4FastSim::DetectorConstruction@{G4FastSim::DetectorConstruction}!SetOuterCryostatRadius@{SetOuterCryostatRadius}}
+\index{SetOuterCryostatRadius@{SetOuterCryostatRadius}!G4FastSim::DetectorConstruction@{G4FastSim::DetectorConstruction}}
+\doxysubsubsection{\texorpdfstring{SetOuterCryostatRadius()}{SetOuterCryostatRadius()}}
+{\footnotesize\ttfamily void G4\+Fast\+Sim\+::\+Detector\+Construction\+::\+Set\+Outer\+Cryostat\+Radius (\begin{DoxyParamCaption}\item[{G4double}]{radius }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classG4FastSim_1_1DetectorConstruction_a8617ce150d576a831bd6894d6d4ebb0f}\label{classG4FastSim_1_1DetectorConstruction_a8617ce150d576a831bd6894d6d4ebb0f} 
+\index{G4FastSim::DetectorConstruction@{G4FastSim::DetectorConstruction}!SetOuterCryostatWallThickness@{SetOuterCryostatWallThickness}}
+\index{SetOuterCryostatWallThickness@{SetOuterCryostatWallThickness}!G4FastSim::DetectorConstruction@{G4FastSim::DetectorConstruction}}
+\doxysubsubsection{\texorpdfstring{SetOuterCryostatWallThickness()}{SetOuterCryostatWallThickness()}}
+{\footnotesize\ttfamily void G4\+Fast\+Sim\+::\+Detector\+Construction\+::\+Set\+Outer\+Cryostat\+Wall\+Thickness (\begin{DoxyParamCaption}\item[{G4double}]{thickness }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classG4FastSim_1_1DetectorConstruction_ab0fa1fabca4339bf27bc74c56a7f1d5b}\label{classG4FastSim_1_1DetectorConstruction_ab0fa1fabca4339bf27bc74c56a7f1d5b} 
+\index{G4FastSim::DetectorConstruction@{G4FastSim::DetectorConstruction}!fMessenger@{fMessenger}}
+\index{fMessenger@{fMessenger}!G4FastSim::DetectorConstruction@{G4FastSim::DetectorConstruction}}
+\doxysubsubsection{\texorpdfstring{fMessenger}{fMessenger}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classG4FastSim_1_1DetectorConstructionMessenger}{Detector\+Construction\+Messenger}}\texorpdfstring{$\ast$}{*} G4\+Fast\+Sim\+::\+Detector\+Construction\+::f\+Messenger\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classG4FastSim_1_1DetectorConstruction_a6eb404ead02476fc40a4678d28acb921}\label{classG4FastSim_1_1DetectorConstruction_a6eb404ead02476fc40a4678d28acb921} 
+\index{G4FastSim::DetectorConstruction@{G4FastSim::DetectorConstruction}!fScoringVolume@{fScoringVolume}}
+\index{fScoringVolume@{fScoringVolume}!G4FastSim::DetectorConstruction@{G4FastSim::DetectorConstruction}}
+\doxysubsubsection{\texorpdfstring{fScoringVolume}{fScoringVolume}}
+{\footnotesize\ttfamily G4\+Logical\+Volume\texorpdfstring{$\ast$}{*} G4\+Fast\+Sim\+::\+Detector\+Construction\+::f\+Scoring\+Volume = nullptr\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{DetectorConstruction_8hh}{Detector\+Construction.\+hh}}\item 
+src/\mbox{\hyperlink{DetectorConstruction_8cc}{Detector\+Construction.\+cc}}\end{DoxyCompactItemize}
