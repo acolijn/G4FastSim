@@ -1,0 +1,87 @@
+\doxysection{Primary\+Generator\+Action Class Reference}
+\hypertarget{classPrimaryGeneratorAction}{}\label{classPrimaryGeneratorAction}\index{PrimaryGeneratorAction@{PrimaryGeneratorAction}}
+
+
+{\ttfamily \#include $<$Primary\+Generator\+Action.\+hh$>$}
+
+Inheritance diagram for Primary\+Generator\+Action\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classPrimaryGeneratorAction}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classPrimaryGeneratorAction_a4bbef83d397d84b434541f8720bf747d}{Primary\+Generator\+Action}} ()
+\begin{DoxyCompactList}\small\item\em Constructor for the \doxylink{classPrimaryGeneratorAction}{Primary\+Generator\+Action} class. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classPrimaryGeneratorAction_aef250d66a3c8ceaad8960bae6f6b1a04}{\texorpdfstring{$\sim$}{\string~}\+Primary\+Generator\+Action}} () override
+\item 
+void \mbox{\hyperlink{classPrimaryGeneratorAction_aae3d67b4299e228e76c10ba40ff2ae2b}{Generate\+Primaries}} (G4\+Event \texorpdfstring{$\ast$}{*}) override
+\begin{DoxyCompactList}\small\item\em This function is called at the beginning of an event to generate primary particles. \end{DoxyCompactList}\item 
+const G4\+General\+Particle\+Source \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classPrimaryGeneratorAction_a1dc3a828c828af205d3acda93f57b67e}{Get\+Particle\+Gun}} () const
+\item 
+G4double \mbox{\hyperlink{classPrimaryGeneratorAction_a88f13d40da2e2083ac230991a735ddd6}{Get\+Initial\+Energy}} () const
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The primary generator action class with particle gun.
+
+The default kinematic is a 6 MeV gamma, randomly distribued in front of the phantom across 80\% of the (X,Y) phantom size. namespace \doxylink{namespaceG4FastSim}{G4\+Fast\+Sim} \{ 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classPrimaryGeneratorAction_a4bbef83d397d84b434541f8720bf747d}\label{classPrimaryGeneratorAction_a4bbef83d397d84b434541f8720bf747d} 
+\index{PrimaryGeneratorAction@{PrimaryGeneratorAction}!PrimaryGeneratorAction@{PrimaryGeneratorAction}}
+\index{PrimaryGeneratorAction@{PrimaryGeneratorAction}!PrimaryGeneratorAction@{PrimaryGeneratorAction}}
+\doxysubsubsection{\texorpdfstring{PrimaryGeneratorAction()}{PrimaryGeneratorAction()}}
+{\footnotesize\ttfamily Primary\+Generator\+Action\+::\+Primary\+Generator\+Action (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Constructor for the \doxylink{classPrimaryGeneratorAction}{Primary\+Generator\+Action} class. 
+
+namespace \doxylink{namespaceG4FastSim}{G4\+Fast\+Sim} \{ 
+
+This constructor initializes the \doxylink{classPrimaryGeneratorAction}{Primary\+Generator\+Action} object by creating a new instance of the G4\+General\+Particle\+Source class. \Hypertarget{classPrimaryGeneratorAction_aef250d66a3c8ceaad8960bae6f6b1a04}\label{classPrimaryGeneratorAction_aef250d66a3c8ceaad8960bae6f6b1a04} 
+\index{PrimaryGeneratorAction@{PrimaryGeneratorAction}!````~PrimaryGeneratorAction@{\texorpdfstring{$\sim$}{\string~}PrimaryGeneratorAction}}
+\index{````~PrimaryGeneratorAction@{\texorpdfstring{$\sim$}{\string~}PrimaryGeneratorAction}!PrimaryGeneratorAction@{PrimaryGeneratorAction}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}PrimaryGeneratorAction()}{\string~PrimaryGeneratorAction()}}
+{\footnotesize\ttfamily Primary\+Generator\+Action\+::\texorpdfstring{$\sim$}{\string~}\+Primary\+Generator\+Action (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classPrimaryGeneratorAction_aae3d67b4299e228e76c10ba40ff2ae2b}\label{classPrimaryGeneratorAction_aae3d67b4299e228e76c10ba40ff2ae2b} 
+\index{PrimaryGeneratorAction@{PrimaryGeneratorAction}!GeneratePrimaries@{GeneratePrimaries}}
+\index{GeneratePrimaries@{GeneratePrimaries}!PrimaryGeneratorAction@{PrimaryGeneratorAction}}
+\doxysubsubsection{\texorpdfstring{GeneratePrimaries()}{GeneratePrimaries()}}
+{\footnotesize\ttfamily void Primary\+Generator\+Action\+::\+Generate\+Primaries (\begin{DoxyParamCaption}\item[{G4\+Event \texorpdfstring{$\ast$}{*}}]{an\+Event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+
+
+This function is called at the beginning of an event to generate primary particles. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em an\+Event} & Pointer to the G4\+Event object representing the current event. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classPrimaryGeneratorAction_a88f13d40da2e2083ac230991a735ddd6}\label{classPrimaryGeneratorAction_a88f13d40da2e2083ac230991a735ddd6} 
+\index{PrimaryGeneratorAction@{PrimaryGeneratorAction}!GetInitialEnergy@{GetInitialEnergy}}
+\index{GetInitialEnergy@{GetInitialEnergy}!PrimaryGeneratorAction@{PrimaryGeneratorAction}}
+\doxysubsubsection{\texorpdfstring{GetInitialEnergy()}{GetInitialEnergy()}}
+{\footnotesize\ttfamily G4double Primary\+Generator\+Action\+::\+Get\+Initial\+Energy (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\Hypertarget{classPrimaryGeneratorAction_a1dc3a828c828af205d3acda93f57b67e}\label{classPrimaryGeneratorAction_a1dc3a828c828af205d3acda93f57b67e} 
+\index{PrimaryGeneratorAction@{PrimaryGeneratorAction}!GetParticleGun@{GetParticleGun}}
+\index{GetParticleGun@{GetParticleGun}!PrimaryGeneratorAction@{PrimaryGeneratorAction}}
+\doxysubsubsection{\texorpdfstring{GetParticleGun()}{GetParticleGun()}}
+{\footnotesize\ttfamily const G4\+General\+Particle\+Source \texorpdfstring{$\ast$}{*} Primary\+Generator\+Action\+::\+Get\+Particle\+Gun (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{PrimaryGeneratorAction_8hh}{Primary\+Generator\+Action.\+hh}}\item 
+src/\mbox{\hyperlink{PrimaryGeneratorAction_8cc}{Primary\+Generator\+Action.\+cc}}\end{DoxyCompactItemize}

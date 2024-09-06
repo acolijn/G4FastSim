@@ -1,0 +1,385 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="EventAction_8hh" kind="file" language="C++">
+    <compoundname>EventAction.hh</compoundname>
+    <includes local="yes">G4UserEventAction.hh</includes>
+    <includes local="yes">G4ThreeVector.hh</includes>
+    <includes local="yes">G4String.hh</includes>
+    <includes local="yes">G4Types.hh</includes>
+    <includes refid="Cluster_8hh" local="yes">Cluster.hh</includes>
+    <includes local="yes">globals.hh</includes>
+    <includes refid="GammaRayHelper_8hh" local="yes">GammaRayHelper.hh</includes>
+    <includes local="no">vector</includes>
+    <includes local="no">mutex</includes>
+    <includedby refid="ActionInitialization_8hh" local="yes">include/ActionInitialization.hh</includedby>
+    <includedby refid="ActionInitialization_8cc" local="yes">src/ActionInitialization.cc</includedby>
+    <includedby refid="EventAction_8cc" local="yes">src/EventAction.cc</includedby>
+    <includedby refid="RunAction_8cc" local="yes">src/RunAction.cc</includedby>
+    <includedby refid="SteppingAction_8cc" local="yes">src/SteppingAction.cc</includedby>
+    <incdepgraph>
+      <node id="6">
+        <label>Cluster.hh</label>
+        <link refid="Cluster_8hh"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>include/EventAction.hh</label>
+        <link refid="EventAction_8hh"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>ExtendedLivermoreComptonModel.hh</label>
+        <link refid="ExtendedLivermoreComptonModel_8hh"/>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>GammaRayHelper.hh</label>
+        <link refid="GammaRayHelper_8hh"/>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>Hit.hh</label>
+        <link refid="Hit_8hh"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>G4Allocator.hh</label>
+      </node>
+      <node id="25">
+        <label>G4AutoLock.hh</label>
+      </node>
+      <node id="24">
+        <label>G4DataVector.hh</label>
+      </node>
+      <node id="17">
+        <label>G4DynamicParticle.hh</label>
+      </node>
+      <node id="14">
+        <label>G4LivermoreComptonModel.hh</label>
+      </node>
+      <node id="19">
+        <label>G4LivermorePhotoElectricModel.hh</label>
+      </node>
+      <node id="20">
+        <label>G4LivermoreRayleighModel.hh</label>
+      </node>
+      <node id="21">
+        <label>G4Material.hh</label>
+      </node>
+      <node id="16">
+        <label>G4MaterialCutsCouple.hh</label>
+      </node>
+      <node id="22">
+        <label>G4PhysicalConstants.hh</label>
+      </node>
+      <node id="27">
+        <label>G4Step.hh</label>
+      </node>
+      <node id="4">
+        <label>G4String.hh</label>
+      </node>
+      <node id="23">
+        <label>G4SystemOfUnits.hh</label>
+      </node>
+      <node id="11">
+        <label>G4THitsCollection.hh</label>
+      </node>
+      <node id="3">
+        <label>G4ThreeVector.hh</label>
+      </node>
+      <node id="26">
+        <label>G4Track.hh</label>
+      </node>
+      <node id="5">
+        <label>G4Types.hh</label>
+      </node>
+      <node id="2">
+        <label>G4UserEventAction.hh</label>
+      </node>
+      <node id="18">
+        <label>G4VEMDataSet.hh</label>
+      </node>
+      <node id="9">
+        <label>G4VHit.hh</label>
+      </node>
+      <node id="12">
+        <label>globals.hh</label>
+      </node>
+      <node id="28">
+        <label>map</label>
+      </node>
+      <node id="29">
+        <label>mutex</label>
+      </node>
+      <node id="7">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>include/ActionInitialization.hh</label>
+        <link refid="ActionInitialization_8hh"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>include/EventAction.hh</label>
+        <link refid="EventAction_8hh"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>src/ActionInitialization.cc</label>
+        <link refid="ActionInitialization_8cc"/>
+      </node>
+      <node id="4">
+        <label>src/EventAction.cc</label>
+        <link refid="EventAction_8cc"/>
+      </node>
+      <node id="5">
+        <label>src/RunAction.cc</label>
+        <link refid="RunAction_8cc"/>
+      </node>
+      <node id="6">
+        <label>src/SteppingAction.cc</label>
+        <link refid="SteppingAction_8cc"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classG4FastSim_1_1EventAction" prot="public">G4FastSim::EventAction</innerclass>
+    <innernamespace refid="namespaceG4FastSim">G4FastSim</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/>********************************************************************</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/>*<sp/>License<sp/>and<sp/>Disclaimer<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">//<sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="comment">//<sp/>*<sp/>The<sp/><sp/>Geant4<sp/>software<sp/><sp/>is<sp/><sp/>copyright<sp/>of<sp/>the<sp/>Copyright<sp/>Holders<sp/><sp/>of<sp/>*</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//<sp/>*<sp/>the<sp/>Geant4<sp/>Collaboration.<sp/><sp/>It<sp/>is<sp/>provided<sp/><sp/>under<sp/><sp/>the<sp/>terms<sp/><sp/>and<sp/>*</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//<sp/>*<sp/>conditions<sp/>of<sp/>the<sp/>Geant4<sp/>Software<sp/>License,<sp/><sp/>included<sp/>in<sp/>the<sp/>file<sp/>*</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="comment">//<sp/>*<sp/>LICENSE<sp/>and<sp/>available<sp/>at<sp/><sp/>http://cern.ch/geant4/license<sp/>.<sp/><sp/>These<sp/>*</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="comment">//<sp/>*<sp/>include<sp/>a<sp/>list<sp/>of<sp/>copyright<sp/>holders.<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="comment">//<sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="comment">//<sp/>*<sp/>Neither<sp/>the<sp/>authors<sp/>of<sp/>this<sp/>software<sp/>system,<sp/>nor<sp/>their<sp/>employing<sp/>*</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="comment">//<sp/>*<sp/>institutes,nor<sp/>the<sp/>agencies<sp/>providing<sp/>financial<sp/>support<sp/>for<sp/>this<sp/>*</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="comment">//<sp/>*<sp/>work<sp/><sp/>make<sp/><sp/>any<sp/>representation<sp/>or<sp/><sp/>warranty,<sp/>express<sp/>or<sp/>implied,<sp/>*</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="comment">//<sp/>*<sp/>regarding<sp/><sp/>this<sp/><sp/>software<sp/>system<sp/>or<sp/>assume<sp/>any<sp/>liability<sp/>for<sp/>its<sp/>*</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="comment">//<sp/>*<sp/>use.<sp/><sp/>Please<sp/>see<sp/>the<sp/>license<sp/>in<sp/>the<sp/>file<sp/><sp/>LICENSE<sp/><sp/>and<sp/>URL<sp/>above<sp/>*</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="comment">//<sp/>*<sp/>for<sp/>the<sp/>full<sp/>disclaimer<sp/>and<sp/>the<sp/>limitation<sp/>of<sp/>liability.<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="comment">//<sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="comment">//<sp/>*<sp/>This<sp/><sp/>code<sp/><sp/>implementation<sp/>is<sp/>the<sp/>result<sp/>of<sp/><sp/>the<sp/><sp/>scientific<sp/>and<sp/>*</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="comment">//<sp/>*<sp/>technical<sp/>work<sp/>of<sp/>the<sp/>GEANT4<sp/>collaboration.<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="comment">//<sp/>*<sp/>By<sp/>using,<sp/><sp/>copying,<sp/><sp/>modifying<sp/>or<sp/><sp/>distributing<sp/>the<sp/>software<sp/>(or<sp/>*</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="comment">//<sp/>*<sp/>any<sp/>work<sp/>based<sp/><sp/>on<sp/>the<sp/>software)<sp/><sp/>you<sp/><sp/>agree<sp/><sp/>to<sp/>acknowledge<sp/>its<sp/>*</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="comment">//<sp/>*<sp/>use<sp/><sp/>in<sp/><sp/>resulting<sp/><sp/>scientific<sp/><sp/>publications,<sp/><sp/>and<sp/>indicate<sp/>your<sp/>*</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="comment">//<sp/>*<sp/>acceptance<sp/>of<sp/>all<sp/>terms<sp/>of<sp/>the<sp/>Geant4<sp/>Software<sp/>license.<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="comment">//<sp/>********************************************************************</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="comment">//</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>EventAction_h</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>EventAction_h<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;G4UserEventAction.hh&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;G4ThreeVector.hh&quot;</highlight><highlight class="normal"><sp/></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;G4String.hh&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;G4Types.hh&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Cluster_8hh" kindref="compound">Cluster.hh</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;globals.hh&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="GammaRayHelper_8hh" kindref="compound">GammaRayHelper.hh</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;mutex&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">G4Event;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">G4HCofThisEvent;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">G4VHitsCollection;</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceG4FastSim" kindref="compound">G4FastSim</ref></highlight></codeline>
+<codeline lineno="53"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Use<sp/>enum<sp/>to<sp/>define<sp/>the<sp/>constants</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56" refid="namespaceG4FastSim_1a05ee3770e81fff7d8cd8d8cab21317d8" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="namespaceG4FastSim_1a05ee3770e81fff7d8cd8d8cab21317d8" kindref="member">EventType</ref><sp/>{</highlight></codeline>
+<codeline lineno="57" refid="namespaceG4FastSim_1a05ee3770e81fff7d8cd8d8cab21317d8ae51bfe7822492a220dcdc2f264cc51c7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceG4FastSim_1a05ee3770e81fff7d8cd8d8cab21317d8ae51bfe7822492a220dcdc2f264cc51c7" kindref="member">DIRECT_GAMMA</ref><sp/>=<sp/>0,</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceG4FastSim_1a05ee3770e81fff7d8cd8d8cab21317d8a7bd13a2486be1506ada95bed246cca91" kindref="member">SCATTERED_GAMMA</ref><sp/>=<sp/>1</highlight></codeline>
+<codeline lineno="59" refid="namespaceG4FastSim_1a05ee3770e81fff7d8cd8d8cab21317d8a7bd13a2486be1506ada95bed246cca91" refkind="member"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61" refid="classG4FastSim_1_1EventAction" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classG4FastSim_1_1EventAction" kindref="compound">EventAction</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>G4UserEventAction</highlight></codeline>
+<codeline lineno="62"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classG4FastSim_1_1EventAction_1aa1f321b88b89f16c67b65da6727a52d6" kindref="member">EventAction</ref>();</highlight></codeline>
+<codeline lineno="65" refid="classG4FastSim_1_1EventAction_1adb4415861c5cdd0a55b2e14990e13da6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classG4FastSim_1_1EventAction_1adb4415861c5cdd0a55b2e14990e13da6" kindref="member">~EventAction</ref>()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal"><sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classG4FastSim_1_1EventAction_1aa0a1ce1d279c7071217c445fc761bbad" kindref="member">BeginOfEventAction</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>G4Event*<sp/>event);</highlight><highlight class="comment">//<sp/>override;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classG4FastSim_1_1EventAction_1a43bd94959a1efa3612b0a6324bca406c" kindref="member">EndOfEventAction</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>G4Event*<sp/>event);</highlight><highlight class="comment">//<sp/>override;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70" refid="classG4FastSim_1_1EventAction_1adeb4e093143f249cf5a556a8246653d3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;G4double&gt;&amp;<sp/><ref refid="classG4FastSim_1_1EventAction_1adeb4e093143f249cf5a556a8246653d3" kindref="member">GetX</ref>(){</highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>fX;};</highlight></codeline>
+<codeline lineno="71" refid="classG4FastSim_1_1EventAction_1a52568c351e9ab62edccb891c0bf8f421" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;G4double&gt;&amp;<sp/><ref refid="classG4FastSim_1_1EventAction_1a52568c351e9ab62edccb891c0bf8f421" kindref="member">GetY</ref>(){</highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>fY;};</highlight></codeline>
+<codeline lineno="72" refid="classG4FastSim_1_1EventAction_1a01b9c8dc9d9839413cd5c07484aaf248" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;G4double&gt;&amp;<sp/><ref refid="classG4FastSim_1_1EventAction_1a01b9c8dc9d9839413cd5c07484aaf248" kindref="member">GetZ</ref>(){</highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>fZ;};</highlight></codeline>
+<codeline lineno="73" refid="classG4FastSim_1_1EventAction_1ace2d3844304533e215785778ef46fe90" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;G4double&gt;&amp;<sp/><ref refid="classG4FastSim_1_1EventAction_1ace2d3844304533e215785778ef46fe90" kindref="member">GetE</ref>(){</highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>fEd;};</highlight></codeline>
+<codeline lineno="74" refid="classG4FastSim_1_1EventAction_1ac0331ec9e7c100627ec72b86857f173e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;G4double&gt;&amp;<sp/><ref refid="classG4FastSim_1_1EventAction_1ac0331ec9e7c100627ec72b86857f173e" kindref="member">GetW</ref>(){</highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>fW;};</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77" refid="classG4FastSim_1_1EventAction_1aebd5b408875e402cf38a33a84410fb0d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classG4FastSim_1_1EventAction_1aebd5b408875e402cf38a33a84410fb0d" kindref="member">AddEdep</ref>(G4double<sp/>edep)<sp/>{<sp/>fEdep<sp/>+=<sp/>edep;<sp/>}</highlight></codeline>
+<codeline lineno="78" refid="classG4FastSim_1_1EventAction_1a25cfe5dde9e5abd4d30c255fb521724d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classG4FastSim_1_1EventAction_1a25cfe5dde9e5abd4d30c255fb521724d" kindref="member">AddWeight</ref>(G4double<sp/>weight)<sp/>{<sp/>fLogWeight<sp/>+=<sp/>weight;<sp/>}</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classG4FastSim_1_1EventAction_1a06e4d9a81df350b8a49c4d3c77c5b154" kindref="member">AnalyzeHits</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>G4Event*<sp/>event);</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classG4FastSim_1_1EventAction_1a3da7908738b2228320ef78abf83763a8" kindref="member">ResetVariables</ref>();</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82" refid="classG4FastSim_1_1EventAction_1a0a5957019bc5a3844c9c10be44f04880" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>G4bool<sp/><ref refid="classG4FastSim_1_1EventAction_1a0a5957019bc5a3844c9c10be44f04880" kindref="member">IsFastSimulation</ref>()<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>fFastSimulation;<sp/>}</highlight></codeline>
+<codeline lineno="83" refid="classG4FastSim_1_1EventAction_1afd2e1cdcd5f4320967274b27bc06e6e0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>G4int<sp/><ref refid="classG4FastSim_1_1EventAction_1afd2e1cdcd5f4320967274b27bc06e6e0" kindref="member">GetNumberOfScatters</ref>()<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>fNumberOfScatters;}</highlight></codeline>
+<codeline lineno="84" refid="classG4FastSim_1_1EventAction_1a6e7b195f21b29162210a1fd4f1395b4d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>G4double<sp/><ref refid="classG4FastSim_1_1EventAction_1a6e7b195f21b29162210a1fd4f1395b4d" kindref="member">GetMaxEnergy</ref>()<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>fMaxEnergy;<sp/>}</highlight></codeline>
+<codeline lineno="85" refid="classG4FastSim_1_1EventAction_1a29578ed86497866f4e76647cff46def8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>G4int<sp/><ref refid="classG4FastSim_1_1EventAction_1a29578ed86497866f4e76647cff46def8" kindref="member">GetNumberOfScattersMax</ref>()<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>fNumberOfScattersMax;<sp/>}</highlight></codeline>
+<codeline lineno="86" refid="classG4FastSim_1_1EventAction_1aa0f4b11d80547c902f0b72cfab9be7a3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>G4double<sp/><ref refid="classG4FastSim_1_1EventAction_1aa0f4b11d80547c902f0b72cfab9be7a3" kindref="member">GetAvailableEnergy</ref>()<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>fAvailableEnergy;<sp/>}</highlight></codeline>
+<codeline lineno="87" refid="classG4FastSim_1_1EventAction_1ae1cd2d1c9fd5002c4f22483481d46cc7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>G4double<sp/><ref refid="classG4FastSim_1_1EventAction_1ae1cd2d1c9fd5002c4f22483481d46cc7" kindref="member">GetWeight</ref>()<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>fLogWeight;<sp/>}</highlight></codeline>
+<codeline lineno="88" refid="classG4FastSim_1_1EventAction_1a85489f607916912fadf7d58891c5b55b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>G4bool<sp/><ref refid="classG4FastSim_1_1EventAction_1a85489f607916912fadf7d58891c5b55b" kindref="member">HasBeenInXenon</ref>()<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>fHasBeenInXenon;<sp/>}</highlight></codeline>
+<codeline lineno="89" refid="classG4FastSim_1_1EventAction_1a4d03ac81dc8d0fcb225ded25bd7f6b73" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>G4int<sp/><ref refid="classG4FastSim_1_1EventAction_1a4d03ac81dc8d0fcb225ded25bd7f6b73" kindref="member">GetEventType</ref>()<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>fEventType;<sp/>}</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91" refid="classG4FastSim_1_1EventAction_1ab0990d80db3bd9e4c88279d1490a4dc4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classG4FastSim_1_1EventAction_1ab0990d80db3bd9e4c88279d1490a4dc4" kindref="member">SetNumberOfScattersMax</ref>(G4int<sp/>n)<sp/>{<sp/>fNumberOfScattersMax<sp/>=<sp/>n;<sp/>}</highlight></codeline>
+<codeline lineno="92" refid="classG4FastSim_1_1EventAction_1ab10d97afcb735c75e77447f118297668" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classG4FastSim_1_1EventAction_1ab10d97afcb735c75e77447f118297668" kindref="member">SetFastSimulation</ref>(G4bool<sp/>fast)<sp/>{<sp/>fFastSimulation<sp/>=<sp/>fast;<sp/>}</highlight></codeline>
+<codeline lineno="93" refid="classG4FastSim_1_1EventAction_1a1ac50be580de9273ef1e58095798bc16" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classG4FastSim_1_1EventAction_1a1ac50be580de9273ef1e58095798bc16" kindref="member">SetNumberOfScatters</ref>(G4int<sp/>n)<sp/>{<sp/>fNumberOfScatters<sp/>=<sp/>n;<sp/>}</highlight></codeline>
+<codeline lineno="94" refid="classG4FastSim_1_1EventAction_1a0497268c7d7eaf9f9f1ef8cf8808a1e7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classG4FastSim_1_1EventAction_1a0497268c7d7eaf9f9f1ef8cf8808a1e7" kindref="member">SetMaxEnergy</ref>(G4double<sp/>e)<sp/>{<sp/>fMaxEnergy<sp/>=<sp/>e;<sp/>}</highlight></codeline>
+<codeline lineno="95" refid="classG4FastSim_1_1EventAction_1a828bd5efac02e28a0cbe6e296898e4f1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classG4FastSim_1_1EventAction_1a828bd5efac02e28a0cbe6e296898e4f1" kindref="member">SetAvailableEnergy</ref>(G4double<sp/>e)<sp/>{<sp/>fAvailableEnergy<sp/>=<sp/>e;<sp/>}</highlight></codeline>
+<codeline lineno="96" refid="classG4FastSim_1_1EventAction_1abc1c3a1d617575f8e1329ecafeda4b45" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classG4FastSim_1_1EventAction_1abc1c3a1d617575f8e1329ecafeda4b45" kindref="member">ReduceAvailableEnergy</ref>(G4double<sp/>e)<sp/>{<sp/>fAvailableEnergy<sp/>-=<sp/>e;<sp/>}<sp/></highlight></codeline>
+<codeline lineno="97" refid="classG4FastSim_1_1EventAction_1a77d54ea8c5f1afe66e9bfa2330dfee27" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classG4FastSim_1_1EventAction_1a77d54ea8c5f1afe66e9bfa2330dfee27" kindref="member">SetHasBeenInXenon</ref>(G4bool<sp/>b)<sp/>{<sp/>fHasBeenInXenon<sp/>=<sp/>b;<sp/>}</highlight></codeline>
+<codeline lineno="98" refid="classG4FastSim_1_1EventAction_1a964a668626874db354cad50145b6f441" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classG4FastSim_1_1EventAction_1a964a668626874db354cad50145b6f441" kindref="member">SetEventType</ref>(G4int<sp/>type)<sp/>{<sp/>fEventType<sp/>=<sp/>type;<sp/>}</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>functions<sp/>for<sp/>hit<sp/>clustering</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>ClusterHits(std::vector&lt;G4FastSim::Hit*&gt;&amp;<sp/>hits,<sp/>G4double<sp/>spatialThreshold,<sp/>G4double<sp/>timeThreshold,<sp/>std::vector&lt;Cluster&gt;&amp;<sp/>clusters);</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>IsWithinFiducialVolume(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>G4ThreeVector&amp;<sp/>position,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>G4ThreeVector&amp;<sp/>direction);</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/>G4double<sp/>CalculateDistance(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>G4ThreeVector&amp;<sp/>pos1,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>G4ThreeVector&amp;<sp/>pos2);</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/>G4double<sp/>CalculateTimeDifference(G4double<sp/>time1,<sp/>G4double<sp/>time2);</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>define<sp/>here<sp/>all<sp/>the<sp/>variables<sp/>that<sp/>you<sp/>want<sp/>to<sp/>store<sp/>for<sp/>each<sp/>event<sp/>in<sp/>the<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>ntuple<sp/>tree<sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/>G4double<sp/>fLogWeight;</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/>G4double<sp/>fEdep;</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/>G4int<sp/>fNclusters;</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/>G4int<sp/>fNphot;</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/>G4int<sp/>fNcomp;</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/>G4int<sp/>fEventID;</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/>G4int<sp/>fEventType;</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/>G4double<sp/>fXp;</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/>G4double<sp/>fYp;</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/>G4double<sp/>fZp;</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;G4double&gt;<sp/>fEd;</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;G4double&gt;<sp/>fX;</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;G4double&gt;<sp/>fY;</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;G4double&gt;<sp/>fZ;</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;G4double&gt;<sp/>fW;</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/>G4bool<sp/>fFastSimulation<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/>G4bool<sp/>fInitializedGraphs<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/>G4int<sp/>fNumberOfScattersMax<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/>G4int<sp/>fNumberOfScatters<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/>G4bool<sp/>fHasBeenInXenon<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>maximum<sp/>energy<sp/>deposit<sp/>that<sp/>is<sp/>allowed:<sp/>/run/setMaxEnergy</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/>G4double<sp/>fMaxEnergy<sp/>=<sp/>0.0;</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>avaliable<sp/>energy<sp/>for<sp/>scattering<sp/>energy<sp/>deposits<sp/>(relevant<sp/>for<sp/>muliple<sp/>scattering<sp/>events)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/>G4double<sp/>fAvailableEnergy<sp/>=<sp/>0.0;</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//static<sp/>std::mutex<sp/>mtx;<sp/>//<sp/>Mutex<sp/>for<sp/>thread<sp/>safety</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;G4String&gt;<sp/>fHitsCollectionNames;</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classGammaRayHelper" kindref="compound">GammaRayHelper</ref>*<sp/>fGammaRayHelper;</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/>G4LogicalVolume*<sp/>fFiducialVolume;</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/>G4int<sp/>verbosityLevel=0;</highlight></codeline>
+<codeline lineno="149"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"></highlight><highlight class="comment">//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="include/EventAction.hh"/>
+  </compounddef>
+</doxygen>

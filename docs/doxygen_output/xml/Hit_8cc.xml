@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="Hit_8cc" kind="file" language="C++">
+    <compoundname>Hit.cc</compoundname>
+    <includes refid="Hit_8hh" local="yes">Hit.hh</includes>
+    <includes local="yes">G4SystemOfUnits.hh</includes>
+    <incdepgraph>
+      <node id="2">
+        <label>Hit.hh</label>
+        <link refid="Hit_8hh"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>src/Hit.cc</label>
+        <link refid="Hit_8cc"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>G4Allocator.hh</label>
+      </node>
+      <node id="6">
+        <label>G4String.hh</label>
+      </node>
+      <node id="8">
+        <label>G4SystemOfUnits.hh</label>
+      </node>
+      <node id="7">
+        <label>G4THitsCollection.hh</label>
+      </node>
+      <node id="4">
+        <label>G4ThreeVector.hh</label>
+      </node>
+      <node id="3">
+        <label>G4VHit.hh</label>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceG4FastSim">G4FastSim</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Hit_8hh" kindref="compound">Hit.hh</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;G4SystemOfUnits.hh&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceG4FastSim" kindref="compound">G4FastSim</ref><sp/>{</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal">G4ThreadLocal<sp/>G4Allocator&lt;Hit&gt;*<sp/><ref refid="namespaceG4FastSim_1a4712e98805b7edcf1d64abd59c618d37" kindref="member">HitAllocator</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"><ref refid="classG4FastSim_1_1Hit_1acb847bc51e6a3604ca9eda681757af84" kindref="member">Hit::Hit</ref>()</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/>G4VHit(),<sp/>energyDeposit(0.),<sp/>position(G4ThreeVector()),<sp/>time(0.),<sp/>trackID(-1),<sp/>parentID(-1),<sp/>momentum(G4ThreeVector()),<sp/>particleType(</highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">),<sp/>processType(</highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">),<sp/>used(false)<sp/>{}</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal">Hit::~Hit()<sp/>{}</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>Hit::Print()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/>G4cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;ID:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>trackID</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;,<sp/>ID:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>parentID</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;,<sp/>Proc:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>processType</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;,<sp/>Ptcl:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>particleType</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;,<sp/>E0:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>particleEnergy0<sp/>/<sp/>keV<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>keV&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;,<sp/>E1:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>particleEnergy1<sp/>/<sp/>keV<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>keV&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;,<sp/>dE:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>energyDeposit<sp/>/<sp/>keV<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>keV&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;,<sp/>pos:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>position<sp/>/<sp/>cm<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>cm&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;,<sp/>t:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>time<sp/>/<sp/>ns<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>ns&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/>G4endl;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/>&quot;,<sp/>p:<sp/>&quot;<sp/>&lt;&lt;<sp/>momentum<sp/>&lt;&lt;<sp/>G4endl;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="src/Hit.cc"/>
+  </compounddef>
+</doxygen>

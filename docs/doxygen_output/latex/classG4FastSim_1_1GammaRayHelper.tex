@@ -1,0 +1,220 @@
+\doxysection{G4\+Fast\+Sim\+::Gamma\+Ray\+Helper Class Reference}
+\hypertarget{classG4FastSim_1_1GammaRayHelper}{}\label{classG4FastSim_1_1GammaRayHelper}\index{G4FastSim::GammaRayHelper@{G4FastSim::GammaRayHelper}}
+
+
+A helper class for handling gamma ray interactions.  
+
+
+
+
+{\ttfamily \#include $<$Gamma\+Ray\+Helper.\+hh$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classG4FastSim_1_1GammaRayHelper_a3a5c1dcb942d83288f018440979ba43a}{Initialize}} ()
+\item 
+void \mbox{\hyperlink{classG4FastSim_1_1GammaRayHelper_a835bb82920830ad096b662c09b447793}{Initialize\+CDFs}} (G4double energy)
+\begin{DoxyCompactList}\small\item\em Initializes the cumulative distribution functions (CDFs) for gamma rays. \end{DoxyCompactList}\item 
+G4double \mbox{\hyperlink{classG4FastSim_1_1GammaRayHelper_ad34476d05a54b95cbd73874476e915c4}{Get\+Compton\+Cross\+Section}} (G4double energy, G4\+Material \texorpdfstring{$\ast$}{*}material)
+\item 
+G4double \mbox{\hyperlink{classG4FastSim_1_1GammaRayHelper_ac59f37fd0718c160f80a026d131b223a}{Get\+Photoelectric\+Cross\+Section}} (G4double energy, G4\+Material \texorpdfstring{$\ast$}{*}material)
+\item 
+G4double \mbox{\hyperlink{classG4FastSim_1_1GammaRayHelper_a76a11400fef3d2ec6b0aa2b7dc05aaa4}{Get\+Total\+Cross\+Section}} (G4double energy, G4\+Material \texorpdfstring{$\ast$}{*}material)
+\item 
+G4double \mbox{\hyperlink{classG4FastSim_1_1GammaRayHelper_a2e541c28e01e87fbc5201a65d6154f04}{Get\+Attenuation\+Length}} (G4double energy, G4\+Material \texorpdfstring{$\ast$}{*}material)
+\item 
+G4double \mbox{\hyperlink{classG4FastSim_1_1GammaRayHelper_ac01b2c3ba877d13e1af4d6f265fcb8f8}{Get\+Mass\+Attenuation\+Coefficient}} (G4double energy, G4\+Material \texorpdfstring{$\ast$}{*}material)
+\item 
+std\+::pair$<$ G4\+Three\+Vector, G4double $>$ \mbox{\hyperlink{classG4FastSim_1_1GammaRayHelper_adae8718ef407a2c8b241b5ad5c36dd87}{Generate\+Interaction\+Point}} (const G4\+Step \texorpdfstring{$\ast$}{*}step)
+\item 
+std\+::pair$<$ G4double, G4double $>$ \mbox{\hyperlink{classG4FastSim_1_1GammaRayHelper_abab2ab82ec46145c2fe5c486fbae7189}{Generate\+Compton\+Angle}} (const G4\+Step \texorpdfstring{$\ast$}{*}step, G4double energy\+\_\+max)
+\item 
+\mbox{\hyperlink{structG4FastSim_1_1InteractionData}{Interaction\+Data}} \mbox{\hyperlink{classG4FastSim_1_1GammaRayHelper_aa4241770cd7dc5aac879cbbf82790540}{Do\+Compton\+Scatter}} (const G4\+Step \texorpdfstring{$\ast$}{*}step, G4\+Three\+Vector x0, G4double energy\+\_\+max)
+\item 
+\mbox{\hyperlink{classExtendedLivermoreComptonModel}{Extended\+Livermore\+Compton\+Model}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classG4FastSim_1_1GammaRayHelper_abb08f27e3b4db84f9c04d840074b18c1}{Get\+Compton\+Model}} ()
+\item 
+G4\+Livermore\+Photo\+Electric\+Model \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classG4FastSim_1_1GammaRayHelper_a165c49ba48707083a7d55b5ad843f3c3}{Get\+Photoelectric\+Model}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static thread\+\_\+local \mbox{\hyperlink{classG4FastSim_1_1GammaRayHelper}{Gamma\+Ray\+Helper}} \& \mbox{\hyperlink{classG4FastSim_1_1GammaRayHelper_af308ffadbe3758075d51457217719886}{Instance}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A helper class for handling gamma ray interactions. 
+
+This class provides methods for calculating gamma ray cross sections, Compton scattering angles, and generating interaction points. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classG4FastSim_1_1GammaRayHelper_aa4241770cd7dc5aac879cbbf82790540}\label{classG4FastSim_1_1GammaRayHelper_aa4241770cd7dc5aac879cbbf82790540} 
+\index{G4FastSim::GammaRayHelper@{G4FastSim::GammaRayHelper}!DoComptonScatter@{DoComptonScatter}}
+\index{DoComptonScatter@{DoComptonScatter}!G4FastSim::GammaRayHelper@{G4FastSim::GammaRayHelper}}
+\doxysubsubsection{\texorpdfstring{DoComptonScatter()}{DoComptonScatter()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structG4FastSim_1_1InteractionData}{Interaction\+Data}} G4\+Fast\+Sim\+::\+Gamma\+Ray\+Helper\+::\+Do\+Compton\+Scatter (\begin{DoxyParamCaption}\item[{const G4\+Step \texorpdfstring{$\ast$}{*}}]{step,  }\item[{G4\+Three\+Vector}]{x0,  }\item[{G4double}]{energy\+\_\+max }\end{DoxyParamCaption})}
+
+\Hypertarget{classG4FastSim_1_1GammaRayHelper_abab2ab82ec46145c2fe5c486fbae7189}\label{classG4FastSim_1_1GammaRayHelper_abab2ab82ec46145c2fe5c486fbae7189} 
+\index{G4FastSim::GammaRayHelper@{G4FastSim::GammaRayHelper}!GenerateComptonAngle@{GenerateComptonAngle}}
+\index{GenerateComptonAngle@{GenerateComptonAngle}!G4FastSim::GammaRayHelper@{G4FastSim::GammaRayHelper}}
+\doxysubsubsection{\texorpdfstring{GenerateComptonAngle()}{GenerateComptonAngle()}}
+{\footnotesize\ttfamily std\+::pair$<$ G4double, G4double $>$ G4\+Fast\+Sim\+::\+Gamma\+Ray\+Helper\+::\+Generate\+Compton\+Angle (\begin{DoxyParamCaption}\item[{const G4\+Step \texorpdfstring{$\ast$}{*}}]{step,  }\item[{G4double}]{energy\+\_\+max }\end{DoxyParamCaption})}
+
+Generates a Compton scattering angle for a gamma ray. 
+\begin{DoxyParams}{Parameters}
+{\em step} & The G4\+Step object containing information about the current step. \\
+\hline
+{\em energy\+\_\+max} & The maximum energy deposition allowed for the gamma ray. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The cosine of the scattering angle. 
+\end{DoxyReturn}
+\Hypertarget{classG4FastSim_1_1GammaRayHelper_adae8718ef407a2c8b241b5ad5c36dd87}\label{classG4FastSim_1_1GammaRayHelper_adae8718ef407a2c8b241b5ad5c36dd87} 
+\index{G4FastSim::GammaRayHelper@{G4FastSim::GammaRayHelper}!GenerateInteractionPoint@{GenerateInteractionPoint}}
+\index{GenerateInteractionPoint@{GenerateInteractionPoint}!G4FastSim::GammaRayHelper@{G4FastSim::GammaRayHelper}}
+\doxysubsubsection{\texorpdfstring{GenerateInteractionPoint()}{GenerateInteractionPoint()}}
+{\footnotesize\ttfamily std\+::pair$<$ G4\+Three\+Vector, G4double $>$ G4\+Fast\+Sim\+::\+Gamma\+Ray\+Helper\+::\+Generate\+Interaction\+Point (\begin{DoxyParamCaption}\item[{const G4\+Step \texorpdfstring{$\ast$}{*}}]{step }\end{DoxyParamCaption})}
+
+Generates an interaction point along a line segment between two points.
+
+
+\begin{DoxyParams}{Parameters}
+{\em entrance} & The entrance point of the line segment. \\
+\hline
+{\em exit} & The exit point of the line segment. \\
+\hline
+{\em attenuation\+\_\+length} & The attenuation length of the material. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The generated interaction point. 
+\end{DoxyReturn}
+\Hypertarget{classG4FastSim_1_1GammaRayHelper_a2e541c28e01e87fbc5201a65d6154f04}\label{classG4FastSim_1_1GammaRayHelper_a2e541c28e01e87fbc5201a65d6154f04} 
+\index{G4FastSim::GammaRayHelper@{G4FastSim::GammaRayHelper}!GetAttenuationLength@{GetAttenuationLength}}
+\index{GetAttenuationLength@{GetAttenuationLength}!G4FastSim::GammaRayHelper@{G4FastSim::GammaRayHelper}}
+\doxysubsubsection{\texorpdfstring{GetAttenuationLength()}{GetAttenuationLength()}}
+{\footnotesize\ttfamily G4double G4\+Fast\+Sim\+::\+Gamma\+Ray\+Helper\+::\+Get\+Attenuation\+Length (\begin{DoxyParamCaption}\item[{G4double}]{energy,  }\item[{G4\+Material \texorpdfstring{$\ast$}{*}}]{material }\end{DoxyParamCaption})}
+
+Get the attenuation length for a given energy and material. 
+\begin{DoxyParams}{Parameters}
+{\em energy} & The energy of the gamma ray. \\
+\hline
+{\em material} & The material to calculate the attenuation length for. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The attenuation length. 
+\end{DoxyReturn}
+\Hypertarget{classG4FastSim_1_1GammaRayHelper_ad34476d05a54b95cbd73874476e915c4}\label{classG4FastSim_1_1GammaRayHelper_ad34476d05a54b95cbd73874476e915c4} 
+\index{G4FastSim::GammaRayHelper@{G4FastSim::GammaRayHelper}!GetComptonCrossSection@{GetComptonCrossSection}}
+\index{GetComptonCrossSection@{GetComptonCrossSection}!G4FastSim::GammaRayHelper@{G4FastSim::GammaRayHelper}}
+\doxysubsubsection{\texorpdfstring{GetComptonCrossSection()}{GetComptonCrossSection()}}
+{\footnotesize\ttfamily G4double G4\+Fast\+Sim\+::\+Gamma\+Ray\+Helper\+::\+Get\+Compton\+Cross\+Section (\begin{DoxyParamCaption}\item[{G4double}]{energy,  }\item[{G4\+Material \texorpdfstring{$\ast$}{*}}]{material }\end{DoxyParamCaption})}
+
+Get the Compton cross section for a given energy and material. 
+\begin{DoxyParams}{Parameters}
+{\em energy} & The energy of the gamma ray. \\
+\hline
+{\em material} & The material to calculate the cross section for. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The Compton cross section. 
+\end{DoxyReturn}
+\Hypertarget{classG4FastSim_1_1GammaRayHelper_abb08f27e3b4db84f9c04d840074b18c1}\label{classG4FastSim_1_1GammaRayHelper_abb08f27e3b4db84f9c04d840074b18c1} 
+\index{G4FastSim::GammaRayHelper@{G4FastSim::GammaRayHelper}!GetComptonModel@{GetComptonModel}}
+\index{GetComptonModel@{GetComptonModel}!G4FastSim::GammaRayHelper@{G4FastSim::GammaRayHelper}}
+\doxysubsubsection{\texorpdfstring{GetComptonModel()}{GetComptonModel()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classExtendedLivermoreComptonModel}{Extended\+Livermore\+Compton\+Model}} \texorpdfstring{$\ast$}{*} G4\+Fast\+Sim\+::\+Gamma\+Ray\+Helper\+::\+Get\+Compton\+Model (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classG4FastSim_1_1GammaRayHelper_ac01b2c3ba877d13e1af4d6f265fcb8f8}\label{classG4FastSim_1_1GammaRayHelper_ac01b2c3ba877d13e1af4d6f265fcb8f8} 
+\index{G4FastSim::GammaRayHelper@{G4FastSim::GammaRayHelper}!GetMassAttenuationCoefficient@{GetMassAttenuationCoefficient}}
+\index{GetMassAttenuationCoefficient@{GetMassAttenuationCoefficient}!G4FastSim::GammaRayHelper@{G4FastSim::GammaRayHelper}}
+\doxysubsubsection{\texorpdfstring{GetMassAttenuationCoefficient()}{GetMassAttenuationCoefficient()}}
+{\footnotesize\ttfamily G4double G4\+Fast\+Sim\+::\+Gamma\+Ray\+Helper\+::\+Get\+Mass\+Attenuation\+Coefficient (\begin{DoxyParamCaption}\item[{G4double}]{energy,  }\item[{G4\+Material \texorpdfstring{$\ast$}{*}}]{material }\end{DoxyParamCaption})}
+
+Get the mass attenuation coefficient for a given energy and material. 
+\begin{DoxyParams}{Parameters}
+{\em energy} & The energy of the gamma ray. \\
+\hline
+{\em material} & The material to calculate the mass attenuation coefficient for. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The mass attenuation coefficient. 
+\end{DoxyReturn}
+\Hypertarget{classG4FastSim_1_1GammaRayHelper_ac59f37fd0718c160f80a026d131b223a}\label{classG4FastSim_1_1GammaRayHelper_ac59f37fd0718c160f80a026d131b223a} 
+\index{G4FastSim::GammaRayHelper@{G4FastSim::GammaRayHelper}!GetPhotoelectricCrossSection@{GetPhotoelectricCrossSection}}
+\index{GetPhotoelectricCrossSection@{GetPhotoelectricCrossSection}!G4FastSim::GammaRayHelper@{G4FastSim::GammaRayHelper}}
+\doxysubsubsection{\texorpdfstring{GetPhotoelectricCrossSection()}{GetPhotoelectricCrossSection()}}
+{\footnotesize\ttfamily G4double G4\+Fast\+Sim\+::\+Gamma\+Ray\+Helper\+::\+Get\+Photoelectric\+Cross\+Section (\begin{DoxyParamCaption}\item[{G4double}]{energy,  }\item[{G4\+Material \texorpdfstring{$\ast$}{*}}]{material }\end{DoxyParamCaption})}
+
+Get the photoelectric cross section for a given energy and material. 
+\begin{DoxyParams}{Parameters}
+{\em energy} & The energy of the gamma ray. \\
+\hline
+{\em material} & The material to calculate the cross section for. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The photoelectric cross section. 
+\end{DoxyReturn}
+\Hypertarget{classG4FastSim_1_1GammaRayHelper_a165c49ba48707083a7d55b5ad843f3c3}\label{classG4FastSim_1_1GammaRayHelper_a165c49ba48707083a7d55b5ad843f3c3} 
+\index{G4FastSim::GammaRayHelper@{G4FastSim::GammaRayHelper}!GetPhotoelectricModel@{GetPhotoelectricModel}}
+\index{GetPhotoelectricModel@{GetPhotoelectricModel}!G4FastSim::GammaRayHelper@{G4FastSim::GammaRayHelper}}
+\doxysubsubsection{\texorpdfstring{GetPhotoelectricModel()}{GetPhotoelectricModel()}}
+{\footnotesize\ttfamily G4\+Livermore\+Photo\+Electric\+Model \texorpdfstring{$\ast$}{*} G4\+Fast\+Sim\+::\+Gamma\+Ray\+Helper\+::\+Get\+Photoelectric\+Model (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classG4FastSim_1_1GammaRayHelper_a76a11400fef3d2ec6b0aa2b7dc05aaa4}\label{classG4FastSim_1_1GammaRayHelper_a76a11400fef3d2ec6b0aa2b7dc05aaa4} 
+\index{G4FastSim::GammaRayHelper@{G4FastSim::GammaRayHelper}!GetTotalCrossSection@{GetTotalCrossSection}}
+\index{GetTotalCrossSection@{GetTotalCrossSection}!G4FastSim::GammaRayHelper@{G4FastSim::GammaRayHelper}}
+\doxysubsubsection{\texorpdfstring{GetTotalCrossSection()}{GetTotalCrossSection()}}
+{\footnotesize\ttfamily G4double G4\+Fast\+Sim\+::\+Gamma\+Ray\+Helper\+::\+Get\+Total\+Cross\+Section (\begin{DoxyParamCaption}\item[{G4double}]{energy,  }\item[{G4\+Material \texorpdfstring{$\ast$}{*}}]{material }\end{DoxyParamCaption})}
+
+Get the total cross section (Compton + photoelectric) for a given energy and material. 
+\begin{DoxyParams}{Parameters}
+{\em energy} & The energy of the gamma ray. \\
+\hline
+{\em material} & The material to calculate the cross section for. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The total cross section. 
+\end{DoxyReturn}
+\Hypertarget{classG4FastSim_1_1GammaRayHelper_a3a5c1dcb942d83288f018440979ba43a}\label{classG4FastSim_1_1GammaRayHelper_a3a5c1dcb942d83288f018440979ba43a} 
+\index{G4FastSim::GammaRayHelper@{G4FastSim::GammaRayHelper}!Initialize@{Initialize}}
+\index{Initialize@{Initialize}!G4FastSim::GammaRayHelper@{G4FastSim::GammaRayHelper}}
+\doxysubsubsection{\texorpdfstring{Initialize()}{Initialize()}}
+{\footnotesize\ttfamily void G4\+Fast\+Sim\+::\+Gamma\+Ray\+Helper\+::\+Initialize (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Initialize the Compton and photoelectric models. \Hypertarget{classG4FastSim_1_1GammaRayHelper_a835bb82920830ad096b662c09b447793}\label{classG4FastSim_1_1GammaRayHelper_a835bb82920830ad096b662c09b447793} 
+\index{G4FastSim::GammaRayHelper@{G4FastSim::GammaRayHelper}!InitializeCDFs@{InitializeCDFs}}
+\index{InitializeCDFs@{InitializeCDFs}!G4FastSim::GammaRayHelper@{G4FastSim::GammaRayHelper}}
+\doxysubsubsection{\texorpdfstring{InitializeCDFs()}{InitializeCDFs()}}
+{\footnotesize\ttfamily void G4\+Fast\+Sim\+::\+Gamma\+Ray\+Helper\+::\+Initialize\+CDFs (\begin{DoxyParamCaption}\item[{G4double}]{energy }\end{DoxyParamCaption})}
+
+
+
+Initializes the cumulative distribution functions (CDFs) for gamma rays. 
+
+This function initializes the CDFs for gamma rays based on the given energy. It checks if the CDFs have already been initialized and if not, performs the initialization. The CDFs are created for each element used in the material table.
+
+
+\begin{DoxyParams}{Parameters}
+{\em energy} & The energy of the gamma rays. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classG4FastSim_1_1GammaRayHelper_af308ffadbe3758075d51457217719886}\label{classG4FastSim_1_1GammaRayHelper_af308ffadbe3758075d51457217719886} 
+\index{G4FastSim::GammaRayHelper@{G4FastSim::GammaRayHelper}!Instance@{Instance}}
+\index{Instance@{Instance}!G4FastSim::GammaRayHelper@{G4FastSim::GammaRayHelper}}
+\doxysubsubsection{\texorpdfstring{Instance()}{Instance()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classG4FastSim_1_1GammaRayHelper}{Gamma\+Ray\+Helper}} \& G4\+Fast\+Sim\+::\+Gamma\+Ray\+Helper\+::\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/user/z37/g4/\+G4\+Fast\+Sim/include/\mbox{\hyperlink{GammaRayHelper_8hh}{Gamma\+Ray\+Helper.\+hh}}\item 
+/user/z37/g4/\+G4\+Fast\+Sim/src/\mbox{\hyperlink{GammaRayHelper_8cc}{Gamma\+Ray\+Helper.\+cc}}\end{DoxyCompactItemize}

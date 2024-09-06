@@ -1,0 +1,346 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="DetectorConstruction_8hh" kind="file" language="C++">
+    <compoundname>DetectorConstruction.hh</compoundname>
+    <includes local="yes">G4VUserDetectorConstruction.hh</includes>
+    <includes refid="DetectorConstructionMessenger_8hh" local="yes">DetectorConstructionMessenger.hh</includes>
+    <includes refid="GammaRayHelper_8hh" local="yes">GammaRayHelper.hh</includes>
+    <includes refid="Materials_8hh" local="yes">Materials.hh</includes>
+    <includes local="yes">globals.hh</includes>
+    <includedby refid="ActionInitialization_8cc" local="yes">src/ActionInitialization.cc</includedby>
+    <includedby refid="DetectorConstruction_8cc" local="yes">src/DetectorConstruction.cc</includedby>
+    <includedby refid="DetectorConstructionMessenger_8cc" local="yes">src/DetectorConstructionMessenger.cc</includedby>
+    <includedby refid="RunAction_8cc" local="yes">src/RunAction.cc</includedby>
+    <includedby refid="SteppingAction_8cc" local="yes">src/SteppingAction.cc</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>include/DetectorConstruction.hh</label>
+        <link refid="DetectorConstruction_8hh"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>DetectorConstructionMessenger.hh</label>
+        <link refid="DetectorConstructionMessenger_8hh"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>ExtendedLivermoreComptonModel.hh</label>
+        <link refid="ExtendedLivermoreComptonModel_8hh"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>GammaRayHelper.hh</label>
+        <link refid="GammaRayHelper_8hh"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+      </node>
+      <node id="23">
+        <label>Hit.hh</label>
+        <link refid="Hit_8hh"/>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+      </node>
+      <node id="30">
+        <label>Materials.hh</label>
+        <link refid="Materials_8hh"/>
+      </node>
+      <node id="25">
+        <label>G4Allocator.hh</label>
+      </node>
+      <node id="20">
+        <label>G4AutoLock.hh</label>
+      </node>
+      <node id="19">
+        <label>G4DataVector.hh</label>
+      </node>
+      <node id="11">
+        <label>G4DynamicParticle.hh</label>
+      </node>
+      <node id="8">
+        <label>G4LivermoreComptonModel.hh</label>
+      </node>
+      <node id="13">
+        <label>G4LivermorePhotoElectricModel.hh</label>
+      </node>
+      <node id="14">
+        <label>G4LivermoreRayleighModel.hh</label>
+      </node>
+      <node id="15">
+        <label>G4Material.hh</label>
+      </node>
+      <node id="10">
+        <label>G4MaterialCutsCouple.hh</label>
+      </node>
+      <node id="17">
+        <label>G4PhysicalConstants.hh</label>
+      </node>
+      <node id="22">
+        <label>G4Step.hh</label>
+      </node>
+      <node id="26">
+        <label>G4String.hh</label>
+      </node>
+      <node id="18">
+        <label>G4SystemOfUnits.hh</label>
+      </node>
+      <node id="27">
+        <label>G4THitsCollection.hh</label>
+      </node>
+      <node id="16">
+        <label>G4ThreeVector.hh</label>
+      </node>
+      <node id="21">
+        <label>G4Track.hh</label>
+      </node>
+      <node id="5">
+        <label>G4UIcmdWithADoubleAndUnit.hh</label>
+      </node>
+      <node id="4">
+        <label>G4UImessenger.hh</label>
+      </node>
+      <node id="12">
+        <label>G4VEMDataSet.hh</label>
+      </node>
+      <node id="24">
+        <label>G4VHit.hh</label>
+      </node>
+      <node id="2">
+        <label>G4VUserDetectorConstruction.hh</label>
+      </node>
+      <node id="6">
+        <label>globals.hh</label>
+      </node>
+      <node id="28">
+        <label>map</label>
+      </node>
+      <node id="29">
+        <label>mutex</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="1">
+        <label>include/DetectorConstruction.hh</label>
+        <link refid="DetectorConstruction_8hh"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>src/ActionInitialization.cc</label>
+        <link refid="ActionInitialization_8cc"/>
+      </node>
+      <node id="3">
+        <label>src/DetectorConstruction.cc</label>
+        <link refid="DetectorConstruction_8cc"/>
+      </node>
+      <node id="4">
+        <label>src/DetectorConstructionMessenger.cc</label>
+        <link refid="DetectorConstructionMessenger_8cc"/>
+      </node>
+      <node id="5">
+        <label>src/RunAction.cc</label>
+        <link refid="RunAction_8cc"/>
+      </node>
+      <node id="6">
+        <label>src/SteppingAction.cc</label>
+        <link refid="SteppingAction_8cc"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classG4FastSim_1_1DetectorConstruction" prot="public">G4FastSim::DetectorConstruction</innerclass>
+    <innernamespace refid="namespaceG4FastSim">G4FastSim</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/>********************************************************************</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/>*<sp/>License<sp/>and<sp/>Disclaimer<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">//<sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="comment">//<sp/>*<sp/>The<sp/><sp/>Geant4<sp/>software<sp/><sp/>is<sp/><sp/>copyright<sp/>of<sp/>the<sp/>Copyright<sp/>Holders<sp/><sp/>of<sp/>*</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//<sp/>*<sp/>the<sp/>Geant4<sp/>Collaboration.<sp/><sp/>It<sp/>is<sp/>provided<sp/><sp/>under<sp/><sp/>the<sp/>terms<sp/><sp/>and<sp/>*</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//<sp/>*<sp/>conditions<sp/>of<sp/>the<sp/>Geant4<sp/>Software<sp/>License,<sp/><sp/>included<sp/>in<sp/>the<sp/>file<sp/>*</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="comment">//<sp/>*<sp/>LICENSE<sp/>and<sp/>available<sp/>at<sp/><sp/>http://cern.ch/geant4/license<sp/>.<sp/><sp/>These<sp/>*</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="comment">//<sp/>*<sp/>include<sp/>a<sp/>list<sp/>of<sp/>copyright<sp/>holders.<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="comment">//<sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="comment">//<sp/>*<sp/>Neither<sp/>the<sp/>authors<sp/>of<sp/>this<sp/>software<sp/>system,<sp/>nor<sp/>their<sp/>employing<sp/>*</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="comment">//<sp/>*<sp/>institutes,nor<sp/>the<sp/>agencies<sp/>providing<sp/>financial<sp/>support<sp/>for<sp/>this<sp/>*</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="comment">//<sp/>*<sp/>work<sp/><sp/>make<sp/><sp/>any<sp/>representation<sp/>or<sp/><sp/>warranty,<sp/>express<sp/>or<sp/>implied,<sp/>*</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="comment">//<sp/>*<sp/>regarding<sp/><sp/>this<sp/><sp/>software<sp/>system<sp/>or<sp/>assume<sp/>any<sp/>liability<sp/>for<sp/>its<sp/>*</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="comment">//<sp/>*<sp/>use.<sp/><sp/>Please<sp/>see<sp/>the<sp/>license<sp/>in<sp/>the<sp/>file<sp/><sp/>LICENSE<sp/><sp/>and<sp/>URL<sp/>above<sp/>*</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="comment">//<sp/>*<sp/>for<sp/>the<sp/>full<sp/>disclaimer<sp/>and<sp/>the<sp/>limitation<sp/>of<sp/>liability.<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="comment">//<sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="comment">//<sp/>*<sp/>This<sp/><sp/>code<sp/><sp/>implementation<sp/>is<sp/>the<sp/>result<sp/>of<sp/><sp/>the<sp/><sp/>scientific<sp/>and<sp/>*</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="comment">//<sp/>*<sp/>technical<sp/>work<sp/>of<sp/>the<sp/>GEANT4<sp/>collaboration.<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="comment">//<sp/>*<sp/>By<sp/>using,<sp/><sp/>copying,<sp/><sp/>modifying<sp/>or<sp/><sp/>distributing<sp/>the<sp/>software<sp/>(or<sp/>*</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="comment">//<sp/>*<sp/>any<sp/>work<sp/>based<sp/><sp/>on<sp/>the<sp/>software)<sp/><sp/>you<sp/><sp/>agree<sp/><sp/>to<sp/>acknowledge<sp/>its<sp/>*</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="comment">//<sp/>*<sp/>use<sp/><sp/>in<sp/><sp/>resulting<sp/><sp/>scientific<sp/><sp/>publications,<sp/><sp/>and<sp/>indicate<sp/>your<sp/>*</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="comment">//<sp/>*<sp/>acceptance<sp/>of<sp/>all<sp/>terms<sp/>of<sp/>the<sp/>Geant4<sp/>Software<sp/>license.<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="comment">//<sp/>********************************************************************</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="comment">//</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>__DetectorConstruction__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__DetectorConstruction__<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;G4VUserDetectorConstruction.hh&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="DetectorConstructionMessenger_8hh" kindref="compound">DetectorConstructionMessenger.hh</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="GammaRayHelper_8hh" kindref="compound">GammaRayHelper.hh</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Materials_8hh" kindref="compound">Materials.hh</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;globals.hh&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">G4VPhysicalVolume;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">G4LogicalVolume;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">DetectorConstructionMessenger;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceG4FastSim" kindref="compound">G4FastSim</ref></highlight></codeline>
+<codeline lineno="46"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48" refid="classG4FastSim_1_1DetectorConstruction" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classG4FastSim_1_1DetectorConstruction" kindref="compound">DetectorConstruction</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>G4VUserDetectorConstruction</highlight></codeline>
+<codeline lineno="49"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classG4FastSim_1_1DetectorConstruction_1aa17a113299f7697c31fda911e666e177" kindref="member">DetectorConstruction</ref>(G4FastSim::GammaRayHelper<sp/>*gammaRayHelper);</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classG4FastSim_1_1DetectorConstruction_1a039ec9979648c6e28e98659464823761" kindref="member">~DetectorConstruction</ref>();</highlight><highlight class="comment">//override<sp/>=<sp/>default;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>G4VPhysicalVolume*<sp/><ref refid="classG4FastSim_1_1DetectorConstruction_1a825525c706b36c849485028d6f138102" kindref="member">Construct</ref>()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classG4FastSim_1_1DetectorConstruction_1a0b6d42fb3252aef821846b808df83787" kindref="member">ConstructWorld</ref>();</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classG4FastSim_1_1DetectorConstruction_1a8ff92616a62089b555e2cfad4818286f" kindref="member">ConstructWaterTank</ref>();</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classG4FastSim_1_1DetectorConstruction_1af4745b2e22d743cf52f98c5ca366b3df" kindref="member">ConstructOuterCryostat</ref>();</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classG4FastSim_1_1DetectorConstruction_1a1dd93079f2b7408756bf3f9f96ae58d0" kindref="member">ConstructInnerCryostat</ref>();<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classG4FastSim_1_1DetectorConstruction_1a2809d771bcb94d38ab7802a0e517df83" kindref="member">ConstructLXe</ref>();</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classG4FastSim_1_1DetectorConstruction_1aba89d601be1c4c5c3a862a0d8147a3a6" kindref="member">ConstructFiducialVolume</ref>();</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classG4FastSim_1_1DetectorConstruction_1a98e849746130d557d122e86534795cb8" kindref="member">DefineSensitiveDetector</ref>();</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63" refid="classG4FastSim_1_1DetectorConstruction_1a0635cbbeb6f0834113db4c369a75ce62" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>G4LogicalVolume*<sp/><ref refid="classG4FastSim_1_1DetectorConstruction_1a0635cbbeb6f0834113db4c369a75ce62" kindref="member">GetScoringVolume</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classG4FastSim_1_1DetectorConstruction_1a6eb404ead02476fc40a4678d28acb921" kindref="member">fScoringVolume</ref>;<sp/>}</highlight></codeline>
+<codeline lineno="64" refid="classG4FastSim_1_1DetectorConstruction_1ac17bb2313f403e6bf33f417eacc2f62b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classGammaRayHelper" kindref="compound">GammaRayHelper</ref>*<sp/><ref refid="classG4FastSim_1_1DetectorConstruction_1ac17bb2313f403e6bf33f417eacc2f62b" kindref="member">GetGammaRayHelper</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>fGammaRayHelper;<sp/>}</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66" refid="classG4FastSim_1_1DetectorConstruction_1ae027aaad114262a32135d05bfb7ee621" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classG4FastSim_1_1DetectorConstruction_1ae027aaad114262a32135d05bfb7ee621" kindref="member">SetOuterCryostatRadius</ref>(G4double<sp/>radius)<sp/>{<sp/>outer_cryostat_radius<sp/>=<sp/>radius;<sp/>}</highlight></codeline>
+<codeline lineno="67" refid="classG4FastSim_1_1DetectorConstruction_1a3a88428057e9c9e17d308650b8a3350f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classG4FastSim_1_1DetectorConstruction_1a3a88428057e9c9e17d308650b8a3350f" kindref="member">SetOuterCryostatHeight</ref>(G4double<sp/>height)<sp/>{<sp/>outer_cryostat_height<sp/>=<sp/>height;<sp/>}</highlight></codeline>
+<codeline lineno="68" refid="classG4FastSim_1_1DetectorConstruction_1a8617ce150d576a831bd6894d6d4ebb0f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classG4FastSim_1_1DetectorConstruction_1a8617ce150d576a831bd6894d6d4ebb0f" kindref="member">SetOuterCryostatWallThickness</ref>(G4double<sp/>thickness)<sp/>{<sp/>outer_cryostat_wall_thickness<sp/>=<sp/>thickness;<sp/>}</highlight></codeline>
+<codeline lineno="69" refid="classG4FastSim_1_1DetectorConstruction_1af79b446ceec64127e74443ec0de833c8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classG4FastSim_1_1DetectorConstruction_1af79b446ceec64127e74443ec0de833c8" kindref="member">SetInnerCryostatRadius</ref>(G4double<sp/>radius)<sp/>{<sp/>inner_cryostat_radius<sp/>=<sp/>radius;<sp/>}</highlight></codeline>
+<codeline lineno="70" refid="classG4FastSim_1_1DetectorConstruction_1a217e2c69978b6eda39a8aa3da03f2024" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classG4FastSim_1_1DetectorConstruction_1a217e2c69978b6eda39a8aa3da03f2024" kindref="member">SetInnerCryostatHeight</ref>(G4double<sp/>height)<sp/>{<sp/>inner_cryostat_height<sp/>=<sp/>height;<sp/>}</highlight></codeline>
+<codeline lineno="71" refid="classG4FastSim_1_1DetectorConstruction_1a23fcc95da41a3623165d4003212a2c8f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classG4FastSim_1_1DetectorConstruction_1a23fcc95da41a3623165d4003212a2c8f" kindref="member">SetInnerCryostatWallThickness</ref>(G4double<sp/>thickness)<sp/>{<sp/>inner_cryostat_wall_thickness<sp/>=<sp/>thickness;<sp/>}</highlight></codeline>
+<codeline lineno="72" refid="classG4FastSim_1_1DetectorConstruction_1a68adc113fced37c0eadddeff3ca8cf64" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classG4FastSim_1_1DetectorConstruction_1a68adc113fced37c0eadddeff3ca8cf64" kindref="member">SetFiducialRadius</ref>(G4double<sp/>radius)<sp/>{<sp/>fiducial_radius<sp/>=<sp/>radius;<sp/>}</highlight></codeline>
+<codeline lineno="73" refid="classG4FastSim_1_1DetectorConstruction_1aa421d8fb67601dda45475f9e0ad77389" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classG4FastSim_1_1DetectorConstruction_1aa421d8fb67601dda45475f9e0ad77389" kindref="member">SetFiducialHeight</ref>(G4double<sp/>height)<sp/>{<sp/>fiducial_height<sp/>=<sp/>height;<sp/>}</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classG4FastSim_1_1Materials" kindref="compound">Materials</ref><sp/>*fMaterials<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classGammaRayHelper" kindref="compound">GammaRayHelper</ref><sp/>*fGammaRayHelper;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>check<sp/>for<sp/>overlaps</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/>G4bool<sp/>fCheckOverlaps<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//dimensions</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/>G4double<sp/>outer_cryostat_radius;</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/>G4double<sp/>outer_cryostat_height;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>G4double<sp/>outer_cryostat_wall_thickness;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/>G4double<sp/>inner_cryostat_radius;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/>G4double<sp/>inner_cryostat_height;</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/>G4double<sp/>inner_cryostat_wall_thickness;</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/>G4double<sp/>fiducial_radius;</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/>G4double<sp/>fiducial_height;</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//logical<sp/>volumes</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/>G4LogicalVolume*<sp/>fWorldLogical<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/>G4LogicalVolume*<sp/>fWaterTankLogical<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/>G4LogicalVolume*<sp/>fOuterCryostatLogical<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/>G4LogicalVolume*<sp/>fVacuumLogical<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/>G4LogicalVolume*<sp/>fInnerCryostatLogical<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/>G4LogicalVolume*<sp/>fLXeLogical<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/>G4LogicalVolume*<sp/>fPTFELogical<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/>G4LogicalVolume*<sp/>fLXeFiducialLogical<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//physical<sp/>volumes</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/>G4VPhysicalVolume*<sp/>fWorldPhysical<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/>G4VPhysicalVolume*<sp/>fWaterTankPhysical<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/>G4VPhysicalVolume*<sp/>fOuterCryostatPhysical<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/>G4VPhysicalVolume*<sp/>fVacuumPhysical<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/>G4VPhysicalVolume*<sp/>fInnerCryostatPhysical<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/>G4VPhysicalVolume*<sp/>fLXePhysical<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/>G4VPhysicalVolume*<sp/>fPTFEPhysical<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/>G4VPhysicalVolume*<sp/>fLXeFiducialPhysical<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="116" refid="classG4FastSim_1_1DetectorConstruction_1a6eb404ead02476fc40a4678d28acb921" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>G4LogicalVolume*<sp/><ref refid="classG4FastSim_1_1DetectorConstruction_1a6eb404ead02476fc40a4678d28acb921" kindref="member">fScoringVolume</ref><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="118" refid="classG4FastSim_1_1DetectorConstruction_1ab0fa1fabca4339bf27bc74c56a7f1d5b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classG4FastSim_1_1DetectorConstructionMessenger" kindref="compound">DetectorConstructionMessenger</ref>*<sp/><ref refid="classG4FastSim_1_1DetectorConstruction_1ab0fa1fabca4339bf27bc74c56a7f1d5b" kindref="member">fMessenger</ref>;</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight><highlight class="comment">//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="include/DetectorConstruction.hh"/>
+  </compounddef>
+</doxygen>

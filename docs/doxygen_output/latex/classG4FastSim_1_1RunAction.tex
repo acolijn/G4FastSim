@@ -1,0 +1,131 @@
+\doxysection{G4\+Fast\+Sim\+::Run\+Action Class Reference}
+\hypertarget{classG4FastSim_1_1RunAction}{}\label{classG4FastSim_1_1RunAction}\index{G4FastSim::RunAction@{G4FastSim::RunAction}}
+
+
+{\ttfamily \#include $<$Run\+Action.\+hh$>$}
+
+Inheritance diagram for G4\+Fast\+Sim\+::Run\+Action\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classG4FastSim_1_1RunAction}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classG4FastSim_1_1RunAction_a37d112d13613a875c701fa713a8578d6}{Run\+Action}} (\mbox{\hyperlink{classG4FastSim_1_1EventAction}{Event\+Action}} \texorpdfstring{$\ast$}{*}event\+Action, \mbox{\hyperlink{classGammaRayHelper}{Gamma\+Ray\+Helper}} \texorpdfstring{$\ast$}{*}helper)
+\item 
+\mbox{\hyperlink{classG4FastSim_1_1RunAction_a60a2332ed4605207febad1b0d8e651a8}{\texorpdfstring{$\sim$}{\string~}\+Run\+Action}} ()
+\item 
+void \mbox{\hyperlink{classG4FastSim_1_1RunAction_a56d7c56a7c026ffc3f06113c7329f7fc}{Begin\+Of\+Run\+Action}} (const G4\+Run \texorpdfstring{$\ast$}{*}) override
+\item 
+void \mbox{\hyperlink{classG4FastSim_1_1RunAction_a3bb1dc31bdbfdd5488955f67edf30187}{End\+Of\+Run\+Action}} (const G4\+Run \texorpdfstring{$\ast$}{*}) override
+\item 
+void \mbox{\hyperlink{classG4FastSim_1_1RunAction_a2760a1df3ffa37b3bae82417e464b988}{Initialize\+Ntuples}} ()
+\item 
+void \mbox{\hyperlink{classG4FastSim_1_1RunAction_a5f2e9b091de890f715f382f00f978f58}{Define\+Event\+Ntuple}} ()
+\begin{DoxyCompactList}\small\item\em Defines the event ntuple for data analysis. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classG4FastSim_1_1RunAction_a5234e8dcae186de76af503dd88394481}{Define\+Cross\+Section\+Ntuple}} ()
+\item 
+void \mbox{\hyperlink{classG4FastSim_1_1RunAction_a882e8082b1a86d880ad497e24880072e}{Define\+Differential\+Cross\+Section\+Ntuple}} (G4double energy) const
+\begin{DoxyCompactList}\small\item\em Defines the differential cross-\/section Ntuple. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classG4FastSim_1_1RunAction_a5bd335f430b8ebd2107da1e3c113ef30}{Set\+Fast\+Simulation}} (G4bool value)
+\item 
+void \mbox{\hyperlink{classG4FastSim_1_1RunAction_a070c9263a8b4d9c9b8b0e99f52f500c9}{Set\+Number\+Of\+Scatters}} (G4int value)
+\item 
+void \mbox{\hyperlink{classG4FastSim_1_1RunAction_a544642e65c03425b5c6131676b6cd65e}{Set\+Max\+Energy}} (G4double value)
+\item 
+void \mbox{\hyperlink{classG4FastSim_1_1RunAction_a8a1efe0b0726343d4974e98efd66f31d}{Set\+Output\+File\+Name}} (G4\+String value)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classG4FastSim_1_1RunAction_a37d112d13613a875c701fa713a8578d6}\label{classG4FastSim_1_1RunAction_a37d112d13613a875c701fa713a8578d6} 
+\index{G4FastSim::RunAction@{G4FastSim::RunAction}!RunAction@{RunAction}}
+\index{RunAction@{RunAction}!G4FastSim::RunAction@{G4FastSim::RunAction}}
+\doxysubsubsection{\texorpdfstring{RunAction()}{RunAction()}}
+{\footnotesize\ttfamily G4\+Fast\+Sim\+::\+Run\+Action\+::\+Run\+Action (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classG4FastSim_1_1EventAction}{Event\+Action}} \texorpdfstring{$\ast$}{*}}]{event\+Action,  }\item[{\mbox{\hyperlink{classGammaRayHelper}{Gamma\+Ray\+Helper}} \texorpdfstring{$\ast$}{*}}]{helper }\end{DoxyParamCaption})}
+
+\Hypertarget{classG4FastSim_1_1RunAction_a60a2332ed4605207febad1b0d8e651a8}\label{classG4FastSim_1_1RunAction_a60a2332ed4605207febad1b0d8e651a8} 
+\index{G4FastSim::RunAction@{G4FastSim::RunAction}!````~RunAction@{\texorpdfstring{$\sim$}{\string~}RunAction}}
+\index{````~RunAction@{\texorpdfstring{$\sim$}{\string~}RunAction}!G4FastSim::RunAction@{G4FastSim::RunAction}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}RunAction()}{\string~RunAction()}}
+{\footnotesize\ttfamily G4\+Fast\+Sim\+::\+Run\+Action\+::\texorpdfstring{$\sim$}{\string~}\+Run\+Action (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classG4FastSim_1_1RunAction_a56d7c56a7c026ffc3f06113c7329f7fc}\label{classG4FastSim_1_1RunAction_a56d7c56a7c026ffc3f06113c7329f7fc} 
+\index{G4FastSim::RunAction@{G4FastSim::RunAction}!BeginOfRunAction@{BeginOfRunAction}}
+\index{BeginOfRunAction@{BeginOfRunAction}!G4FastSim::RunAction@{G4FastSim::RunAction}}
+\doxysubsubsection{\texorpdfstring{BeginOfRunAction()}{BeginOfRunAction()}}
+{\footnotesize\ttfamily void G4\+Fast\+Sim\+::\+Run\+Action\+::\+Begin\+Of\+Run\+Action (\begin{DoxyParamCaption}\item[{const G4\+Run \texorpdfstring{$\ast$}{*}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+\Hypertarget{classG4FastSim_1_1RunAction_a5234e8dcae186de76af503dd88394481}\label{classG4FastSim_1_1RunAction_a5234e8dcae186de76af503dd88394481} 
+\index{G4FastSim::RunAction@{G4FastSim::RunAction}!DefineCrossSectionNtuple@{DefineCrossSectionNtuple}}
+\index{DefineCrossSectionNtuple@{DefineCrossSectionNtuple}!G4FastSim::RunAction@{G4FastSim::RunAction}}
+\doxysubsubsection{\texorpdfstring{DefineCrossSectionNtuple()}{DefineCrossSectionNtuple()}}
+{\footnotesize\ttfamily void G4\+Fast\+Sim\+::\+Run\+Action\+::\+Define\+Cross\+Section\+Ntuple (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{classG4FastSim_1_1RunAction_a882e8082b1a86d880ad497e24880072e}\label{classG4FastSim_1_1RunAction_a882e8082b1a86d880ad497e24880072e} 
+\index{G4FastSim::RunAction@{G4FastSim::RunAction}!DefineDifferentialCrossSectionNtuple@{DefineDifferentialCrossSectionNtuple}}
+\index{DefineDifferentialCrossSectionNtuple@{DefineDifferentialCrossSectionNtuple}!G4FastSim::RunAction@{G4FastSim::RunAction}}
+\doxysubsubsection{\texorpdfstring{DefineDifferentialCrossSectionNtuple()}{DefineDifferentialCrossSectionNtuple()}}
+{\footnotesize\ttfamily void G4\+Fast\+Sim\+::\+Run\+Action\+::\+Define\+Differential\+Cross\+Section\+Ntuple (\begin{DoxyParamCaption}\item[{G4double}]{e0 }\end{DoxyParamCaption}) const}
+
+
+
+Defines the differential cross-\/section Ntuple. 
+
+This function creates an Ntuple to store the differential cross-\/section data. It retrieves the material table, creates the necessary columns in the Ntuple, and fills the Ntuple with the differential cross-\/section values for each element in each material. The Ntuple columns include the material name, scattering angle, form factor, Klein-\/\+Nishina cross-\/section, and atomic number of the element. \Hypertarget{classG4FastSim_1_1RunAction_a5f2e9b091de890f715f382f00f978f58}\label{classG4FastSim_1_1RunAction_a5f2e9b091de890f715f382f00f978f58} 
+\index{G4FastSim::RunAction@{G4FastSim::RunAction}!DefineEventNtuple@{DefineEventNtuple}}
+\index{DefineEventNtuple@{DefineEventNtuple}!G4FastSim::RunAction@{G4FastSim::RunAction}}
+\doxysubsubsection{\texorpdfstring{DefineEventNtuple()}{DefineEventNtuple()}}
+{\footnotesize\ttfamily void G4\+Fast\+Sim\+::\+Run\+Action\+::\+Define\+Event\+Ntuple (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Defines the event ntuple for data analysis. 
+
+This function creates an event ntuple using the G4\+Analysis\+Manager class. The ntuple contains columns for storing energy deposition (Edep), x-\/coordinate (xh), and y-\/coordinate (yh) of each event. The ntuple is finished and assigned an ID. \Hypertarget{classG4FastSim_1_1RunAction_a3bb1dc31bdbfdd5488955f67edf30187}\label{classG4FastSim_1_1RunAction_a3bb1dc31bdbfdd5488955f67edf30187} 
+\index{G4FastSim::RunAction@{G4FastSim::RunAction}!EndOfRunAction@{EndOfRunAction}}
+\index{EndOfRunAction@{EndOfRunAction}!G4FastSim::RunAction@{G4FastSim::RunAction}}
+\doxysubsubsection{\texorpdfstring{EndOfRunAction()}{EndOfRunAction()}}
+{\footnotesize\ttfamily void G4\+Fast\+Sim\+::\+Run\+Action\+::\+End\+Of\+Run\+Action (\begin{DoxyParamCaption}\item[{const G4\+Run \texorpdfstring{$\ast$}{*}}]{run }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+\Hypertarget{classG4FastSim_1_1RunAction_a2760a1df3ffa37b3bae82417e464b988}\label{classG4FastSim_1_1RunAction_a2760a1df3ffa37b3bae82417e464b988} 
+\index{G4FastSim::RunAction@{G4FastSim::RunAction}!InitializeNtuples@{InitializeNtuples}}
+\index{InitializeNtuples@{InitializeNtuples}!G4FastSim::RunAction@{G4FastSim::RunAction}}
+\doxysubsubsection{\texorpdfstring{InitializeNtuples()}{InitializeNtuples()}}
+{\footnotesize\ttfamily void G4\+Fast\+Sim\+::\+Run\+Action\+::\+Initialize\+Ntuples (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{classG4FastSim_1_1RunAction_a5bd335f430b8ebd2107da1e3c113ef30}\label{classG4FastSim_1_1RunAction_a5bd335f430b8ebd2107da1e3c113ef30} 
+\index{G4FastSim::RunAction@{G4FastSim::RunAction}!SetFastSimulation@{SetFastSimulation}}
+\index{SetFastSimulation@{SetFastSimulation}!G4FastSim::RunAction@{G4FastSim::RunAction}}
+\doxysubsubsection{\texorpdfstring{SetFastSimulation()}{SetFastSimulation()}}
+{\footnotesize\ttfamily void G4\+Fast\+Sim\+::\+Run\+Action\+::\+Set\+Fast\+Simulation (\begin{DoxyParamCaption}\item[{G4bool}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classG4FastSim_1_1RunAction_a544642e65c03425b5c6131676b6cd65e}\label{classG4FastSim_1_1RunAction_a544642e65c03425b5c6131676b6cd65e} 
+\index{G4FastSim::RunAction@{G4FastSim::RunAction}!SetMaxEnergy@{SetMaxEnergy}}
+\index{SetMaxEnergy@{SetMaxEnergy}!G4FastSim::RunAction@{G4FastSim::RunAction}}
+\doxysubsubsection{\texorpdfstring{SetMaxEnergy()}{SetMaxEnergy()}}
+{\footnotesize\ttfamily void G4\+Fast\+Sim\+::\+Run\+Action\+::\+Set\+Max\+Energy (\begin{DoxyParamCaption}\item[{G4double}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classG4FastSim_1_1RunAction_a070c9263a8b4d9c9b8b0e99f52f500c9}\label{classG4FastSim_1_1RunAction_a070c9263a8b4d9c9b8b0e99f52f500c9} 
+\index{G4FastSim::RunAction@{G4FastSim::RunAction}!SetNumberOfScatters@{SetNumberOfScatters}}
+\index{SetNumberOfScatters@{SetNumberOfScatters}!G4FastSim::RunAction@{G4FastSim::RunAction}}
+\doxysubsubsection{\texorpdfstring{SetNumberOfScatters()}{SetNumberOfScatters()}}
+{\footnotesize\ttfamily void G4\+Fast\+Sim\+::\+Run\+Action\+::\+Set\+Number\+Of\+Scatters (\begin{DoxyParamCaption}\item[{G4int}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classG4FastSim_1_1RunAction_a8a1efe0b0726343d4974e98efd66f31d}\label{classG4FastSim_1_1RunAction_a8a1efe0b0726343d4974e98efd66f31d} 
+\index{G4FastSim::RunAction@{G4FastSim::RunAction}!SetOutputFileName@{SetOutputFileName}}
+\index{SetOutputFileName@{SetOutputFileName}!G4FastSim::RunAction@{G4FastSim::RunAction}}
+\doxysubsubsection{\texorpdfstring{SetOutputFileName()}{SetOutputFileName()}}
+{\footnotesize\ttfamily void G4\+Fast\+Sim\+::\+Run\+Action\+::\+Set\+Output\+File\+Name (\begin{DoxyParamCaption}\item[{G4\+String}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{RunAction_8hh}{Run\+Action.\+hh}}\item 
+src/\mbox{\hyperlink{RunAction_8cc}{Run\+Action.\+cc}}\end{DoxyCompactItemize}

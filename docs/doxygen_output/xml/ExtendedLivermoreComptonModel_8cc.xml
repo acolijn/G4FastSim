@@ -1,0 +1,158 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="ExtendedLivermoreComptonModel_8cc" kind="file" language="C++">
+    <compoundname>ExtendedLivermoreComptonModel.cc</compoundname>
+    <includes refid="ExtendedLivermoreComptonModel_8hh" local="yes">ExtendedLivermoreComptonModel.hh</includes>
+    <includes local="yes">G4LivermoreComptonModel.hh</includes>
+    <includes local="yes">G4Element.hh</includes>
+    <includes local="yes">G4ElementVector.hh</includes>
+    <includes local="yes">G4Gamma.hh</includes>
+    <includes local="yes">G4LogLogInterpolation.hh</includes>
+    <includes local="yes">G4CompositeEMDataSet.hh</includes>
+    <includes local="yes">G4VDataSetAlgorithm.hh</includes>
+    <includes local="yes">G4PhysicalConstants.hh</includes>
+    <includes local="yes">G4SystemOfUnits.hh</includes>
+    <incdepgraph>
+      <node id="2">
+        <label>ExtendedLivermoreComptonModel.hh</label>
+        <link refid="ExtendedLivermoreComptonModel_8hh"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>src/ExtendedLivermoreComptonModel.cc</label>
+        <link refid="ExtendedLivermoreComptonModel_8cc"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>G4CompositeEMDataSet.hh</label>
+      </node>
+      <node id="5">
+        <label>G4DynamicParticle.hh</label>
+      </node>
+      <node id="7">
+        <label>G4Element.hh</label>
+      </node>
+      <node id="8">
+        <label>G4ElementVector.hh</label>
+      </node>
+      <node id="9">
+        <label>G4Gamma.hh</label>
+      </node>
+      <node id="3">
+        <label>G4LivermoreComptonModel.hh</label>
+      </node>
+      <node id="10">
+        <label>G4LogLogInterpolation.hh</label>
+      </node>
+      <node id="4">
+        <label>G4MaterialCutsCouple.hh</label>
+      </node>
+      <node id="13">
+        <label>G4PhysicalConstants.hh</label>
+      </node>
+      <node id="14">
+        <label>G4SystemOfUnits.hh</label>
+      </node>
+      <node id="12">
+        <label>G4VDataSetAlgorithm.hh</label>
+      </node>
+      <node id="6">
+        <label>G4VEMDataSet.hh</label>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="ExtendedLivermoreComptonModel_8hh" kindref="compound">ExtendedLivermoreComptonModel.hh</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;G4LivermoreComptonModel.hh&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;G4Element.hh&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;G4ElementVector.hh&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;G4Gamma.hh&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;G4LogLogInterpolation.hh&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;G4CompositeEMDataSet.hh&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;G4VDataSetAlgorithm.hh&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;G4PhysicalConstants.hh&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;G4SystemOfUnits.hh&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><ref refid="classExtendedLivermoreComptonModel_1a7aef900331e6061162b3c23741207511" kindref="member">ExtendedLivermoreComptonModel::ExtendedLivermoreComptonModel</ref>()<sp/>:<sp/>G4LivermoreComptonModel()<sp/>{</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>G4VDataSetAlgorithm*<sp/>scatterInterpolation<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>G4LogLogInterpolation;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>G4String<sp/>scatterFile<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;comp/ce-sf-&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>scatterFunctionData<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>G4CompositeEMDataSet(scatterInterpolation,<sp/>1.,<sp/>1.);</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>scatterFunctionData-&gt;LoadData(scatterFile);</highlight></codeline>
+<codeline lineno="25"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><ref refid="classExtendedLivermoreComptonModel_1a3763c959944a0427314b339379bf8c2a" kindref="member">ExtendedLivermoreComptonModel::~ExtendedLivermoreComptonModel</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal"><sp/>scatterFunctionData;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal">G4double<sp/><ref refid="classExtendedLivermoreComptonModel_1a98a23482707a3aabe93e1e069414e171" kindref="member">ExtendedLivermoreComptonModel::DifferentialCrossSection</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>G4Element*<sp/>element,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>G4DynamicParticle*<sp/>aDynamicGamma,<sp/>G4double<sp/>cosTheta)<sp/>{</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classExtendedLivermoreComptonModel_1ae31d98e10efd833f6371e423b65ca17d" kindref="member">KleinNishina</ref>(aDynamicGamma,<sp/>cosTheta)<sp/>*<sp/><ref refid="classExtendedLivermoreComptonModel_1aefcaa8e5384a9d3d36b7b09aea0fd5c2" kindref="member">FormFactor</ref>(element,<sp/>aDynamicGamma,<sp/>cosTheta);</highlight></codeline>
+<codeline lineno="42"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal">G4double<sp/><ref refid="classExtendedLivermoreComptonModel_1aefcaa8e5384a9d3d36b7b09aea0fd5c2" kindref="member">ExtendedLivermoreComptonModel::FormFactor</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>G4Element*<sp/>elm,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>G4DynamicParticle*<sp/>aDynamicGamma,<sp/>G4double<sp/>cosTheta)<sp/>{</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Get<sp/>the<sp/>energy<sp/>of<sp/>the<sp/>gamma</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>G4double<sp/>photonEnergy0<sp/>=<sp/>aDynamicGamma-&gt;GetKineticEnergy();</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Get<sp/>the<sp/>particle<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>G4ParticleDefinition*<sp/>particle<sp/>=<sp/><sp/>aDynamicGamma-&gt;GetDefinition();</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Get<sp/>Z<sp/>of<sp/>the<sp/>element</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/>G4int<sp/>Z<sp/>=<sp/>(G4int)elm-&gt;GetZ();</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Calculate<sp/>the<sp/>wavelength<sp/>of<sp/>the<sp/>photon</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/>G4double<sp/>wlPhoton<sp/>=<sp/>h_Planck*c_light/photonEnergy0;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>G4double<sp/>oneCost<sp/>=<sp/>1-cosTheta;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>G4double<sp/>x<sp/>=<sp/>std::sqrt(oneCost/2.)<sp/>/<sp/>(wlPhoton/cm);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>return<sp/>the<sp/>scatter<sp/>function<sp/>value</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/>G4double<sp/>f<sp/>=<sp/>scatterFunctionData-&gt;FindValue(x,Z-1);</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>f;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal">G4double<sp/><ref refid="classExtendedLivermoreComptonModel_1ae31d98e10efd833f6371e423b65ca17d" kindref="member">ExtendedLivermoreComptonModel::KleinNishina</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>G4DynamicParticle*<sp/>aDynamicGamma,<sp/>G4double<sp/>cosTheta)<sp/>{</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Get<sp/>the<sp/>energy<sp/>of<sp/>the<sp/>gamma</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/>G4double<sp/>photonEnergy0<sp/>=<sp/>aDynamicGamma-&gt;GetKineticEnergy();</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Calculate<sp/>the<sp/>wavelength<sp/>of<sp/>the<sp/>photon</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/>G4double<sp/>e0m<sp/>=<sp/>photonEnergy0/electron_mass_c2;</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>G4double<sp/>ff<sp/>=<sp/>1<sp/>+<sp/>e0m*(1-cosTheta);</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/>G4double<sp/>kn<sp/>=<sp/>(1.<sp/>+<sp/>cosTheta*cosTheta<sp/>+<sp/>e0m*e0m*(1.-cosTheta)*(1.-cosTheta)/ff)/(ff*ff)/2.;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>return<sp/>the<sp/>scatter<sp/>function<sp/>value</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>kn;</highlight></codeline>
+<codeline lineno="91"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="src/ExtendedLivermoreComptonModel.cc"/>
+  </compounddef>
+</doxygen>

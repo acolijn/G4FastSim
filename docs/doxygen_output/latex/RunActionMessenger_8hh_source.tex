@@ -1,0 +1,42 @@
+\doxysection{Run\+Action\+Messenger.\+hh}
+\hypertarget{RunActionMessenger_8hh_source}{}\label{RunActionMessenger_8hh_source}\index{include/RunActionMessenger.hh@{include/RunActionMessenger.hh}}
+\mbox{\hyperlink{RunActionMessenger_8hh}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ RUN\_ACTION\_MESSENGER\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ RUN\_ACTION\_MESSENGER\_H\ 1}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}G4UImessenger.hh"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{RunAction_8hh}{RunAction.hh}}"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}G4UIcmdWithABool.hh"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}G4UIcmdWithAnInteger.hh"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}G4UIcmdWithADoubleAndUnit.hh"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}G4UIcmdWithAString.hh"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}globals.hh"{}}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceG4FastSim}{G4FastSim}}\ \{}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{class\ }RunAction;}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classG4FastSim_1_1RunActionMessenger}{RunActionMessenger}}\ :\ \textcolor{keyword}{public}\ G4UImessenger\ \{}
+\DoxyCodeLine{00018\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00019\ \ \ \ \ \mbox{\hyperlink{classG4FastSim_1_1RunActionMessenger_a9fb1df1d404343d1d6b03f3111eff8b7}{RunActionMessenger}}(\mbox{\hyperlink{classG4FastSim_1_1RunAction}{RunAction}}*\ action);}
+\DoxyCodeLine{00020\ \ \ \ \ \mbox{\hyperlink{classG4FastSim_1_1RunActionMessenger_ae73a6a37e9ec805ea9965168283a89af}{\string~RunActionMessenger}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classG4FastSim_1_1RunActionMessenger_a9f892e9a20fe5ef2c33726ef418fcd13}{SetNewValue}}(G4UIcommand*\ command,\ G4String\ newValue)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00025\ \ \ \ \ \mbox{\hyperlink{classG4FastSim_1_1RunAction}{RunAction}}*\ fRunAction;}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ G4UIcmdWithABool*\ fFastSimulationCmd;}
+\DoxyCodeLine{00028\ \ \ \ \ G4UIcmdWithAnInteger*\ fNumberOfScattersCmd;}
+\DoxyCodeLine{00029\ \ \ \ \ G4UIcmdWithADoubleAndUnit*\ fMaxEnergyCmd;}
+\DoxyCodeLine{00030\ \ \ \ \ G4UIcmdWithAString*\ fOutputFileNameCmd;}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \};}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \}\ \textcolor{comment}{//\ namespace\ G4FastSim}}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

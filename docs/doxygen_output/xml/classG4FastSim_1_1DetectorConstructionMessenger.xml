@@ -1,0 +1,264 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="classG4FastSim_1_1DetectorConstructionMessenger" kind="class" language="C++" prot="public">
+    <compoundname>G4FastSim::DetectorConstructionMessenger</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">G4UImessenger</basecompoundref>
+    <includes refid="DetectorConstructionMessenger_8hh" local="no">DetectorConstructionMessenger.hh</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classG4FastSim_1_1DetectorConstructionMessenger_1a56d94b045310919b4da79b66e6a82d15" prot="private" static="no" mutable="no">
+        <type><ref refid="classG4FastSim_1_1DetectorConstruction" kindref="compound">DetectorConstruction</ref> *</type>
+        <definition>DetectorConstruction* G4FastSim::DetectorConstructionMessenger::fDetectorConstruction</definition>
+        <argsstring></argsstring>
+        <name>fDetectorConstruction</name>
+        <qualifiedname>G4FastSim::DetectorConstructionMessenger::fDetectorConstruction</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/DetectorConstructionMessenger.hh" line="21" column="30" bodyfile="include/DetectorConstructionMessenger.hh" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classG4FastSim_1_1DetectorConstructionMessenger_1a570fae24685b56a50966c0bbb8dcb7bd" prot="private" static="no" mutable="no">
+        <type>G4UIcmdWithADoubleAndUnit *</type>
+        <definition>G4UIcmdWithADoubleAndUnit* G4FastSim::DetectorConstructionMessenger::fOuterCryostatRadiusCmd</definition>
+        <argsstring></argsstring>
+        <name>fOuterCryostatRadiusCmd</name>
+        <qualifiedname>G4FastSim::DetectorConstructionMessenger::fOuterCryostatRadiusCmd</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/DetectorConstructionMessenger.hh" line="23" column="35" bodyfile="include/DetectorConstructionMessenger.hh" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classG4FastSim_1_1DetectorConstructionMessenger_1aaf6845f894e89f96ead6506cbd9334ab" prot="private" static="no" mutable="no">
+        <type>G4UIcmdWithADoubleAndUnit *</type>
+        <definition>G4UIcmdWithADoubleAndUnit* G4FastSim::DetectorConstructionMessenger::fOuterCryostatHeightCmd</definition>
+        <argsstring></argsstring>
+        <name>fOuterCryostatHeightCmd</name>
+        <qualifiedname>G4FastSim::DetectorConstructionMessenger::fOuterCryostatHeightCmd</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/DetectorConstructionMessenger.hh" line="24" column="35" bodyfile="include/DetectorConstructionMessenger.hh" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classG4FastSim_1_1DetectorConstructionMessenger_1a6ebb345d6459e8e4fd0acede46e8fa5a" prot="private" static="no" mutable="no">
+        <type>G4UIcmdWithADoubleAndUnit *</type>
+        <definition>G4UIcmdWithADoubleAndUnit* G4FastSim::DetectorConstructionMessenger::fOuterCryostatWallThicknessCmd</definition>
+        <argsstring></argsstring>
+        <name>fOuterCryostatWallThicknessCmd</name>
+        <qualifiedname>G4FastSim::DetectorConstructionMessenger::fOuterCryostatWallThicknessCmd</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/DetectorConstructionMessenger.hh" line="25" column="35" bodyfile="include/DetectorConstructionMessenger.hh" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classG4FastSim_1_1DetectorConstructionMessenger_1af9c455ac33ef5c218a6dfcfaa7d40f52" prot="private" static="no" mutable="no">
+        <type>G4UIcmdWithADoubleAndUnit *</type>
+        <definition>G4UIcmdWithADoubleAndUnit* G4FastSim::DetectorConstructionMessenger::fInnerCryostatRadiusCmd</definition>
+        <argsstring></argsstring>
+        <name>fInnerCryostatRadiusCmd</name>
+        <qualifiedname>G4FastSim::DetectorConstructionMessenger::fInnerCryostatRadiusCmd</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/DetectorConstructionMessenger.hh" line="26" column="35" bodyfile="include/DetectorConstructionMessenger.hh" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classG4FastSim_1_1DetectorConstructionMessenger_1a25946e7d102fd08d3a1f9d8840f26b73" prot="private" static="no" mutable="no">
+        <type>G4UIcmdWithADoubleAndUnit *</type>
+        <definition>G4UIcmdWithADoubleAndUnit* G4FastSim::DetectorConstructionMessenger::fInnerCryostatHeightCmd</definition>
+        <argsstring></argsstring>
+        <name>fInnerCryostatHeightCmd</name>
+        <qualifiedname>G4FastSim::DetectorConstructionMessenger::fInnerCryostatHeightCmd</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/DetectorConstructionMessenger.hh" line="27" column="35" bodyfile="include/DetectorConstructionMessenger.hh" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classG4FastSim_1_1DetectorConstructionMessenger_1a8fc02b54e9f3e1239d318017c7ed6b7f" prot="private" static="no" mutable="no">
+        <type>G4UIcmdWithADoubleAndUnit *</type>
+        <definition>G4UIcmdWithADoubleAndUnit* G4FastSim::DetectorConstructionMessenger::fInnerCryostatWallThicknessCmd</definition>
+        <argsstring></argsstring>
+        <name>fInnerCryostatWallThicknessCmd</name>
+        <qualifiedname>G4FastSim::DetectorConstructionMessenger::fInnerCryostatWallThicknessCmd</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/DetectorConstructionMessenger.hh" line="28" column="35" bodyfile="include/DetectorConstructionMessenger.hh" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classG4FastSim_1_1DetectorConstructionMessenger_1ad5770c8bf550077b323cdac9e4dbbb61" prot="private" static="no" mutable="no">
+        <type>G4UIcmdWithADoubleAndUnit *</type>
+        <definition>G4UIcmdWithADoubleAndUnit* G4FastSim::DetectorConstructionMessenger::fFiducialRadiusCmd</definition>
+        <argsstring></argsstring>
+        <name>fFiducialRadiusCmd</name>
+        <qualifiedname>G4FastSim::DetectorConstructionMessenger::fFiducialRadiusCmd</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/DetectorConstructionMessenger.hh" line="29" column="35" bodyfile="include/DetectorConstructionMessenger.hh" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classG4FastSim_1_1DetectorConstructionMessenger_1a6427694bb191591efc64eac070c18fe2" prot="private" static="no" mutable="no">
+        <type>G4UIcmdWithADoubleAndUnit *</type>
+        <definition>G4UIcmdWithADoubleAndUnit* G4FastSim::DetectorConstructionMessenger::fFiducialHeightCmd</definition>
+        <argsstring></argsstring>
+        <name>fFiducialHeightCmd</name>
+        <qualifiedname>G4FastSim::DetectorConstructionMessenger::fFiducialHeightCmd</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/DetectorConstructionMessenger.hh" line="30" column="35" bodyfile="include/DetectorConstructionMessenger.hh" bodystart="30" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classG4FastSim_1_1DetectorConstructionMessenger_1a56d16def755cd3ecb9288893eecf1025" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>G4FastSim::DetectorConstructionMessenger::DetectorConstructionMessenger</definition>
+        <argsstring>(DetectorConstruction *detector)</argsstring>
+        <name>DetectorConstructionMessenger</name>
+        <qualifiedname>G4FastSim::DetectorConstructionMessenger::DetectorConstructionMessenger</qualifiedname>
+        <param>
+          <type><ref refid="classG4FastSim_1_1DetectorConstruction" kindref="compound">DetectorConstruction</ref> *</type>
+          <declname>detector</declname>
+        </param>
+        <briefdescription>
+<para>Constructor for the <ref refid="classG4FastSim_1_1DetectorConstructionMessenger" kindref="compound">DetectorConstructionMessenger</ref> class. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>detector</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A pointer to the <ref refid="classG4FastSim_1_1DetectorConstruction" kindref="compound">DetectorConstruction</ref> object. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/DetectorConstructionMessenger.hh" line="15" column="9" bodyfile="src/DetectorConstructionMessenger.cc" bodystart="13" bodyend="66"/>
+      </memberdef>
+      <memberdef kind="function" id="classG4FastSim_1_1DetectorConstructionMessenger_1a51453a61e4bb06fc4c23031e5dbf7ccb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>G4FastSim::DetectorConstructionMessenger::~DetectorConstructionMessenger</definition>
+        <argsstring>()</argsstring>
+        <name>~DetectorConstructionMessenger</name>
+        <qualifiedname>G4FastSim::DetectorConstructionMessenger::~DetectorConstructionMessenger</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/DetectorConstructionMessenger.hh" line="16" column="9" bodyfile="src/DetectorConstructionMessenger.cc" bodystart="68" bodyend="77"/>
+      </memberdef>
+      <memberdef kind="function" id="classG4FastSim_1_1DetectorConstructionMessenger_1a9843aeb75968abb9ac95e69fa704ca57" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void G4FastSim::DetectorConstructionMessenger::SetNewValue</definition>
+        <argsstring>(G4UIcommand *command, G4String newValue) override</argsstring>
+        <name>SetNewValue</name>
+        <qualifiedname>G4FastSim::DetectorConstructionMessenger::SetNewValue</qualifiedname>
+        <param>
+          <type>G4UIcommand *</type>
+          <declname>command</declname>
+        </param>
+        <param>
+          <type>G4String</type>
+          <declname>newValue</declname>
+        </param>
+        <briefdescription>
+<para>Sets the new value for a given command. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function is called when a new value is assigned to a command in the user interface. It checks which command is being modified and calls the corresponding setter function in the <computeroutput><ref refid="classG4FastSim_1_1DetectorConstruction" kindref="compound">DetectorConstruction</ref></computeroutput> class.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>command</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The command being modified. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>newValue</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The new value assigned to the command. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/DetectorConstructionMessenger.hh" line="18" column="14" bodyfile="src/DetectorConstructionMessenger.cc" bodystart="88" bodyend="107"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>G4FastSim::DetectorConstructionMessenger</label>
+        <link refid="classG4FastSim_1_1DetectorConstructionMessenger"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>G4UImessenger</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>G4FastSim::DetectorConstructionMessenger</label>
+        <link refid="classG4FastSim_1_1DetectorConstructionMessenger"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>G4UImessenger</label>
+      </node>
+    </collaborationgraph>
+    <location file="include/DetectorConstructionMessenger.hh" line="13" column="1" bodyfile="include/DetectorConstructionMessenger.hh" bodystart="13" bodyend="31"/>
+    <listofallmembers>
+      <member refid="classG4FastSim_1_1DetectorConstructionMessenger_1a56d16def755cd3ecb9288893eecf1025" prot="public" virt="non-virtual"><scope>G4FastSim::DetectorConstructionMessenger</scope><name>DetectorConstructionMessenger</name></member>
+      <member refid="classG4FastSim_1_1DetectorConstructionMessenger_1a56d94b045310919b4da79b66e6a82d15" prot="private" virt="non-virtual"><scope>G4FastSim::DetectorConstructionMessenger</scope><name>fDetectorConstruction</name></member>
+      <member refid="classG4FastSim_1_1DetectorConstructionMessenger_1a6427694bb191591efc64eac070c18fe2" prot="private" virt="non-virtual"><scope>G4FastSim::DetectorConstructionMessenger</scope><name>fFiducialHeightCmd</name></member>
+      <member refid="classG4FastSim_1_1DetectorConstructionMessenger_1ad5770c8bf550077b323cdac9e4dbbb61" prot="private" virt="non-virtual"><scope>G4FastSim::DetectorConstructionMessenger</scope><name>fFiducialRadiusCmd</name></member>
+      <member refid="classG4FastSim_1_1DetectorConstructionMessenger_1a25946e7d102fd08d3a1f9d8840f26b73" prot="private" virt="non-virtual"><scope>G4FastSim::DetectorConstructionMessenger</scope><name>fInnerCryostatHeightCmd</name></member>
+      <member refid="classG4FastSim_1_1DetectorConstructionMessenger_1af9c455ac33ef5c218a6dfcfaa7d40f52" prot="private" virt="non-virtual"><scope>G4FastSim::DetectorConstructionMessenger</scope><name>fInnerCryostatRadiusCmd</name></member>
+      <member refid="classG4FastSim_1_1DetectorConstructionMessenger_1a8fc02b54e9f3e1239d318017c7ed6b7f" prot="private" virt="non-virtual"><scope>G4FastSim::DetectorConstructionMessenger</scope><name>fInnerCryostatWallThicknessCmd</name></member>
+      <member refid="classG4FastSim_1_1DetectorConstructionMessenger_1aaf6845f894e89f96ead6506cbd9334ab" prot="private" virt="non-virtual"><scope>G4FastSim::DetectorConstructionMessenger</scope><name>fOuterCryostatHeightCmd</name></member>
+      <member refid="classG4FastSim_1_1DetectorConstructionMessenger_1a570fae24685b56a50966c0bbb8dcb7bd" prot="private" virt="non-virtual"><scope>G4FastSim::DetectorConstructionMessenger</scope><name>fOuterCryostatRadiusCmd</name></member>
+      <member refid="classG4FastSim_1_1DetectorConstructionMessenger_1a6ebb345d6459e8e4fd0acede46e8fa5a" prot="private" virt="non-virtual"><scope>G4FastSim::DetectorConstructionMessenger</scope><name>fOuterCryostatWallThicknessCmd</name></member>
+      <member refid="classG4FastSim_1_1DetectorConstructionMessenger_1a9843aeb75968abb9ac95e69fa704ca57" prot="public" virt="non-virtual"><scope>G4FastSim::DetectorConstructionMessenger</scope><name>SetNewValue</name></member>
+      <member refid="classG4FastSim_1_1DetectorConstructionMessenger_1a51453a61e4bb06fc4c23031e5dbf7ccb" prot="public" virt="non-virtual"><scope>G4FastSim::DetectorConstructionMessenger</scope><name>~DetectorConstructionMessenger</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

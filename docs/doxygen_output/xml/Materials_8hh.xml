@@ -1,0 +1,95 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="Materials_8hh" kind="file" language="C++">
+    <compoundname>Materials.hh</compoundname>
+    <includedby refid="DetectorConstruction_8hh" local="yes">include/DetectorConstruction.hh</includedby>
+    <includedby refid="DetectorConstruction_8cc" local="yes">src/DetectorConstruction.cc</includedby>
+    <includedby refid="Materials_8cc" local="yes">src/Materials.cc</includedby>
+    <invincdepgraph>
+      <node id="2">
+        <label>include/DetectorConstruction.hh</label>
+        <link refid="DetectorConstruction_8hh"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>include/Materials.hh</label>
+        <link refid="Materials_8hh"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>src/ActionInitialization.cc</label>
+        <link refid="ActionInitialization_8cc"/>
+      </node>
+      <node id="4">
+        <label>src/DetectorConstruction.cc</label>
+        <link refid="DetectorConstruction_8cc"/>
+      </node>
+      <node id="5">
+        <label>src/DetectorConstructionMessenger.cc</label>
+        <link refid="DetectorConstructionMessenger_8cc"/>
+      </node>
+      <node id="8">
+        <label>src/Materials.cc</label>
+        <link refid="Materials_8cc"/>
+      </node>
+      <node id="6">
+        <label>src/RunAction.cc</label>
+        <link refid="RunAction_8cc"/>
+      </node>
+      <node id="7">
+        <label>src/SteppingAction.cc</label>
+        <link refid="SteppingAction_8cc"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classG4FastSim_1_1Materials" prot="public">G4FastSim::Materials</innerclass>
+    <innernamespace refid="namespaceG4FastSim">G4FastSim</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>__MATERIALS_HH__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__MATERIALS_HH__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceG4FastSim" kindref="compound">G4FastSim</ref><sp/>{</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7" refid="classG4FastSim_1_1Materials" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classG4FastSim_1_1Materials" kindref="compound">Materials</ref><sp/>{</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Materials</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Materials<sp/>are<sp/>defined<sp/>in<sp/>the<sp/>G4NistManager,<sp/>which<sp/>is<sp/>a<sp/>G4MaterialDatabase.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>G4NistManager<sp/>provides<sp/>a<sp/>list<sp/>of<sp/>predefined<sp/>materials<sp/>from<sp/>the<sp/>NIST<sp/>database.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>G4NistManager<sp/>is<sp/>a<sp/>singleton<sp/>class,<sp/>which<sp/>means<sp/>that<sp/>there<sp/>is<sp/>only<sp/>one<sp/>instance<sp/>of<sp/>it<sp/>in<sp/>the<sp/>program.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>G4NistManager<sp/>can<sp/>be<sp/>accessed<sp/>by<sp/>calling<sp/>the<sp/>static<sp/>method<sp/>G4NistManager::Instance().</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>G4NistManager<sp/>provides<sp/>a<sp/>method<sp/>called<sp/>FindOrBuildMaterial()<sp/>that<sp/>returns<sp/>a<sp/>pointer<sp/>to<sp/>a<sp/>G4Material<sp/>object.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>FindOrBuildMaterial()<sp/>method<sp/>takes<sp/>a<sp/>string<sp/>as<sp/>an<sp/>argument,<sp/>which<sp/>is<sp/>the<sp/>name<sp/>of<sp/>the<sp/>material.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classG4FastSim_1_1Materials_1ac1751f59b2c1eb7b22719bf6b99049a7" kindref="member">Materials</ref>();</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classG4FastSim_1_1Materials_1ae5ed292f6259abccf38b0cc6689fc38d" kindref="member">~Materials</ref>();</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classG4FastSim_1_1Materials_1a796f131069ba10c41945d693d3e9f131" kindref="member">DefineMaterials</ref>();</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="include/Materials.hh"/>
+  </compounddef>
+</doxygen>

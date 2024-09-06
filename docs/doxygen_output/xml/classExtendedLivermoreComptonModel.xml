@@ -1,0 +1,245 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="classExtendedLivermoreComptonModel" kind="class" language="C++" prot="public">
+    <compoundname>ExtendedLivermoreComptonModel</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">G4LivermoreComptonModel</basecompoundref>
+    <includes refid="ExtendedLivermoreComptonModel_8hh" local="no">ExtendedLivermoreComptonModel.hh</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classExtendedLivermoreComptonModel_1a7e76b4926db11e61b73dedbd1e03f1bf" prot="private" static="no" mutable="no">
+        <type>G4VEMDataSet *</type>
+        <definition>G4VEMDataSet* ExtendedLivermoreComptonModel::scatterFunctionData</definition>
+        <argsstring></argsstring>
+        <name>scatterFunctionData</name>
+        <qualifiedname>ExtendedLivermoreComptonModel::scatterFunctionData</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/ExtendedLivermoreComptonModel.hh" line="19" column="22" bodyfile="include/ExtendedLivermoreComptonModel.hh" bodystart="19" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classExtendedLivermoreComptonModel_1a7aef900331e6061162b3c23741207511" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ExtendedLivermoreComptonModel::ExtendedLivermoreComptonModel</definition>
+        <argsstring>()</argsstring>
+        <name>ExtendedLivermoreComptonModel</name>
+        <qualifiedname>ExtendedLivermoreComptonModel::ExtendedLivermoreComptonModel</qualifiedname>
+        <briefdescription>
+<para>Constructs an instance of the <ref refid="classExtendedLivermoreComptonModel" kindref="compound">ExtendedLivermoreComptonModel</ref> class. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This constructor initializes the <ref refid="classExtendedLivermoreComptonModel" kindref="compound">ExtendedLivermoreComptonModel</ref> object by calling the base class constructor G4LivermoreComptonModel(). It also creates a scatterInterpolation object of type G4LogLogInterpolation and sets the scatterFile to &quot;comp/ce-sf-&quot;. The scatterFunctionData is then initialized as a new G4CompositeEMDataSet object with scatterInterpolation and load the data from scatterFile. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/ExtendedLivermoreComptonModel.hh" line="11" column="9" bodyfile="src/ExtendedLivermoreComptonModel.cc" bodystart="20" bodyend="25"/>
+      </memberdef>
+      <memberdef kind="function" id="classExtendedLivermoreComptonModel_1a3763c959944a0427314b339379bf8c2a" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>ExtendedLivermoreComptonModel::~ExtendedLivermoreComptonModel</definition>
+        <argsstring>()</argsstring>
+        <name>~ExtendedLivermoreComptonModel</name>
+        <qualifiedname>ExtendedLivermoreComptonModel::~ExtendedLivermoreComptonModel</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/ExtendedLivermoreComptonModel.hh" line="12" column="17" bodyfile="src/ExtendedLivermoreComptonModel.cc" bodystart="27" bodyend="30"/>
+      </memberdef>
+      <memberdef kind="function" id="classExtendedLivermoreComptonModel_1aefcaa8e5384a9d3d36b7b09aea0fd5c2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>G4double</type>
+        <definition>G4double ExtendedLivermoreComptonModel::FormFactor</definition>
+        <argsstring>(const G4Element *, const G4DynamicParticle *aDynamicGamma, G4double cosTheta)</argsstring>
+        <name>FormFactor</name>
+        <qualifiedname>ExtendedLivermoreComptonModel::FormFactor</qualifiedname>
+        <param>
+          <type>const G4Element *</type>
+          <defname>elm</defname>
+        </param>
+        <param>
+          <type>const G4DynamicParticle *</type>
+          <declname>aDynamicGamma</declname>
+        </param>
+        <param>
+          <type>G4double</type>
+          <declname>cosTheta</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Calculates the scatter function for Compton scattering in the Extended Livermore model.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>elm</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The element to calculate the scatter function for. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>aDynamicGamma</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The dynamic gamma particle. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>theta</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The scattering angle. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The scatter function value. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/ExtendedLivermoreComptonModel.hh" line="14" column="18" bodyfile="src/ExtendedLivermoreComptonModel.cc" bodystart="52" bodyend="70"/>
+      </memberdef>
+      <memberdef kind="function" id="classExtendedLivermoreComptonModel_1ae31d98e10efd833f6371e423b65ca17d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>G4double</type>
+        <definition>G4double ExtendedLivermoreComptonModel::KleinNishina</definition>
+        <argsstring>(const G4DynamicParticle *aDynamicGamma, G4double cosTheta)</argsstring>
+        <name>KleinNishina</name>
+        <qualifiedname>ExtendedLivermoreComptonModel::KleinNishina</qualifiedname>
+        <param>
+          <type>const G4DynamicParticle *</type>
+          <declname>aDynamicGamma</declname>
+        </param>
+        <param>
+          <type>G4double</type>
+          <declname>cosTheta</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Calculates the Klein-Nishina scattering function value for a given gamma particle and scattering angle.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>aDynamicGamma</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The dynamic gamma particle. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>theta</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The scattering angle in radians. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The Klein-Nishina scattering function value. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/ExtendedLivermoreComptonModel.hh" line="15" column="18" bodyfile="src/ExtendedLivermoreComptonModel.cc" bodystart="79" bodyend="91"/>
+      </memberdef>
+      <memberdef kind="function" id="classExtendedLivermoreComptonModel_1a98a23482707a3aabe93e1e069414e171" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>G4double</type>
+        <definition>G4double ExtendedLivermoreComptonModel::DifferentialCrossSection</definition>
+        <argsstring>(const G4Element *element, const G4DynamicParticle *aDynamicGamma, G4double cossTheta)</argsstring>
+        <name>DifferentialCrossSection</name>
+        <qualifiedname>ExtendedLivermoreComptonModel::DifferentialCrossSection</qualifiedname>
+        <param>
+          <type>const G4Element *</type>
+          <declname>element</declname>
+        </param>
+        <param>
+          <type>const G4DynamicParticle *</type>
+          <declname>aDynamicGamma</declname>
+        </param>
+        <param>
+          <type>G4double</type>
+          <declname>cossTheta</declname>
+          <defname>cosTheta</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Calculates the differential cross section for Compton scattering.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>element</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The element being scattered off. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>aDynamicGamma</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The dynamic gamma particle. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>cosTheta</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The cosine of the scattering angle. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The calculated differential cross section. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/ExtendedLivermoreComptonModel.hh" line="16" column="18" bodyfile="src/ExtendedLivermoreComptonModel.cc" bodystart="40" bodyend="42"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>ExtendedLivermoreComptonModel</label>
+        <link refid="classExtendedLivermoreComptonModel"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>G4LivermoreComptonModel</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>ExtendedLivermoreComptonModel</label>
+        <link refid="classExtendedLivermoreComptonModel"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>G4LivermoreComptonModel</label>
+      </node>
+    </collaborationgraph>
+    <location file="include/ExtendedLivermoreComptonModel.hh" line="9" column="1" bodyfile="include/ExtendedLivermoreComptonModel.hh" bodystart="9" bodyend="20"/>
+    <listofallmembers>
+      <member refid="classExtendedLivermoreComptonModel_1a98a23482707a3aabe93e1e069414e171" prot="public" virt="non-virtual"><scope>ExtendedLivermoreComptonModel</scope><name>DifferentialCrossSection</name></member>
+      <member refid="classExtendedLivermoreComptonModel_1a7aef900331e6061162b3c23741207511" prot="public" virt="non-virtual"><scope>ExtendedLivermoreComptonModel</scope><name>ExtendedLivermoreComptonModel</name></member>
+      <member refid="classExtendedLivermoreComptonModel_1aefcaa8e5384a9d3d36b7b09aea0fd5c2" prot="public" virt="non-virtual"><scope>ExtendedLivermoreComptonModel</scope><name>FormFactor</name></member>
+      <member refid="classExtendedLivermoreComptonModel_1ae31d98e10efd833f6371e423b65ca17d" prot="public" virt="non-virtual"><scope>ExtendedLivermoreComptonModel</scope><name>KleinNishina</name></member>
+      <member refid="classExtendedLivermoreComptonModel_1a7e76b4926db11e61b73dedbd1e03f1bf" prot="private" virt="non-virtual"><scope>ExtendedLivermoreComptonModel</scope><name>scatterFunctionData</name></member>
+      <member refid="classExtendedLivermoreComptonModel_1a3763c959944a0427314b339379bf8c2a" prot="public" virt="virtual"><scope>ExtendedLivermoreComptonModel</scope><name>~ExtendedLivermoreComptonModel</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

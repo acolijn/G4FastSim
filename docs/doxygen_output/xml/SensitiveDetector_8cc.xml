@@ -1,0 +1,190 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="SensitiveDetector_8cc" kind="file" language="C++">
+    <compoundname>SensitiveDetector.cc</compoundname>
+    <includes refid="SensitiveDetector_8hh" local="yes">SensitiveDetector.hh</includes>
+    <includes local="yes">G4HCofThisEvent.hh</includes>
+    <includes local="yes">G4Step.hh</includes>
+    <includes local="yes">G4SDManager.hh</includes>
+    <includes local="yes">G4ios.hh</includes>
+    <includes local="yes">G4SystemOfUnits.hh</includes>
+    <includes local="yes">G4PhysicalConstants.hh</includes>
+    <includes local="yes">G4ThreeVector.hh</includes>
+    <includes local="yes">G4VProcess.hh</includes>
+    <includes refid="Hit_8hh" local="yes">Hit.hh</includes>
+    <incdepgraph>
+      <node id="5">
+        <label>Hit.hh</label>
+        <link refid="Hit_8hh"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>SensitiveDetector.hh</label>
+        <link refid="SensitiveDetector_8hh"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>src/SensitiveDetector.cc</label>
+        <link refid="SensitiveDetector_8cc"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>G4Allocator.hh</label>
+      </node>
+      <node id="10">
+        <label>G4HCofThisEvent.hh</label>
+      </node>
+      <node id="15">
+        <label>G4PhysicalConstants.hh</label>
+      </node>
+      <node id="12">
+        <label>G4SDManager.hh</label>
+      </node>
+      <node id="11">
+        <label>G4Step.hh</label>
+      </node>
+      <node id="9">
+        <label>G4String.hh</label>
+      </node>
+      <node id="14">
+        <label>G4SystemOfUnits.hh</label>
+      </node>
+      <node id="4">
+        <label>G4THitsCollection.hh</label>
+      </node>
+      <node id="7">
+        <label>G4ThreeVector.hh</label>
+      </node>
+      <node id="6">
+        <label>G4VHit.hh</label>
+      </node>
+      <node id="16">
+        <label>G4VProcess.hh</label>
+      </node>
+      <node id="3">
+        <label>G4VSensitiveDetector.hh</label>
+      </node>
+      <node id="13">
+        <label>G4ios.hh</label>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceG4FastSim">G4FastSim</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="SensitiveDetector_8hh" kindref="compound">SensitiveDetector.hh</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;G4HCofThisEvent.hh&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;G4Step.hh&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;G4SDManager.hh&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;G4ios.hh&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;G4SystemOfUnits.hh&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;G4PhysicalConstants.hh&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;G4ThreeVector.hh&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;G4VProcess.hh&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Hit_8hh" kindref="compound">Hit.hh</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceG4FastSim" kindref="compound">G4FastSim</ref><sp/>{</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><ref refid="classG4FastSim_1_1SensitiveDetector_1a5fdabfdde5883e065d3c4aa727ed867f" kindref="member">SensitiveDetector::SensitiveDetector</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>G4String&amp;<sp/>name,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>G4String&amp;<sp/>hitsCollectionName)</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/>G4VSensitiveDetector(name),<sp/>fHitsCollection(nullptr),<sp/>fHitsCollectionID(-1),<sp/>fTotalEnergyDeposit(0.)<sp/>{</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>collectionName.insert(hitsCollectionName);</highlight></codeline>
+<codeline lineno="17"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal">SensitiveDetector::~SensitiveDetector()<sp/>{}</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>SensitiveDetector::Initialize(G4HCofThisEvent*<sp/>hce)<sp/>{</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>fHitsCollection<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/><ref refid="namespaceG4FastSim_1a03dccfbb4e25fe6f2ab3468c33175a36" kindref="member">HitsCollection</ref>(SensitiveDetectorName,<sp/>collectionName[0]);</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(fHitsCollectionID<sp/>&lt;<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fHitsCollectionID<sp/>=<sp/>G4SDManager::GetSDMpointer()-&gt;GetCollectionID(fHitsCollection);</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//fHitsCollection<sp/>=<sp/>new<sp/>G4THitsCollection&lt;Hit&gt;(SensitiveDetectorName,<sp/>collectionName[0]);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/>G4int<sp/>hcID<sp/>=<sp/>G4SDManager::GetSDMpointer()-&gt;GetCollectionID(collectionName[0]);</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>hce-&gt;AddHitsCollection(hcID,<sp/>fHitsCollection);</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>fTotalEnergyDeposit<sp/>=<sp/>0.;<sp/><sp/></highlight><highlight class="comment">//<sp/>Reset<sp/>total<sp/>energy<sp/>deposit</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal">G4bool<sp/>SensitiveDetector::ProcessHits(G4Step*<sp/>step,<sp/>G4TouchableHistory*)<sp/>{</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>G4double<sp/>edep<sp/>=<sp/>step-&gt;GetTotalEnergyDeposit();</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(edep<sp/>==<sp/>0.)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classG4FastSim_1_1Hit" kindref="compound">G4FastSim::Hit</ref>*<sp/>newHit<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/><ref refid="classG4FastSim_1_1Hit" kindref="compound">G4FastSim::Hit</ref>();</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Hit*<sp/>newHit<sp/>=<sp/>new<sp/>Hit();</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>newHit-&gt;<ref refid="classG4FastSim_1_1Hit_1a2fcf2ab249ba8b5fc95013ea94001750" kindref="member">energyDeposit</ref><sp/>=<sp/>edep;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//newHit-&gt;position<sp/>=<sp/>step-&gt;GetPreStepPoint()-&gt;GetPosition();</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>newHit-&gt;<ref refid="classG4FastSim_1_1Hit_1aa50db143e0803d86e2f01fec22ac313e" kindref="member">position</ref><sp/>=<sp/>step-&gt;GetPostStepPoint()-&gt;GetPosition();</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>newHit-&gt;<ref refid="classG4FastSim_1_1Hit_1a4815fe232702658cdb7587a508095b9b" kindref="member">time</ref><sp/>=<sp/>step-&gt;GetPostStepPoint()-&gt;GetGlobalTime();</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/>newHit-&gt;<ref refid="classG4FastSim_1_1Hit_1a9c3ae356721c590ba17b1bb7e3819887" kindref="member">trackID</ref><sp/>=<sp/>step-&gt;GetTrack()-&gt;GetTrackID();</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/>newHit-&gt;<ref refid="classG4FastSim_1_1Hit_1aa35bfbbddc37bfc7bf860719bdc71821" kindref="member">parentID</ref><sp/>=<sp/>step-&gt;GetTrack()-&gt;GetParentID();</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>newHit-&gt;<ref refid="classG4FastSim_1_1Hit_1a1ec3a00fb247cb4379083d1e8b88d004" kindref="member">momentum</ref><sp/>=<sp/>step-&gt;GetPreStepPoint()-&gt;GetMomentum();</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>newHit-&gt;<ref refid="classG4FastSim_1_1Hit_1a5c9609d8d3f775ccddb484c937ec97d7" kindref="member">particleType</ref><sp/>=<sp/>step-&gt;GetTrack()-&gt;GetDefinition()-&gt;GetParticleName();</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>newHit-&gt;<ref refid="classG4FastSim_1_1Hit_1a9e05b45ddeb28149a4d2b05bddac2c22" kindref="member">processType</ref><sp/>=<sp/>step-&gt;GetPostStepPoint()-&gt;GetProcessDefinedStep()-&gt;GetProcessName();</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>newHit-&gt;<ref refid="classG4FastSim_1_1Hit_1a3396684dc1ff80159d2be9a22f2b4b65" kindref="member">particleEnergy0</ref><sp/>=<sp/>step-&gt;GetPreStepPoint()-&gt;GetKineticEnergy();</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/>newHit-&gt;<ref refid="classG4FastSim_1_1Hit_1a80e65ca8a582d646dbf185bb60417c9d" kindref="member">particleEnergy1</ref><sp/>=<sp/>step-&gt;GetPostStepPoint()-&gt;GetKineticEnergy();<sp/></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//if<sp/>(newHit-&gt;trackID<sp/>==<sp/>1){</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>newHit-&gt;Print();</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>//<sp/>get<sp/>the<sp/>track<sp/>energy<sp/>before<sp/>the<sp/>step</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>G4cout<sp/>&lt;&lt;<sp/>newHit-&gt;processType&lt;&lt;&quot;<sp/>SensitiveDetector::ProcessHits:<sp/>track<sp/>energy<sp/>before:<sp/>&quot;<sp/>&lt;&lt;<sp/>step-&gt;GetPreStepPoint()-&gt;GetKineticEnergy()<sp/>/<sp/>keV<sp/>&lt;&lt;<sp/>&quot;<sp/>keV&quot;&lt;&lt;G4endl;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>G4cout<sp/>&lt;&lt;<sp/>newHit-&gt;processType&lt;&lt;&quot;<sp/>SensitiveDetector::ProcessHits:<sp/>track<sp/>energy<sp/>after:<sp/>&quot;<sp/>&lt;&lt;<sp/>step-&gt;GetTrack()-&gt;GetKineticEnergy()<sp/>/<sp/>keV<sp/>&lt;&lt;<sp/>&quot;<sp/>keV&quot;<sp/>&lt;&lt;G4endl;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/>fHitsCollection-&gt;insert(newHit);</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>fTotalEnergyDeposit<sp/>+=<sp/>edep;<sp/><sp/></highlight><highlight class="comment">//<sp/>Accumulate<sp/>total<sp/>energy<sp/>deposit</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>SensitiveDetector::EndOfEvent(G4HCofThisEvent*<sp/>hce)<sp/>{</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!fHitsCollection)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Example<sp/>of<sp/>processing<sp/>hits<sp/>at<sp/>the<sp/>end<sp/>of<sp/>the<sp/>event</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/>G4int<sp/>numHits<sp/>=<sp/>fHitsCollection-&gt;entries();</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//G4cout<sp/>&lt;&lt;<sp/>&quot;End<sp/>of<sp/>event:<sp/>total<sp/>energy<sp/>deposited<sp/>in<sp/>sensitive<sp/>detector:<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/>fTotalEnergyDeposit<sp/>/<sp/>CLHEP::MeV<sp/>&lt;&lt;<sp/>&quot;<sp/>MeV&quot;<sp/>&lt;&lt;<sp/>G4endl;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="src/SensitiveDetector.cc"/>
+  </compounddef>
+</doxygen>
