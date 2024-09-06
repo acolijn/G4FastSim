@@ -44,4 +44,3 @@ autodoc_mock_imports = ['pandas', 'shutil', 'json']
 
 html_theme = 'sphinx_rtd_theme'
 html_static_path = ['_static']
-html_output = os.getenv('READTHEDOCS_OUTPUT', 'build/html')
