@@ -10,6 +10,7 @@ build:
     - doxygen
   # Optionally run Doxygen before Sphinx
   commands:
+    - mkdir -p $READTHEDOCS_OUTPUT/html/
     - mkdir -p docs/doxygen_output
     - doxygen docs/Doxyfile
 
