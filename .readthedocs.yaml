@@ -16,7 +16,7 @@ build:
     # golang: "1.19"
   commands:
     - doxygen docs/Doxyfile
-    - sphinx-build -b html docs/source docs/build/html
+    # - sphinx-build -b html docs/source docs/build/html
 
 python:
   install:
