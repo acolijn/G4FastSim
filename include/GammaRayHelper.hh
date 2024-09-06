@@ -17,6 +17,10 @@
 #include <map>
 #include <mutex>
 
+/**
+ * @namespace G4FastSim
+ * @brief A namespace for fast simulation classes in Geant4.
+/*/
 namespace G4FastSim {
 
 struct CDFData {
@@ -34,6 +38,13 @@ struct InteractionData {
     Hit* hit;
 };
 
+/**
+ * @class GammaRayHelper
+ * @brief A helper class for handling gamma ray interactions.
+ *
+ * This class provides methods for calculating gamma ray cross sections,
+ * Compton scattering angles, and generating interaction points.
+ */
 class GammaRayHelper {
 public:
     static thread_local GammaRayHelper& Instance();
