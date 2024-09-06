@@ -1,6 +1,9 @@
 import os
 import sys
 sys.path.insert(0, os.path.abspath('../../analysis'))  # Point this to your code directory if needed
+sys.path.insert(0, os.path.abspath('../../run'))      # Point this to your code directory if needed
+sys.path.insert(0, os.path.abspath('../../include'))  # Point this to your code directory if needed
+sys.path.insert(0, os.path.abspath('../../src'))      # Point this to your code directory if needed
 sys.path.insert(0, os.path.abspath('../'))       # Points to the docs directory
 sys.path.insert(0, os.path.abspath('.'))  # Points to the source directory where your .rst files are
 
@@ -24,7 +27,12 @@ extensions = [
     'sphinx.ext.autodoc',   # Auto-generates documentation from docstrings
     'sphinx.ext.napoleon',  # Supports Google-style and NumPy-style docstrings
     'sphinx.ext.viewcode',  # Links to the source code in the documentation
+    'breathe'              # Integrates Doxygen with Sphinx
 ]
+breathe_projects = {
+    "G4FastSim": "../doxygen_output/xml"
+}
+breathe_default_project = "G4FastSim"
 
 templates_path = ['_templates']
 exclude_patterns = []

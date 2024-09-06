@@ -356,11 +356,17 @@ def main():
     Main function that executes the simulation.
 
     This function performs the following steps:
+
     1. Parses the command line arguments.
+    
     2. Loads the settings from the specified configuration file.
+    
     3. Initializes the path manager.
+    
     4. Prepares the simulation settings.
+    
     5. Executes the simulation jobs.
+    
     6. Updates the master configuration file.
 
     Note: This function assumes that the necessary helper functions are defined elsewhere.
