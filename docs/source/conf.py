@@ -30,7 +30,7 @@ extensions = [
     'breathe'              # Integrates Doxygen with Sphinx
 ]
 breathe_projects = {
-    "G4FastSim": "../doxygen_output/xml"
+    "G4FastSim": "./docs/doxygen_output/xml"
 }
 breathe_default_project = "G4FastSim"
 
