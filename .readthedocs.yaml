@@ -9,6 +9,8 @@ build:
   # Optionally run Doxygen before Sphinx
   commands:
     - doxygen docs/Doxyfile
+    - sphinx-build -b html docs/source $READTHEDOCS_OUTPUT/html
+
 
 python:
   install:
