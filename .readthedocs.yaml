@@ -15,7 +15,7 @@ build:
     # rust: "1.64"
     # golang: "1.19"
   commands:
-    - doxygen Doxyfile
+    - doxygen docs/Doxyfile
     - sphinx-build -b html docs/source docs/build/html
 
 python:
