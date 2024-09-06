@@ -27,7 +27,9 @@ Geant4 code
 -----------
 
 .. doxygenclass:: GammaRayHelper
+   :project: G4FastSim
    :members:
 
 .. doxygenclass:: PrimaryGeneratorAction
+   :project: G4FastSim
    :members:
