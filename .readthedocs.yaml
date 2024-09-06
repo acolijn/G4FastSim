@@ -8,7 +8,8 @@ build:
     python: "3.11"
   # Optionally run Doxygen before Sphinx
   commands:
-    - doxygen docs/Doxyfile
+    - cd docs
+    - doxygen Doxyfile
 
 python:
   install:
