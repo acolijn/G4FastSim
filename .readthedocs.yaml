@@ -7,8 +7,8 @@ build:
   tools:
     python: "3.11"
   # Optionally run Doxygen before Sphinx
-  #commands:
-  #  - doxygen docs/Doxyfile
+  commands:
+    - doxygen docs/Doxyfile
 
 python:
   install:
