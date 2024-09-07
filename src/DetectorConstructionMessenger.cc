@@ -5,11 +5,6 @@
 
 namespace G4FastSim{
 
-/**
- * @brief Constructor for the DetectorConstructionMessenger class.
- * 
- * @param detector A pointer to the DetectorConstruction object.
- */
 DetectorConstructionMessenger::DetectorConstructionMessenger(DetectorConstruction* detector)
     : fDetectorConstruction(detector) {
 

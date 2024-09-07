@@ -74,7 +74,7 @@ class SteppingAction : public G4UserSteppingAction
     void Print(const G4Step* step);
 
   private:
-    /** 
+    /* 
      * @brief Adds a hit to the specified hit collection.
      * 
      * @param newhit Pointer to the new hit object to be added.
