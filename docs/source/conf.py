@@ -23,6 +23,11 @@ author = 'Auke Colijn'
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
+html_extra_path = ['../build/html']
+import subprocess
+subprocess.call('cd .. ; doxygen', shell=True)
+
+
 extensions = [
     'sphinx.ext.autodoc',   # Auto-generates documentation from docstrings
     'sphinx.ext.napoleon',  # Supports Google-style and NumPy-style docstrings
