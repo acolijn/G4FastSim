@@ -17,6 +17,11 @@
 
 namespace G4FastSim{
 
+/**
+ * @brief Constructs a DetectorConstruction object.
+ * 
+ * @param helper A pointer to a GammaRayHelper object.
+ */
 DetectorConstruction::DetectorConstruction(GammaRayHelper* helper)
   : G4VUserDetectorConstruction(),
   fGammaRayHelper(helper){
@@ -40,6 +45,9 @@ DetectorConstruction::DetectorConstruction(GammaRayHelper* helper)
 
 }
 
+/**
+ * @brief Destructor for the DetectorConstruction class.
+ */
 DetectorConstruction::~DetectorConstruction()
 {
   delete fMessenger;
@@ -99,7 +107,14 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
   //
   return fWorldPhysical;
 }
-//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
+
+
+/**
+ * DefineSensitiveDetector function is responsible for defining the sensitive detector for the detector construction.
+ * It creates a new instance of G4FastSim::SensitiveDetector named "LXeFiducialSD" with the collection name "LXeFiducialCollection".
+ * The sensitive detector is added to the G4SDManager using the AddNewDetector function.
+ * The logical volume fLXeFiducialLogical is set as the sensitive detector using the SetSensitiveDetector function.
+ */
 void DetectorConstruction::DefineSensitiveDetector(){
   //
   // Define the sensitive detector
@@ -120,7 +135,9 @@ void DetectorConstruction::DefineSensitiveDetector(){
 }
 
 
-//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
+/**
+ * Constructs the world volume.
+ */
 void DetectorConstruction::ConstructWorld(){
   //
   // Construct the world volume
@@ -141,7 +158,10 @@ void DetectorConstruction::ConstructWorld(){
     fCheckOverlaps);                            // overlaps checking
 
 }
-//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
+
+/**
+ * Constructs a water tank in the detector.
+ */
 void DetectorConstruction::ConstructWaterTank(){
   //
   // Water tank
@@ -169,7 +189,9 @@ void DetectorConstruction::ConstructWaterTank(){
     0,                        // copy number
     fCheckOverlaps);           // overlaps checking
 }
-//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
+/**
+ * Constructs the outer cryostat.
+ */
 void DetectorConstruction::ConstructOuterCryostat(){
   //
   // Outer cryostat
@@ -218,7 +240,6 @@ void DetectorConstruction::ConstructOuterCryostat(){
     fCheckOverlaps);           // overlaps checking
 
 }
-//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 /**
  * Constructs the inner cryostat and fills it with LXe.
  */
@@ -307,9 +328,6 @@ void DetectorConstruction::ConstructFiducialVolume(){
     false,                    // no boolean operation
     0,                        // copy number
     fCheckOverlaps);           // overlaps checking 
-
-//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
-
 }
 
 }
