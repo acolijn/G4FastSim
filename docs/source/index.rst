@@ -3,13 +3,8 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-G4FastSim documentation (beta)
-================================
-
-Add your content using ``reStructuredText`` syntax. See the
-`reStructuredText <https://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html>`_
-documentation for details.
-
+G4FastSim documentation 
+=======================
 
 .. toctree::
    :maxdepth: 2

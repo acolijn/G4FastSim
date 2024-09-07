@@ -7,6 +7,10 @@
 #include "G4String.hh"
 #include "G4THitsCollection.hh"
 
+/**
+ * @namespace G4FastSim
+ * @brief A namespace for fast simulation classes in Geant4.
+/*/
 namespace G4FastSim {
 
 /**

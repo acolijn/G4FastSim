@@ -1,5 +1,3 @@
-/// \file G4FastSim.cc
-/// \brief Main program of the B1 example
 #include "DetectorConstruction.hh"
 #include "DetectorConstructionMessenger.hh"
 #include "ActionInitialization.hh"
@@ -19,11 +17,20 @@
 #include "GammaRayHelper.hh"
 #include "CustomEmPhysics.hh"
 
-//#include "TTree.h"
-
 using namespace G4FastSim;
-//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
+/**
+ * @brief The main function of the program.
+ *
+ * This function is the entry point of the program. It initializes the necessary components,
+ * sets up the run manager, initializes the visualization, and processes the macro or starts
+ * the UI session based on the command line arguments. After the execution, it frees the memory
+ * allocated for the visualization manager and the run manager.
+ *
+ * @param argc The number of command line arguments.
+ * @param argv An array of command line arguments.
+ * @return An integer representing the exit status of the program.
+ */
 int main(int argc,char** argv)
 {
   // Detect interactive mode (if no arguments) and define UI session
