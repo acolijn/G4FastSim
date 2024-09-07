@@ -25,7 +25,7 @@ author = 'Auke Colijn'
 
 html_extra_path = ['../build/html']
 import subprocess
-subprocess.call('cd ../.. ; docs/doxygen Doxyfile', shell=True)
+subprocess.call('cd ../.. ; doxygen docs/Doxyfile', shell=True)
 
 
 extensions = [
