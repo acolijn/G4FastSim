@@ -17,7 +17,7 @@
 #include "GammaRayHelper.hh"
 #include "CustomEmPhysics.hh"
 
-using namespace G4FastSim;
+using namespace G4Sim;
 
 /**
  * @brief The main function of the program.

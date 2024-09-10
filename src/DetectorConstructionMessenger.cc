@@ -3,7 +3,7 @@
 #include "G4UIdirectory.hh"
 #include "G4UIcmdWithADoubleAndUnit.hh"
 
-namespace G4FastSim{
+namespace G4Sim{
 
 DetectorConstructionMessenger::DetectorConstructionMessenger(DetectorConstruction* detector)
     : fDetectorConstruction(detector) {

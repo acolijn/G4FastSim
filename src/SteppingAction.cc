@@ -53,7 +53,7 @@ namespace {
     G4Mutex mutex = G4MUTEX_INITIALIZER;
 }
 
-namespace G4FastSim
+namespace G4Sim
 {
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
@@ -423,4 +423,4 @@ void SteppingAction::AnalyzeStandardStep(const G4Step* step){
 }
 
 
-} // namespace G4FastSim
+} // namespace G4Sim

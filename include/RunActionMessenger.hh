@@ -10,7 +10,7 @@
 #include "globals.hh"
 
 
-namespace G4FastSim {
+namespace G4Sim {
 
 class RunAction;
 
@@ -31,6 +31,6 @@ private:
 
 };
 
-} // namespace G4FastSim
+} // namespace G4Sim
 
 #endif

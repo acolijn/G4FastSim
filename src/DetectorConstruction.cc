@@ -15,7 +15,7 @@
 #include "G4AnalysisManager.hh"
 #include "G4SDManager.hh"
 
-namespace G4FastSim{
+namespace G4Sim{
 
 /**
  * @brief Constructs a DetectorConstruction object.
@@ -111,7 +111,7 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
 
 /**
  * DefineSensitiveDetector function is responsible for defining the sensitive detector for the detector construction.
- * It creates a new instance of G4FastSim::SensitiveDetector named "LXeFiducialSD" with the collection name "LXeFiducialCollection".
+ * It creates a new instance of G4Sim::SensitiveDetector named "LXeFiducialSD" with the collection name "LXeFiducialCollection".
  * The sensitive detector is added to the G4SDManager using the AddNewDetector function.
  * The logical volume fLXeFiducialLogical is set as the sensitive detector using the SetSensitiveDetector function.
  */
@@ -121,8 +121,8 @@ void DetectorConstruction::DefineSensitiveDetector(){
   //
 
   G4SDManager* sdManager = G4SDManager::GetSDMpointer();
-  // // auto* lXeSD = new G4FastSim::SensitiveDetector("LXeSD","LXeCollection");
-  auto* lXeFiducialSD = new G4FastSim::SensitiveDetector("LXeFiducialSD","LXeFiducialCollection");
+  // // auto* lXeSD = new G4Sim::SensitiveDetector("LXeSD","LXeCollection");
+  auto* lXeFiducialSD = new G4Sim::SensitiveDetector("LXeFiducialSD","LXeFiducialCollection");
 
   // make both the liquid xenon and the fiducial volume sensitive
   // this is only relevant for the standard Monte Carlo. The fast simulation will 

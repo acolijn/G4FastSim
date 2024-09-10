@@ -6,7 +6,7 @@
 #include "G4SystemOfUnits.hh"
 
 
-namespace G4FastSim {
+namespace G4Sim {
 
 Materials::Materials()
 {
@@ -74,4 +74,4 @@ void Materials::DefineMaterials()
     G4cout << "Materials::DefineMaterials done" << G4endl;
 }
 
-} // namespace G4FastSim
+} // namespace G4Sim

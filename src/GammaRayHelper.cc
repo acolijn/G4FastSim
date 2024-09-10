@@ -16,7 +16,7 @@ namespace {
     G4Mutex mutex = G4MUTEX_INITIALIZER;
 }
 
-namespace G4FastSim {
+namespace G4Sim {
 
 GammaRayHelper& GammaRayHelper::Instance() {
     static thread_local GammaRayHelper instance;

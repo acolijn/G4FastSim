@@ -12,10 +12,10 @@
 class G4Run;
 
 /**
- * @namespace G4FastSim
+ * @namespace G4Sim
  * @brief A namespace for fast simulation classes in Geant4.
 /*/
-namespace G4FastSim
+namespace G4Sim
 {
 
 class EventAction;

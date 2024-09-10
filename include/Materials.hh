@@ -2,7 +2,7 @@
 #define __MATERIALS_HH__
 
 
-namespace G4FastSim {
+namespace G4Sim {
 
 class Materials {
     //
