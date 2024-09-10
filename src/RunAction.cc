@@ -48,7 +48,7 @@
 
 #include <cmath>
 
-namespace G4FastSim{
+namespace G4Sim{
 /**
  * @file RunAction.cc
  * @brief Implementation of the RunAction class.

@@ -1,8 +1,8 @@
 #include "RunActionMessenger.hh"
 #include "RunAction.hh"
 
-///using namespace G4FastSim;
-namespace G4FastSim {
+///using namespace G4Sim;
+namespace G4Sim {
 
 RunActionMessenger::RunActionMessenger(RunAction* action)
     : fRunAction(action) {
@@ -46,4 +46,4 @@ void RunActionMessenger::SetNewValue(G4UIcommand* command, G4String newValue) {
     }
 }
 
-} // namespace G4FastSim
+} // namespace G4Sim

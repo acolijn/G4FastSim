@@ -9,7 +9,7 @@
 #include "G4VProcess.hh"
 #include "Hit.hh"
 
-namespace G4FastSim {
+namespace G4Sim {
 
 SensitiveDetector::SensitiveDetector(const G4String& name, const G4String& hitsCollectionName)
     : G4VSensitiveDetector(name), fHitsCollection(nullptr), fHitsCollectionID(-1), fTotalEnergyDeposit(0.) {
@@ -36,7 +36,7 @@ G4bool SensitiveDetector::ProcessHits(G4Step* step, G4TouchableHistory*) {
     G4double edep = step->GetTotalEnergyDeposit();
     if (edep == 0.) return false;
 
-    G4FastSim::Hit* newHit = new G4FastSim::Hit();
+    G4Sim::Hit* newHit = new G4Sim::Hit();
     //Hit* newHit = new Hit();
     newHit->energyDeposit = edep;
     //newHit->position = step->GetPreStepPoint()->GetPosition();

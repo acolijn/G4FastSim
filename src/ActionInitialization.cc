@@ -37,12 +37,12 @@
 #include "GammaRayHelper.hh"
 #include "EventAction.hh"
 
-namespace G4FastSim
+namespace G4Sim
 {
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-ActionInitialization::ActionInitialization(G4FastSim::GammaRayHelper* gammaRayHelper)
+ActionInitialization::ActionInitialization(G4Sim::GammaRayHelper* gammaRayHelper)
   : G4VUserActionInitialization(), fGammaRayHelper(gammaRayHelper)
 {
 }
@@ -73,4 +73,4 @@ void ActionInitialization::Build() const
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-} // namespace G4FastSim
+} // namespace G4Sim

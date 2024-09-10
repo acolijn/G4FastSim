@@ -2,7 +2,7 @@
 #include "G4SystemOfUnits.hh"
 
 
-namespace G4FastSim {
+namespace G4Sim {
 
 G4ThreadLocal G4Allocator<Hit>* HitAllocator = 0;
 

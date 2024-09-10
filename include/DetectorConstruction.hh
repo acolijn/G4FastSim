@@ -12,10 +12,10 @@ class G4LogicalVolume;
 class DetectorConstructionMessenger;
 
 /**
- * @namespace G4FastSim
+ * @namespace G4Sim
  * @brief A namespace for fast simulation classes in Geant4.
 /*/
-namespace G4FastSim
+namespace G4Sim
 {
 
 /**
@@ -31,7 +31,7 @@ namespace G4FastSim
 class DetectorConstruction : public G4VUserDetectorConstruction
 {
   public:
-    DetectorConstruction(G4FastSim::GammaRayHelper *gammaRayHelper);
+    DetectorConstruction(G4Sim::GammaRayHelper *gammaRayHelper);
     ~DetectorConstruction();//override = default;
 
     G4VPhysicalVolume* Construct() override;

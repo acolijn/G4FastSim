@@ -50,10 +50,10 @@ class G4HCofThisEvent;
 class G4VHitsCollection;
 
 /**
- * @namespace G4FastSim
+ * @namespace G4Sim
  * @brief A namespace for fast simulation classes in Geant4.
 /*/
-namespace G4FastSim
+namespace G4Sim
 {
 
 // Use enum to define the constants
@@ -113,7 +113,7 @@ class EventAction : public G4UserEventAction
     //
     // functions for hit clustering
     //
-    void ClusterHits(std::vector<G4FastSim::Hit*>& hits, G4double spatialThreshold, G4double timeThreshold, std::vector<Cluster>& clusters);
+    void ClusterHits(std::vector<G4Sim::Hit*>& hits, G4double spatialThreshold, G4double timeThreshold, std::vector<Cluster>& clusters);
     bool IsWithinFiducialVolume(const G4ThreeVector& position, const G4ThreeVector& direction);
 
     G4double CalculateDistance(const G4ThreeVector& pos1, const G4ThreeVector& pos2);
