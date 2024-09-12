@@ -89,10 +89,10 @@ int main(int argc,char** argv)
   else {
     // interactive mode
     UImanager->ApplyCommand("/control/execute init_vis.mac");
-    ui->SessionStart();
+    ui->SessionStart(); 
     delete ui;
   }
-
+ 
   // Job termination
   // Free the store: user actions, physics_list and detector_description are
   // owned and deleted by the run manager, so they should not be deleted
