@@ -82,11 +82,16 @@ class EventAction : public G4UserEventAction
     std::vector<G4double>& GetX(){return fX;};
     std::vector<G4double>& GetY(){return fY;};
     std::vector<G4double>& GetZ(){return fZ;};
-    std::vector<G4double>& GetE(){return fEd;};
+    std::vector<G4double>& GetE(){return fE;};
     std::vector<G4double>& GetW(){return fW;};
+    std::vector<G4int>& GetID(){return fID;};
 
+    // per detector information
+    std::vector<G4double>& GetEdet(){return fEdet;};
+    std::vector<G4int>& GetNdet(){return fNdet;};
+    std::vector<G4int>& GetNphot(){return fNphot;};
+    std::vector<G4int>& GetNcomp(){return fNcomp;};
 
-    void AddEdep(G4double edep) { fEdep += edep; }
     void AddWeight(G4double weight) { fLogWeight += weight; }
     void AnalyzeHits(const G4Event* event);
     void ResetVariables();
@@ -109,34 +114,46 @@ class EventAction : public G4UserEventAction
     void SetHasBeenInXenon(G4bool b) { fHasBeenInXenon = b; }
     void SetEventType(G4int type) { fEventType = type; }
 
+
+    G4double GetSpatialThreshold(const G4String& collectionName);
+    G4double GetTimeThreshold(const G4String& collectionName);
+    static void SetClusteringParameters(const std::map<G4String, std::pair<G4double, G4double>>& params);
+    void AddHitsCollectionName(const G4String& name);
+    void RenormalizeHitTimes(G4HCofThisEvent* HCE);
+    void CountInteractions(std::vector<Hit*>& hits, G4int& ncomp, G4int& nphot);
+
   private:
     //
     // functions for hit clustering
     //
-    void ClusterHits(std::vector<G4Sim::Hit*>& hits, G4double spatialThreshold, G4double timeThreshold, std::vector<Cluster>& clusters);
-    bool IsWithinFiducialVolume(const G4ThreeVector& position, const G4ThreeVector& direction);
+    G4double fSpatialThreshold;  // Spatial threshold for clustering
+    G4double fTimeThreshold;     // Time threshold for clustering
 
+    //void ClusterHits(std::vector<G4Sim::Hit*>& hits, G4double spatialThreshold, G4double timeThreshold, std::vector<Cluster>& clusters);
+    void ClusterHits(std::vector<G4Sim::Hit*>& hits, G4double spatialThreshold, G4double timeThreshold, std::vector<Cluster>& clusters, int collectionID);
     G4double CalculateDistance(const G4ThreeVector& pos1, const G4ThreeVector& pos2);
     G4double CalculateTimeDifference(G4double time1, G4double time2);
 
     // define here all the variables that you want to store for each event in the 
     // ntuple tree  
     G4double fLogWeight;
-    G4double fEdep;
-    G4int fNclusters;
-    G4int fNphot;
-    G4int fNcomp;
     G4int fEventID;
     G4int fEventType;
     G4double fXp;
     G4double fYp;
     G4double fZp;
 
-    std::vector<G4double> fEd;
+    std::vector<G4double> fE;
     std::vector<G4double> fX;
     std::vector<G4double> fY;
     std::vector<G4double> fZ;
     std::vector<G4double> fW;
+    std::vector<G4int> fID;
+    
+    std::vector<G4double> fEdet;
+    std::vector<G4int> fNdet;
+    std::vector<G4int> fNphot;
+    std::vector<G4int> fNcomp;
 
     G4bool fFastSimulation = false;
     G4bool fInitializedGraphs = false;
@@ -155,9 +172,9 @@ class EventAction : public G4UserEventAction
 
     GammaRayHelper* fGammaRayHelper;
 
-    G4LogicalVolume* fFiducialVolume;
-
     G4int verbosityLevel=0;
+    static std::map<G4String, std::pair<G4double, G4double>> fClusteringParameters;
+
 };
 
 }

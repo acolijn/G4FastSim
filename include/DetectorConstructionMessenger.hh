@@ -3,14 +3,14 @@
 
 #include "G4UImessenger.hh"
 #include "G4UIcmdWithADoubleAndUnit.hh"
+#include "G4UIcmdWithAString.hh"
 #include "globals.hh"
 
 /**
  * @namespace G4Sim
- * @brief A namespace for fast simulation classes in Geant4.
+ * @brief Namespace for the G4Sim library.
 /*/
-namespace G4Sim 
-{
+namespace G4Sim {
 
 class DetectorConstruction;
 
@@ -30,15 +30,9 @@ class DetectorConstructionMessenger : public G4UImessenger {
 
     private:
         DetectorConstruction* fDetectorConstruction;
+        G4UIcmdWithAString* fGeometryFileNameCmd;  // New command to set geometry file name
+        G4UIcmdWithAString* fMaterialFileNameCmd;  // New command to set material file name
 
-        G4UIcmdWithADoubleAndUnit* fOuterCryostatRadiusCmd;
-        G4UIcmdWithADoubleAndUnit* fOuterCryostatHeightCmd;
-        G4UIcmdWithADoubleAndUnit* fOuterCryostatWallThicknessCmd;
-        G4UIcmdWithADoubleAndUnit* fInnerCryostatRadiusCmd;
-        G4UIcmdWithADoubleAndUnit* fInnerCryostatHeightCmd;
-        G4UIcmdWithADoubleAndUnit* fInnerCryostatWallThicknessCmd;
-        G4UIcmdWithADoubleAndUnit* fFiducialRadiusCmd;
-        G4UIcmdWithADoubleAndUnit* fFiducialHeightCmd;
 };
 
 }

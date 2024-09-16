@@ -57,7 +57,7 @@ int main(int argc,char** argv)
   // Detector construction
 
   GammaRayHelper* helper = &GammaRayHelper::Instance();
-  runManager->SetUserInitialization(new DetectorConstruction(helper));
+  runManager->SetUserInitialization(new DetectorConstruction());
 
   // Physics list
   G4PhysListFactory factory;
@@ -88,7 +88,7 @@ int main(int argc,char** argv)
   }
   else {
     // interactive mode
-    UImanager->ApplyCommand("/control/execute init_vis.mac");
+    UImanager->ApplyCommand("/control/execute vis.mac");
     ui->SessionStart(); 
     delete ui; 
   }

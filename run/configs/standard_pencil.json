@@ -1,14 +1,8 @@
 {
     "verbose": 0,
-    "geometry_settings": {
-        "outerCryostatRadius": "150 cm",
-        "outerCryostatHeight": "300 cm",
-        "outerCryostatWallThickness": "10 mm",
-        "innerCryostatRadius": "120 cm",
-        "innerCryostatHeight": "240 cm",
-        "innerCryostatWallThickness": "6 mm",
-        "fiducialRadius": "119.4 cm",
-        "fiducialHeight": "238.8 cm"
+    "detector_configuration": {
+        "geometryFileName": "/user/z37/g4/G4FastSim/run/configs/geometry.json",
+        "materialFileName": "/user/z37/g4/G4FastSim/run/configs/materials.json"
     },
     "gps_settings": {
         "particle": "gamma",

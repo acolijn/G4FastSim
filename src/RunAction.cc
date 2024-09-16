@@ -209,21 +209,21 @@ void RunAction::DefineEventNtuple(){
 
   eventNtupleId = analysisManager->CreateNtuple("ev", "G4FastSim ntuple");
   analysisManager->CreateNtupleDColumn(eventNtupleId, "ev");   // column Id = 0
-  analysisManager->CreateNtupleDColumn(eventNtupleId, "nclus");   // column Id = 1
-  analysisManager->CreateNtupleDColumn(eventNtupleId, "nphot");   // column Id = 2
-  analysisManager->CreateNtupleDColumn(eventNtupleId, "ncomp");   // column Id = 3
-  analysisManager->CreateNtupleDColumn(eventNtupleId, "e");    // column Id = 4
-  analysisManager->CreateNtupleDColumn(eventNtupleId, "w");    // column Id = 5
-  analysisManager->CreateNtupleDColumn(eventNtupleId, "type"); // column Id = 6
-  analysisManager->CreateNtupleDColumn(eventNtupleId, "xp");   // column Id = 7
-  analysisManager->CreateNtupleDColumn(eventNtupleId, "yp");   // column Id = 8
-  analysisManager->CreateNtupleDColumn(eventNtupleId, "zp");   // column Id = 9
-  analysisManager->CreateNtupleDColumn(eventNtupleId, "eh", fEventAction->GetE()); // column Id = 10
-  analysisManager->CreateNtupleDColumn(eventNtupleId, "xh", fEventAction->GetX()); // column Id = 11
-  analysisManager->CreateNtupleDColumn(eventNtupleId, "yh", fEventAction->GetY()); // column Id = 12
-  analysisManager->CreateNtupleDColumn(eventNtupleId, "zh", fEventAction->GetZ()); // column Id = 13
-  analysisManager->CreateNtupleDColumn(eventNtupleId, "wh", fEventAction->GetW()); // column Id = 14
-
+  analysisManager->CreateNtupleDColumn(eventNtupleId, "w");    // column Id = 1
+  analysisManager->CreateNtupleDColumn(eventNtupleId, "type"); // column Id = 2
+  analysisManager->CreateNtupleDColumn(eventNtupleId, "xp");   // column Id = 3
+  analysisManager->CreateNtupleDColumn(eventNtupleId, "yp");   // column Id = 4
+  analysisManager->CreateNtupleDColumn(eventNtupleId, "zp");   // column Id = 5
+  analysisManager->CreateNtupleDColumn(eventNtupleId, "eh", fEventAction->GetE()); 
+  analysisManager->CreateNtupleDColumn(eventNtupleId, "xh", fEventAction->GetX()); 
+  analysisManager->CreateNtupleDColumn(eventNtupleId, "yh", fEventAction->GetY()); 
+  analysisManager->CreateNtupleDColumn(eventNtupleId, "zh", fEventAction->GetZ()); 
+  analysisManager->CreateNtupleDColumn(eventNtupleId, "wh", fEventAction->GetW()); 
+  analysisManager->CreateNtupleIColumn(eventNtupleId, "id", fEventAction->GetID()); 
+  analysisManager->CreateNtupleDColumn(eventNtupleId, "edet", fEventAction->GetEdet());
+  analysisManager->CreateNtupleIColumn(eventNtupleId, "ndet", fEventAction->GetNdet());
+  analysisManager->CreateNtupleIColumn(eventNtupleId, "nphot", fEventAction->GetNphot());
+  analysisManager->CreateNtupleIColumn(eventNtupleId, "ncomp", fEventAction->GetNcomp());
   analysisManager->FinishNtuple(eventNtupleId);
   G4cout <<"RunAction::BeginOfRunAction: Event data ntuple created. ID = "<< eventNtupleId << G4endl;
 }

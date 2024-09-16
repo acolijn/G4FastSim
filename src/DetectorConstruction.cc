@@ -1,333 +1,444 @@
 #include "DetectorConstruction.hh"
-#include "DetectorConstructionMessenger.hh"
-#include "SensitiveDetector.hh"
-#include "Materials.hh"
-#include "GammaRayHelper.hh"
-
-#include "G4RunManager.hh"
-#include "G4NistManager.hh"
 #include "G4Box.hh"
-#include "G4Tubs.hh"	
-#include "G4LogicalVolume.hh"
+#include "G4Tubs.hh"
+#include "G4Sphere.hh"
+#include "G4UnionSolid.hh"
+#include "G4SubtractionSolid.hh"
+
 #include "G4PVPlacement.hh"
 #include "G4SystemOfUnits.hh"
+#include "G4LogicalVolume.hh"
+#include "G4NistManager.hh"
 #include "G4Material.hh"
-#include "G4AnalysisManager.hh"
-#include "G4SDManager.hh"
+#include "G4PhysicalVolumeStore.hh"
+#include "G4LogicalVolumeStore.hh"
+#include "G4PVPlacement.hh"
+#include "G4ThreeVector.hh"
+#include "G4RotationMatrix.hh"
+#include "G4VisAttributes.hh"
 
-namespace G4Sim{
+#include "DetectorConstructionMessenger.hh"
+#include "Materials.hh"
+#include "SensitiveDetector.hh"
+#include "EventAction.hh"
+#include "G4Material.hh"
+#include "G4SDManager.hh"
+#include "G4RunManager.hh"
+
+
+#include "nlohmann/json.hpp"
+#include <fstream>
+#include <iostream>
+
+using namespace G4Sim;
+using json = nlohmann::json;
 
 /**
- * @brief Constructs a DetectorConstruction object.
- * 
- * @param helper A pointer to a GammaRayHelper object.
+ * @namespace G4Sim
+ * @brief Namespace for the G4Sim library.
+/*/
+namespace G4Sim {
+
+/**
+ * @brief Constructor for the DetectorConstruction class.
  */
-DetectorConstruction::DetectorConstruction(GammaRayHelper* helper)
-  : G4VUserDetectorConstruction(),
-  fGammaRayHelper(helper){
-
-  // Set default values
-  outer_cryostat_radius = 1.3 * m;
-  outer_cryostat_height = 2.0 * m;
-  outer_cryostat_wall_thickness = 1 * cm;
-
-  inner_cryostat_radius = 1.2 * m;
-  inner_cryostat_height = 1.8 * m;
-  inner_cryostat_wall_thickness = 0.5 * cm;
-
-  fiducial_radius = 0.8 * m;
-  fiducial_height = 1.0 * m;
-
-  // Create the messenger class
-  // This class is responsible for handling user input commands
-  // and updating the detector geometry accordingly
-  fMessenger = new DetectorConstructionMessenger(this);
-
+DetectorConstruction::DetectorConstruction() 
+  : G4VUserDetectorConstruction() {
+    // Load geometry from JSON
+    fMessenger = new DetectorConstructionMessenger(this);
 }
 
 /**
  * @brief Destructor for the DetectorConstruction class.
  */
-DetectorConstruction::~DetectorConstruction()
-{
-  delete fMessenger;
-}
+DetectorConstruction::~DetectorConstruction() {}
 
 /**
- * @brief Constructs the detector geometry.
+ * @brief Constructs the physical volume of the detector.
  * 
- * This function is responsible for constructing the detector geometry by defining materials,
- * constructing various volumes such as the world volume, water tank, cryostats, liquid xenon,
- * and fiducial volume. It also initializes the gamma ray helper class with the defined materials.
+ * This function loads the geometry from a JSON file and constructs the physical volume of the detector.
  * 
- * @return The physical volume of the world.
+ * @return The constructed physical volume of the detector.
  */
 G4VPhysicalVolume* DetectorConstruction::Construct()
 {
-  //fGammaRayHelper = &GammaRayHelper::Instance();
-  //
-  // Verification of geometry
-  //
-  fCheckOverlaps = true;
-  //
-  // Define materials
-  //
-  fMaterials = new Materials();
-  fMaterials->DefineMaterials();
-  // 
-  // Construct world volume
-  //
-  ConstructWorld();
-  //
-  // Construct water tank
-  //
-  ConstructWaterTank();
-  //
-  // Construct outer cryostat and fill with vacuum
-  //
-  ConstructOuterCryostat();
-  //
-  // Construct inner cryostat 
-  //
-  ConstructInnerCryostat();
-  //
-  // Fill with Liquid xenon, PTFE field cage, and inner fiducial volume
-  //
-  ConstructLXe();
-  //
-  // Define the inner fiducial volume
-  //
-  ConstructFiducialVolume();
-  // 
-  // Define the sensitive detector
-  //
-  DefineSensitiveDetector();
-  //
-  //always return the physical World
-  //
-  return fWorldPhysical;
+    // construct materials
+    fMaterials = new Materials(matFileName);
+    fMaterials->DefineMaterials();
+
+    // construct geometry
+    G4cout << "DetectorConstruction::Construct: Loading geometry from JSON file: " << geoFileName << G4endl;
+    LoadGeometryFromJson(geoFileName);
+    G4cout << "DetectorConstruction::Construct: Geometry loaded successfully!" << G4endl;
+
+    return fWorldPhysical;
+}
+
+/**
+ * @brief Sets the geometry file name.
+ * 
+ * This function sets the name of the JSON file that contains the geometry information.
+ * 
+ * @param fileName The name of the JSON file.
+ */
+void DetectorConstruction::SetGeometryFileName(const std::string& fileName) {
+    geoFileName = fileName;
+    G4cout << "DetectorConstruction::SetGeometryFilename: JSON file name set to: " << geoFileName << G4endl;
+}
+
+void DetectorConstruction::SetMaterialFileName(const std::string& fileName) {
+    matFileName = fileName;
+    G4cout << "DetectorConstruction::SetMaterialFilename: JSON file name set to: " << matFileName << G4endl;
+}   
+
+/**
+ * Loads the geometry from a JSON file.
+ * 
+ * @param jsonFileName The path to the JSON file containing the geometry information.
+ */
+void DetectorConstruction::LoadGeometryFromJson(const std::string& geoFileName) {
+
+    std::ifstream inputFile(geoFileName);
+    if (!inputFile.is_open()) {
+        G4cerr << "DetectorConstruction::LoadGeometryFromJson: Error: Could not open geometry JSON file: " << geoFileName << G4endl;
+        exit(-1);	
+    }
+
+    json geometryJson;
+    inputFile >> geometryJson;
+
+    // First construct the world volume
+    G4Material* worldMaterial = G4Material::GetMaterial("G4_AIR");
+    G4double worldSize = geometryJson["world"]["size"].get<double>() * m;
+    G4Box* worldBox = new G4Box("World", worldSize / 2, worldSize / 2, worldSize / 2);
+    fWorldLogical = new G4LogicalVolume(worldBox, worldMaterial, "World");
+    fWorldPhysical = new G4PVPlacement(nullptr, G4ThreeVector(), fWorldLogical, "World", nullptr, false, 0, fCheckOverlaps);
+
+    // Store the world volume in the logical volume map
+    logicalVolumeMap["World"] = fWorldLogical;
+
+    // Now construct other volumes
+    for (const auto& volume : geometryJson["volumes"]) {
+        // Construct the logical volume
+        G4LogicalVolume* logVol = ConstructVolume(volume);
+        // Store the logical volume in the map
+        if (logVol) {
+            logicalVolumeMap[volume["name"]] = logVol;  // Store logical volume
+
+            // If the volume is marked as active, make it a sensitive detector
+            G4String name = volume["name"].get<std::string>();
+            if (volume.contains("active") && volume["active"].get<bool>()) {
+                G4cout << "Making volume sensitive: " << name << G4endl;
+                G4String collectionName = "";
+                if (volume.contains("collectionName")){
+                  collectionName = volume["collectionName"].get<std::string>();
+                } else {
+                  collectionName = name + "Collection";
+                }
+                MakeVolumeSensitive(name, collectionName);
+
+                G4double spatialThreshold = 10.0 * mm;  // default
+                G4double timeThreshold = 100.0 * ns;    // default
+
+                if (volume.contains("clustering")) {
+                    if (volume["clustering"].contains("spatialThreshold")) {
+                        spatialThreshold = volume["clustering"]["spatialThreshold"].get<double>() * mm;
+                    }
+                    if (volume["clustering"].contains("timeThreshold")) {
+                        timeThreshold = volume["clustering"]["timeThreshold"].get<double>() * ns;
+                    }
+                }
+
+                // Store the thresholds in the map
+                fClusteringParameters[name] = std::make_pair(spatialThreshold, timeThreshold);
+            }
+        
+            // create the Physical Volume
+            //G4VPhysicalVolume* physVol = new G4PVPlacement(nullptr, position, logicalVolume, name, parentVolume, false, 0, fCheckOverlaps);
+            G4VPhysicalVolume* physicalVolume = PlaceVolume(volume, logVol);
+            physicalVolumeMap[name] = physicalVolume;  // Store physical volume
+        }
+    }
+
+    G4cout << "Setting clustering parameters in EventAction." << G4endl;
+    EventAction::SetClusteringParameters(fClusteringParameters);
+}
+
+/**
+ * Makes a volume sensitive by assigning a sensitive detector to it.
+ * 
+ * @param volumeName The name of the volume to make sensitive.
+ * @param collectionName The name of the collection associated with the sensitive detector.
+ */
+void DetectorConstruction::MakeVolumeSensitive(const G4String& volumeName, const G4String& collectionName) {
+    G4SDManager* sdManager = G4SDManager::GetSDMpointer();
+
+    // Create a new sensitive detector
+    auto* sensitiveDetector = new G4Sim::SensitiveDetector(volumeName, collectionName);
+    sdManager->AddNewDetector(sensitiveDetector);
+
+    // Assign the sensitive detector to the corresponding logical volume
+    G4LogicalVolume* logicalVolume = GetLogicalVolume(volumeName);
+    if (logicalVolume) {
+        logicalVolume->SetSensitiveDetector(sensitiveDetector);
+        G4cout << "Assigned sensitive detector to volume: " << volumeName << G4endl;
+
+        // Register the hits collection name with EventAction
+        auto* eventAction = const_cast<EventAction*>(dynamic_cast<const EventAction*>(G4RunManager::GetRunManager()->GetUserEventAction()));
+
+        if (eventAction) {
+            eventAction->AddHitsCollectionName(collectionName);
+        }
+    } else {
+        G4cerr << "Error: Logical volume " << volumeName << " not found!" << G4endl;
+    }
 }
 
 
 /**
- * DefineSensitiveDetector function is responsible for defining the sensitive detector for the detector construction.
- * It creates a new instance of G4Sim::SensitiveDetector named "LXeFiducialSD" with the collection name "LXeFiducialCollection".
- * The sensitive detector is added to the G4SDManager using the AddNewDetector function.
- * The logical volume fLXeFiducialLogical is set as the sensitive detector using the SetSensitiveDetector function.
+ * Constructs a G4LogicalVolume based on the provided volume definition.
+ *
+ * @param volumeDef The JSON object containing the volume definition.
+ * @return The constructed G4LogicalVolume, or nullptr if an error occurred.
  */
-void DetectorConstruction::DefineSensitiveDetector(){
-  //
-  // Define the sensitive detector
-  //
+G4LogicalVolume* DetectorConstruction::ConstructVolume(const json& volumeDef) {
+    G4String name = volumeDef["name"].get<std::string>();
+    G4Material* material = G4Material::GetMaterial(volumeDef["material"].get<std::string>());
+    G4LogicalVolume* logicalVolume = nullptr;
 
-  G4SDManager* sdManager = G4SDManager::GetSDMpointer();
-  // // auto* lXeSD = new G4Sim::SensitiveDetector("LXeSD","LXeCollection");
-  auto* lXeFiducialSD = new G4Sim::SensitiveDetector("LXeFiducialSD","LXeFiducialCollection");
+    G4cout << "DetectorConstruction::ConstructVolume: Constructing volume: " << name << G4endl;
+    G4cout << "DetectorConstruction::ConstructVolume: Material: " << material->GetName() << G4endl;  
 
-  // make both the liquid xenon and the fiducial volume sensitive
-  // this is only relevant for the standard Monte Carlo. The fast simulation will 
-  // use the energy deposition directly.
-  // // sdManager->AddNewDetector(lXeSD);
-  sdManager->AddNewDetector(lXeFiducialSD);
+    // if shape is 'union'
+    if (volumeDef["shape"].get<std::string>() == "union"){
+        G4VSolid* unionSolid = nullptr;
+        for (const auto& component : volumeDef["components"]) {
+            // create the solid
+            G4VSolid* solid = CreateSolid(component);
+            // its relative position
+            G4ThreeVector position(component["placement"]["x"].get<double>() * mm,
+                                   component["placement"]["y"].get<double>() * mm,
+                                   component["placement"]["z"].get<double>() * mm);
+            // its rotation (if exists)
+            G4RotationMatrix* rotation = GetRotationMatrix(component);
+            // Call the function that handles rotation
+            if (!unionSolid) {
+                unionSolid = solid;  // First component
+            } else {
+                unionSolid = new G4UnionSolid(name, unionSolid, solid, rotation, position);
+            }
+        }
+        logicalVolume = new G4LogicalVolume(unionSolid, material, name);
+    // if shape is 'subtraction'
+    } else if (volumeDef["shape"].get<std::string>() == "subtraction"){
+        G4VSolid* subtractionSolid = nullptr;
+        for (const auto& component : volumeDef["components"]) {
+            // create the solid
+            G4VSolid* solid = CreateSolid(component);
+            // its relative position
+            G4ThreeVector position(component["placement"]["x"].get<double>() * mm,
+                                   component["placement"]["y"].get<double>() * mm,
+                                   component["placement"]["z"].get<double>() * mm);
+            // its rotation (if exists)
+            G4RotationMatrix* rotation = GetRotationMatrix(component);
+            // Call the function that handles rotation
+            if (!subtractionSolid) {
+                subtractionSolid = solid;  // First component
+            } else {
+                subtractionSolid = new G4SubtractionSolid(name, subtractionSolid, solid, rotation, position);
+            }
+        }
+        logicalVolume = new G4LogicalVolume(subtractionSolid, material, name);	
+    // if shape is 'tubs' or 'box'
+    } else {
+        G4VSolid* solid = CreateSolid(volumeDef);
+        logicalVolume = new G4LogicalVolume(solid, material, name);
+    }
 
-  // // fLXeLogical->SetSensitiveDetector(lXeSD);
-  fLXeFiducialLogical->SetSensitiveDetector(lXeFiducialSD);
+    // Set the attributes of the logical volume, like visibility, color, transparency, etc.
+    SetAttributes(volumeDef, logicalVolume);
+ 
+    return logicalVolume;
 }
-
 
 /**
- * Constructs the world volume.
+ * @brief Sets the attributes of a given logical volume based on the provided JSON definition.
+ *
+ * This function configures the attributes of the specified logical volume using the
+ * parameters defined in the JSON object. The attributes may include properties such as
+ * material, color, visibility, and other visualization settings.
+ *
+ * @param volumeDef A JSON object containing the definition of the volume attributes.
+ * @param logicalVolume A pointer to the G4LogicalVolume whose attributes are to be set.
  */
-void DetectorConstruction::ConstructWorld(){
-  //
-  // Construct the world volume
-  //
-  G4double world_sizeXY = 20*m, world_sizeZ = 15*m;
-  
-  G4Material* world_mat = G4Material::GetMaterial("G4_AIR");
-  auto solidWorld = new G4Box("World", 0.5 * world_sizeXY, 0.5 * world_sizeXY, 0.5 * world_sizeZ);
-  fWorldLogical = new G4LogicalVolume(solidWorld, world_mat, "World");
+void DetectorConstruction::SetAttributes(const json& volumeDef, G4LogicalVolume* logicalVolume) {
+    G4VisAttributes* visAttributes = new G4VisAttributes();
 
-  fWorldPhysical = new G4PVPlacement(nullptr,  // no rotation
-    G4ThreeVector(),                           // at (0,0,0)
-    fWorldLogical,                                // its logical volume
-    "World",                                   // its name
-    nullptr,                                   // its mother  volume
-    false,                                     // no boolean operation
-    0,                                         // copy number
-    fCheckOverlaps);                            // overlaps checking
+    if (volumeDef.contains("visible")) {
+        visAttributes->SetVisibility(volumeDef["visible"].get<bool>());
+    } else {
+        visAttributes->SetVisibility(true);
+    }
 
+    if (volumeDef.contains("color")) {
+        std::vector<double> color = volumeDef["color"].get<std::vector<double>>();
+        visAttributes->SetColour(G4Colour(color[0], color[1], color[2], color[3]));
+    } else {
+        visAttributes->SetColour(G4Colour(0.5, 0.5, 0.5, 0.5));
+    }
+
+    logicalVolume->SetVisAttributes(visAttributes);
 }
 
 /**
- * Constructs a water tank in the detector.
+ * @brief Places a volume inside its parent volume based on the provided JSON definition.
+ *
+ * This function reads the volume definition from a JSON object and places the volume
+ * inside its parent volume. If a parent volume is specified in the JSON definition, 
+ * it retrieves the parent volume by name. If no parent is specified, it defaults to 
+ * placing the volume inside the world volume. The function also handles the position 
+ * and optional rotation of the volume.
+ *
+ * @param volumeDef A JSON object containing the volume definition, including its name, 
+ *                  parent volume (optional), and placement information (position and rotation).
+ * @param logicalVolume A pointer to the logical volume to be placed.
+ * @return A pointer to the placed physical volume, or nullptr if an error occurs.
  */
-void DetectorConstruction::ConstructWaterTank(){
-  //
-  // Water tank
-  //
-  G4double tank_radius = 5*m;
-  G4double tank_height = 10*m;
-  G4cout << "DetectorConstruction::ConstructWaterTank Constructing water tank" << G4endl;
-  G4cout << "DetectorConstruction::ConstructWaterTank tank_radius = " << tank_radius/cm << " cm"<<G4endl;
-  G4cout << "DetectorConstruction::ConstructWaterTank tank_height = " << tank_height/cm << " cm"<<G4endl;
+G4VPhysicalVolume* DetectorConstruction::PlaceVolume(const json& volumeDef, G4LogicalVolume* logicalVolume) {
 
-  G4Material* water = G4Material::GetMaterial("G4_WATER");
-  auto solidWaterTank = new G4Tubs("WaterTank",           // its name
-    0., tank_radius, tank_height / 2., 0. * deg, 360. * deg);  // its size
+    G4String name = volumeDef["name"].get<std::string>();
+    G4VPhysicalVolume* physicalVolume = nullptr;
 
-  fWaterTankLogical = new G4LogicalVolume(solidWaterTank,  // its solid
-    water,                                         // its material
-    "WaterTank");                                    // its name
+   // Place volume inside its parent
+    if (logicalVolume) {
+        G4LogicalVolume* parentVolume = fWorldLogical;  // Default to world
 
-  fWaterTankPhysical = new G4PVPlacement(nullptr,  // no rotation
-    G4ThreeVector(),          // at (0,0,0)
-    fWaterTankLogical,        // its logical volume
-    "WaterTank",              // its name
-    fWorldLogical,            // its mother  volume
-    false,                    // no boolean operation
-    0,                        // copy number
-    fCheckOverlaps);           // overlaps checking
+        if (volumeDef.contains("parent")) {
+            G4String parentName = volumeDef["parent"].get<std::string>();
+            parentVolume = GetLogicalVolume(parentName);
+            if (!parentVolume) {
+                G4cerr << "Error: Parent volume " << parentName << " not found!" << G4endl;
+                exit(-1);
+            }
+        }
+
+        G4ThreeVector position(volumeDef["placement"]["x"].get<double>() * mm, 
+                               volumeDef["placement"]["y"].get<double>() * mm, 
+                               volumeDef["placement"]["z"].get<double>() * mm);
+
+        // Extract rotation (if exists)
+        G4RotationMatrix* rotation = GetRotationMatrix(volumeDef);
+
+        // place the volume
+        physicalVolume = new G4PVPlacement(
+            rotation,  // Rotation matrix (can be nullptr)
+            position,        // Position vector
+            logicalVolume,   // Logical volume to place
+            name,      // Name of the volume
+            parentVolume,    // Parent logical volume
+            false,           // No boolean operation
+            0,               // Copy number
+            fCheckOverlaps   // Overlap checking
+        );
+    }
+
+    return physicalVolume;
 }
+
 /**
- * Constructs the outer cryostat.
+ * @brief Creates a G4RotationMatrix based on the rotation parameters provided in the JSON object.
+ *
+ * This function extracts the rotation parameters (if they exist) from the given JSON object and 
+ * creates a G4RotationMatrix using the specified Euler angles (x, y, z). The angles are expected 
+ * to be in degrees and will be converted to radians internally.
+ *
+ * @param volumeDef A JSON object containing the volume definition, including placement and rotation parameters.
+ * @return A pointer to a G4RotationMatrix object initialized with the specified rotation angles, or nullptr if no rotation is specified.
  */
-void DetectorConstruction::ConstructOuterCryostat(){
-  //
-  // Outer cryostat
-  //
+G4RotationMatrix* DetectorConstruction::GetRotationMatrix(const json& volumeDef){
 
-  G4cout << "DetectorConstruction::ConstructOuterCryostat Constructing outer cryostat" << G4endl;	
-  G4cout << "DetectorConstruction::ConstructOuterCryostat outer_cryostat_radius = " << outer_cryostat_radius/cm << " cm"<<G4endl;
-  G4cout << "DetectorConstruction::ConstructOuterCryostat outer_cryostat_height = " << outer_cryostat_height/cm << " cm"<<G4endl;
-  G4cout << "DetectorConstruction::ConstructOuterCryostat outer_cryostat_wall_thickness = " << outer_cryostat_wall_thickness/cm << " cm"<<G4endl;
+    G4RotationMatrix* rotationMatrix = nullptr;
 
-  G4Material* stainless_steel = G4Material::GetMaterial("StainlessSteel");
+    // Extract rotation (if exists)
+    json rotationJson;
+    if (volumeDef["placement"].contains("rotation")) {
+        rotationJson = volumeDef["placement"]["rotation"];
+    }
 
+    if (rotationJson.contains("x") || rotationJson.contains("y") || rotationJson.contains("z")) {
+        G4double rotationX = 0.0;
+        G4double rotationY = 0.0;
+        G4double rotationZ = 0.0;
 
-  auto solidOuterCryostat = new G4Tubs("OuterCryostat",           // its name
-    0, outer_cryostat_radius, outer_cryostat_height / 2., 0. * deg, 360. * deg);  // its size
+        if (rotationJson.contains("x")) {
+            rotationX = rotationJson["x"].get<double>() * deg;
+        }
+        if (rotationJson.contains("y")) {
+            rotationY = rotationJson["y"].get<double>() * deg;
+        }
+        if (rotationJson.contains("z")) {
+            rotationZ = rotationJson["z"].get<double>() * deg;
+        }
 
-  fOuterCryostatLogical = new G4LogicalVolume(solidOuterCryostat,  // its solid
-    stainless_steel,                                         // its material
-    "OuterCryostat");                                    // its name
+        // Create the rotation matrix with the Euler angles
+        rotationMatrix = new G4RotationMatrix();
+        rotationMatrix->rotateX(rotationX);
+        rotationMatrix->rotateY(rotationY);
+        rotationMatrix->rotateZ(rotationZ);
+    }
 
-  fOuterCryostatPhysical = new G4PVPlacement(nullptr,  // no rotation
-    G4ThreeVector(),          // at (0,0,0)
-    fOuterCryostatLogical,     // its logical volume
-    "OuterCryostat",          // its name
-    fWaterTankLogical,        // its mother  volume
-    false,                    // no boolean operation
-    0,                        // copy number
-    fCheckOverlaps);           // overlaps checking
-
-  // Fill the outer cryostat with vacuum
-  G4Material* vacuum = G4Material::GetMaterial("Vacuum");
-  auto solidVacuum = new G4Tubs("Vacuum",           // its name
-    0., outer_cryostat_radius - outer_cryostat_wall_thickness, outer_cryostat_height / 2. - outer_cryostat_wall_thickness, 0. * deg, 360. * deg);  // its size  
-
-  fVacuumLogical = new G4LogicalVolume(solidVacuum,  // its solid
-    vacuum,                                         // its material
-    "Vacuum");                                    // its name
-
-  fVacuumPhysical = new G4PVPlacement(nullptr,  // no rotation
-    G4ThreeVector(),          // at (0,0,0)
-    fVacuumLogical,             // its logical volume
-    "Vacuum",                 // its name
-    fOuterCryostatLogical,     // its mother  volume
-    false,                    // no boolean operation
-    0,                        // copy number
-    fCheckOverlaps);           // overlaps checking
-
+    return rotationMatrix;
 }
+
 /**
- * Constructs the inner cryostat and fills it with LXe.
+ * @brief Creates a G4VSolid object based on the provided solid definition.
+ * 
+ * @param solidDef The JSON object containing the solid definition.
+ * @return A pointer to the created G4VSolid object. Returns nullptr if the shape is not supported.
  */
-void DetectorConstruction::ConstructInnerCryostat(){
-  //
-  // Construct inner cryostat and fill with LXe
-  //
+G4VSolid* DetectorConstruction::CreateSolid(const json& solidDef) {
 
-  // the vessel
+    G4String shape = solidDef["shape"].get<std::string>();
+    if (shape == "tubs") {
+        G4double rMin = solidDef["dimensions"]["rMin"].get<double>() * mm;
+        G4double rMax = solidDef["dimensions"]["rMax"].get<double>() * mm;
+        G4double z = solidDef["dimensions"]["z"].get<double>() * mm;
+        G4double startAngle = solidDef["dimensions"]["startAngle"].get<double>() * deg;
+        G4double spanningAngle = solidDef["dimensions"]["spanningAngle"].get<double>() * deg;
+        return new G4Tubs("Tubs", rMin, rMax, z / 2, startAngle, spanningAngle);
+    } else if (shape == "box"){
+        G4double x = solidDef["dimensions"]["x"].get<double>() * mm;
+        G4double y = solidDef["dimensions"]["y"].get<double>() * mm;
+        G4double z = solidDef["dimensions"]["z"].get<double>() * mm;
+        return new G4Box("Box", x / 2, y / 2, z / 2);
+    } else if (shape == "sphere"){
+        G4double rMin = solidDef["dimensions"]["rMin"].get<double>() * mm;
+        G4double rMax = solidDef["dimensions"]["rMax"].get<double>() * mm;
+        G4double startPhi = solidDef["dimensions"]["startPhi"].get<double>() * deg;
+        G4double endPhi = solidDef["dimensions"]["endPhi"].get<double>() * deg;
+        G4double startTheta = solidDef["dimensions"]["startTheta"].get<double>() * deg;
+        G4double endTheta = solidDef["dimensions"]["endTheta"].get<double>() * deg;
+        return new G4Sphere("Sphere", rMin, rMax, startPhi, endPhi, startTheta, endTheta);
+    } else {
+        G4cerr << "Error: Unsupported shape: " << shape << G4endl;
+        exit(-1);
+    }
+    // Add more shapes as needed (G4Box, G4Sphere, etc.)
 
-  G4cout << "DetectorConstruction::ConstructInnerCryostat Constructing inner cryostat" << G4endl;
-  G4cout << "DetectorConstruction::ConstructInnerCryostat inner_cryostat_radius = " << inner_cryostat_radius/cm << " cm"<<G4endl;
-  G4cout << "DetectorConstruction::ConstructInnerCryostat inner_cryostat_height = " << inner_cryostat_height/cm << " cm"<<G4endl;
-  G4cout << "DetectorConstruction::ConstructInnerCryostat inner_cryostat_wall_thickness = " << inner_cryostat_wall_thickness/cm << " cm"<<G4endl;
-
-  G4Material* stainless_steel = G4Material::GetMaterial("StainlessSteel");
-  auto solidInnerCryostat = new G4Tubs("InnerCryostat",           // its name
-    0., inner_cryostat_radius, inner_cryostat_height / 2., 0. * deg, 360. * deg);  // its size
-
-  fInnerCryostatLogical = new G4LogicalVolume(solidInnerCryostat,  // its solid
-    stainless_steel,                                         // its material
-    "InnerCryostat");                                    // its name
-
-  fInnerCryostatPhysical = new G4PVPlacement(nullptr,  // no rotation
-    G4ThreeVector(),          // at (0,0,0)
-    fInnerCryostatLogical,     // its logical volume
-    "InnerCryostat",          // its name
-    fVacuumLogical,            // its mother  volume
-    false,                    // no boolean operation
-    0,                        // copy number
-    fCheckOverlaps);           // overlaps checking
+    return nullptr;
 }
 
-//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 /**
- * Constructs the liquid xenon volume in the detector.
+ * @brief Retrieves the logical volume with the specified name.
+ * 
+ * @param name The name of the logical volume to retrieve.
+ * @return A pointer to the logical volume if found, otherwise nullptr.
  */
-void DetectorConstruction::ConstructLXe(){
-  // the liquid xenon
-
-  G4cout << "DetectorConstruction::ConstructLXe Constructing LXe" << G4endl;
-
-  G4Material* lXe = G4Material::GetMaterial("LXe");
-  auto solidLXe = new G4Tubs("LXe",           // its name
-    0., inner_cryostat_radius - inner_cryostat_wall_thickness, inner_cryostat_height / 2. - inner_cryostat_wall_thickness, 0. * deg, 360. * deg);  // its size
-
-  fLXeLogical = new G4LogicalVolume(solidLXe,  // its solid
-    lXe,                                         // its material
-    "LXe");                                    // its name
-
-  fLXePhysical = new G4PVPlacement(nullptr,  // no rotation
-    G4ThreeVector(),          // at (0,0,0)
-    fLXeLogical,               // its logical volume
-    "LXe",                    // its name
-    fInnerCryostatLogical,     // its mother  volume
-    false,                    // no boolean operation
-    0,                        // copy number
-    fCheckOverlaps);           // overlaps checking
-}
-//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
-/**
- * Constructs the liquid xenon fiducial volume.
- */
-void DetectorConstruction::ConstructFiducialVolume(){
-
-  // the liquid xenon fiducial volume
-
-  G4cout << "DetectorConstruction::ConstructFiducialVolume Constructing LXe fiducial volume" << G4endl;
-  G4cout << "DetectorConstruction::ConstructFiducialVolume fiducial_radius = " << fiducial_radius/cm << " cm"<<G4endl;
-  G4cout << "DetectorConstruction::ConstructFiducialVolume fiducial_height = " << fiducial_height/cm << " cm"<<G4endl;
-
-  G4Material* lXe = G4Material::GetMaterial("LXe");
-
-  auto solidLXeFiducial = new G4Tubs("LXeFiducial",           // its name
-    0., fiducial_radius, fiducial_height / 2., 0. * deg, 360. * deg);  // its size
-
-  fLXeFiducialLogical = new G4LogicalVolume(solidLXeFiducial,  // its solid
-    lXe,                                         // its material
-    "LXeFiducial");                                    // its name
-
-  fLXeFiducialPhysical = new G4PVPlacement(nullptr,  // no rotation
-    G4ThreeVector(),          // at (0,0,0)
-    fLXeFiducialLogical,       // its logical volume
-    "LXeFiducial",            // its name
-    fLXeLogical,               // its mother  volume
-    false,                    // no boolean operation
-    0,                        // copy number
-    fCheckOverlaps);           // overlaps checking 
+G4LogicalVolume* DetectorConstruction::GetLogicalVolume(const G4String& name) {
+    if (logicalVolumeMap.find(name) != logicalVolumeMap.end()) {
+        return logicalVolumeMap[name];
+    }
+    return nullptr;
 }
 
-}
+}  // namespace G4XamsSim

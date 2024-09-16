@@ -76,11 +76,16 @@ def generate_gps_settings(gps_settings):
     """
     commands = [
         f"/gps/particle {gps_settings['particle']}",
-        f"/gps/energy {gps_settings['energy']}",
         f"/gps/pos/type {gps_settings['posType']}",
         f"/gps/pos/centre {gps_settings['posCentre']}"
     ]
-    
+
+    if gps_settings['particle'] == "ion":
+        commands.append(f"/gps/ion {gps_settings['ion']}")
+
+    if 'energy' in gps_settings:
+        commands.append(f"/gps/energy {gps_settings['energy']}")
+
     if gps_settings['posType'] == "Volume":
         if 'posRadius' in gps_settings:
             commands.append(f"/gps/pos/radius {gps_settings['posRadius']}")
@@ -97,19 +102,13 @@ def generate_gps_settings(gps_settings):
     
     return "\n".join(commands)
 
-def generate_geometry_settings(geometry_settings):
+def generate_detector_configuration(detector_configuration):
     """
     Generate the geometry commands based on the provided geometry_settings.
     """
     commands = [
-        f"/detector/setOuterCryostatRadius {geometry_settings['outerCryostatRadius']}",
-        f"/detector/setOuterCryostatHeight {geometry_settings['outerCryostatHeight']}",
-        f"/detector/setOuterCryostatWallThickness {geometry_settings['outerCryostatWallThickness']}",
-        f"/detector/setInnerCryostatRadius {geometry_settings['innerCryostatRadius']}",
-        f"/detector/setInnerCryostatHeight {geometry_settings['innerCryostatHeight']}",
-        f"/detector/setInnerCryostatWallThickness {geometry_settings['innerCryostatWallThickness']}",
-        f"/detector/setFiducialRadius {geometry_settings['fiducialRadius']}",
-        f"/detector/setFiducialHeight {geometry_settings['fiducialHeight']}",
+        f"/detector/setGeometryFileName {detector_configuration['geometryFileName']}",
+        f"/detector/setMaterialFileName {detector_configuration['materialFileName']}",
     ]
     return "\n".join(commands)
 
@@ -163,17 +162,17 @@ def generate_mac_file(settings, path_manager, beam_on, random_seed1, job_id):
     """
     # Generate different sections of the macro file
     gps_commands = generate_gps_settings(settings["gps_settings"])
-    geometry_commands = generate_geometry_settings(settings["geometry_settings"])
+    detector_commands = generate_detector_configuration(settings["detector_configuration"])
     run_commands = generate_run_settings(settings["run_settings"], path_manager, job_id)
     run_section = generate_run_control(beam_on, random_seed1, random_seed1 + 1)
-    
+     
     # Combine all the sections into the final macro content
     mac_content = "\n".join([
         f"/control/verbose {settings['verbose']}",
         f"/run/verbose {settings['verbose']}",
         f"/tracking/verbose {settings['verbose']}",
         "# define the detector geometry",
-        geometry_commands,
+        detector_commands,
         "/run/initialize",
         gps_commands,
         run_commands,
@@ -288,10 +287,19 @@ def prepare_settings(args, path_manager):
         dict: The prepared simulation settings.
     """
     settings = load_settings(args.json_file)
+
+    # copy the geometry and material files to the output directory
+    shutil.copy(settings["detector_configuration"]["geometryFileName"], path_manager.output_dir)
+    shutil.copy(settings["detector_configuration"]["materialFileName"], path_manager.output_dir)
+
     random_seed = random.randint(0, 1000000)
     settings['randomSeed'] = random_seed
     settings['beamOn'] = args.beam_on
     settings_file = os.path.join(path_manager.output_dir, "settings.json")
+
+    # replace the geometry and material file paths in the settings with the copied paths
+    settings["detector_configuration"]["geometryFileName"] = os.path.join(path_manager.output_dir, os.path.basename(settings["detector_configuration"]["geometryFileName"]))
+    settings["detector_configuration"]["materialFileName"] = os.path.join(path_manager.output_dir, os.path.basename(settings["detector_configuration"]["materialFileName"]))
 
     with open(settings_file, 'w') as json_file:
         json.dump(settings, json_file, indent=4)
@@ -335,7 +343,8 @@ def update_master_rundb(rundb, settings, path_manager, args):
     new_run = {
         "id": f"run_{len(rundb['runs']) + 1:02}",
         "particle": gps_settings["particle"],
-        "energy": gps_settings["energy"],
+        "ion": gps_settings["ion"] if gps_settings["particle"] == "ion" else "None",
+        "energy": gps_settings["energy"] if "energy" in gps_settings else "None",
         "fastSimulation": run_settings["fastSimulation"],
         "maxScatters": run_settings.get("numberOfScatters", 1),
         "maxEnergy": run_settings.get("maxEnergy", "2 MeV"),
