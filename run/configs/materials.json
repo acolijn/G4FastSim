@@ -1,0 +1,71 @@
+{
+    "materials": {
+      "Air": {
+        "nist": "G4_AIR"
+      },
+      "Water": {
+        "nist": "G4_WATER"
+      },
+      "Pb": {
+        "nist": "G4_Pb"
+      },
+      "LXe": {
+        "name": "LXe",
+        "state": "kStateLiquid",
+        "density": "2.862 g/cm3",
+        "temperature": "177.05 K",
+        "pressure": "1.5 atm",
+        "components": {
+          "Xe": 1
+        }
+      },
+      "GXe": {
+        "name": "GXe",
+        "state": "kStateGas",
+        "density": "0.015 g/cm3",
+        "temperature": "177.05 K",
+        "pressure": "1.5 atm",
+        "components": {
+          "Xe": 1
+        }
+      },
+      "Vacuum": {
+        "name": "Vacuum",
+        "state": "kStateGas",
+        "density": "1e-25 g/cm3",
+        "components": {
+          "N": 0.755,
+          "O": 0.245
+        }
+      },
+      "PTFE": {
+        "name": "PTFE",
+        "state": "kStateSolid",
+        "density": "2.2 g/cm3",
+        "components": {
+          "C": 0.240183,
+          "F": 0.759817
+        }
+      },
+      "StainlessSteel": {
+        "name": "StainlessSteel",
+        "state": "kStateSolid",
+        "density": "8.06 g/cm3",
+        "components": {
+          "Fe": 0.70,
+          "Cr": 0.18,
+          "Ni": 0.12
+        }
+      },
+      "NaI": {	
+        "name": "NaI",
+        "state": "kStateSolid",
+        "density": "3.67 g/cm3",
+        "components": {
+          "Na": 0.5,
+          "I": 0.5
+        } 
+      }
+    }
+  }
+  

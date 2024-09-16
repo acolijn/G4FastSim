@@ -22,6 +22,7 @@ struct Cluster {
     G4double energyDeposit;
     G4double time;
     std::vector<Hit*> hits;
+    G4int collectionID;
 };
 
 } // namespace G4Sim
