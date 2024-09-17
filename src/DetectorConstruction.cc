@@ -86,6 +86,15 @@ void DetectorConstruction::SetGeometryFileName(const std::string& fileName) {
     G4cout << "DetectorConstruction::SetGeometryFilename: JSON file name set to: " << geoFileName << G4endl;
 }
 
+/**
+ * @brief Sets the material file name for the detector construction.
+ *
+ * This function assigns the provided file name to the material file name
+ * used in the detector construction process. It also outputs a message
+ * to the console indicating the new file name.
+ *
+ * @param fileName The name of the JSON file containing material information.
+ */
 void DetectorConstruction::SetMaterialFileName(const std::string& fileName) {
     matFileName = fileName;
     G4cout << "DetectorConstruction::SetMaterialFilename: JSON file name set to: " << matFileName << G4endl;

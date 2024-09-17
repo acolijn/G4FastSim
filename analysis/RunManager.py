@@ -4,17 +4,15 @@ import os
 import shutil
 
 class RunManager:
-    def __init__(self, rundb_file="rundb.json"):
+    def __init__(self, config_file="config.json"):
         """
-        Initializes a RunManager object......
+        Initializes a RunManager object.
 
         Args:
-            rundb_file (str): The path to the runs database file. Default is "rundb.json".
+            config_file (str): The path to the configuration file. Default is "config.json".
         """
-        self.rundb_file = rundb_file
+        self.config_file = config_file
         self.load_config()
-
-        #self.mark_deleted_if_missing_output()
 
     def load_config(self):
         """
@@ -22,7 +20,7 @@ class RunManager:
         If the 'status' field is missing for any run, it is initialized to 'active'.
         The modified config is saved and a DataFrame is created from the 'runs' field.
         """
-        with open(self.rundb_file, 'r') as file:
+        with open(self.config_file, 'r') as file:
             self.config = json.load(file)
         # Initialize status field if not present
         for run in self.config.get("runs", []):
@@ -36,10 +34,10 @@ class RunManager:
         Saves the configuration data to a JSON file.
         
         This method writes the configuration data stored in the `config` attribute
-        to a JSON file specified by the `rundb_file` attribute. The data is written
+        to a JSON file specified by the `config_file` attribute. The data is written
         with an indentation level of 4 spaces.
         """
-        with open(self.rundb_file, 'w') as file:
+        with open(self.config_file, 'w') as file:
             json.dump(self.config, file, indent=4)
 
     def display_all_runs(self, include_deleted=False):
@@ -53,9 +51,6 @@ class RunManager:
         Returns:
             pandas.DataFrame: A DataFrame containing the runs to be displayed.
         """
-        self.mark_deleted_if_missing_output()
-
-
         if include_deleted:
             return self.runs_df
         else:
@@ -172,29 +167,4 @@ class RunManager:
             print(f"Run {run_id} marked as deleted and its output has been removed.")
         else:
             print(f"Run {run_id} not found.")
-
-    def mark_deleted_if_missing_output(self):
-        """
-        Checks if the output directory exists for each run in the database.
-        If the directory does not exist, it sets the run's status to 'deleted'.
-    
-        Returns:
-            None
-        """
-        modified = False
-        for run in self.config.get("runs", []):
-            output_dir = run.get("outputDir")
-            if output_dir and not os.path.exists(output_dir):
-                if run.get("status") != "deleted":
-                    run["status"] = "deleted"
-                    modified = True
-                    print(f"Run {run['id']} marked as deleted because its output directory is missing.")
-    
-        if modified:
-            self.save_config()
-            self.runs_df = pd.DataFrame(self.config.get("runs", []))  # Update the DataFrame
-            print("Database updated to reflect missing output directories.")
-        else:
-            print("No missing directories were found.")
-
 
