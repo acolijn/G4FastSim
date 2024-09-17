@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 from matplotlib.colors import LogNorm
 
 from RunManager import RunManager
+from mendeleev import element
 
 def is_jagged(array):
     """Check if the given array is a jagged array."""
@@ -25,17 +26,24 @@ class Geant4Analyzer:
         self.file_paths = manager.get_output_root_files(run_id, first_only=first_only)
         self.settings = manager.get_run_settings(run_id, convert_units=True)
         self.label = ""
+
         if label == "":
-            if self.settings['fastSimulation'] == "true":
-                self.label = "Accelerated MC"
-            elif self.settings['fastSimulation'] == "false":
-                self.label = "Geant4 standard"
+            if 'ion' in self.settings['gps_settings']:
+                txt = self.settings['gps_settings']['ion']
+                Z = txt.split(" ")[0]
+                A = txt.split(" ")[1]
+                element_symbol = element(int(Z)).symbol
+                label_text = 'ion: $^{{{:2d}}}${:s}'.format(int(A), element_symbol)
+                self.label = label_text
+            else:
+                self.label = ""
         else:
             self.label = label
 
         self.raw = None
         self.data = {}
 
+        print(f"Initialized Geant4Analyzer with run_id={run_id}, label={self.label}")	
         self.load_data()
 
     def load_data(self):
@@ -48,6 +56,8 @@ class Geant4Analyzer:
         Raises:
             FileNotFoundError: If any file is not found.
         """
+
+        print(f"Loading data from {self.file_paths}")
         if isinstance(self.file_paths, str):
             self.file_paths = [self.file_paths]
 
@@ -72,6 +82,8 @@ class Geant4Analyzer:
             print(f"Data loaded from {len(self.file_paths)} files")
         else:
             print("No data loaded")
+
+        print(f"Data loaded from {self.file_paths}")
 
 
     def load_data_obsolete(self):
@@ -109,22 +121,28 @@ class Geant4Analyzer:
             raise ValueError("Data not loaded. Call load_data() first.")
         
         if cut is None:
-            cut = (self.raw['ncomp'] + self.raw['nphot'] == 1) & \
-                  (self.raw['type'] == 0)
+            cut = cut
         else:
             cut = cut(self.raw)
             
         if cut_hit is None:
-            cut_hit = cut & (self.raw['eh'] > 1.)
+            cut_hit = cut  & (self.raw['eh'] > 0. )
         else:
             cut_hit = cut_hit(self.raw) & cut & (self.raw['eh'] > 1.)
 
         for field in self.raw.fields:
             data_field = self.raw[field]
             if is_jagged(data_field):
-                data_field = ak.flatten(data_field[cut_hit])
+                # Flatten jagged arrays
+                
+                # make sure that you do not apply the cuts on the hits on the other fields   
+                if ( (field == 'edet') or (field == 'ndet') or (field == 'ncomp') or (field == 'nphot') ):
+                    data_field = data_field[cut]
+                else:
+                    data_field = ak.flatten(data_field[cut_hit])
             else:
                 data_field = data_field[cut]
+
             self.data[field] = ak.to_numpy(data_field)
 
 
