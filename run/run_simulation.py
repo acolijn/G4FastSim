@@ -120,10 +120,10 @@ def generate_run_settings(run_settings, path_manager, job_id):
     
     commands = [
         f"/run/setOutputFileName {output_file_name}",
-        f"/run/setFastSimulation {run_settings['fastSimulation']}",
-        f"/run/setNumberOfScatters {run_settings['numberOfScatters']}",
-        f"/run/setMaxEnergy {run_settings.get('maxEnergy', '2 MeV')}",
-        f"/run/printProgress {run_settings['printProgress']}",
+        f"/run/setFastSimulation {run_settings['fastSimulation'] if 'fastSimulation' in run_settings else 'false'}",
+        f"/run/setNumberOfScatters {run_settings['numberOfScatters'] if 'numberOfScatters' in run_settings else -1}",
+        f"/run/setMaxEnergy {run_settings.get('maxEnergy', '2 MeV') if 'maxEnergy' in run_settings else -1.0}",
+        f"/run/printProgress {run_settings['printProgress'] if 'printProgress' in run_settings else 10000}",
     ]
     
     return "\n".join(commands)
@@ -345,9 +345,9 @@ def update_master_rundb(rundb, settings, path_manager, args):
         "particle": gps_settings["particle"],
         "ion": gps_settings["ion"] if gps_settings["particle"] == "ion" else "None",
         "energy": gps_settings["energy"] if "energy" in gps_settings else "None",
-        "fastSimulation": run_settings["fastSimulation"],
-        "maxScatters": run_settings.get("numberOfScatters", 1),
-        "maxEnergy": run_settings.get("maxEnergy", "2 MeV"),
+        "fastSimulation": run_settings["fastSimulation"] if "fastSimulation" in run_settings else "None",
+        "maxScatters": run_settings.get("numberOfScatters", 1) if "numberOfScatters" in run_settings else -1,
+        "maxEnergy": run_settings.get("maxEnergy", "2 MeV") if "maxEnergy" in run_settings else "None",
         "sourceVolume": gps_settings["posConfine"] if gps_settings["posType"] == "Volume" else "",
         "outputDir": path_manager.output_dir,
         "outputFile": run_settings['outputFileName'],

@@ -46,16 +46,25 @@
       "color": [0.0, 0.0, 1.0, 0.3],	
       "active": true,
       "clustering": {
-        "spatialThreshold": 10.0,
+        "spatialThreshold": 25.0,
         "timeThreshold": 1.0
       },
       "dimensions": { "rMin": 0, "rMax": 1194.0, "z": 2388.0, "startAngle": 0.0, "spanningAngle": 360.0 },
       "placement": { "x": 0.0, "y": 0.0, "z": 0.0 }
+    },
+    {
+      "name": "LXeFiducial",
+      "shape": "tubs",
+      "material": "LXe",
+      "parent": "LiquidXenon",
+      "color": [0.0, 0.0, 1.0, 0.5],
+      "active": true,
+      "clustering": {
+        "spatialThreshold": 25.0,
+        "timeThreshold": 1.0
+      },
+      "dimensions": { "rMin": 0, "rMax": 1144.0, "z": 2288.0, "startAngle": 0.0, "spanningAngle": 360.0 }, 
+      "placement": { "x": 0.0, "y": 0.0, "z": 0.0 }
     }
-  ],
-  "fiducial": {
-    "radius": 1.0,
-    "height": 1.0,
-    "placement": { "x": 0.0, "y": 0.0, "z": 0.0 }
-  }
+  ]
 }
