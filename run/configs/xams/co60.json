@@ -1,0 +1,18 @@
+{
+    "verbose": 0,
+    "detector_configuration": {
+        "geometryFileName": "/user/z37/g4/G4XamsSim/run/configs/geometry.json",
+        "materialFileName": "/user/z37/g4/G4XamsSim/run/configs/materials.json"
+    },
+    "gps_settings": {
+        "particle": "ion",
+        "ion": "27 60",
+        "posType": "Point",
+        "posCentre": "15. 0. -2.5 cm",
+        "angType": "iso"
+    },
+    "run_settings": {
+        "outputFileName": "co60",
+        "printProgress": 10000
+    }
+}

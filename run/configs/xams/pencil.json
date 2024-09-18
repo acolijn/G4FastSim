@@ -1,0 +1,18 @@
+{
+    "verbose": 0,
+    "detector_configuration": {
+        "geometryFileName": "/user/z37/g4/G4XamsSim/run/configs/geometry.json",
+        "materialFileName": "/user/z37/g4/G4XamsSim/run/configs/materials.json"
+    },
+    "gps_settings": {
+        "particle": "gamma",
+        "energy": "1. MeV",
+        "posType": "Point",
+        "posCentre": "25. 0. 0. cm",
+        "direction": "-1. 0. 0."
+    },
+    "run_settings": {
+        "outputFileName": "pencil",
+        "printProgress": 10000
+    }
+}

@@ -114,7 +114,6 @@ class EventAction : public G4UserEventAction
     void SetHasBeenInXenon(G4bool b) { fHasBeenInXenon = b; }
     void SetEventType(G4int type) { fEventType = type; }
 
-
     G4double GetSpatialThreshold(const G4String& collectionName);
     G4double GetTimeThreshold(const G4String& collectionName);
     static void SetClusteringParameters(const std::map<G4String, std::pair<G4double, G4double>>& params);

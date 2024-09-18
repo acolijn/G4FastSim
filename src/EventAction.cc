@@ -27,9 +27,6 @@ EventAction::EventAction() : G4UserEventAction(), fGammaRayHelper(&GammaRayHelpe
 {
   // set printing per each event
   G4RunManager::GetRunManager()->SetPrintProgress(1);
-
-  //fHitsCollectionNames.push_back("LXeCollection");
-  //fHitsCollectionNames.push_back("LXeFiducialCollection");
 }
 
 /**
@@ -68,14 +65,10 @@ void EventAction::BeginOfEventAction(const G4Event* event)
   }
 
   if(IsFastSimulation()) {
-    fGammaRayHelper->InitializeCDFs(primaryVertex->GetPrimary()->GetKineticEnergy());  // only when here for first time we do the initialization
-  
-    // Kill the event if the particle does not point to the fiducial volume
-    //if (!IsWithinFiducialVolume(primaryVertex->GetPosition(), primaryVertex->GetPrimary()->GetMomentumDirection())){
-    //  G4cout<<"EventAction::BeginOfEventAction: Killing event..."<<G4endl;
-    //  G4RunManager::GetRunManager()->AbortEvent();
-    //}
+    // Only when here for first time we do the initialization of teh CDFs (first time is taken care of inside function).
+    fGammaRayHelper->InitializeCDFs(primaryVertex->GetPrimary()->GetKineticEnergy());  
   }
+
   if(!fInitializedGraphs) {
     // Get the RunAction instance
     const RunAction* runAction = static_cast<const RunAction*>(G4RunManager::GetRunManager()->GetUserRunAction());
@@ -130,6 +123,7 @@ void EventAction::EndOfEventAction(const G4Event* event)
   // if no scatters were made we are dealing with an event that did nothing inside the fiducial volume
   // such an event should have a weight=1.0
   if(fNumberOfScatters == 0) fLogWeight = 0.0;
+  
   const G4Event* currentEvent = G4EventManager::GetEventManager()->GetConstCurrentEvent();
   fEventID = currentEvent->GetEventID();
   
@@ -203,14 +197,17 @@ void EventAction::RenormalizeHitTimes(G4HCofThisEvent* HCE) {
  *
  * This function iterates through a vector of Hit pointers and increments the counters
  * for Compton interactions (`ncomp`) and photoelectric interactions (`nphot`) based on
- * the `processType` of each hit.
+ * the `processType` of each hit. Only interactions of the primary gamma ray are counted.
  *
  * @param hits A vector of pointers to Hit objects to be analyzed.
  * @param ncomp An integer reference to store the count of Compton interactions.
  * @param nphot An integer reference to store the count of photoelectric interactions.
  */
 void EventAction::CountInteractions(std::vector<Hit*>& hits, int& ncomp, int& nphot) {
+
+
     for (const auto& hit : hits) {
+        if (hit->trackID != 1) continue;  // Only primary track hits
         if (hit->processType == "compt") ncomp++;
         if (hit->processType == "phot") nphot++;
     }
@@ -235,6 +232,7 @@ void EventAction::AnalyzeHits(const G4Event* event) {
 
     // Cluster hits for each hits collection
     std::vector<Cluster> allClusters;
+
     // Loop over hits collections.
     for (size_t i = 0; i < fHitsCollectionNames.size(); ++i) {
         G4int hcID = G4SDManager::GetSDMpointer()->GetCollectionID(fHitsCollectionNames[i]);
@@ -250,14 +248,13 @@ void EventAction::AnalyzeHits(const G4Event* event) {
             collectionHits.push_back(hit);
         }
 
-        // count the different types of interactions
-        G4int ncomp = 0;
-        G4int nphot = 0;
-        CountInteractions(collectionHits, ncomp, nphot);  
-
         // Get clustering parameters for this collection from the config file or a predefined map.
         G4double spatialThreshold = GetSpatialThreshold(fHitsCollectionNames[i]) * mm;
         G4double timeThreshold = GetTimeThreshold(fHitsCollectionNames[i]) * ns;
+
+        G4int ncomp = 0;
+        G4int nphot = 0;
+        CountInteractions(collectionHits, ncomp, nphot);  // Count Compton and photoelectric interactions.
 
         // Cluster hits for this collection.
         std::vector<Cluster> clusters;
@@ -326,30 +323,26 @@ void EventAction::ClusterHits(std::vector<Hit*>& hits, G4double spatialThreshold
     // For the fast simulation the primary track can have another trackID, so we do not need to check the ID.
     //
 
-    G4int ncomp = 0;
-    G4int nphot = 0;
-    for (auto& hit : hits){      
-      G4String process = hit->processType;
-      G4int trackID = hit->trackID;
+    // for (auto& hit : hits){      
+    //   G4String process = hit->processType;
+    //   G4int trackID = hit->trackID;
 
-      G4bool isRelevantProcess = (process == "compt" || process == "phot");
-      G4bool isPrimaryTrack = (trackID == 1);
+    //   G4bool isRelevantProcess = (process == "compt" || process == "phot");
+    //   G4bool isPrimaryTrack = (trackID == 1);
 
-      if (IsFastSimulation() || isPrimaryTrack) {
-          if (process == "compt") ncomp++;
-          if (process == "phot") nphot++;
-          if (isRelevantProcess) {
-              clusters.push_back(Cluster{hit->position, hit->energyDeposit, hit->time, {hit}});
-              hit->used = true;
-          }
-      }
-    }
+    //   if (IsFastSimulation() || isPrimaryTrack) {
+    //       if (isRelevantProcess) {
+    //           clusters.push_back(Cluster{hit->position, hit->energyDeposit, hit->time, {hit}, collectionID});
+    //           hit->used = true;
+    //       }
+    //   }
+    // }
 
     //
     // Clustering the hits, with the seeds already in the cluster vector
     //
     for (auto& hit : hits) {
-        if(verbosityLevel>0 && (ncomp+nphot == 1)) hit->Print();
+        if(verbosityLevel>0) hit->Print();
         if (hit->used) continue;
 
         bool addedToCluster = false;
@@ -371,7 +364,7 @@ void EventAction::ClusterHits(std::vector<Hit*>& hits, G4double spatialThreshold
         }
         // If the hit was not added to any existing cluster, create a new cluster
         if (!addedToCluster) {
-            clusters.push_back(Cluster{hit->position, hit->energyDeposit, hit->time, {hit}});
+            clusters.push_back(Cluster{hit->position, hit->energyDeposit, hit->time, {hit}, collectionID});
         }
     }
 

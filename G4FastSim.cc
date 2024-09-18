@@ -57,6 +57,7 @@ int main(int argc,char** argv)
   // Detector construction
 
   GammaRayHelper* helper = &GammaRayHelper::Instance();
+  
   runManager->SetUserInitialization(new DetectorConstruction());
 
   // Physics list
