@@ -1,4 +1,6 @@
-# G4FastSim
-Variance reduction for gamma ray MC in Geant4
+# G4Sim
 
-For [documentation](https://g4fastsim.readthedocs.io/) on installation, code, and running.
+Code for running both simple standard Geant4 simulations and 
+variance reduction for gamma rays
+
+For [documentation](https://g4sim.readthedocs.io/) on installation, code, and running.

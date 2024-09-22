@@ -3,7 +3,7 @@ Installation
 
 To install the package, run the following command::
     
-    git clone https://github.com/acolijn/G4FastSim.git
+    git clone https://github.com/acolijn/G4Sim.git
 
 Your environment should include Geant4 and ROOT installations.
 

@@ -4,8 +4,8 @@
 # define the detector geometry
 
 # define the detector geometry
-/detector/setGeometryFileName /user/z37/g4/G4FastSim/run/configs/geometry_fast.json
-/detector/setMaterialFileName /user/z37/g4/G4FastSim/run/configs/materials.json
+/detector/setGeometryFileName /user/z37/g4/G4Sim/run/configs/geometry_fast.json
+/detector/setMaterialFileName /user/z37/g4/G4Sim/run/configs/materials.json
 
 /run/initialize
 

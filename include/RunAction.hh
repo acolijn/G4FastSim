@@ -60,7 +60,7 @@ class RunAction : public G4UserRunAction
     G4bool fFastSimulation = false;
     G4int fNumberOfScattersMax = 0;
     G4double fMaxEnergy = 0.0;
-    G4String fOutputFileName = "G4FastSim.root";
+    G4String fOutputFileName = "G4Sim.root";
 };
 
 }

@@ -207,7 +207,7 @@ void RunAction::DefineEventNtuple(){
 
   G4cout << "RunAction::BeginOfRunAction: Creating event data ntuple" << G4endl;
 
-  eventNtupleId = analysisManager->CreateNtuple("ev", "G4FastSim ntuple");
+  eventNtupleId = analysisManager->CreateNtuple("ev", "G4Sim ntuple");
   analysisManager->CreateNtupleDColumn(eventNtupleId, "ev");   // column Id = 0
   analysisManager->CreateNtupleDColumn(eventNtupleId, "w");    // column Id = 1
   analysisManager->CreateNtupleDColumn(eventNtupleId, "type"); // column Id = 2

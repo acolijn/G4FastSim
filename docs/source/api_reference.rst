@@ -26,57 +26,57 @@ Running
 Geant4 code
 -----------
 
-.. doxygenfile:: G4FastSim.cc
-   :project: G4FastSim
+.. doxygenfile:: G4Sim.cc
+   :project: G4Sim
 
 .. doxygenclass:: Hit
-   :project: G4FastSim
+   :project: G4Sim
    :members:
    :private-members:
    
 .. doxygenclass:: ActionInitialization
-   :project: G4FastSim
+   :project: G4Sim
    :members:
 
 .. doxygenclass:: DetectorConstruction
-   :project: G4FastSim
+   :project: G4Sim
    :members:
    :private-members:
 
 .. doxygenclass:: DetectorConstructionMessenger
-   :project: G4FastSim
+   :project: G4Sim
    :members:
    :private-members:
 
 .. doxygenclass:: EventAction
-   :project: G4FastSim
+   :project: G4Sim
    :members:   
    :private-members:
 
 .. doxygenclass:: RunAction
-   :project: G4FastSim
+   :project: G4Sim
    :members:
    :private-members:
 
 .. doxygenclass:: SteppingAction
-   :project: G4FastSim
+   :project: G4Sim
    :members:
    :private-members:
 
 .. doxygenclass:: SensitiveDetector
-   :project: G4FastSim
+   :project: G4Sim
    :members:
 
 .. doxygenclass:: GammaRayHelper
-   :project: G4FastSim
+   :project: G4Sim
    :members:
    :private-members:
 
 .. doxygenclass:: ExtendedLivermoreComptonModel
-   :project: G4FastSim
+   :project: G4Sim
    :members:
    :private-members:
 
 .. doxygenclass:: PrimaryGeneratorAction
-   :project: G4FastSim
+   :project: G4Sim
    :members:

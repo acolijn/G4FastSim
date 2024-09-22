@@ -26,7 +26,7 @@ class PathManager:
     def __init__(self, project_base_dir, output_dir=None):
         self.project_base_dir = project_base_dir
         self.timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
-        self.output_base_dir = output_dir if output_dir else "/data/xenon/acolijn/G4FastSim/"
+        self.output_base_dir = output_dir if output_dir else "/data/xenon/acolijn/G4Sim/"
         self.output_dir = self.create_output_dir()
         self.jobs_dir = os.path.join(self.output_dir, "jobs")
         self.logs_dir = os.path.join(self.output_dir, "logs")
@@ -220,7 +220,7 @@ queue
 source /user/z37/.bashrc
 conda activate g4
 cd {path_manager.jobs_dir}
-/user/z37/g4/G4FastSim/build/G4FastSim {mac_file}
+/user/z37/g4/G4Sim/build/G4Sim {mac_file}
 """
     with open(script_file, 'w') as file:
         file.write(script_content)
@@ -242,7 +242,7 @@ def run_simulation(mac_file, path_manager):
     Returns:
         None
     """
-    executable = os.path.join(path_manager.project_base_dir, "build", "G4FastSim")
+    executable = os.path.join(path_manager.project_base_dir, "build", "G4Sim")
     print(executable, mac_file)
     subprocess.run([executable, mac_file])
 
@@ -254,13 +254,13 @@ def parse_arguments():
         argparse.Namespace: Parsed command line arguments.
     """
     parser = argparse.ArgumentParser(description="Run Geant4 simulation with specified settings.")
-    parser.add_argument("-json", "--json_file", required=True, help="Path to the JSON settings file.")
+    parser.add_argument("-config", "--config_file", required=True, help="Path to the JSON settings file.")
     parser.add_argument("-n", "--beam_on", type=int, required=True, help="Number of events to simulate.")
     parser.add_argument("-o", "--output_dir", default=None, help="Optional output directory. Defaults to a parameter-based directory in '../output'.")
     parser.add_argument("-rundb", "--rundb_file", default="rundb.json", help="Path to the run database file.")
     parser.add_argument("-jobs", "--num_jobs", type=int, default=1, help="Number of jobs to submit.")
     parser.add_argument("--batch", action="store_true", help="Submit jobs to batch queue.")
-    parser.add_argument("--base_dir", default="/user/z37/g4/G4FastSim", help="Base directory of the project.")
+    parser.add_argument("--base_dir", default="/user/z37/g4/G4Sim", help="Base directory of the project.")
     return parser.parse_args()
 
 def initialize_paths(args):
@@ -286,7 +286,7 @@ def prepare_settings(args, path_manager):
     Returns:
         dict: The prepared simulation settings.
     """
-    settings = load_settings(args.json_file)
+    settings = load_settings(args.config_file)
 
     # copy the geometry and material files to the output directory
     shutil.copy(settings["detector_configuration"]["geometryFileName"], path_manager.output_dir)

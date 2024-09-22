@@ -1,7 +1,7 @@
 #----------------------------------------------------------------------------
 # Setup the project
 cmake_minimum_required(VERSION 3.16...3.21)
-project(G4FastSim VERSION 0.1.0)
+project(G4Sim VERSION 0.1.0)
 
 #----------------------------------------------------------------------------
 # Find Geant4 package, activating all available UI and Vis drivers by default
@@ -38,8 +38,8 @@ file(GLOB headers ${PROJECT_SOURCE_DIR}/include/*.hh)
 # Add the executable, and link it to the Geant4 libraries
 #
 link_directories(/data/xenon/miniconda3/envs/g4/lib)
-add_executable(G4FastSim G4FastSim.cc ${sources} ${headers})
-target_link_libraries(G4FastSim ${Geant4_LIBRARIES})
+add_executable(G4Sim G4Sim.cc ${sources} ${headers})
+target_link_libraries(G4Sim ${Geant4_LIBRARIES})
 
 #----------------------------------------------------------------------------
 # Copy all scripts to the build directory, i.e. the directory in which we
@@ -61,9 +61,9 @@ endforeach()
 # For internal Geant4 use - but has no effect if you build this
 # example standalone
 #
-##add_custom_target(G4Proj DEPENDS G4FastSim)
+##add_custom_target(G4Proj DEPENDS G4Sim)
 
 #----------------------------------------------------------------------------
 # Install the executable to 'bin' directory under CMAKE_INSTALL_PREFIX
 #
-install(TARGETS G4FastSim DESTINATION bin)
+install(TARGETS G4Sim DESTINATION bin)
