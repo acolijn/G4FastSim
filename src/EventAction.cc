@@ -268,7 +268,7 @@ void EventAction::AnalyzeHits(const G4Event* event) {
         G4ExceptionDescription msg;
         msg << "No hits collection of this event found." << G4endl;
         G4Exception("EventAction::EndOfEventAction()", "MyCode0001", JustWarning, msg);
-        return;
+        return; // No hits collection of this event found
     }
 
     // Renormalize hit times to avoid numerical issues
