@@ -277,7 +277,7 @@ G4double SteppingAction::DoScatter(const G4Step* step, G4ThreeVector x0){
   //
   // add the hit to the collection
   //
-  AddHitToCollection(newHit, "LXeFiducial");
+  AddHitToCollection(newHit, "LXeFiducialCollection");
 
   return weight;
 }
