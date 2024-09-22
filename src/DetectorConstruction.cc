@@ -35,7 +35,7 @@ using json = nlohmann::json;
 
 /**
  * @namespace G4Sim
- * @brief Namespace for the G4Sim library.
+ * @brief Namespace for the G4Sim library..
 /*/
 namespace G4Sim {
 
