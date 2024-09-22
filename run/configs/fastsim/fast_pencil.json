@@ -1,8 +1,8 @@
 {
     "verbose": 0,
     "detector_configuration": {
-        "geometryFileName": "/user/z37/g4/G4FastSim/run/configs/geometry_fast.json",
-        "materialFileName": "/user/z37/g4/G4FastSim/run/configs/materials.json"
+        "geometryFileName": "/user/z37/g4/G4FastSim/run/configs/fastsim/geometry_fast.json",
+        "materialFileName": "/user/z37/g4/G4FastSim/run/configs/fastsim/materials.json"
     },
     "gps_settings": {
         "particle": "geantino",

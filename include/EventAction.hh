@@ -120,6 +120,10 @@ class EventAction : public G4UserEventAction
     void AddHitsCollectionName(const G4String& name);
     void RenormalizeHitTimes(G4HCofThisEvent* HCE);
     void CountInteractions(std::vector<Hit*>& hits, G4int& ncomp, G4int& nphot);
+    void StorePerCollectionData(const std::vector<Cluster>& clusters, G4int ncomp, G4int nphot);
+    void MergeClusters(std::vector<Cluster>& clusters, G4double spatialThreshold, G4double timeThreshold);
+    void SetVerbosityLevel(G4int level) { verbosityLevel = level; }
+    std::vector<G4String> GetSensitiveDetectorNames();
 
   private:
     //
@@ -132,6 +136,7 @@ class EventAction : public G4UserEventAction
     void ClusterHits(std::vector<G4Sim::Hit*>& hits, G4double spatialThreshold, G4double timeThreshold, std::vector<Cluster>& clusters, int collectionID);
     G4double CalculateDistance(const G4ThreeVector& pos1, const G4ThreeVector& pos2);
     G4double CalculateTimeDifference(G4double time1, G4double time2);
+
 
     // define here all the variables that you want to store for each event in the 
     // ntuple tree  

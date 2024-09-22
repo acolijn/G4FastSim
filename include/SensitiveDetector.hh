@@ -24,7 +24,7 @@ namespace G4Sim {
  */
 class SensitiveDetector : public G4VSensitiveDetector {
 public:
-    SensitiveDetector(const G4String& name, const G4String& hitsCollectionName);
+    SensitiveDetector(const G4String& name, const std::vector<G4String>& volumeNames);
     virtual ~SensitiveDetector();
 
     virtual void Initialize(G4HCofThisEvent* hce) override;
@@ -32,12 +32,22 @@ public:
     virtual void EndOfEvent(G4HCofThisEvent* hce) override;
 
     G4double GetTotalEnergyDeposit() const { return fTotalEnergyDeposit; }
+    G4String GetTag() const { return fTag; }
+
+        // Add this getter function
+    const std::vector<HitsCollection*>& GetHitsCollections() const {
+        return fHitsCollections;
+    }
+
 
 private:
-    HitsCollection* fHitsCollection;
+    //HitsCollection* fHitsCollection;
+    std::vector<HitsCollection*> fHitsCollections;  // A vector to store multiple hits collections
+
     //G4THitsCollection<Hit>* fHitsCollection;
     G4double fTotalEnergyDeposit;
     G4int fHitsCollectionID;
+    G4String fTag;
 };
 
 }

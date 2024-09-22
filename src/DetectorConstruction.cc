@@ -105,12 +105,12 @@ void DetectorConstruction::SetMaterialFileName(const std::string& fileName) {
  * 
  * @param jsonFileName The path to the JSON file containing the geometry information.
  */
-void DetectorConstruction::LoadGeometryFromJson(const std::string& geoFileName) {
 
+void DetectorConstruction::LoadGeometryFromJson(const std::string& geoFileName) {
     std::ifstream inputFile(geoFileName);
     if (!inputFile.is_open()) {
         G4cerr << "DetectorConstruction::LoadGeometryFromJson: Error: Could not open geometry JSON file: " << geoFileName << G4endl;
-        exit(-1);	
+        exit(-1);    
     }
 
     json geometryJson;
@@ -123,55 +123,124 @@ void DetectorConstruction::LoadGeometryFromJson(const std::string& geoFileName) 
     fWorldLogical = new G4LogicalVolume(worldBox, worldMaterial, "World");
     fWorldPhysical = new G4PVPlacement(nullptr, G4ThreeVector(), fWorldLogical, "World", nullptr, false, 0, fCheckOverlaps);
 
-    // Store the world volume in the logical volume map
     logicalVolumeMap["World"] = fWorldLogical;
 
-    // Now construct other volumes
+    // Loop through volumes and set up the sensitive detectors
+    std::map<G4String, std::vector<G4String>> detectorsToVolumes; // Map of detector names to volume names
     for (const auto& volume : geometryJson["volumes"]) {
-        // Construct the logical volume
         G4LogicalVolume* logVol = ConstructVolume(volume);
-        // Store the logical volume in the map
         if (logVol) {
-            logicalVolumeMap[volume["name"]] = logVol;  // Store logical volume
-
-            // If the volume is marked as active, make it a sensitive detector
             G4String name = volume["name"].get<std::string>();
+            logicalVolumeMap[name] = logVol;
+
+            // If the volume is active, associate it with a sensitive detector
             if (volume.contains("active") && volume["active"].get<bool>()) {
-                G4cout << "Making volume sensitive: " << name << G4endl;
-                G4String collectionName = "";
-                if (volume.contains("collectionName")){
-                  collectionName = volume["collectionName"].get<std::string>();
-                } else {
-                  collectionName = name + "Collection";
-                }
-                MakeVolumeSensitive(name, collectionName);
+                G4String detectorName = volume.contains("detectorName") 
+                                         ? volume["detectorName"].get<std::string>()
+                                         : name;  // Use the name of the volume if detectorName is not specified
+                
+                detectorsToVolumes[detectorName].push_back(name); // Associate volume name with detector
 
                 G4double spatialThreshold = 10.0 * mm;  // default
                 G4double timeThreshold = 100.0 * ns;    // default
 
-                if (volume.contains("clustering")) {
-                    if (volume["clustering"].contains("spatialThreshold")) {
-                        spatialThreshold = volume["clustering"]["spatialThreshold"].get<double>() * mm;
-                    }
-                    if (volume["clustering"].contains("timeThreshold")) {
-                        timeThreshold = volume["clustering"]["timeThreshold"].get<double>() * ns;
-                    }
+                if (volume["clustering"].contains("spatialThreshold")) {
+                    spatialThreshold = volume["clustering"]["spatialThreshold"].get<double>() * mm;
+                }
+
+                if (volume["clustering"].contains("timeThreshold")) {
+                    timeThreshold = volume["clustering"]["timeThreshold"].get<double>() * ns;
                 }
 
                 // Store the thresholds in the map
                 fClusteringParameters[name] = std::make_pair(spatialThreshold, timeThreshold);
             }
-        
-            // create the Physical Volume
-            //G4VPhysicalVolume* physVol = new G4PVPlacement(nullptr, position, logicalVolume, name, parentVolume, false, 0, fCheckOverlaps);
+
             G4VPhysicalVolume* physicalVolume = PlaceVolume(volume, logVol);
-            physicalVolumeMap[name] = physicalVolume;  // Store physical volume
+            physicalVolumeMap[name] = physicalVolume;
         }
     }
 
-    G4cout << "Setting clustering parameters in EventAction." << G4endl;
+    // Now create sensitive detectors for each detector name and assign associated volumes
+    for (const auto& [detectorName, volumeNames] : detectorsToVolumes) {
+        MakeVolumeSensitive(detectorName, volumeNames);  // Pass detector name and associated volumes
+    }
+
     EventAction::SetClusteringParameters(fClusteringParameters);
 }
+
+
+// void DetectorConstruction::LoadGeometryFromJson(const std::string& geoFileName) {
+
+//     std::ifstream inputFile(geoFileName);
+//     if (!inputFile.is_open()) {
+//         G4cerr << "DetectorConstruction::LoadGeometryFromJson: Error: Could not open geometry JSON file: " << geoFileName << G4endl;
+//         exit(-1);	
+//     }
+
+//     json geometryJson;
+//     inputFile >> geometryJson;
+
+//     // First construct the world volume
+//     G4Material* worldMaterial = G4Material::GetMaterial("G4_AIR");
+//     G4double worldSize = geometryJson["world"]["size"].get<double>() * m;
+//     G4Box* worldBox = new G4Box("World", worldSize / 2, worldSize / 2, worldSize / 2);
+//     fWorldLogical = new G4LogicalVolume(worldBox, worldMaterial, "World");
+//     fWorldPhysical = new G4PVPlacement(nullptr, G4ThreeVector(), fWorldLogical, "World", nullptr, false, 0, fCheckOverlaps);
+
+//     // Store the world volume in the logical volume map
+//     logicalVolumeMap["World"] = fWorldLogical;
+
+//     // Now construct other volumes
+//     for (const auto& volume : geometryJson["volumes"]) {
+//         // Construct the logical volume
+//         G4LogicalVolume* logVol = ConstructVolume(volume);
+//         // Store the logical volume in the map
+//         if (logVol) {
+//             logicalVolumeMap[volume["name"]] = logVol;  // Store logical volume
+
+//             // If the volume is marked as active, make it a sensitive detector
+//             G4String name = volume["name"].get<std::string>();
+//             if (volume.contains("active") && volume["active"].get<bool>()) {
+//                 if (volume.contains("clustering")) {
+
+//                     G4cout << "Making volume sensitive: " << name << G4endl;
+//                     G4String tag = volume["clustering"].contains("tag") 
+//                                    ? volume["clustering"]["tag"].get<std::string>() 
+//                                    : name;     
+                                          
+//                     MakeVolumeSensitive(name, tag); // Make the volume sensitive
+
+//                     G4double spatialThreshold = 10.0 * mm;  // default
+//                     G4double timeThreshold = 100.0 * ns;    // default
+
+//                     if (volume["clustering"].contains("spatialThreshold")) {
+//                         spatialThreshold = volume["clustering"]["spatialThreshold"].get<double>() * mm;
+//                     }
+
+//                     if (volume["clustering"].contains("timeThreshold")) {
+//                         timeThreshold = volume["clustering"]["timeThreshold"].get<double>() * ns;
+//                     }
+
+//                     // Store the thresholds in the map
+//                     fClusteringParameters[name] = std::make_pair(spatialThreshold, timeThreshold);
+//                 } else {
+//                     G4cerr << "Error: Volume " << name << " is active but has no clustering parameters!" << G4endl;
+//                     exit(-1);
+//                 }
+
+//             }
+        
+//             // create the Physical Volume
+//             //G4VPhysicalVolume* physVol = new G4PVPlacement(nullptr, position, logicalVolume, name, parentVolume, false, 0, fCheckOverlaps);
+//             G4VPhysicalVolume* physicalVolume = PlaceVolume(volume, logVol);
+//             physicalVolumeMap[name] = physicalVolume;  // Store physical volume
+//         }
+//     }
+
+//     G4cout << "Setting clustering parameters in EventAction." << G4endl;
+//     EventAction::SetClusteringParameters(fClusteringParameters);
+// }
 
 /**
  * Makes a volume sensitive by assigning a sensitive detector to it.
@@ -179,29 +248,30 @@ void DetectorConstruction::LoadGeometryFromJson(const std::string& geoFileName) 
  * @param volumeName The name of the volume to make sensitive.
  * @param collectionName The name of the collection associated with the sensitive detector.
  */
-void DetectorConstruction::MakeVolumeSensitive(const G4String& volumeName, const G4String& collectionName) {
+void DetectorConstruction::MakeVolumeSensitive(const G4String& detectorName, const std::vector<G4String>& volumeNames) {
     G4SDManager* sdManager = G4SDManager::GetSDMpointer();
 
-    // Create a new sensitive detector
-    auto* sensitiveDetector = new G4Sim::SensitiveDetector(volumeName, collectionName);
+    // Create a sensitive detector with the detector name
+    auto* sensitiveDetector = new SensitiveDetector(detectorName, volumeNames);
     sdManager->AddNewDetector(sensitiveDetector);
 
-    // Assign the sensitive detector to the corresponding logical volume
-    G4LogicalVolume* logicalVolume = GetLogicalVolume(volumeName);
-    if (logicalVolume) {
-        logicalVolume->SetSensitiveDetector(sensitiveDetector);
-        G4cout << "Assigned sensitive detector to volume: " << volumeName << G4endl;
+    for (const auto& volumeName : volumeNames) {
+        G4LogicalVolume* logicalVolume = GetLogicalVolume(volumeName);
+        if (logicalVolume) {
+            logicalVolume->SetSensitiveDetector(sensitiveDetector);
+            G4cout << "Assigned sensitive detector " << detectorName << " to volume: " << volumeName << G4endl;
 
-        // Register the hits collection name with EventAction
-        auto* eventAction = const_cast<EventAction*>(dynamic_cast<const EventAction*>(G4RunManager::GetRunManager()->GetUserEventAction()));
-
-        if (eventAction) {
-            eventAction->AddHitsCollectionName(collectionName);
+            // Register the hits collection name with EventAction
+            auto* eventAction = const_cast<EventAction*>(dynamic_cast<const EventAction*>(G4RunManager::GetRunManager()->GetUserEventAction()));
+            if (eventAction) {
+                eventAction->AddHitsCollectionName(volumeName + "Collection");
+            }
+        } else {
+            G4cerr << "Error: Logical volume " << volumeName << " not found!" << G4endl;
         }
-    } else {
-        G4cerr << "Error: Logical volume " << volumeName << " not found!" << G4endl;
     }
 }
+
 
 
 /**
