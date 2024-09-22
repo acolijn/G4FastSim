@@ -45,6 +45,7 @@
       "parent": "InnerCryostat",
       "color": [0.0, 0.0, 1.0, 0.3],	
       "active": true,
+      "detectorName": "LXe",
       "clustering": {
         "spatialThreshold": 25.0,
         "timeThreshold": 1.0
@@ -59,6 +60,7 @@
       "parent": "LiquidXenon",
       "color": [0.0, 0.0, 1.0, 0.5],
       "active": true,
+      "detectorName": "LXe",
       "clustering": {
         "spatialThreshold": 25.0,
         "timeThreshold": 1.0

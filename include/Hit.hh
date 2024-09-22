@@ -44,6 +44,8 @@ public:
     G4double particleEnergy1; /**< Energy of the particle after the step */
     G4bool used; /**< Flag to indicate if the hit has been used in a cluster. */
 
+    // New: Tag for identifying hit collection (default: logical volume name)
+    G4String tag;
     
     /**
      * @brief Print function to print the details of the hit.

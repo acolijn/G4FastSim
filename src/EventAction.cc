@@ -12,6 +12,8 @@
 #include "G4SDManager.hh"
 #include "Hit.hh"
 #include "GammaRayHelper.hh"
+#include "SensitiveDetector.hh"
+#include "G4LogicalVolumeStore.hh"
 
 ///namespace G4Sim
 ///{
@@ -214,9 +216,51 @@ void EventAction::CountInteractions(std::vector<Hit*>& hits, int& ncomp, int& np
 }
 
 /**
- * Analyzes the hits in the event.
+ * @brief Prints the names of all sensitive detectors and their associated hit collections.
  *
- * @param event The G4Event object representing the current event.
+ * This function retrieves the sensitive detector manager and hit collection table,
+ * then iterates through all hit collections to print their names along with the
+ * names of the associated sensitive detectors.
+ *
+ * The output is printed to the standard Geant4 output stream (G4cout).
+ */
+void PrintSensitiveDetectorNames() {
+    G4SDManager* sdManager = G4SDManager::GetSDMpointer();
+    G4HCtable* hcTable = sdManager->GetHCtable();
+    
+    G4int numberOfCollections = hcTable->entries();
+    G4cout << "Number of hit collections: " << numberOfCollections << G4endl;
+
+    for (G4int i = 0; i < numberOfCollections; ++i) {
+        G4String collectionName = hcTable->GetHCname(i);
+        G4String sdName = hcTable->GetSDname(i);
+
+        G4cout << "Hit Collection: " << collectionName << ", Sensitive Detector: " << sdName << G4endl;
+    }
+}
+
+
+/**
+ * @brief Analyzes the hits in the given event.
+ *
+ * This function processes the hits collected during the event, renormalizes hit times,
+ * and clusters the hits based on spatial and temporal thresholds. It also counts the
+ * number of Compton and photoelectric interactions.
+ *
+ * @param event Pointer to the G4Event object containing the event data.
+ *
+ * The function performs the following steps:
+ * 1. Retrieves the hits collection of the event.
+ * 2. Renormalizes hit times to avoid numerical issues.
+ * 3. Prints the names of sensitive detectors if verbosity level is greater than 0.
+ * 4. Iterates over all sensitive detectors and retrieves their hit collections.
+ * 5. For each hit collection, it retrieves the hits and adds them to a list.
+ * 6. Counts the number of Compton and photoelectric interactions.
+ * 7. Clusters the hits based on spatial and temporal thresholds.
+ * 8. Stores the clustered data along with interaction counts.
+ *
+ * If any sensitive detector is not found or cannot be cast to the custom SensitiveDetector class,
+ * the function prints an error message and exits the program.
  */
 void EventAction::AnalyzeHits(const G4Event* event) {
     G4HCofThisEvent* HCE = event->GetHCofThisEvent();
@@ -227,141 +271,160 @@ void EventAction::AnalyzeHits(const G4Event* event) {
         return;
     }
 
-    // renormalize hit times. sometimes very large numbers give numerical troubles when clustering
+    // Renormalize hit times to avoid numerical issues
     RenormalizeHitTimes(HCE);
 
-    // Cluster hits for each hits collection
-    std::vector<Cluster> allClusters;
+    if(verbosityLevel>0) PrintSensitiveDetectorNames();
 
-    // Loop over hits collections.
-    for (size_t i = 0; i < fHitsCollectionNames.size(); ++i) {
-        G4int hcID = G4SDManager::GetSDMpointer()->GetCollectionID(fHitsCollectionNames[i]);
-        auto* fHitsCollection = static_cast<HitsCollection*>(HCE->GetHC(hcID));
-        if (!fHitsCollection) continue;
-
-        G4int n_hit = fHitsCollection->entries();
-        if (verbosityLevel > 0) G4cout << "Hits Collection: " << fHitsCollectionNames[i] << " has " << n_hit << " hits." << G4endl;
-
-        std::vector<Hit*> collectionHits;
-        for (G4int j = 0; j < n_hit; ++j) {
-            Hit* hit = (*fHitsCollection)[j];
-            collectionHits.push_back(hit);
+    // Get the list of sensitive detector names
+    std::vector<G4String> sensitiveDetectorNames = GetSensitiveDetectorNames();
+    // Loop over all sensitive detectors
+    int collectionId = 0;
+    for (const G4String& sdName : sensitiveDetectorNames) {
+        G4VSensitiveDetector* sd = G4SDManager::GetSDMpointer()->FindSensitiveDetector(sdName);
+        if (!sd) {
+            G4cerr << "Sensitive detector " << sdName << " not found!" << G4endl;
+            exit(-1);
         }
 
-        // Get clustering parameters for this collection from the config file or a predefined map.
-        G4double spatialThreshold = GetSpatialThreshold(fHitsCollectionNames[i]) * mm;
-        G4double timeThreshold = GetTimeThreshold(fHitsCollectionNames[i]) * ns;
+        // Cast to your custom sensitive detector class
+        SensitiveDetector* mySD = dynamic_cast<SensitiveDetector*>(sd);
+        if (!mySD) {
+            G4cerr << "Error casting to SensitiveDetector for " << sdName << G4endl;
+            exit(-1);
+        }
 
+        // Now iterate over all hit collections in this sensitive detector
+        std::vector<Hit*> hitList;
+        G4double spatialThreshold = 100.0 * mm;
+        G4double timeThreshold = 10.0 * ns;
+        for (auto* hitsCollection : mySD->GetHitsCollections()) {
+            G4int n_hit = hitsCollection->entries();
+            if(verbosityLevel>0)
+                G4cout << "Hits Collection in " << sdName << " has " << n_hit << " hits." << G4endl;
+            
+            G4String collectionName = hitsCollection->GetName();
+            spatialThreshold = GetSpatialThreshold(collectionName) * mm;
+            timeThreshold = GetTimeThreshold(collectionName) * ns;
+
+            // Find the hits in this collection
+            for (G4int j = 0; j < n_hit; ++j) {
+                Hit* hit = (*hitsCollection)[j];
+                hitList.push_back(hit);  // Add hit to the list
+            }
+
+
+        }    
+        // Call the function that processes the hits: all hist in teh same senstive detector are processed together
+        // Count Compton and photoelectric interactions
         G4int ncomp = 0;
         G4int nphot = 0;
-        CountInteractions(collectionHits, ncomp, nphot);  // Count Compton and photoelectric interactions.
-
-        // Cluster hits for this collection.
+        CountInteractions(hitList, ncomp, nphot);
+        // Cluster hits and store the data
         std::vector<Cluster> clusters;
-        ClusterHits(collectionHits, spatialThreshold, timeThreshold, clusters, static_cast<int>(i)); // Add collection ID here.
-        allClusters.insert(allClusters.end(), clusters.begin(), clusters.end());
-    
-        // Use `allClusters` for further analysis or output.
-        G4double edet = 0.0;
-        G4int nclus = 0;
+        ClusterHits(hitList, spatialThreshold, timeThreshold, clusters, static_cast<int>(collectionId));  
+        // Store the data for each collection
+        StorePerCollectionData(clusters, ncomp, nphot);
+        // Increment the collection ID
+        collectionId++;
+    }
 
-        for (auto& cluster : clusters) {
+    return;
+}
 
-          if (cluster.energyDeposit > 0*eV) {
+/**
+ * @brief Retrieves the names of all sensitive detectors in the simulation.
+ *
+ * This method accesses the G4SDManager to get the list of all hits collections
+ * and extracts the names of the sensitive detectors associated with them.
+ * It ensures that the returned list contains unique names only.
+ *
+ * @return A vector of G4String containing the names of all sensitive detectors.
+ */
+std::vector<G4String> EventAction::GetSensitiveDetectorNames() {
+    G4SDManager* sdManager = G4SDManager::GetSDMpointer();
+    std::vector<G4String> sdNames;
+
+    // Retrieve the list of all hits collections and extract the sensitive detector names from them
+    const G4HCtable* hctable = sdManager->GetHCtable();
+    for (G4int i = 0; i < hctable->entries(); ++i) {
+        G4String hcName = hctable->GetHCname(i);
+        G4String sdName = hctable->GetSDname(i);  // Get the corresponding sensitive detector name
+        if (std::find(sdNames.begin(), sdNames.end(), sdName) == sdNames.end()) {
+            sdNames.push_back(sdName);  // Avoid duplicates
+        }
+    }
+
+    return sdNames;
+}
+
+/**
+ * Stores the cluster data for each tag group.
+ *
+ * @param clusters The clusters for the given tag group.
+ * @param ncomp The number of Compton interactions.
+ * @param nphot The number of photoelectric interactions.
+ */
+void EventAction::StorePerCollectionData(const std::vector<Cluster>& clusters, G4int ncomp, G4int nphot) {
+    G4double edet = 0.0;
+    G4int nclus = 0;
+
+    for (const auto& cluster : clusters) {
+        if (cluster.energyDeposit > 0 * eV) {
             nclus++;
             edet += cluster.energyDeposit / keV;
-            //G4cout << "cluster: " << nclus << " edep: " << cluster.energyDeposit / keV << " keV" << G4endl;
+
             fE.push_back(cluster.energyDeposit / keV);
             fX.push_back(cluster.position.x());
             fY.push_back(cluster.position.y());
             fZ.push_back(cluster.position.z());
             fID.push_back(cluster.collectionID);
             fW.push_back(fLogWeight);
-          }
         }
-        //G4cout << "Total energy deposit: " << edet << " keV" << G4endl;
-        fEdet.push_back(edet);
-        fNdet.push_back(nclus);
-        fNphot.push_back(ncomp);
-        fNcomp.push_back(nphot);
     }
-  }
 
-//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
-
-G4double EventAction::CalculateDistance(const G4ThreeVector& pos1, const G4ThreeVector& pos2) {
-    return (pos1 - pos2).mag();
+    // Store the total energy deposit and number of clusters per collection (tag)
+    fEdet.push_back(edet);
+    fNdet.push_back(nclus);
+    fNphot.push_back(nphot);
+    fNcomp.push_back(ncomp);
 }
-
-//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
-
-G4double EventAction::CalculateTimeDifference(G4double time1, G4double time2) {
-    return std::fabs(time1 - time2);
-}
-
-//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
-
 
 /**
- * @brief Clusters hits based on spatial and time thresholds.
- * 
- * This function takes a vector of hits and clusters them based on their spatial and time proximity.
- * Hits that are within the specified spatial and time thresholds are added to the same cluster.
- * If a hit does not belong to any existing cluster, a new cluster is created for that hit.
- * 
+ * Clusters hits based on spatial and time thresholds.
+ *
  * @param hits The vector of hits to be clustered.
  * @param spatialThreshold The maximum spatial distance for hits to be considered part of the same cluster.
  * @param timeThreshold The maximum time difference for hits to be considered part of the same cluster.
  * @param clusters The vector of clusters to store the clustered hits.
+ * @param collectionID The collection ID for the hits.
  */
-//void EventAction::ClusterHits(std::vector<Hit*>& hits, G4double spatialThreshold, G4double timeThreshold, std::vector<Cluster>& clusters) {
 void EventAction::ClusterHits(std::vector<Hit*>& hits, G4double spatialThreshold, G4double timeThreshold, std::vector<Cluster>& clusters, int collectionID) {
-    if (hits.empty()) return;  // No hits, nothing to do.
+    if (hits.empty()) return;
 
-    // 
-    // Finding the cluster seeds. A cluster seed is a hit from a primary track doing a Compton or photoelectric interaction.
-    // For the fast simulation the primary track can have another trackID, so we do not need to check the ID.
-    //
-
-    // for (auto& hit : hits){      
-    //   G4String process = hit->processType;
-    //   G4int trackID = hit->trackID;
-
-    //   G4bool isRelevantProcess = (process == "compt" || process == "phot");
-    //   G4bool isPrimaryTrack = (trackID == 1);
-
-    //   if (IsFastSimulation() || isPrimaryTrack) {
-    //       if (isRelevantProcess) {
-    //           clusters.push_back(Cluster{hit->position, hit->energyDeposit, hit->time, {hit}, collectionID});
-    //           hit->used = true;
-    //       }
-    //   }
-    // }
-
-    //
-    // Clustering the hits, with the seeds already in the cluster vector
-    //
+    // Clustering the hits
     for (auto& hit : hits) {
-        if(verbosityLevel>0) hit->Print();
+        if (verbosityLevel > 0) hit->Print();
         if (hit->used) continue;
 
         bool addedToCluster = false;
         for (auto& cluster : clusters) {
             if (CalculateDistance(hit->position, cluster.position) < spatialThreshold &&
                 CalculateTimeDifference(hit->time, cluster.time) < timeThreshold) {
-                
+
                 G4double energyDeposit = hit->energyDeposit;
-                if(energyDeposit > 0*eV) {
-                  G4int clusterSize = cluster.hits.size();
-                  cluster.position = (cluster.position * clusterSize + hit->position) / (clusterSize + 1);
-                  cluster.energyDeposit += energyDeposit; // Sum energy deposits
-                  cluster.time = (cluster.time * clusterSize + hit->time) / (clusterSize + 1); // Update average time
-                  cluster.hits.push_back(hit);
-                  addedToCluster = true;
-                  break;
+                if (energyDeposit > 0 * eV) {
+                    G4int clusterSize = cluster.hits.size();
+                    cluster.position = (cluster.position * clusterSize + hit->position) / (clusterSize + 1);
+                    cluster.energyDeposit += energyDeposit;
+                    cluster.time = (cluster.time * clusterSize + hit->time) / (clusterSize + 1);
+                    cluster.hits.push_back(hit);
+                    addedToCluster = true;
+                    break;
                 }
             }
         }
+
         // If the hit was not added to any existing cluster, create a new cluster
         if (!addedToCluster) {
             clusters.push_back(Cluster{hit->position, hit->energyDeposit, hit->time, {hit}, collectionID});
@@ -369,9 +432,19 @@ void EventAction::ClusterHits(std::vector<Hit*>& hits, G4double spatialThreshold
     }
 
     // Merge close clusters
+    MergeClusters(clusters, spatialThreshold, timeThreshold);
+}
 
+/**
+ * Merges clusters that are close in space and time.
+ *
+ * @param clusters The vector of clusters to be merged.
+ * @param spatialThreshold The maximum spatial distance for merging clusters.
+ * @param timeThreshold The maximum time difference for merging clusters.
+ */
+void EventAction::MergeClusters(std::vector<Cluster>& clusters, G4double spatialThreshold, G4double timeThreshold) {
     for (size_t i = 0; i < clusters.size(); ++i) {
-        for (size_t j = i + 1; j < clusters.size(); ) {
+        for (size_t j = i + 1; j < clusters.size();) {
             if (CalculateDistance(clusters[i].position, clusters[j].position) < spatialThreshold &&
                 CalculateTimeDifference(clusters[i].time, clusters[j].time) < timeThreshold) {
 
@@ -385,13 +458,24 @@ void EventAction::ClusterHits(std::vector<Hit*>& hits, G4double spatialThreshold
                 // Remove cluster j
                 clusters.erase(clusters.begin() + j);
             } else {
-                ++j; // Only increment if no merge
+                ++j;  // Increment only if no merge
             }
         }
     }
+}
+//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
+G4double EventAction::CalculateDistance(const G4ThreeVector& pos1, const G4ThreeVector& pos2) {
+    return (pos1 - pos2).mag();
 }
 
+//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
+
+G4double EventAction::CalculateTimeDifference(G4double time1, G4double time2) {
+    return std::fabs(time1 - time2);
+}
+
+//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 G4double EventAction::GetSpatialThreshold(const G4String& collectionName) {
     if (fClusteringParameters.find(collectionName) != fClusteringParameters.end()) {

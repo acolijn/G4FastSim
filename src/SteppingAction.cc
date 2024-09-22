@@ -273,10 +273,11 @@ G4double SteppingAction::DoScatter(const G4Step* step, G4ThreeVector x0){
   newHit->parentID = step->GetTrack()->GetParentID();
   newHit->particleType = "manual";
   newHit->processType = process;
+  //newHit->tag = "LXeFiducial";
   //
   // add the hit to the collection
   //
-  AddHitToCollection(newHit, "LXeFiducialCollection");
+  AddHitToCollection(newHit, "LXeFiducial");
 
   return weight;
 }
