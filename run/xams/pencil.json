@@ -1,8 +1,8 @@
 {
     "verbose": 0,
     "detector_configuration": {
-        "geometryFileName": "/user/z37/g4/G4XamsSim/run/configs/geometry.json",
-        "materialFileName": "/user/z37/g4/G4XamsSim/run/configs/materials.json"
+        "geometryFileName": "/user/z37/g4/G4XamsSim/run/xams/geometry.json",
+        "materialFileName": "/user/z37/g4/G4XamsSim/run/xams/materials.json"
     },
     "gps_settings": {
         "particle": "gamma",

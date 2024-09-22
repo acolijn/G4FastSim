@@ -16,7 +16,7 @@ sys.path.insert(0, os.path.abspath('.'))  # Points to the source directory where
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = 'G4FastSim'
+project = 'G4Sim'
 copyright = '2024, Auke Colijn'
 author = 'Auke Colijn'
 
@@ -35,9 +35,9 @@ extensions = [
     'breathe'              # Integrates Doxygen with Sphinx
 ]
 breathe_projects = {
-    "G4FastSim": "../doxygen_output/xml"
+    "G4Sim": "../doxygen_output/xml"
 }
-breathe_default_project = "G4FastSim"
+breathe_default_project = "G4Sim"
 
 templates_path = ['_templates']
 exclude_patterns = []

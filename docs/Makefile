@@ -8,7 +8,7 @@ SPHINXBUILD   ?= sphinx-build
 SOURCEDIR     = source
 BUILDDIR      = build
 
-SPHINXPROJ    = G4FastSim
+SPHINXPROJ    = G4Sim
 CONF          = source
 
 # Put it first so that "make" without argument is like "make help".

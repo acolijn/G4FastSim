@@ -26,7 +26,7 @@ RunActionMessenger::RunActionMessenger(RunAction* action)
     fOutputFileNameCmd = new G4UIcmdWithAString("/run/setOutputFileName", this);
     fOutputFileNameCmd->SetGuidance("Set the output file name.");
     fOutputFileNameCmd->SetParameterName("outputFileName", false);
-    fOutputFileNameCmd->SetDefaultValue("G4FastSim.root");
+    fOutputFileNameCmd->SetDefaultValue("G4Sim.root");
 
 }
 
