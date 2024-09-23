@@ -105,7 +105,6 @@ void DetectorConstruction::SetMaterialFileName(const std::string& fileName) {
  * 
  * @param jsonFileName The path to the JSON file containing the geometry information.
  */
-
 void DetectorConstruction::LoadGeometryFromJson(const std::string& geoFileName) {
     std::ifstream inputFile(geoFileName);
     if (!inputFile.is_open()) {
@@ -168,79 +167,6 @@ void DetectorConstruction::LoadGeometryFromJson(const std::string& geoFileName) 
 
     EventAction::SetClusteringParameters(fClusteringParameters);
 }
-
-
-// void DetectorConstruction::LoadGeometryFromJson(const std::string& geoFileName) {
-
-//     std::ifstream inputFile(geoFileName);
-//     if (!inputFile.is_open()) {
-//         G4cerr << "DetectorConstruction::LoadGeometryFromJson: Error: Could not open geometry JSON file: " << geoFileName << G4endl;
-//         exit(-1);	
-//     }
-
-//     json geometryJson;
-//     inputFile >> geometryJson;
-
-//     // First construct the world volume
-//     G4Material* worldMaterial = G4Material::GetMaterial("G4_AIR");
-//     G4double worldSize = geometryJson["world"]["size"].get<double>() * m;
-//     G4Box* worldBox = new G4Box("World", worldSize / 2, worldSize / 2, worldSize / 2);
-//     fWorldLogical = new G4LogicalVolume(worldBox, worldMaterial, "World");
-//     fWorldPhysical = new G4PVPlacement(nullptr, G4ThreeVector(), fWorldLogical, "World", nullptr, false, 0, fCheckOverlaps);
-
-//     // Store the world volume in the logical volume map
-//     logicalVolumeMap["World"] = fWorldLogical;
-
-//     // Now construct other volumes
-//     for (const auto& volume : geometryJson["volumes"]) {
-//         // Construct the logical volume
-//         G4LogicalVolume* logVol = ConstructVolume(volume);
-//         // Store the logical volume in the map
-//         if (logVol) {
-//             logicalVolumeMap[volume["name"]] = logVol;  // Store logical volume
-
-//             // If the volume is marked as active, make it a sensitive detector
-//             G4String name = volume["name"].get<std::string>();
-//             if (volume.contains("active") && volume["active"].get<bool>()) {
-//                 if (volume.contains("clustering")) {
-
-//                     G4cout << "Making volume sensitive: " << name << G4endl;
-//                     G4String tag = volume["clustering"].contains("tag") 
-//                                    ? volume["clustering"]["tag"].get<std::string>() 
-//                                    : name;     
-                                          
-//                     MakeVolumeSensitive(name, tag); // Make the volume sensitive
-
-//                     G4double spatialThreshold = 10.0 * mm;  // default
-//                     G4double timeThreshold = 100.0 * ns;    // default
-
-//                     if (volume["clustering"].contains("spatialThreshold")) {
-//                         spatialThreshold = volume["clustering"]["spatialThreshold"].get<double>() * mm;
-//                     }
-
-//                     if (volume["clustering"].contains("timeThreshold")) {
-//                         timeThreshold = volume["clustering"]["timeThreshold"].get<double>() * ns;
-//                     }
-
-//                     // Store the thresholds in the map
-//                     fClusteringParameters[name] = std::make_pair(spatialThreshold, timeThreshold);
-//                 } else {
-//                     G4cerr << "Error: Volume " << name << " is active but has no clustering parameters!" << G4endl;
-//                     exit(-1);
-//                 }
-
-//             }
-        
-//             // create the Physical Volume
-//             //G4VPhysicalVolume* physVol = new G4PVPlacement(nullptr, position, logicalVolume, name, parentVolume, false, 0, fCheckOverlaps);
-//             G4VPhysicalVolume* physicalVolume = PlaceVolume(volume, logVol);
-//             physicalVolumeMap[name] = physicalVolume;  // Store physical volume
-//         }
-//     }
-
-//     G4cout << "Setting clustering parameters in EventAction." << G4endl;
-//     EventAction::SetClusteringParameters(fClusteringParameters);
-// }
 
 /**
  * Makes a volume sensitive by assigning a sensitive detector to it.

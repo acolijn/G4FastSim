@@ -11,6 +11,7 @@ def is_jagged(array):
     """Check if the given array is a jagged array."""
     return isinstance(array, ak.highlevel.Array) and isinstance(array.layout, ak.contents.ListOffsetArray)
 
+
 class Geant4Analyzer:
     def __init__(self, run_id, label="", first_only=True):
         """
