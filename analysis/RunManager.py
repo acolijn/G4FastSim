@@ -99,7 +99,37 @@ class RunManager:
                     settings = json.load(file)
                 if convert_units:
                     settings = self.convert_units(settings)
+                #print(settings)
+                
                 return settings
+        return None
+    
+    def get_geometry(self, run_id):
+        """
+        Retrieves the geometry for a specific run.
+
+        Args:
+            run_id (int): The ID of the run.
+
+        Returns:
+            dict or None: The geometry for the run if found, None otherwise.
+        """
+
+        settings = self.get_run_settings(run_id)
+
+        if settings:
+            # get the geometryFileName from the settings
+            geometryFileName = settings["detector_configuration"]["geometryFileName"]
+            print(geometryFileName)
+            # check if the file geometryFileName exists
+            if os.path.exists(geometryFileName):
+                with open(geometryFileName, 'r') as file:
+                    geometry = json.load(file)
+                return geometry
+            else:
+                print(f"Geometry file {geometryFileName} not found.")
+                return None
+            
         return None
 
     def convert_units(self, settings):

@@ -370,17 +370,17 @@ void EventAction::StorePerCollectionData(const std::vector<Cluster>& clusters, G
     G4int nclus = 0;
 
     for (const auto& cluster : clusters) {
-        if (cluster.energyDeposit > 0 * eV) {
-            nclus++;
-            edet += cluster.energyDeposit / keV;
+//        if (cluster.energyDeposit > 0 * eV) {
+        nclus++;
+        edet += cluster.energyDeposit / keV;
 
-            fE.push_back(cluster.energyDeposit / keV);
-            fX.push_back(cluster.position.x());
-            fY.push_back(cluster.position.y());
-            fZ.push_back(cluster.position.z());
-            fID.push_back(cluster.collectionID);
-            fW.push_back(fLogWeight);
-        }
+        fE.push_back(cluster.energyDeposit / keV);
+        fX.push_back(cluster.position.x());
+        fY.push_back(cluster.position.y());
+        fZ.push_back(cluster.position.z());
+        fID.push_back(cluster.collectionID);
+        fW.push_back(fLogWeight);
+//        }
     }
 
     // Store the total energy deposit and number of clusters per collection (tag)
