@@ -1,6 +1,7 @@
 import uproot
 import numpy as np
 import awkward as ak
+from matplotlib.patches import Circle, Rectangle
 import matplotlib.pyplot as plt
 from matplotlib.colors import LogNorm
 
@@ -26,6 +27,7 @@ class Geant4Analyzer:
 
         self.file_paths = manager.get_output_root_files(run_id, first_only=first_only)
         self.settings = manager.get_run_settings(run_id, convert_units=True)
+        self.geometry = manager.get_geometry(run_id)   
         self.label = ""
 
         if label == "":
@@ -199,4 +201,4 @@ class Geant4Analyzer:
             plt.show()
 
         return ax
-
+    
