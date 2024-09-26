@@ -1,128 +1,197 @@
 import json
 import numpy as np
 import matplotlib.pyplot as plt
+from scipy.spatial.transform import Rotation as R
 
 class GeometryPlotter:
     def __init__(self, geometry_file):
-        """Constructor that loads the geometry from a JSON file."""
-        self.geometry_file = geometry_file
-        self.geometry_data = self.load_geometry(geometry_file)
-
-    def load_geometry(self, geometry_file):
-        """Loads the geometry from a JSON file."""
+        """Initialize the GeometryPlotter with a geometry JSON file."""
         with open(geometry_file, 'r') as file:
-            return json.load(file)
+            self.geometry_data = json.load(file)
 
-    def draw_geometry(self):
-        """Main function to draw the entire geometry."""
-        fig, ax = plt.subplots()
-        world = self.geometry_data['world']
-        #ax.set_xlim(-world['size']*1000, world['size']*1000)
-        #ax.set_ylim(-world['size']*1000, world['size']*1000)
-        ax.set_xlim(-200,200)
-        ax.set_ylim(-200,200)
-        for volume in self.geometry_data['volumes']:
-            print(f"Drawing volume: {volume['name']}")
-            self.draw_volume(volume, ax)
+    def plot_geometry(self, ax=None, view="xy"):
+        """Plot the geometry on the provided axis."""
+        if ax is None:
+            fig, ax = plt.subplots()
+
+        ax.set_ylim(-150, 150)
+        ax.set_xlim(-150, 150)
+        # Plot each volume recursively, starting with the world volume
+        world_volume = [vol for vol in self.geometry_data['volumes'] if vol.get('parent') == 'World'][0]
+        self.plot_volume(world_volume, ax, view, parent_transform=None)
+
+        # Set axis labels based on the view
+        if view == "xy":
+            plt.xlabel("X (mm)")
+            plt.ylabel("Y (mm)")
+        elif view == "rz":
+            plt.xlabel("Radius (mm)")
+            plt.ylabel("Z (mm)")
+
         plt.show()
 
-    def draw_volume(self, volume, ax):
-        """Draws an individual volume based on its shape."""
+    def plot_volume(self, volume, ax, view, parent_transform=None):
+        """Plot an individual volume, applying transformations from parent volumes."""
+        shape_type = volume['shape']
+
+        # Apply parent transformation (position and rotation)
+        volume_transform = self.get_volume_transform(volume)
+        if parent_transform:
+            volume_transform = self.combine_transforms(parent_transform, volume_transform)
+
+        # Plot based on volume type
+        if shape_type in ('tubs', 'box', 'sphere'):
+            self.plot_simple_volume(volume, ax, view, volume_transform)
+        elif shape_type in ('union', 'subtraction'):
+            self.plot_composite_volume(volume, ax, view, volume_transform)
+
+        # Recursively plot child volumes
+        for child_volume in self.get_child_volumes(volume['name']):
+            self.plot_volume(child_volume, ax, view, parent_transform=volume_transform)
+
+    def plot_composite_volume(self, volume, ax, view, volume_transform):
+        """Handle composite volumes with union or subtraction."""
+        components = volume['components']
+
+        # Collect component coordinates, applying only relative transformations
+        all_coords = []
+        for component in components:
+            # Apply the local placement (relative to the composite object) but not the final placement
+            coords = self.get_component_coords(component, view)
+            all_coords.append((component, coords))
+
+        # Apply final transformation (rotation + translation) to the entire composite
+        transformed_coords = []
+        for component, coords in all_coords:
+            transformed_coords.append(self.apply_placement(component, coords, volume_transform))
+
+        # Plot the final combined object with the overall transformation
+        # for coords in transformed_coords:
+        #     for coord in coords:
+        #         if len(coord) == 2:
+        #             x, y = coord
+        #             z = 0
+        #         elif len(coord) == 3:
+        #             x, y, z = coord
+        #         else:
+        #             raise ValueError("Coordinate format not supported.")
+
+        #         if view == "xy":
+        #             self.draw_circle(ax, x, y, 50, {})  # Example, replace with actual shape drawing
+        #         elif view == "rz":
+        #             r = np.sqrt(x**2 + y**2)
+        #             self.draw_rectangle(ax, r, z, 50, 100, {}, view)
+
+    def get_component_coords(self, component, view):
+        """Get coordinates of a component relative to its parent composite volume."""
+        placement = component.get('placement', {})
+        x = placement.get('x', 0)
+        y = placement.get('y', 0)
+        z = placement.get('z', 0)
+        
+        # Return the appropriate coordinate based on the view (xy or rz)
+        if view == "xy":
+            return [(x, y, z)]
+        elif view == "rz":
+            r = np.sqrt(x**2 + y**2)
+            return [(r, z)]
+
+    def get_volume_transform(self, volume):
+        """Return the transformation (translation + rotation) of the volume."""
+        placement = volume.get('placement', {})
+        x = placement.get('x', 0)
+        y = placement.get('y', 0)
+        z = placement.get('z', 0)
+        rotation = placement.get('rotation', {'x': 0, 'y': 0, 'z': 0})
+
+        return {'position': np.array([x, y, z]), 'rotation': rotation}
+
+    def combine_transforms(self, parent_transform, child_transform):
+        """Combine parent and child transformations."""
+        # Apply parent's rotation to child's position
+        child_position = self.apply_rotation(child_transform['position'], parent_transform['rotation'])
+        combined_position = parent_transform['position'] + child_position
+
+        # Combine rotations (Euler angles)
+        combined_rotation = {
+            'x': parent_transform['rotation']['x'] + child_transform['rotation']['x'],
+            'y': parent_transform['rotation']['y'] + child_transform['rotation']['y'],
+            'z': parent_transform['rotation']['z'] + child_transform['rotation']['z']
+        }
+
+        return {'position': combined_position, 'rotation': combined_rotation}
+
+    def apply_rotation(self, coords, rotation_angles):
+        """Apply 3D rotation using Euler angles."""
+        rotation = R.from_euler('xyz', [rotation_angles['x'], rotation_angles['y'], rotation_angles['z']], degrees=True)
+        return rotation.apply(coords)
+
+    def apply_placement(self, volume, coords, transform):
+        """Apply the global transformation (rotation + translation) to the entire object."""
+        x_offset, y_offset, z_offset = transform['position']
+
+        # Apply rotation if needed and handle 2D or 3D coordinates
+        transformed_coords = []
+        for coord in coords:
+            if len(coord) == 2:  # If only (x, y) is provided
+                x, y = coord
+                z = 0  # Default z to 0 for 2D cases
+            elif len(coord) == 3:  # If (x, y, z) is provided
+                x, y, z = coord
+            else:
+                raise ValueError(f"Invalid coordinate format: {coord}")
+            
+            # Apply rotation
+            rotated_coord = self.apply_rotation(np.array([x, y, z]), transform['rotation'])
+            transformed_coords.append(rotated_coord)
+
+        # Apply translation after rotation
+        final_coords = [(x + x_offset, y + y_offset, z + z_offset) for x, y, z in transformed_coords]
+        return final_coords
+
+
+    def get_child_volumes(self, parent_name):
+        """Retrieve child volumes of a given parent."""
+        return [vol for vol in self.geometry_data['volumes'] if vol.get('parent') == parent_name]
+
+    def plot_simple_volume(self, volume, ax, view, transform):
+        """Plot a simple volume like a tub, box, or sphere."""
         shape = volume['shape']
-        if shape == 'tubs':
-            self.draw_tubs(volume, ax)
-        elif shape == 'box':
-            self.draw_box(volume, ax)
-        elif shape == 'sphere':
-            self.draw_sphere(volume, ax)
-        elif shape == 'union':
-            self.draw_union(volume, ax)
-        elif shape == 'subtraction':
-            self.draw_subtraction(volume, ax)
-        # Add more shapes if needed
+        coords = transform['position']
 
-    def draw_tubs(self, volume, ax):
-        """Draws a 'tubs' shape."""
-        dims = volume['dimensions']
-        rMin = dims['rMin']
-        rMax = dims['rMax']
-        z = dims['z']
-        placement = volume['placement']
-        self.plot_cylinder(rMax, rMin, z, placement, ax)
+        if shape == "tubs":
+            radius = volume['dimensions']['rMax']
+            height = volume['dimensions']['z']
+            x, y, z = coords
+            if view == "xy":
+                self.draw_circle(ax, x, y, radius, self.get_color_properties(volume))
+            elif view == "rz":
+                r = np.sqrt(x**2 + y**2)
+                self.draw_rectangle(ax, r, z, radius*2, height, self.get_color_properties(volume), view)
 
-    def draw_box(self, volume, ax):
-        """Draws a 'box' shape."""
-        dims = volume['dimensions']
-        x = dims['x']
-        y = dims['y']
-        z = dims['z']
-        placement = volume['placement']
-        self.plot_box(x, y, z, placement, ax)
+        elif shape == "box":
+            x_length = volume['dimensions']['x']
+            y_length = volume['dimensions']['y']
+            z_length = volume['dimensions']['z']
+            x, y, z = coords
+            if view == "xy":
+                self.draw_rectangle(ax, x, y, x_length, y_length, self.get_color_properties(volume))
+            elif view == "rz":
+                radius = np.sqrt(x**2 + y**2)
+                self.draw_rectangle(ax, radius, z, x_length, z_length, self.get_color_properties(volume), view)
 
-    def draw_sphere(self, volume, ax):
-        """Draws a 'sphere' shape."""
-        dims = volume['dimensions']
-        rMin = dims['rMin']
-        rMax = dims['rMax']
-        placement = volume['placement']
-        self.plot_circle(rMax, placement, ax)
+    def draw_circle(self, ax, x, y, radius, properties):
+        """Draw a circle (for tubs) on the given axis."""
+        circle = plt.Circle((x, y), radius, **properties)
+        ax.add_patch(circle)
 
-    def draw_union(self, volume, ax):
-        """Draws a 'union' of components."""
-        for component in volume['components']:
-            self.draw_volume(component, ax)
-        self.apply_rotation(volume, ax)
+    def draw_rectangle(self, ax, x, y, width, height, properties, view):
+        """Draw a rectangle (for box) on the given axis."""
+        rect = plt.Rectangle((x - width / 2, y - height / 2), width, height, **properties)
+        ax.add_patch(rect)
 
-    def draw_subtraction(self, volume, ax):
-        """Handles 'subtraction' shape drawing."""
-        # Subtract components visually (not detailed here)
-        for component in volume['components']:
-            self.draw_volume(component, ax)
-        self.apply_rotation(volume, ax)
-
-    def plot_cylinder(self, rMax, rMin, height, placement, ax):
-        """Plots a cylinder (tubs) shape."""
-        x, y = self.apply_translation(placement['x'], placement['y'])
-        circle_outer = plt.Circle((x, y), rMax, color='blue', fill=False)
-        circle_inner = plt.Circle((x, y), rMin, color='red', fill=False)
-        ax.add_artist(circle_outer)
-        if rMin > 0:
-            ax.add_artist(circle_inner)
-
-    def plot_box(self, x, y, z, placement, ax):
-        """Plots a box shape."""
-        x0, y0 = self.apply_translation(placement['x'], placement['y'])
-        ax.add_patch(plt.Rectangle((x0 - x/2, y0 - y/2), x, y, fill=None))
-
-    def plot_circle(self, rMax, placement, ax):
-        """Plots a circle shape (for spheres)."""
-        x, y = self.apply_translation(placement['x'], placement['y'])
-        circle = plt.Circle((x, y), rMax, color='blue', fill=False)
-        ax.add_artist(circle)
-
-    def apply_translation(self, x, y):
-        """Applies translation to the given coordinates."""
-        return x, y
-
-    def apply_rotation(self, volume, ax):
-        """Applies rotation to a volume if it has rotation."""
-        if 'rotation' in volume['placement']:
-            rotation = volume['placement']['rotation']
-            angle_z = rotation.get('z', 0.0)
-            angle_y = rotation.get('y', 0.0)
-            angle_x = rotation.get('x', 0.0)
-            # Apply rotation matrix logic
-
-    def rotation_matrix(self, angle_z, angle_y, angle_x):
-        """Returns a combined rotation matrix for X, Y, Z rotations."""
-        rz = np.array([[np.cos(angle_z), -np.sin(angle_z)], [np.sin(angle_z), np.cos(angle_z)]])
-        ry = np.array([[np.cos(angle_y), 0, np.sin(angle_y)], [0, 1, 0], [-np.sin(angle_y), 0, np.cos(angle_y)]])
-        rx = np.array([[1, 0, 0], [0, np.cos(angle_x), -np.sin(angle_x)], [0, np.sin(angle_x), np.cos(angle_x)]])
-        return rz @ ry @ rx  # Combine all rotations
-
-    def handle_union_rotation(self, volume, ax):
-        """Handles the union of rotations in multiple components."""
-        if 'rotation' in volume['placement']:
-            rotation = volume['placement']['rotation']
-            matrix = self.rotation_matrix(rotation['x'], rotation['y'], rotation['z'])
-            # Apply the rotation to the components within the union
+    def get_color_properties(self, volume):
+        """Convert color from list to dictionary suitable for matplotlib."""
+        color = volume.get('color', [0.5, 0.5, 0.5, 0.5])
+        color = [0.5, 0.5, 0.5, 0.1]
+        return {'color': (color[0], color[1], color[2]), 'alpha': color[3]}

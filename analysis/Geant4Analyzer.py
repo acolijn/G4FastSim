@@ -129,9 +129,9 @@ class Geant4Analyzer:
             cut = cut(self.raw)
             
         if cut_hit is None:
-            cut_hit = cut  & (self.raw['eh'] > 0. )
+            cut_hit = cut
         else:
-            cut_hit = cut_hit(self.raw) & cut & (self.raw['eh'] > 1.)
+            cut_hit = cut_hit(self.raw) & cut
 
         for field in self.raw.fields:
             data_field = self.raw[field]

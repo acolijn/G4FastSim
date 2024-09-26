@@ -79,7 +79,7 @@
         "spatialThreshold": 10.0,
         "timeThreshold": 1.0
       },
-      "dimensions": { "rMin": 0.0, "rMax": 76.2, "z": 331.0, "startAngle": 0.0, "spanningAngle": 360.0 },
+      "dimensions": { "rMin": 0.0, "rMax": 73.43, "z": 331.0, "startAngle": 0.0, "spanningAngle": 360.0 },
       "placement": { "x": 0.0, "y": 0.0, "z": 0.0 }
     },
     {
@@ -173,10 +173,5 @@
       "dimensions": {"rMin": 0.0, "rMax": 0.5, "startPhi": 0.0, "endPhi": 360.0, "startTheta": 0.0, "endTheta": 180.0},
       "placement": { "x": 0.0, "y": 175.0, "z": -25.0}      
     }
-  ],
-  "fiducial": {
-    "radius": 1.0,
-    "height": 1.0,
-    "placement": { "x": 0.0, "y": 0.0, "z": 0.0 }
-  }
+  ]
 }
