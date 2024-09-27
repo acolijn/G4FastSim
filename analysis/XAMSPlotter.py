@@ -315,14 +315,14 @@ class XAMSPlotter:
                 rMin = self.volumes[name]['dimensions']['rMin']
                 rMax = self.volumes[name]['dimensions']['rMax'] 
                 height = self.volumes[name]['dimensions']['z']
-                z_offset = self.volumes['InnerCryostat']['placement']['z']+self.volumes['PTFEBucket']['placement']['z']+self.volumes[name]['placement']['z']+10 
+                z_offset = self.volumes['InnerCryostat']['placement']['z']+self.volumes[name]['placement']['z']
                 rectangle = Rectangle((0, -height/2.+z_offset), rMax, height, edgecolor=None, facecolor='darkblue', alpha=0.3)
                 ax.add_patch(rectangle)
             elif name == "PTFEReflectionCylinder":
                 rMin = self.volumes[name]['dimensions']['rMin']
                 rMax = self.volumes[name]['dimensions']['rMax'] 
                 height = self.volumes[name]['dimensions']['z']
-                z_offset = self.volumes['InnerCryostat']['placement']['z']+self.volumes['PTFEBucket']['placement']['z']+self.volumes[name]['placement']['z']-3
+                z_offset = self.volumes['InnerCryostat']['placement']['z']+self.volumes['LiquidXenon']['placement']['z']+self.volumes[name]['placement']['z']
                 rectangle = Rectangle((rMin, -height/2.+z_offset), rMax-rMin, height, edgecolor='grey', facecolor='white', alpha=0.9)
                 ax.add_patch(rectangle)
             elif name == "NaI":
