@@ -15,6 +15,11 @@ Analysis code
    :undoc-members:
    :show-inheritance:
 
+.. automodule:: XAMSPlotter
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 Running
 -------
 
