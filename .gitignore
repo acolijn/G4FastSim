@@ -5,8 +5,7 @@ analysis/xams_xy.png
 analysis/test_plotter.ipynb
 analysis/GeometryPlotter.py
 analysis/xams_rz.png
-analysis/__pycache__/Geant4Analyzer.cpython-311.pyc
-analysis/__pycache__/GeometryPlotter.cpython-311.pyc
-analysis/__pycache__/RunManager.cpython-311.pyc
-analysis/__pycache__/XAMSPlotter.cpython-311.pyc
+analysis/__pycache__/
 analysis/GeometryPlotter.py
+analysis/xams_rz.pdf
+analysis/xams_xy.pdf

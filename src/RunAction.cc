@@ -1,32 +1,3 @@
-//
-// ********************************************************************
-// * License and Disclaimer                                           *
-// *                                                                  *
-// * The  Geant4 software  is  copyright of the Copyright Holders  of *
-// * the Geant4 Collaboration.  It is provided  under  the terms  and *
-// * conditions of the Geant4 Software License,  included in the file *
-// * LICENSE and available at  http://cern.ch/geant4/license .  These *
-// * include a list of copyright holders.                             *
-// *                                                                  *
-// * Neither the authors of this software system, nor their employing *
-// * institutes,nor the agencies providing financial support for this *
-// * work  make  any representation or  warranty, express or implied, *
-// * regarding  this  software system or assume any liability for its *
-// * use.  Please see the license in the file  LICENSE  and URL above *
-// * for the full disclaimer and the limitation of liability.         *
-// *                                                                  *
-// * This  code  implementation is the result of  the  scientific and *
-// * technical work of the GEANT4 collaboration.                      *
-// * By using,  copying,  modifying or  distributing the software (or *
-// * any work based  on the software)  you  agree  to acknowledge its *
-// * use  in  resulting  scientific  publications,  and indicate your *
-// * acceptance of all terms of the Geant4 Software license.          *
-// ********************************************************************
-//
-//
-/// \file B1/src/RunAction.cc
-/// \brief Implementation of the B1::RunAction class
-
 #include "RunAction.hh"
 #include "EventAction.hh"	
 #include "PrimaryGeneratorAction.hh"
@@ -48,6 +19,10 @@
 
 #include <cmath>
 
+/**
+ * @namespace G4Sim
+ * @brief Namespace for the G4Sim library.
+/*/
 namespace G4Sim{
 /**
  * @file RunAction.cc
@@ -57,10 +32,6 @@ namespace G4Sim{
  * It initializes and defines the analysis manager, creates and fills ntuples for event data, cross-section data,
  * and differential cross-section data, and performs actions at the beginning and end of a run.
  */
-
-
-//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
-
 RunAction::RunAction(EventAction* eventAction, GammaRayHelper* helper)
   : fEventAction(eventAction), fGammaRayHelper(helper)
 {
@@ -75,6 +46,20 @@ RunAction::RunAction(EventAction* eventAction, GammaRayHelper* helper)
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
+/**
+ * @brief This method is called at the beginning of each run.
+ *
+ * It performs the following actions:
+ * - Retrieves the initial energy from the primary generator action and prints it.
+ * - Initializes the gamma-ray helper.
+ * - Initializes the analysis manager and ntuples.
+ * - Passes parameters to the event action, including:
+ *   - Fast simulation mode (normal or fast).
+ *   - Maximum number of scatters.
+ *   - Maximum energy deposit.
+ *
+ * @param run Pointer to the current G4Run object.
+ */
 void RunAction::BeginOfRunAction(const G4Run*)
 {
 
@@ -107,6 +92,27 @@ RunAction::~RunAction()
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
+/**
+ * @brief Initializes the ntuples for data analysis.
+ *
+ * This function sets up the analysis manager, configures the output file type,
+ * opens the output file, and sets various default settings. It also creates
+ * histograms and defines ntuples for event data, physics data, and differential
+ * cross-section data.
+ *
+ * The function performs the following steps:
+ * - Retrieves the analysis manager instance.
+ * - If the current thread is the master thread:
+ *   - Sets the default file type to "root".
+ *   - Opens the output file with the specified name.
+ *   - Sets the verbose level to 1.
+ *   - Enables ntuple merging.
+ *   - Creates a histogram for the cosine of the Compton scattering angle.
+ *   - Defines the ntuple for event data.
+ *   - Defines the ntuple for physics data.
+ *   - Prepares for the definition of the differential cross-section ntuple,
+ *     which will be done in the EventAction at the first event.
+ */
 void RunAction::InitializeNtuples(){
 
   // Get analysis manager
@@ -199,7 +205,25 @@ void RunAction::DefineDifferentialCrossSectionNtuple(G4double e0) const {
 /**
  * @brief Defines the event ntuple for data analysis.
  * 
- * This function creates an event ntuple using the G4AnalysisManager class. The ntuple contains columns for storing energy deposition (Edep), x-coordinate (xh), and y-coordinate (yh) of each event. The ntuple is finished and assigned an ID.
+ * This function creates an event ntuple using the G4AnalysisManager class. 
+ * 
+ * Definition of the ntuple columns:
+ * - ev = Event number
+ * - w  = Event weight (only for fast simulation)
+ * - type = Particle type (only for fast simulation: did the gamma scatter outside the detector prior to makingan interaction in the xenon?)
+ * - xp = x position of the primary event
+ * - yp = y position of the primary event
+ * - zp = z position of the primary event
+ * - eh = vector of energy deposited in the detector
+ * - xh = vector of x position of the clusters in the detector
+ * - yh = vector of y position of the clusters in the detector
+ * - zh = vector of z position of the clusters in the detector
+ * - wh = vector of weights (all the same, only for fast simulation)
+ * - id = vector of detector IDs of the clusters
+ * - edet = total energy deposited in each detector
+ * - ndet = number of clusters in each detector
+ * - nphot = number of photo-electric interactions in each detector
+ * - ncomp = number of Compton interactions in each detector
  */
 void RunAction::DefineEventNtuple(){
   // Creating ntuple
@@ -230,6 +254,30 @@ void RunAction::DefineEventNtuple(){
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
+/**
+ * @brief Defines and fills a ntuple with gamma-ray cross-section data for various materials and processes.
+ *
+ * This function initializes an ntuple to store gamma-ray cross-section data, including material names,
+ * process names, energy levels, and cross-section values. It iterates over a predefined set of materials
+ * and processes, calculates the cross-sections for a range of energy levels, and fills the ntuple with
+ * the computed data.
+ *
+ * The ntuple contains the following columns:
+ * - "mat": Material name (string)
+ * - "proc": Process name (string)
+ * - "e": Energy (double, in MeV)
+ * - "att": Attenuation length or cross-section (double, in cm^2/g or barns)
+ *
+ * The processes considered are:
+ * - "compton": Compton scattering
+ * - "phot": Photoelectric effect
+ * - "tot": Total cross-section
+ * - "att": Attenuation coefficient
+ *
+ * The energy range for the calculations is from 1 keV to 10 MeV, divided into 1000 logarithmic steps.
+ *
+ * @note This function assumes that the G4AnalysisManager and fGammaRayHelper instances are properly initialized.
+ */
 void RunAction::DefineCrossSectionNtuple(){
   // Get analysis manager
   auto analysisManager = G4AnalysisManager::Instance();
@@ -291,6 +339,14 @@ void RunAction::DefineCrossSectionNtuple(){
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
+/**
+ * @brief Called at the end of a run to perform final actions.
+ *
+ * This method is executed at the end of a run. If the current thread is the master thread,
+ * it saves histograms and ntuple data by writing and closing the analysis manager's file.
+ *
+ * @param run Pointer to the G4Run object representing the current run.
+ */
 void RunAction::EndOfRunAction(const G4Run* run)
 {
 
