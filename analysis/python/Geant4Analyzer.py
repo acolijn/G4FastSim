@@ -248,6 +248,6 @@ class Geant4Analyzer:
         if saveFigFilename is not None:
             plt.savefig(saveFigFilename)
 
-        plt.show()
+        #plt.show()
 
     
