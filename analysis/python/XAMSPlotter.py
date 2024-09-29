@@ -1,7 +1,7 @@
 import json
 import numpy as np
 import matplotlib.pyplot as plt
-from matplotlib.patches import Wedge, Rectangle
+from matplotlib.patches import Wedge, Rectangle, Circle
 from shapely.geometry import Polygon
 from shapely.ops import unary_union
 
@@ -80,13 +80,13 @@ class XAMSPlotter:
 
         # Set axis labels based on the view
         if view == "xy":
-            plt.xlabel("$x$ (mm)")
-            plt.ylabel("$y$ (mm)")
+            ax.set_xlabel("$x$ (mm)")
+            ax.set_ylabel("$y$ (mm)")
         elif view == "rz":
-            plt.xlabel("r (mm)")
-            plt.ylabel("z (mm)")
+            ax.set_xlabel("r (mm)")
+            ax.set_ylabel("z (mm)")
 
-        plt.show()
+        #plt.show()
 
     def plot_source(self, ax, view):
         """
@@ -105,16 +105,20 @@ class XAMSPlotter:
             x = volume['placement']['x']
             y = volume['placement']['y']
             r = volume['dimensions']['rMax']
-            circle = plt.Circle((x, y), r, edgecolor='black', facecolor='green', alpha=0.7)
-            ax.add_artist(circle)
+            #circle = plt.Circle((x, y), r, edgecolor='black', facecolor='green', alpha=0.7)
+            #ax.add_artist(circle)
+            circle = Circle((x, y), r, edgecolor='black', facecolor='green', alpha=0.7)
+            ax.add_patch(circle)
         elif view == "rz":
             x = volume['placement']['x']
             y = volume['placement']['y']
             z = volume['placement']['z']
             r = np.sqrt(x**2 + y**2)
             rSource = volume['dimensions']['rMax']
-            circle = plt.Circle((r, z), rSource, edgecolor='black', facecolor='green', alpha=0.7)
-            ax.add_artist(circle)
+            #circle = plt.Circle((r, z), rSource, edgecolor='black', facecolor='green', alpha=0.7)
+            #ax.add_artist(circle)
+            circle = Circle((r, z), rSource, edgecolor='black', facecolor='green', alpha=0.7)
+            ax.add_patch(circle)
 
 
     def plot_collimator(self, ax, view):
