@@ -69,11 +69,14 @@ class XAMSPlotter:
         # plot PTFE reflection cylinder
         self.plot_cylinder(ax, view, "PTFEReflectionCylinder")
         # plot NaI
-        self.plot_cylinder(ax, view, "NaI")
+        if 'NaI' in self.volumes:
+            self.plot_cylinder(ax, view, "NaI")
         # plot collimator
-        self.plot_collimator(ax, view)
+        if 'Collimator' in self.volumes:
+            self.plot_collimator(ax, view)
         # plot source
-        self.plot_source(ax, view)
+        if 'SourceSphere' in self.volumes:
+            self.plot_source(ax, view)
 
         # Set axis labels based on the view
         if view == "xy":
@@ -128,7 +131,7 @@ class XAMSPlotter:
             components = {component['name']: component for component in volume['components']}
      
         if view == "xy":
-            print("Plotting xy view : Collimator")
+            #print("Plotting xy view : Collimator")
             # left side of collimator block
             x = volume['placement']['x'] - components['CollimatorBlock']['dimensions']['x']/2.
             y = volume['placement']['y'] - components['CollimatorBlock']['dimensions']['z']/2.
@@ -143,7 +146,7 @@ class XAMSPlotter:
             rectangle = Rectangle((x, y), width, height, edgecolor='black', facecolor='grey', alpha=0.7)
             ax.add_patch(rectangle)
         elif view == "rz":
-            print("Plotting rz view : Collimator")
+            #print("Plotting rz view : Collimator")
             x = volume['placement']['x']
             y = volume['placement']['y']
             z = volume['placement']['z']
@@ -179,7 +182,7 @@ class XAMSPlotter:
         edgecolor = None
 
         if view == "xy":
-            print("Plotting xy view :", name)
+            #print("Plotting xy view :", name)
             if name == "OuterCryostat":
                 rMin = self.volumes['Vacuum']['dimensions']['rMax']
                 rMax = components['OuterCryostatCylinder']['dimensions']['rMax']
@@ -237,7 +240,7 @@ class XAMSPlotter:
             self.draw_ring(ax, (xc, yc), rMin, rMax, angle_range=(0, 360), edgecolor=edgecolor, facecolor=facecolor, alpha=alpha)
         
         elif view == 'rz':
-            print("Plotting rz view :", name)
+            #print("Plotting rz view :", name)
             x = []
             y = []
             if name == "OuterCryostat" or name == "InnerCryostat":

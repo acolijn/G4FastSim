@@ -1,13 +1,7 @@
 build/
 run/rundb.json
 docs/doxygen_output/
-analysis/xams_xy.png
-analysis/test_plotter.ipynb
-analysis/GeometryPlotter.py
 analysis/xams_rz.png
-analysis/__pycache__/
-analysis/GeometryPlotter.py
-analysis/xams_rz.pdf
-analysis/xams_xy.pdf
-analysis/energy_resolution.pdf
-analysis/energy_spectrum.pdf
+**/__pycache__/
+*.pdf
+*.png
