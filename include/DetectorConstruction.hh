@@ -52,6 +52,8 @@ private:
     G4LogicalVolume* ConstructVolume(const nlohmann::json& volumeDef);
     G4VSolid* CreateSolid(const nlohmann::json& solidDef);
     G4LogicalVolume* GetLogicalVolume(const G4String& name);
+    void PlaceMultipleVolumes(const nlohmann::json& volumeDef, G4LogicalVolume* logicalVolume);
+    G4VPhysicalVolume* PlaceSingleVolume(const nlohmann::json& volumeDef, G4LogicalVolume* logicalVolume, int copyNumber);
 
     // Maps to store logical and physical volumes for easy lookup
     std::map<G4String, G4LogicalVolume*> logicalVolumeMap;

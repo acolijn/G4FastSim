@@ -3,8 +3,8 @@
     "size": 0.6
   },
   "detector": "xams",
-  "description": "XAMS detector",
-  "version": "1.0",
+  "description": "XAMS detector with rings",
+  "version": "2.0",
   "volumes": [
     {
       "name": "OuterCryostat",
@@ -127,8 +127,18 @@
       "material": "PTFE",
       "parent": "LiquidXenon",
       "color": [1.0, 1.0, 1.0, 0.3],	
-      "dimensions": { "rMin": 31.0, "rMax": 36.0, "z": 72.0, "startAngle": 0.0, "spanningAngle": 360.0 },
-      "placement": { "x": 0.0, "y": 0.0, "z": 12.0 }
+      "dimensions": { "rMin": 31.0, "rMax": 36.0, "z": 52.0, "startAngle": 0.0, "spanningAngle": 360.0 },
+      "placement": { "x": 0.0, "y": 0.0, "z": 22.0 }
+    },
+    {
+      "name": "FieldShape",
+      "shape": "tubs",
+      "material": "G4_Cu",
+      "parent": "LiquidXenon",
+      "color": [0.0, 1.0, 0.0, 0.3],
+      "dimensions": { "rMin": 36.0, "rMax": 46.0, "z": 1.0, "startAngle": 0.0, "spanningAngle": 360.0 },
+      "placement": { "x": 0.0, "y": 0.0, "z": 47.5 },
+      "repetitions": {"count": 6, "dx": 0.0, "dy": 0.0, "dz": -10.2}
     },
     {
       "name": "Collimator",
