@@ -155,7 +155,7 @@ class XAMSPlotter:
             y = volume['placement']['y']
             z = volume['placement']['z']
             r = np.sqrt(x**2 + y**2)
-            height = components['CollimatorBlock']['dimensions']['x']/2
+            height = components['CollimatorBlock']['dimensions']['x']
             rHole = components['CollimatorHole']['dimensions']['rMax']
             rectangle = Rectangle((r-components['CollimatorBlock']['dimensions']['z']/2., z-height/2.), components['CollimatorBlock']['dimensions']['z'], height/2-rHole, edgecolor='black', facecolor='grey', alpha=0.7)
             ax.add_patch(rectangle)
