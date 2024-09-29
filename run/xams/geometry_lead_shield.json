@@ -3,9 +3,18 @@
     "size": 0.6
   },
   "detector": "xams",
-  "description": "XAMS detector",
+  "description": "XAMS detector with lead shield",
   "version": "1.0",
   "volumes": [
+    {
+      "name": "LeadShield",
+      "shape": "tubs",
+      "material": "G4_Pb",
+      "parent": "World",
+      "color": [0.5, 0.5, 0.5, 0.5],
+      "dimensions": { "rMin": 128.0, "rMax": 130.0, "z": 200.0, "startAngle": 0.0, "spanningAngle": 360.0 },
+      "placement": { "x": 0.0, "y": 0.0, "z": 0.0 }
+    },
     {
       "name": "OuterCryostat",
       "shape": "union",

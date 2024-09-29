@@ -53,6 +53,9 @@ class XAMSPlotter:
             ax.set_ylim(-150, 150)
             ax.set_xlim(-150, 150)
 
+        # if a lead shield is present, plot it
+        if 'LeadShield' in self.volumes:
+            self.plot_cylinder(ax, view, "LeadShield")
         # plot outer cryostat
         self.plot_cylinder(ax, view, "OuterCryostat")
         # plot inner cryostat
@@ -189,6 +192,12 @@ class XAMSPlotter:
                 facecolor = 'grey'
                 edgecolor = 'black'
                 alpha = 0.8
+            elif name == "LeadShield":
+                rMin = self.volumes[name]['dimensions']['rMin']
+                rMax = self.volumes[name]['dimensions']['rMax']
+                facecolor = 'grey'
+                edgecolor = 'black'
+                alpha = 0.8
             elif name == "GaseousXenon":
                 vtmp = self.volumes['PTFEBucket']
                 ptfeComponents = {component['name']: component for component in vtmp['components']}
@@ -279,7 +288,13 @@ class XAMSPlotter:
                 y = np.array(y)+z_offset
                 ax.fill(x, y, color='lightgrey', alpha=0.6)  # Fill the shape with color
                 ax.plot(x, y, linewidth=1., color='black', alpha=0.6)	
-
+            elif name == "LeadShield":
+                rMin = self.volumes[name]['dimensions']['rMin']
+                rMax = self.volumes[name]['dimensions']['rMax']
+                dz = self.volumes[name]['dimensions']['z']
+                z_offset = self.volumes[name]['placement']['z']
+                rectangle = Rectangle((rMin, -dz/2.+z_offset), rMax-rMin, dz, edgecolor='black', facecolor='grey', alpha=0.8)
+                ax.add_patch(rectangle)
             elif name == "PTFEBucket":
                 rMin = components['PTFEWall']['dimensions']['rMin']
                 rMax = components['PTFEWall']['dimensions']['rMax']

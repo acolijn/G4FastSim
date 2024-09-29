@@ -10,3 +10,4 @@ analysis/GeometryPlotter.py
 analysis/xams_rz.pdf
 analysis/xams_xy.pdf
 analysis/energy_resolution.pdf
+analysis/energy_spectrum.pdf

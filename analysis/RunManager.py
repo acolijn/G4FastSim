@@ -2,6 +2,7 @@ import json
 import pandas as pd
 import os
 import shutil
+from mendeleev import element
 
 class RunManager:
     def __init__(self, config_file="config.json"):
@@ -40,22 +41,59 @@ class RunManager:
         with open(self.config_file, 'w') as file:
             json.dump(self.config, file, indent=4)
 
-    def display_all_runs(self, include_deleted=False):
+    def display_all_runs(self, include_deleted=False, detector_type=None):
         """
-        Display all runs in the RunManager.
+        Display all runs in the RunManager, with optional filtering by detector type.
 
         Args:
             include_deleted (bool): If True, include deleted runs in the output. 
                                     If False (default), exclude deleted runs.
+            detector_type (str): If provided, filter runs that have this detector type
+                                as specified in the geometry JSON file.
 
         Returns:
-            pandas.DataFrame: A DataFrame containing the runs to be displayed.
+            pandas.DataFrame: A DataFrame containing the filtered runs to be displayed.
         """
+        # Filter the runs by 'deleted' status
         if include_deleted:
-            return self.runs_df
+            filtered_runs = self.runs_df
         else:
-            return self.runs_df[self.runs_df['status'] != 'deleted']
+            filtered_runs = self.runs_df[self.runs_df['status'] != 'deleted']
 
+        # If detector_type is specified, filter by that
+        if detector_type:
+            filtered_indices = []
+            for index, run in filtered_runs.iterrows():
+                run_id = run['id']
+                geometry = self.get_geometry(run_id)
+                if geometry:
+                    # Check if the 'detector' key exists in the geometry
+                    detector = geometry.get('detector')
+                    if detector and detector == detector_type:
+                        filtered_indices.append(index)
+            
+            filtered_runs = filtered_runs.loc[filtered_indices]
+        
+        # if particle is 'ion', get the ion name
+        for index, run in filtered_runs.iterrows():
+            # if particle is 'ion', get the ion name
+            if run['particle'] == 'ion':
+                settings = self.get_run_settings(run['id'])
+                txt = settings['gps_settings']['ion']
+                Z = txt.split(" ")[0]
+                A = txt.split(" ")[1]
+                element_symbol = element(int(Z)).symbol
+                filtered_runs['ion'] = '{:s}{:2d}'.format(element_symbol, int(A))
+
+            # get the geometry description
+            geometry = self.get_geometry(run['id'])
+            filtered_runs.loc[index,'geo description'] = geometry['description']
+
+
+        # if detector is 'xams' drop a few columns that are not relevant
+        if detector_type == 'xams':
+            filtered_runs = filtered_runs.drop(columns=['fastSimulation','maxEnergy', 'maxScatters','outputFile', 'numJobs', 'sourceVolume'])
+        return filtered_runs
 
     def get_output_root_files(self, run_id, first_only=False):
         """
@@ -120,7 +158,6 @@ class RunManager:
         if settings:
             # get the geometryFileName from the settings
             geometryFileName = settings["detector_configuration"]["geometryFileName"]
-            print(geometryFileName)
             # check if the file geometryFileName exists
             if os.path.exists(geometryFileName):
                 with open(geometryFileName, 'r') as file:
