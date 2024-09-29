@@ -155,8 +155,16 @@ void DetectorConstruction::LoadGeometryFromJson(const std::string& geoFileName) 
                 fClusteringParameters[name] = std::make_pair(spatialThreshold, timeThreshold);
             }
 
-            G4VPhysicalVolume* physicalVolume = PlaceVolume(volume, logVol);
-            physicalVolumeMap[name] = physicalVolume;
+            // Check if multiple placements are needed (via 'repetitions' field)
+            if (volume.contains("repetitions")) {
+                // Place the volume multiple times
+                PlaceMultipleVolumes(volume, logVol);
+            } else {
+                // Place the volume once
+                PlaceSingleVolume(volume, logVol, -1);
+            }
+            //G4VPhysicalVolume* physicalVolume = PlaceVolume(volume, logVol);
+            //physicalVolumeMap[name] = physicalVolume;
         }
     }
 
@@ -447,3 +455,132 @@ G4LogicalVolume* DetectorConstruction::GetLogicalVolume(const G4String& name) {
 }
 
 }  // namespace G4XamsSim
+
+/**
+ * @brief Places multiple instances of a volume within a logical volume based on the provided JSON definition.
+ *
+ * This function extracts the base position, rotation, and repetition information from the JSON definition
+ * and places multiple copies of the specified volume within the given logical volume.
+ *
+ * @param volumeDef A JSON object containing the volume definition, including name, placement, rotation, and repetition details.
+ * @param logicalVolume A pointer to the G4LogicalVolume where the volumes will be placed.
+ *
+ * The JSON structure for volumeDef should include:
+ * - "name": The base name of the volume.
+ * - "placement": An object with "x", "y", and "z" coordinates for the base position.
+ * - "rotation": (Optional) An object defining the rotation matrix.
+ * - "repetitions": An object with:
+ *   - "count": The number of repetitions.
+ *   - "dx", "dy", "dz": The displacements in x, y, and z directions for each repetition.
+ * - "parent": The name of the parent logical volume.
+ *
+ * The function will create unique names for each instance by appending an index suffix to the base name.
+ * It will also store each created physical volume in the physicalVolumeMap using the unique name as the key.
+ */
+void DetectorConstruction::PlaceMultipleVolumes(const json& volumeDef, G4LogicalVolume* logicalVolume) {
+    G4String name = volumeDef["name"].get<std::string>();
+    
+    // Extract the base position
+    G4double baseX = volumeDef["placement"]["x"].get<double>() * mm;
+    G4double baseY = volumeDef["placement"]["y"].get<double>() * mm;
+    G4double baseZ = volumeDef["placement"]["z"].get<double>() * mm;
+    
+    // Default rotation matrix (identity)
+    G4RotationMatrix* baseRotation = GetRotationMatrix(volumeDef);
+    if (!baseRotation) {
+        baseRotation = new G4RotationMatrix();  // Identity matrix (no rotation)
+    }
+
+    // Get repetitions info
+    int count = volumeDef["repetitions"]["count"].get<int>();
+    G4double dx = volumeDef["repetitions"]["dx"].get<double>() * mm;
+    G4double dy = volumeDef["repetitions"]["dy"].get<double>() * mm;
+    G4double dz = volumeDef["repetitions"]["dz"].get<double>() * mm;
+
+    // Place multiple copies
+    for (int i = 0; i < count; ++i) {
+        G4ThreeVector position(baseX + i * dx, baseY + i * dy, baseZ + i * dz);
+        
+        // Append a suffix to make the physical volume name unique
+        G4String instanceName = name + "_" + std::to_string(i);
+
+        // Place the volume
+        G4VPhysicalVolume* physicalVolume = new G4PVPlacement(
+            baseRotation,       // Apply the rotation matrix
+            position,           // Position
+            logicalVolume,      // Logical volume
+            instanceName,       // Unique name for each instance
+            GetLogicalVolume(volumeDef["parent"].get<std::string>()),  // Parent volume
+            false,              // No boolean operation
+            i,                  // Copy number
+            fCheckOverlaps      // Check for overlaps
+        );
+        
+        physicalVolumeMap[instanceName] = physicalVolume;
+    }
+}
+
+/**
+ * @brief Places a single volume inside its parent volume based on the provided JSON definition.
+ *
+ * This function creates and places a physical volume inside its parent logical volume.
+ * The placement details such as position and rotation are extracted from the JSON definition.
+ * If a parent volume is specified in the JSON, it is used; otherwise, the world volume is used as the parent.
+ * The placed volume is stored in a map with a unique key.
+ *
+ * @param volumeDef A JSON object containing the definition of the volume to be placed.
+ *                  Expected keys:
+ *                  - "name": The name of the volume (string).
+ *                  - "parent": The name of the parent volume (optional, string).
+ *                  - "placement": An object containing the position coordinates (x, y, z) in millimeters.
+ * @param logicalVolume The logical volume to be placed.
+ * @param copyNumber An integer representing the unique copy number of the volume instance (default is 0).
+ * @return A pointer to the placed G4VPhysicalVolume.
+ */
+G4VPhysicalVolume* DetectorConstruction::PlaceSingleVolume(const json& volumeDef, G4LogicalVolume* logicalVolume, int copyNumber = 0) {
+    G4String name = volumeDef["name"].get<std::string>();
+    G4VPhysicalVolume* physicalVolume = nullptr;
+
+    // Place volume inside its parent
+    if (logicalVolume) {
+        G4LogicalVolume* parentVolume = fWorldLogical;  // Default to world
+
+        if (volumeDef.contains("parent")) {
+            G4String parentName = volumeDef["parent"].get<std::string>();
+            parentVolume = GetLogicalVolume(parentName);
+            if (!parentVolume) {
+                G4cerr << "Error: Parent volume " << parentName << " not found!" << G4endl;
+                exit(-1);
+            }
+        }
+
+        G4ThreeVector position(volumeDef["placement"]["x"].get<double>() * mm, 
+                               volumeDef["placement"]["y"].get<double>() * mm, 
+                               volumeDef["placement"]["z"].get<double>() * mm);
+
+        // Extract rotation (if exists)
+        G4RotationMatrix* rotation = GetRotationMatrix(volumeDef);
+
+        // Place the volume
+
+        G4String instanceName = name;
+        if (copyNumber >= 0) instanceName = name+ "_" + std::to_string(copyNumber);
+        
+        physicalVolume = new G4PVPlacement(
+            rotation,                    // Rotation matrix (can be nullptr)
+            position,                    // Position vector
+            logicalVolume,               // Logical volume to place
+            instanceName,                // Unique name of the volume instance
+            parentVolume,                // Parent logical volume
+            false,                       // No boolean operation
+            copyNumber,                  // Unique copy number
+            fCheckOverlaps               // Overlap checking
+        );
+
+        // Store the placed volume in the physicalVolumeMap with unique key
+        physicalVolumeMap[instanceName] = physicalVolume;
+    }
+
+    return physicalVolume;
+}
+

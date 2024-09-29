@@ -140,6 +140,16 @@
       "placement": { "x": 0.0, "y": 0.0, "z": 12.0 }
     },
     {
+      "name": "FieldShape",
+      "shape": "tubs",
+      "material": "G4_Cu",
+      "parent": "LiquidXenon",
+      "color": [0.0, 1.0, 0.0, 0.3],
+      "dimensions": { "rMin": 36.0, "rMax": 46.0, "z": 1.0, "startAngle": 0.0, "spanningAngle": 360.0 },
+      "placement": { "x": 0.0, "y": 0.0, "z": 47.5 },
+      "repetitions": {"count": 6, "dx": 0.0, "dy": 0.0, "dz": -10.2}
+    },
+    {
       "name": "Collimator",
       "shape": "subtraction",
       "material": "G4_Pb",

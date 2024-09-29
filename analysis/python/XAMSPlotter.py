@@ -56,6 +56,8 @@ class XAMSPlotter:
         # if a lead shield is present, plot it
         if 'LeadShield' in self.volumes:
             self.plot_cylinder(ax, view, "LeadShield")
+
+
         # plot outer cryostat
         self.plot_cylinder(ax, view, "OuterCryostat")
         # plot inner cryostat
@@ -66,6 +68,8 @@ class XAMSPlotter:
         self.plot_cylinder(ax, view, "LiquidXenon")
         # plot PTFE bucket
         self.plot_cylinder(ax, view, "PTFEBucket")
+        if 'FieldShape' in self.volumes:
+            self.plot_cylinder(ax, view, "FieldShape")
         # plot PTFE reflection cylinder
         self.plot_cylinder(ax, view, "PTFEReflectionCylinder")
         # plot NaI
@@ -105,8 +109,6 @@ class XAMSPlotter:
             x = volume['placement']['x']
             y = volume['placement']['y']
             r = volume['dimensions']['rMax']
-            #circle = plt.Circle((x, y), r, edgecolor='black', facecolor='green', alpha=0.7)
-            #ax.add_artist(circle)
             circle = Circle((x, y), r, edgecolor='black', facecolor='green', alpha=0.7)
             ax.add_patch(circle)
         elif view == "rz":
@@ -115,8 +117,6 @@ class XAMSPlotter:
             z = volume['placement']['z']
             r = np.sqrt(x**2 + y**2)
             rSource = volume['dimensions']['rMax']
-            #circle = plt.Circle((r, z), rSource, edgecolor='black', facecolor='green', alpha=0.7)
-            #ax.add_artist(circle)
             circle = Circle((r, z), rSource, edgecolor='black', facecolor='green', alpha=0.7)
             ax.add_patch(circle)
 
@@ -284,8 +284,6 @@ class XAMSPlotter:
                     dz = self.volumes['GaseousXenon']['dimensions']['z']
                     z = self.volumes['GaseousXenon']['placement']['z']
                     gaseousXenon = self.create_rectangle(0, z-dz/2, rMax, dz)
-
-
                     union_shape = union_shape.difference(gaseousXenon)
 
                 x,y=union_shape.exterior.xy
@@ -295,6 +293,20 @@ class XAMSPlotter:
                 y = np.array(y)+z_offset
                 ax.fill(x, y, color='lightgrey', alpha=0.6)  # Fill the shape with color
                 ax.plot(x, y, linewidth=1., color='black', alpha=0.6)	
+            elif name == "FieldShape":
+                rMin = self.volumes[name]['dimensions']['rMin']
+                rMax = self.volumes[name]['dimensions']['rMax']
+                dz_ring = self.volumes[name]['dimensions']['z']  # Thickness of a ring
+                num_rings = self.volumes[name]['repetitions']['count']  # Number of rings
+                dz_spacing = self.volumes[name]['repetitions']['dz']  # Spacing between rings
+        
+                z_offset = self.volumes['InnerCryostat']['placement']['z']+self.volumes['LiquidXenon']['placement']['z']+self.volumes[name]['placement']['z']
+
+                for i in range(num_rings):
+                    z = z_offset + i * dz_spacing
+                    rectangle = Rectangle((rMin, z - dz_ring / 2), rMax - rMin, dz_ring,
+                                  edgecolor='black', facecolor='grey', alpha=0.8)
+                    ax.add_patch(rectangle)
             elif name == "LeadShield":
                 rMin = self.volumes[name]['dimensions']['rMin']
                 rMax = self.volumes[name]['dimensions']['rMax']
