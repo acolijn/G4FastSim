@@ -4,6 +4,7 @@ import awkward as ak
 from matplotlib.patches import Circle, Rectangle
 import matplotlib.pyplot as plt
 from matplotlib.colors import LogNorm
+from XAMSPlotter import XAMSPlotter
 
 from RunManager import RunManager
 from mendeleev import element
@@ -23,7 +24,7 @@ class Geant4Analyzer:
             label (str, optional): The label to use for the plot.
         """
 
-        manager = RunManager("../run/rundb.json")
+        manager = RunManager("../../run/rundb.json")
 
         self.file_paths = manager.get_output_root_files(run_id, first_only=first_only)
         self.settings = manager.get_run_settings(run_id, convert_units=True)
@@ -201,4 +202,52 @@ class Geant4Analyzer:
             plt.show()
 
         return ax
+    
+    def plot_2d_histogram_with_detector(self, view="xy", bins=500, range=None, ax=None, saveFigFilename=None):
+        """
+        Plots a 2D histogram of the hits and overlays the detector geometry if available.
+
+        Args:
+            view (str): The view for the plot, either "xy" or "rz". Default is "xy".
+            bins (int or array-like): The number of bins for the histogram. Default is 500.
+            range (tuple or list): The range for the histogram. Default is set based on view.
+            ax (matplotlib.axes.Axes): The axis to plot on. If None, a new figure is created.
+        """
+        if ax is None:
+            fig, ax = plt.subplots()
+            fig.set_size_inches(5, 5)
+
+        # Set default ranges based on view
+        if range is None:
+            if view == "xy":
+                range = [[-150, 150], [-35, 265]]  # Default range for x-y
+            elif view == "rz":
+                range = [[0, 300], [-125, 175]]  # Default range for r-z
+
+        # Plot 2D histogram
+        if view == "xy":
+            h = ax.hist2d(self.data['xh'], self.data['yh'], bins=bins, range=range, cmap='viridis', norm=LogNorm())
+        elif view == "rz":
+            h = ax.hist2d(self.data['r'], self.data['zh'], bins=bins, range=range, cmap='viridis', norm=LogNorm())
+            ax.plot([0, 400], [-25., -25.], '--', color='grey', linewidth=0.5)
+
+        # Plot detector geometry if the detector type is 'xams'
+        if "xams" in self.geometry.get('description', "").lower():
+            gpl = XAMSPlotter(self.geometry)
+            gpl.plot_geometry(ax=ax, view=view)
+
+        # Label axes
+        if view == "xy":
+            ax.set_xlabel("$x$ (mm)")
+            ax.set_ylabel("$y$ (mm)")
+        elif view == "rz":
+            ax.set_xlabel("$r$ (mm)")
+            ax.set_ylabel("$z$ (mm)")
+
+        # Show plot and optionally save to a file
+        if saveFigFilename is not None:
+            plt.savefig(saveFigFilename)
+
+        plt.show()
+
     
