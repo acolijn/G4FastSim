@@ -235,9 +235,12 @@ class XAMSPlotter:
                 facecolor = 'green'
                 edgecolor = 'black'
                 alpha = 0.2
+            elif name == "FieldShape":
+                return
             else:
                 print("Invalid name")
                 exit(-1)
+
             xc = volume['placement']['x']
             yc = volume['placement']['y']
             # plot the x-y view of the cylinder. draw an annulus 360deg with rMin and rMax and centr (xc,yc)
@@ -302,10 +305,11 @@ class XAMSPlotter:
         
                 z_offset = self.volumes['InnerCryostat']['placement']['z']+self.volumes['LiquidXenon']['placement']['z']+self.volumes[name]['placement']['z']
 
+                coppercolor = '#B87333'
                 for i in range(num_rings):
                     z = z_offset + i * dz_spacing
                     rectangle = Rectangle((rMin, z - dz_ring / 2), rMax - rMin, dz_ring,
-                                  edgecolor='black', facecolor='grey', alpha=0.8)
+                                  edgecolor=None, facecolor=coppercolor, alpha=0.4)
                     ax.add_patch(rectangle)
             elif name == "LeadShield":
                 rMin = self.volumes[name]['dimensions']['rMin']
