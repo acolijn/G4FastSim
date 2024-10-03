@@ -9,6 +9,9 @@
       "Pb": {
         "nist": "G4_Pb"
       },
+      "Cu": {
+        "nist": "G4_Cu"
+      },	
       "LXe": {
         "name": "LXe",
         "state": "kStateLiquid",

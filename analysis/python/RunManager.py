@@ -77,13 +77,21 @@ class RunManager:
         # if particle is 'ion', get the ion name
         for index, run in filtered_runs.iterrows():
             # if particle is 'ion', get the ion name
+            settings = self.get_run_settings(run['id'])
+
             if run['particle'] == 'ion':
-                settings = self.get_run_settings(run['id'])
                 txt = settings['gps_settings']['ion']
                 Z = txt.split(" ")[0]
                 A = txt.split(" ")[1]
                 element_symbol = element(int(Z)).symbol
                 filtered_runs['ion'] = '{:s}{:2d}'.format(element_symbol, int(A))
+
+            # get the source position
+            source_position = settings['gps_settings']['posCentre']
+            # source position is now "x y z cm". convert to "(x, y, z) cm" 
+            source_position = "(" + source_position.replace(" ", ", ") + ") cm"
+            source_position = source_position.replace(", cm)", ")")
+            filtered_runs.loc[index,'source position'] = source_position
 
             # get the geometry description
             geometry = self.get_geometry(run['id'])
@@ -92,7 +100,7 @@ class RunManager:
 
         # if detector is 'xams' drop a few columns that are not relevant
         if detector_type == 'xams':
-            filtered_runs = filtered_runs.drop(columns=['fastSimulation','maxEnergy', 'maxScatters','outputFile', 'numJobs', 'sourceVolume'])
+            filtered_runs = filtered_runs.drop(columns=['fastSimulation','maxEnergy', 'maxScatters','outputDir', 'outputFile', 'settingsFile', 'status', 'numJobs', 'randomSeed','sourceVolume'])
         return filtered_runs
 
     def get_output_root_files(self, run_id, first_only=False):
@@ -168,6 +176,34 @@ class RunManager:
                 return None
             
         return None
+    
+    def get_materials(self, run_id):
+        """
+        Retrieves the maerials that are defined for a specific run.
+
+        Args:
+            run_id (int): The ID of the run.
+
+        Returns:
+            dict or None: The geometry for the run if found, None otherwise.
+        """
+
+        settings = self.get_run_settings(run_id)
+
+        if settings:
+            # get the geometryFileName from the settings
+            materialFileName = settings["detector_configuration"]["materialFileName"]
+            # check if the file geometryFileName exists
+            if os.path.exists(materialFileName):
+                with open(materialFileName, 'r') as file:
+                    material = json.load(file)
+                return material['materials']
+            else:
+                print(f"Geometry file {materialFileName} not found.")
+                return None
+            
+        return None
+
 
     def convert_units(self, settings):
         """
@@ -213,25 +249,31 @@ class RunManager:
 
     def delete_run(self, run_id):
         """
-        Deletes a run with the given run_id.
+        Deletes a run with the given run_id and removes it from the database (config file).
 
         Args:
             run_id (int): The ID of the run to be deleted.
 
         Returns:
             None
-
-        Raises:
-            None
         """
-        run = self.get_run_by_id(run_id)
-        if run:
-            run["status"] = "deleted"
+        # Filter out the run with the specified run_id
+        new_runs = [run for run in self.config.get("runs", []) if run["id"] != run_id]
+        
+        if len(new_runs) != len(self.config["runs"]):
+            # Remove the output directory
+            run = self.get_run_by_id(run_id)  # Get run information before it's deleted
+            if run:
+                output_dir = run.get("outputDir")
+                if output_dir and os.path.exists(output_dir):
+                    shutil.rmtree(output_dir)
+                    print(f"Output for run {run_id} has been removed.")
+
+            self.config["runs"] = new_runs
+            # Save the updated config
             self.save_config()
-            output_dir = run.get("outputDir")
-            if output_dir and os.path.exists(output_dir):
-                shutil.rmtree(output_dir)
-            print(f"Run {run_id} marked as deleted and its output has been removed.")
+            print(f"Run {run_id} has been removed from the database.")
         else:
             print(f"Run {run_id} not found.")
+
 

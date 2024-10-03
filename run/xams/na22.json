@@ -8,7 +8,7 @@
         "particle": "ion",
         "ion": "11 22",
         "posType": "Point",
-        "posCentre": "0.0 13.5 -2.5 cm",
+        "posCentre": "0.0 17.5 -2.5 cm",
         "angType": "iso"
     },
     "run_settings": {

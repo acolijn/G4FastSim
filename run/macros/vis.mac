@@ -10,16 +10,11 @@
 /run/initialize
 
 # define the particle gun settings
-/gps/particle gamma
-/gps/energy 1. MeV
-/gps/pos/type Volume
-/gps/pos/shape Cylinder
-/gps/pos/centre 0. 0. 0. cm
-/gps/pos/radius 1.6 m
+/gps/particle ion
+/gps/ion 11 22
+/gps/pos/type Point
+/gps/pos/centre 0. 13.5 -2.5 cm
 /gps/pos/halfz 1.3 m
-/gps/pos/confine InnerCryostat
-#/gps/pos/confine OuterCryostat
-
 /gps/ang/type iso
 
 # fast simulation?
