@@ -3,14 +3,14 @@
     "size": 0.6
   },
   "detector": "xams",
-  "description": "XAMS detector with rings",
+  "description": "source at -2.5cm in z",
   "version": "2.0",
   "volumes": [
     {
       "name": "OuterCryostat",
+      "parent": "World",
       "shape": "union",
       "material": "StainlessSteel",
-      "parent": "World",
       "color": [1.0, 0.0, 1.0, 0.3],
       "components": [
         {
@@ -109,9 +109,9 @@
     },
     {
       "name": "LiquidXenon",
+      "parent": "GaseousXenon",
       "shape": "tubs",
       "material": "LXe",
-      "parent": "GaseousXenon",
       "color": [0.0, 0.0, 1.0, 0.3],	
       "active": true,
       "clustering": {
@@ -184,7 +184,7 @@
       "visible": true,
       "color": [0.7, 0.7, 0.2, 0.5],
       "dimensions": {"rMin": 0.0, "rMax": 0.5, "startPhi": 0.0, "endPhi": 360.0, "startTheta": 0.0, "endTheta": 180.0},
-      "placement": { "x": 0.0, "y": 135.0, "z": -25.0}      
+      "placement": { "x": 0.0, "y": 175.0, "z": -25.0}      
     }
   ]
 }

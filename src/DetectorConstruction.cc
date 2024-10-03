@@ -138,8 +138,13 @@ void DetectorConstruction::LoadGeometryFromJson(const std::string& geoFileName) 
                                          ? volume["detectorName"].get<std::string>()
                                          : name;  // Use the name of the volume if detectorName is not specified
                 
-                detectorsToVolumes[detectorName].push_back(name); // Associate volume name with detector
+                // Associate volume name with detector name. This may seems a bit weird, but in this way
+                // we can have multiple logical volumes (i.e. hit collections) associated with the same detector.
+                // This is crucial for the clustering algorithm, when we have an artificial fidcutial volume
+                // inside the LXe. This is needed for the accelerated MC only.
+                detectorsToVolumes[detectorName].push_back(name); 
 
+                // Define the clusternig parameters......
                 G4double spatialThreshold = 10.0 * mm;  // default
                 G4double timeThreshold = 100.0 * ns;    // default
 
@@ -163,8 +168,6 @@ void DetectorConstruction::LoadGeometryFromJson(const std::string& geoFileName) 
                 // Place the volume once
                 PlaceSingleVolume(volume, logVol, -1);
             }
-            //G4VPhysicalVolume* physicalVolume = PlaceVolume(volume, logVol);
-            //physicalVolumeMap[name] = physicalVolume;
         }
     }
 

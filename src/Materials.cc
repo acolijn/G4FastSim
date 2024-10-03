@@ -1,6 +1,4 @@
 #include "Materials.hh"
-
-#include "Materials.hh"
 #include "G4NistManager.hh"
 #include "G4Material.hh"
 #include "G4PhysicalConstants.hh"

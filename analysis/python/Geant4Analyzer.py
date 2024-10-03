@@ -199,7 +199,6 @@ class Geant4Analyzer:
 
         if show:
             ax.legend(frameon=False)
-            plt.show()
 
         return ax
     
@@ -227,12 +226,16 @@ class Geant4Analyzer:
         # Plot 2D histogram
         if view == "xy":
             h = ax.hist2d(self.data['xh'], self.data['yh'], bins=bins, range=range, cmap='viridis', norm=LogNorm())
+
+
         elif view == "rz":
             h = ax.hist2d(self.data['r'], self.data['zh'], bins=bins, range=range, cmap='viridis', norm=LogNorm())
-            ax.plot([0, 400], [-25., -25.], '--', color='grey', linewidth=0.5)
+
+        # show source position
+        self.show_source_position(ax, view)
 
         # Plot detector geometry if the detector type is 'xams'
-        if "xams" in self.geometry.get('description', "").lower():
+        if "xams" in self.geometry.get('detector', "").lower():
             gpl = XAMSPlotter(self.geometry)
             gpl.plot_geometry(ax=ax, view=view)
 
@@ -249,5 +252,43 @@ class Geant4Analyzer:
             plt.savefig(saveFigFilename)
 
         #plt.show()
+
+    def show_source_position(self, ax, view):
+        """
+        Plots the source position on the given axis based on the specified view.
+
+        Parameters:
+        ax (matplotlib.axes.Axes): The matplotlib axes object where the source position will be plotted.
+        view (str): The view type for plotting. It can be either "xy" or "rz".
+
+        Notes:
+        - The function expects 'gps_settings' and 'posCentre' to be present in the 'settings' attribute of the class.
+        - The source position is scaled by a factor of 10.
+        - For the "xy" view, the source position is plotted in the XY plane.
+        - For the "rz" view, the source position is plotted in the RZ plane, where R is the radial distance from the origin.
+
+        Raises:
+        KeyError: If 'gps_settings' or 'posCentre' is not found in the settings.
+        """
+        if 'gps_settings' in self.settings:
+            if 'posCentre' in self.settings['gps_settings']:
+                pos = self.settings['gps_settings']['posCentre']
+                pos = pos.replace(" cm", "").split()
+                pos = [float(p) for p in pos]
+
+
+                if view == "xy":
+                    print("source position: ", pos)
+                    print("source position: ", pos[0], pos[1])
+                    x_source = float(pos[0])*10.
+                    y_source = float(pos[1])*10.
+                    ax.plot([x_source, x_source], [0., y_source+100], '--', color='blue', linewidth=0.5)
+                    ax.plot(x_source, y_source, 'bx', markersize=3)
+                elif view == "rz":
+                    r_source = np.sqrt(float(pos[0])*10.+float(pos[1])**2)*10.
+                    z_source = float(pos[2])*10.
+                    ax.plot([0, 400], [z_source, z_source], '--', color='blue', linewidth=0.5)
+                    ax.plot(r_source, z_source, 'bx', markersize=3)
+
 
     

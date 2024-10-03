@@ -320,7 +320,7 @@ void RunAction::DefineCrossSectionNtuple(){
         analysisManager->FillNtupleSColumn(crossSectionNtupleId, 1, processName);
         analysisManager->FillNtupleDColumn(crossSectionNtupleId, 2, energy / MeV);
         if (processName == "att") {
-          analysisManager->FillNtupleDColumn(crossSectionNtupleId, 3, fGammaRayHelper->GetMassAttenuationCoefficient(energy, mat)/cm2);
+          analysisManager->FillNtupleDColumn(crossSectionNtupleId, 3, fGammaRayHelper->GetAttenuationLength(energy, mat)/cm);
         } else {
           analysisManager->FillNtupleDColumn(crossSectionNtupleId, 3, crossSection / barn);
         }
