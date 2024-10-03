@@ -44,7 +44,7 @@ public:
     void SetMaterialFileName(const std::string& fileName);
 
 private:
-    G4VPhysicalVolume* PlaceVolume(const nlohmann::json& volumeDef, G4LogicalVolume* logicalVolume);
+    //G4VPhysicalVolume* PlaceVolume(const nlohmann::json& volumeDef, G4LogicalVolume* logicalVolume);
     G4RotationMatrix* GetRotationMatrix(const nlohmann::json& volumeDef);
     void SetAttributes(const nlohmann::json& volumeDef, G4LogicalVolume* logicalVolume);
     void LoadGeometryFromJson(const std::string& jsonFileName);
@@ -53,7 +53,7 @@ private:
     G4VSolid* CreateSolid(const nlohmann::json& solidDef);
     G4LogicalVolume* GetLogicalVolume(const G4String& name);
     void PlaceMultipleVolumes(const nlohmann::json& volumeDef, G4LogicalVolume* logicalVolume);
-    G4VPhysicalVolume* PlaceSingleVolume(const nlohmann::json& volumeDef, G4LogicalVolume* logicalVolume, int copyNumber);
+    G4VPhysicalVolume* PlaceSingleVolume(const nlohmann::json& volumeDef, G4LogicalVolume* logicalVolume, G4int copyNumber);
 
     // Maps to store logical and physical volumes for easy lookup
     std::map<G4String, G4LogicalVolume*> logicalVolumeMap;

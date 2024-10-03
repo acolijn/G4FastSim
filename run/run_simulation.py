@@ -91,6 +91,8 @@ def generate_gps_settings(gps_settings):
             commands.append(f"/gps/pos/radius {gps_settings['posRadius']}")
         if 'posHalfz' in gps_settings:
             commands.append(f"/gps/pos/halfz {gps_settings['posHalfz']}")
+        if 'posShape' in gps_settings:
+            commands.append(f"/gps/pos/shape {gps_settings['posShape']}")
         if 'posConfine' in gps_settings:
             commands.append(f"/gps/pos/confine {gps_settings['posConfine']}")
     elif gps_settings['posType'] == "Point":

@@ -1,10 +1,6 @@
 import uproot
-import numpy as np
 import awkward as ak
-from matplotlib.patches import Circle, Rectangle
 import matplotlib.pyplot as plt
-from matplotlib.colors import LogNorm
-from XAMSPlotter import XAMSPlotter
 
 from RunManager import RunManager
 from mendeleev import element

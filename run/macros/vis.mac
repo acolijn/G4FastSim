@@ -9,7 +9,7 @@
 
 /run/initialize
 
-# define the particle gun settings
+# define the particole gun settings
 /gps/particle ion
 /gps/ion 11 22
 /gps/pos/type Point

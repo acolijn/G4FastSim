@@ -166,7 +166,7 @@ void DetectorConstruction::LoadGeometryFromJson(const std::string& geoFileName) 
                 PlaceMultipleVolumes(volume, logVol);
             } else {
                 // Place the volume once
-                PlaceSingleVolume(volume, logVol, -1);
+                PlaceSingleVolume(volume, logVol, 0);
             }
         }
     }
@@ -304,61 +304,6 @@ void DetectorConstruction::SetAttributes(const json& volumeDef, G4LogicalVolume*
     }
 
     logicalVolume->SetVisAttributes(visAttributes);
-}
-
-/**
- * @brief Places a volume inside its parent volume based on the provided JSON definition.
- *
- * This function reads the volume definition from a JSON object and places the volume
- * inside its parent volume. If a parent volume is specified in the JSON definition, 
- * it retrieves the parent volume by name. If no parent is specified, it defaults to 
- * placing the volume inside the world volume. The function also handles the position 
- * and optional rotation of the volume.
- *
- * @param volumeDef A JSON object containing the volume definition, including its name, 
- *                  parent volume (optional), and placement information (position and rotation).
- * @param logicalVolume A pointer to the logical volume to be placed.
- * @return A pointer to the placed physical volume, or nullptr if an error occurs.
- */
-G4VPhysicalVolume* DetectorConstruction::PlaceVolume(const json& volumeDef, G4LogicalVolume* logicalVolume) {
-
-    G4String name = volumeDef["name"].get<std::string>();
-    G4VPhysicalVolume* physicalVolume = nullptr;
-
-   // Place volume inside its parent
-    if (logicalVolume) {
-        G4LogicalVolume* parentVolume = fWorldLogical;  // Default to world
-
-        if (volumeDef.contains("parent")) {
-            G4String parentName = volumeDef["parent"].get<std::string>();
-            parentVolume = GetLogicalVolume(parentName);
-            if (!parentVolume) {
-                G4cerr << "Error: Parent volume " << parentName << " not found!" << G4endl;
-                exit(-1);
-            }
-        }
-
-        G4ThreeVector position(volumeDef["placement"]["x"].get<double>() * mm, 
-                               volumeDef["placement"]["y"].get<double>() * mm, 
-                               volumeDef["placement"]["z"].get<double>() * mm);
-
-        // Extract rotation (if exists)
-        G4RotationMatrix* rotation = GetRotationMatrix(volumeDef);
-
-        // place the volume
-        physicalVolume = new G4PVPlacement(
-            rotation,  // Rotation matrix (can be nullptr)
-            position,        // Position vector
-            logicalVolume,   // Logical volume to place
-            name,      // Name of the volume
-            parentVolume,    // Parent logical volume
-            false,           // No boolean operation
-            0,               // Copy number
-            fCheckOverlaps   // Overlap checking
-        );
-    }
-
-    return physicalVolume;
 }
 
 /**
@@ -540,9 +485,10 @@ void DetectorConstruction::PlaceMultipleVolumes(const json& volumeDef, G4Logical
  * @param copyNumber An integer representing the unique copy number of the volume instance (default is 0).
  * @return A pointer to the placed G4VPhysicalVolume.
  */
-G4VPhysicalVolume* DetectorConstruction::PlaceSingleVolume(const json& volumeDef, G4LogicalVolume* logicalVolume, int copyNumber = 0) {
+G4VPhysicalVolume* DetectorConstruction::PlaceSingleVolume(const json& volumeDef, G4LogicalVolume* logicalVolume, G4int copyNumber) {
     G4String name = volumeDef["name"].get<std::string>();
     G4VPhysicalVolume* physicalVolume = nullptr;
+    G4cout << "Placing volume: >>>" << name << "<<<"<<G4endl;
 
     // Place volume inside its parent
     if (logicalVolume) {
@@ -565,10 +511,13 @@ G4VPhysicalVolume* DetectorConstruction::PlaceSingleVolume(const json& volumeDef
         G4RotationMatrix* rotation = GetRotationMatrix(volumeDef);
 
         // Place the volume
-
         G4String instanceName = name;
-        if (copyNumber >= 0) instanceName = name+ "_" + std::to_string(copyNumber);
-        
+        if (copyNumber == 0){
+            instanceName = name;
+        } else {
+            instanceName = name+ "_" + std::to_string(copyNumber);
+        }
+
         physicalVolume = new G4PVPlacement(
             rotation,                    // Rotation matrix (can be nullptr)
             position,                    // Position vector
