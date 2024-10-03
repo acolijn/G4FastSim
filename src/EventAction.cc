@@ -14,6 +14,7 @@
 #include "GammaRayHelper.hh"
 #include "SensitiveDetector.hh"
 #include "G4LogicalVolumeStore.hh"
+#include "G4PhysicalVolumeStore.hh"
 
 ///namespace G4Sim
 ///{
@@ -46,6 +47,7 @@ void EventAction::AddHitsCollectionName(const G4String& name) {
 
 void EventAction::BeginOfEventAction(const G4Event* event)
 {
+
   if (verbosityLevel > 0)
     G4cout << "EventAction::BeginOfEventAction..... NEXT" << G4endl;	
 
