@@ -1,0 +1,205 @@
+{
+  "world": {
+    "size": 0.6
+  },
+  "detector": "xams",
+  "description": "source at -2.5cm in z",
+  "version": "2.0",
+  "volumes": [
+    {
+      "name": "OuterCryostat",
+      "parent": "World",
+      "shape": "union",
+      "material": "StainlessSteel",
+      "color": [1.0, 0.0, 1.0, 0.3],
+      "components": [
+        {
+          "name": "OuterCryostatCylinder",
+          "shape": "tubs",
+          "dimensions": { "rMin": 0.0, "rMax": 127.0, "z": 470.0, "startAngle": 0.0, "spanningAngle": 360.0 },
+          "placement": [
+            { "x": 0.0, "y": 0.0, "z": 0.0 }
+          ]
+        },
+        {
+          "name": "OuterCryostatBottomFlange",
+          "shape": "tubs",
+          "dimensions": { "rMin": 0.0, "rMax": 145.0, "z": 12.0, "startAngle": 0.0, "spanningAngle": 360.0 },
+          "placement": [
+            { "x": 0.0, "y": 0.0, "z": -235.0, "rotation": { "x": 0.0, "y": 0.0, "z": 0.0 } }
+          ]
+        },
+        {
+          "name": "OuterCryostatTopFlange",
+          "shape": "tubs",
+          "dimensions": { "rMin": 0.0, "rMax": 145.0, "z": 12.0, "startAngle": 0.0, "spanningAngle": 360.0 },
+          "placement": [
+            { "x": 0.0, "y": 0.0, "z": 235.0 }
+          ]
+        }
+      ],
+      "placement": [
+        { "x": 0.0, "y": 0.0, "z": 0.0 }
+      ]
+    },
+    {
+      "name": "Vacuum",
+      "shape": "tubs",
+      "material": "Vacuum",
+      "parent": "OuterCryostat",
+      "visible": false,
+      "dimensions": { "rMin": 0.0, "rMax": 124.23, "z": 465.46, "startAngle": 0.0, "spanningAngle": 360.0 },
+      "placement": [
+        { "x": 0.0, "y": 0.0, "z": 0.0 }
+      ]
+    },
+    {
+      "name": "InnerCryostat",
+      "shape": "union",
+      "material": "StainlessSteel",
+      "parent": "Vacuum",
+      "color": [1.0, 0.0, 1.0, 0.3],
+      "components": [
+        {
+          "name": "InnerCryostatCylinder",
+          "shape": "tubs",
+          "dimensions": { "rMin": 0.0, "rMax": 76.2, "z": 331.0, "startAngle": 0.0, "spanningAngle": 360.0 },
+          "placement": [{ "x": 0.0, "y": 0.0, "z": 0.0 }]
+        },
+        {
+          "name": "InnerCryostatBottomFlange",
+          "shape": "tubs",
+          "dimensions": { "rMin": 0.0, "rMax": 101.25, "z": 22.0, "startAngle": 0.0, "spanningAngle": 360.0 },
+          "placement": [{ "x": 0.0, "y": 0.0, "z": -165.5 }]
+        },
+        {
+          "name": "InnerCryostatTopFlange",
+          "shape": "tubs",
+          "dimensions": { "rMin": 0.0, "rMax": 101.25, "z": 22.0, "startAngle": 0.0, "spanningAngle": 360.0 },
+          "placement": [{ "x": 0.0, "y": 0.0, "z": 165.5 }]
+        }
+      ],
+      "placement": [{ "x": 0.0, "y": 0.0, "z": -26.0, "rotation": { "x": 0.0, "y": 0.0, "z": 0.0 } }]
+    },
+    {
+      "name": "GaseousXenon",
+      "shape": "tubs",
+      "material": "GXe",
+      "parent": "InnerCryostat",
+      "color": [0.0, 0.7, 0.8, 0.3],
+      "active": true,
+      "clustering": {
+        "spatialThreshold": 10.0,
+        "timeThreshold": 1.0
+      },
+      "dimensions": { "rMin": 0.0, "rMax": 73.43, "z": 331.0, "startAngle": 0.0, "spanningAngle": 360.0 },
+      "placement": [{ "x": 0.0, "y": 0.0, "z": 0.0 }]
+    },
+    {
+      "name": "PTFEBucket",
+      "shape": "union",
+      "material": "PTFE",
+      "parent": "GaseousXenon",
+      "color": [1.0, 1.0, 1.0, 0.3],	
+      "components": [
+        {
+          "name": "PTFEWall",
+          "shape": "tubs",
+          "dimensions": { "rMin": 55.0, "rMax": 65.0, "z": 110.0, "startAngle": 0.0, "spanningAngle": 360.0 },
+          "placement": [{ "x": 0.0, "y": 0.0, "z": 0.0 }]
+        },
+        {
+          "name": "PTFEBottom",
+          "shape": "tubs",
+          "dimensions": { "rMin": 0.0, "rMax": 65.0, "z": 10.0, "startAngle": 0.0, "spanningAngle": 360.0 },
+          "placement": [{ "x": 0.0, "y": 0.0, "z": -60.0 }]
+        }
+      ],
+      "placement": [{ "x": 0.0, "y": 0.0, "z": -10.0 }]
+    },
+    {
+      "name": "LiquidXenon",
+      "parent": "GaseousXenon",
+      "shape": "tubs",
+      "material": "LXe",
+      "color": [0.0, 0.0, 1.0, 0.3],	
+      "active": true,
+      "clustering": {
+        "spatialThreshold": 10.0,
+        "timeThreshold": 1.0
+      },
+      "dimensions": { "rMin": 0, "rMax": 55.0, "z": 100.0, "startAngle": 0.0, "spanningAngle": 360.0 },
+      "placement": [{ "x": 0.0, "y": 0.0, "z": -15.0 }]
+    },
+    {
+      "name": "PTFEReflectionCylinder",
+      "shape": "tubs",
+      "material": "PTFE",
+      "parent": "LiquidXenon",
+      "color": [1.0, 1.0, 1.0, 0.3],	
+      "dimensions": { "rMin": 31.0, "rMax": 36.0, "z": 52.0, "startAngle": 0.0, "spanningAngle": 360.0 },
+      "placement": [{ "x": 0.0, "y": 0.0, "z": 22.0 }]
+    },
+    {
+      "name": "FieldShape",
+      "shape": "tubs",
+      "material": "G4_Cu",
+      "parent": "LiquidXenon",
+      "color": [0.0, 1.0, 0.0, 0.3],
+      "dimensions": { "rMin": 36.0, "rMax": 46.0, "z": 1.0, "startAngle": 0.0, "spanningAngle": 360.0 },
+      "placement": [
+        { "x": 0.0, "y": 0.0, "z": 47.5 },
+        { "x": 0.0, "y": 0.0, "z": 37.3 },
+        { "x": 0.0, "y": 0.0, "z": 27.1 },
+        { "x": 0.0, "y": 0.0, "z": 16.9 },
+        { "x": 0.0, "y": 0.0, "z":  5.7 },
+        { "x": 0.0, "y": 0.0, "z": -4.5 }]
+    },
+    {
+      "name": "Collimator",
+      "shape": "subtraction",
+      "material": "G4_Pb",
+      "parent": "World",
+      "components":[  
+        {
+          "name": "CollimatorBlock",
+          "shape": "box",
+          "dimensions": { "x": 100.0, "y": 100.0, "z": 20.0 },	
+          "placement": [{ "x": 0.0, "y": 0.0, "z": 0.0 }]
+        },
+        {
+          "name": "CollimatorHole",
+          "shape": "tubs",
+          "dimensions": { "rMin": 0.0, "rMax": 2.5 , "z": 40.0, "startAngle": 0.0, "spanningAngle": 360.0 },
+          "placement": [{ "x": 0.0, "y": 0.0, "z": 0.0 }]
+        }
+      ],
+      "placement": [{ "x": 0.0, "y": 150.0, "z": -25.0, "rotation": { "x": 90.0, "y": 0.0, "z": 0.0 } }]
+    },
+    {
+      "name": "NaI",
+      "shape": "tubs",
+      "parent": "World",
+      "material": "NaI",
+      "visible": true,
+      "color": [0.7, 0.7, 0.2, 0.5],
+      "active": true,
+      "clustering": {
+        "spatialThreshold": 1000.0,
+        "timeThreshold": 100.0
+      },
+      "dimensions": { "rMin": 0.0, "rMax": 36.0, "z": 72.0, "startAngle": 0.0, "spanningAngle": 360.0 },
+      "placement": [{ "x": 0.0, "y": 220.0, "z": -25.0 }]
+    },
+    {
+      "name": "SourceSphere",
+      "shape": "sphere",
+      "parent": "World",
+      "material": "G4_Pb",
+      "visible": true,
+      "color": [0.7, 0.7, 0.2, 0.5],
+      "dimensions": {"rMin": 0.0, "rMax": 0.5, "startPhi": 0.0, "endPhi": 360.0, "startTheta": 0.0, "endTheta": 180.0},
+      "placement": [{ "x": 0.0, "y": 175.0, "z": -25.0}]
+    }
+  ]
+}

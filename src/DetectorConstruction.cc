@@ -105,6 +105,7 @@ void DetectorConstruction::SetMaterialFileName(const std::string& fileName) {
  * 
  * @param jsonFileName The path to the JSON file containing the geometry information.
  */
+
 void DetectorConstruction::LoadGeometryFromJson(const std::string& geoFileName) {
     std::ifstream inputFile(geoFileName);
     if (!inputFile.is_open()) {
@@ -127,57 +128,117 @@ void DetectorConstruction::LoadGeometryFromJson(const std::string& geoFileName) 
     // Loop through volumes and set up the sensitive detectors
     std::map<G4String, std::vector<G4String>> detectorsToVolumes; // Map of detector names to volume names
     for (const auto& volume : geometryJson["volumes"]) {
+        G4int id = 0;
         G4LogicalVolume* logVol = ConstructVolume(volume);
         if (logVol) {
             G4String name = volume["name"].get<std::string>();
             logicalVolumeMap[name] = logVol;
 
-            // If the volume is active, associate it with a sensitive detector
+            // Handle active volumes and detectors
             if (volume.contains("active") && volume["active"].get<bool>()) {
                 G4String detectorName = volume.contains("detectorName") 
                                          ? volume["detectorName"].get<std::string>()
-                                         : name;  // Use the name of the volume if detectorName is not specified
+                                         : name;
                 
-                // Associate volume name with detector name. This may seems a bit weird, but in this way
-                // we can have multiple logical volumes (i.e. hit collections) associated with the same detector.
-                // This is crucial for the clustering algorithm, when we have an artificial fidcutial volume
-                // inside the LXe. This is needed for the accelerated MC only.
+                // get clustering parameters
                 detectorsToVolumes[detectorName].push_back(name); 
 
-                // Define the clusternig parameters......
-                G4double spatialThreshold = 10.0 * mm;  // default
-                G4double timeThreshold = 100.0 * ns;    // default
-
-                if (volume["clustering"].contains("spatialThreshold")) {
-                    spatialThreshold = volume["clustering"]["spatialThreshold"].get<double>() * mm;
-                }
-
-                if (volume["clustering"].contains("timeThreshold")) {
-                    timeThreshold = volume["clustering"]["timeThreshold"].get<double>() * ns;
-                }
-
-                // Store the thresholds in the map
+                G4double spatialThreshold = volume["clustering"].contains("spatialThreshold") ? 
+                                            volume["clustering"]["spatialThreshold"].get<double>() * mm : 10.0 * mm;
+                G4double timeThreshold = volume["clustering"].contains("timeThreshold") ? 
+                                         volume["clustering"]["timeThreshold"].get<double>() * ns : 100.0 * ns;
                 fClusteringParameters[name] = std::make_pair(spatialThreshold, timeThreshold);
             }
 
-            // Check if multiple placements are needed (via 'repetitions' field)
-            if (volume.contains("repetitions")) {
-                // Place the volume multiple times
-                PlaceMultipleVolumes(volume, logVol);
-            } else {
-                // Place the volume once
-                PlaceSingleVolume(volume, logVol, 0);
+            // Place volumes according to the "placement" array
+            for (const auto& placement : volume["placement"]) {
+                PlaceSingleVolume(volume, logVol, placement, id);
+                id++;
             }
         }
     }
 
-    // Now create sensitive detectors for each detector name and assign associated volumes
+    // Set up sensitive detectors
     for (const auto& [detectorName, volumeNames] : detectorsToVolumes) {
         MakeVolumeSensitive(detectorName, volumeNames);  // Pass detector name and associated volumes
     }
 
     EventAction::SetClusteringParameters(fClusteringParameters);
 }
+
+// void DetectorConstruction::LoadGeometryFromJson(const std::string& geoFileName) {
+//     std::ifstream inputFile(geoFileName);
+//     if (!inputFile.is_open()) {
+//         G4cerr << "DetectorConstruction::LoadGeometryFromJson: Error: Could not open geometry JSON file: " << geoFileName << G4endl;
+//         exit(-1);    
+//     }
+
+//     json geometryJson;
+//     inputFile >> geometryJson;
+
+//     // First construct the world volume
+//     G4Material* worldMaterial = G4Material::GetMaterial("G4_AIR");
+//     G4double worldSize = geometryJson["world"]["size"].get<double>() * m;
+//     G4Box* worldBox = new G4Box("World", worldSize / 2, worldSize / 2, worldSize / 2);
+//     fWorldLogical = new G4LogicalVolume(worldBox, worldMaterial, "World");
+//     fWorldPhysical = new G4PVPlacement(nullptr, G4ThreeVector(), fWorldLogical, "World", nullptr, false, 0, fCheckOverlaps);
+
+//     logicalVolumeMap["World"] = fWorldLogical;
+
+//     // Loop through volumes and set up the sensitive detectors
+//     std::map<G4String, std::vector<G4String>> detectorsToVolumes; // Map of detector names to volume names
+//     for (const auto& volume : geometryJson["volumes"]) {
+//         G4LogicalVolume* logVol = ConstructVolume(volume);
+//         if (logVol) {
+//             G4String name = volume["name"].get<std::string>();
+//             logicalVolumeMap[name] = logVol;
+
+//             // If the volume is active, associate it with a sensitive detector
+//             if (volume.contains("active") && volume["active"].get<bool>()) {
+//                 G4String detectorName = volume.contains("detectorName") 
+//                                          ? volume["detectorName"].get<std::string>()
+//                                          : name;  // Use the name of the volume if detectorName is not specified
+                
+//                 // Associate volume name with detector name. This may seems a bit weird, but in this way
+//                 // we can have multiple logical volumes (i.e. hit collections) associated with the same detector.
+//                 // This is crucial for the clustering algorithm, when we have an artificial fidcutial volume
+//                 // inside the LXe. This is needed for the accelerated MC only.
+//                 detectorsToVolumes[detectorName].push_back(name); 
+
+//                 // Define the clusternig parameters......
+//                 G4double spatialThreshold = 10.0 * mm;  // default
+//                 G4double timeThreshold = 100.0 * ns;    // default
+
+//                 if (volume["clustering"].contains("spatialThreshold")) {
+//                     spatialThreshold = volume["clustering"]["spatialThreshold"].get<double>() * mm;
+//                 }
+
+//                 if (volume["clustering"].contains("timeThreshold")) {
+//                     timeThreshold = volume["clustering"]["timeThreshold"].get<double>() * ns;
+//                 }
+
+//                 // Store the thresholds in the map
+//                 fClusteringParameters[name] = std::make_pair(spatialThreshold, timeThreshold);
+//             }
+
+//             // Check if multiple placements are needed (via 'repetitions' field)
+//             if (volume.contains("repetitions")) {
+//                 // Place the volume multiple times
+//                 PlaceMultipleVolumes(volume, logVol);
+//             } else {
+//                 // Place the volume once
+//                 PlaceSingleVolume(volume, logVol, 0);
+//             }
+//         }
+//     }
+
+//     // Now create sensitive detectors for each detector name and assign associated volumes
+//     for (const auto& [detectorName, volumeNames] : detectorsToVolumes) {
+//         MakeVolumeSensitive(detectorName, volumeNames);  // Pass detector name and associated volumes
+//     }
+
+//     EventAction::SetClusteringParameters(fClusteringParameters);
+// }
 
 /**
  * Makes a volume sensitive by assigning a sensitive detector to it.
@@ -209,73 +270,119 @@ void DetectorConstruction::MakeVolumeSensitive(const G4String& detectorName, con
     }
 }
 
-
-
 /**
  * Constructs a G4LogicalVolume based on the provided volume definition.
  *
  * @param volumeDef The JSON object containing the volume definition.
  * @return The constructed G4LogicalVolume, or nullptr if an error occurred.
  */
-G4LogicalVolume* DetectorConstruction::ConstructVolume(const json& volumeDef) {
+ G4LogicalVolume* DetectorConstruction::ConstructVolume(const json& volumeDef) {
     G4String name = volumeDef["name"].get<std::string>();
     G4Material* material = G4Material::GetMaterial(volumeDef["material"].get<std::string>());
     G4LogicalVolume* logicalVolume = nullptr;
 
     G4cout << "DetectorConstruction::ConstructVolume: Constructing volume: " << name << G4endl;
-    G4cout << "DetectorConstruction::ConstructVolume: Material: " << material->GetName() << G4endl;  
 
-    // if shape is 'union'
-    if (volumeDef["shape"].get<std::string>() == "union"){
-        G4VSolid* unionSolid = nullptr;
+    // Handle "union" or "subtraction"
+    if (volumeDef["shape"] == "union" || volumeDef["shape"] == "subtraction") {
+        G4VSolid* compoundSolid = nullptr;
         for (const auto& component : volumeDef["components"]) {
-            // create the solid
             G4VSolid* solid = CreateSolid(component);
-            // its relative position
-            G4ThreeVector position(component["placement"]["x"].get<double>() * mm,
-                                   component["placement"]["y"].get<double>() * mm,
-                                   component["placement"]["z"].get<double>() * mm);
-            // its rotation (if exists)
-            G4RotationMatrix* rotation = GetRotationMatrix(component);
-            // Call the function that handles rotation
-            if (!unionSolid) {
-                unionSolid = solid;  // First component
-            } else {
-                unionSolid = new G4UnionSolid(name, unionSolid, solid, rotation, position);
+            G4ThreeVector position(component["placement"][0]["x"].get<double>() * mm,
+                                   component["placement"][0]["y"].get<double>() * mm,
+                                   component["placement"][0]["z"].get<double>() * mm);
+            G4RotationMatrix* rotation = nullptr;
+            if (component["placement"][0].contains("rotation")) {
+                rotation = GetRotationMatrix(component["placement"][0]["rotation"]);
+            }
+
+            if (!compoundSolid) {
+                compoundSolid = solid;  // First component
+            } else if (volumeDef["shape"] == "union") {
+                compoundSolid = new G4UnionSolid(name, compoundSolid, solid, rotation, position);
+            } else if (volumeDef["shape"] == "subtraction") {
+                compoundSolid = new G4SubtractionSolid(name, compoundSolid, solid, rotation, position);
             }
         }
-        logicalVolume = new G4LogicalVolume(unionSolid, material, name);
-    // if shape is 'subtraction'
-    } else if (volumeDef["shape"].get<std::string>() == "subtraction"){
-        G4VSolid* subtractionSolid = nullptr;
-        for (const auto& component : volumeDef["components"]) {
-            // create the solid
-            G4VSolid* solid = CreateSolid(component);
-            // its relative position
-            G4ThreeVector position(component["placement"]["x"].get<double>() * mm,
-                                   component["placement"]["y"].get<double>() * mm,
-                                   component["placement"]["z"].get<double>() * mm);
-            // its rotation (if exists)
-            G4RotationMatrix* rotation = GetRotationMatrix(component);
-            // Call the function that handles rotation
-            if (!subtractionSolid) {
-                subtractionSolid = solid;  // First component
-            } else {
-                subtractionSolid = new G4SubtractionSolid(name, subtractionSolid, solid, rotation, position);
-            }
-        }
-        logicalVolume = new G4LogicalVolume(subtractionSolid, material, name);	
-    // if shape is 'tubs' or 'box'
+        logicalVolume = new G4LogicalVolume(compoundSolid, material, name);
     } else {
+        // Simple solids like "tubs", "box", etc.
         G4VSolid* solid = CreateSolid(volumeDef);
         logicalVolume = new G4LogicalVolume(solid, material, name);
     }
 
-    // Set the attributes of the logical volume, like visibility, color, transparency, etc.
     SetAttributes(volumeDef, logicalVolume);
- 
     return logicalVolume;
-}
+ }
+// G4LogicalVolume* DetectorConstruction::ConstructVolume(const json& volumeDef) {
+//     G4String name = volumeDef["name"].get<std::string>();
+//     G4Material* material = G4Material::GetMaterial(volumeDef["material"].get<std::string>());
+//     G4LogicalVolume* logicalVolume = nullptr;
+
+//     G4cout << "DetectorConstruction::ConstructVolume: Constructing volume: " << name << G4endl;
+//     G4cout << "DetectorConstruction::ConstructVolume: Material: " << material->GetName() << G4endl;  
+
+//     // if shape is 'union'
+//     if (volumeDef["shape"].get<std::string>() == "union"){
+//         G4VSolid* unionSolid = nullptr;
+//         for (const auto& component : volumeDef["components"]) {
+//             // create the solid
+//             G4VSolid* solid = CreateSolid(component);
+//             // its relative position
+//             G4ThreeVector position(component["placement"]["x"].get<double>() * mm,
+//                                    component["placement"]["y"].get<double>() * mm,
+//                                    component["placement"]["z"].get<double>() * mm);
+//             // its rotation (if exists)
+//             G4RotationMatrix* rotation = nullptr;
+//             if (component["placement"].contains("rotation")) {
+//                 json rotationJson = component["placement"]["rotation"];
+//                 rotation = GetRotationMatrix(rotationJson);
+//             }
+//             //G4RotationMatrix* rotation = GetRotationMatrix(component);
+//             // Call the function that handles rotation
+//             if (!unionSolid) {
+//                 unionSolid = solid;  // First component
+//             } else {
+//                 unionSolid = new G4UnionSolid(name, unionSolid, solid, rotation, position);
+//             }
+//         }
+//         logicalVolume = new G4LogicalVolume(unionSolid, material, name);
+//     // if shape is 'subtraction'
+//     } else if (volumeDef["shape"].get<std::string>() == "subtraction"){
+//         G4VSolid* subtractionSolid = nullptr;
+//         for (const auto& component : volumeDef["components"]) {
+//             // create the solid
+//             G4VSolid* solid = CreateSolid(component);
+//             // its relative position
+//             G4ThreeVector position(component["placement"]["x"].get<double>() * mm,
+//                                    component["placement"]["y"].get<double>() * mm,
+//                                    component["placement"]["z"].get<double>() * mm);
+//             // its rotation (if exists)
+//             G4RotationMatrix* rotation = nullptr;
+//             if (component["placement"].contains("rotation")) {
+//                 json rotationJson = component["placement"]["rotation"];
+//                 rotation = GetRotationMatrix(rotationJson);
+//             }
+
+//             // Call the function that handles rotation
+//             if (!subtractionSolid) {
+//                 subtractionSolid = solid;  // First component
+//             } else {
+//                 subtractionSolid = new G4SubtractionSolid(name, subtractionSolid, solid, rotation, position);
+//             }
+//         }
+//         logicalVolume = new G4LogicalVolume(subtractionSolid, material, name);	
+//     // if shape is 'tubs' or 'box'
+//     } else {
+//         G4VSolid* solid = CreateSolid(volumeDef);
+//         logicalVolume = new G4LogicalVolume(solid, material, name);
+//     }
+
+//     // Set the attributes of the logical volume, like visibility, color, transparency, etc.
+//     SetAttributes(volumeDef, logicalVolume);
+ 
+//     return logicalVolume;
+// }
 
 /**
  * @brief Sets the attributes of a given logical volume based on the provided JSON definition.
@@ -316,15 +423,16 @@ void DetectorConstruction::SetAttributes(const json& volumeDef, G4LogicalVolume*
  * @param volumeDef A JSON object containing the volume definition, including placement and rotation parameters.
  * @return A pointer to a G4RotationMatrix object initialized with the specified rotation angles, or nullptr if no rotation is specified.
  */
-G4RotationMatrix* DetectorConstruction::GetRotationMatrix(const json& volumeDef){
+//G4RotationMatrix* DetectorConstruction::GetRotationMatrix(const json& volumeDef){
+G4RotationMatrix* DetectorConstruction::GetRotationMatrix(const json& rotationJson) {
 
     G4RotationMatrix* rotationMatrix = nullptr;
 
     // Extract rotation (if exists)
-    json rotationJson;
-    if (volumeDef["placement"].contains("rotation")) {
-        rotationJson = volumeDef["placement"]["rotation"];
-    }
+    //json rotationJson;
+    //if (placementDef["placement"].contains("rotation")) {
+    //     rotationJson = placementDef["placement"]["rotation"];
+    //}
 
     if (rotationJson.contains("x") || rotationJson.contains("y") || rotationJson.contains("z")) {
         G4double rotationX = 0.0;
@@ -434,8 +542,10 @@ void DetectorConstruction::PlaceMultipleVolumes(const json& volumeDef, G4Logical
     G4double baseZ = volumeDef["placement"]["z"].get<double>() * mm;
     
     // Default rotation matrix (identity)
-    G4RotationMatrix* baseRotation = GetRotationMatrix(volumeDef);
-    if (!baseRotation) {
+    G4RotationMatrix* baseRotation = nullptr;
+    if (volumeDef["placement"].contains("rotation")) {
+        baseRotation = GetRotationMatrix(volumeDef["placement"]["rotation"]);
+    } else {
         baseRotation = new G4RotationMatrix();  // Identity matrix (no rotation)
     }
 
@@ -485,54 +595,96 @@ void DetectorConstruction::PlaceMultipleVolumes(const json& volumeDef, G4Logical
  * @param copyNumber An integer representing the unique copy number of the volume instance (default is 0).
  * @return A pointer to the placed G4VPhysicalVolume.
  */
-G4VPhysicalVolume* DetectorConstruction::PlaceSingleVolume(const json& volumeDef, G4LogicalVolume* logicalVolume, G4int copyNumber) {
+ G4VPhysicalVolume* DetectorConstruction::PlaceSingleVolume(const json& volumeDef, G4LogicalVolume* logicalVolume, const json& placement, int copyNumber) {
     G4String name = volumeDef["name"].get<std::string>();
-    G4VPhysicalVolume* physicalVolume = nullptr;
-    G4cout << "Placing volume: >>>" << name << "<<<"<<G4endl;
+    G4LogicalVolume* parentVolume = GetLogicalVolume(volumeDef["parent"].get<std::string>());
 
-    // Place volume inside its parent
-    if (logicalVolume) {
-        G4LogicalVolume* parentVolume = fWorldLogical;  // Default to world
-
-        if (volumeDef.contains("parent")) {
-            G4String parentName = volumeDef["parent"].get<std::string>();
-            parentVolume = GetLogicalVolume(parentName);
-            if (!parentVolume) {
-                G4cerr << "Error: Parent volume " << parentName << " not found!" << G4endl;
-                exit(-1);
-            }
-        }
-
-        G4ThreeVector position(volumeDef["placement"]["x"].get<double>() * mm, 
-                               volumeDef["placement"]["y"].get<double>() * mm, 
-                               volumeDef["placement"]["z"].get<double>() * mm);
-
-        // Extract rotation (if exists)
-        G4RotationMatrix* rotation = GetRotationMatrix(volumeDef);
-
-        // Place the volume
-        G4String instanceName = name;
-        if (copyNumber == 0){
-            instanceName = name;
-        } else {
-            instanceName = name+ "_" + std::to_string(copyNumber);
-        }
-
-        physicalVolume = new G4PVPlacement(
-            rotation,                    // Rotation matrix (can be nullptr)
-            position,                    // Position vector
-            logicalVolume,               // Logical volume to place
-            instanceName,                // Unique name of the volume instance
-            parentVolume,                // Parent logical volume
-            false,                       // No boolean operation
-            copyNumber,                  // Unique copy number
-            fCheckOverlaps               // Overlap checking
-        );
-
-        // Store the placed volume in the physicalVolumeMap with unique key
-        physicalVolumeMap[instanceName] = physicalVolume;
+    if (!parentVolume) {
+        G4cerr << "Error: Parent volume " << volumeDef["parent"].get<std::string>() << " not found!" << G4endl;
+        exit(-1);
     }
+
+    G4ThreeVector position(placement["x"].get<double>() * mm, placement["y"].get<double>() * mm, placement["z"].get<double>() * mm);
+    G4RotationMatrix* rotation = nullptr;
+    if (placement.contains("rotation")) {
+        rotation = GetRotationMatrix(placement["rotation"]);
+    }
+
+    G4String instanceName = name;
+    if (copyNumber == 0){
+        instanceName = name;
+    } else {
+        instanceName = name+ "_" + std::to_string(copyNumber);
+    }
+
+    //G4String instanceName = name + "_instance";
+    G4VPhysicalVolume* physicalVolume = new G4PVPlacement(
+        rotation, 
+        position, 
+        logicalVolume, 
+        instanceName, 
+        parentVolume, 
+        false, 
+        copyNumber, 
+        fCheckOverlaps);
+
+    physicalVolumeMap[instanceName] = physicalVolume;
 
     return physicalVolume;
 }
+// G4VPhysicalVolume* DetectorConstruction::PlaceSingleVolume(const json& volumeDef, G4LogicalVolume* logicalVolume, G4int copyNumber) {
+//     G4String name = volumeDef["name"].get<std::string>();
+//     G4VPhysicalVolume* physicalVolume = nullptr;
+//     G4cout << "Placing volume: >>>" << name << "<<<"<<G4endl;
+
+//     // Place volume inside its parent
+//     if (logicalVolume) {
+//         G4LogicalVolume* parentVolume = fWorldLogical;  // Default to world
+
+//         if (volumeDef.contains("parent")) {
+//             G4String parentName = volumeDef["parent"].get<std::string>();
+//             parentVolume = GetLogicalVolume(parentName);
+//             if (!parentVolume) {
+//                 G4cerr << "Error: Parent volume " << parentName << " not found!" << G4endl;
+//                 exit(-1);
+//             }
+//         }
+
+//         G4ThreeVector position(volumeDef["placement"]["x"].get<double>() * mm, 
+//                                volumeDef["placement"]["y"].get<double>() * mm, 
+//                                volumeDef["placement"]["z"].get<double>() * mm);
+
+//         // Extract rotation (if exists)
+//         G4RotationMatrix* rotation = nullptr;
+//         if (volumeDef["placement"].contains("rotation")) {
+//             rotation = GetRotationMatrix(volumeDef["placement"]["rotation"]);
+//         } else {
+//             rotation = new G4RotationMatrix();  // Identity matrix (no rotation)
+//         }
+
+//         // Place the volume
+//         G4String instanceName = name;
+//         if (copyNumber == 0){
+//             instanceName = name;
+//         } else {
+//             instanceName = name+ "_" + std::to_string(copyNumber);
+//         }
+
+//         physicalVolume = new G4PVPlacement(
+//             rotation,                    // Rotation matrix (can be nullptr)
+//             position,                    // Position vector
+//             logicalVolume,               // Logical volume to place
+//             instanceName,                // Unique name of the volume instance
+//             parentVolume,                // Parent logical volume
+//             false,                       // No boolean operation
+//             copyNumber,                  // Unique copy number
+//             fCheckOverlaps               // Overlap checking
+//         );
+
+//         // Store the placed volume in the physicalVolumeMap with unique key
+//         physicalVolumeMap[instanceName] = physicalVolume;
+//     }
+
+//     return physicalVolume;
+// }
 
