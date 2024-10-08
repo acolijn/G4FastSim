@@ -43,7 +43,7 @@ breathe_default_project = "G4Sim"
 templates_path = ['_templates']
 exclude_patterns = []
 
-autodoc_mock_imports = ['pandas', 'shutil', 'json']
+autodoc_mock_imports = ['pandas', 'shutil', 'json', 'mendeleev', 'shapely']
 
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
