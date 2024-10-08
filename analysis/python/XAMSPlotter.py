@@ -106,15 +106,15 @@ class XAMSPlotter:
         volume     = self.volumes['SourceSphere']
 
         if view == "xy":
-            x = volume['placement']['x']
-            y = volume['placement']['y']
+            x = volume['placement'][0]['x']
+            y = volume['placement'][0]['y']
             r = volume['dimensions']['rMax']
             circle = Circle((x, y), r, edgecolor='black', facecolor='green', alpha=0.7)
             ax.add_patch(circle)
         elif view == "rz":
-            x = volume['placement']['x']
-            y = volume['placement']['y']
-            z = volume['placement']['z']
+            x = volume['placement'][0]['x']
+            y = volume['placement'][0]['y']
+            z = volume['placement'][0]['z']
             r = np.sqrt(x**2 + y**2)
             rSource = volume['dimensions']['rMax']
             circle = Circle((r, z), rSource, edgecolor='black', facecolor='green', alpha=0.7)
@@ -134,26 +134,27 @@ class XAMSPlotter:
         if 'components' in volume:
             components = {component['name']: component for component in volume['components']}
      
+        placement = volume['placement'][0]
         if view == "xy":
             #print("Plotting xy view : Collimator")
             # left side of collimator block
-            x = volume['placement']['x'] - components['CollimatorBlock']['dimensions']['x']/2.
-            y = volume['placement']['y'] - components['CollimatorBlock']['dimensions']['z']/2.
+            x = placement['x'] - components['CollimatorBlock']['dimensions']['x']/2.
+            y = placement['y'] - components['CollimatorBlock']['dimensions']['z']/2.
             width = components['CollimatorBlock']['dimensions']['x']/2.-components['CollimatorHole']['dimensions']['rMax']
             height = components['CollimatorBlock']['dimensions']['z']
             rectangle = Rectangle((x, y), width, height, edgecolor='black', facecolor='grey', alpha=0.7)
             ax.add_patch(rectangle)
             # right side of collimator block
-            x = volume['placement']['x'] + components['CollimatorHole']['dimensions']['rMax']
-            y = volume['placement']['y'] - components['CollimatorBlock']['dimensions']['z']/2.
+            x = placement['x'] + components['CollimatorHole']['dimensions']['rMax']
+            y = placement['y'] - components['CollimatorBlock']['dimensions']['z']/2.
 
             rectangle = Rectangle((x, y), width, height, edgecolor='black', facecolor='grey', alpha=0.7)
             ax.add_patch(rectangle)
         elif view == "rz":
             #print("Plotting rz view : Collimator")
-            x = volume['placement']['x']
-            y = volume['placement']['y']
-            z = volume['placement']['z']
+            x = placement['x']
+            y = placement['y']
+            z = placement['z']
             r = np.sqrt(x**2 + y**2)
             height = components['CollimatorBlock']['dimensions']['x']
             rHole = components['CollimatorHole']['dimensions']['rMax']
@@ -241,8 +242,9 @@ class XAMSPlotter:
                 print("Invalid name")
                 exit(-1)
 
-            xc = volume['placement']['x']
-            yc = volume['placement']['y']
+            placement = volume['placement'][0]
+            xc = placement['x']
+            yc = placement['y']
             # plot the x-y view of the cylinder. draw an annulus 360deg with rMin and rMax and centr (xc,yc)
             self.draw_ring(ax, (xc, yc), rMin, rMax, angle_range=(0, 360), edgecolor=edgecolor, facecolor=facecolor, alpha=alpha)
         
@@ -259,13 +261,13 @@ class XAMSPlotter:
                 rMin = 0.0
                 rMax = components[name+'BottomFlange']['dimensions']['rMax']
                 dz = components[name+'BottomFlange']['dimensions']['z']
-                z = components[name+'BottomFlange']['placement']['z']
+                z = components[name+'BottomFlange']['placement'][0]['z']
                 bottomFlange = self.create_rectangle(0, z-dz/2, rMax, dz)
 
                 rMin = 0.0
                 rMax = components[name+'TopFlange']['dimensions']['rMax']
                 dz = components[name+'TopFlange']['dimensions']['z']
-                z = components[name+'TopFlange']['placement']['z']
+                z = components[name+'TopFlange']['placement'][0]['z']
                 topFlange = self.create_rectangle(0, z-dz/2, rMax, dz)
                 
                 union_shape =unary_union([mainCylinder, bottomFlange, topFlange])
@@ -276,7 +278,7 @@ class XAMSPlotter:
                     rMin = 0.0
                     rMax = self.volumes['Vacuum']['dimensions']['rMax']
                     dz = self.volumes['Vacuum']['dimensions']['z']
-                    z = self.volumes['Vacuum']['placement']['z']
+                    z = self.volumes['Vacuum']['placement'][0]['z']
                     vacuum = self.create_rectangle(0, z-dz/2, rMax, dz)
                     
                     union_shape = union_shape.difference(vacuum)
@@ -285,13 +287,13 @@ class XAMSPlotter:
                     rMin = 0.0
                     rMax = self.volumes['GaseousXenon']['dimensions']['rMax']
                     dz = self.volumes['GaseousXenon']['dimensions']['z']
-                    z = self.volumes['GaseousXenon']['placement']['z']
+                    z = self.volumes['GaseousXenon']['placement'][0]['z']
                     gaseousXenon = self.create_rectangle(0, z-dz/2, rMax, dz)
                     union_shape = union_shape.difference(gaseousXenon)
 
                 x,y=union_shape.exterior.xy
 
-                z_offset = self.volumes[name]['placement']['z']
+                z_offset = self.volumes[name]['placement'][0]['z']
                 x = np.array(x)
                 y = np.array(y)+z_offset
                 ax.fill(x, y, color='lightgrey', alpha=0.6)  # Fill the shape with color
@@ -300,14 +302,17 @@ class XAMSPlotter:
                 rMin = self.volumes[name]['dimensions']['rMin']
                 rMax = self.volumes[name]['dimensions']['rMax']
                 dz_ring = self.volumes[name]['dimensions']['z']  # Thickness of a ring
-                num_rings = self.volumes[name]['repetitions']['count']  # Number of rings
-                dz_spacing = self.volumes[name]['repetitions']['dz']  # Spacing between rings
+                #num_rings = self.volumes[name]['repetitions']['count']  # Number of rings
+                #dz_spacing = self.volumes[name]['repetitions']['dz']  # Spacing between rings
         
-                z_offset = self.volumes['InnerCryostat']['placement']['z']+self.volumes['LiquidXenon']['placement']['z']+self.volumes[name]['placement']['z']
-
                 coppercolor = '#B87333'
-                for i in range(num_rings):
-                    z = z_offset + i * dz_spacing
+                #for i in range(num_rings):
+                for placement in self.volumes[name]['placement']:
+                    print('ring ',placement)
+                    delta_z = placement['z']
+
+                    z_offset = self.volumes['InnerCryostat']['placement'][0]['z']+self.volumes['LiquidXenon']['placement'][0]['z']+delta_z    
+                    z = z_offset
                     rectangle = Rectangle((rMin, z - dz_ring / 2), rMax - rMin, dz_ring,
                                   edgecolor=None, facecolor=coppercolor, alpha=0.4)
                     ax.add_patch(rectangle)
@@ -315,7 +320,7 @@ class XAMSPlotter:
                 rMin = self.volumes[name]['dimensions']['rMin']
                 rMax = self.volumes[name]['dimensions']['rMax']
                 dz = self.volumes[name]['dimensions']['z']
-                z_offset = self.volumes[name]['placement']['z']
+                z_offset = self.volumes[name]['placement'][0]['z']
                 rectangle = Rectangle((rMin, -dz/2.+z_offset), rMax-rMin, dz, edgecolor='black', facecolor='grey', alpha=0.8)
                 ax.add_patch(rectangle)
             elif name == "PTFEBucket":
@@ -327,13 +332,13 @@ class XAMSPlotter:
                 rMin = 0.0
                 rMax = components['PTFEBottom']['dimensions']['rMax']
                 dz = components['PTFEBottom']['dimensions']['z']
-                z = components['PTFEBottom']['placement']['z']
+                z = components['PTFEBottom']['placement'][0]['z']
                 bottomFlange = self.create_rectangle(0, z-dz/2, rMax, dz)
 
                 union_shape =unary_union([mainCylinder, bottomFlange])
 
-                z_offset = self.volumes[name]['placement']['z']
-                z_offset += self.volumes['InnerCryostat']['placement']['z']
+                z_offset = self.volumes[name]['placement'][0]['z']
+                z_offset += self.volumes['InnerCryostat']['placement'][0]['z']
 
                 x,y=union_shape.exterior.xy
                 x = np.array(x)
@@ -345,7 +350,7 @@ class XAMSPlotter:
                 rMin = 0.0
                 rMax = self.volumes[name]['dimensions']['rMax'] 
                 height = self.volumes[name]['dimensions']['z']
-                z_offset = self.volumes['InnerCryostat']['placement']['z']
+                z_offset = self.volumes['InnerCryostat']['placement'][0]['z']
                 rectangle = Rectangle((0, -height/2.+z_offset), rMax, height, edgecolor=None, facecolor='lightblue', alpha=0.3)
                 ax.add_patch(rectangle)
 
@@ -353,22 +358,22 @@ class XAMSPlotter:
                 rMin = self.volumes[name]['dimensions']['rMin']
                 rMax = self.volumes[name]['dimensions']['rMax'] 
                 height = self.volumes[name]['dimensions']['z']
-                z_offset = self.volumes['InnerCryostat']['placement']['z']+self.volumes[name]['placement']['z']
+                z_offset = self.volumes['InnerCryostat']['placement'][0]['z']+self.volumes[name]['placement'][0]['z']
                 rectangle = Rectangle((0, -height/2.+z_offset), rMax, height, edgecolor=None, facecolor='darkblue', alpha=0.3)
                 ax.add_patch(rectangle)
             elif name == "PTFEReflectionCylinder":
                 rMin = self.volumes[name]['dimensions']['rMin']
                 rMax = self.volumes[name]['dimensions']['rMax'] 
                 height = self.volumes[name]['dimensions']['z']
-                z_offset = self.volumes['InnerCryostat']['placement']['z']+self.volumes['LiquidXenon']['placement']['z']+self.volumes[name]['placement']['z']
+                z_offset = self.volumes['InnerCryostat']['placement'][0]['z']+self.volumes['LiquidXenon']['placement'][0]['z']+self.volumes[name]['placement'][0]['z']
                 rectangle = Rectangle((rMin, -height/2.+z_offset), rMax-rMin, height, edgecolor='grey', facecolor='white', alpha=0.9)
                 ax.add_patch(rectangle)
             elif name == "NaI":
-                r = np.sqrt(self.volumes[name]['placement']['x']**2+self.volumes[name]['placement']['y']**2)
+                r = np.sqrt(self.volumes[name]['placement'][0]['x']**2+self.volumes[name]['placement'][0]['y']**2)
                 rMin = self.volumes[name]['dimensions']['rMin']
                 rMax = self.volumes[name]['dimensions']['rMax'] 
                 height = self.volumes[name]['dimensions']['z']
-                z_offset = self.volumes[name]['placement']['z']
+                z_offset = self.volumes[name]['placement'][0]['z']
                 rectangle = Rectangle((r-rMax, -height/2.+z_offset), 2*rMax, height, edgecolor='black', facecolor='green', alpha=0.2)
                 ax.add_patch(rectangle)
             else:

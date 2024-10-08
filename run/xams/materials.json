@@ -9,6 +9,12 @@
       "Pb": {
         "nist": "G4_Pb"
       },
+      "Fe": {
+        "nist": "G4_Fe"
+      },
+      "Al": {
+        "nist": "G4_Al"
+      },
       "Cu": {
         "nist": "G4_Cu"
       },

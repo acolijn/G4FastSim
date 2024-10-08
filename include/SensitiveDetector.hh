@@ -24,12 +24,14 @@ namespace G4Sim {
  */
 class SensitiveDetector : public G4VSensitiveDetector {
 public:
-    SensitiveDetector(const G4String& name, const std::vector<G4String>& volumeNames);
+    SensitiveDetector(const G4String& name, const G4String& volumeName);
     virtual ~SensitiveDetector();
 
     virtual void Initialize(G4HCofThisEvent* hce) override;
     virtual G4bool ProcessHits(G4Step* step, G4TouchableHistory* history) override;
     virtual void EndOfEvent(G4HCofThisEvent* hce) override;
+
+    void AddCollection(G4String volumeName);
 
     G4double GetTotalEnergyDeposit() const { return fTotalEnergyDeposit; }
     G4String GetTag() const { return fTag; }

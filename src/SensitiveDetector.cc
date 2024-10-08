@@ -11,12 +11,11 @@
 
 namespace G4Sim {
 
-SensitiveDetector::SensitiveDetector(const G4String& name, const std::vector<G4String>& volumeNames)
+SensitiveDetector::SensitiveDetector(const G4String& name, const G4String& volumeName)
     : G4VSensitiveDetector(name), fTotalEnergyDeposit(0.) {
     
-    for (const auto& volumeName : volumeNames) {
-        collectionName.insert(volumeName + "Collection");  // Register hit collection for each volume
-    }
+    collectionName.insert(volumeName + "Collection");  // Register hit collection for each volume
+    
 }
 
 void SensitiveDetector::Initialize(G4HCofThisEvent* hce) {
@@ -91,6 +90,10 @@ G4bool SensitiveDetector::ProcessHits(G4Step* step, G4TouchableHistory*) {
 
     fTotalEnergyDeposit += edep;  // Accumulate total energy deposit
     return true;
+}
+
+void SensitiveDetector::AddCollection(G4String volumeName) {
+    collectionName.insert(volumeName + "Collection");  // Register hit collection for each volume
 }
 
 

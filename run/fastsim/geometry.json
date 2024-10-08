@@ -10,9 +10,10 @@
       "name": "WaterTank",
       "shape": "tubs",
       "material": "G4_WATER",
+      "parent": "World",
       "color": [0.0, 1.0, 0.0, 0.3],
       "dimensions": { "rMin": 0.0, "rMax": 5000.0, "z": 10000.0, "startAngle": 0.0, "spanningAngle": 360.0 },
-      "placement": { "x": 0.0, "y": 0.0, "z": 0.0 }
+      "placement": [{ "x": 0.0, "y": 0.0, "z": 0.0 }]
     },
     {
       "name": "OuterCryostat",
@@ -21,7 +22,7 @@
       "parent": "WaterTank",
       "color": [1.0, 0.0, 1.0, 0.3],
       "dimensions": { "rMin": 0.0, "rMax": 1500.0, "z": 3000.0, "startAngle": 0.0, "spanningAngle": 360.0 },	
-      "placement": { "x": 0.0, "y": 0.0, "z": 0.0 }
+      "placement": [{ "x": 0.0, "y": 0.0, "z": 0.0 }]
     },
     {
       "name": "Vacuum",
@@ -30,7 +31,7 @@
       "parent": "OuterCryostat",
       "visible": true,
       "dimensions": { "rMin": 0.0, "rMax": 1490.0, "z": 2980.0, "startAngle": 0.0, "spanningAngle": 360.0 },
-      "placement": { "x": 0.0, "y": 0.0, "z": 0.0 }
+      "placement": [{ "x": 0.0, "y": 0.0, "z": 0.0 }]
     },
     {
       "name": "InnerCryostat",
@@ -39,7 +40,7 @@
       "parent": "Vacuum",
       "color": [1.0, 0.0, 1.0, 0.3],
       "dimensions"	: { "rMin": 0.0, "rMax": 1200.0, "z": 2400.0, "startAngle": 0.0, "spanningAngle": 360.0 },
-      "placement": { "x": 0.0, "y": 0.0, "z": 0.0, "rotation": { "x": 0.0, "y": 0.0, "z": 0.0 } }	
+      "placement": [{ "x": 0.0, "y": 0.0, "z": 0.0, "rotation": { "x": 0.0, "y": 0.0, "z": 0.0 } }]
     },
     {
       "name": "LiquidXenon",
@@ -54,7 +55,7 @@
         "timeThreshold": 1.0
       },
       "dimensions": { "rMin": 0, "rMax": 1194.0, "z": 2388.0, "startAngle": 0.0, "spanningAngle": 360.0 },
-      "placement": { "x": 0.0, "y": 0.0, "z": 0.0 }
+      "placement": [{ "x": 0.0, "y": 0.0, "z": 0.0 }]
     },
     {
       "name": "LXeFiducial",
@@ -69,7 +70,7 @@
         "timeThreshold": 1.0
       },
       "dimensions": { "rMin": 0, "rMax": 1144.0, "z": 2288.0, "startAngle": 0.0, "spanningAngle": 360.0 }, 
-      "placement": { "x": 0.0, "y": 0.0, "z": 0.0 }
+      "placement": [{ "x": 0.0, "y": 0.0, "z": 0.0 }]
     }
   ]
 }
