@@ -1,6 +1,7 @@
 import os
 import sys
-sys.path.insert(0, os.path.abspath('../../analysis'))  # Point this to your code directory if needed
+sys.path.insert(0, os.path.abspath('../../analysis/notebook'))  # Point this to your code directory if needed
+sys.path.insert(0, os.path.abspath('../../analysis/python'))  # Point this to your code directory if needed
 sys.path.insert(0, os.path.abspath('../../run'))      # Point this to your code directory if needed
 sys.path.insert(0, os.path.abspath('../../include'))  # Point this to your code directory if needed
 sys.path.insert(0, os.path.abspath('../../src'))      # Point this to your code directory if needed
