@@ -7,6 +7,8 @@
 #include "G4PVPlacement.hh"
 #include "G4SystemOfUnits.hh"
 #include "G4VSolid.hh"
+#include "G4AssemblyVolume.hh"
+
 #include "DetectorConstructionMessenger.hh"
 #include "Materials.hh"
 
@@ -44,16 +46,18 @@ public:
     void SetMaterialFileName(const std::string& fileName);
 
 private:
-    //G4VPhysicalVolume* PlaceVolume(const nlohmann::json& volumeDef, G4LogicalVolume* logicalVolume);
+    void PlaceVolume(const nlohmann::json& volumeDef, G4LogicalVolume* logicalVolume);
+    void PlaceAssembly(const nlohmann::json& volumeDef, G4AssemblyVolume* assembly);
     G4RotationMatrix* GetRotationMatrix(const nlohmann::json& rotationJson);
     void SetAttributes(const nlohmann::json& volumeDef, G4LogicalVolume* logicalVolume);
     void LoadGeometryFromJson(const std::string& jsonFileName);
-    void MakeVolumeSensitive(const G4String& detectorName, const std::vector<G4String>& volumeNames);
+    void MakeVolumeSensitive(const G4String& detectorName, const G4String& volumeName);
     G4LogicalVolume* ConstructVolume(const nlohmann::json& volumeDef);
+    G4AssemblyVolume* ConstructAssembly(const nlohmann::json& volumeDef);
     G4VSolid* CreateSolid(const nlohmann::json& solidDef);
     G4LogicalVolume* GetLogicalVolume(const G4String& name);
-    void PlaceMultipleVolumes(const nlohmann::json& volumeDef, G4LogicalVolume* logicalVolume);
-    G4VPhysicalVolume* PlaceSingleVolume(const nlohmann::json& volumeDef, G4LogicalVolume* logicalVolume, const nlohmann::json& placement, G4int copyNumber);
+    void PlaceRepeatedVolume(const nlohmann::json& volumeDef, G4LogicalVolume* logicalVolume);
+    //G4VPhysicalVolume* PlaceSingleVolume(const nlohmann::json& volumeDef, G4LogicalVolume* logicalVolume, G4int copyNumber);
 
     // Maps to store logical and physical volumes for easy lookup
     std::map<G4String, G4LogicalVolume*> logicalVolumeMap;

@@ -4,7 +4,7 @@
 # define the detector geometry
 
 # define the detector geometry
-/detector/setGeometryFileName /user/z37/g4/G4Sim/run/xams/geometry_testing.json
+/detector/setGeometryFileName /user/z37/g4/G4Sim/run/xams/geometry.json
 /detector/setMaterialFileName /user/z37/g4/G4Sim/run/xams/materials.json
 
 /run/initialize
