@@ -440,7 +440,7 @@ G4VSolid* DetectorConstruction::CreateSolid(const json& solidDef) {
         G4cerr << "Error: Unsupported shape: " << shape << G4endl;
         exit(-1);
     }
-    // Add more shapes as needed (G4Box, G4Sphere, etc.)
+    // Add more shapes as needed......
 
     return nullptr;
 }

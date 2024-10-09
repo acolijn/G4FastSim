@@ -26,6 +26,16 @@
         "pressure": "1.5 atm",
         "components": {
           "Xe": 1
+        },
+        "opticalProperties": {
+          "photonEnergy": [6.91, 6.98, 7.05],  
+          "refractiveIndex": [1.63, 1.61, 1.58],
+          "absorptionLength": [1.0, 1.0, 1.0],
+          "scatteringLength": [0.3, 0.3, 0.3],
+          "scintillationComponent": [0.1, 1.0, 0.1],
+          "scintillationYield": 0.0,
+          "scintillationTimeConstant1": 3.0,
+          "scintillationTimeConstant2": 27.0 
         }
       },
       "GXe": {
@@ -36,6 +46,16 @@
         "pressure": "1.5 atm",
         "components": {
           "Xe": 1
+        },
+        "opticalProperties": {
+          "photonEnergy": [6.91, 6.98, 7.05],  
+          "refractiveIndex": [1.0, 1.0, 1.0], 
+          "absorptionLength": [100.0, 100.0, 100.0],  
+          "scatteringLength": [100.0, 100.0, 100.0],  
+          "scintillationComponent": [0.1, 1.0, 0.1],
+          "scintillationYield": 0.0,  
+          "scintillationTimeConstant1": 3.0,
+          "scintillationTimeConstant2": 27.0
         }
       },
       "Vacuum": {
@@ -54,6 +74,16 @@
         "components": {
           "C": 0.240183,
           "F": 0.759817
+        },
+        "opticalProperties":{
+          "photonEnergy": [6.91, 6.98, 7.05],
+          "refractiveIndex": [1.63, 1.61, 1.58],
+          "absorptionLength": [1e-3, 1e-3, 1e-3],
+          "reflectivity": [0.99, 0.99, 0.99],
+          "specularLobe": [0.01, 0.01, 0.01],
+          "specularSpike": [0.01, 0.01, 0.01],
+          "backscatter": [0.01, 0.01, 0.01],
+          "efficiency": [1.0, 1.0, 1.0]
         }
       },
       "StainlessSteel": {
@@ -74,6 +104,19 @@
           "Na": 0.5,
           "I": 0.5
         } 
+      },
+      "PhotoCathodeMaterial":{
+        "name": "PhotoCathodeMaterial",
+        "state": "kStateSolid",
+        "density": "8.0 g/cm3",
+        "components": {
+          "Al": 1.0
+        },
+        "opticalProperties":{
+          "photonEnergy": [1.0, 6.9, 6.91, 6.98, 7.05],
+          "refractiveIndex": [1.5, 1.5, 1.5, 1.56, 1.60],
+          "absorptionLength": [1e-9, 1e-9, 1e-9, 1e-9, 1e-9]
+        }
       }
     }
   }
