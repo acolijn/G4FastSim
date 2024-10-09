@@ -9,6 +9,7 @@
 
 //#include "G4Element.hh"
 #include "G4SystemOfUnits.hh"
+#include "G4MaterialPropertiesTable.hh"
 //#include <regex>
 
 using json = nlohmann::json;
@@ -148,6 +149,56 @@ void Materials::DefineMaterials() {
             for (const auto& [elementName, fraction] : materialData["components"].items()) {
                 G4Element* element = nist->FindOrBuildElement(elementName);
                 material->AddElement(element, fraction.get<double>());
+            }
+
+            if(materialData.contains("opticalProperties")){
+                json prop = materialData["opticalProperties"];
+                G4MaterialPropertiesTable* mpt = new G4MaterialPropertiesTable();
+                std::vector<G4double> energy = prop["photonEnergy"].get<std::vector<G4double>>();
+                for (auto& e : energy) {
+                   e *= eV;  // Multiply each element by eV
+                }
+                
+                if(prop.contains("refractiveIndex")){
+                    std::vector<G4double> rIndex = prop["refractiveIndex"].get<std::vector<G4double>>();
+                    mpt->AddProperty("RINDEX", energy, rIndex, rIndex.size());
+                }
+                if(prop.contains("absorptionLength")){
+                    std::vector<G4double> absLength = prop["absorptionLength"].get<std::vector<G4double>>();
+                    for (auto& a : absLength) {
+                        a *= m;  // Multiply each element by m
+                    }
+                    mpt->AddProperty("ABSLENGTH", energy, absLength, absLength.size());
+                }
+                if(prop.contains("scatteringLength")){
+                    std::vector<G4double> scatLength = prop["scatteringLength"].get<std::vector<G4double>>();
+                    for (auto& s : scatLength) {
+                        s *= m;  // Multiply each element by m
+                    }
+                    mpt->AddProperty("RAYLEIGH", energy, scatLength, scatLength.size());
+                }
+                if(prop.contains("reflectivity")){
+                    std::vector<G4double> refl = prop["reflectivity"].get<std::vector<G4double>>();
+                    mpt->AddProperty("REFLECTIVITY", energy, refl, refl.size());
+                }
+                if(prop.contains("specularLobe")){
+                    std::vector<G4double> specLobe = prop["specularLobe"].get<std::vector<G4double>>();
+                    mpt->AddProperty("SPECULARLOBECONSTANT", energy, specLobe, specLobe.size());
+                }   
+                if(prop.contains("specularSpike")){
+                    std::vector<G4double> specSpike = prop["specularSpike"].get<std::vector<G4double>>();
+                    mpt->AddProperty("SPECULARSPIKECONSTANT", energy, specSpike, specSpike.size());
+                }
+                if(prop.contains("backscatter")){
+                    std::vector<G4double> backScat = prop["backscatter"].get<std::vector<G4double>>();
+                    mpt->AddProperty("BACKSCATTERCONSTANT", energy, backScat, backScat.size());
+                }
+                if(prop.contains("efficiency")){
+                    std::vector<G4double> eff = prop["efficiency"].get<std::vector<G4double>>();
+                    mpt->AddProperty("EFFICIENCY", energy, eff, eff.size());
+                }
+                //
+                material->SetMaterialPropertiesTable(mpt);
             }
 
         } else {

@@ -238,7 +238,7 @@
         {
           "name": "Photocathode",
           "shape": "box",
-          "material": "G4_Al",
+          "material": "PhotoCathodeMaterial",
           "active": true,
           "clustering": {
             "spatialThreshold": 1000.0,
