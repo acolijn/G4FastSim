@@ -1,0 +1,24 @@
+{
+    "verbose": 0,
+    "detector_configuration": {
+        "geometryFileName": "/user/z37/g4/G4Sim/run/xams/geometry.json",
+        "materialFileName": "/user/z37/g4/G4Sim/run/xams/materials.json",
+        "opticalPhysics": true
+    },
+    "gps_settings": {
+        "particle": "opticalphoton",
+        "energy": "6.9 eV",
+        "polarization": "0.0 0.0 1.0",	
+        "posType": "Volume",
+        "posShape": "Cylinder",
+        "posCentre": "0.0 0.0 0.0 cm",
+        "posRadius": "50.0 cm",
+        "posHalfz": "30.0 cm",
+        "posConfine": "LiquidXenon",	
+        "angType": "iso"	
+    },
+    "run_settings": {
+        "outputFileName": "optical",
+        "printProgress": 10000
+    }
+}

@@ -115,7 +115,8 @@
         "opticalProperties":{
           "photonEnergy": [1.0, 6.9, 6.91, 6.98, 7.05],
           "refractiveIndex": [1.5, 1.5, 1.5, 1.56, 1.60],
-          "absorptionLength": [1e-9, 1e-9, 1e-9, 1e-9, 1e-9]
+          "absorptionLength": [1e-9, 1e-9, 1e-9, 1e-9, 1e-9],
+          "efficiency": [1.0, 1.0, 1.0, 1.0, 1.0]
         }
       }
     }

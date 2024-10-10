@@ -84,7 +84,9 @@ class RunManager:
                 Z = txt.split(" ")[0]
                 A = txt.split(" ")[1]
                 element_symbol = element(int(Z)).symbol
-                filtered_runs['ion'] = '{:s}{:2d}'.format(element_symbol, int(A))
+                filtered_runs.loc[index,'ion'] = '{:s}{:2d}'.format(element_symbol, int(A))
+            else:
+                filtered_runs.loc[index,'ion'] = '-'
 
             # get the source position
             source_position = settings['gps_settings']['posCentre']

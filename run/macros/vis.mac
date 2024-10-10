@@ -5,16 +5,15 @@
 
 # define the detector geometry
 /detector/setGeometryFileName /user/z37/g4/G4Sim/run/xams/geometry.json
-/detector/setMaterialFileName /user/z37/g4/G4Sim/run/xams/materials.json
-
+/detector/setMaterialFileName /data/xenon/acolijn/G4Sim/20241010_195319/materials.json
 /run/initialize
-
-# define the particole gun settings
-/gps/particle ion
-/gps/ion 11 22
-/gps/pos/type Point
-/gps/pos/centre 0. 13.5 -2.5 cm
-/gps/pos/halfz 1.3 m
+/gps/particle opticalphoton
+/gps/pos/type Volume
+/gps/pos/centre 0. -2.0 0. cm
+/gps/energy 6.9 eV
+/gps/pos/radius 3.5 cm
+/gps/pos/halfz 1.0 cm
+/gps/pos/shape Cylinder
 /gps/ang/type iso
 
 # fast simulation?

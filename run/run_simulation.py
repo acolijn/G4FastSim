@@ -80,6 +80,9 @@ def generate_gps_settings(gps_settings):
         f"/gps/pos/centre {gps_settings['posCentre']}"
     ]
 
+    if 'polarization' in gps_settings:
+        commands.append(f"/gps/polarization {gps_settings['polarization']}")
+
     if gps_settings['particle'] == "ion":
         commands.append(f"/gps/ion {gps_settings['ion']}")
 
@@ -112,6 +115,10 @@ def generate_detector_configuration(detector_configuration):
         f"/detector/setGeometryFileName {detector_configuration['geometryFileName']}",
         f"/detector/setMaterialFileName {detector_configuration['materialFileName']}",
     ]
+
+    if 'opticalPhysics' in detector_configuration:
+        commands.append(f"/physics/setOpticalPhysics {detector_configuration['opticalPhysics']}")
+
     return "\n".join(commands)
 
 def generate_run_settings(run_settings, path_manager, job_id):
@@ -350,7 +357,7 @@ def update_master_rundb(rundb, settings, path_manager, args):
         "fastSimulation": run_settings["fastSimulation"] if "fastSimulation" in run_settings else "None",
         "maxScatters": run_settings.get("numberOfScatters", 1) if "numberOfScatters" in run_settings else -1,
         "maxEnergy": run_settings.get("maxEnergy", "2 MeV") if "maxEnergy" in run_settings else "None",
-        "sourceVolume": gps_settings["posConfine"] if gps_settings["posType"] == "Volume" else "",
+        "sourceVolume": gps_settings["posConfine"] if "posConfine" in gps_settings else "None",
         "outputDir": path_manager.output_dir,
         "outputFile": run_settings['outputFileName'],
         "numEvents": args.beam_on,
