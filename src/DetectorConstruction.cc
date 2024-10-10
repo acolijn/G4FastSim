@@ -180,7 +180,12 @@ void DetectorConstruction::PlaceAssembly(const json& volume, G4AssemblyVolume* a
             rotation = GetRotationMatrix(placement["rotation"]);
         }
 
-        G4LogicalVolume* parentVolume = GetLogicalVolume(volume["parent"].get<std::string>());
+        G4LogicalVolume* parentVolume;
+        if (placement.contains("parent")) {
+            parentVolume = GetLogicalVolume(placement["parent"].get<std::string>());
+        } else {
+            parentVolume= GetLogicalVolume(volume["parent"].get<std::string>());
+        }
         assembly->MakeImprint(parentVolume, position, rotation);  // Place the assembly
     }
 }
@@ -557,13 +562,6 @@ void DetectorConstruction::PlaceRepeatedVolume(const json& volumeDef, G4LogicalV
  */
 void DetectorConstruction::PlaceVolume(const json& volumeDef, G4LogicalVolume* logicalVolume){//}, const json& placement, int copyNumber) {
     G4String name = volumeDef["name"].get<std::string>();
-    G4LogicalVolume* parentVolume = GetLogicalVolume(volumeDef["parent"].get<std::string>());
-
-    // Check if the parent volume exists
-    if (!parentVolume) {
-        G4cerr << "Error: Parent volume " << volumeDef["parent"].get<std::string>() << " not found!" << G4endl;
-        exit(-1);
-    }
     // loop over placement and count copyNumber
     int copyNumber = 0;
     for (const auto& placement : volumeDef["placement"]) {
@@ -581,6 +579,14 @@ void DetectorConstruction::PlaceVolume(const json& volumeDef, G4LogicalVolume* l
         } else {
             instanceName = name+ "_" + std::to_string(copyNumber);
         }
+
+        G4LogicalVolume* parentVolume;
+        if (placement.contains("parent")) {
+            parentVolume = GetLogicalVolume(placement["parent"].get<std::string>());
+        } else {
+            parentVolume= GetLogicalVolume(volumeDef["parent"].get<std::string>());
+        }
+
         G4VPhysicalVolume* physicalVolume = new G4PVPlacement(
             rotation, 
             position, 

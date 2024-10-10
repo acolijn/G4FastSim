@@ -7,6 +7,7 @@
 #include "G4PhysicalConstants.hh"
 #include "G4ThreeVector.hh"
 #include "G4VProcess.hh"
+#include "G4OpticalPhoton.hh"
 #include "Hit.hh"
 
 namespace G4Sim {
@@ -54,21 +55,31 @@ void SensitiveDetector::Initialize(G4HCofThisEvent* hce) {
 
 SensitiveDetector::~SensitiveDetector() {}
 
-
 G4bool SensitiveDetector::ProcessHits(G4Step* step, G4TouchableHistory*) {
     G4double edep = step->GetTotalEnergyDeposit();
-    if (edep == 0.) return false;
+    //G4cout << "SensitiveDetector::ProcessHits: entering ProcessHits" << G4endl;
 
+    G4Track* track = step->GetTrack();
+    //if (track->GetDefinition() == G4OpticalPhoton::OpticalPhotonDefinition()) {
+    //    G4cout << "SensitiveDetector::ProcessHits: Optical photon detected" << G4endl;
+    //}
+
+    if (edep == 0.) {
+        //G4cout << "SensitiveDetector::ProcessHits: No energy deposited in this step" << G4endl;
+        return false;
+    }
     // Get the volume where the step occurred
     G4StepPoint* preStepPoint = step->GetPreStepPoint();
-    //G4TouchableHandle touchable = preStepPoint->GetTouchable();
     const G4VTouchable* touchable = preStepPoint->GetTouchable();  // Keep it const since we are not modifying it
 
-    G4String volumeName = touchable->GetVolume()->GetName();  // Get the name of the current volume
+    G4String volumeName = touchable->GetVolume()->GetLogicalVolume()->GetName();  // Get the name of the current volume
 
     // Loop through the registered hit collections and find the correct one for the volume
     for (size_t i = 0; i < fHitsCollections.size(); ++i) {
         G4String name = volumeName + "Collection";
+        //G4cout << "SensitiveDetector::ProcessHits: volumeName = " << volumeName << G4endl;
+        //G4cout << "SensitiveDetector::ProcessHits: name = " << name << G4endl;
+        //G4cout << "SensitiveDetector::ProcessHits: collectionName[i] = " << collectionName[i] << G4endl;
         if (name == collectionName[i]) {  // Match the hit collection with the volume
             auto* newHit = new G4Sim::Hit();
             newHit->energyDeposit = edep;
